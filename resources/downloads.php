@@ -233,7 +233,9 @@ the appropriate column.</p>
 
 <h2 id="core">GNUstep Core</h2>
 
-<p>All GNUstep users should install the following items.
+<p>All GNUstep users should install the following items. Choose either the
+GNUstep Startup package, which combines all four core packages (plus ffcall) 
+or download and install the four core packages separately.
 <small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">Building GNUstep</a></i> in Build Guide)</small></p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
@@ -255,6 +257,22 @@ the appropriate column.</p>
 </thead>
 
 <tbody>
+
+<tr>
+<td class="src">GNUstep Startup</td>
+<td class="req">Required</td>
+<td class="stab"><a href="<?php download("core/gnustep-startup-0.9.1.tar.gz")?>">0.9.1</a></td>
+<td class="unst">-</td>
+<td>Easy Install Core Packages</td>
+</tr>
+
+<tr>
+<td class="src"></td>
+<td class="req"></td>
+<td class="stab"</td>
+<td class="unst"></td>
+<td></td>
+</tr>
 
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
