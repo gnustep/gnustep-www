@@ -222,7 +222,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-make-1.6.0.tar.gz">1.6.0</a></td>
-<td class="unst"><a href="core/gnustep-make-1.7.3.tar.gz">1.7.3</a></td>
+<td class="unst"><a href="core/gnustep-make-1.7.4.tar.gz">1.7.4</a></td>
 <td>Makefile Package</td>
 </tr>
 
@@ -230,7 +230,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-base-1.6.0.tar.gz">1.6.0</a></td>
-<td class="unst"><a href="core/gnustep-base-1.7.3.tar.gz">1.7.3</a></td>
+<td class="unst"><a href="core/gnustep-base-1.7.4.tar.gz">1.7.4</a></td>
 <td>Foundation</td>
 </tr>
 
