@@ -90,7 +90,7 @@
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSTextAttachment-attachmentCell">attachmentCell</a></h3>
-    - (id) <b>attachmentCell</b>;<br />
+    - (id&#60;<a rel="gsdoc" href="#protocol$(NSTextAttachmentCell)">NSTextAttachmentCell</a>>) <b>attachmentCell</b>;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -114,7 +114,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSTextAttachment-setAttachmentCell:">setAttachmentCell:</a></h3>
-    - (void) <b>setAttachmentCell:</b> (id)cell;<br />
+    - (void) <b>setAttachmentCell:</b> (id&#60;<a rel="gsdoc" href="#protocol$(NSTextAttachmentCell)">NSTextAttachmentCell</a>>)cell;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -192,7 +192,7 @@
       <li><a rel="gsdoc" href="NSTextAttachment.html#method$NSAttributedString-containsAttachments">-containsAttachments</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSAttributedString+attributedStringWithAttachment:">attributedStringWithAttachment:</a></h3>
+    <h3><a name="method$NSAttributedString(NSTextAttachment)+attributedStringWithAttachment:">attributedStringWithAttachment:</a></h3>
     + (NSAttributedString*) <b>attributedStringWithAttachment:</b> (<a rel="gsdoc" href="#class$NSTextAttachment">NSTextAttachment</a>*)attachment;<br />
     <p>
       
@@ -200,7 +200,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSAttributedString-containsAttachments">containsAttachments</a></h3>
+    <h3><a name="method$NSAttributedString(NSTextAttachment)-containsAttachments">containsAttachments</a></h3>
     - (BOOL) <b>containsAttachments</b>;<br />
     <p>
       
@@ -239,7 +239,7 @@
       <li><a rel="gsdoc" href="NSTextAttachment.html#method$NSMutableAttributedString-updateAttachmentsFromPath:">-updateAttachmentsFromPath:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSMutableAttributedString-updateAttachmentsFromPath:">updateAttachmentsFromPath:</a></h3>
+    <h3><a name="method$NSMutableAttributedString(NSTextAttachment)-updateAttachmentsFromPath:">updateAttachmentsFromPath:</a></h3>
     - (void) <b>updateAttachmentsFromPath:</b> (NSString*)path;<br />
     <p>
       
@@ -312,10 +312,10 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$(NSTextAttachmentCell)-cellFrameForTextContainer:proposedLineFragment:glyphPosition:characterIndex:">cellFrameForTextContainer:proposedLineFragment:glyphPosition:characterIndex:</a></h3>
-    - (NSRect) <b>cellFrameForTextContainer:</b> (<a rel="gsdoc" href="NSTextContainer.html#class$NSTextContainer">NSTextContainer</a>*)textContainer<b> proposedLineFragment:</b> (NSRect)lineFrag<b> glyphPosition:</b> (NSPoint)position<b> characterIndex:</b> (unsigned)charIndex;<br />
+    - (NSRect) <b>cellFrameForTextContainer:</b> (<a rel="gsdoc" href="NSTextContainer.html#class$NSTextContainer">NSTextContainer</a>*)textContainer<b> proposedLineFragment:</b> (NSRect)lineFrag<b> glyphPosition:</b> (NSPoint)position<b> characterIndex:</b> (unsigned int)charIndex;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            The new way of placing the cell.
           
     </p>
     <hr width="25%" align="left" />
@@ -323,7 +323,12 @@
     - (NSSize) <b>cellSize</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            The old way of placing the cell. The text system will
+            never call these directly (TODO: make sure it
+            doesn't), but other things might. The class
+            implements the new method by calling these, so
+            subclasses can easily change behavior by
+            overriding these.
           
     </p>
     <hr width="25%" align="left" />

@@ -740,8 +740,89 @@
     - (BOOL) <b>setPath:</b> (NSString*)path;<br />
     <p>
       
-            Parses <var>path</var> and selects corresponding
-            items in the NSBrowser columns.
+            
+    </p>
+    <p>
+
+              Parses <var>path</var> and selects corresponding
+              items in the NSBrowser columns.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This is the primary mechanism for programmatically
+              updating the selection of a browser. It should
+              result in the browser cells corresponding to the
+              components being selected, and the browser
+              columns up to the end of <var>path</var> (and
+              just beyond if the last selected cell's
+              <a rel="gsdoc" href="NSBrowserCell.html#method$NSBrowserCell-isLeaf">
+                [NSBrowserCell&nbsp;-isLeaf]
+              </a>
+
+              returns <code>YES</code>). <br /> It does
+              <em>not</em> result in the browsers action being
+              sent to its target, just in a change to the browser
+              selection and display.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              If <var>path</var> begins with the
+              <a rel="gsdoc" href="#method$NSBrowser-pathSeparator">
+                -pathSeparator
+              </a>
+
+              then it is taken to be absolute and the first
+              component in it is expected to denote a cell in
+              column zero. Otherwise it is taken to be relative
+              to the currently selected column.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Empty components (ie where a
+              <a rel="gsdoc" href="#method$NSBrowser-pathSeparator">
+                -pathSeparator
+              </a>
+
+              occurs immediately after another or at the end of
+              <var>path</var>) are simply ignored.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The receivers delegate is asked to select each cell
+              in turn using the
+              <a rel="gsdoc" href="#method$NSObject-browser:selectCellWithString:inColumn:">-browser:selectCellWithString:inColumn:</a>
+ method (if it implements it). If this call to the delegate returns <code>NO</code> then the attempt to set the <var>path</var> fails. <br /> If the delegate does not implement the method, the browser attempts to locate and select the cell itsself, and the method fails if it is unable to locate the cell by matching its <a rel="gsdoc" href="NSCell.html#method$NSCell-stringValue">[NSCell&nbsp;-stringValue]</a>
+ with the component of the <var>path</var>.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The method returns <code>YES</code> if
+              <var>path</var> contains no components or if a cell
+              corresponding to the <var>path</var> was
+              found. Otherwise it returns <code>NO</code>.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -908,7 +989,7 @@
       <li><a rel="gsdoc" href="NSBrowser.html#method$NSBrowser-setSendsActionOnAlphaNumericalKeys:">-setSendsActionOnAlphaNumericalKeys:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSBrowser-acceptsAlphaNumericalKeys">acceptsAlphaNumericalKeys</a></h3>
+    <h3><a name="method$NSBrowser(GNUstepExtensions)-acceptsAlphaNumericalKeys">acceptsAlphaNumericalKeys</a></h3>
     - (BOOL) <b>acceptsAlphaNumericalKeys</b>;<br />
     <p>
       
@@ -917,7 +998,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBrowser-sendsActionOnAlphaNumericalKeys">sendsActionOnAlphaNumericalKeys</a></h3>
+    <h3><a name="method$NSBrowser(GNUstepExtensions)-sendsActionOnAlphaNumericalKeys">sendsActionOnAlphaNumericalKeys</a></h3>
     - (BOOL) <b>sendsActionOnAlphaNumericalKeys</b>;<br />
     <p>
       
@@ -927,7 +1008,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBrowser-setAcceptsAlphaNumericalKeys:">setAcceptsAlphaNumericalKeys:</a></h3>
+    <h3><a name="method$NSBrowser(GNUstepExtensions)-setAcceptsAlphaNumericalKeys:">setAcceptsAlphaNumericalKeys:</a></h3>
     - (void) <b>setAcceptsAlphaNumericalKeys:</b> (BOOL)flag;<br />
     <p>
       
@@ -936,7 +1017,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBrowser-setSendsActionOnAlphaNumericalKeys:">setSendsActionOnAlphaNumericalKeys:</a></h3>
+    <h3><a name="method$NSBrowser(GNUstepExtensions)-setSendsActionOnAlphaNumericalKeys:">setSendsActionOnAlphaNumericalKeys:</a></h3>
     - (void) <b>setSendsActionOnAlphaNumericalKeys:</b> (BOOL)flag;<br />
     <p>
       
@@ -985,7 +1066,7 @@
       <li><a rel="gsdoc" href="NSBrowser.html#method$NSObject-browserWillScroll:">-browserWillScroll:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSObject-browser:createRowsForColumn:inMatrix:">browser:createRowsForColumn:inMatrix:</a></h3>
+    <h3><a name="method$NSObject(NSBrowserDelegate)-browser:createRowsForColumn:inMatrix:">browser:createRowsForColumn:inMatrix:</a></h3>
     - (void) <b>browser:</b> (<a rel="gsdoc" href="#class$NSBrowser">NSBrowser</a>*)sender<b> createRowsForColumn:</b> (int)column<b> inMatrix:</b> (<a rel="gsdoc" href="NSMatrix.html#class$NSMatrix">NSMatrix</a>*)matrix;<br />
     <p>
       
@@ -993,7 +1074,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-browser:isColumnValid:">browser:isColumnValid:</a></h3>
+    <h3><a name="method$NSObject(NSBrowserDelegate)-browser:isColumnValid:">browser:isColumnValid:</a></h3>
     - (BOOL) <b>browser:</b> (<a rel="gsdoc" href="#class$NSBrowser">NSBrowser</a>*)sender<b> isColumnValid:</b> (int)column;<br />
     <p>
       
@@ -1001,7 +1082,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-browser:numberOfRowsInColumn:">browser:numberOfRowsInColumn:</a></h3>
+    <h3><a name="method$NSObject(NSBrowserDelegate)-browser:numberOfRowsInColumn:">browser:numberOfRowsInColumn:</a></h3>
     - (int) <b>browser:</b> (<a rel="gsdoc" href="#class$NSBrowser">NSBrowser</a>*)sender<b> numberOfRowsInColumn:</b> (int)column;<br />
     <p>
       
@@ -1009,7 +1090,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-browser:selectCellWithString:inColumn:">browser:selectCellWithString:inColumn:</a></h3>
+    <h3><a name="method$NSObject(NSBrowserDelegate)-browser:selectCellWithString:inColumn:">browser:selectCellWithString:inColumn:</a></h3>
     - (BOOL) <b>browser:</b> (<a rel="gsdoc" href="#class$NSBrowser">NSBrowser</a>*)sender<b> selectCellWithString:</b> (NSString*)title<b> inColumn:</b> (int)column;<br />
     <p>
       
@@ -1017,7 +1098,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-browser:selectRow:inColumn:">browser:selectRow:inColumn:</a></h3>
+    <h3><a name="method$NSObject(NSBrowserDelegate)-browser:selectRow:inColumn:">browser:selectRow:inColumn:</a></h3>
     - (BOOL) <b>browser:</b> (<a rel="gsdoc" href="#class$NSBrowser">NSBrowser</a>*)sender<b> selectRow:</b> (int)row<b> inColumn:</b> (int)column;<br />
     <p>
       
@@ -1025,7 +1106,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-browser:titleOfColumn:">browser:titleOfColumn:</a></h3>
+    <h3><a name="method$NSObject(NSBrowserDelegate)-browser:titleOfColumn:">browser:titleOfColumn:</a></h3>
     - (NSString*) <b>browser:</b> (<a rel="gsdoc" href="#class$NSBrowser">NSBrowser</a>*)sender<b> titleOfColumn:</b> (int)column;<br />
     <p>
       
@@ -1033,7 +1114,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-browser:willDisplayCell:atRow:column:">browser:willDisplayCell:atRow:column:</a></h3>
+    <h3><a name="method$NSObject(NSBrowserDelegate)-browser:willDisplayCell:atRow:column:">browser:willDisplayCell:atRow:column:</a></h3>
     - (void) <b>browser:</b> (<a rel="gsdoc" href="#class$NSBrowser">NSBrowser</a>*)sender<b> willDisplayCell:</b> (id)cell<b> atRow:</b> (int)row<b> column:</b> (int)column;<br />
     <p>
       
@@ -1041,7 +1122,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-browserDidScroll:">browserDidScroll:</a></h3>
+    <h3><a name="method$NSObject(NSBrowserDelegate)-browserDidScroll:">browserDidScroll:</a></h3>
     - (void) <b>browserDidScroll:</b> (<a rel="gsdoc" href="#class$NSBrowser">NSBrowser</a>*)sender;<br />
     <p>
       
@@ -1049,7 +1130,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-browserWillScroll:">browserWillScroll:</a></h3>
+    <h3><a name="method$NSObject(NSBrowserDelegate)-browserWillScroll:">browserWillScroll:</a></h3>
     - (void) <b>browserWillScroll:</b> (<a rel="gsdoc" href="#class$NSBrowser">NSBrowser</a>*)sender;<br />
     <p>
       
