@@ -4,6 +4,7 @@
     <title>The XML and HTML parsing system</title>
   </head>
   <body>
+    <font face="palatino linotype">
     <a href="BaseAdditions.html">Up</a>
     <br />
     <h1><a name="title$GSXML">The XML and HTML parsing system</a></h1>
@@ -69,6 +70,10 @@
         </li>
         <li>
           <a href="#016000000000">Software documentation for the GSXPathString class</a>
+        </li>
+        <li>
+          <a href="#017000000000">Software documentation for the GSXMLDocument(XSLT)
+        category</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
@@ -149,7 +154,7 @@
           <h1><a name="004000000000">
         Software documentation for the GSSAXHandler class
       </a></h1>
-    <h2><a name="class$GSSAXHandler">GSSAXHandler</a> : <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+    <h2><a name="class$GSSAXHandler">GSSAXHandler</a> : NSObject</h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -231,8 +236,8 @@ XML SAX Handler.    </p>
       
         
     </p>
-    <hr width="50%" align="left" />
-    <h3>Instance variables</h3>
+    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for GSSAXHandler Class</h2>
     <h3><a name="ivariable$GSSAXHandler*isHtmlHandler">isHtmlHandler</a></h3>
     @protected BOOL <b>isHtmlHandler</b>;<br />
     <p>
@@ -241,6 +246,23 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSSAXHandler*lib">lib</a></h3>
+    @private void* <b>lib</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSSAXHandler*parser">parser</a></h3>
+    @private GSXMLParser* <b>parser</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler+handler">+handler</a></li>
@@ -252,6 +274,7 @@ XML SAX Handler.    </p>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-elementDecl:type:">-elementDecl:type:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-endDocument">-endDocument</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-endElement:">-endElement:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-endElement:prefix:href:">-endElement:prefix:href:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-entityDecl:type:public:system:content:">-entityDecl:type:public:system:content:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-error:">-error:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-error:colNumber:lineNumber:">-error:colNumber:lineNumber:</a></li>
@@ -275,12 +298,13 @@ XML SAX Handler.    </p>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-reference:">-reference:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-startDocument">-startDocument</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-startElement:attributes:">-startElement:attributes:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-startElement:prefix:href:attributes:">-startElement:prefix:href:attributes:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-unparsedEntityDecl:public:system:notationName:">-unparsedEntityDecl:public:system:notationName:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-warning:">-warning:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSSAXHandler-warning:colNumber:lineNumber:">-warning:colNumber:lineNumber:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSSAXHandler+handler">handler</a></h3>
+    <h3><a name="method$GSSAXHandler+handler">handler&nbsp;</a></h3>
     + (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*) <b>handler</b>;<br />
     <p>
       
@@ -288,8 +312,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-attribute:value:">attribute:value:</a></h3>
-    - (void) <b>attribute:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> value:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)value;<br />
+    <h3><a name="method$GSSAXHandler-attribute:value:">attribute:&nbsp;value:&nbsp;</a></h3>
+    - (void) <b>attribute:</b> (NSString*)name<b> value:</b> (NSString*)value;<br />
     <p>
       
             Handle an attribute that has been read by the
@@ -297,47 +321,47 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-attributeDecl:name:type:typeDefValue:defaultValue:">attributeDecl:name:type:typeDefValue:defaultValue:</a></h3>
-    - (void) <b>attributeDecl:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)nameElement<b> name:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> type:</b> (int)type<b> typeDefValue:</b> (int)defType<b> defaultValue:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)value;<br />
+    <h3><a name="method$GSSAXHandler-attributeDecl:name:type:typeDefValue:defaultValue:">attributeDecl:&nbsp;name:&nbsp;type:&nbsp;typeDefValue:&nbsp;defaultValue:&nbsp;</a></h3>
+    - (void) <b>attributeDecl:</b> (NSString*)nameElement<b> name:</b> (NSString*)name<b> type:</b> (int)type<b> typeDefValue:</b> (int)defType<b> defaultValue:</b> (NSString*)value;<br />
     <p>
       
             An attribute definition has been parsed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-cdataBlock:">cdataBlock:</a></h3>
-    - (void) <b>cdataBlock:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)value;<br />
+    <h3><a name="method$GSSAXHandler-cdataBlock:">cdataBlock:&nbsp;</a></h3>
+    - (void) <b>cdataBlock:</b> (NSData*)value;<br />
     <p>
       
-            Called when a pcdata block has been parsed.
+            Called when a cdata block has been parsed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-characters:">characters:</a></h3>
-    - (void) <b>characters:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name;<br />
+    <h3><a name="method$GSSAXHandler-characters:">characters:&nbsp;</a></h3>
+    - (void) <b>characters:</b> (NSString*)name;<br />
     <p>
       
             Receiving some chars from the parser.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-comment:">comment:</a></h3>
-    - (void) <b>comment:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)value;<br />
+    <h3><a name="method$GSSAXHandler-comment:">comment:&nbsp;</a></h3>
+    - (void) <b>comment:</b> (NSString*)value;<br />
     <p>
       
             A comment has been parsed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-elementDecl:type:">elementDecl:type:</a></h3>
-    - (void) <b>elementDecl:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> type:</b> (int)type;<br />
+    <h3><a name="method$GSSAXHandler-elementDecl:type:">elementDecl:&nbsp;type:&nbsp;</a></h3>
+    - (void) <b>elementDecl:</b> (NSString*)name<b> type:</b> (int)type;<br />
     <p>
       
             An element definition has been parsed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-endDocument">endDocument</a></h3>
+    <h3><a name="method$GSSAXHandler-endDocument">endDocument&nbsp;</a></h3>
     - (void) <b>endDocument</b>;<br />
     <p>
       
@@ -345,40 +369,48 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-endElement:">endElement:</a></h3>
-    - (void) <b>endElement:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)elementName;<br />
+    <h3><a name="method$GSSAXHandler-endElement:">endElement:&nbsp;</a></h3>
+    - (void) <b>endElement:</b> (NSString*)elementName;<br />
     <p>
       
             Called when a closing tag has been processed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-entityDecl:type:public:system:content:">entityDecl:type:public:system:content:</a></h3>
-    - (void) <b>entityDecl:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> type:</b> (int)type<b> public:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)publicId<b> system:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)systemId<b> content:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)content;<br />
+    <h3><a name="method$GSSAXHandler-endElement:prefix:href:">endElement:&nbsp;prefix:&nbsp;href:&nbsp;</a></h3>
+    - (void) <b>endElement:</b> (NSString*)elementName<b> prefix:</b> (NSString*)prefix<b> href:</b> (NSString*)href;<br />
+    <p>
+      
+            Called when a closing tag has been processed.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSSAXHandler-entityDecl:type:public:system:content:">entityDecl:&nbsp;type:&nbsp;public:&nbsp;system:&nbsp;content:&nbsp;</a></h3>
+    - (void) <b>entityDecl:</b> (NSString*)name<b> type:</b> (int)type<b> public:</b> (NSString*)publicId<b> system:</b> (NSString*)systemId<b> content:</b> (NSString*)content;<br />
     <p>
       
             An entity definition has been parsed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-error:">error:</a></h3>
-    - (void) <b>error:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)e;<br />
+    <h3><a name="method$GSSAXHandler-error:">error:&nbsp;</a></h3>
+    - (void) <b>error:</b> (NSString*)e;<br />
     <p>
       
             Called when an error message needs to be output.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-error:colNumber:lineNumber:">error:colNumber:lineNumber:</a></h3>
-    - (void) <b>error:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)e<b> colNumber:</b> (int)colNumber<b> lineNumber:</b> (int)lineNumber;<br />
+    <h3><a name="method$GSSAXHandler-error:colNumber:lineNumber:">error:&nbsp;colNumber:&nbsp;lineNumber:&nbsp;</a></h3>
+    - (void) <b>error:</b> (NSString*)e<b> colNumber:</b> (int)colNumber<b> lineNumber:</b> (int)lineNumber;<br />
     <p>
       
             Called when an error message needs to be output.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-externalSubset:externalID:systemID:">externalSubset:externalID:systemID:</a></h3>
-    - (BOOL) <b>externalSubset:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> externalID:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)externalID<b> systemID:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)systemID;<br />
+    <h3><a name="method$GSSAXHandler-externalSubset:externalID:systemID:">externalSubset:&nbsp;externalID:&nbsp;systemID:&nbsp;</a></h3>
+    - (BOOL) <b>externalSubset:</b> (NSString*)name<b> externalID:</b> (NSString*)externalID<b> systemID:</b> (NSString*)systemID;<br />
     <p>
       
             Called to find out whether there is an external
@@ -386,8 +418,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-fatalError:">fatalError:</a></h3>
-    - (void) <b>fatalError:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)e;<br />
+    <h3><a name="method$GSSAXHandler-fatalError:">fatalError:&nbsp;</a></h3>
+    - (void) <b>fatalError:</b> (NSString*)e;<br />
     <p>
       
             Called when a fatal error message needs to be
@@ -395,8 +427,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-fatalError:colNumber:lineNumber:">fatalError:colNumber:lineNumber:</a></h3>
-    - (void) <b>fatalError:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)e<b> colNumber:</b> (int)colNumber<b> lineNumber:</b> (int)lineNumber;<br />
+    <h3><a name="method$GSSAXHandler-fatalError:colNumber:lineNumber:">fatalError:&nbsp;colNumber:&nbsp;lineNumber:&nbsp;</a></h3>
+    - (void) <b>fatalError:</b> (NSString*)e<b> colNumber:</b> (int)colNumber<b> lineNumber:</b> (int)lineNumber;<br />
     <p>
       
             Called when a fatal error message needs to be
@@ -404,31 +436,31 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-getEntity:">getEntity:</a></h3>
-    - (void*) <b>getEntity:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name;<br />
+    <h3><a name="method$GSSAXHandler-getEntity:">getEntity:&nbsp;</a></h3>
+    - (void*) <b>getEntity:</b> (NSString*)name;<br />
     <p>
       
             get an entity by <var>name</var>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-getParameterEntity:">getParameterEntity:</a></h3>
-    - (void*) <b>getParameterEntity:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name;<br />
+    <h3><a name="method$GSSAXHandler-getParameterEntity:">getParameterEntity:&nbsp;</a></h3>
+    - (void*) <b>getParameterEntity:</b> (NSString*)name;<br />
     <p>
       
             get a parameter entity by <var>name</var>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-globalNamespace:href:prefix:">globalNamespace:href:prefix:</a></h3>
-    - (void) <b>globalNamespace:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> href:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)href<b> prefix:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)prefix;<br />
+    <h3><a name="method$GSSAXHandler-globalNamespace:href:prefix:">globalNamespace:&nbsp;href:&nbsp;prefix:&nbsp;</a></h3>
+    - (void) <b>globalNamespace:</b> (NSString*)name<b> href:</b> (NSString*)href<b> prefix:</b> (NSString*)prefix;<br />
     <p>
       
             An old global namespace has been parsed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-hasExternalSubset">hasExternalSubset</a></h3>
+    <h3><a name="method$GSSAXHandler-hasExternalSubset">hasExternalSubset&nbsp;</a></h3>
     - (int) <b>hasExternalSubset</b>;<br />
     <p>
       
@@ -437,7 +469,7 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-hasInternalSubset">hasInternalSubset</a></h3>
+    <h3><a name="method$GSSAXHandler-hasInternalSubset">hasInternalSubset&nbsp;</a></h3>
     - (int) <b>hasInternalSubset</b>;<br />
     <p>
       
@@ -446,8 +478,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-ignoreWhitespace:">ignoreWhitespace:</a></h3>
-    - (void) <b>ignoreWhitespace:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)ch;<br />
+    <h3><a name="method$GSSAXHandler-ignoreWhitespace:">ignoreWhitespace:&nbsp;</a></h3>
+    - (void) <b>ignoreWhitespace:</b> (NSString*)ch;<br />
     <p>
       
             Receiving some ignorable whitespaces from the
@@ -455,8 +487,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-internalSubset:externalID:systemID:">internalSubset:externalID:systemID:</a></h3>
-    - (BOOL) <b>internalSubset:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> externalID:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)externalID<b> systemID:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)systemID;<br />
+    <h3><a name="method$GSSAXHandler-internalSubset:externalID:systemID:">internalSubset:&nbsp;externalID:&nbsp;systemID:&nbsp;</a></h3>
+    - (BOOL) <b>internalSubset:</b> (NSString*)name<b> externalID:</b> (NSString*)externalID<b> systemID:</b> (NSString*)systemID;<br />
     <p>
       
             Called to find out whether there is an internal
@@ -464,7 +496,7 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-isStandalone">isStandalone</a></h3>
+    <h3><a name="method$GSSAXHandler-isStandalone">isStandalone&nbsp;</a></h3>
     - (int) <b>isStandalone</b>;<br />
     <p>
       
@@ -472,7 +504,7 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-lib">lib</a></h3>
+    <h3><a name="method$GSSAXHandler-lib">lib&nbsp;</a></h3>
     - (void*) <b>lib</b>;<br />
     <p>
       
@@ -481,8 +513,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-loadEntity:at:">loadEntity:at:</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>loadEntity:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)publicId<b> at:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)location;<br />
+    <h3><a name="method$GSSAXHandler-loadEntity:at:">loadEntity:&nbsp;at:&nbsp;</a></h3>
+    - (NSString*) <b>loadEntity:</b> (NSString*)publicId<b> at:</b> (NSString*)location;<br />
     <p>
       
             Called to return the filename from which an entity
@@ -490,16 +522,16 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-namespaceDecl:href:prefix:">namespaceDecl:href:prefix:</a></h3>
-    - (void) <b>namespaceDecl:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> href:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)href<b> prefix:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)prefix;<br />
+    <h3><a name="method$GSSAXHandler-namespaceDecl:href:prefix:">namespaceDecl:&nbsp;href:&nbsp;prefix:&nbsp;</a></h3>
+    - (void) <b>namespaceDecl:</b> (NSString*)name<b> href:</b> (NSString*)href<b> prefix:</b> (NSString*)prefix;<br />
     <p>
       
             An old global namespace has been parsed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-notationDecl:public:system:">notationDecl:public:system:</a></h3>
-    - (void) <b>notationDecl:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> public:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)publicId<b> system:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)systemId;<br />
+    <h3><a name="method$GSSAXHandler-notationDecl:public:system:">notationDecl:&nbsp;public:&nbsp;system:&nbsp;</a></h3>
+    - (void) <b>notationDecl:</b> (NSString*)name<b> public:</b> (NSString*)publicId<b> system:</b> (NSString*)systemId;<br />
     <p>
       
             What to do when a notation declaration has been
@@ -507,7 +539,7 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-parser">parser</a></h3>
+    <h3><a name="method$GSSAXHandler-parser">parser&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parser</b>;<br />
     <p>
       
@@ -516,23 +548,23 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-processInstruction:data:">processInstruction:data:</a></h3>
-    - (void) <b>processInstruction:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)targetName<b> data:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)PIdata;<br />
+    <h3><a name="method$GSSAXHandler-processInstruction:data:">processInstruction:&nbsp;data:&nbsp;</a></h3>
+    - (void) <b>processInstruction:</b> (NSString*)targetName<b> data:</b> (NSString*)PIdata;<br />
     <p>
       
             A processing instruction has been parsed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-reference:">reference:</a></h3>
-    - (void) <b>reference:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name;<br />
+    <h3><a name="method$GSSAXHandler-reference:">reference:&nbsp;</a></h3>
+    - (void) <b>reference:</b> (NSString*)name;<br />
     <p>
       
             Called when an entity reference is detected.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-startDocument">startDocument</a></h3>
+    <h3><a name="method$GSSAXHandler-startDocument">startDocument&nbsp;</a></h3>
     - (void) <b>startDocument</b>;<br />
     <p>
       
@@ -540,16 +572,24 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-startElement:attributes:">startElement:attributes:</a></h3>
-    - (void) <b>startElement:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)elementName<b> attributes:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSMutableDictionary">NSMutableDictionary</a>*)elementAttributes;<br />
+    <h3><a name="method$GSSAXHandler-startElement:attributes:">startElement:&nbsp;attributes:&nbsp;</a></h3>
+    - (void) <b>startElement:</b> (NSString*)elementName<b> attributes:</b> (NSMutableDictionary*)elementAttributes;<br />
     <p>
       
             Called when an opening tag has been processed.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-unparsedEntityDecl:public:system:notationName:">unparsedEntityDecl:public:system:notationName:</a></h3>
-    - (void) <b>unparsedEntityDecl:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> public:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)publicId<b> system:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)systemId<b> notationName:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)notation;<br />
+    <h3><a name="method$GSSAXHandler-startElement:prefix:href:attributes:">startElement:&nbsp;prefix:&nbsp;href:&nbsp;attributes:&nbsp;</a></h3>
+    - (void) <b>startElement:</b> (NSString*)elementName<b> prefix:</b> (NSString*)prefix<b> href:</b> (NSString*)href<b> attributes:</b> (NSMutableDictionary*)elementAttributes;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSSAXHandler-unparsedEntityDecl:public:system:notationName:">unparsedEntityDecl:&nbsp;public:&nbsp;system:&nbsp;notationName:&nbsp;</a></h3>
+    - (void) <b>unparsedEntityDecl:</b> (NSString*)name<b> public:</b> (NSString*)publicId<b> system:</b> (NSString*)systemId<b> notationName:</b> (NSString*)notation;<br />
     <p>
       
             What to do when an unparsed entity declaration is
@@ -557,16 +597,16 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-warning:">warning:</a></h3>
-    - (void) <b>warning:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)e;<br />
+    <h3><a name="method$GSSAXHandler-warning:">warning:&nbsp;</a></h3>
+    - (void) <b>warning:</b> (NSString*)e;<br />
     <p>
       
             Called when a warning message needs to be output.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSSAXHandler-warning:colNumber:lineNumber:">warning:colNumber:lineNumber:</a></h3>
-    - (void) <b>warning:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)e<b> colNumber:</b> (int)colNumber<b> lineNumber:</b> (int)lineNumber;<br />
+    <h3><a name="method$GSSAXHandler-warning:colNumber:lineNumber:">warning:&nbsp;colNumber:&nbsp;lineNumber:&nbsp;</a></h3>
+    - (void) <b>warning:</b> (NSString*)e<b> colNumber:</b> (int)colNumber<b> lineNumber:</b> (int)lineNumber;<br />
     <p>
       
             Called when a warning message needs to be output.
@@ -638,8 +678,8 @@ XML SAX Handler.    </p>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLAttribute-value">-value</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXMLAttribute-value">value</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>value</b>;<br />
+    <h3><a name="method$GSXMLAttribute-value">value&nbsp;</a></h3>
+    - (NSString*) <b>value</b>;<br />
     <p>
       
             Returns the string value of the attribute.
@@ -650,7 +690,7 @@ XML SAX Handler.    </p>
           <h1><a name="007000000000">
         Software documentation for the GSXMLDocument class
       </a></h1>
-    <h2><a name="class$GSXMLDocument">GSXMLDocument</a> : <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+    <h2><a name="class$GSXMLDocument">GSXMLDocument</a> : NSObject</h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -660,7 +700,7 @@ XML SAX Handler.    </p>
     <blockquote>
       <dl>
         <dt><b>Conforms to:</b></dt>
-        <dd><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#protocol$(NSCopying)">NSCopying</a></dd>
+        <dd>NSCopying</dd>
       </dl>
     </blockquote>
     <blockquote>
@@ -677,8 +717,41 @@ XML SAX Handler.    </p>
           underlying libxml library.
         
     </p>
+    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for GSXMLDocument Class</h2>
+    <h3><a name="ivariable$GSXMLDocument*_ownsLib">_ownsLib</a></h3>
+    @private BOOL <b>_ownsLib</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSXMLDocument*_parent">_parent</a></h3>
+    @private id <b>_parent</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSXMLDocument*lib">lib</a></h3>
+    @private void* <b>lib</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)+xsltTransformFile:stylesheet:">+xsltTransformFile:stylesheet:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)+xsltTransformFile:stylesheet:params:">+xsltTransformFile:stylesheet:params:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)+xsltTransformXml:stylesheet:">+xsltTransformXml:stylesheet:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)+xsltTransformXml:stylesheet:params:">+xsltTransformXml:stylesheet:params:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)-xsltTransform:">-xsltTransform:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)-xsltTransform:params:">-xsltTransform:params:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument+documentWithVersion:">+documentWithVersion:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument-description">-description</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument-encoding">-encoding</a></li>
@@ -691,8 +764,8 @@ XML SAX Handler.    </p>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument-writeToURL:atomically:">-writeToURL:atomically:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXMLDocument+documentWithVersion:">documentWithVersion:</a></h3>
-    + (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>documentWithVersion:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)version;<br />
+    <h3><a name="method$GSXMLDocument+documentWithVersion:">documentWithVersion:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>documentWithVersion:</b> (NSString*)version;<br />
     <p>
       
             Create a new document with the specified
@@ -714,8 +787,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLDocument-description">description</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>description</b>;<br />
+    <h3><a name="method$GSXMLDocument-description">description&nbsp;</a></h3>
+    - (NSString*) <b>description</b>;<br />
     <p>
       
             Returns a string representation of the document (ie
@@ -724,15 +797,15 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLDocument-encoding">encoding</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>encoding</b>;<br />
+    <h3><a name="method$GSXMLDocument-encoding">encoding&nbsp;</a></h3>
+    - (NSString*) <b>encoding</b>;<br />
     <p>
       
             Returns the name of the encoding for this document.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLDocument-lib">lib</a></h3>
+    <h3><a name="method$GSXMLDocument-lib">lib&nbsp;</a></h3>
     - (void*) <b>lib</b>;<br />
     <p>
       
@@ -741,8 +814,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLDocument-makeNodeWithNamespace:name:content:">makeNodeWithNamespace:name:content:</a></h3>
-    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makeNodeWithNamespace:</b> (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*)ns<b> name:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> content:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)content;<br />
+    <h3><a name="method$GSXMLDocument-makeNodeWithNamespace:name:content:">makeNodeWithNamespace:&nbsp;name:&nbsp;content:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makeNodeWithNamespace:</b> (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*)ns<b> name:</b> (NSString*)name<b> content:</b> (NSString*)content;<br />
     <p>
       
             Creates a new node within the document.
@@ -760,7 +833,7 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLDocument-root">root</a></h3>
+    <h3><a name="method$GSXMLDocument-root">root&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>root</b>;<br />
     <p>
       
@@ -768,7 +841,7 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLDocument-setRoot:">setRoot:</a></h3>
+    <h3><a name="method$GSXMLDocument-setRoot:">setRoot:&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>setRoot:</b> (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*)node;<br />
     <p>
       
@@ -776,16 +849,16 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLDocument-version">version</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>version</b>;<br />
+    <h3><a name="method$GSXMLDocument-version">version&nbsp;</a></h3>
+    - (NSString*) <b>version</b>;<br />
     <p>
       
             Returns the version string for this document.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLDocument-writeToFile:atomically:">writeToFile:atomically:</a></h3>
-    - (BOOL) <b>writeToFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)filename<b> atomically:</b> (BOOL)useAuxilliaryFile;<br />
+    <h3><a name="method$GSXMLDocument-writeToFile:atomically:">writeToFile:&nbsp;atomically:&nbsp;</a></h3>
+    - (BOOL) <b>writeToFile:</b> (NSString*)filename<b> atomically:</b> (BOOL)useAuxilliaryFile;<br />
     <p>
       
             Uses the
@@ -798,8 +871,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLDocument-writeToURL:atomically:">writeToURL:atomically:</a></h3>
-    - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> atomically:</b> (BOOL)useAuxilliaryFile;<br />
+    <h3><a name="method$GSXMLDocument-writeToURL:atomically:">writeToURL:&nbsp;atomically:&nbsp;</a></h3>
+    - (BOOL) <b>writeToURL:</b> (NSURL*)url<b> atomically:</b> (BOOL)useAuxilliaryFile;<br />
     <p>
       
             Uses the
@@ -816,7 +889,7 @@ XML SAX Handler.    </p>
           <h1><a name="008000000000">
         Software documentation for the GSXMLNamespace class
       </a></h1>
-    <h2><a name="class$GSXMLNamespace">GSXMLNamespace</a> : <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+    <h2><a name="class$GSXMLNamespace">GSXMLNamespace</a> : NSObject</h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -826,7 +899,7 @@ XML SAX Handler.    </p>
     <blockquote>
       <dl>
         <dt><b>Conforms to:</b></dt>
-        <dd><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#protocol$(NSCopying)">NSCopying</a></dd>
+        <dd>NSCopying</dd>
       </dl>
     </blockquote>
     <blockquote>
@@ -843,6 +916,25 @@ XML SAX Handler.    </p>
           structure of the underlying libxml library.
         
     </p>
+    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for GSXMLNamespace Class</h2>
+    <h3><a name="ivariable$GSXMLNamespace*_parent">_parent</a></h3>
+    @private id <b>_parent</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSXMLNamespace*lib">lib</a></h3>
+    @private void* <b>lib</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLNamespace+descriptionFromType:">+descriptionFromType:</a></li>
@@ -855,8 +947,8 @@ XML SAX Handler.    </p>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLNamespace-typeDescription">-typeDescription</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXMLNamespace+descriptionFromType:">descriptionFromType:</a></h3>
-    + (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>descriptionFromType:</b> (int)type;<br />
+    <h3><a name="method$GSXMLNamespace+descriptionFromType:">descriptionFromType:&nbsp;</a></h3>
+    + (NSString*) <b>descriptionFromType:</b> (int)type;<br />
     <p>
       
             Return the string representation of the specified
@@ -864,8 +956,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNamespace+typeFromDescription:">typeFromDescription:</a></h3>
-    + (int) <b>typeFromDescription:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)desc;<br />
+    <h3><a name="method$GSXMLNamespace+typeFromDescription:">typeFromDescription:&nbsp;</a></h3>
+    + (int) <b>typeFromDescription:</b> (NSString*)desc;<br />
     <p>
       
             Return the numeric constant value for the namespace
@@ -882,15 +974,15 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNamespace-href">href</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>href</b>;<br />
+    <h3><a name="method$GSXMLNamespace-href">href&nbsp;</a></h3>
+    - (NSString*) <b>href</b>;<br />
     <p>
       
             Returns the namespace reference
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNamespace-lib">lib</a></h3>
+    <h3><a name="method$GSXMLNamespace-lib">lib&nbsp;</a></h3>
     - (void*) <b>lib</b>;<br />
     <p>
       
@@ -899,7 +991,7 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNamespace-next">next</a></h3>
+    <h3><a name="method$GSXMLNamespace-next">next&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*) <b>next</b>;<br />
     <p>
       
@@ -907,15 +999,15 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNamespace-prefix">prefix</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>prefix</b>;<br />
+    <h3><a name="method$GSXMLNamespace-prefix">prefix&nbsp;</a></h3>
+    - (NSString*) <b>prefix</b>;<br />
     <p>
       
             Return the namespace prefix.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNamespace-type">type</a></h3>
+    <h3><a name="method$GSXMLNamespace-type">type&nbsp;</a></h3>
     - (int) <b>type</b>;<br />
     <p>
       
@@ -923,8 +1015,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNamespace-typeDescription">typeDescription</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>typeDescription</b>;<br />
+    <h3><a name="method$GSXMLNamespace-typeDescription">typeDescription&nbsp;</a></h3>
+    - (NSString*) <b>typeDescription</b>;<br />
     <p>
       
             Return string representation of the type of the
@@ -936,7 +1028,7 @@ XML SAX Handler.    </p>
           <h1><a name="009000000000">
         Software documentation for the GSXMLNode class
       </a></h1>
-    <h2><a name="class$GSXMLNode">GSXMLNode</a> : <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+    <h2><a name="class$GSXMLNode">GSXMLNode</a> : NSObject</h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -946,7 +1038,7 @@ XML SAX Handler.    </p>
     <blockquote>
       <dl>
         <dt><b>Conforms to:</b></dt>
-        <dd><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#protocol$(NSCopying)">NSCopying</a></dd>
+        <dd>NSCopying</dd>
       </dl>
     </blockquote>
     <blockquote>
@@ -964,6 +1056,25 @@ XML SAX Handler.    </p>
           siblings, and children.
         
     </p>
+    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for GSXMLNode Class</h2>
+    <h3><a name="ivariable$GSXMLNode*_parent">_parent</a></h3>
+    @private id <b>_parent</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSXMLNode*lib">lib</a></h3>
+    @private void* <b>lib</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLNode+descriptionFromType:">+descriptionFromType:</a></li>
@@ -1001,8 +1112,8 @@ XML SAX Handler.    </p>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLNode-typeDescription">-typeDescription</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXMLNode+descriptionFromType:">descriptionFromType:</a></h3>
-    + (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>descriptionFromType:</b> (int)type;<br />
+    <h3><a name="method$GSXMLNode+descriptionFromType:">descriptionFromType:&nbsp;</a></h3>
+    + (NSString*) <b>descriptionFromType:</b> (int)type;<br />
     <p>
       
             Return the string constant value for the node
@@ -1010,8 +1121,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode+typeFromDescription:">typeFromDescription:</a></h3>
-    + (int) <b>typeFromDescription:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)desc;<br />
+    <h3><a name="method$GSXMLNode+typeFromDescription:">typeFromDescription:&nbsp;</a></h3>
+    + (int) <b>typeFromDescription:</b> (NSString*)desc;<br />
     <p>
       
             
@@ -1088,8 +1199,8 @@ XML SAX Handler.    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-attributes">attributes</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>attributes</b>;<br />
+    <h3><a name="method$GSXMLNode-attributes">attributes&nbsp;</a></h3>
+    - (NSDictionary*) <b>attributes</b>;<br />
     <p>
       
             
@@ -1101,8 +1212,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-content">content</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>content</b>;<br />
+    <h3><a name="method$GSXMLNode-content">content&nbsp;</a></h3>
+    - (NSString*) <b>content</b>;<br />
     <p>
       
             Return node content as a string. This should return
@@ -1130,8 +1241,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-description">description</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>description</b>;<br />
+    <h3><a name="method$GSXMLNode-description">description&nbsp;</a></h3>
+    - (NSString*) <b>description</b>;<br />
     <p>
       
             Returns a string representation of the node and all
@@ -1140,7 +1251,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-document">document</a></h3>
+    <h3><a name="method$GSXMLNode-document">document&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>document</b>;<br />
     <p>
       
@@ -1148,8 +1259,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-escapedContent">escapedContent</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>escapedContent</b>;<br />
+    <h3><a name="method$GSXMLNode-escapedContent">escapedContent&nbsp;</a></h3>
+    - (NSString*) <b>escapedContent</b>;<br />
     <p>
       
             This performs the same function as the
@@ -1165,7 +1276,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-firstAttribute">firstAttribute</a></h3>
+    <h3><a name="method$GSXMLNode-firstAttribute">firstAttribute&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLAttribute">GSXMLAttribute</a>*) <b>firstAttribute</b>;<br />
     <p>
       
@@ -1173,7 +1284,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-firstChild">firstChild</a></h3>
+    <h3><a name="method$GSXMLNode-firstChild">firstChild&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>firstChild</b>;<br />
     <p>
       
@@ -1204,7 +1315,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-firstChildElement">firstChildElement</a></h3>
+    <h3><a name="method$GSXMLNode-firstChildElement">firstChildElement&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>firstChildElement</b>;<br />
     <p>
       
@@ -1219,7 +1330,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-isElement">isElement</a></h3>
+    <h3><a name="method$GSXMLNode-isElement">isElement&nbsp;</a></h3>
     - (BOOL) <b>isElement</b>;<br />
     <p>
       
@@ -1238,7 +1349,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-isText">isText</a></h3>
+    <h3><a name="method$GSXMLNode-isText">isText&nbsp;</a></h3>
     - (BOOL) <b>isText</b>;<br />
     <p>
       
@@ -1257,7 +1368,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-lib">lib</a></h3>
+    <h3><a name="method$GSXMLNode-lib">lib&nbsp;</a></h3>
     - (void*) <b>lib</b>;<br />
     <p>
       
@@ -1266,8 +1377,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-makeAttributeWithName:value:">makeAttributeWithName:value:</a></h3>
-    - (<a rel="gsdoc" href="#class$GSXMLAttribute">GSXMLAttribute</a>*) <b>makeAttributeWithName:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> value:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)value;<br />
+    <h3><a name="method$GSXMLNode-makeAttributeWithName:value:">makeAttributeWithName:&nbsp;value:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXMLAttribute">GSXMLAttribute</a>*) <b>makeAttributeWithName:</b> (NSString*)name<b> value:</b> (NSString*)value;<br />
     <p>
       
             Create and return an attribute (unless the named
@@ -1277,8 +1388,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-makeChildWithNamespace:name:content:">makeChildWithNamespace:name:content:</a></h3>
-    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makeChildWithNamespace:</b> (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*)ns<b> name:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> content:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)content;<br />
+    <h3><a name="method$GSXMLNode-makeChildWithNamespace:name:content:">makeChildWithNamespace:&nbsp;name:&nbsp;content:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makeChildWithNamespace:</b> (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*)ns<b> name:</b> (NSString*)name<b> content:</b> (NSString*)content;<br />
     <p>
       
             
@@ -1320,8 +1431,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-makeComment:">makeComment:</a></h3>
-    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makeComment:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)content;<br />
+    <h3><a name="method$GSXMLNode-makeComment:">makeComment:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makeComment:</b> (NSString*)content;<br />
     <p>
       
             Creation of a new comment element, added at the
@@ -1339,16 +1450,16 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-makeNamespaceHref:prefix:">makeNamespaceHref:prefix:</a></h3>
-    - (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*) <b>makeNamespaceHref:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)href<b> prefix:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)prefix;<br />
+    <h3><a name="method$GSXMLNode-makeNamespaceHref:prefix:">makeNamespaceHref:&nbsp;prefix:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*) <b>makeNamespaceHref:</b> (NSString*)href<b> prefix:</b> (NSString*)prefix;<br />
     <p>
       
             Create a namespace attached to this node.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-makePI:content:">makePI:content:</a></h3>
-    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makePI:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name<b> content:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)content;<br />
+    <h3><a name="method$GSXMLNode-makePI:content:">makePI:&nbsp;content:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makePI:</b> (NSString*)name<b> content:</b> (NSString*)content;<br />
     <p>
       
             Creation of a new process instruction element,
@@ -1367,8 +1478,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-makeText:">makeText:</a></h3>
-    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makeText:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)content;<br />
+    <h3><a name="method$GSXMLNode-makeText:">makeText:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>makeText:</b> (NSString*)content;<br />
     <p>
       
             Creation of a new text element, added at the end
@@ -1386,15 +1497,15 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-name">name</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>name</b>;<br />
+    <h3><a name="method$GSXMLNode-name">name&nbsp;</a></h3>
+    - (NSString*) <b>name</b>;<br />
     <p>
       
             Return the node-name
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-namespace">namespace</a></h3>
+    <h3><a name="method$GSXMLNode-namespace">namespace&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*) <b>namespace</b>;<br />
     <p>
       
@@ -1402,7 +1513,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-namespaceDefinitions">namespaceDefinitions</a></h3>
+    <h3><a name="method$GSXMLNode-namespaceDefinitions">namespaceDefinitions&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*) <b>namespaceDefinitions</b>;<br />
     <p>
       
@@ -1410,7 +1521,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-next">next</a></h3>
+    <h3><a name="method$GSXMLNode-next">next&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>next</b>;<br />
     <p>
       
@@ -1427,7 +1538,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-nextElement">nextElement</a></h3>
+    <h3><a name="method$GSXMLNode-nextElement">nextElement&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>nextElement</b>;<br />
     <p>
       
@@ -1440,8 +1551,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-objectForKey:">objectForKey:</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>objectForKey:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)key;<br />
+    <h3><a name="method$GSXMLNode-objectForKey:">objectForKey:&nbsp;</a></h3>
+    - (NSString*) <b>objectForKey:</b> (NSString*)key;<br />
     <p>
       
             Return the attribute value for the specified
@@ -1449,7 +1560,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-parent">parent</a></h3>
+    <h3><a name="method$GSXMLNode-parent">parent&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>parent</b>;<br />
     <p>
       
@@ -1457,7 +1568,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-previous">previous</a></h3>
+    <h3><a name="method$GSXMLNode-previous">previous&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>previous</b>;<br />
     <p>
       
@@ -1465,7 +1576,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-previousElement">previousElement</a></h3>
+    <h3><a name="method$GSXMLNode-previousElement">previousElement&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>previousElement</b>;<br />
     <p>
       
@@ -1476,8 +1587,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-propertiesAsDictionaryWithKeyTransformationSel:">propertiesAsDictionaryWithKeyTransformationSel:</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSMutableDictionary">NSMutableDictionary</a>*) <b>propertiesAsDictionaryWithKeyTransformationSel:</b> (SEL)keyTransformSel;<br />
+    <h3><a name="method$GSXMLNode-propertiesAsDictionaryWithKeyTransformationSel:">propertiesAsDictionaryWithKeyTransformationSel:&nbsp;</a></h3>
+    - (NSMutableDictionary*) <b>propertiesAsDictionaryWithKeyTransformationSel:</b> (SEL)keyTransformSel;<br />
     <p>
       
             
@@ -1505,7 +1616,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-setNamespace:">setNamespace:</a></h3>
+    <h3><a name="method$GSXMLNode-setNamespace:">setNamespace:&nbsp;</a></h3>
     - (void) <b>setNamespace:</b> (<a rel="gsdoc" href="#class$GSXMLNamespace">GSXMLNamespace</a>*)space;<br />
     <p>
       
@@ -1517,8 +1628,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-setObject:forKey:">setObject:forKey:</a></h3>
-    - (void) <b>setObject:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)value<b> forKey:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)key;<br />
+    <h3><a name="method$GSXMLNode-setObject:forKey:">setObject:&nbsp;forKey:&nbsp;</a></h3>
+    - (void) <b>setObject:</b> (NSString*)value<b> forKey:</b> (NSString*)key;<br />
     <p>
       
             Set (or reset) an attribute carried by a node.
@@ -1532,7 +1643,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-type">type</a></h3>
+    <h3><a name="method$GSXMLNode-type">type&nbsp;</a></h3>
     - (int) <b>type</b>;<br />
     <p>
       
@@ -1548,8 +1659,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLNode-typeDescription">typeDescription</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>typeDescription</b>;<br />
+    <h3><a name="method$GSXMLNode-typeDescription">typeDescription&nbsp;</a></h3>
+    - (NSString*) <b>typeDescription</b>;<br />
     <p>
       
             Return node type as a string.
@@ -1560,7 +1671,7 @@ Return attributes and values as a dictionary    </p>
           <h1><a name="010000000000">
         Software documentation for the GSXMLParser class
       </a></h1>
-    <h2><a name="class$GSXMLParser">GSXMLParser</a> : <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+    <h2><a name="class$GSXMLParser">GSXMLParser</a> : NSObject</h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -1604,6 +1715,41 @@ Return attributes and values as a dictionary    </p>
       
         
     </p>
+    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for GSXMLParser Class</h2>
+    <h3><a name="ivariable$GSXMLParser*lib">lib</a></h3>
+    @private void* <b>lib</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSXMLParser*messages">messages</a></h3>
+    @private NSMutableString* <b>messages</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSXMLParser*saxHandler">saxHandler</a></h3>
+    @private GSSAXHandler* <b>saxHandler</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSXMLParser*src">src</a></h3>
+    @private id <b>src</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser+loadEntity:at:">+loadEntity:at:</a></li>
@@ -1616,6 +1762,7 @@ Return attributes and values as a dictionary    </p>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser+parserWithSAXHandler:withContentsOfURL:">+parserWithSAXHandler:withContentsOfURL:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser+parserWithSAXHandler:withData:">+parserWithSAXHandler:withData:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser+xmlEncodingStringForStringEncoding:">+xmlEncodingStringForStringEncoding:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-columnNumber">-columnNumber</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-doValidityChecking:">-doValidityChecking:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-document">-document</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-errNo">-errNo</a></li>
@@ -1625,15 +1772,18 @@ Return attributes and values as a dictionary    </p>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-initWithSAXHandler:withContentsOfURL:">-initWithSAXHandler:withContentsOfURL:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-initWithSAXHandler:withData:">-initWithSAXHandler:withData:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-keepBlanks:">-keepBlanks:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-lineNumber">-lineNumber</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-messages">-messages</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-parse">-parse</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-parse:">-parse:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-publicID">-publicID</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-saveMessages:">-saveMessages:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-substituteEntities:">-substituteEntities:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-systemID">-systemID</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXMLParser+loadEntity:at:">loadEntity:at:</a></h3>
-    + (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>loadEntity:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)publicId<b> at:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)location;<br />
+    <h3><a name="method$GSXMLParser+loadEntity:at:">loadEntity:&nbsp;at:&nbsp;</a></h3>
+    + (NSString*) <b>loadEntity:</b> (NSString*)publicId<b> at:</b> (NSString*)location;<br />
     <p>
       
             
@@ -1688,7 +1838,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser+parser">parser</a></h3>
+    <h3><a name="method$GSXMLParser+parser">parser&nbsp;</a></h3>
     + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parser</b>;<br />
     <p>
       
@@ -1701,8 +1851,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser+parserWithContentsOfFile:">parserWithContentsOfFile:</a></h3>
-    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithContentsOfFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)path;<br />
+    <h3><a name="method$GSXMLParser+parserWithContentsOfFile:">parserWithContentsOfFile:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithContentsOfFile:</b> (NSString*)path;<br />
     <p>
       
             Creation of a new Parser by calling
@@ -1725,8 +1875,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser+parserWithContentsOfURL:">parserWithContentsOfURL:</a></h3>
-    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithContentsOfURL:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url;<br />
+    <h3><a name="method$GSXMLParser+parserWithContentsOfURL:">parserWithContentsOfURL:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithContentsOfURL:</b> (NSURL*)url;<br />
     <p>
       
             Creation of a new Parser by calling
@@ -1735,8 +1885,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser+parserWithData:">parserWithData:</a></h3>
-    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithData:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*)data;<br />
+    <h3><a name="method$GSXMLParser+parserWithData:">parserWithData:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithData:</b> (NSData*)data;<br />
     <p>
       
             Creation of a new Parser by calling
@@ -1747,7 +1897,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser+parserWithSAXHandler:">parserWithSAXHandler:</a></h3>
+    <h3><a name="method$GSXMLParser+parserWithSAXHandler:">parserWithSAXHandler:&nbsp;</a></h3>
     + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler;<br />
     <p>
       
@@ -1778,8 +1928,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser+parserWithSAXHandler:withContentsOfFile:">parserWithSAXHandler:withContentsOfFile:</a></h3>
-    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withContentsOfFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)path;<br />
+    <h3><a name="method$GSXMLParser+parserWithSAXHandler:withContentsOfFile:">parserWithSAXHandler:&nbsp;withContentsOfFile:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withContentsOfFile:</b> (NSString*)path;<br />
     <p>
       
             Creation of a new Parser by calling
@@ -1801,8 +1951,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser+parserWithSAXHandler:withContentsOfURL:">parserWithSAXHandler:withContentsOfURL:</a></h3>
-    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withContentsOfURL:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url;<br />
+    <h3><a name="method$GSXMLParser+parserWithSAXHandler:withContentsOfURL:">parserWithSAXHandler:&nbsp;withContentsOfURL:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withContentsOfURL:</b> (NSURL*)url;<br />
     <p>
       
             Creation of a new Parser by calling
@@ -1811,8 +1961,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser+parserWithSAXHandler:withData:">parserWithSAXHandler:withData:</a></h3>
-    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withData:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*)data;<br />
+    <h3><a name="method$GSXMLParser+parserWithSAXHandler:withData:">parserWithSAXHandler:&nbsp;withData:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLParser">GSXMLParser</a>*) <b>parserWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withData:</b> (NSData*)data;<br />
     <p>
       
             Creation of a new Parser by calling
@@ -1823,8 +1973,8 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser+xmlEncodingStringForStringEncoding:">xmlEncodingStringForStringEncoding:</a></h3>
-    + (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>xmlEncodingStringForStringEncoding:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
+    <h3><a name="method$GSXMLParser+xmlEncodingStringForStringEncoding:">xmlEncodingStringForStringEncoding:&nbsp;</a></h3>
+    + (NSString*) <b>xmlEncodingStringForStringEncoding:</b> (NSStringEncoding)encoding;<br />
     <p>
       
             Return the name of the string <var>encoding</var>
@@ -1833,7 +1983,16 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-doValidityChecking:">doValidityChecking:</a></h3>
+    <h3><a name="method$GSXMLParser-columnNumber">columnNumber&nbsp;</a></h3>
+    - (int) <b>columnNumber</b>;<br />
+    <p>
+      
+            If executed during a parse operation, returns the
+            current column number.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLParser-doValidityChecking:">doValidityChecking:&nbsp;</a></h3>
     - (BOOL) <b>doValidityChecking:</b> (BOOL)yesno;<br />
     <p>
       
@@ -1841,7 +2000,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-document">document</a></h3>
+    <h3><a name="method$GSXMLParser-document">document&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>document</b>;<br />
     <p>
       
@@ -1850,7 +2009,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-errNo">errNo</a></h3>
+    <h3><a name="method$GSXMLParser-errNo">errNo&nbsp;</a></h3>
     - (int) <b>errNo</b>;<br />
     <p>
       
@@ -1858,7 +2017,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-getWarnings:">getWarnings:</a></h3>
+    <h3><a name="method$GSXMLParser-getWarnings:">getWarnings:&nbsp;</a></h3>
     - (BOOL) <b>getWarnings:</b> (BOOL)yesno;<br />
     <p>
       
@@ -1866,7 +2025,7 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-initWithSAXHandler:">initWithSAXHandler:</a></h3>
+    <h3><a name="method$GSXMLParser-initWithSAXHandler:">initWithSAXHandler:&nbsp;</a></h3>
     - (id) <b>initWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler;<br />
 This is a designated initialiser for the class.<br />
     <p>
@@ -1908,8 +2067,8 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-initWithSAXHandler:withContentsOfFile:">initWithSAXHandler:withContentsOfFile:</a></h3>
-    - (id) <b>initWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withContentsOfFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)path;<br />
+    <h3><a name="method$GSXMLParser-initWithSAXHandler:withContentsOfFile:">initWithSAXHandler:&nbsp;withContentsOfFile:&nbsp;</a></h3>
+    - (id) <b>initWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withContentsOfFile:</b> (NSString*)path;<br />
     <p>
       
             
@@ -1939,8 +2098,8 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-initWithSAXHandler:withContentsOfURL:">initWithSAXHandler:withContentsOfURL:</a></h3>
-    - (id) <b>initWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withContentsOfURL:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url;<br />
+    <h3><a name="method$GSXMLParser-initWithSAXHandler:withContentsOfURL:">initWithSAXHandler:&nbsp;withContentsOfURL:&nbsp;</a></h3>
+    - (id) <b>initWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withContentsOfURL:</b> (NSURL*)url;<br />
     <p>
       
             
@@ -1971,8 +2130,8 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-initWithSAXHandler:withData:">initWithSAXHandler:withData:</a></h3>
-    - (id) <b>initWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withData:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*)data;<br />
+    <h3><a name="method$GSXMLParser-initWithSAXHandler:withData:">initWithSAXHandler:&nbsp;withData:&nbsp;</a></h3>
+    - (id) <b>initWithSAXHandler:</b> (<a rel="gsdoc" href="#class$GSSAXHandler">GSSAXHandler</a>*)handler<b> withData:</b> (NSData*)data;<br />
     <p>
       
             
@@ -2004,7 +2163,7 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-keepBlanks:">keepBlanks:</a></h3>
+    <h3><a name="method$GSXMLParser-keepBlanks:">keepBlanks:&nbsp;</a></h3>
     - (BOOL) <b>keepBlanks:</b> (BOOL)yesno;<br />
     <p>
       
@@ -2016,8 +2175,17 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-messages">messages</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>messages</b>;<br />
+    <h3><a name="method$GSXMLParser-lineNumber">lineNumber&nbsp;</a></h3>
+    - (int) <b>lineNumber</b>;<br />
+    <p>
+      
+            If executed during a parse operation, returns the
+            current line number.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLParser-messages">messages&nbsp;</a></h3>
+    - (NSString*) <b>messages</b>;<br />
     <p>
       
             Returns the string into which warning and error
@@ -2026,7 +2194,7 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-parse">parse</a></h3>
+    <h3><a name="method$GSXMLParser-parse">parse&nbsp;</a></h3>
     - (BOOL) <b>parse</b>;<br />
     <p>
       
@@ -2050,8 +2218,8 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-parse:">parse:</a></h3>
-    - (BOOL) <b>parse:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*)data;<br />
+    <h3><a name="method$GSXMLParser-parse:">parse:&nbsp;</a></h3>
+    - (BOOL) <b>parse:</b> (NSData*)data;<br />
     <p>
       
             
@@ -2088,7 +2256,15 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-saveMessages:">saveMessages:</a></h3>
+    <h3><a name="method$GSXMLParser-publicID">publicID&nbsp;</a></h3>
+    - (NSString*) <b>publicID</b>;<br />
+    <p>
+      
+            Return the public ID of the document being parsed.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLParser-saveMessages:">saveMessages:&nbsp;</a></h3>
     - (void) <b>saveMessages:</b> (BOOL)yesno;<br />
     <p>
       
@@ -2101,7 +2277,7 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXMLParser-substituteEntities:">substituteEntities:</a></h3>
+    <h3><a name="method$GSXMLParser-substituteEntities:">substituteEntities:&nbsp;</a></h3>
     - (BOOL) <b>substituteEntities:</b> (BOOL)yesno;<br />
     <p>
       
@@ -2109,6 +2285,14 @@ The source for the parsing process is not specified - so parsing must be done in
             Initially the parser always keeps entity
             references instead of substituting entity values
             in the output.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLParser-systemID">systemID&nbsp;</a></h3>
+    - (NSString*) <b>systemID</b>;<br />
+    <p>
+      
+            Return the system ID of the document being parsed.
           
     </p>
     <hr width="25%" align="left" />
@@ -2141,7 +2325,7 @@ The source for the parsing process is not specified - so parsing must be done in
       <li><a rel="gsdoc" href="GSXML.html#method$GSXPathBoolean-booleanValue">-booleanValue</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXPathBoolean-booleanValue">booleanValue</a></h3>
+    <h3><a name="method$GSXPathBoolean-booleanValue">booleanValue&nbsp;</a></h3>
     - (BOOL) <b>booleanValue</b>;<br />
     <p>
       
@@ -2154,7 +2338,7 @@ The source for the parsing process is not specified - so parsing must be done in
           <h1><a name="012000000000">
         Software documentation for the GSXPathContext class
       </a></h1>
-    <h2><a name="class$GSXPathContext">GSXPathContext</a> : <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+    <h2><a name="class$GSXPathContext">GSXPathContext</a> : NSObject</h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -2203,14 +2387,33 @@ The source for the parsing process is not specified - so parsing must be done in
       
         
     </p>
+    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for GSXPathContext Class</h2>
+    <h3><a name="ivariable$GSXPathContext*_document">_document</a></h3>
+    @private GSXMLDocument* <b>_document</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSXPathContext*_lib">_lib</a></h3>
+    @private void* <b>_lib</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXPathContext-evaluateExpression:">-evaluateExpression:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXPathContext-initWithDocument:">-initWithDocument:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXPathContext-evaluateExpression:">evaluateExpression:</a></h3>
-    - (<a rel="gsdoc" href="#class$GSXPathObject">GSXPathObject</a>*) <b>evaluateExpression:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)XPathExpression;<br />
+    <h3><a name="method$GSXPathContext-evaluateExpression:">evaluateExpression:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXPathObject">GSXPathObject</a>*) <b>evaluateExpression:</b> (NSString*)XPathExpression;<br />
     <p>
       
             Evaluates the supplied expression and returns the
@@ -2219,7 +2422,7 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXPathContext-initWithDocument:">initWithDocument:</a></h3>
+    <h3><a name="method$GSXPathContext-initWithDocument:">initWithDocument:&nbsp;</a></h3>
     - (id) <b>initWithDocument:</b> (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*)d;<br />
     <p>
       
@@ -2263,7 +2466,7 @@ The source for the parsing process is not specified - so parsing must be done in
       <li><a rel="gsdoc" href="GSXML.html#method$GSXPathNodeSet-nodeAtIndex:">-nodeAtIndex:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXPathNodeSet-count">count</a></h3>
+    <h3><a name="method$GSXPathNodeSet-count">count&nbsp;</a></h3>
     - (unsigned int) <b>count</b>;<br />
     <p>
       
@@ -2271,7 +2474,7 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXPathNodeSet-length">length</a></h3>
+    <h3><a name="method$GSXPathNodeSet-length">length&nbsp;</a></h3>
     - (unsigned int) <b>length</b>;<br />
     <p>
       
@@ -2279,7 +2482,7 @@ The source for the parsing process is not specified - so parsing must be done in
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSXPathNodeSet-nodeAtIndex:">nodeAtIndex:</a></h3>
+    <h3><a name="method$GSXPathNodeSet-nodeAtIndex:">nodeAtIndex:&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$GSXMLNode">GSXMLNode</a>*) <b>nodeAtIndex:</b> (unsigned)index;<br />
     <p>
       
@@ -2319,7 +2522,7 @@ The source for the parsing process is not specified - so parsing must be done in
       <li><a rel="gsdoc" href="GSXML.html#method$GSXPathNumber-doubleValue">-doubleValue</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXPathNumber-doubleValue">doubleValue</a></h3>
+    <h3><a name="method$GSXPathNumber-doubleValue">doubleValue&nbsp;</a></h3>
     - (double) <b>doubleValue</b>;<br />
     <p>
       
@@ -2332,7 +2535,7 @@ The source for the parsing process is not specified - so parsing must be done in
           <h1><a name="015000000000">
         Software documentation for the GSXPathObject class
       </a></h1>
-    <h2><a name="class$GSXPathObject">GSXPathObject</a> : <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+    <h2><a name="class$GSXPathObject">GSXPathObject</a> : NSObject</h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -2369,6 +2572,25 @@ The source for the parsing process is not specified - so parsing must be done in
       
         
     </p>
+    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for GSXPathObject Class</h2>
+    <h3><a name="ivariable$GSXPathObject*_context">_context</a></h3>
+    @private GSXPathContext* <b>_context</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$GSXPathObject*_lib">_lib</a></h3>
+    @private void* <b>_lib</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
 
           <h1><a name="016000000000">
         Software documentation for the GSXPathString class
@@ -2398,15 +2620,126 @@ The source for the parsing process is not specified - so parsing must be done in
       <li><a rel="gsdoc" href="GSXML.html#method$GSXPathString-stringValue">-stringValue</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSXPathString-stringValue">stringValue</a></h3>
-    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>stringValue</b>;<br />
+    <h3><a name="method$GSXPathString-stringValue">stringValue&nbsp;</a></h3>
+    - (NSString*) <b>stringValue</b>;<br />
     <p>
       
             Returns the string value of the receiver.
           
     </p>
     <hr width="25%" align="left" />
+
+          <h1><a name="017000000000">
+        Software documentation for the GSXMLDocument(XSLT)
+        category
+      </a></h1>
+    <h2><a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>(<a name="category$GSXMLDocument(XSLT)">XSLT</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>GNUstepBase/GSXML.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>NotOpenStep</li>
+        <li>NotMacOS-X</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument+xsltTransformFile:stylesheet:">+xsltTransformFile:stylesheet:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument+xsltTransformFile:stylesheet:params:">+xsltTransformFile:stylesheet:params:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument+xsltTransformXml:stylesheet:">+xsltTransformXml:stylesheet:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument+xsltTransformXml:stylesheet:params:">+xsltTransformXml:stylesheet:params:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument-xsltTransform:">-xsltTransform:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument-xsltTransform:params:">-xsltTransform:params:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$GSXMLDocument(XSLT)+xsltTransformFile:stylesheet:">xsltTransformFile:&nbsp;stylesheet:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>xsltTransformFile:</b> (NSString*)xmlFile<b> stylesheet:</b> (NSString*)xsltStylesheet;<br />
+    <p>
+      
+            Performs an XSLT transformation on the specified
+            file using the stylesheet provided. <br /> Returns an
+            autoreleased GSXMLDocument containing the
+            transformed XML, or <code>nil</code> on
+            failure.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLDocument(XSLT)+xsltTransformFile:stylesheet:params:">xsltTransformFile:&nbsp;stylesheet:&nbsp;params:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>xsltTransformFile:</b> (NSString*)xmlFile<b> stylesheet:</b> (NSString*)xsltStylesheet<b> params:</b> (NSDictionary*)params;<br />
+    <p>
+      
+            Performs an XSLT transformation on the specified
+            file using the stylesheet and parameters provided. See
+            the libxslt documentation for details of the supported
+            parameters. <br /> Returns an autoreleased
+            GSXMLDocument containing the transformed XML,
+            or <code>nil</code> on failure.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLDocument(XSLT)+xsltTransformXml:stylesheet:">xsltTransformXml:&nbsp;stylesheet:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>xsltTransformXml:</b> (NSData*)xmlData<b> stylesheet:</b> (NSData*)xsltStylesheet;<br />
+    <p>
+      
+            Performs an XSLT transformation on the specified
+            file using the stylesheet provided. <br /> Returns an
+            autoreleased GSXMLDocument containing the
+            transformed XML, or <code>nil</code> on
+            failure.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLDocument(XSLT)+xsltTransformXml:stylesheet:params:">xsltTransformXml:&nbsp;stylesheet:&nbsp;params:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>xsltTransformXml:</b> (NSData*)xmlData<b> stylesheet:</b> (NSData*)xsltStylesheet<b> params:</b> (NSDictionary*)params;<br />
+    <p>
+      
+            Performs an XSLT transformation on the specified
+            file using the stylesheet and parameters provided.See
+            the libxslt documentation for details of the supported
+            parameters. <br /> Returns an autoreleased
+            GSXMLDocument containing the transformed XML,
+            or <code>nil</code> on failure.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLDocument(XSLT)-xsltTransform:">xsltTransform:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>xsltTransform:</b> (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*)xsltStylesheet;<br />
+    <p>
+      
+            Performs an XSLT transformation on the current
+            document using the supplied stylesheet. <br />
+            Returns an autoreleased GSXMLDocument containing
+            the transformed XML, or <code>nil</code> on failure.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLDocument(XSLT)-xsltTransform:params:">xsltTransform:&nbsp;params:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*) <b>xsltTransform:</b> (<a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>*)xsltStylesheet<b> params:</b> (NSDictionary*)params;<br />
+    <p>
+      
+            Performs an XSLT transformation on the current
+            document using the supplied stylesheet and
+            paramaters (<var>params</var> may be
+            <code>nil</code>). See the libxslt documentation for
+            details of the supported parameters. <br /> Returns
+            an autoreleased GSXMLDocument containing the transformed
+            XML, or <code>nil</code> on failure.
+          
+    </p>
+    <hr width="25%" align="left" />
     <br />
     <a href="BaseAdditions.html">Up</a>
-  </body>
+    </font>
+</body>
 </html>
