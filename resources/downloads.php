@@ -361,7 +361,8 @@ packages and applications may require you to install these libraries
 <td class="req">Recommended</td>
 <td class="stab"><a href="dev-apps/Gorm-0.2.5.tar.gz">0.2.5
 </a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td class="unst"><a href="dev-apps/Gorm-0.2.6.tar.gz">0.2.6
+</a></td>
 <td>Graphical interface builder</td>
 </tr>
 
