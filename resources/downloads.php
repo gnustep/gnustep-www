@@ -307,7 +307,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.EXTENSIONS">StepTalk</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="libs/StepTalk-0.8.1.tar.gz">0.8.1</a></td>
+<td class="stab"><a href="http://steptalk.agentfarms.net/download.html">0.8.1</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Scripting language support</td>
 </tr>
@@ -315,7 +315,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.gnustep.it/jigs/">JIGS</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://www.gnustep.it/jigs/Download/jigs-1.5.4.tar.gz">1.5.4
+<td class="stab"><a href="http://www.gnustep.it/jigs/Download/">1.5.5
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Java bridge</td>
