@@ -221,7 +221,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN702">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-make-1.4.0.tar.gz">1.4.0</a></td>
-<td class="unst"><a href="core/gnustep-make-1.5.1.tar.gz">1.5.1</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-1.5.1.tar.gz">1.5.1</a></td>
 <td>Makefile Package</td>
 </tr>
 
@@ -229,7 +229,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN747">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-base-1.4.1.tar.gz">1.4.1</a></td>
-<td class="unst"><a href="core/gnustep-base-1.5.1.tar.gz">1.5.1</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.5.1.tar.gz">1.5.1</a></td>
 <td>Foundation</td>
 </tr>
 
@@ -237,7 +237,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN778">GNUstep GUI</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-gui-0.8.0.tar.gz">0.8.0</a></td>
-<td class="unst"><a href="core/gnustep-gui-0.8.3.tar.gz">0.8.3</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.8.3.tar.gz">0.8.3</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
@@ -245,7 +245,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN817">GNUstep Backend</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-back-0.8.0.tar.gz">0.8.0</a></td>
-<td class="unst"><a href="core/gnustep-back-0.8.3.tar.gz">0.8.3</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-0.8.3.tar.gz">0.8.3</a></td>
 <td>Generic back-end</td>
 </tr>
 
@@ -313,12 +313,11 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src">3DKit</td>
+<td class="src"><a href="http://www.fsf.org/software/gnu3dkit/gnu3dkit.html">Geometry Kit</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://www.fsf.org/software/gnu3dkit/gnu3dkit.html">0.3.0
-</a></td>
+<td class="stab"><a href="http://www.gnu.org/software/gnu3dkit/GeometryKit-0.7.5.src.tar.gz">0.7.5</a></td>
 <td class="unst"><div class="cent">-</div></td>
-<td>3D Kit</td>
+<td>Part of 3D Kit</td>
 </tr>
 
 <tr>
@@ -453,7 +452,7 @@ packages and applications may require you to install these libraries
 
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN976">GWorkspace</a></td>
-<td class="req">Optional</td>
+<td class="req">Recommended</td>
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.4.1.tar.gz">0.4.1</a></td>
 <td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.4.5.tar.gz">0.4.5</a></td>
 <td>File manager for GNUstep</td>
@@ -463,7 +462,7 @@ packages and applications may require you to install these libraries
 <td class="src">RPM Inspector</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/RpmViewer.tar.gz">RPM Viewer</a></td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/RpmViewer.tar.gz">RPM Viewer</a></td>
+<td class="unst"><div class="cent">-</div></td>
 <td>GWorkspace inspector for RPM packages</td>
 </tr>
 
@@ -471,7 +470,7 @@ packages and applications may require you to install these libraries
 <td class="src">Localization</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/">Various</a></td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/">Various</a></td>
+<td class="unst"><div class="cent">-</div></td>
 <td>Language translations for GWorkspace</td>
 </tr>
 
@@ -479,22 +478,22 @@ packages and applications may require you to install these libraries
 <td class="src">App Wrappers</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/wrappers.tar.gz">Wrappers</a></td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/wrappers.tar.gz">Wrappers</a></td>
+<td class="unst"><div class="cent">-</div></td>
 <td>Additional GWorkspace wrappers</td>
 </tr>
 
 <tr>
 <td class="src"><a href="http://www.gnustep.org/experience/apps.html">GNUMail</a></td>
 <td class="req">Optional</td>
-<td class="stab"></td>
-<td class="unst"></td>
+<td class="stab"><a href="usr-apps/GNUMail-1.0.3.tar.gz">1.0.3</a></td>
+<td class="unst"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.0pre1.tar.gz?rid=75">1.1.0pre1</a></td>
 <td>Mail Application</td>
 </tr>
 
 <tr>
 <td class="src"><a href="http://www.gnustep.org/experience/apps.html">GNUstep Apps</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="usr-apps">Various</a></td>
+<td class="stab"><a href="usr-apps/">Various</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Other User Applications</td>
 </tr>
