@@ -17,7 +17,7 @@
   }
   else
   {
-    print "<html><body>Sorry, the document you requested does not exist or has been moved. Try navigating from the <a href="http://www.gnustep.org">home page</a> to find what you want.</body></html>\n";
+    print "<html><body>Sorry, the document you requested does not exist or has been moved. Try navigating from the <a href=\"http://www.gnustep.org\">home page</a> to find what you want.</body></html>\n";
   };
 
 ?>
