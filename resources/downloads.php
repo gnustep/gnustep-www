@@ -371,7 +371,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src">RIGS</td>
+<td class="src"><a href="http://www.gnustep.org/experience/RIGS.html">RIGS</a></td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/rigs-0.2.2.tar.gz")?>">0.2.2</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -387,7 +387,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src">gdl2</td>
+<td class="src">SQLClient</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/SQLClient-1.1.0.tar.gz")?>">1.1.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
