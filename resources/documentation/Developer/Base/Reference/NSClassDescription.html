@@ -4,7 +4,7 @@
     <title>NSClassDescription class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSClassDescription">NSClassDescription class reference</a></h1>
@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.7</p>
-    <p><b>Date:</b> 2003/06/07 01:24:40</p>
+    <p><b>Version:</b> 1.8</p>
+    <p><b>Date:</b> 2004/06/22 22:40:36</p>
     <p><b>Copyright:</b> (C) 2000 Free Software Foundation, Inc.</p>
 
         <div>
@@ -39,7 +39,7 @@
         Software documentation for the NSClassDescription
         class
       </a></h1>
-    <h2><a name="class$NSClassDescription">NSClassDescription</a> : NSObject</h2>
+    <h2><a name="class$NSClassDescription">NSClassDescription</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -50,24 +50,43 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>NotOpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Each instance of this class provides descriptive
+          information for an Objective C class. This is
+          used for key-value coding, a framework used in Cocoa for
+          scripting with Objective-C objects. Scripting is
+          available in GNUstep using Guile, however that
+          implementation does not make use of class
+          descriptions. Therefore the primary purpose of
+          this class is to smooth the process of porting between
+          GNUstep and other OpenStep-derived systems.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSClassDescription+classDescriptionForClass:">+classDescriptionForClass:</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSClassDescription+invalidateClassDescriptionCache">+invalidateClassDescriptionCache</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSClassDescription+registerClassDescription:forClass:">+registerClassDescription:forClass:</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSClassDescription-attributeKeys">-attributeKeys</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSClassDescription-inverseForRelationshipKey:">-inverseForRelationshipKey:</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSClassDescription-toManyRelationshipKeys">-toManyRelationshipKeys</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSClassDescription-toOneRelationshipKeys">-toOneRelationshipKeys</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSClassDescription+classDescriptionForClass:">classDescriptionForClass:&nbsp;</a></h3>
     + (<a rel="gsdoc" href="#class$NSClassDescription">NSClassDescription</a>*) <b>classDescriptionForClass:</b> (Class)aClass;<br />
     <p>
       
-            Returns the class descriptuion for
-            <var>aClass</var>. If there is no such description
-            available, sends an
-            NSClassDescriptionNeededForClassNotification
+            Returns the class description for <var>aClass</var>
+            . If there is no such description available, sends an
+            <code>
+              NSClassDescriptionNeededForClassNotification
+            </code>
             (with <var>aClass</var> as its object) so that
             objects providing class descriptions can register
             one, and tries again to find one. <br /> Returns
@@ -101,7 +120,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSClassDescription-attributeKeys">attributeKeys&nbsp;</a></h3>
-    - (NSArray*) <b>attributeKeys</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>attributeKeys</b>;<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
@@ -111,7 +130,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSClassDescription-inverseForRelationshipKey:">inverseForRelationshipKey:&nbsp;</a></h3>
-    - (NSString*) <b>inverseForRelationshipKey:</b> (NSString*)aKey;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>inverseForRelationshipKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
@@ -121,7 +140,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSClassDescription-toManyRelationshipKeys">toManyRelationshipKeys&nbsp;</a></h3>
-    - (NSArray*) <b>toManyRelationshipKeys</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>toManyRelationshipKeys</b>;<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
@@ -131,7 +150,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSClassDescription-toOneRelationshipKeys">toOneRelationshipKeys&nbsp;</a></h3>
-    - (NSArray*) <b>toOneRelationshipKeys</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>toOneRelationshipKeys</b>;<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
@@ -146,7 +165,7 @@ Subclasses <strong>should</strong> override this method.<br />
         NSObject(NSClassDescriptionPrimitives)
         category
       </a></h1>
-    <h2>NSObject(<a name="category$NSObject(NSClassDescriptionPrimitives)">NSClassDescriptionPrimitives</a>)</h2>
+    <h2><a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSClassDescriptionPrimitives)">NSClassDescriptionPrimitives</a>)</h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -157,8 +176,8 @@ Subclasses <strong>should</strong> override this method.<br />
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>NotOpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -166,9 +185,17 @@ Subclasses <strong>should</strong> override this method.<br />
           <em>Description forthcoming.</em>
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSObject-attributeKeys">-attributeKeys</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSObject-classDescription">-classDescription</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSObject-inverseForRelationshipKey:">-inverseForRelationshipKey:</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSObject-toManyRelationshipKeys">-toManyRelationshipKeys</a></li>
+      <li><a rel="gsdoc" href="NSClassDescription.html#method$NSObject-toOneRelationshipKeys">-toOneRelationshipKeys</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSObject(NSClassDescriptionPrimitives)-attributeKeys">attributeKeys&nbsp;</a></h3>
-    - (NSArray*) <b>attributeKeys</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>attributeKeys</b>;<br />
     <p>
       
             Returns the attribute keys supplied by the
@@ -190,7 +217,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSObject(NSClassDescriptionPrimitives)-inverseForRelationshipKey:">inverseForRelationshipKey:&nbsp;</a></h3>
-    - (NSString*) <b>inverseForRelationshipKey:</b> (NSString*)aKey;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>inverseForRelationshipKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
     <p>
       
             Returns the inverse relationship keys supplied by
@@ -201,7 +228,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSObject(NSClassDescriptionPrimitives)-toManyRelationshipKeys">toManyRelationshipKeys&nbsp;</a></h3>
-    - (NSArray*) <b>toManyRelationshipKeys</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>toManyRelationshipKeys</b>;<br />
     <p>
       
             Returns the to many relationship keys supplied by
@@ -212,7 +239,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSObject(NSClassDescriptionPrimitives)-toOneRelationshipKeys">toOneRelationshipKeys&nbsp;</a></h3>
-    - (NSArray*) <b>toOneRelationshipKeys</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>toOneRelationshipKeys</b>;<br />
     <p>
       
             Returns the to one relationship keys supplied by

@@ -4,7 +4,7 @@
     <title>NSString class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSString">NSString class reference</a></h1>
@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.318</p>
-    <p><b>Date:</b> 2004/06/05 09:34:41</p>
+    <p><b>Version:</b> 1.326</p>
+    <p><b>Date:</b> 2004/08/26 13:43:34</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -64,21 +64,49 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          This is the mutable form of the NSString class.
+          This is the mutable form of the
+          <a rel="gsdoc" href="#class$NSString">NSString</a>
+
+            class.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GNUstep)-immutableProxy">-immutableProxy</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-deletePrefix:">-deletePrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-deleteSuffix:">-deleteSuffix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-replaceString:withString:">-replaceString:withString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-trimLeadSpaces">-trimLeadSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-trimSpaces">-trimSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-trimTailSpaces">-trimTailSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+string">+string</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithCString:">+stringWithCString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithCString:length:">+stringWithCString:length:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithCapacity:">+stringWithCapacity:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithCharacters:length:">+stringWithCharacters:length:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithContentsOfFile:">+stringWithContentsOfFile:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithFormat:,...">+stringWithFormat:,...</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-appendFormat:,...">-appendFormat:,...</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-appendString:">-appendString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deleteCharactersInRange:">-deleteCharactersInRange:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-initWithCapacity:">-initWithCapacity:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-insertString:atIndex:">-insertString:atIndex:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-replaceCharactersInRange:withString:">-replaceCharactersInRange:withString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-replaceOccurrencesOfString:withString:options:range:">-replaceOccurrencesOfString:withString:options:range:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-setString:">-setString:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSMutableString+string">string&nbsp;</a></h3>
     + (id) <b>string</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Constructs an empty string.
           
     </p>
     <hr width="25%" align="left" />
@@ -86,7 +114,10 @@
     + (id) <b>stringWithCString:</b> (const char*)byteString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create a string based on the given C (char[])
+            string, which should be null-terminated and encoded
+            in the default C string encoding. (Characters will be
+            converted to unicode representation internally.)
           
     </p>
     <hr width="25%" align="left" />
@@ -94,7 +125,11 @@
     + (id) <b>stringWithCString:</b> (const char*)byteString<b> length:</b> (unsigned int)length;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create a string based on the given C (char[])
+            string, which may contain null bytes and should be
+            encoded in the default C string encoding.
+            (Characters will be converted to unicode
+            representation internally.)
           
     </p>
     <hr width="25%" align="left" />
@@ -102,15 +137,16 @@
     + (<a rel="gsdoc" href="#class$NSMutableString">NSMutableString</a>*) <b>stringWithCapacity:</b> (unsigned int)capacity;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Constructs an empty string with initial buffer
+            size of <var>capacity</var>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSMutableString+stringWithCharacters:length:">stringWithCharacters:&nbsp;length:&nbsp;</a></h3>
-    + (id) <b>stringWithCharacters:</b> (const unichar*)characters<b> length:</b> (unsigned int)length;<br />
+    + (id) <b>stringWithCharacters:</b> (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)characters<b> length:</b> (unsigned int)length;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create a string of unicode <var>characters</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -118,7 +154,11 @@
     + (id) <b>stringWithContentsOfFile:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Load contents of file at <var>path</var> into a new
+            string. Will interpret file as containing direct
+            unicode if it begins with the unicode byte order
+            mark, else converts to unicode using default C string
+            encoding.
           
     </p>
     <hr width="25%" align="left" />
@@ -126,7 +166,12 @@
     + (id) <b>stringWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates a new string using C printf-style
+            formatting. First argument should be a constant
+            <var>format</var> string, like &apos;
+            <code>@&quot;float val = %f&quot;</code> &apos;, remaining
+            arguments should be the variables to print the
+            values of, comma-separated.
           
     </p>
     <hr width="25%" align="left" />
@@ -134,7 +179,8 @@
     - (void) <b>appendFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Modifies this string by appending string described
+            by given <var>format</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -142,23 +188,27 @@
     - (void) <b>appendString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Modifies this string by appending
+            <var>aString</var>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSMutableString-deleteCharactersInRange:">deleteCharactersInRange:&nbsp;</a></h3>
-    - (void) <b>deleteCharactersInRange:</b> (NSRange)range;<br />
+    - (void) <b>deleteCharactersInRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)range;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Modifies this instance by deleting specified
+            <var>range</var> of characters.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSMutableString-initWithCapacity:">initWithCapacity:&nbsp;</a></h3>
     - (id) <b>initWithCapacity:</b> (unsigned int)capacity;<br />
+This is a designated initialiser for the class.<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Constructs an empty string with initial buffer
+            size of <var>capacity</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -166,20 +216,23 @@
     - (void) <b>insertString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> atIndex:</b> (unsigned int)loc;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Modifies this instance by inserting
+            <var>aString</var> at <var>loc</var>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSMutableString-replaceCharactersInRange:withString:">replaceCharactersInRange:&nbsp;withString:&nbsp;</a></h3>
-    - (void) <b>replaceCharactersInRange:</b> (NSRange)range<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
+    - (void) <b>replaceCharactersInRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)range<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Modifies this instance by deleting characters in
+            <var>range</var> and then inserting
+            <var>aString</var> at its beginning.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSMutableString-replaceOccurrencesOfString:withString:options:range:">replaceOccurrencesOfString:&nbsp;withString:&nbsp;options:&nbsp;range:&nbsp;</a></h3>
-    - (unsigned int) <b>replaceOccurrencesOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)replace<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by<b> options:</b> (unsigned int)opts<b> range:</b> (NSRange)searchRange;<br />
+    - (unsigned int) <b>replaceOccurrencesOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)replace<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by<b> options:</b> (unsigned int)opts<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)searchRange;<br />
     <p>
       
             Replaces all occurrences of the <var>replace</var>
@@ -202,7 +255,8 @@
     - (void) <b>setString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Modifies this instance by replacing contents with
+            those of <var>aString</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -210,7 +264,7 @@
           <h1><a name="002000000000">
         Software documentation for the NSString class
       </a></h1>
-    <h2><a name="class$NSString">NSString</a> : NSObject</h2>
+    <h2><a name="class$NSString">NSString</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -220,17 +274,17 @@
     <blockquote>
       <dl>
         <dt><b>Conforms to:</b></dt>
-        <dd>NSCoding</dd>
-        <dd>NSCopying</dd>
-        <dd>NSMutableCopying</dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(NSCoding)">NSCoding</a></dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(NSCopying)">NSCopying</a></dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(NSMutableCopying)">NSMutableCopying</a></dd>
       </dl>
     </blockquote>
     <blockquote>
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -239,52 +293,171 @@
     </p>
     <p>
 
-            NSString objects represent an immutable string of
-            characters. NSString itself is an abstract
-            class which provides factory methods to generate
-            objects of unspecified subclasses.
-              </p>
+            <code>NSString</code> objects represent an immutable
+            string of Unicode 3.0 characters. These may be
+            accessed individually as type <code>unichar</code>
+            , an unsigned short. <br /> The
+            <a rel="gsdoc" href="#class$NSMutableString">NSMutableString</a>
+subclass represents a modifiable string. Both are implemented as part of a class cluster and the instances you receive may actually be of unspecified concrete subclasses.    </p>
     <p>
-      
-          
+       
     </p>
     <p>
-
-            A constant NSString can be created using the following
-            syntax: <code>@&quot;...&quot;</code>, where the contents of
-            the quotes are the string, using only ASCII characters.
-              </p>
+A constant <code>NSString</code> can be created using the following syntax: <code>@&quot;...&quot;</code>, where the contents of the quotes are the string, using only ASCII characters.    </p>
     <p>
-      
-          
+       
     </p>
     <p>
-
-            To create a concrete subclass of NSString, you must have
-            your class inherit from NSString and override at least
-            the two primitive methods - length and
-            characterAtIndex:
-              </p>
+A variable string can be created using a C printf-like <em>format</em>, as in <code>[NSString stringWithFormat: @&quot;Total is %f&quot;, t]</code>.    </p>
     <p>
-      
-          
+       
     </p>
     <p>
-
-            In general the rule is that your subclass must override
-            any initialiser that you want to use with it. The
-            GNUstep implementation relaxes that to say that,
-            you may override only the
-            <em>designated initialiser</em> and the other
-            initialisation methods should work.
-              </p>
+To create a concrete subclass of <code>NSString</code>, you must have your class inherit from <code>NSString</code> and override at least the two primitive methods - <a rel="gsdoc" href="#method$NSString-length">-length</a>
+ and <a rel="gsdoc" href="#method$NSString-characterAtIndex:">-characterAtIndex:</a>
+    </p>
+    <p>
+       
+    </p>
+    <p>
+In general the rule is that your subclass must override any initialiser that you want to use with it. The GNUstep implementation relaxes that to say that, you may override only the <em>designated initialiser</em> and the other initialisation methods should work.    </p>
+    <p>
+       
+    </p>
+    <p>
+Where an NSString instance method returns an NSString object, the class of the actual object returned may be any subclass of NSString. The actual value returned may be a new autoreleased object, an autoreleased copy of the receiver, or the receiver itsself. While the abstract base class implementations of methods (other than initialisers) will avoid returning mutable strings by returning an autoreleased copy of a mutable receiver, concrete subclasses may behave differently, so code should not rely upon the mutability of returned strings nor upon their lifetime being greater than that of the receiver which returned them.    </p>
     <p>
       
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)+stringWithFormat:arguments:">+stringWithFormat:arguments:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByDeletingPrefix:">-stringByDeletingPrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByDeletingSuffix:">-stringByDeletingSuffix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByReplacingString:withString:">-stringByReplacingString:withString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-boolValue">-boolValue</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-substringFromRange:">-substringFromRange:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawAtPoint:withAttributes:">-drawAtPoint:withAttributes:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawInRect:withAttributes:">-drawInRect:withAttributes:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-sizeWithAttributes:">-sizeWithAttributes:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+localizedNameOfStringEncoding:">+localizedNameOfStringEncoding:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+localizedStringWithFormat:,...">+localizedStringWithFormat:,...</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+pathWithComponents:">+pathWithComponents:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+string">+string</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithCString:">+stringWithCString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithCString:length:">+stringWithCString:length:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithCharacters:length:">+stringWithCharacters:length:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithContentsOfFile:">+stringWithContentsOfFile:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithContentsOfURL:">+stringWithContentsOfURL:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithFormat:,...">+stringWithFormat:,...</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithString:">+stringWithString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithUTF8String:">+stringWithUTF8String:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-UTF8String">-UTF8String</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-_baseLength">-_baseLength</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-boolValue">-boolValue</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-cString">-cString</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-cStringLength">-cStringLength</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-canBeConvertedToEncoding:">-canBeConvertedToEncoding:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-capitalizedString">-capitalizedString</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-caseInsensitiveCompare:">-caseInsensitiveCompare:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-characterAtIndex:">-characterAtIndex:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-commonPrefixWithString:options:">-commonPrefixWithString:options:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-compare:">-compare:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-compare:options:">-compare:options:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-compare:options:range:">-compare:options:range:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-compare:options:range:locale:">-compare:options:range:locale:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-completePathIntoString:caseSensitive:matchesIntoArray:filterTypes:">-completePathIntoString:caseSensitive:matchesIntoArray:filterTypes:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-componentsSeparatedByString:">-componentsSeparatedByString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-dataUsingEncoding:">-dataUsingEncoding:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-dataUsingEncoding:allowLossyConversion:">-dataUsingEncoding:allowLossyConversion:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-description">-description</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-doubleValue">-doubleValue</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-fastestEncoding">-fastestEncoding</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-fileSystemRepresentation">-fileSystemRepresentation</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-floatValue">-floatValue</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-getCString:">-getCString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-getCString:maxLength:">-getCString:maxLength:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-getCString:maxLength:range:remainingRange:">-getCString:maxLength:range:remainingRange:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-getCharacters:">-getCharacters:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-getCharacters:range:">-getCharacters:range:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-getFileSystemRepresentation:maxLength:">-getFileSystemRepresentation:maxLength:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-getLineStart:end:contentsEnd:forRange:">-getLineStart:end:contentsEnd:forRange:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-hasPrefix:">-hasPrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-hasSuffix:">-hasSuffix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-hash">-hash</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-init">-init</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithBytes:length:encoding:">-initWithBytes:length:encoding:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithBytesNoCopy:length:encoding:freeWhenDone:">-initWithBytesNoCopy:length:encoding:freeWhenDone:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithCString:">-initWithCString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithCString:length:">-initWithCString:length:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithCStringNoCopy:length:freeWhenDone:">-initWithCStringNoCopy:length:freeWhenDone:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithCharacters:length:">-initWithCharacters:length:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithCharactersNoCopy:length:freeWhenDone:">-initWithCharactersNoCopy:length:freeWhenDone:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithContentsOfFile:">-initWithContentsOfFile:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithContentsOfURL:">-initWithContentsOfURL:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithData:encoding:">-initWithData:encoding:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithFormat:,...">-initWithFormat:,...</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithFormat:arguments:">-initWithFormat:arguments:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithFormat:locale:,...">-initWithFormat:locale:,...</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithFormat:locale:arguments:">-initWithFormat:locale:arguments:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithString:">-initWithString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithUTF8String:">-initWithUTF8String:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-intValue">-intValue</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-isAbsolutePath">-isAbsolutePath</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-isEqual:">-isEqual:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-isEqualToString:">-isEqualToString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-lastPathComponent">-lastPathComponent</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-length">-length</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-lineRangeForRange:">-lineRangeForRange:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-localizedCaseInsensitiveCompare:">-localizedCaseInsensitiveCompare:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-localizedCompare:">-localizedCompare:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-lossyCString">-lossyCString</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-lowercaseString">-lowercaseString</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-pathComponents">-pathComponents</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-pathExtension">-pathExtension</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-propertyList">-propertyList</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-propertyListFromStringsFileFormat">-propertyListFromStringsFileFormat</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfCharacterFromSet:">-rangeOfCharacterFromSet:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfCharacterFromSet:options:">-rangeOfCharacterFromSet:options:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfCharacterFromSet:options:range:">-rangeOfCharacterFromSet:options:range:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfComposedCharacterSequenceAtIndex:">-rangeOfComposedCharacterSequenceAtIndex:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfString:">-rangeOfString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfString:options:">-rangeOfString:options:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfString:options:range:">-rangeOfString:options:range:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-smallestEncoding">-smallestEncoding</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByAbbreviatingWithTildeInPath">-stringByAbbreviatingWithTildeInPath</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByAddingPercentEscapesUsingEncoding:">-stringByAddingPercentEscapesUsingEncoding:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByAppendingFormat:,...">-stringByAppendingFormat:,...</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByAppendingPathComponent:">-stringByAppendingPathComponent:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByAppendingPathExtension:">-stringByAppendingPathExtension:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByAppendingString:">-stringByAppendingString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingLastPathComponent">-stringByDeletingLastPathComponent</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingPathExtension">-stringByDeletingPathExtension</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByExpandingTildeInPath">-stringByExpandingTildeInPath</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByPaddingToLength:withString:startingAtIndex:">-stringByPaddingToLength:withString:startingAtIndex:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByReplacingPercentEscapesUsingEncoding:">-stringByReplacingPercentEscapesUsingEncoding:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByResolvingSymlinksInPath">-stringByResolvingSymlinksInPath</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByStandardizingPath">-stringByStandardizingPath</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByTrimmingCharactersInSet:">-stringByTrimmingCharactersInSet:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringsByAppendingPaths:">-stringsByAppendingPaths:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-substringFromIndex:">-substringFromIndex:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-substringFromRange:">-substringFromRange:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-substringToIndex:">-substringToIndex:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-substringWithRange:">-substringWithRange:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-uppercaseString">-uppercaseString</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-writeToFile:atomically:">-writeToFile:atomically:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-writeToURL:atomically:">-writeToURL:atomically:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSString+availableStringEncodings">availableStringEncodings&nbsp;</a></h3>
-    + (NSStringEncoding*) <b>availableStringEncodings</b>;<br />
+    + (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>*) <b>availableStringEncodings</b>;<br />
     <p>
       
             Returns an array of all available string encodings,
@@ -310,7 +483,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString+defaultCStringEncoding">defaultCStringEncoding&nbsp;</a></h3>
-    + (NSStringEncoding) <b>defaultCStringEncoding</b>;<br />
+    + (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>) <b>defaultCStringEncoding</b>;<br />
     <p>
       
             
@@ -319,8 +492,9 @@
 
               Returns the encoding used for any method
               accepting a C string. This value is determined
-              automatically from the programs environment
-              and cannot be changed programmatically.
+              automatically from the program&apos;s
+              environment and cannot be changed
+              programmatically.
                 </p>
     <p>
       
@@ -349,7 +523,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString+localizedNameOfStringEncoding:">localizedNameOfStringEncoding:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>localizedNameOfStringEncoding:</b> (NSStringEncoding)encoding;<br />
+    + (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>localizedNameOfStringEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <p>
       
             Returns the localized name of the
@@ -361,12 +535,13 @@
     + (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>localizedStringWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased string with given
+            <var>format</var> using the default locale.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString+pathWithComponents:">pathWithComponents:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>pathWithComponents:</b> (NSArray*)components;<br />
+    + (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>pathWithComponents:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)components;<br />
     <p>
       
             Concatenates the strings in the
@@ -379,7 +554,7 @@
     + (id) <b>string</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create an empty string.
           
     </p>
     <hr width="25%" align="left" />
@@ -387,7 +562,10 @@
     + (id) <b>stringWithCString:</b> (const char*)byteString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create a string based on the given C (char[])
+            string, which should be null-terminated and encoded
+            in the default C string encoding. (Characters will be
+            converted to unicode representation internally.)
           
     </p>
     <hr width="25%" align="left" />
@@ -395,15 +573,19 @@
     + (id) <b>stringWithCString:</b> (const char*)byteString<b> length:</b> (unsigned int)length;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create a string based on the given C (char[])
+            string, which may contain null bytes and should be
+            encoded in the default C string encoding.
+            (Characters will be converted to unicode
+            representation internally.)
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString+stringWithCharacters:length:">stringWithCharacters:&nbsp;length:&nbsp;</a></h3>
-    + (id) <b>stringWithCharacters:</b> (const unichar*)chars<b> length:</b> (unsigned int)length;<br />
+    + (id) <b>stringWithCharacters:</b> (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (unsigned int)length;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create a string of unicode characters.
           
     </p>
     <hr width="25%" align="left" />
@@ -411,15 +593,23 @@
     + (id) <b>stringWithContentsOfFile:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Load contents of file at <var>path</var> into a new
+            string. Will interpret file as containing direct
+            unicode if it begins with the unicode byte order
+            mark, else converts to unicode using default C string
+            encoding.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString+stringWithContentsOfURL:">stringWithContentsOfURL:&nbsp;</a></h3>
-    + (id) <b>stringWithContentsOfURL:</b> (NSURL*)url;<br />
+    + (id) <b>stringWithContentsOfURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)url;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Load contents of given URL into a new string. Will
+            interpret contents as containing direct unicode
+            if it begins with the unicode byte order mark, else
+            converts to unicode using default C string
+            encoding.
           
     </p>
     <hr width="25%" align="left" />
@@ -427,7 +617,12 @@
     + (id) <b>stringWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates a new string using C printf-style
+            formatting. First argument should be a constant
+            <var>format</var> string, like &apos;
+            <code>@&quot;float val = %f&quot;</code> &apos;, remaining
+            arguments should be the variables to print the
+            values of, comma-separated.
           
     </p>
     <hr width="25%" align="left" />
@@ -435,7 +630,7 @@
     + (id) <b>stringWithString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create a copy of <var>aString</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -443,7 +638,8 @@
     + (id) <b>stringWithUTF8String:</b> (const char*)bytes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create a string based on the given UTF-8 string,
+            null-terminated.
           
     </p>
     <hr width="25%" align="left" />
@@ -451,7 +647,10 @@
     - (const char*) <b>UTF8String</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns null-terminated UTF-8 version of this
+            unicode string. The char[] memory comes from an
+            autoreleased object, so it will eventually go
+            out of scope.
           
     </p>
     <hr width="25%" align="left" />
@@ -484,7 +683,14 @@
             Returns a pointer to a null terminated string of
             8-bit characters in the default encoding. The memory
             pointed to is not owned by the caller, so the
-            caller must copy its contents to keep it.
+            caller must copy its contents to keep it. Raises an
+            <code>NSCharacterConversionException</code> if loss
+            of information would occur during conversion. (See
+            <a rel="gsdoc" href="#method$NSString-canBeConvertedToEncoding:">
+              -canBeConvertedToEncoding:
+            </a>
+
+            .)
           
     </p>
     <hr width="25%" align="left" />
@@ -492,15 +698,26 @@
     - (unsigned int) <b>cStringLength</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns length of a version of this unicode string
+            converted to bytes using the default C string
+            encoding. If the conversion would result in
+            information loss, the results are
+            unpredictable. Check
+            <a rel="gsdoc" href="#method$NSString-canBeConvertedToEncoding:">
+              -canBeConvertedToEncoding:
+            </a>
+
+            first.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-canBeConvertedToEncoding:">canBeConvertedToEncoding:&nbsp;</a></h3>
-    - (BOOL) <b>canBeConvertedToEncoding:</b> (NSStringEncoding)encoding;<br />
+    - (BOOL) <b>canBeConvertedToEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether this string can be converted to the
+            given string <var>encoding</var> without information
+            loss.
           
     </p>
     <hr width="25%" align="left" />
@@ -508,23 +725,37 @@
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>capitalizedString</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns version of string in which each
+            whitespace-delimited <em>word</em> is
+            capitalized (not every letter). Conversion to
+            capitals is done in a unicode-compliant manner but
+            there may be exceptional cases where behavior is not
+            what is desired.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-caseInsensitiveCompare:">caseInsensitiveCompare:&nbsp;</a></h3>
-    - (NSComparisonResult) <b>caseInsensitiveCompare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>caseInsensitiveCompare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Compares this string with <var>aString</var>
+            ignoring case. Convenience for
+            <a rel="gsdoc" href="#method$NSString-compare:options:range:">
+              -compare:options:range:
+            </a>
+
+            with the <code>NSCaseInsensitiveSearch</code> option,
+            in the default locale.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-characterAtIndex:">characterAtIndex:&nbsp;</a></h3>
-    - (unichar) <b>characterAtIndex:</b> (unsigned int)index;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>) <b>characterAtIndex:</b> (unsigned int)index;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns unicode character at <var>index</var>.
+            <code>unichar</code> is an unsigned short. Thus, a
+            16-bit character is returned.
           
     </p>
     <hr width="25%" align="left" />
@@ -532,71 +763,208 @@
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>commonPrefixWithString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the largest initial portion of this
+            instance shared with <var>aString</var>.
+            <var>mask</var> may be either
+            <code>NSCaseInsensitiveSearch</code> or
+            <code>NSLiteralSearch</code>. The latter requests a
+            literal byte-by-byte comparison, which is fastest
+            but may return inaccurate results in cases where two
+            different composed character sequences may be
+            used to express the same character.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-compare:">compare:&nbsp;</a></h3>
-    - (NSComparisonResult) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Compares this instance with <var>aString</var>.
+              Returns <code>NSOrderedAscending</code>,
+              <code>NSOrderedDescending</code>, or
+              <code>NSOrderedSame</code>, depending on whether
+              this instance occurs before or after string in
+              lexical order, or is equal to it.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-compare:options:">compare:&nbsp;options:&nbsp;</a></h3>
-    - (NSComparisonResult) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Compares this instance with <var>aString</var>.
+              <var>mask</var> may be either
+              <code>NSCaseInsensitiveSearch</code> or
+              <code>NSLiteralSearch</code>. The latter requests
+              a literal byte-by-byte comparison, which is fastest but
+              may return inaccurate results in cases where two
+              different composed character sequences may be
+              used to express the same character.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-compare:options:range:">compare:&nbsp;options:&nbsp;range:&nbsp;</a></h3>
-    - (NSComparisonResult) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask<b> range:</b> (NSRange)aRange;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Compares this instance with string.
+              <var>mask</var> may be either
+              <code>NSCaseInsensitiveSearch</code> or
+              <code>NSLiteralSearch</code>. The latter requests
+              a literal byte-by-byte comparison, which is fastest but
+              may return inaccurate results in cases where two
+              different composed character sequences may be
+              used to express the same character.
+              <var>aRange</var> refers to this instance, and
+              should be set to 0..length to compare the whole
+              string.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-compare:options:range:locale:">compare:&nbsp;options:&nbsp;range:&nbsp;locale:&nbsp;</a></h3>
-    - (NSComparisonResult) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string<b> options:</b> (unsigned int)mask<b> range:</b> (NSRange)compareRange<b> locale:</b> (NSDictionary*)dict;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string<b> options:</b> (unsigned int)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)compareRange<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)dict;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Compares this instance with <var>string</var>,
+              using rules in locale given by <var>dict</var>.
+              <var>mask</var> may be either
+              <code>NSCaseInsensitiveSearch</code> or
+              <code>NSLiteralSearch</code>. The latter requests
+              a literal byte-by-byte comparison, which is fastest but
+              may return inaccurate results in cases where two
+              different composed character sequences may be
+              used to express the same character.
+              <var>compareRange</var> refers to this instance,
+              and should be set to 0..length to compare the whole
+              <var>string</var>.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Returns <code>NSOrderedAscending</code>,
+              <code>NSOrderedDescending</code>, or
+              <code>NSOrderedSame</code>, depending on whether
+              this instance occurs before or after
+              <var>string</var> in lexical order, or is equal to
+              it.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              <em>
+                <strong>Warning:</strong> this implementation
+                and others in NSString IGNORE the locale.
+              </em>
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-completePathIntoString:caseSensitive:matchesIntoArray:filterTypes:">completePathIntoString:&nbsp;caseSensitive:&nbsp;matchesIntoArray:&nbsp;filterTypes:&nbsp;</a></h3>
-    - (unsigned int) <b>completePathIntoString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>**)outputName<b> caseSensitive:</b> (BOOL)flag<b> matchesIntoArray:</b> (NSArray**)outputArray<b> filterTypes:</b> (NSArray*)filterTypes;<br />
+    - (unsigned int) <b>completePathIntoString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>**)outputName<b> caseSensitive:</b> (BOOL)flag<b> matchesIntoArray:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>**)outputArray<b> filterTypes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)filterTypes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Attempts to complete this string as a path in the
+            filesystem by finding a unique completion if one
+            exists and returning it by reference in
+            <var>outputName</var> (which must be a non-nil
+            pointer), or if it finds a set of completions
+            they are returned by reference in
+            <var>outputArray</var>, if it is non-nil.
+            <var>filterTypes</var> can be an array of strings
+            specifying extensions to consider; files without
+            these extensions will be ignored and will not
+            constitute completions. Returns 0 if no match
+            found, else a positive number that is only accurate
+            if <var>outputArray</var> was non-nil.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-componentsSeparatedByString:">componentsSeparatedByString:&nbsp;</a></h3>
-    - (NSArray*) <b>componentsSeparatedByString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)separator;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>componentsSeparatedByString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)separator;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Returns an array of
+              <a rel="gsdoc" href="#class$NSString">NSString</a>
+
+                s representing substrings of this string that are
+                separated by <var>separator</var> (which
+                itself is never returned in the array). If there
+                are no occurrences of <var>separator</var>, the
+                whole string is returned. If string begins or
+                ends with <var>separator</var>, empty strings will
+                be returned for those positions.
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                Note, use an
+                <a rel="gsdoc" href="NSScanner.html#class$NSScanner">NSScanner</a>
+
+                  if you need more sophisticated parsing.
+                    </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-dataUsingEncoding:">dataUsingEncoding:&nbsp;</a></h3>
-    - (NSData*) <b>dataUsingEncoding:</b> (NSStringEncoding)encoding;<br />
+    - (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>dataUsingEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Converts string to a byte array in the given
+            <var>encoding</var>, returning <code>nil</code> if
+            this would result in information loss.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-dataUsingEncoding:allowLossyConversion:">dataUsingEncoding:&nbsp;allowLossyConversion:&nbsp;</a></h3>
-    - (NSData*) <b>dataUsingEncoding:</b> (NSStringEncoding)encoding<b> allowLossyConversion:</b> (BOOL)flag;<br />
+    - (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>dataUsingEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding<b> allowLossyConversion:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Converts string to a byte array in the given
+            <var>encoding</var>. If <var>flag</var> is
+            <code>NO</code>, <code>nil</code> would be returned
+            if this would result in information loss.
           
     </p>
     <hr width="25%" align="left" />
@@ -604,7 +972,7 @@
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>description</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>self</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -612,19 +980,21 @@
     - (double) <b>doubleValue</b>;<br />
     <p>
       
-            Returns the strings content as a double. Skips
+            Returns the string&apos;s content as a double. Skips
             leading whitespace. <br /> Conversion is not
-            localised (ie uses &apos;.&apos; as the decimal separator).
-            <br /> Returns 0.0 on underflow or if the string
-            does not contain a number.
+            localised (i.e. uses &apos;.&apos; as the decimal
+            separator). <br /> Returns 0.0 on underflow or
+            if the string does not contain a number.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-fastestEncoding">fastestEncoding&nbsp;</a></h3>
-    - (NSStringEncoding) <b>fastestEncoding</b>;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>) <b>fastestEncoding</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the encoding with which this string can be
+            converted without information loss that would
+            result in most efficient character access.
           
     </p>
     <hr width="25%" align="left" />
@@ -632,7 +1002,12 @@
     - (const char*) <b>fileSystemRepresentation</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Converts this string, which is assumed to be a
+            path in Unix notation (&apos;/&apos; is file separator, &apos;.&apos; is
+            extension separator) to a C string path expressed
+            in the convention for the host operating system. This
+            string will be automatically freed soon after it is
+            returned, so copy it if you need it for long.
           
     </p>
     <hr width="25%" align="left" />
@@ -640,11 +1015,11 @@
     - (float) <b>floatValue</b>;<br />
     <p>
       
-            Returns the strings content as a double. Skips
+            Returns the string&apos;s content as a float. Skips
             leading whitespace. <br /> Conversion is not
-            localised (ie uses &apos;.&apos; as the decimal separator).
-            <br /> Returns 0.0 on underflow or if the string
-            does not contain a number.
+            localised (i.e. uses &apos;.&apos; as the decimal
+            separator). <br /> Returns 0.0 on underflow or
+            if the string does not contain a number.
           
     </p>
     <hr width="25%" align="left" />
@@ -673,7 +1048,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-getCString:maxLength:range:remainingRange:">getCString:&nbsp;maxLength:&nbsp;range:&nbsp;remainingRange:&nbsp;</a></h3>
-    - (void) <b>getCString:</b> (char*)buffer<b> maxLength:</b> (unsigned int)maxLength<b> range:</b> (NSRange)aRange<b> remainingRange:</b> (NSRange*)leftoverRange;<br />
+    - (void) <b>getCString:</b> (char*)buffer<b> maxLength:</b> (unsigned int)maxLength<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange<b> remainingRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>*)leftoverRange;<br />
     <p>
       
             Converts characters from the given range of the
@@ -690,18 +1065,29 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-getCharacters:">getCharacters:&nbsp;</a></h3>
-    - (void) <b>getCharacters:</b> (unichar*)buffer;<br />
+    - (void) <b>getCharacters:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)buffer;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns this string as an array of 16-bit
+            <code>unichar</code> (unsigned short) values.
+            <var>buffer</var> must be preallocated and should be
+            capable of holding
+            <a rel="gsdoc" href="#method$NSString-length">
+              -length
+            </a>
+
+            shorts.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-getCharacters:range:">getCharacters:&nbsp;range:&nbsp;</a></h3>
-    - (void) <b>getCharacters:</b> (unichar*)buffer<b> range:</b> (NSRange)aRange;<br />
+    - (void) <b>getCharacters:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)buffer<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <var>aRange</var> of string as an array of
+            16-bit <code>unichar</code> (unsigned short) values.
+            <var>buffer</var> must be preallocated and should be
+            capable of holding a sufficient number of shorts.
           
     </p>
     <hr width="25%" align="left" />
@@ -709,12 +1095,18 @@
     - (BOOL) <b>getFileSystemRepresentation:</b> (char*)buffer<b> maxLength:</b> (unsigned int)size;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Converts this string, which is assumed to be a
+            path in Unix notation (&apos;/&apos; is file separator, &apos;.&apos; is
+            extension separator) to a C string path expressed
+            in the convention for the host operating system. This
+            string will be stored into <var>buffer</var> if it
+            is shorter than <var>size</var>, otherwise
+            <code>NO</code> is returned.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-getLineStart:end:contentsEnd:forRange:">getLineStart:&nbsp;end:&nbsp;contentsEnd:&nbsp;forRange:&nbsp;</a></h3>
-    - (void) <b>getLineStart:</b> (unsigned int*)startIndex<b> end:</b> (unsigned int*)lineEndIndex<b> contentsEnd:</b> (unsigned int*)contentsEndIndex<b> forRange:</b> (NSRange)aRange;<br />
+    - (void) <b>getLineStart:</b> (unsigned int*)startIndex<b> end:</b> (unsigned int*)lineEndIndex<b> contentsEnd:</b> (unsigned int*)contentsEndIndex<b> forRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
             Determines the smallest range of lines
@@ -759,7 +1151,8 @@
     - (BOOL) <b>hasPrefix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether this string starts with
+            <var>aString</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -767,7 +1160,8 @@
     - (BOOL) <b>hasSuffix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether this string ends with
+            <var>aString</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -786,12 +1180,12 @@
     - (id) <b>init</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes as an empty string.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-initWithBytes:length:encoding:">initWithBytes:&nbsp;length:&nbsp;encoding:&nbsp;</a></h3>
-    - (id) <b>initWithBytes:</b> (const void*)bytes<b> length:</b> (unsigned int)length<b> encoding:</b> (NSStringEncoding)encoding;<br />
+    - (id) <b>initWithBytes:</b> (const void*)bytes<b> length:</b> (unsigned int)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <p>
       
             Initialises the receiver with a copy of the
@@ -808,7 +1202,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-initWithBytesNoCopy:length:encoding:freeWhenDone:">initWithBytesNoCopy:&nbsp;length:&nbsp;encoding:&nbsp;freeWhenDone:&nbsp;</a></h3>
-    - (id) <b>initWithBytesNoCopy:</b> (const void*)bytes<b> length:</b> (unsigned int)length<b> encoding:</b> (NSStringEncoding)encoding<b> freeWhenDone:</b> (BOOL)flag;<br />
+    - (id) <b>initWithBytesNoCopy:</b> (const void*)bytes<b> length:</b> (unsigned int)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding<b> freeWhenDone:</b> (BOOL)flag;<br />
     <p>
       
             Initialises the receiver with the supplied
@@ -832,7 +1226,18 @@
     - (id) <b>initWithCString:</b> (const char*)byteString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Initialize with given C string
+              <var>byteString</var>, which should be
+              null-terminated. Characters are
+              converted to unicode based on the default C
+              encoding. Copies the string.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -840,7 +1245,18 @@
     - (id) <b>initWithCString:</b> (const char*)byteString<b> length:</b> (unsigned int)length;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Initialize with given C string
+              <var>byteString</var> up to <var>length</var>,
+              regardless of presence of null bytes.
+              Characters converted to unicode based on the
+              default C encoding. Copies the string.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -848,27 +1264,69 @@
     - (id) <b>initWithCStringNoCopy:</b> (char*)byteString<b> length:</b> (unsigned int)length<b> freeWhenDone:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Initialize with given C string
+              <var>byteString</var> up to <var>length</var>,
+              regardless of presence of null bytes.
+              Characters converted to unicode based on the
+              default C encoding. Does not copy the string. If
+              <var>flag</var>, frees its storage when this
+              instance is deallocated.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-initWithCharacters:length:">initWithCharacters:&nbsp;length:&nbsp;</a></h3>
-    - (id) <b>initWithCharacters:</b> (const unichar*)chars<b> length:</b> (unsigned int)length;<br />
+    - (id) <b>initWithCharacters:</b> (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (unsigned int)length;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Initialize with given unicode <var>chars</var>
+              up to <var>length</var>, regardless of presence of
+              null bytes. Copies the string and frees copy when
+              deallocated.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-initWithCharactersNoCopy:length:freeWhenDone:">initWithCharactersNoCopy:&nbsp;length:&nbsp;freeWhenDone:&nbsp;</a></h3>
-    - (id) <b>initWithCharactersNoCopy:</b> (unichar*)chars<b> length:</b> (unsigned int)length<b> freeWhenDone:</b> (BOOL)flag;<br />
+    - (id) <b>initWithCharactersNoCopy:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (unsigned int)length<b> freeWhenDone:</b> (BOOL)flag;<br />
 This is a designated initialiser for the class.<br />
     <p>
       
-            This is the most basic initialiser for unicode
-            strings. In the GNUstep implementation, your
-            subclasses may override this initialiser in
-            order to have all others function.
+            
+    </p>
+    <p>
+
+              Initialize with given unicode <var>chars</var>
+              up to <var>length</var>, regardless of presence of
+              null bytes. Does not copy the string. If
+              <var>flag</var>, frees its storage when this
+              instance is deallocated.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Note, this is the most basic initialiser for
+              unicode strings. In the GNUstep implementation,
+              your subclasses may override this initialiser in
+              order to have all others function.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -890,7 +1348,7 @@ This is a designated initialiser for the class.<br />
     <p>
 
               Invokes
-              [NSData-initWithContentsOfFile:]
+              <a rel="gsdoc" href="NSData.html#method$NSData-initWithContentsOfFile:">[NSData&nbsp;-initWithContentsOfFile:]</a>
  to read the file, then examines the data to infer its encoding type, and converts the data to a string using <a rel="gsdoc" href="#method$NSString-initWithData:encoding:">-initWithData:encoding:</a>
 
                 </p>
@@ -924,15 +1382,58 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-initWithContentsOfURL:">initWithContentsOfURL:&nbsp;</a></h3>
-    - (id) <b>initWithContentsOfURL:</b> (NSURL*)url;<br />
+    - (id) <b>initWithContentsOfURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)url;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Initialises the receiver with the contents of
+              the given URL.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Invokes
+              <a rel="gsdoc" href="NSData.html#method$NSData+dataWithContentsOfURL:">[NSData&nbsp;+dataWithContentsOfURL:]</a>
+ to read the contents, then examines the data to infer its encoding type, and converts the data to a string using <a rel="gsdoc" href="#method$NSString-initWithData:encoding:">-initWithData:encoding:</a>
+
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The encoding to use is determined as follows... if
+              the data begins with the 16-bit unicode Byte Order
+              Marker, then it is assumed to be unicode data in
+              the appropriate ordering and converted as such.
+              <br /> If it begins with a UTF8 representation of
+              the BOM, the UTF8 encoding is used. <br /> Otherwise,
+              the default C String encoding is used.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Releases the receiver and returns
+              <code>nil</code> if the URL contents could not be
+              read and converted to a string.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-initWithData:encoding:">initWithData:&nbsp;encoding:&nbsp;</a></h3>
-    - (id) <b>initWithData:</b> (NSData*)data<b> encoding:</b> (NSStringEncoding)encoding;<br />
+    - (id) <b>initWithData:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)data<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <p>
       
             Initialises the receiver with the supplied
@@ -975,7 +1476,7 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-initWithFormat:locale:,...">initWithFormat:&nbsp;locale:&nbsp;,...</a></h3>
-    - (id) <b>initWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b> locale:</b> (NSDictionary*)locale<b>,...</b>;<br />
+    - (id) <b>initWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale<b>,...</b>;<br />
     <p>
       
             Invokes
@@ -987,7 +1488,7 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-initWithFormat:locale:arguments:">initWithFormat:&nbsp;locale:&nbsp;arguments:&nbsp;</a></h3>
-    - (id) <b>initWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b> locale:</b> (NSDictionary*)locale<b> arguments:</b> (va_list)argList;<br />
+    - (id) <b>initWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale<b> arguments:</b> (va_list)argList;<br />
     <p>
       
             Initialises the string using the specified
@@ -1000,7 +1501,8 @@ This is a designated initialiser for the class.<br />
     - (id) <b>initWithString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialize to be a copy of the given
+            <var>string</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -1008,7 +1510,8 @@ This is a designated initialiser for the class.<br />
     - (id) <b>initWithUTF8String:</b> (const char*)bytes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialize based on given null-terminated UTF-8
+            string <var>bytes</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -1016,7 +1519,23 @@ This is a designated initialiser for the class.<br />
     - (int) <b>intValue</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Returns the string&apos;s content as an int. <br />
+              Current implementation uses C library
+              <code>
+                
+                  atoi()
+                
+
+              </code>
+              , which does not detect conversion errors -- use with
+              care!
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -1024,7 +1543,9 @@ This is a designated initialiser for the class.<br />
     - (BOOL) <b>isAbsolutePath</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if the receiver represents
+            an absolute path... i.e. if it begins with a &apos;/&apos; or a
+            &apos;~&apos; <br /> Returns <code>NO</code> otherwise.
           
     </p>
     <hr width="25%" align="left" />
@@ -1032,7 +1553,9 @@ This is a designated initialiser for the class.<br />
     - (BOOL) <b>isEqual:</b> (id)anObject;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns based on string comparison if
+            <var>anObject</var> is an NSString, else uses
+            <code>==</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -1040,7 +1563,13 @@ This is a designated initialiser for the class.<br />
     - (BOOL) <b>isEqualToString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether this instance is equal as a string
+            to <var>aString</var>. See also
+            <a rel="gsdoc" href="#method$NSString-compare:">
+              -compare:
+            </a>
+
+            and related methods.
           
     </p>
     <hr width="25%" align="left" />
@@ -1062,12 +1591,14 @@ This is a designated initialiser for the class.<br />
     - (unsigned int) <b>length</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the number of Unicode characters in this
+            string, including the individual characters of
+            composed character sequences,
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-lineRangeForRange:">lineRangeForRange:&nbsp;</a></h3>
-    - (NSRange) <b>lineRangeForRange:</b> (NSRange)aRange;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>lineRangeForRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
             Determines the smallest range of lines
@@ -1079,18 +1610,20 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-localizedCaseInsensitiveCompare:">localizedCaseInsensitiveCompare:&nbsp;</a></h3>
-    - (NSComparisonResult) <b>localizedCaseInsensitiveCompare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>localizedCaseInsensitiveCompare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Compares this instance with <var>string</var>,
+            using rules in the default locale, ignoring case.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-localizedCompare:">localizedCompare:&nbsp;</a></h3>
-    - (NSComparisonResult) <b>localizedCompare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>localizedCompare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Compares this instance with <var>string</var>,
+            using rules in the default locale.
           
     </p>
     <hr width="25%" align="left" />
@@ -1098,7 +1631,11 @@ This is a designated initialiser for the class.<br />
     - (const char*) <b>lossyCString</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a C string converted using the default C
+            string encoding, which may result in information
+            loss. The memory pointed to is not owned by the
+            caller, so the caller must copy its contents to
+            keep it.
           
     </p>
     <hr width="25%" align="left" />
@@ -1112,7 +1649,7 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-pathComponents">pathComponents&nbsp;</a></h3>
-    - (NSArray*) <b>pathComponents</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>pathComponents</b>;<br />
     <p>
       
             Returns the path components of the reciever
@@ -1156,9 +1693,18 @@ This is a designated initialiser for the class.<br />
     </p>
     <p>
 
+              Containers (arrays and dictionaries) are
+              decoded as <em>mutable</em> objects.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
               There are three readable <em>property list</em>
               storage formats - The binary format used by
-              NSSerializer
+              <a rel="gsdoc" href="NSSerialization.html#class$NSSerializer">NSSerializer</a>
 
                 does not concern us here, but there are two &apos;human
                 readable&apos; formats, the <em>traditional</em>
@@ -1172,10 +1718,10 @@ This is a designated initialiser for the class.<br />
     <p>
 
                 The
-                [NSArray-descriptionWithLocale:indent:]
- and [NSDictionary-descriptionWithLocale:indent:]
- methods both generate strings containing traditional style <em>property lists</em>, but [NSArray-writeToFile:atomically:]
- and [NSDictionary-writeToFile:atomically:]
+                <a rel="gsdoc" href="NSArray.html#method$NSArray-descriptionWithLocale:indent:">[NSArray&nbsp;-descriptionWithLocale:indent:]</a>
+ and <a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-descriptionWithLocale:indent:">[NSDictionary&nbsp;-descriptionWithLocale:indent:]</a>
+ methods both generate strings containing traditional style <em>property lists</em>, but <a rel="gsdoc" href="NSArray.html#method$NSArray-writeToFile:atomically:">[NSArray&nbsp;-writeToFile:atomically:]</a>
+ and <a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-writeToFile:atomically:">[NSDictionary&nbsp;-writeToFile:atomically:]</a>
  generate either traditional or XML style <em>property lists</em> depending on the value of the GSMacOSXCompatible and NSWriteOldStylePropertyLists user defaults. <br /> If GSMacOSXCompatible is <code>YES</code> then XML <em>property lists</em> are written unless NSWriteOldStylePropertyLists is also <code>YES</code>. <br /> By default GNUstep writes old style data and always supports reading of either style.
                   </p>
     <p>
@@ -1213,260 +1759,27 @@ This is a designated initialiser for the class.<br />
                 Both the traditional format and the XML format
                 permit comments to be placed in
                 <em>property list</em> documents. In traditional
-                format the comment notations used in ObjectiveC
+                format the comment notations used in Objective-C
                 programming are supported, while in XML
                 format, the standard SGML comment sequences are
                 used.
                   </p>
     <p>
       
-              A <em>property list</em> may only be one of the
-              following classes -
               
-      <dl>
-        <dt>
-                  NSArray
+    </p>
+    <p>
 
-                  </dt>
-        <dd>
-          
-                    An array which is either empty or contains only
-                    <em>property list</em> objects. <br /> An
-                    array is delimited by round brackets and its
-                    contents are comma <em>separated</em>
-                    (there is no comma after the last array
-                    element).
-
-<pre>
-       ( &quot;one&quot;, &quot;two&quot;, &quot;three&quot; )
-     </pre>
-          
-            In XML format, an array is an element whose name is
-            <code>array</code> and whose content is the array
-            content.
-
-<pre>
-       &lt;array&gt;&lt;string&gt;one&lt;/string&gt;&lt;string&gt;two&lt;/string&gt;&lt;string&gt;three&lt;/string&gt;&lt;/array&gt;
-     </pre>
-          
-          
-        </dd>
-        <dt>
-            NSData
-
-            </dt>
-        <dd>
-          
-              An array is represented as a series of pairs of
-              hexadecimal characters (each pair
-              representing a byte of data) enclosed in
-              angle brackets. Spaces are ignored).
-
-<pre>
-       &lt; 54637374 696D67 &gt;
-     </pre>
-          
-            In XML format, a data object is an element whose name is
-            <code>data</code> and whose content is a stream of
-            base64 encoded bytes.
-          
-        </dd>
-        <dt>
-            NSDate
-
-            </dt>
-        <dd>
-          
-              Date objects were not traditionally allowed in
-              <em>property lists</em> but were added when the XML
-              format was intoroduced. GNUstep provides an
-              extension to the traditional
-              <em>property list</em> format to support date
-              objects, but older code will not read
-              <em>property lists</em> containing this extension.
-              <br /> This format consists of an asterisk follwed
-              by the letter &apos;D&apos; then a date/time in YYYY-MM-DD
-              HH:MM:SS +/-ZZZZ format, all enclosed within
-              angle brackets.
-
-<pre>
-       &lt;*D2002-03-22 11:30:00 +0100&gt;
-     </pre>
-          
-            In XML format, a date object is an element whose name is
-            <code>date</code> and whose content is a date in the
-            above format.
-
-<pre>
-       &lt;date&gt;2002-03-22 11:30:00 +0100&lt;/date&gt;
-     </pre>
-          
-          
-        </dd>
-        <dt>
-            NSDictionary
-
-            </dt>
-        <dd>
-          
-              A dictionary which is either empty or contains only
-              <em>string</em> keys and <em>property list</em>
-              objects. <br /> A dictionary is delimited by
-              curly brackets and its contents are semicolon
-              <em>terminated</em> (there is a semicolon after each
-              value). Each item in the dictionary is a
-              key/value pair with an equals sign after the
-              key and before the value.
-
-<pre>
-       {
-         &quot;key1&quot; = &quot;value1&quot;;
-       }
-     </pre>
-          
-            In XML format, a dictionary is an element whose name is
-            <code>dictionary</code> and whose content consists
-            of pairs of strings and other <em>property list</em>
-            objects.
-
-<pre>
-       &lt;dictionary&gt;
-         &lt;string&gt;key1&lt;/string&gt;
-         &lt;string&gt;value1&lt;/string&gt;
-       &lt;/dictionary&gt;
-     </pre>
-          
-          
-        </dd>
-        <dt>
-            NSNumber
-
-            </dt>
-        <dd>
-          
-              Number objects were not traditionally allowed in
-              <em>property lists</em> but were added when the XML
-              format was intoroduced. GNUstep provides an
-              extension to the traditional
-              <em>property list</em> format to support number
-              objects, but older code will not read
-              <em>property lists</em> containing this extension.
-              <br /> Numbers are stored in a variety of formats
-              depending on their values.
-              
-          <ul>
-            <li>
-              
-                  boolean... either <code>&lt;*BY&gt;</code>
-                  for <code>YES</code> or <code>&lt;*BN&gt;</code>
-                  for <code>NO</code>. <br /> In XML format this is
-                  either <code>&lt;true /&gt;</code> or
-                  <code>&lt;false /&gt;</code>
-                
-            </li>
-            <li>
-              
-                  integer... <code>&lt;*INNN&gt;</code> where
-                  NNN is an integer. <br /> In XML format this is
-                  <code>&lt;integer&gt;NNN&lt;integer&gt;</code>
-                
-            </li>
-            <li>
-              
-                  real... <code>&lt;*RNNN&gt;</code> where NNN is
-                  a real number. <br /> In XML format this is
-                  <code>&lt;real&gt;NNN&lt;real&gt;</code>
-                
-            </li>
-          </ul>
-          
-            
-        </dd>
-        <dt>
-              <a rel="gsdoc" href="#class$NSString">NSString</a>
-
-              </dt>
-        <dd>
-          
-                A string is either stored literally (if it contains
-                no spaces or special characters), or is stored as a
-                quoted string with special characters escaped
-                where necessary. <br /> Escape conventions are
-                similar to those normally used in ObjectiveC
-                programming, using a backslash followed by
-                -
-                
-          <ul>
-            <li>
-              
-                    <strong>\</strong> a backslash character
-                  
-            </li>
-            <li>
-              
-                    <strong>&quot;</strong> a quote character
-                  
-            </li>
-            <li>
-              
-                    <strong>b</strong> a backspace character
-                  
-            </li>
-            <li>
-              
-                    <strong>n</strong> a newline character
-                  
-            </li>
-            <li>
-              
-                    <strong>r</strong> a carriage return
-                    character
-                  
-            </li>
-            <li>
-              
-                    <strong>t</strong> a tab character
-                  
-            </li>
-            <li>
-              
-                    <strong>OOO</strong> (three octal digits)
-                    an arbitrary ascii character
-                  
-            </li>
-            <li>
-              
-                    <strong>UXXXX</strong> (where X is a
-                    hexadecimal digit) a an arbitrary
-                    unicode character
-                  
-            </li>
-          </ul>
-          
-
-<pre>
-       &quot;hello world &amp; others&quot;
-     </pre>
-          
-            In XML format, the string is simply stored in UTF8
-            format as the content of a <code>string</code>
-            element, and the only character escapes required
-            are those used by XML such as the &apos;&amp;lt;&apos; markup
-            representing a &apos;&lt;&apos; character.
-
-<pre>
-       &lt;string&gt;hello world &amp;amp; others&lt;/string&gt;&quot;
-     </pre>
-          
-          
-        </dd>
-      </dl>
+                See the documentation for
+                <a rel="gsdoc" href="NSPropertyList.html#class$NSPropertyListSerialization">NSPropertyListSerialization</a>
+for more information on what a property list is.    </p>
+    <p>
       
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-propertyListFromStringsFileFormat">propertyListFromStringsFileFormat&nbsp;</a></h3>
-    - (NSDictionary*) <b>propertyListFromStringsFileFormat</b>;<br />
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>propertyListFromStringsFileFormat</b>;<br />
     <p>
       
             
@@ -1507,39 +1820,65 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-rangeOfCharacterFromSet:">rangeOfCharacterFromSet:&nbsp;</a></h3>
-    - (NSRange) <b>rangeOfCharacterFromSet:</b> (NSCharacterSet*)aSet;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfCharacterFromSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)aSet;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns position of first character in this string
+            that is in <var>aSet</var>. Positions start at 0. If
+            the character is a composed character sequence, the
+            range returned will contain the whole sequence, else
+            just the character itself.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-rangeOfCharacterFromSet:options:">rangeOfCharacterFromSet:&nbsp;options:&nbsp;</a></h3>
-    - (NSRange) <b>rangeOfCharacterFromSet:</b> (NSCharacterSet*)aSet<b> options:</b> (unsigned int)mask;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfCharacterFromSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)aSet<b> options:</b> (unsigned int)mask;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns position of first character in this string
+            that is in <var>aSet</var>. Positions start at 0. If
+            the character is a composed character sequence, the
+            range returned will contain the whole sequence, else
+            just the character itself. <var>mask</var> may contain
+            <code>NSCaseInsensitiveSearch</code>,
+            <code>NSLiteralSearch</code> (don&apos;t consider
+            alternate forms of composed characters equal), or
+            <code>NSBackwardsSearch</code> (search from end of
+            string).
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-rangeOfCharacterFromSet:options:range:">rangeOfCharacterFromSet:&nbsp;options:&nbsp;range:&nbsp;</a></h3>
-    - (NSRange) <b>rangeOfCharacterFromSet:</b> (NSCharacterSet*)aSet<b> options:</b> (unsigned int)mask<b> range:</b> (NSRange)aRange;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfCharacterFromSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)aSet<b> options:</b> (unsigned int)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns position of first character in this string
+            that is in <var>aSet</var>. Positions start at 0. If
+            the character is a composed character sequence, the
+            range returned will contain the whole sequence, else
+            just the character itself. <var>mask</var> may contain
+            <code>NSCaseInsensitiveSearch</code>,
+            <code>NSLiteralSearch</code> (don&apos;t consider
+            alternate forms of composed characters equal), or
+            <code>NSBackwardsSearch</code> (search from end of
+            string). Search only carried out within
+            <var>aRange</var>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-rangeOfComposedCharacterSequenceAtIndex:">rangeOfComposedCharacterSequenceAtIndex:&nbsp;</a></h3>
-    - (NSRange) <b>rangeOfComposedCharacterSequenceAtIndex:</b> (unsigned int)anIndex;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfComposedCharacterSequenceAtIndex:</b> (unsigned int)anIndex;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Unicode utility method. If character at
+            <var>anIndex</var> is part of a composed character
+            sequence <var>anIndex</var> (note indices start
+            from 0), returns the full range of this sequence.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-rangeOfString:">rangeOfString:&nbsp;</a></h3>
-    - (NSRange) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string;<br />
     <p>
       
             Invokes
@@ -1547,12 +1886,12 @@ This is a designated initialiser for the class.<br />
               -rangeOfString:options:
             </a>
 
-            with the options mask set to zero.
+            with no options.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-rangeOfString:options:">rangeOfString:&nbsp;options:&nbsp;</a></h3>
-    - (NSRange) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string<b> options:</b> (unsigned int)mask;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string<b> options:</b> (unsigned int)mask;<br />
     <p>
       
             Invokes
@@ -1566,7 +1905,7 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-rangeOfString:options:range:">rangeOfString:&nbsp;options:&nbsp;range:&nbsp;</a></h3>
-    - (NSRange) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask<b> range:</b> (NSRange)aRange;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
             Returns the range giving the location and length of
@@ -1583,27 +1922,33 @@ This is a designated initialiser for the class.<br />
             
       <ul>
         <li>
-          NSCaseInsensitiveSearch
+          <code>NSCaseInsensitiveSearch</code>
         </li>
         <li>
-          NSLiteralSearch
+          <code>NSLiteralSearch</code>
         </li>
         <li>
-          NSBackwardsSearch
+          <code>NSBackwardsSearch</code>
         </li>
         <li>
-          NSAnchoredSearch
+          <code>NSAnchoredSearch</code>
         </li>
       </ul>
       
+            The <code>NSAnchoredSearch</code> option means
+            <var>aString</var> must occur at the beginning (or
+            end, if <code>NSBackwardsSearch</code> is also given)
+            of the string. Options should be OR&apos;d together using
+            <code>&apos;|&apos;</code>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-smallestEncoding">smallestEncoding&nbsp;</a></h3>
-    - (NSStringEncoding) <b>smallestEncoding</b>;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>) <b>smallestEncoding</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the smallest encoding with which this
+            string can be converted without information loss.
           
     </p>
     <hr width="25%" align="left" />
@@ -1613,8 +1958,21 @@ This is a designated initialiser for the class.<br />
       
             Returns a string where a prefix of the current
             user&apos;s home directory is abbreviated by &apos;~&apos;, or
-            returns the receiver if it was not found to have
-            the home directory as a prefix.
+            returns the receiver (or an immutable copy) if it
+            was not found to have the home directory as a prefix.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSString-stringByAddingPercentEscapesUsingEncoding:">stringByAddingPercentEscapesUsingEncoding:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByAddingPercentEscapesUsingEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)e;<br />
+    <p>
+      
+            Constructs a new ASCII string which is a
+            representation of the receiver in which
+            characters are esacped where necessary in order
+            to produce a legal URL. <br /> Returns <code>nil</code>
+            if the receiver cannot be represented using the
+            specified encoding.
           
     </p>
     <hr width="25%" align="left" />
@@ -1622,7 +1980,9 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByAppendingFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Constructs a new string consisting of this
+            instance followed by the string specified by
+            <var>format</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -1653,7 +2013,8 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByAppendingString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Constructs a new string consisting of this
+            instance followed by the <var>aString</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -1694,8 +2055,8 @@ This is a designated initialiser for the class.<br />
             Returns a string created by expanding the initial
             tilde (&apos;~&apos;) and any following username to be the home
             directory of the current user or the named user.
-            <br /> Returns the receiver if it was not possible
-            to expand it.
+            <br /> Returns the receiver or an immutable copy if
+            it was not possible to expand it.
           
     </p>
     <hr width="25%" align="left" />
@@ -1713,11 +2074,26 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSString-stringByReplacingPercentEscapesUsingEncoding:">stringByReplacingPercentEscapesUsingEncoding:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByReplacingPercentEscapesUsingEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)e;<br />
+    <p>
+      
+            Returns a string created by replacing percent
+            escape sequences in the receiver assuning that the
+            resulting data represents characters in the
+            specified encoding. <br /> Returns
+            <code>nil</code> if the ressult is not a string in
+            the specified encoding.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSString-stringByResolvingSymlinksInPath">stringByResolvingSymlinksInPath&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByResolvingSymlinksInPath</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Replaces path string by one in which path
+            components representing symbolic links have been
+            replaced by their referents.
           
     </p>
     <hr width="25%" align="left" />
@@ -1759,7 +2135,7 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-stringByTrimmingCharactersInSet:">stringByTrimmingCharactersInSet:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByTrimmingCharactersInSet:</b> (NSCharacterSet*)aSet;<br />
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByTrimmingCharactersInSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)aSet;<br />
     <p>
       
             Return a string formed by removing characters from
@@ -1772,7 +2148,7 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-stringsByAppendingPaths:">stringsByAppendingPaths:&nbsp;</a></h3>
-    - (NSArray*) <b>stringsByAppendingPaths:</b> (NSArray*)paths;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>stringsByAppendingPaths:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)paths;<br />
     <p>
       
             Returns an array of strings made by appending the
@@ -1796,7 +2172,7 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-substringFromRange:">substringFromRange:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>substringFromRange:</b> (NSRange)aRange;<br />
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>substringFromRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
             An obsolete name for
@@ -1824,7 +2200,7 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-substringWithRange:">substringWithRange:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>substringWithRange:</b> (NSRange)aRange;<br />
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>substringWithRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
             Returns a substring of the receiver containing the
@@ -1849,15 +2225,36 @@ This is a designated initialiser for the class.<br />
     - (BOOL) <b>writeToFile:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)filename<b> atomically:</b> (BOOL)useAuxiliaryFile;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Writes contents out to file at <var>filename</var>,
+            using the default C string encoding unless this would
+            result in information loss, otherwise straight
+            unicode. The &apos; <code>atomically</code> &apos; option if
+            set will cause the contents to be written to a temp
+            file, which is then closed and renamed to
+            <var>filename</var>. Thus, an incomplete file at
+            <var>filename</var> should never result.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-writeToURL:atomically:">writeToURL:&nbsp;atomically:&nbsp;</a></h3>
-    - (BOOL) <b>writeToURL:</b> (NSURL*)anURL<b> atomically:</b> (BOOL)atomically;<br />
+    - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)anURL<b> atomically:</b> (BOOL)atomically;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Writes contents out to <var>anURL</var>, using the
+            default C string encoding unless this would result
+            in information loss, otherwise straight unicode. See
+            <a rel="gsdoc" href="NSURLHandle.html#method$NSURLHandle-writeData:">
+              [NSURLHandle&nbsp;-writeData:]
+            </a>
+
+            on which URL types are supported. The &apos;
+            <code><var>atomically</var></code> &apos; option is only
+            heeded if the URL is a <code>file://</code> URL; see
+            <a rel="gsdoc" href="#method$NSString-writeToFile:atomically:">
+              -writeToFile:atomically:
+            </a>
+
+            .
           
     </p>
     <hr width="25%" align="left" />
@@ -1876,8 +2273,8 @@ This is a designated initialiser for the class.<br />
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -1921,7 +2318,7 @@ This is a designated initialiser for the class.<br />
             and GNUstep uses this to avoid conflicts with the
             default implementation of NXConstantString in the
             ObjC runtime library (the preprocessor is used to
-            change all occurances of NXConstantString in the
+            change all occurences of NXConstantString in the
             source code to NSConstantString).
               </p>
     <p>
@@ -1932,8 +2329,8 @@ This is a designated initialiser for the class.<br />
 
             Since GNUstep will generally use the GNUstep
             extension to the compiler, you should never refer
-            to the constnat string class by name, but should use the
-            <a rel="gsdoc" href="#method$NSString+constantStringClass">[NSString+constantStringClass]</a>
+            to the constant string class by name, but should use the
+            <a rel="gsdoc" href="#method$NSString+constantStringClass">[NSString&nbsp;+constantStringClass]</a>
  method to get the actual class being used for constant strings.
               </p>
     <p>
@@ -1942,10 +2339,13 @@ This is a designated initialiser for the class.<br />
           the compiler happy.
         
     </p>
-    <br/><hr width="50%" align="left" />
+    <hr width="50%" align="left" />
+    <a href="#_NXConstantString_ivars">Instance Variables</a>
+    <br/><br/>
+<a name="_NXConstantString_ivars"/>    <br/><hr width="50%" align="left" />
     <h2>Instance Variables for NXConstantString Class</h2>
     <h3><a name="ivariable$NXConstantString*nxcslen">nxcslen</a></h3>
-    @private const unsigned int <b>nxcslen</b>;<br />
+    @protected const unsigned int <b>nxcslen</b>;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -1953,7 +2353,7 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NXConstantString*nxcsptr">nxcsptr</a></h3>
-    @private const char* const <b>nxcsptr</b>;<br />
+    @protected const char* const <b>nxcsptr</b>;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -1976,9 +2376,9 @@ This is a designated initialiser for the class.<br />
     <blockquote>
       <b>Standards:</b>
       <ul>
+        <li>NotOpenStep</li>
         <li>NotMacOS-X</li>
         <li>GNUstep</li>
-        <li>NotOpenStep</li>
       </ul>
     </blockquote>
     <p>
@@ -1988,6 +2388,10 @@ This is a designated initialiser for the class.<br />
           category are not available in MacOS-X
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-immutableProxy">-immutableProxy</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSMutableString(GNUstep)-immutableProxy">immutableProxy&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>immutableProxy</b>;<br />
@@ -2018,22 +2422,34 @@ This is a designated initialiser for the class.<br />
     <blockquote>
       <b>Standards:</b>
       <ul>
+        <li>NotOpenStep</li>
         <li>NotMacOS-X</li>
         <li>GNUstep</li>
-        <li>NotOpenStep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          GNUstep specific (non-standard) additions to the
+          NSMutableString class.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deletePrefix:">-deletePrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deleteSuffix:">-deleteSuffix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-replaceString:withString:">-replaceString:withString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-trimLeadSpaces">-trimLeadSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-trimSpaces">-trimSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-trimTailSpaces">-trimTailSpaces</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSMutableString(GSCategories)-deletePrefix:">deletePrefix:&nbsp;</a></h3>
     - (void) <b>deletePrefix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)prefix;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes the specified <var>prefix</var> from the
+            string. Raises an exception if the
+            <var>prefix</var> is not present.
           
     </p>
     <hr width="25%" align="left" />
@@ -2041,7 +2457,9 @@ This is a designated initialiser for the class.<br />
     - (void) <b>deleteSuffix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)suffix;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes the specified <var>suffix</var> from the
+            string. Raises an exception if the
+            <var>suffix</var> is not present.
           
     </p>
     <hr width="25%" align="left" />
@@ -2049,7 +2467,15 @@ This is a designated initialiser for the class.<br />
     - (void) <b>replaceString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)replace<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Replaces all occurrances of the string
+            <var>replace</var> with the string <var>by</var> in
+            the receiver. <br /> Has no effect if
+            <var>replace</var> does not occur within the
+            receiver. NB. an empty string is not considered
+            to exist within the receiver. <br /> Calls -
+            replaceOccurrencesOfString:withString:options:range:
+            passing zero for the options and a range from 0
+            with the length of the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -2057,7 +2483,7 @@ This is a designated initialiser for the class.<br />
     - (void) <b>trimLeadSpaces</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes all leading white space from the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -2065,7 +2491,8 @@ This is a designated initialiser for the class.<br />
     - (void) <b>trimSpaces</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes all leading or trailing white space from
+            the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -2073,7 +2500,7 @@ This is a designated initialiser for the class.<br />
     - (void) <b>trimTailSpaces</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes all trailing white space from the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -2092,22 +2519,35 @@ This is a designated initialiser for the class.<br />
     <blockquote>
       <b>Standards:</b>
       <ul>
+        <li>NotOpenStep</li>
         <li>NotMacOS-X</li>
         <li>GNUstep</li>
-        <li>NotOpenStep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Provides some additional (non-standard) utility
+          methods.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithFormat:arguments:">+stringWithFormat:arguments:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingPrefix:">-stringByDeletingPrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingSuffix:">-stringByDeletingSuffix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByReplacingString:withString:">-stringByReplacingString:withString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSString(GSCategories)+stringWithFormat:arguments:">stringWithFormat:&nbsp;arguments:&nbsp;</a></h3>
     + (id) <b>stringWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b> arguments:</b> (va_list)argList;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Alternate way to invoke
+            <code>stringWithFormat</code> if you have or wish to
+            build an explicit <code>va_list</code> structure.
           
     </p>
     <hr width="25%" align="left" />
@@ -2115,7 +2555,10 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByDeletingPrefix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)prefix;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string formed by removing the
+            <var>prefix</var> string from the receiver. Raises an
+            exception if the <var>prefix</var> is not
+            present.
           
     </p>
     <hr width="25%" align="left" />
@@ -2123,7 +2566,10 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByDeletingSuffix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)suffix;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string formed by removing the
+            <var>suffix</var> string from the receiver. Raises an
+            exception if the <var>suffix</var> is not
+            present.
           
     </p>
     <hr width="25%" align="left" />
@@ -2131,7 +2577,12 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByReplacingString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)replace<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string in which any (and all) occurrences
+            of <var>replace</var> in the receiver have been replaced
+            with <var>by</var>. Returns the receiver if
+            <var>replace</var> does not occur within the
+            receiver. NB. an empty string is not considered
+            to exist within the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -2139,7 +2590,8 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByTrimmingLeadSpaces</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string formed by removing leading white
+            space from the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -2147,7 +2599,8 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByTrimmingSpaces</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string formed by removing both leading
+            and trailing white space from the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -2155,7 +2608,8 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByTrimmingTailSpaces</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string formed by removing trailing white
+            space from the receiver.
           
     </p>
     <hr width="25%" align="left" />

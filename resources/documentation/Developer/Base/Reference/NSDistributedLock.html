@@ -4,7 +4,7 @@
     <title>NSDistributedLock class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSDistributedLock">NSDistributedLock class reference</a></h1>
@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.17</p>
-    <p><b>Date:</b> 2003/09/04 16:44:37</p>
+    <p><b>Version:</b> 1.19</p>
+    <p><b>Date:</b> 2004/07/29 15:30:47</p>
     <p><b>Copyright:</b> (C) 1997 Free Software Foundation, Inc.</p>
 
         <div>
@@ -24,7 +24,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSDistributedLock class
       </a></h1>
-    <h2><a name="class$NSDistributedLock">NSDistributedLock</a> : NSObject</h2>
+    <h2><a name="class$NSDistributedLock">NSDistributedLock</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -35,37 +35,35 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          This class does not adopt the
+          <a rel="gsdoc" href="NSLock.html#protocol$(NSLocking)">&lt;NSLocking&gt;</a>
+
+            protocol but supports locking across processes,
+            including processes on different machines, as
+            long as they can access a common filesystem.
         
     </p>
-    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for NSDistributedLock Class</h2>
-    <h3><a name="ivariable$NSDistributedLock*_lockPath">_lockPath</a></h3>
-    @private NSString* <b>_lockPath</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSDistributedLock*_lockTime">_lockTime</a></h3>
-    @private NSDate* <b>_lockTime</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+    <hr width="50%" align="left" />
+    <a href="#_NSDistributedLock_ivars">Instance Variables</a>
+    <br/><br/>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSDistributedLock.html#method$NSDistributedLock+lockWithPath:">+lockWithPath:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedLock.html#method$NSDistributedLock-breakLock">-breakLock</a></li>
+      <li><a rel="gsdoc" href="NSDistributedLock.html#method$NSDistributedLock-initWithPath:">-initWithPath:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedLock.html#method$NSDistributedLock-lockDate">-lockDate</a></li>
+      <li><a rel="gsdoc" href="NSDistributedLock.html#method$NSDistributedLock-tryLock">-tryLock</a></li>
+      <li><a rel="gsdoc" href="NSDistributedLock.html#method$NSDistributedLock-unlock">-unlock</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSDistributedLock+lockWithPath:">lockWithPath:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSDistributedLock">NSDistributedLock</a>*) <b>lockWithPath:</b> (NSString*)aPath;<br />
+    + (<a rel="gsdoc" href="#class$NSDistributedLock">NSDistributedLock</a>*) <b>lockWithPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aPath;<br />
     <p>
       
             Return a distributed lock for <var>aPath</var>. See
@@ -88,7 +86,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedLock-initWithPath:">initWithPath:&nbsp;</a></h3>
-    - (id) <b>initWithPath:</b> (NSString*)aPath;<br />
+    - (id) <b>initWithPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aPath;<br />
     <p>
       
             Initialises the reciever with the specified
@@ -103,7 +101,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedLock-lockDate">lockDate&nbsp;</a></h3>
-    - (NSDate*) <b>lockDate</b>;<br />
+    - (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*) <b>lockDate</b>;<br />
     <p>
       
             Returns the date at which the lock was aquired by
@@ -135,6 +133,33 @@
           
     </p>
     <hr width="25%" align="left" />
+<a name="_NSDistributedLock_ivars"/>    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for NSDistributedLock Class</h2>
+    <h3><a name="ivariable$NSDistributedLock*_lockPath">_lockPath</a></h3>
+    @protected NSString* <b>_lockPath</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSDistributedLock*_lockTime">_lockTime</a></h3>
+    @protected NSDate* <b>_lockTime</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <br />
     <a href="Base.html">Up</a>
     </font>

@@ -4,7 +4,7 @@
     <title>NSNumberFormatter class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSNumberFormatter">NSNumberFormatter class reference</a></h1>
@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.10</p>
-    <p><b>Date:</b> 2003/06/12 03:29:35</p>
+    <p><b>Version:</b> 1.11</p>
+    <p><b>Date:</b> 2004/06/22 22:40:38</p>
     <p><b>Copyright:</b> (C) 2000 Free Software Foundation, Inc.</p>
 
         <div>
@@ -27,7 +27,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSNumberFormatter class
       </a></h1>
-    <h2><a name="class$NSNumberFormatter">NSNumberFormatter</a> : NSFormatter</h2>
+    <h2><a name="class$NSNumberFormatter">NSNumberFormatter</a> : <a rel="gsdoc" href="NSFormatter.html#class$NSFormatter">NSFormatter</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -38,184 +38,222 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>NotOpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            <em>
+              <strong>
+                This class is currently not implemented in
+                GNUstep! All set methods will work, but
+                stringForObject: will ignore the
+                format completely. The documentation below
+                describes what the behavior SHOULD be...
+              </strong>
+            </em>
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            A specialization of the
+            <a rel="gsdoc" href="NSFormatter.html#class$NSFormatter">NSFormatter</a>
+
+              class for generating string representations of
+              numbers
+              <a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>
+
+                and
+                <a rel="gsdoc" href="NSDecimalNumber.html#class$NSDecimalNumber">NSDecimalNumber</a>
+instances) and for parsing numeric values in strings.    </p>
+    <p>
+      
+                
+    </p>
+    <p>
+
+                  See the
+                  <a rel="gsdoc" href="NSFormatter.html#class$NSFormatter">NSFormatter</a>
+
+                    documentation for description of the
+                    basic methods for formatting and parsing that
+                    are available.
+                      </p>
+    <p>
+      
+                  
+    </p>
+    <p>
+
+                    There are no convenience initializers or
+                    constructors for this class. Instead,
+                    to obtain an instance, call alloc init and then
+                    <a rel="gsdoc" href="#method$NSNumberFormatter-setFormat:">
+                      -setFormat:
+                    </a>
+
+                    .
+                      </p>
+    <p>
+      
+                  
+    </p>
+    <p>
+
+                    The basic format of a format string uses &quot;#&quot;
+                    signs to represent digits, and other
+                    characters to represent themselves, in a
+                    context-dependent way. Thus, for
+                    example, <code>@&quot;#,###.00&quot;</code> means to
+                    print the number ending in.00 if it has no
+                    decimal part, otherwise print two decimal
+                    places, and to print one comma if it is
+                    greater than 1000. Thus, 1000 prints as
+                    &quot;1,000.00&quot;, and 1444555.979 prints as
+                    &quot;1444,555.98&quot; (see
+                    -setRoundingBehavior:).
+                      </p>
+    <p>
+      
+                  
+    </p>
+    <p>
+
+                    After setting the format, you may change the
+                    thousands separator and decimal point
+                    using set methods, or by calling
+                    <a rel="gsdoc" href="#method$NSNumberFormatter-setLocalizesFormat:">
+                      -setLocalizesFormat:
+                    </a>
+
+                    .
+                      </p>
+    <p>
+      
+                  
+    </p>
+    <p>
+
+                    You may set separate formats to be used for
+                    positive numbers, negative numbers, and
+                    zero independently.
+                      </p>
+    <p>
+      
+                  
+    </p>
+    <p>
+
+                    In addition, this class supports attributed
+                    strings (see
+                    <a rel="gsdoc" href="NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>
+), so that you can specify font and color attributes, among others, to display aspects of a number. You can assign specific sets of attributes for positive and negative numbers, and for specific cases including 0, NaN, and <code>nil</code>...    </p>
+    <p>
+      
         
     </p>
-    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for NSNumberFormatter Class</h2>
-    <h3><a name="ivariable$NSNumberFormatter*_allowsFloats">_allowsFloats</a></h3>
-    @private BOOL <b>_allowsFloats</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_attributedStringForNil">_attributedStringForNil</a></h3>
-    @private NSAttributedString* <b>_attributedStringForNil</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_attributedStringForNotANumber">_attributedStringForNotANumber</a></h3>
-    @private NSAttributedString* <b>_attributedStringForNotANumber</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_attributedStringForZero">_attributedStringForZero</a></h3>
-    @private NSAttributedString* <b>_attributedStringForZero</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_attributesForNegativeValues">_attributesForNegativeValues</a></h3>
-    @private NSDictionary* <b>_attributesForNegativeValues</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_attributesForPositiveValues">_attributesForPositiveValues</a></h3>
-    @private NSDictionary* <b>_attributesForPositiveValues</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_decimalSeparator">_decimalSeparator</a></h3>
-    @private unichar <b>_decimalSeparator</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_hasThousandSeparators">_hasThousandSeparators</a></h3>
-    @private BOOL <b>_hasThousandSeparators</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_localizesFormat">_localizesFormat</a></h3>
-    @private BOOL <b>_localizesFormat</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_maximum">_maximum</a></h3>
-    @private NSDecimalNumber* <b>_maximum</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_minimum">_minimum</a></h3>
-    @private NSDecimalNumber* <b>_minimum</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_negativeFormat">_negativeFormat</a></h3>
-    @private NSString* <b>_negativeFormat</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_positiveFormat">_positiveFormat</a></h3>
-    @private NSString* <b>_positiveFormat</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_roundingBehavior">_roundingBehavior</a></h3>
-    @private NSDecimalNumberHandler* <b>_roundingBehavior</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSNumberFormatter*_thousandSeparator">_thousandSeparator</a></h3>
-    @private unichar <b>_thousandSeparator</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+    <hr width="50%" align="left" />
+    <a href="#_NSNumberFormatter_ivars">Instance Variables</a>
+    <br/><br/>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-allowsFloats">-allowsFloats</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-attributedStringForNil">-attributedStringForNil</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-attributedStringForNotANumber">-attributedStringForNotANumber</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-attributedStringForZero">-attributedStringForZero</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-decimalSeparator">-decimalSeparator</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-format">-format</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-hasThousandSeparators">-hasThousandSeparators</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-localizesFormat">-localizesFormat</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-maximum">-maximum</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-minimum">-minimum</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-negativeFormat">-negativeFormat</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-positiveFormat">-positiveFormat</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-roundingBehavior">-roundingBehavior</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setAllowsFloats:">-setAllowsFloats:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setAttributedStringForNil:">-setAttributedStringForNil:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setAttributedStringForNotANumber:">-setAttributedStringForNotANumber:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setAttributedStringForZero:">-setAttributedStringForZero:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setDecimalSeparator:">-setDecimalSeparator:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setFormat:">-setFormat:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setHasThousandSeparators:">-setHasThousandSeparators:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setLocalizesFormat:">-setLocalizesFormat:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setMaximum:">-setMaximum:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setMinimum:">-setMinimum:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setNegativeFormat:">-setNegativeFormat:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setPositiveFormat:">-setPositiveFormat:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setRoundingBehavior:">-setRoundingBehavior:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setTextAttributesForNegativeValues:">-setTextAttributesForNegativeValues:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setTextAttributesForPositiveValues:">-setTextAttributesForPositiveValues:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-setThousandSeparator:">-setThousandSeparator:</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-textAttributesForNegativeValues">-textAttributesForNegativeValues</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-textAttributesForPositiveValues">-textAttributesForPositiveValues</a></li>
+      <li><a rel="gsdoc" href="NSNumberFormatter.html#method$NSNumberFormatter-thousandSeparator">-thousandSeparator</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSNumberFormatter-allowsFloats">allowsFloats&nbsp;</a></h3>
     - (BOOL) <b>allowsFloats</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether number parsing will accept floating
+            point values or generate an exception (only int
+            values are valid). Default is <code>YES</code>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-attributedStringForNil">attributedStringForNil&nbsp;</a></h3>
-    - (NSAttributedString*) <b>attributedStringForNil</b>;<br />
+    - (<a rel="gsdoc" href="NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*) <b>attributedStringForNil</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the exact attributed string used for
+            <code>nil</code> values. By default this is an empty
+            string.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-attributedStringForNotANumber">attributedStringForNotANumber&nbsp;</a></h3>
-    - (NSAttributedString*) <b>attributedStringForNotANumber</b>;<br />
+    - (<a rel="gsdoc" href="NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*) <b>attributedStringForNotANumber</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the exact attributed string used for NaN
+            values. By default this is the string &quot;NaN&quot; with no
+            attributes.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-attributedStringForZero">attributedStringForZero&nbsp;</a></h3>
-    - (NSAttributedString*) <b>attributedStringForZero</b>;<br />
+    - (<a rel="gsdoc" href="NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*) <b>attributedStringForZero</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the exact attributed string used for zero
+            values. By default this is based on the format for
+            zero values, if set, or the format for positive values
+            otherwise.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-decimalSeparator">decimalSeparator&nbsp;</a></h3>
-    - (NSString*) <b>decimalSeparator</b>;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>decimalSeparator</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns thousands separator used; default is &apos;.&apos;.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-format">format&nbsp;</a></h3>
-    - (NSString*) <b>format</b>;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>format</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the format string this instance was
+            initialized with.
           
     </p>
     <hr width="25%" align="left" />
@@ -223,7 +261,10 @@
     - (BOOL) <b>hasThousandSeparators</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether thousands separator should be used,
+            regardless of whether it is set in format.
+            (Default is <code>YES</code> if explicitly set in
+            format.)
           
     </p>
     <hr width="25%" align="left" />
@@ -231,47 +272,55 @@
     - (BOOL) <b>localizesFormat</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether this format should defer to the
+            locale in determining thousands separator and
+            decimal point. The default is to NOT localize.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-maximum">maximum&nbsp;</a></h3>
-    - (NSDecimalNumber*) <b>maximum</b>;<br />
+    - (<a rel="gsdoc" href="NSDecimalNumber.html#class$NSDecimalNumber">NSDecimalNumber</a>*) <b>maximum</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns maximum value that will be accepted as
+            valid in number parsing. Default is none.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-minimum">minimum&nbsp;</a></h3>
-    - (NSDecimalNumber*) <b>minimum</b>;<br />
+    - (<a rel="gsdoc" href="NSDecimalNumber.html#class$NSDecimalNumber">NSDecimalNumber</a>*) <b>minimum</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns minimum value that will be accepted as
+            valid in number parsing. Default is none.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-negativeFormat">negativeFormat&nbsp;</a></h3>
-    - (NSString*) <b>negativeFormat</b>;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>negativeFormat</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns format used for negative numbers.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-positiveFormat">positiveFormat&nbsp;</a></h3>
-    - (NSString*) <b>positiveFormat</b>;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>positiveFormat</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns format used for positive numbers.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-roundingBehavior">roundingBehavior&nbsp;</a></h3>
-    - (NSDecimalNumberHandler*) <b>roundingBehavior</b>;<br />
+    - (<a rel="gsdoc" href="NSDecimalNumber.html#class$NSDecimalNumberHandler">NSDecimalNumberHandler</a>*) <b>roundingBehavior</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns object specifying the rounding behavior
+            used when truncating decimal digits in formats.
+            Default is
+            <a rel="gsdoc" href="NSDecimalNumber.html#method$NSDecimalNumberHandler+defaultDecimalNumberHandler">[NSDecimalNumberHandler&nbsp;+defaultDecimalNumberHandler]</a>
+.
           
     </p>
     <hr width="25%" align="left" />
@@ -279,47 +328,55 @@
     - (void) <b>setAllowsFloats:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether number parsing will accept floating point
+            values or generate an exception (only int values are
+            valid). Default is <code>YES</code>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setAttributedStringForNil:">setAttributedStringForNil:&nbsp;</a></h3>
-    - (void) <b>setAttributedStringForNil:</b> (NSAttributedString*)newAttributedString;<br />
+    - (void) <b>setAttributedStringForNil:</b> (<a rel="gsdoc" href="NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*)newAttributedString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the exact attributed string used for
+            <code>nil</code> values. By default this is an empty
+            string.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setAttributedStringForNotANumber:">setAttributedStringForNotANumber:&nbsp;</a></h3>
-    - (void) <b>setAttributedStringForNotANumber:</b> (NSAttributedString*)newAttributedString;<br />
+    - (void) <b>setAttributedStringForNotANumber:</b> (<a rel="gsdoc" href="NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*)newAttributedString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the exact attributed string used for NaN values.
+            By default this is the string &quot;NaN&quot; with no attributes.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setAttributedStringForZero:">setAttributedStringForZero:&nbsp;</a></h3>
-    - (void) <b>setAttributedStringForZero:</b> (NSAttributedString*)newAttributedString;<br />
+    - (void) <b>setAttributedStringForZero:</b> (<a rel="gsdoc" href="NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*)newAttributedString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the exact attributed string used for zero values.
+            By default this is based on the format for zero values,
+            if set, or the format for positive values otherwise.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setDecimalSeparator:">setDecimalSeparator:&nbsp;</a></h3>
-    - (void) <b>setDecimalSeparator:</b> (NSString*)newSeparator;<br />
+    - (void) <b>setDecimalSeparator:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)newSeparator;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets thousands separator used; default is &apos;.&apos;.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setFormat:">setFormat:&nbsp;</a></h3>
-    - (void) <b>setFormat:</b> (NSString*)aFormat;<br />
+    - (void) <b>setFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aFormat;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets format string. See class description for more
+            information.
           
     </p>
     <hr width="25%" align="left" />
@@ -327,7 +384,10 @@
     - (void) <b>setHasThousandSeparators:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether thousands separator should be used,
+            regardless of whether it is set in format.
+            (Default is <code>YES</code> if explicitly set in
+            format.)
           
     </p>
     <hr width="25%" align="left" />
@@ -335,98 +395,302 @@
     - (void) <b>setLocalizesFormat:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Set whether this format should defer to the locale in
+            determining thousands separator and decimal
+            point. The default is to NOT localize.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setMaximum:">setMaximum:&nbsp;</a></h3>
-    - (void) <b>setMaximum:</b> (NSDecimalNumber*)aMaximum;<br />
+    - (void) <b>setMaximum:</b> (<a rel="gsdoc" href="NSDecimalNumber.html#class$NSDecimalNumber">NSDecimalNumber</a>*)aMaximum;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets maximum value that will be accepted as valid in
+            number parsing. Default is none.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setMinimum:">setMinimum:&nbsp;</a></h3>
-    - (void) <b>setMinimum:</b> (NSDecimalNumber*)aMinimum;<br />
+    - (void) <b>setMinimum:</b> (<a rel="gsdoc" href="NSDecimalNumber.html#class$NSDecimalNumber">NSDecimalNumber</a>*)aMinimum;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets minimum value that will be accepted as valid in
+            number parsing. Default is none.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setNegativeFormat:">setNegativeFormat:&nbsp;</a></h3>
-    - (void) <b>setNegativeFormat:</b> (NSString*)aFormat;<br />
+    - (void) <b>setNegativeFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aFormat;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets format used for negative numbers. See class
+            description for more information.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setPositiveFormat:">setPositiveFormat:&nbsp;</a></h3>
-    - (void) <b>setPositiveFormat:</b> (NSString*)aFormat;<br />
+    - (void) <b>setPositiveFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aFormat;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets format used for positive numbers. See class
+            description for more information.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setRoundingBehavior:">setRoundingBehavior:&nbsp;</a></h3>
-    - (void) <b>setRoundingBehavior:</b> (NSDecimalNumberHandler*)newRoundingBehavior;<br />
+    - (void) <b>setRoundingBehavior:</b> (<a rel="gsdoc" href="NSDecimalNumber.html#class$NSDecimalNumberHandler">NSDecimalNumberHandler</a>*)newRoundingBehavior;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets object specifying the rounding behavior used when
+            truncating decimal digits in formats. Default is
+            <a rel="gsdoc" href="NSDecimalNumber.html#method$NSDecimalNumberHandler+defaultDecimalNumberHandler">[NSDecimalNumberHandler&nbsp;+defaultDecimalNumberHandler]</a>
+.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setTextAttributesForNegativeValues:">setTextAttributesForNegativeValues:&nbsp;</a></h3>
-    - (void) <b>setTextAttributesForNegativeValues:</b> (NSDictionary*)newAttributes;<br />
+    - (void) <b>setTextAttributesForNegativeValues:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)newAttributes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the attributes to apply to negative values (whole
+            string), when
+            <a rel="gsdoc" href="NSFormatter.html#method$NSFormatter-attributedStringForObjectValue:withDefaultAttributes:">-attributedStringForObjectValue:withDefaultAttributes:</a>
+ is called. Default is none.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setTextAttributesForPositiveValues:">setTextAttributesForPositiveValues:&nbsp;</a></h3>
-    - (void) <b>setTextAttributesForPositiveValues:</b> (NSDictionary*)newAttributes;<br />
+    - (void) <b>setTextAttributesForPositiveValues:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)newAttributes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the attributes to apply to positive values (whole
+            string), when
+            <a rel="gsdoc" href="NSFormatter.html#method$NSFormatter-attributedStringForObjectValue:withDefaultAttributes:">-attributedStringForObjectValue:withDefaultAttributes:</a>
+ is called. Default is none.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-setThousandSeparator:">setThousandSeparator:&nbsp;</a></h3>
-    - (void) <b>setThousandSeparator:</b> (NSString*)newSeparator;<br />
+    - (void) <b>setThousandSeparator:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)newSeparator;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets thousands separator used; default is &apos;,&apos;.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-textAttributesForNegativeValues">textAttributesForNegativeValues&nbsp;</a></h3>
-    - (NSDictionary*) <b>textAttributesForNegativeValues</b>;<br />
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>textAttributesForNegativeValues</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the attributes to apply to negative values
+            (whole string), when
+            <a rel="gsdoc" href="NSFormatter.html#method$NSFormatter-attributedStringForObjectValue:withDefaultAttributes:">-attributedStringForObjectValue:withDefaultAttributes:</a>
+ is called. Default is none.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-textAttributesForPositiveValues">textAttributesForPositiveValues&nbsp;</a></h3>
-    - (NSDictionary*) <b>textAttributesForPositiveValues</b>;<br />
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>textAttributesForPositiveValues</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the attributes to apply to positive values
+            (whole string), when
+            <a rel="gsdoc" href="NSFormatter.html#method$NSFormatter-attributedStringForObjectValue:withDefaultAttributes:">-attributedStringForObjectValue:withDefaultAttributes:</a>
+ is called. Default is none.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNumberFormatter-thousandSeparator">thousandSeparator&nbsp;</a></h3>
-    - (NSString*) <b>thousandSeparator</b>;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>thousandSeparator</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns thousands separator used; default is &apos;,&apos;.
           
     </p>
     <hr width="25%" align="left" />
+<a name="_NSNumberFormatter_ivars"/>    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for NSNumberFormatter Class</h2>
+    <h3><a name="ivariable$NSNumberFormatter*_allowsFloats">_allowsFloats</a></h3>
+    @protected BOOL <b>_allowsFloats</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_attributedStringForNil">_attributedStringForNil</a></h3>
+    @protected NSAttributedString* <b>_attributedStringForNil</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_attributedStringForNotANumber">_attributedStringForNotANumber</a></h3>
+    @protected NSAttributedString* <b>_attributedStringForNotANumber</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_attributedStringForZero">_attributedStringForZero</a></h3>
+    @protected NSAttributedString* <b>_attributedStringForZero</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_attributesForNegativeValues">_attributesForNegativeValues</a></h3>
+    @protected NSDictionary* <b>_attributesForNegativeValues</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_attributesForPositiveValues">_attributesForPositiveValues</a></h3>
+    @protected NSDictionary* <b>_attributesForPositiveValues</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_decimalSeparator">_decimalSeparator</a></h3>
+    @protected unichar <b>_decimalSeparator</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_hasThousandSeparators">_hasThousandSeparators</a></h3>
+    @protected BOOL <b>_hasThousandSeparators</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_localizesFormat">_localizesFormat</a></h3>
+    @protected BOOL <b>_localizesFormat</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_maximum">_maximum</a></h3>
+    @protected NSDecimalNumber* <b>_maximum</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_minimum">_minimum</a></h3>
+    @protected NSDecimalNumber* <b>_minimum</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_negativeFormat">_negativeFormat</a></h3>
+    @protected NSString* <b>_negativeFormat</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_positiveFormat">_positiveFormat</a></h3>
+    @protected NSString* <b>_positiveFormat</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_roundingBehavior">_roundingBehavior</a></h3>
+    @protected NSDecimalNumberHandler* <b>_roundingBehavior</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSNumberFormatter*_thousandSeparator">_thousandSeparator</a></h3>
+    @protected unichar <b>_thousandSeparator</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <br />
     <a href="Base.html">Up</a>
     </font>

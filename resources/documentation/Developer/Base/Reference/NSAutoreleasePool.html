@@ -4,7 +4,7 @@
     <title>NSAutoreleasePool class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSAutoreleasePool">NSAutoreleasePool class reference</a></h1>
@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.53</p>
-    <p><b>Date:</b> 2004/05/14 16:22:49</p>
+    <p><b>Version:</b> 1.54</p>
+    <p><b>Date:</b> 2004/07/29 10:54:55</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1997 Free Software Foundation, Inc.</p>
 
         <div>
@@ -27,7 +27,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSAutoreleasePool class
       </a></h1>
-    <h2><a name="class$NSAutoreleasePool">NSAutoreleasePool</a> : NSObject</h2>
+    <h2><a name="class$NSAutoreleasePool">NSAutoreleasePool</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -38,8 +38,8 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -61,24 +61,24 @@
     </p>
     <p>
 
-            A simple retain/release mechanism is not very interesting
-            ... so it&apos;s spiced up with autorelease pools. You can
-            use the
-            
+            A simple retain/release mechanism has problems with
+            passing objects from one scope to another, so it&apos;s
+            augmented with autorelease pools. You can use the
+            <a rel="gsdoc" href="Functions.html#macro$AUTORELEASE">
               AUTORELEASE()
-            
+            </a>
 
             macro to call the
-            
-              [NSObject-autorelease]
-            
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-autorelease">
+              [NSObject&nbsp;-autorelease]
+            </a>
 
             method, which adds an object to the current
             autorelease pool by calling
-            <a rel="gsdoc" href="#method$NSAutoreleasePool+addObject:">[NSAutoreleasePool+addObject:]</a>
-. <br /> An autorelease pool simply maintains a reference to each object added to it, and for each addition, the autorelease pool will call the [NSObject-release]
- method of the object when the pool is released. So doing an AUTORELEASE()
- is just the same as doing a RELEASE()
+            <a rel="gsdoc" href="#method$NSAutoreleasePool+addObject:">[NSAutoreleasePool&nbsp;+addObject:]</a>
+. <br /> An autorelease pool simply maintains a reference to each object added to it, and for each addition, the autorelease pool will call the <a rel="gsdoc" href="NSObject.html#method$NSObject-release">[NSObject&nbsp;-release]</a>
+ method of the object when the pool is released. So doing an <a rel="gsdoc" href="Functions.html#macro$AUTORELEASE">AUTORELEASE()</a>
+ is just the same as doing a <a rel="gsdoc" href="Functions.html#macro$RELEASE">RELEASE()</a>
 , but deferred until the current autorelease pool is deallocated.
               </p>
     <p>
@@ -140,12 +140,12 @@
           
       <dl>
         <dt>
-              
-                [NSObject+alloc]
-              
+              <a rel="gsdoc" href="NSObject.html#method$NSObject+alloc">
+                [NSObject&nbsp;+alloc]
+              </a>
 
               ,
-              [NSObject+allocWithZone:]
+              <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone:">[NSObject&nbsp;+allocWithZone:]</a>
 
             </dt>
         <dd>
@@ -155,9 +155,9 @@
             
         </dd>
         <dt>
-              
-                [NSObject-init]
-              
+              <a rel="gsdoc" href="NSObject.html#method$NSObject-init">
+                [NSObject&nbsp;-init]
+              </a>
 
             </dt>
         <dd>
@@ -165,15 +165,15 @@
               Methods whose names begin with init return an
               initialised version of the receiving object,
               owned by the caller. <br /> NB. The returned object
-              may not actualy be the same as the receiver...
+              may not actually be the same as the receiver...
               sometimes an init method releases the original
               receiver and returns an alternative.
             
         </dd>
         <dt>
-              
-                [NSObject+new]
-              
+              <a rel="gsdoc" href="NSObject.html#method$NSObject+new">
+                [NSObject&nbsp;+new]
+              </a>
 
             </dt>
         <dd>
@@ -183,12 +183,12 @@
             
         </dd>
         <dt>
-              
-                [NSObject-copy]
-              
+              <a rel="gsdoc" href="NSObject.html#method$NSObject-copy">
+                [NSObject&nbsp;-copy]
+              </a>
 
               ,
-              [&lt;NSCopying&gt;-copyWithZone:]
+              <a rel="gsdoc" href="NSObject.html#method$(NSCopying)-copyWithZone:">[&lt;NSCopying&gt;-copyWithZone:]</a>
 
             </dt>
         <dd>
@@ -198,12 +198,12 @@
             
         </dd>
         <dt>
-              
-                [NSObject-mutableCopy]
-              
+              <a rel="gsdoc" href="NSObject.html#method$NSObject-mutableCopy">
+                [NSObject&nbsp;-mutableCopy]
+              </a>
 
               ,
-              [&lt;NSMutableCopying&gt;-mutableCopyWithZone:]
+              <a rel="gsdoc" href="NSObject.html#method$(NSMutableCopying)-mutableCopyWithZone:">[&lt;NSMutableCopying&gt;-mutableCopyWithZone:]</a>
 
             </dt>
         <dd>
@@ -216,60 +216,29 @@
       
         
     </p>
-    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for NSAutoreleasePool Class</h2>
-    <h3><a name="ivariable$NSAutoreleasePool*_addImp">_addImp</a></h3>
-    @private void(* <b>_addImp</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSAutoreleasePool*_child">_child</a></h3>
-    @private NSAutoreleasePool* <b>_child</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSAutoreleasePool*_parent">_parent</a></h3>
-    @private NSAutoreleasePool* <b>_parent</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSAutoreleasePool*_released">_released</a></h3>
-    @private struct autorelease_array_list* <b>_released</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSAutoreleasePool*_released_count">_released_count</a></h3>
-    @private unsigned int <b>_released_count</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSAutoreleasePool*_released_head">_released_head</a></h3>
-    @private struct autorelease_array_list* <b>_released_head</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+    <hr width="50%" align="left" />
+    <a href="#_NSAutoreleasePool_ivars">Instance Variables</a>
+    <br/><br/>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+_endThread:">+_endThread:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+addObject:">+addObject:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+allocWithZone:">+allocWithZone:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+autoreleaseCountForObject:">+autoreleaseCountForObject:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+currentPool">+currentPool</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+enableRelease:">+enableRelease:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+freeCache">+freeCache</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+setPoolCountThreshhold:">+setPoolCountThreshhold:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool-addObject:">-addObject:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool-autorelease">-autorelease</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool-autoreleaseCount">-autoreleaseCount</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool-emptyPool">-emptyPool</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool-release">-release</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool-retain">-retain</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSAutoreleasePool+_endThread:">_endThread:&nbsp;</a></h3>
-    + (void) <b>_endThread:</b> (NSThread*)thread;<br />
+    + (void) <b>_endThread:</b> (<a rel="gsdoc" href="NSThread.html#class$NSThread">NSThread</a>*)thread;<br />
     <p>
       
             Destroys all the autorelease pools in the
@@ -295,7 +264,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSAutoreleasePool+allocWithZone:">allocWithZone:&nbsp;</a></h3>
-    + (id) <b>allocWithZone:</b> (NSZone*)zone;<br />
+    + (id) <b>allocWithZone:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>*)zone;<br />
     <p>
       
             Allocate and return an autorelease pool instance.
@@ -483,6 +452,81 @@ Default value is maxint.    </p>
           
     </p>
     <hr width="25%" align="left" />
+<a name="_NSAutoreleasePool_ivars"/>    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for NSAutoreleasePool Class</h2>
+    <h3><a name="ivariable$NSAutoreleasePool*_addImp">_addImp</a></h3>
+    @protected void(* <b>_addImp</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSAutoreleasePool*_child">_child</a></h3>
+    @protected NSAutoreleasePool* <b>_child</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSAutoreleasePool*_parent">_parent</a></h3>
+    @protected NSAutoreleasePool* <b>_parent</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSAutoreleasePool*_released">_released</a></h3>
+    @protected struct autorelease_array_list* <b>_released</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSAutoreleasePool*_released_count">_released_count</a></h3>
+    @protected unsigned int <b>_released_count</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSAutoreleasePool*_released_head">_released_head</a></h3>
+    @protected struct autorelease_array_list* <b>_released_head</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <br />
     <a href="Base.html">Up</a>
     </font>

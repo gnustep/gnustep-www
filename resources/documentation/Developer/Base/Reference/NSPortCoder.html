@@ -4,7 +4,7 @@
     <title>NSPortCoder class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSPortCoder">NSPortCoder class reference</a></h1>
@@ -36,7 +36,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSPortCoder class
       </a></h1>
-    <h2><a name="class$NSPortCoder">NSPortCoder</a> : NSCoder</h2>
+    <h2><a name="class$NSPortCoder">NSPortCoder</a> : <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -47,37 +47,66 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          This class is an
+          <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>
+
+            implementation specialized for sending
+            objects over network connections for immediate use
+            (as opposed to the archivers which persist objects for
+            reconstitution after an indefinite term). It
+            is used to help implement the distributed objects
+            framework by the
+            <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
+
+              class. Even for highly specialized applications,
+              you probably do not need to use this class directly.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder(Private)-_components">-_components</a></li>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder+portCoderWithReceivePort:sendPort:components:">+portCoderWithReceivePort:sendPort:components:</a></li>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder-connection">-connection</a></li>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder-decodePortObject">-decodePortObject</a></li>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder-dispatch">-dispatch</a></li>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder-encodePortObject:">-encodePortObject:</a></li>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder-initWithReceivePort:sendPort:components:">-initWithReceivePort:sendPort:components:</a></li>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder-isBycopy">-isBycopy</a></li>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder-isByref">-isByref</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSPortCoder+portCoderWithReceivePort:sendPort:components:">portCoderWithReceivePort:&nbsp;sendPort:&nbsp;components:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSPortCoder">NSPortCoder</a>*) <b>portCoderWithReceivePort:</b> (NSPort*)recv<b> sendPort:</b> (NSPort*)send<b> components:</b> (NSArray*)comp;<br />
+    + (<a rel="gsdoc" href="#class$NSPortCoder">NSPortCoder</a>*) <b>portCoderWithReceivePort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)recv<b> sendPort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)send<b> components:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)comp;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create a new instance for communications over
+            <var>send</var> and <var>recv</var>, and
+            <var>send</var> an initial message through
+            <var>send</var> as specified by <var>comp</var>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortCoder-connection">connection&nbsp;</a></h3>
-    - (NSConnection*) <b>connection</b>;<br />
+    - (<a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>*) <b>connection</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the <code>NSConnection</code> using this
+            instance.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortCoder-decodePortObject">decodePortObject&nbsp;</a></h3>
-    - (NSPort*) <b>decodePortObject</b>;<br />
+    - (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*) <b>decodePortObject</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return port object previously encoded by this
+            instance. Mainly for use by the ports themselves.
           
     </p>
     <hr width="25%" align="left" />
@@ -85,23 +114,29 @@
     - (void) <b>dispatch</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Processes and acts upon the initial message the
+            receiver was initialized with..
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortCoder-encodePortObject:">encodePortObject:&nbsp;</a></h3>
-    - (void) <b>encodePortObject:</b> (NSPort*)aPort;<br />
+    - (void) <b>encodePortObject:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)aPort;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Encodes <var>aPort</var> so it can be sent to the
+            receiving side of the connection. Mainly for use
+            by the ports themselves.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortCoder-initWithReceivePort:sendPort:components:">initWithReceivePort:&nbsp;sendPort:&nbsp;components:&nbsp;</a></h3>
-    - (id) <b>initWithReceivePort:</b> (NSPort*)recv<b> sendPort:</b> (NSPort*)send<b> components:</b> (NSArray*)comp;<br />
+    - (id) <b>initWithReceivePort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)recv<b> sendPort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)send<b> components:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)comp;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialize a new instance for communications
+            over <var>send</var> and <var>recv</var>, and
+            <var>send</var> an initial message through
+            <var>send</var> as specified by <var>comp</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -109,7 +144,10 @@
     - (BOOL) <b>isBycopy</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if receiver is in the
+            process of encoding objects by copying them (rather
+            than substituting a proxy). This method is mainly
+            needed internally and by subclasses.
           
     </p>
     <hr width="25%" align="left" />
@@ -117,7 +155,10 @@
     - (BOOL) <b>isByref</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if receiver will
+            substitute a proxy when encoding objects rather
+            than by copying them. This method is mainly needed
+            internally and by subclasses.
           
     </p>
     <hr width="25%" align="left" />
@@ -137,8 +178,8 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -148,9 +189,13 @@
           the package. You should not use them in external code.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSPortCoder-_components">-_components</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSPortCoder(Private)-_components">_components&nbsp;</a></h3>
-    - (NSMutableArray*) <b>_components</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSMutableArray">NSMutableArray</a>*) <b>_components</b>;<br />
     <p>
       
             <em>Warning</em> the underscore at the start of the

@@ -4,7 +4,7 @@
     <title>NSLock class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSLock">NSLock class reference</a></h1>
@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.28</p>
-    <p><b>Date:</b> 2004/02/17 12:55:01</p>
+    <p><b>Version:</b> 1.29</p>
+    <p><b>Date:</b> 2004/06/22 22:40:38</p>
     <p><b>Copyright:</b> (C) 1996,2003 Free Software Foundation, Inc.</p>
 
         <div>
@@ -53,7 +53,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSConditionLock class
       </a></h1>
-    <h2><a name="class$NSConditionLock">NSConditionLock</a> : NSObject</h2>
+    <h2><a name="class$NSConditionLock">NSConditionLock</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -64,28 +64,44 @@
       <dl>
         <dt><b>Conforms to:</b></dt>
         <dd><a rel="gsdoc" href="#protocol$(NSLocking)">NSLocking</a></dd>
-        <dd>GCFinalization</dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(GCFinalization)">GCFinalization</a></dd>
       </dl>
     </blockquote>
     <blockquote>
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Lock that allows user to request it only when an
+          internal integer condition is equal to a particular
+          value. The condition is set on initialization and
+          whenever the lock is relinquished.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-condition">-condition</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-initWithCondition:">-initWithCondition:</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-lock">-lock</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-lockBeforeDate:">-lockBeforeDate:</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-lockWhenCondition:">-lockWhenCondition:</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-lockWhenCondition:beforeDate:">-lockWhenCondition:beforeDate:</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-tryLock">-tryLock</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-tryLockWhenCondition:">-tryLockWhenCondition:</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-unlock">-unlock</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSConditionLock-unlockWithCondition:">-unlockWithCondition:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSConditionLock-condition">condition&nbsp;</a></h3>
     - (int) <b>condition</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the current condition of the lock.
           
     </p>
     <hr width="25%" align="left" />
@@ -93,7 +109,7 @@
     - (id) <b>initWithCondition:</b> (int)value;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialize lock with given condition.
           
     </p>
     <hr width="25%" align="left" />
@@ -101,15 +117,17 @@
     - (void) <b>lock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Block until acquiring lock.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSConditionLock-lockBeforeDate:">lockBeforeDate:&nbsp;</a></h3>
-    - (BOOL) <b>lockBeforeDate:</b> (NSDate*)limit;<br />
+    - (BOOL) <b>lockBeforeDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)limit;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Try to acquire lock and return before <var>limit</var>,
+            <code>YES</code> if succeeded, <code>NO</code> if
+            not.
           
     </p>
     <hr width="25%" align="left" />
@@ -117,15 +135,20 @@
     - (void) <b>lockWhenCondition:</b> (int)value;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Acquire lock when it is available and the internal
+            condition is equal to <var>value</var>. Blocks
+            until this occurs.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSConditionLock-lockWhenCondition:beforeDate:">lockWhenCondition:&nbsp;beforeDate:&nbsp;</a></h3>
-    - (BOOL) <b>lockWhenCondition:</b> (int)condition_to_meet<b> beforeDate:</b> (NSDate*)limitDate;<br />
+    - (BOOL) <b>lockWhenCondition:</b> (int)condition_to_meet<b> beforeDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)limitDate;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Try to acquire lock, when internal condition is equal
+            to <var>condition_to_meet</var>, and return before
+            limit, <code>YES</code> if succeeded,
+            <code>NO</code> if not.
           
     </p>
     <hr width="25%" align="left" />
@@ -133,7 +156,9 @@
     - (BOOL) <b>tryLock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Try to acquire lock regardless of condition and return
+            immediately, <code>YES</code> if succeeded,
+            <code>NO</code> if not.
           
     </p>
     <hr width="25%" align="left" />
@@ -141,7 +166,10 @@
     - (BOOL) <b>tryLockWhenCondition:</b> (int)value;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Try to acquire lock if condition is equal to
+            <var>value</var> and return immediately in any case,
+            <code>YES</code> if succeeded, <code>NO</code> if
+            not.
           
     </p>
     <hr width="25%" align="left" />
@@ -149,7 +177,7 @@
     - (void) <b>unlock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Relinquish lock.
           
     </p>
     <hr width="25%" align="left" />
@@ -157,7 +185,8 @@
     - (void) <b>unlockWithCondition:</b> (int)value;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Relinquish the lock, setting internal condition
+            to <var>value</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -165,7 +194,7 @@
           <h1><a name="002000000000">
         Software documentation for the NSLock class
       </a></h1>
-    <h2><a name="class$NSLock">NSLock</a> : NSObject</h2>
+    <h2><a name="class$NSLock">NSLock</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -176,45 +205,61 @@
       <dl>
         <dt><b>Conforms to:</b></dt>
         <dd><a rel="gsdoc" href="#protocol$(NSLocking)">NSLocking</a></dd>
-        <dd>GCFinalization</dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(GCFinalization)">GCFinalization</a></dd>
       </dl>
     </blockquote>
     <blockquote>
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          An NSLock is used in multi-threaded applications to
-          protect critical pieces of code. While one thread
-          holds a lock within a piece of code, another thread
-          cannot execute that code until the first thread has
-          given up it&apos;s hold on the lock. The limitation of
-          NSLock is that you can only lock an NSLock once and it
-          must be unlocked before it can be aquired again. <br />
-          Other lock classes, notably NSRecursiveLock, have
-          different restrictions.
+          Simplest lock for protecting critical sections of
+          code. <br /> An <code>NSLock</code> is used in
+          multi-threaded applications to protect
+          critical pieces of code. While one thread holds a
+          lock within a piece of code, another thread cannot
+          execute that code until the first thread has given up
+          its hold on the lock. The limitation of
+          <code>NSLock</code> is that you can only lock an
+          <code>NSLock</code> once and it must be unlocked
+          before it can be aquired again. <br /> Other lock
+          classes, notably
+          <a rel="gsdoc" href="#class$NSRecursiveLock">NSRecursiveLock</a>
+
+            , have different restrictions.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSLock(GSCategories)+newLockAt:">+newLockAt:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSLock(GSCompatibility)-gcFinalize">-gcFinalize</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSLock-lock">-lock</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSLock-lockBeforeDate:">-lockBeforeDate:</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSLock-tryLock">-tryLock</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSLock-unlock">-unlock</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSLock-lock">lock&nbsp;</a></h3>
     - (void) <b>lock</b>;<br />
     <p>
       
-            Attempts to aquire a lock, and waits until it can
-            do so.
+            Block until acquiring lock. <br /> Attempts to aquire
+            a lock, and waits until it can do so.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSLock-lockBeforeDate:">lockBeforeDate:&nbsp;</a></h3>
-    - (BOOL) <b>lockBeforeDate:</b> (NSDate*)limit;<br />
+    - (BOOL) <b>lockBeforeDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)limit;<br />
     <p>
       
-            Attempts to aquire a lock before the date
+            Try to acquire lock and return before <var>limit</var>,
+            <code>YES</code> if succeeded, <code>NO</code> if
+            not. <br /> Attempts to aquire a lock before the date
             <var>limit</var> passes. It returns <code>YES</code>
             if it can. It returns <code>NO</code> if it cannot, or
             if the current thread already has the lock (but it waits
@@ -227,11 +272,14 @@
     - (BOOL) <b>tryLock</b>;<br />
     <p>
       
-            Attempts to aquire a lock, but returns immediately
-            if the lock cannot be aquired. It returns
-            <code>YES</code> if the lock is aquired. It returns
-            <code>NO</code> if the lock cannot be aquired or if
-            the current thread already has the lock.
+            Try to acquire lock and return immediately,
+            <code>YES</code> if succeeded, <code>NO</code> if
+            not. <br /> Attempts to aquire a lock, but returns
+            immediately if the lock cannot be aquired. It
+            returns <code>YES</code> if the lock is aquired. It
+            returns <code>NO</code> if the lock cannot be
+            aquired or if the current thread already has the
+            lock.
           
     </p>
     <hr width="25%" align="left" />
@@ -239,7 +287,7 @@
     - (void) <b>unlock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Relinquish lock.
           
     </p>
     <hr width="25%" align="left" />
@@ -247,7 +295,7 @@
           <h1><a name="003000000000">
         Software documentation for the NSRecursiveLock class
       </a></h1>
-    <h2><a name="class$NSRecursiveLock">NSRecursiveLock</a> : NSObject</h2>
+    <h2><a name="class$NSRecursiveLock">NSRecursiveLock</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -258,41 +306,61 @@
       <dl>
         <dt><b>Conforms to:</b></dt>
         <dd><a rel="gsdoc" href="#protocol$(NSLocking)">NSLocking</a></dd>
-        <dd>GCFinalization</dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(GCFinalization)">GCFinalization</a></dd>
       </dl>
     </blockquote>
     <blockquote>
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          See NSLock for more information about what a lock is. A
-          recursive lock extends NSLock in that you can lock
-          a recursive lock multiple times. Each lock must be balanced
-          by a cooresponding unlock, and the lock is not released
-          for another thread to aquire until the last unlock call
-          is made (corresponding to the first lock message).
+          Allows the lock to be recursively acquired by the same
+          thread. If the same thread locks the mutex (n) times
+          then that same thread must also unlock it (n) times
+          before another thread can acquire the lock. <br /> See
+          <a rel="gsdoc" href="#class$NSLock">NSLock</a>
+
+            for more information about what a lock is. A recursive
+            lock extends
+            <a rel="gsdoc" href="#class$NSLock">NSLock</a>
+
+              in that you can lock a recursive lock multiple times.
+              Each lock must be balanced by a cooresponding
+              unlock, and the lock is not released for another
+              thread to aquire until the last unlock call is
+              made (corresponding to the first lock message).
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSRecursiveLock(GSCategories)+newLockAt:">+newLockAt:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSRecursiveLock(GSCompatibility)-gcFinalize">-gcFinalize</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSRecursiveLock-lock">-lock</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSRecursiveLock-lockBeforeDate:">-lockBeforeDate:</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSRecursiveLock-tryLock">-tryLock</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSRecursiveLock-unlock">-unlock</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSRecursiveLock-lock">lock&nbsp;</a></h3>
     - (void) <b>lock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Block until acquiring lock.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRecursiveLock-lockBeforeDate:">lockBeforeDate:&nbsp;</a></h3>
-    - (BOOL) <b>lockBeforeDate:</b> (NSDate*)limit;<br />
+    - (BOOL) <b>lockBeforeDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)limit;<br />
     <p>
       
-            Attempts to aquire a lock before the date
+            Try to acquire lock and return before <var>limit</var>,
+            <code>YES</code> if succeeded, <code>NO</code> if
+            not. <br /> Attempts to aquire a lock before the date
             <var>limit</var> passes. It returns <code>YES</code>
             if it can. It returns <code>NO</code> if it cannot (but
             it waits until the time <var>limit</var> is up before
@@ -304,11 +372,13 @@
     - (BOOL) <b>tryLock</b>;<br />
     <p>
       
-            Attempts to aquire a lock, but returns
-            <code>NO</code> immediately if the lock cannot be
-            aquired. It returns <code>YES</code> if the lock
-            is aquired. Can be called multiple times to make nested
-            locks.
+            Try to acquire lock regardless of condition and return
+            immediately, <code>YES</code> if succeeded,
+            <code>NO</code> if not. <br /> Attempts to aquire a
+            lock, but returns <code>NO</code> immediately if the
+            lock cannot be aquired. It returns <code>YES</code> if
+            the lock is aquired. Can be called multiple times to
+            make nested locks.
           
     </p>
     <hr width="25%" align="left" />
@@ -316,7 +386,7 @@
     - (void) <b>unlock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Relinquish lock.
           
     </p>
     <hr width="25%" align="left" />
@@ -335,22 +405,48 @@
     <blockquote>
       <b>Standards:</b>
       <ul>
+        <li>NotOpenStep</li>
         <li>NotMacOS-X</li>
         <li>GNUstep</li>
-        <li>NotOpenStep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Defines the <code>newLockAt:</code> method.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSLock+newLockAt:">+newLockAt:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSLock(GSCategories)+newLockAt:">newLockAt:&nbsp;</a></h3>
     + (id) <b>newLockAt:</b> (id*)location;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes the id pointed to by
+            <var>location</var> with a new instance of the
+            receiver&apos;s class in a thread safe manner, unless
+            it has been previously initialized. Returns the contents
+            pointed to by <var>location</var>. The
+            <var>location</var> is considered unintialized if it
+            contains <code>nil</code>. <br /> This method is
+            used in the GS_INITIALIZED_LOCK macro to initialize
+            lock variables when it cannot be insured that they can
+            be initialized in a thread safe environment.
+
+<pre>
+ NSLock *my_lock = nil;
+
+ void function (void)
+ {
+   [GS_INITIALIZED_LOCK(my_lock, NSLock) lock];
+   do_work ();
+   [my_lock unlock];
+ }
+ 
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -370,22 +466,48 @@
     <blockquote>
       <b>Standards:</b>
       <ul>
+        <li>NotOpenStep</li>
         <li>NotMacOS-X</li>
         <li>GNUstep</li>
-        <li>NotOpenStep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Defines the <code>newLockAt:</code> method.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSLock.html#method$NSRecursiveLock+newLockAt:">+newLockAt:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSRecursiveLock(GSCategories)+newLockAt:">newLockAt:&nbsp;</a></h3>
     + (id) <b>newLockAt:</b> (id*)location;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes the id pointed to by
+            <var>location</var> with a new instance of the
+            receiver&apos;s class in a thread safe manner, unless
+            it has been previously initialized. Returns the contents
+            pointed to by <var>location</var>. The
+            <var>location</var> is considered unintialized if it
+            contains <code>nil</code>. <br /> This method is
+            used in the GS_INITIALIZED_LOCK macro to initialize
+            lock variables when it cannot be insured that they can
+            be initialized in a thread safe environment.
+
+<pre>
+ NSLock *my_lock = nil;
+
+ void function (void)
+ {
+   [GS_INITIALIZED_LOCK(my_lock, NSRecursiveLock) lock];
+   do_work ();
+   [my_lock unlock];
+ }
+ 
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -404,21 +526,26 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Protocol defining lock and unlock operations.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSLock.html#method$(NSLocking)-lock">-lock</a></li>
+      <li><a rel="gsdoc" href="NSLock.html#method$(NSLocking)-unlock">-unlock</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$(NSLocking)-lock">lock&nbsp;</a></h3>
     - (void) <b>lock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Block until acquiring lock.
           
     </p>
     <hr width="25%" align="left" />
@@ -426,7 +553,7 @@
     - (void) <b>unlock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Relinquish lock.
           
     </p>
     <hr width="25%" align="left" />

@@ -4,7 +4,7 @@
     <title>Types and Constants</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$TypesAndConstants">Types and Constants</a></h1>
@@ -298,8 +298,11 @@
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSFileHandleConnectCompletionNotification">GSFileHandleConnectCompletionNotification</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSFileHandleNotificationError">GSFileHandleNotificationError</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSFileHandleWriteCompletionNotification">GSFileHandleWriteCompletionNotification</a></li>
+        <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyCertificateFileKey">GSHTTPPropertyCertificateFileKey</a></li>
+        <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyKeyFileKey">GSHTTPPropertyKeyFileKey</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyLocalHostKey">GSHTTPPropertyLocalHostKey</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyMethodKey">GSHTTPPropertyMethodKey</a></li>
+        <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyPasswordKey">GSHTTPPropertyPasswordKey</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyProxyHostKey">GSHTTPPropertyProxyHostKey</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyProxyPortKey">GSHTTPPropertyProxyPortKey</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$NSAMPMDesignation">NSAMPMDesignation</a></li>
@@ -432,7 +435,15 @@
     NSString* const NSInconsistentArchiveException;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Specified in OpenStep to be raised by
+          <a rel="gsdoc" href="NSArchiver.html#class$NSArchiver">NSArchiver</a>
+
+            or subclasses if there are problems initializing or
+            encoding.
+            <em>
+              Not currently used. NSInternalInconsistencyException
+              usually raised instead.
+            </em>
         
     </p>
     <hr width="25%" align="left" />
@@ -444,7 +455,9 @@
     NSString* const NSClassDescriptionNeededForClassNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Posted by
+          <a rel="gsdoc" href="NSClassDescription.html#method$NSClassDescription+classDescriptionForClass:">[NSClassDescription&nbsp;+classDescriptionForClass:]</a>
+ when a class description cannot be found for a class. The implementation will check again after the notification is (synchronously) processed, allowing descriptions to be registered lazily.
         
     </p>
     <hr width="25%" align="left" />
@@ -456,7 +469,14 @@
     NSString* const NSConnectionDidDieNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Posted when an
+          <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
+
+            is deallocated or it is notified its port is
+            deactivated. (Note, connections to remote
+            ports don&apos;t get such a notification.) Receivers
+            should deregister themselves for notifications from
+            the given connection.
         
     </p>
     <hr width="25%" align="left" />
@@ -464,7 +484,10 @@
     NSString* const NSConnectionDidInitializeNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Posted when an
+          <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
+
+            is initialized.
         
     </p>
     <hr width="25%" align="left" />
@@ -472,7 +495,13 @@
     NSString* const NSConnectionReplyMode;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          <a rel="gsdoc" href="NSRunLoop.html#class$NSRunLoop">NSRunLoop</a>
+
+            mode for
+            <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
+
+              objects waiting for replies. Mainly used
+              internally by distributed objects system.
         
     </p>
     <hr width="25%" align="left" />
@@ -480,7 +509,11 @@
     NSString* const NSFailedAuthenticationException;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Raised by an
+          <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
+
+            on receiving a message that it or its delegate cannot
+            authenticate.
         
     </p>
     <hr width="25%" align="left" />
@@ -572,8 +605,8 @@
     NSString* const NSInternalInconsistencyException;<br />
     <p>
       
-          An exception for caes where unexpected state is detected
-          within an object
+          An exception for cases where unexpected state is detected
+          within an object.
         
     </p>
     <hr width="25%" align="left" />
@@ -590,7 +623,7 @@
     NSString* const NSMallocException;<br />
     <p>
       
-          An exception used when the system faols to allocate
+          An exception used when the system fails to allocate
           required memory.
         
     </p>
@@ -621,7 +654,11 @@
     NSString* const GSFileHandleConnectCompletionNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted when an asynchronous
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            connection attempt (to an FTP, HTTP, or other
+            internet server) has succeeded.
         
     </p>
     <hr width="25%" align="left" />
@@ -629,7 +666,10 @@
     NSString* const GSFileHandleNotificationError;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Message describing error in asynchronous
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            accept,read,write operation.
         
     </p>
     <hr width="25%" align="left" />
@@ -637,7 +677,11 @@
     NSString* const GSFileHandleWriteCompletionNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted when an asynchronous
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            write operation (to an FTP, HTTP, or other internet
+            server) has succeeded.
         
     </p>
     <hr width="25%" align="left" />
@@ -645,7 +689,22 @@
     NSString* const NSFileHandleConnectionAcceptedNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Posted when one of the
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            methods
+            <code>acceptConnectionInBackground...</code>
+            succeeds and has connected to a stream-type socket
+            in another process. The notification&apos;s <em>userInfo</em>
+            dictionary will contain the
+            <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+              for the near end of the connection (associated to the
+              key &apos;
+              <code>
+                NSFileHandleNotificationFileHandleItem
+              </code>
+              &apos;).
         
     </p>
     <hr width="25%" align="left" />
@@ -653,7 +712,14 @@
     NSString* const NSFileHandleDataAvailableNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Posted when one of the
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            methods <code>waitForDataInBackground...</code> has
+            been informed that data is available. The receiving
+            <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+              is passed in the notification.
         
     </p>
     <hr width="25%" align="left" />
@@ -661,7 +727,13 @@
     NSString* const NSFileHandleNotificationDataItem;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Dictionary key for
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            notifications used to access an
+            NSDataItem
+
+              containing received data.
         
     </p>
     <hr width="25%" align="left" />
@@ -669,7 +741,13 @@
     NSString* const NSFileHandleNotificationFileHandleItem;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Dictionary key for
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            notifications used to mark the
+            <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+              that has established a stream-socket connection.
         
     </p>
     <hr width="25%" align="left" />
@@ -677,7 +755,12 @@
     NSString* const NSFileHandleNotificationMonitorModes;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Dictionary key for
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            notifications postable to certain run loop
+            modes, associated to an NSArray containing the modes
+            allowed.
         
     </p>
     <hr width="25%" align="left" />
@@ -685,7 +768,11 @@
     NSString* const NSFileHandleOperationException;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Exception raised when attempts to read from an
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            channel fail. <br /> An exception used when a file
+            error occurs.
         
     </p>
     <hr width="25%" align="left" />
@@ -693,7 +780,16 @@
     NSString* const NSFileHandleReadCompletionNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Posted when one of the
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            methods readDataInBackground... has consumed data.
+            The receiving
+            <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+              is passed in the notification&apos;s <em>userInfo</em>
+              dictionary associated to the key &apos;
+              <code>NSFileHandleNotificationDataItem</code> &apos;.
         
     </p>
     <hr width="25%" align="left" />
@@ -701,7 +797,16 @@
     NSString* const NSFileHandleReadToEndOfFileCompletionNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Posted when one of the
+          <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+            methods <code>readToEndOfFileInBackground...</code>
+            has finished. The receiving
+            <a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a>
+
+              is passed in the notification&apos;s <em>userInfo</em>
+              dictionary associated to the key &apos;
+              <code>NSFileHandleNotificationDataItem</code> &apos;.
         
     </p>
     <hr width="25%" align="left" />
@@ -713,7 +818,9 @@
     NSString* const NSFileAppendOnly;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -721,7 +828,9 @@
     NSString* const NSFileCreationDate;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -729,7 +838,9 @@
     NSString* const NSFileDeviceIdentifier;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -737,7 +848,9 @@
     NSString* const NSFileExtensionHidden;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -745,7 +858,9 @@
     NSString* const NSFileGroupOwnerAccountID;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -753,7 +868,9 @@
     NSString* const NSFileGroupOwnerAccountName;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -761,7 +878,9 @@
     NSString* const NSFileHFSCreatorCode;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -769,7 +888,9 @@
     NSString* const NSFileHFSTypeCode;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -777,7 +898,9 @@
     NSString* const NSFileImmutable;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -785,7 +908,9 @@
     NSString* const NSFileModificationDate;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -793,7 +918,9 @@
     NSString* const NSFileOwnerAccountID;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -801,7 +928,9 @@
     NSString* const NSFileOwnerAccountName;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -809,7 +938,9 @@
     NSString* const NSFilePosixPermissions;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -817,7 +948,9 @@
     NSString* const NSFileReferenceCount;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -825,7 +958,9 @@
     NSString* const NSFileSize;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -833,7 +968,9 @@
     NSString* const NSFileSystemFileNumber;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -841,7 +978,9 @@
     NSString* const NSFileSystemFreeNodes;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File system attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -849,7 +988,9 @@
     NSString* const NSFileSystemFreeSize;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File system attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -857,7 +998,9 @@
     NSString* const NSFileSystemNodes;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File system attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -865,7 +1008,9 @@
     NSString* const NSFileSystemNumber;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -873,7 +1018,9 @@
     NSString* const NSFileSystemSize;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File system attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -881,7 +1028,9 @@
     NSString* const NSFileType;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          File attribute key in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -889,7 +1038,10 @@
     NSString* const NSFileTypeBlockSpecial;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Possible value for &apos; <code>NSFileType</code> &apos; key
+          in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -897,7 +1049,10 @@
     NSString* const NSFileTypeCharacterSpecial;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Possible value for &apos; <code>NSFileType</code> &apos; key
+          in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -905,7 +1060,10 @@
     NSString* const NSFileTypeDirectory;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Possible value for &apos; <code>NSFileType</code> &apos; key
+          in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -913,7 +1071,10 @@
     NSString* const NSFileTypeFifo;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Possible value for &apos; <code>NSFileType</code> &apos; key
+          in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -921,7 +1082,10 @@
     NSString* const NSFileTypeRegular;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Possible value for &apos; <code>NSFileType</code> &apos; key
+          in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -929,7 +1093,10 @@
     NSString* const NSFileTypeSocket;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Possible value for &apos; <code>NSFileType</code> &apos; key
+          in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -937,7 +1104,10 @@
     NSString* const NSFileTypeSymbolicLink;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Possible value for &apos; <code>NSFileType</code> &apos; key
+          in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -945,7 +1115,10 @@
     NSString* const NSFileTypeUnknown;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Possible value for &apos; <code>NSFileType</code> &apos; key
+          in dictionary returned by
+          <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -957,7 +1130,7 @@
     const <a rel="gsdoc" href="#type$NSPoint">NSPoint</a> NSZeroPoint;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Point at 0,0
         
     </p>
     <hr width="25%" align="left" />
@@ -965,7 +1138,7 @@
     const <a rel="gsdoc" href="#type$NSRect">NSRect</a> NSZeroRect;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Zero-size rectangle at 0,0
         
     </p>
     <hr width="25%" align="left" />
@@ -973,7 +1146,7 @@
     const <a rel="gsdoc" href="#type$NSSize">NSSize</a> NSZeroSize;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Zero size
         
     </p>
     <hr width="25%" align="left" />
@@ -1010,7 +1183,7 @@
     <p>
       
           For sets of objects; similar to
-          NSSet
+          <a rel="gsdoc" href="NSSet.html#class$NSSet">NSSet</a>
 
             .
         
@@ -1042,7 +1215,7 @@
     NSString* const NSInvalidArchiveOperationException;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          An archiving error has occurred.
         
     </p>
     <hr width="25%" align="left" />
@@ -1050,7 +1223,7 @@
     NSString* const NSInvalidUnarchiveOperationException;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          An unarchiving error has occurred.
         
     </p>
     <hr width="25%" align="left" />
@@ -1168,7 +1341,18 @@
     NSString* const NSPortTimeoutException;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Exception raised by
+          <a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>
+
+            ,
+            <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
+
+              , and friends if sufficient time elapses while waiting
+              for a response, or if the receiving port is
+              invalidated before a request can be received.
+              See
+              <a rel="gsdoc" href="NSConnection.html#method$NSConnection-setReplyTimeout:">[NSConnection&nbsp;-setReplyTimeout:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -1180,7 +1364,9 @@
     NSString* const NSDefaultRunLoopMode;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Run loop mode used to deal with input sources other than
+          NSConnections or dialog windows. Most commonly
+          used. Defined in <code>Foundation/NSRunLoop.h</code>.
         
     </p>
     <hr width="25%" align="left" />
@@ -1188,11 +1374,39 @@
           <h1><a name="019000000000">NSURLHandle constants</a></h1>
     <p>
     </p>
+    <h3><a name="constant$GSHTTPPropertyCertificateFileKey">GSHTTPPropertyCertificateFileKey</a></h3>
+    NSString* const GSHTTPPropertyCertificateFileKey;<br />
+    <p>
+      
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to specify the
+            location of an SSL certificate file.
+        
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="constant$GSHTTPPropertyKeyFileKey">GSHTTPPropertyKeyFileKey</a></h3>
+    NSString* const GSHTTPPropertyKeyFileKey;<br />
+    <p>
+      
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to specify the
+            location of an SSL key file.
+        
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="constant$GSHTTPPropertyLocalHostKey">GSHTTPPropertyLocalHostKey</a></h3>
     NSString* const GSHTTPPropertyLocalHostKey;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to obtain local
+            host.
         
     </p>
     <hr width="25%" align="left" />
@@ -1200,7 +1414,23 @@
     NSString* const GSHTTPPropertyMethodKey;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to obtain
+            method (GET, POST, etc.).
+        
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="constant$GSHTTPPropertyPasswordKey">GSHTTPPropertyPasswordKey</a></h3>
+    NSString* const GSHTTPPropertyPasswordKey;<br />
+    <p>
+      
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to specify the
+            password for an SSL key file.
         
     </p>
     <hr width="25%" align="left" />
@@ -1208,7 +1438,11 @@
     NSString* const GSHTTPPropertyProxyHostKey;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to obtain proxy
+            host.
         
     </p>
     <hr width="25%" align="left" />
@@ -1216,7 +1450,11 @@
     NSString* const GSHTTPPropertyProxyPortKey;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to obtain proxy
+            port.
         
     </p>
     <hr width="25%" align="left" />
@@ -1224,7 +1462,11 @@
     NSString* const NSHTTPPropertyErrorPageDataKey;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to obtain error
+            page data.
         
     </p>
     <hr width="25%" align="left" />
@@ -1232,7 +1474,11 @@
     NSString* const NSHTTPPropertyRedirectionHeadersKey;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to obtain
+            redirection headers.
         
     </p>
     <hr width="25%" align="left" />
@@ -1240,7 +1486,11 @@
     NSString* const NSHTTPPropertyServerHTTPVersionKey;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to obtain HTTP
+            version supported by server.
         
     </p>
     <hr width="25%" align="left" />
@@ -1248,7 +1498,11 @@
     NSString* const NSHTTPPropertyStatusCodeKey;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to obtain
+            status code.
         
     </p>
     <hr width="25%" align="left" />
@@ -1256,7 +1510,11 @@
     NSString* const NSHTTPPropertyStatusReasonKey;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for passing to
+          <a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>
+
+            &apos;s <code>propertyForKey..</code> methods to obtain
+            status reason.
         
     </p>
     <hr width="25%" align="left" />
@@ -1268,7 +1526,8 @@
     NSString* const NSAMPMDesignation;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: array of strings for AM and
+          PM.
         
     </p>
     <hr width="25%" align="left" />
@@ -1276,7 +1535,9 @@
     NSString* const NSArgumentDomain;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          User defaults domain for process arguments. Command-line
+          arguments (attribute-value pairs, as in &quot;-NSFoo
+          bar&quot;) are placed into this domain.
         
     </p>
     <hr width="25%" align="left" />
@@ -1284,7 +1545,8 @@
     NSString* const NSCurrencyString;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: text formatter string for
+          monetary amounts.
         
     </p>
     <hr width="25%" align="left" />
@@ -1292,7 +1554,7 @@
     NSString* const NSCurrencySymbol;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: currency symbol.
         
     </p>
     <hr width="25%" align="left" />
@@ -1300,7 +1562,10 @@
     NSString* const NSDateFormatString;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: format string for feeding to
+          <a rel="gsdoc" href="NSDateFormatter.html#class$NSDateFormatter">NSDateFormatter</a>
+
+            .
         
     </p>
     <hr width="25%" align="left" />
@@ -1308,7 +1573,9 @@
     NSString* const NSDateTimeOrdering;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: string with &apos;Y&apos;, &apos;M&apos;, &apos;D&apos;, and
+          &apos;H&apos; designating the default method of writing dates, as
+          in &quot;MDYH&quot; for the U.S..
         
     </p>
     <hr width="25%" align="left" />
@@ -1316,7 +1583,7 @@
     NSString* const NSDecimalDigits;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: array of strings for 0-9.
         
     </p>
     <hr width="25%" align="left" />
@@ -1324,7 +1591,7 @@
     NSString* const NSDecimalSeparator;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: decimal separator.
         
     </p>
     <hr width="25%" align="left" />
@@ -1332,7 +1599,9 @@
     NSString* const NSEarlierTimeDesignations;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: adjectives that modify values
+          in NSYearMonthWeekDesignations, as in &quot;last&quot;, &quot;previous&quot;,
+          etc..
         
     </p>
     <hr width="25%" align="left" />
@@ -1340,7 +1609,7 @@
     NSString* const NSFormalName;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: formal name of language.
         
     </p>
     <hr width="25%" align="left" />
@@ -1348,7 +1617,7 @@
     NSString* const NSGlobalDomain;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          User defaults domain for system defaults.
         
     </p>
     <hr width="25%" align="left" />
@@ -1356,7 +1625,10 @@
     NSString* const NSHourNameDesignations;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Array of arrays of NSStrings, first member of each
+          specifying a time, followed by one or more
+          colloquial names for the time, as in &quot;(0,
+          midnight), (12, noon, lunch)&quot;.
         
     </p>
     <hr width="25%" align="left" />
@@ -1364,7 +1636,8 @@
     NSString* const NSInternationalCurrencyString;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: three-letter ISO 4217 currency
+          abbreviation.
         
     </p>
     <hr width="25%" align="left" />
@@ -1372,7 +1645,7 @@
     NSString* const NSLanguageCode;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: two-letter ISO code.
         
     </p>
     <hr width="25%" align="left" />
@@ -1380,7 +1653,7 @@
     NSString* const NSLanguageName;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: name of language.
         
     </p>
     <hr width="25%" align="left" />
@@ -1388,7 +1661,9 @@
     NSString* const NSLaterTimeDesignations;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: adjectives that modify values
+          in NSYearMonthWeekDesignations, as in &quot;next&quot;,
+          &quot;subsequent&quot;, etc..
         
     </p>
     <hr width="25%" align="left" />
@@ -1396,7 +1671,7 @@
     NSString* const NSLocale;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: name of locale.
         
     </p>
     <hr width="25%" align="left" />
@@ -1404,7 +1679,7 @@
     NSString* const NSMonthNameArray;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: names of months of year.
         
     </p>
     <hr width="25%" align="left" />
@@ -1412,7 +1687,8 @@
     NSString* const NSNextDayDesignations;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: one or more strings
+          designating the next day, such as &quot;tomorrow&quot;.
         
     </p>
     <hr width="25%" align="left" />
@@ -1420,7 +1696,9 @@
     NSString* const NSNextNextDayDesignations;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: one or more strings
+          designating the next day, such as &quot;day after
+          tomorrow&quot;.
         
     </p>
     <hr width="25%" align="left" />
@@ -1428,7 +1706,9 @@
     NSString* const NSPriorDayDesignations;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: one or more strings
+          designating the previous day, such as
+          &quot;yesterday&quot;.
         
     </p>
     <hr width="25%" align="left" />
@@ -1436,7 +1716,8 @@
     NSString* const NSRegistrationDomain;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          User defaults domain for application-registered &quot;default
+          defaults&quot;.
         
     </p>
     <hr width="25%" align="left" />
@@ -1444,7 +1725,10 @@
     NSString* const NSShortDateFormatString;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: format string for feeding to
+          <a rel="gsdoc" href="NSDateFormatter.html#class$NSDateFormatter">NSDateFormatter</a>
+
+            .
         
     </p>
     <hr width="25%" align="left" />
@@ -1452,7 +1736,8 @@
     NSString* const NSShortMonthNameArray;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: abbreviations of months of
+          year.
         
     </p>
     <hr width="25%" align="left" />
@@ -1460,7 +1745,10 @@
     NSString* const NSShortTimeDateFormatString;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: format string for feeding to
+          <a rel="gsdoc" href="NSDateFormatter.html#class$NSDateFormatter">NSDateFormatter</a>
+
+            .
         
     </p>
     <hr width="25%" align="left" />
@@ -1468,7 +1756,7 @@
     NSString* const NSShortWeekDayNameArray;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: abbreviations of days of week.
         
     </p>
     <hr width="25%" align="left" />
@@ -1476,7 +1764,8 @@
     NSString* const NSThisDayDesignations;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: one or more strings
+          designating the current day, such as &quot;today&quot;.
         
     </p>
     <hr width="25%" align="left" />
@@ -1484,7 +1773,7 @@
     NSString* const NSThousandsSeparator;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: thousands separator.
         
     </p>
     <hr width="25%" align="left" />
@@ -1492,7 +1781,10 @@
     NSString* const NSTimeDateFormatString;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: format string for feeding to
+          <a rel="gsdoc" href="NSDateFormatter.html#class$NSDateFormatter">NSDateFormatter</a>
+
+            .
         
     </p>
     <hr width="25%" align="left" />
@@ -1500,7 +1792,10 @@
     NSString* const NSTimeFormatString;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: format string for feeding to
+          <a rel="gsdoc" href="NSDateFormatter.html#class$NSDateFormatter">NSDateFormatter</a>
+
+            .
         
     </p>
     <hr width="25%" align="left" />
@@ -1508,7 +1803,13 @@
     NSString* const NSUserDefaultsDidChangeNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted when a defaults synchronize
+          has been performed (see
+          <a rel="gsdoc" href="NSUserDefaults.html#method$NSUserDefaults-synchronize">
+            [NSUserDefaults&nbsp;-synchronize]
+          </a>
+
+          ) and changes have been loaded in from disk.
         
     </p>
     <hr width="25%" align="left" />
@@ -1516,7 +1817,7 @@
     NSString* const NSWeekDayNameArray;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for locale dictionary: names of days of week.
         
     </p>
     <hr width="25%" align="left" />
@@ -1524,7 +1825,7 @@
     NSString* const NSYearMonthWeekDesignations;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Strings for &quot;year&quot;, &quot;month&quot;, &quot;week&quot;.
         
     </p>
     <hr width="25%" align="left" />
@@ -1536,7 +1837,18 @@
     typedef struct autorelease_array_list array_list_struct;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Each pool holds its objects-to-be-released in a
+          linked-list of these structures.
+
+<pre>
+{
+  struct autorelease_array_list *next;
+  unsigned size;
+  unsigned count;
+  id objects[0];
+}
+    </pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1544,7 +1856,18 @@
     typedef struct autorelease_thread_vars thread_vars_struct;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Each thread has its own copy of these variables.
+
+<pre>
+{
+  NSAutoreleasePool *current_pool; // current pool for thread
+  unsigned total_objects_count;    // total #/autoreleased objects over thread&apos;s lifetime
+  id *pool_cache;                  // cache of previously-allocated pools,
+  int pool_cache_size;             //  used internally for recycling
+  int pool_cache_count;
+}
+ </pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1568,7 +1891,37 @@
     typedef enum ... NSCalculationError;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Enumerated type for specifying a decimal
+          calculation error. Can be one of the following:
+          
+      <dl>
+        <dt><code>NSCalculationNoError</code></dt>
+        <dd>
+          No error occurred.
+        </dd>
+        <dt>
+              <code>NSCalculationLossOfPrecision</code>
+            </dt>
+        <dd>
+          
+              The number can&apos;t be represented in 38 significant
+              digits.
+            
+        </dd>
+        <dt><code>NSCalculationOverflow</code></dt>
+        <dd>
+          The number is too large to represent.
+        </dd>
+        <dt><code>NSCalculationUnderflow</code></dt>
+        <dd>
+          The number is too small to represent.
+        </dd>
+        <dt><code>NSCalculationDivideByZero</code></dt>
+        <dd>
+          The caller tried to divide by 0.
+        </dd>
+      </dl>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1576,7 +1929,37 @@
     typedef struct ... NSDecimal;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            Structure providing equivalent functionality, in
+            conjunction with a set of functions, to the
+            <a rel="gsdoc" href="NSDecimalNumber.html#class$NSDecimalNumber">NSDecimalNumber</a>
+class.    </p>
+    <p>
+      
+
+<pre>
+typedef struct {
+  signed char	exponent;   // Signed exponent - -128 to 127
+  BOOL	isNegative;         // Is this negative?
+  BOOL	validNumber;        // Is this a valid number?
+  unsigned char	length;	    // digits in mantissa.
+  unsigned char  cMantissa[2*NSDecimalMaxDigit];
+} NSDecimal;
+</pre>
+      
+          
+    </p>
+    <p>
+
+            Instances can be initialized using the
+            NSDecimalFromString(NSString
+            *) function.
+              </p>
+    <p>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1584,7 +1967,16 @@
     typedef enum ... NSRoundingMode;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Enumerated type for specifying decimal rounding
+          behavior. Can be one of <code>NSRoundDown</code>
+          (always round down), <code>NSRoundUp</code> (always
+          round up), <code>NSRoundPlain</code> (&quot;normal&quot; rounding
+          (up from.5 or above, down otherwise),
+          <code>NSRoundBankers</code> (as &quot;Plain&quot; but.5 rounds
+          to make last remaining digit even). See the
+          <a rel="gsdoc" href="NSDecimalNumber.html#protocol$(NSDecimalNumberBehaviors)">&lt;NSDecimalNumberBehaviors&gt;</a>
+
+            protocol.
         
     </p>
     <hr width="25%" align="left" />
@@ -1596,7 +1988,21 @@
     typedef enum ... NSNotificationSuspensionBehavior;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Enumeration of possible values for specifying how
+          <a rel="gsdoc" href="NSDistributedNotificationCenter.html#class$NSDistributedNotificationCenter">NSDistributedNotificationCenter</a>
+
+            deals with notifications when the process to which
+            the notification should be delivered is suspended:
+
+<pre>
+ {
+  NSNotificationSuspensionBehaviorDrop,       // drop the notification
+  NSNotificationSuspensionBehaviorCoalesce,   // drop all for this process but the latest-sent notification
+  NSNotificationSuspensionBehaviorHold,       // queue all notifications for this process until it is resumed
+  NSNotificationSuspensionBehaviorDeliverImmediately  // resume the process and deliver
+}
+ </pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1608,7 +2014,8 @@
     typedef struct _NSHandler NSHandler;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          The actual structure for an NSHandler. You shouldn&apos;t need
+          to worry about it.
         
     </p>
     <hr width="25%" align="left" />
@@ -1620,7 +2027,18 @@
     typedef struct _NSPoint NSPoint;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+
+<pre>{
+  float x;
+  float y;
+}</pre>
+      
+          
+    </p>
+    <p>
+Represents a 2-d cartesian position.    </p>
+    <p>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1628,7 +2046,7 @@
     typedef <a rel="gsdoc" href="#type$NSPoint">NSPoint</a>* NSPointArray;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Array of NSPoint structs.
         
     </p>
     <hr width="25%" align="left" />
@@ -1636,7 +2054,7 @@
     typedef <a rel="gsdoc" href="#type$NSPoint">NSPoint</a>* NSPointPointer;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Pointer to NSPoint struct.
         
     </p>
     <hr width="25%" align="left" />
@@ -1644,7 +2062,18 @@
     typedef struct _NSRect NSRect;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+
+<pre>{
+  NSPoint origin;
+  NSSize size;
+}</pre>
+      
+          
+    </p>
+    <p>
+Rectangle.    </p>
+    <p>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1652,7 +2081,7 @@
     typedef <a rel="gsdoc" href="#type$NSRect">NSRect</a>* NSRectArray;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Array of NSRect structs.
         
     </p>
     <hr width="25%" align="left" />
@@ -1660,7 +2089,17 @@
     typedef enum _NSRectEdge NSRectEdge;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Sides of a rectangle.
+
+<pre>
+{
+  NSMinXEdge,
+  NSMinYEdge,
+  NSMaxXEdge,
+  NSMaxYEdge
+}
+</pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1668,7 +2107,7 @@
     typedef <a rel="gsdoc" href="#type$NSRect">NSRect</a>* NSRectPointer;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Pointer to NSRect struct.
         
     </p>
     <hr width="25%" align="left" />
@@ -1676,7 +2115,18 @@
     typedef struct _NSSize NSSize;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+
+<pre>{
+  float width;
+  float height;
+}</pre>
+      
+          
+    </p>
+    <p>
+Floating point rectangle size.    </p>
+    <p>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1684,7 +2134,7 @@
     typedef <a rel="gsdoc" href="#type$NSSize">NSSize</a>* NSSizeArray;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Array of NSSize structs.
         
     </p>
     <hr width="25%" align="left" />
@@ -1692,7 +2142,7 @@
     typedef <a rel="gsdoc" href="#type$NSSize">NSSize</a>* NSSizePointer;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Pointer to NSSize struct.
         
     </p>
     <hr width="25%" align="left" />
@@ -1723,14 +2173,39 @@
     typedef struct _NSHashTableCallBacks NSHashTableCallBacks;<br />
     <p>
       
-          Callback functions. <br /> hash... Hashing function.
-          NOTE: Elements with equal values must have equal hash
-          function values. <br /> isEqual... Comparison
-          function. <br /> retain... Retaining function
-          called when adding elements to the table. <br />
-          release... Releasing function called when a data
-          element is removed from the table. <br /> describe...
-          Description function. <br />
+          Callback functions for an NSHashTable. See
+          <a rel="gsdoc" href="Functions.html#function$NSCreateHashTable">
+            NSCreateHashTable()
+          </a>
+
+          . <br />
+          <code>
+            unsigned int (*hash)(NSHashTable *, const void *)
+          </code>
+          ... Hashing function. NOTE: Elements with equal values
+          must have equal hash function values. The default if
+          NULL uses the pointer addresses directly. <br />
+          <code>
+            BOOL (*isEqual)(NSHashTable *, const void *, const
+            void *)
+          </code>
+          ... Comparison function. The default if NULL uses &apos;
+          <code>==</code> &apos;. <br />
+          <code>
+            void (*retain)(NSHashTable *, const void *)
+          </code>
+          ... Retaining function called when adding elements to the
+          table. The default if NULL is a no-op (no reference
+          counting). <br />
+          <code>void (*release)(NSHashTable *, void *)</code>...
+          Releasing function called when a data element is
+          removed from the table. The default if NULL is a
+          no-op (no reference counting). <br />
+          <code>
+            NSString *(*describe)(NSHashTable *, const void *)
+          </code>
+          ... Description function. The default if NULL prints
+          boilerplate. <br />
         
     </p>
     <hr width="25%" align="left" />
@@ -1772,8 +2247,8 @@
           a retain count or may actually destroy the key. <br />
           Description function. Generates a string
           describing the key and does not modify the key
-          itsself. <br /> Quantity that is not a key to the
-          map table.
+          itself. <br /> Quantity that is not a key to the map
+          table.
         
     </p>
     <hr width="25%" align="left" />
@@ -1793,7 +2268,46 @@
     typedef struct ... NSArgumentInfo;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            Info about layout of arguments. Extended from the
+            original OpenStep version to let us know if the
+            arg is passed in registers or on the stack.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+NB. This no longer exists in Rhapsody/MacOS.    </p>
+    <p>
+      
+
+<pre>
+typedef struct	{
+  int		offset;
+  unsigned	size;
+  const char	*type;
+  unsigned	align;  // extension, available only ifndef NO_GNUSTEP
+  unsigned	qual;   // extension, available only ifndef NO_GNUSTEP
+  BOOL		isReg;  // extension, available only ifndef NO_GNUSTEP
+} NSArgumentInfo;
+ </pre>
+      
+          
+    </p>
+    <p>
+
+            NB. The offset and register information may not always
+            be reliable. In the past it was dependent on locally
+            maintained platform dependent information. In
+            the future it may depend on layout information supplied
+            by the compiler.
+              </p>
+    <p>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1805,7 +2319,20 @@
     typedef enum ... NSNotificationCoalescing;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Enumeration of possible ways to combine
+          notifications when dealing with
+          <a rel="gsdoc" href="NSNotificationQueue.html#class$NSNotificationQueue">NSNotificationQueue</a>
+
+            :
+
+<pre>
+{
+  NSNotificationNoCoalescing,       // don&apos;t combine
+  NSNotificationCoalescingOnName,   // combine all registered with same name
+  NSNotificationCoalescingOnSender  // combine all registered with same object
+}
+ </pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1813,7 +2340,20 @@
     typedef enum ... NSPostingStyle;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Enumeration of possible timings for distribution
+          of notifications handed to an
+          <a rel="gsdoc" href="NSNotificationQueue.html#class$NSNotificationQueue">NSNotificationQueue</a>
+
+            :
+
+<pre>
+{
+  NSPostWhenIdle,	// post when runloop is idle
+  NSPostASAP,		// post soon
+  NSPostNow		// post synchronously
+}
+ </pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1825,7 +2365,10 @@
     typedef enum _NSComparisonResult NSComparisonResult;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Contains values <code>NSOrderedSame</code>,
+          <code>NSOrderedAscending</code>
+          <code>NSOrderedDescending</code>, for left hand side
+          equals, less than, or greater than right hand side.
         
     </p>
     <hr width="25%" align="left" />
@@ -1837,7 +2380,29 @@
     typedef enum ... NSSearchPathDirectory;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Enumeration of possible requested directory type
+          specifiers for
+          <a rel="gsdoc" href="Functions.html#function$NSSearchPathForDirectoriesInDomains">NSSearchPathForDirectoriesInDomains()</a>
+ function. These correspond to the subdirectories that may be found under, e.g., $GNUSTEP_SYSTEM_ROOT, such as &quot;Library&quot; and &quot;Applications&quot;.
+
+<pre>
+{
+  NSApplicationDirectory,
+  NSDemoApplicationDirectory,
+  NSDeveloperApplicationDirectory,
+  NSAdminApplicationDirectory,
+  NSLibraryDirectory,
+  NSDeveloperDirectory,
+  NSUserDirectory,
+  NSDocumentationDirectory,
+  NSAllApplicationsDirectory,
+  NSAllLibrariesDirectory,
+  GSLibrariesDirectory,
+  GSToolsDirectory,
+  GSApplicationSupportDirectory
+}
+ </pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1845,7 +2410,9 @@
     typedef unsigned int NSSearchPathDomainMask;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Mask type for
+          <a rel="gsdoc" href="Functions.html#function$NSSearchPathForDirectoriesInDomains">NSSearchPathForDirectoriesInDomains()</a>
+ function. A bitwise OR of one or more of <code>NSUserDomainMask, NSLocalDomainMask, NSNetworkDomainMask, NSSystemDomainMask, NSAllDomainsMask</code>.
         
     </p>
     <hr width="25%" align="left" />
@@ -1857,7 +2424,7 @@
     typedef SOCKET NSSocketNativeHandle;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Native socket type.
         
     </p>
     <hr width="25%" align="left" />
@@ -1878,9 +2445,7 @@
           <strong>NSPropertyListOpenStepFormat</strong> the
           most human-readable format <br />
           <strong>NSPropertyListXMLFormat_v1_0</strong>
-          portable and readable <br />
-          <strong>NSPropertyListBinaryFormat_v1_0</strong> not
-          yet supported
+          portable and readable
         
     </p>
     <hr width="25%" align="left" />
@@ -1910,6 +2475,13 @@
     typedef struct _NSRange NSRange;<br />
     <p>
       
+
+<pre>
+{
+  unsigned int location;
+  unsigned int length;
+}</pre>
+      
           
     </p>
     <p>
@@ -1935,15 +2507,16 @@
     </p>
     <p>
 
-            An NSRange consists of a location and a length. The
-            points that are considered to lie in a range are the
-            integers from the location to the location plus
-            the length, so the number of points in a range is the
-            length of the range plus one. <br /> However, if you
-            consider these points like the marks on a ruler,
-            you can only store information <strong>between</strong>
-            points. So the number of items that can be stored
-            in a range is the length of the range.
+            An NSRange consists of a <em>location</em> and a
+            <em>length</em>. The points that are considered to lie
+            in a range are the integers from the location to the
+            location plus the length, so the number of points
+            in a range is the length of the range plus one. <br />
+            However, if you consider these points like the
+            marks on a ruler, you can only store information
+            <strong>between</strong> points. So the number of
+            items that can be stored in a range is the length of
+            the range.
               </p>
     <p>
       
@@ -1954,7 +2527,7 @@
     typedef <a rel="gsdoc" href="#type$NSRange">NSRange</a>* NSRangePointer;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Pointer to an NSRange structure.
         
     </p>
     <hr width="25%" align="left" />
@@ -1966,7 +2539,22 @@
     typedef enum ... RunLoopEventType;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Enumeration of event types that an
+          <a rel="gsdoc" href="NSRunLoop.html#class$NSRunLoop">NSRunLoop</a>
+
+            watcher can watch for. See
+            <a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-addEvent:type:watcher:forMode:">[NSRunLoop&nbsp;-addEvent:type:watcher:forMode:]</a>
+. This is a GNUstep extension.
+
+<pre>
+{
+    ET_RDESC,	// Watch for descriptor becoming readable.
+    ET_WDESC,	// Watch for descriptor becoming writeable.
+    ET_RPORT,	// Watch for message arriving on port.
+    ET_EDESC	// Watch for descriptor with out-of-band data.
+}
+ </pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1978,7 +2566,70 @@
     typedef enum _NSStringEncoding NSStringEncoding;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            Enumeration of available encodings for
+            converting between bytes and characters (in
+            <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>
+
+              s). The ones that are shared with OpenStep and Cocoa
+              are:
+              <code>
+                NSASCIIStringEncoding,
+                NSNEXTSTEPStringEncoding,
+                NSJapaneseEUCStringEncoding,
+                NSUTF8StringEncoding,
+                NSISOLatin1StringEncoding,
+                NSSymbolStringEncoding,
+                NSNonLossyASCIIStringEncoding,
+                NSShiftJISStringEncoding,
+                NSISOLatin2StringEncoding,
+                NSUnicodeStringEncoding,
+                NSWindowsCP1251StringEncoding,
+                NSWindowsCP1252StringEncoding,
+                NSWindowsCP1253StringEncoding,
+                NSWindowsCP1254StringEncoding,
+                NSWindowsCP1250StringEncoding,
+                NSISO2022JPStringEncoding,
+                NSMacOSRomanStringEncoding,
+                NSProprietaryStringEncoding
+              </code>
+              .
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Additional encodings available under GNUstep
+              are:
+              <code>
+                NSKOI8RStringEncoding,
+                NSISOLatin3StringEncoding,
+                NSISOLatin4StringEncoding,
+                NSISOCyrillicStringEncoding,
+                NSISOArabicStringEncoding,
+                NSISOGreekStringEncoding,
+                NSISOHebrewStringEncoding,
+                NSISOLatin5StringEncoding,
+                NSISOLatin6StringEncoding,
+                NSISOThaiStringEncoding,
+                NSISOLatin7StringEncoding,
+                NSISOLatin8StringEncoding,
+                NSISOLatin9StringEncoding,
+                NSGB2312StringEncoding,
+                NSUTF7StringEncoding,
+                NSGSM0338StringEncoding,
+                NSBIG5StringEncoding,
+                NSKoreanEUCStringEncoding
+              </code>
+              .
+                </p>
+    <p>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1986,7 +2637,7 @@
     typedef unsigned short int unichar;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Type for representing unicode characters. (16-bit)
         
     </p>
     <hr width="25%" align="left" />
@@ -1998,7 +2649,22 @@
     typedef enum ... NSURLHandleStatus;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Enumerated type returned by
+          <a rel="gsdoc" href="NSURLHandle.html#method$NSURLHandle-status">
+            [NSURLHandle&nbsp;-status]
+          </a>
+
+          :
+
+<pre>
+{
+  NSURLHandleNotLoaded
+  NSURLHandleLoadSucceeded,
+  NSURLHandleLoadInProgress,
+  NSURLHandleLoadFailed
+}
+</pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -2010,7 +2676,8 @@
     typedef struct ... GSNumberInfo;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Cache info for internal use by NSNumber concrete
+          subclasses.
         
     </p>
     <hr width="25%" align="left" />
@@ -2022,7 +2689,28 @@
     typedef struct _NSZone NSZone;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Primary structure representing an <code>NSZone</code>
+          . Technically it consists of a set of function pointers for
+          zone upkeep functions plus some other things-
+
+<pre>
+{
+  // Functions for zone.
+  void *(*malloc)(struct _NSZone *zone, size_t size);
+  void *(*realloc)(struct _NSZone *zone, void *ptr, size_t size);
+  void (*free)(struct _NSZone *zone, void *ptr);
+  void (*recycle)(struct _NSZone *zone);
+  BOOL (*check)(struct _NSZone *zone);
+  BOOL (*lookup)(struct _NSZone *zone, void *ptr);
+
+  // Zone statistics (not always maintained).
+  struct NSZoneStats (*stats)(struct _NSZone *zone);
+  
+  size_t gran;    // Zone granularity (passed in on initialization)
+  NSString *name; // Name of zone (default is &apos;nil&apos;)
+  NSZone *next;   // Pointer used for internal management of multiple zones.
+}</pre>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -2031,26 +2719,48 @@
     <p>
     </p>
     <h3><a name="variable$NSBundleDidLoadNotification">NSBundleDidLoadNotification</a></h3>
-    NSString* NSBundleDidLoadNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSBundleDidLoadNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted when a bundle is loaded. The
+          notification object is the
+          <a rel="gsdoc" href="NSBundle.html#class$NSBundle">NSBundle</a>
+
+            itself. The notification also contains a
+            <em>userInfo</em> dictionary, containing the single
+            key &apos; <code>NSLoadedClasses</code> &apos;, mapped to an
+            <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>
+
+              containing the names of each class and
+              category loaded (as strings).
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSLoadedClasses">NSLoadedClasses</a></h3>
-    NSString* NSLoadedClasses;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSLoadedClasses;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          When an
+          <a rel="gsdoc" href="NSBundle.html#class$NSBundle">NSBundle</a>
+
+            loads classes and posts a
+            <code>NSBundleDidLoadNotification</code>, its
+            <em>userInfo</em> dictionary contains this key, mapped
+            to an
+            <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>
+
+              containing the names of each class and
+              category loaded (as strings).
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSShowNonLocalizedStrings">NSShowNonLocalizedStrings</a></h3>
-    NSString* NSShowNonLocalizedStrings;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSShowNonLocalizedStrings;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          A user default affecting the behavior of
+          <a rel="gsdoc" href="NSBundle.html#method$NSBundle-localizedStringForKey:value:table:">[NSBundle&nbsp;-localizedStringForKey:value:table:]</a>
+. If set, the value of the key will be returned as an uppercase string rather than any localized equivalent found. This can be useful during development to check where a given string in the UI is &quot;coming from&quot;.
         
     </p>
     <hr width="25%" align="left" />
@@ -2059,58 +2769,92 @@
     <p>
     </p>
     <h3><a name="variable$ConnectionBecameInvalidNotification">ConnectionBecameInvalidNotification</a></h3>
-    NSString* ConnectionBecameInvalidNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* ConnectionBecameInvalidNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Present for backwards compatibility. Do not use.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSConnectionLocalCount">NSConnectionLocalCount</a></h3>
-    NSString* NSConnectionLocalCount;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSConnectionLocalCount;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          GNUstep-specific key for dictionary returned
+          by
+          <a rel="gsdoc" href="NSConnection.html#method$NSConnection-statistics">
+            [NSConnection&nbsp;-statistics]
+          </a>
+
+          : number of local objects currently in use remotely.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSConnectionProxyCount">NSConnectionProxyCount</a></h3>
-    NSString* NSConnectionProxyCount;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSConnectionProxyCount;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          GNUstep-specific key for dictionary returned
+          by
+          <a rel="gsdoc" href="NSConnection.html#method$NSConnection-statistics">
+            [NSConnection&nbsp;-statistics]
+          </a>
+
+          : number of remote objects currently in use.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSConnectionRepliesReceived">NSConnectionRepliesReceived</a></h3>
-    NSString* NSConnectionRepliesReceived;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSConnectionRepliesReceived;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for dictionary returned by
+          <a rel="gsdoc" href="NSConnection.html#method$NSConnection-statistics">
+            [NSConnection&nbsp;-statistics]
+          </a>
+
+          : number of messages replied to so far by the remote
+          connection.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSConnectionRepliesSent">NSConnectionRepliesSent</a></h3>
-    NSString* NSConnectionRepliesSent;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSConnectionRepliesSent;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for dictionary returned by
+          <a rel="gsdoc" href="NSConnection.html#method$NSConnection-statistics">
+            [NSConnection&nbsp;-statistics]
+          </a>
+
+          : number of messages sent so far to the remote connection.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSConnectionRequestsReceived">NSConnectionRequestsReceived</a></h3>
-    NSString* NSConnectionRequestsReceived;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSConnectionRequestsReceived;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for dictionary returned by
+          <a rel="gsdoc" href="NSConnection.html#method$NSConnection-statistics">
+            [NSConnection&nbsp;-statistics]
+          </a>
+
+          : number of messages received so far from the remote
+          connection.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSConnectionRequestsSent">NSConnectionRequestsSent</a></h3>
-    NSString* NSConnectionRequestsSent;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSConnectionRequestsSent;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Key for dictionary returned by
+          <a rel="gsdoc" href="NSConnection.html#method$NSConnection-statistics">
+            [NSConnection&nbsp;-statistics]
+          </a>
+
+          : number of messages sent so far to the remote connection.
         
     </p>
     <hr width="25%" align="left" />
@@ -2180,9 +2924,9 @@
             the isa pointer is modified to be that of the NSZombie
             class. When messages are sent to the object, intead
             of crashing, NSZombie will use
-            
+            <a rel="gsdoc" href="Functions.html#function$NSLog">
               NSLog()
-            
+            </a>
 
             to produce an error message. By default the memory used
             by the object will not really be freed, so error
@@ -2204,18 +2948,22 @@
     <p>
     </p>
     <h3><a name="variable$GSNetworkNotificationCenterType">GSNetworkNotificationCenterType</a></h3>
-    NSString* GSNetworkNotificationCenterType;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* GSNetworkNotificationCenterType;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Type of
+          <a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter+notificationCenterForType:">[NSDistributedNotificationCenter&nbsp;+notificationCenterForType:]</a>
+ - localhost and LAN broadcast. This type is available only on GNUstep.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSLocalNotificationCenterType">NSLocalNotificationCenterType</a></h3>
-    NSString* NSLocalNotificationCenterType;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSLocalNotificationCenterType;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Type for
+          <a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter+notificationCenterForType:">[NSDistributedNotificationCenter&nbsp;+notificationCenterForType:]</a>
+ - localhost broadcast only. This is the only type on OS X.
         
     </p>
     <hr width="25%" align="left" />
@@ -2227,7 +2975,13 @@
     NSUncaughtExceptionHandler* _NSUncaughtExceptionHandler;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Variable used to hold the current uncaught exception
+          handler. Use the function
+          <a rel="gsdoc" href="Functions.html#macro$NSSetUncaughtExceptionHandler">
+            NSSetUncaughtExceptionHandler()
+          </a>
+
+          to set.
         
     </p>
     <hr width="25%" align="left" />
@@ -2285,7 +3039,7 @@
           This may decrease a retain count or may actually destroy
           the element. <br /> Description function. Generates a
           string describing the element and does not modify the
-          element itsself.
+          element itself.
         
     </p>
     <hr width="25%" align="left" />
@@ -2297,7 +3051,10 @@
     struct _NSNotificationQueueList struct _NSNotificationQueueList;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Structure used internally by
+          <a rel="gsdoc" href="NSNotificationQueue.html#class$NSNotificationQueue">NSNotificationQueue</a>
+
+            .
         
     </p>
     <hr width="25%" align="left" />
@@ -2310,16 +3067,16 @@
     <p>
       
           A variable holding the file descriptor to which
-          
+          <a rel="gsdoc" href="Functions.html#function$NSLogv">
             NSLogv()
-          
+          </a>
 
           messages are written by default. GNUstep initialises
           this to stderr. <br /> You may change this, but for
           thread safety should use the lock provided by
-          
+          <a rel="gsdoc" href="Functions.html#function$GSLogLock">
             GSLogLock()
-          
+          </a>
 
           to protect the change.
         
@@ -2340,9 +3097,9 @@
             this in your program in order to implement any custom
             behavior you wish. You should use the lock
             returned by
-            
+            <a rel="gsdoc" href="Functions.html#function$GSLogLock">
               GSLogLock()
-            
+            </a>
 
             to protect any change you make.
               </p>
@@ -2353,9 +3110,9 @@
     <p>
 
             Calls from
-            
+            <a rel="gsdoc" href="Functions.html#function$NSLogv">
               NSLogv()
-            
+            </a>
 
             to the function pointed to by this variable are
             protected by a lock, and should therefore be
@@ -2402,9 +3159,9 @@
               , which is set by default to stderr. <br /> Your
               program may change this descriptor... but you
               should protect changes using the lock provided by
-              
+              <a rel="gsdoc" href="Functions.html#function$GSLogLock">
                 GSLogLock()
-              
+              </a>
 
               . <br /> NB. If the write to the descriptor fails, and
               the system supports writing to syslog, then the log
@@ -2422,10 +3179,13 @@
     <p>
     </p>
     <h3><a name="variable$gnustep_global_lock">gnustep_global_lock</a></h3>
-    NSRecursiveLock* gnustep_global_lock;<br />
+    <a rel="gsdoc" href="NSLock.html#class$NSRecursiveLock">NSRecursiveLock</a>* gnustep_global_lock;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Global lock to be used by classes when operating on
+          any global data that invoke other methods which also
+          access global; thus, creating the potential for
+          deadlock.
         
     </p>
     <hr width="25%" align="left" />
@@ -2434,10 +3194,13 @@
     <p>
     </p>
     <h3><a name="variable$NSPortDidBecomeInvalidNotification">NSPortDidBecomeInvalidNotification</a></h3>
-    NSString* NSPortDidBecomeInvalidNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSPortDidBecomeInvalidNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted when an instance of
+          <a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>
+
+            or a subclass becomes invalid.
         
     </p>
     <hr width="25%" align="left" />
@@ -2461,7 +3224,8 @@
     struct objc_class _NSConstantStringClassReference;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          For internal use with NeXT runtime; needed, until Apple
+          Radar 2870817 is fixed.
         
     </p>
     <hr width="25%" align="left" />
@@ -2470,10 +3234,19 @@
     <p>
     </p>
     <h3><a name="variable$NSTaskDidTerminateNotification">NSTaskDidTerminateNotification</a></h3>
-    NSString* NSTaskDidTerminateNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSTaskDidTerminateNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted when an
+          <a rel="gsdoc" href="NSTask.html#class$NSTask">NSTask</a>
+
+            terminates, either due to the subprocess ending
+            or the
+            <a rel="gsdoc" href="NSTask.html#method$NSTask-terminate">
+              [NSTask&nbsp;-terminate]
+            </a>
+
+            method explicitly being called.
         
     </p>
     <hr width="25%" align="left" />
@@ -2482,26 +3255,41 @@
     <p>
     </p>
     <h3><a name="variable$NSThreadDidStartNotification">NSThreadDidStartNotification</a></h3>
-    NSString* NSThreadDidStartNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSThreadDidStartNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted whenever a new thread is
+          started up. This is a GNUstep extension.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSThreadWillExitNotification">NSThreadWillExitNotification</a></h3>
-    NSString* NSThreadWillExitNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSThreadWillExitNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted when an
+          <a rel="gsdoc" href="NSThread.html#class$NSThread">NSThread</a>
+
+            instance receives an exit message, or an external
+            thread has been deregistered.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSWillBecomeMultiThreadedNotification">NSWillBecomeMultiThreadedNotification</a></h3>
-    NSString* NSWillBecomeMultiThreadedNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSWillBecomeMultiThreadedNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted the first time a new
+          <a rel="gsdoc" href="NSThread.html#class$NSThread">NSThread</a>
+
+            is created or a separate thread from another library is
+            registered in an application. (The initial
+            thread that a program starts with does <em>not</em>
+            post this notification.) Before such a notification
+            has been posted you can assume the application is in
+            single-threaded mode and locks are not
+            necessary. Afterwards multiple threads
+            <em>may</em> be running.
         
     </p>
     <hr width="25%" align="left" />
@@ -2510,10 +3298,12 @@
     <p>
     </p>
     <h3><a name="variable$NSURLFileScheme">NSURLFileScheme</a></h3>
-    NSString* NSURLFileScheme;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSURLFileScheme;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          URL scheme constant for use with
+          <a rel="gsdoc" href="NSURL.html#method$NSURL-initWithScheme:host:path:">[NSURL&nbsp;-initWithScheme:host:path:]</a>
+.
         
     </p>
     <hr width="25%" align="left" />
@@ -2522,58 +3312,81 @@
     <p>
     </p>
     <h3><a name="variable$NSUndoManagerCheckpointNotification">NSUndoManagerCheckpointNotification</a></h3>
-    NSString* NSUndoManagerCheckpointNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSUndoManagerCheckpointNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted whenever
+          <a rel="gsdoc" href="NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>
+
+            opens or closes an undo group. The undo manager
+            itself is the notification object, with no
+            <em>userInfo</em> dictionary.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSUndoManagerDidOpenUndoGroupNotification">NSUndoManagerDidOpenUndoGroupNotification</a></h3>
-    NSString* NSUndoManagerDidOpenUndoGroupNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSUndoManagerDidOpenUndoGroupNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted after an
+          <a rel="gsdoc" href="NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>
+
+            opens an undo group.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSUndoManagerDidRedoChangeNotification">NSUndoManagerDidRedoChangeNotification</a></h3>
-    NSString* NSUndoManagerDidRedoChangeNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSUndoManagerDidRedoChangeNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted after an
+          <a rel="gsdoc" href="NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>
+
+            executes a redo operation.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSUndoManagerDidUndoChangeNotification">NSUndoManagerDidUndoChangeNotification</a></h3>
-    NSString* NSUndoManagerDidUndoChangeNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSUndoManagerDidUndoChangeNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted after an
+          <a rel="gsdoc" href="NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>
+
+            executes an undo operation.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSUndoManagerWillCloseUndoGroupNotification">NSUndoManagerWillCloseUndoGroupNotification</a></h3>
-    NSString* NSUndoManagerWillCloseUndoGroupNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSUndoManagerWillCloseUndoGroupNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted before an
+          <a rel="gsdoc" href="NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>
+
+            closes an undo group.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSUndoManagerWillRedoChangeNotification">NSUndoManagerWillRedoChangeNotification</a></h3>
-    NSString* NSUndoManagerWillRedoChangeNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSUndoManagerWillRedoChangeNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted before an
+          <a rel="gsdoc" href="NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>
+
+            will execute a redo operation.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="variable$NSUndoManagerWillUndoChangeNotification">NSUndoManagerWillUndoChangeNotification</a></h3>
-    NSString* NSUndoManagerWillUndoChangeNotification;<br />
+    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSUndoManagerWillUndoChangeNotification;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Notification posted before an
+          <a rel="gsdoc" href="NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>
+
+            will execute an undo operation.
         
     </p>
     <hr width="25%" align="left" />
@@ -2601,7 +3414,52 @@
     struct NSZoneStats struct NSZoneStats;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          <code>NSZoneStats</code> is the structure returned by
+          the
+          <a rel="gsdoc" href="Functions.html#function$NSZoneStats">
+            NSZoneStats()
+          </a>
+
+          function that summarizes the current usage of a
+          zone. It is similar to the structure <em>mstats</em> in
+          the GNU C library. It has 5 fields of type
+          <code>size_t</code> -
+          
+      <dl>
+        <dt><code>bytes_total</code></dt>
+        <dd>
+          
+              This is the total size of memory managed by the
+              zone, in bytes.
+            
+        </dd>
+        <dt><code>chunks_used</code></dt>
+        <dd>
+          
+              This is the number of memory chunks in use in the
+              zone.
+            
+        </dd>
+        <dt><code>bytes_used</code></dt>
+        <dd>
+          This is the number of bytes in use.
+        </dd>
+        <dt><code>chunks_free</code></dt>
+        <dd>
+          
+              This is the number of memory chunks that are not in
+              use.
+            
+        </dd>
+        <dt><code>bytes_free</code></dt>
+        <dd>
+          
+              This is the number of bytes managed by the zone that
+              are not in use.
+            
+        </dd>
+      </dl>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -2609,7 +3467,28 @@
     struct _NSZone struct _NSZone;<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          Primary structure representing an <code>NSZone</code>
+          . Technically it consists of a set of function pointers for
+          zone upkeep functions plus some other things-
+
+<pre>
+{
+  // Functions for zone.
+  void *(*malloc)(struct _NSZone *zone, size_t size);
+  void *(*realloc)(struct _NSZone *zone, void *ptr, size_t size);
+  void (*free)(struct _NSZone *zone, void *ptr);
+  void (*recycle)(struct _NSZone *zone);
+  BOOL (*check)(struct _NSZone *zone);
+  BOOL (*lookup)(struct _NSZone *zone, void *ptr);
+
+  // Zone statistics (not always maintained).
+  struct NSZoneStats (*stats)(struct _NSZone *zone);
+  
+  size_t gran;    // Zone granularity (passed in on initialization)
+  NSString *name; // Name of zone (default is &apos;nil&apos;)
+  NSZone *next;   // Pointer used for internal management of multiple zones.
+}</pre>
+      
         
     </p>
     <hr width="25%" align="left" />

@@ -7,7 +7,7 @@
     </title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSDistributedNotificationCenter">
@@ -20,8 +20,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.32</p>
-    <p><b>Date:</b> 2003/07/31 23:49:31</p>
+    <p><b>Version:</b> 1.33</p>
+    <p><b>Date:</b> 2004/06/22 22:40:38</p>
     <p><b>Copyright:</b> (C) 1998-2003 Free Software Foundation, Inc.</p>
 
         <div>
@@ -32,7 +32,7 @@
         NSDistributedNotificationCenter
         class
       </a></h1>
-    <h2><a name="class$NSDistributedNotificationCenter">NSDistributedNotificationCenter</a> : NSNotificationCenter</h2>
+    <h2><a name="class$NSDistributedNotificationCenter">NSDistributedNotificationCenter</a> : <a rel="gsdoc" href="NSNotification.html#class$NSNotificationCenter">NSNotificationCenter</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -43,8 +43,8 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>NotOpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -53,21 +53,21 @@
     </p>
     <p>
 
-            The NSDistributedNotificationCenter provides a
-            versatile yet simple mechanism for objects in
-            different processes to communicate effectively
-            while knowing very little about each others
-            internals. <br /> A distributed notification
-            center acts much like a normal notification center,
-            but it handles notifications on a machine-wide (or
-            local network wide) basis rather than just
-            notifications within a single process.
-            Objects are able to register themselves as
-            observers for particular notification names and
-            objects, and they will then receive notifications
-            (including optional user information consisting
-            of a dictionary of property-list objects) as they are
-            posted.
+            The <code>NSDistributedNotificationCenter</code>
+            provides a versatile yet simple mechanism for
+            objects in different processes to communicate
+            effectively while knowing very little about
+            each others&apos; internals. <br /> A distributed
+            notification center acts much like a normal
+            notification center, but it handles
+            notifications on a machine-wide (or local
+            network wide) basis rather than just notifications
+            within a single process. Objects are able to
+            register themselves as observers for particular
+            notification names and objects, and they will
+            then receive notifications (including optional user
+            information consisting of a dictionary of
+            property-list objects) as they are posted.
               </p>
     <p>
       
@@ -80,15 +80,17 @@
             communication, it is fundamentally slower
             than normal notifications, and should be used
             relatively sparingly. In order to help with
-            this, the NSDistributedNotificationCenter provides a
-            notion of &apos;suspension&apos;, whereby a center can be
-            suspended causing notifications for observers in
-            the process where the center was suspended to cease
-            receiving notifications. Observers can specify
-            how notifications are to be handled in this case
-            (queued or discarded) and posters can specify that
-            particular notifications are to be delivered
-            immediately irrespective of suspension.
+            this, the
+            <code>NSDistributedNotificationCenter</code>
+            provides a notion of &apos;suspension&apos;, whereby a
+            center can be suspended causing notifications for
+            observers in the process where the center was
+            suspended to cease receiving notifications.
+            Observers can specify how notifications are to be
+            handled in this case (queued or discarded) and
+            posters can specify that particular notifications
+            are to be delivered immediately irrespective of
+            suspension.
               </p>
     <p>
       
@@ -99,13 +101,14 @@
             Distributed notifications are mediated by a
             server process which handles all notifications for a
             particular center type. In GNUstep this process
-            is the gdnc tool, and when started without special
-            options, a gdnc process acts as the local centre
-            for the host it is running on. When started with the
-            GSNetwork user default set to <code>YES</code>,
-            the gdnc tool acts as a local network wide server (you
-            should only run one copy of gdnc like this on your
-            LAN). <br /> The gdnc process should be started at
+            is the <code>gdnc</code> tool, and when started without
+            special options, a gdnc process acts as the local
+            centre for the host it is running on. When started
+            with the <code>GSNetwork</code> user default set to
+            <code>YES</code>, the <code>gdnc</code> tool acts as
+            a local network wide server (you should only run one copy
+            of <code>gdnc</code> like this on your LAN). <br /> The
+            <code>gdnc</code> process should be started at
             machine boot time, but GNUstep will attempt to
             start it automatically if it can&apos;t find it.
               </p>
@@ -120,54 +123,36 @@
             local network center which can be used from multiple
             hosts. By default the system sends this to any gdnc
             process it can find which is configured as a
-            network-wide server, but the GDNCHost user
-            default may be used to specify a particular host to
-            be contacted... this may be of use where you wish to
-            have logically separate clusters of machines on a
-            shared LAN.
+            network-wide server, but the
+            <code>GDNCHost</code> user default may be used to
+            specify a particular host to be contacted... this
+            may be of use where you wish to have logically separate
+            clusters of machines on a shared LAN.
               </p>
     <p>
       
         
     </p>
-    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for NSDistributedNotificationCenter Class</h2>
-    <h3><a name="ivariable$NSDistributedNotificationCenter*_centerLock">_centerLock</a></h3>
-    @private NSRecursiveLock* <b>_centerLock</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSDistributedNotificationCenter*_remote">_remote</a></h3>
-    @private id <b>_remote</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSDistributedNotificationCenter*_suspended">_suspended</a></h3>
-    @private BOOL <b>_suspended</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSDistributedNotificationCenter*_type">_type</a></h3>
-    @private NSString* <b>_type</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+    <hr width="50%" align="left" />
+    <a href="#_NSDistributedNotificationCenter_ivars">Instance Variables</a>
+    <br/><br/>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter+defaultCenter">+defaultCenter</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter+notificationCenterForType:">+notificationCenterForType:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter-addObserver:selector:name:object:">-addObserver:selector:name:object:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter-addObserver:selector:name:object:suspensionBehavior:">-addObserver:selector:name:object:suspensionBehavior:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter-postNotification:">-postNotification:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter-postNotificationName:object:">-postNotificationName:object:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter-postNotificationName:object:userInfo:">-postNotificationName:object:userInfo:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter-postNotificationName:object:userInfo:deliverImmediately:">-postNotificationName:object:userInfo:deliverImmediately:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter-removeObserver:name:object:">-removeObserver:name:object:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter-setSuspended:">-setSuspended:</a></li>
+      <li><a rel="gsdoc" href="NSDistributedNotificationCenter.html#method$NSDistributedNotificationCenter-suspended">-suspended</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSDistributedNotificationCenter+defaultCenter">defaultCenter&nbsp;</a></h3>
-    + (NSNotificationCenter*) <b>defaultCenter</b>;<br />
+    + (<a rel="gsdoc" href="NSNotification.html#class$NSNotificationCenter">NSNotificationCenter</a>*) <b>defaultCenter</b>;<br />
     <p>
       
             Returns the default notification center... a shared
@@ -177,38 +162,40 @@
               +notificationCenterForType:
             </a>
 
-            with NSLocalNotificationCenterType as its argument.
+            with <code>NSLocalNotificationCenterType</code> as its
+            argument.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedNotificationCenter+notificationCenterForType:">notificationCenterForType:&nbsp;</a></h3>
-    + (NSNotificationCenter*) <b>notificationCenterForType:</b> (NSString*)type;<br />
+    + (<a rel="gsdoc" href="NSNotification.html#class$NSNotificationCenter">NSNotificationCenter</a>*) <b>notificationCenterForType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)type;<br />
     <p>
       
             Returns a notification center of the specified
             <var>type</var>. <br /> The
-            NSLocalNotificationCenterType
-            provides a shared access to a notificatiuon center
-            used by processes on the local host. <br /> The
-            GSNetworkNotificationCenterType
+            <code>NSLocalNotificationCenterType</code> provides
+            a shared access to a notificatiuon center used by
+            processes on the local host. <br /> The
+            <code>GSNetworkNotificationCenterType</code>
             provides a shared access to a notificatiuon center
             used by processes on the local network. <br /> MacOS-X
-            supports only NSLocalNotificationCenterType.
+            supports only
+            <code>NSLocalNotificationCenterType</code>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedNotificationCenter-addObserver:selector:name:object:">addObserver:&nbsp;selector:&nbsp;name:&nbsp;object:&nbsp;</a></h3>
-    - (void) <b>addObserver:</b> (id)anObserver<b> selector:</b> (SEL)aSelector<b> name:</b> (NSString*)notificationName<b> object:</b> (NSString*)anObject;<br />
+    - (void) <b>addObserver:</b> (id)anObserver<b> selector:</b> (SEL)aSelector<b> name:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)notificationName<b> object:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)anObject;<br />
     <p>
       
             Adds an observer to the receiver. Calls
             <a rel="gsdoc" href="#method$NSDistributedNotificationCenter-addObserver:selector:name:object:suspensionBehavior:">-addObserver:selector:name:object:suspensionBehavior:</a>
- with NSNotificationSuspensionBehaviorCoalesce.
+ with <code>NSNotificationSuspensionBehaviorCoalesce</code>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedNotificationCenter-addObserver:selector:name:object:suspensionBehavior:">addObserver:&nbsp;selector:&nbsp;name:&nbsp;object:&nbsp;suspensionBehavior:&nbsp;</a></h3>
-    - (void) <b>addObserver:</b> (id)anObserver<b> selector:</b> (SEL)aSelector<b> name:</b> (NSString*)notificationName<b> object:</b> (NSString*)anObject<b> suspensionBehavior:</b> (NSNotificationSuspensionBehavior)suspensionBehavior;<br />
+    - (void) <b>addObserver:</b> (id)anObserver<b> selector:</b> (SEL)aSelector<b> name:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)notificationName<b> object:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)anObject<b> suspensionBehavior:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSNotificationSuspensionBehavior">NSNotificationSuspensionBehavior</a>)suspensionBehavior;<br />
     <p>
       
             Adds an observer to the receiver. <br /> When a
@@ -223,7 +210,11 @@
             suspended:
             
       <dl>
-        <dt>NSNotificationSuspensionBehaviorDrop</dt>
+        <dt>
+                <code>
+                  NSNotificationSuspensionBehaviorDrop
+                </code>
+              </dt>
         <dd>
           
                 Discards the notification if the observing
@@ -231,7 +222,9 @@
               
         </dd>
         <dt>
-                NSNotificationSuspensionBehaviorCoalesce
+                <code>
+                  NSNotificationSuspensionBehaviorCoalesce
+                </code>
               </dt>
         <dd>
           
@@ -242,7 +235,11 @@
                 unsuspended.
               
         </dd>
-        <dt>NSNotificationSuspensionBehaviorHold</dt>
+        <dt>
+                <code>
+                  NSNotificationSuspensionBehaviorHold
+                </code>
+              </dt>
         <dd>
           
                 Queues notifications when the observing process
@@ -252,7 +249,9 @@
               
         </dd>
         <dt>
-                NSNotificationSuspensionBehaviorDeliverImmediately
+                <code>
+                  NSNotificationSuspensionBehaviorDeliverImmediately
+                </code>
               </dt>
         <dd>
           
@@ -266,7 +265,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedNotificationCenter-postNotification:">postNotification:&nbsp;</a></h3>
-    - (void) <b>postNotification:</b> (NSNotification*)notification;<br />
+    - (void) <b>postNotification:</b> (<a rel="gsdoc" href="NSNotification.html#class$NSNotification">NSNotification</a>*)notification;<br />
     <p>
       
             Posts the <var>notification</var> to the center using
@@ -276,7 +275,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedNotificationCenter-postNotificationName:object:">postNotificationName:&nbsp;object:&nbsp;</a></h3>
-    - (void) <b>postNotificationName:</b> (NSString*)notificationName<b> object:</b> (NSString*)anObject;<br />
+    - (void) <b>postNotificationName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)notificationName<b> object:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)anObject;<br />
     <p>
       
             Posts the <var>notificationName</var> and
@@ -288,7 +287,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedNotificationCenter-postNotificationName:object:userInfo:">postNotificationName:&nbsp;object:&nbsp;userInfo:&nbsp;</a></h3>
-    - (void) <b>postNotificationName:</b> (NSString*)notificationName<b> object:</b> (NSString*)anObject<b> userInfo:</b> (NSDictionary*)userInfo;<br />
+    - (void) <b>postNotificationName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)notificationName<b> object:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)anObject<b> userInfo:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)userInfo;<br />
     <p>
       
             Posts the <var>notificationName</var>,
@@ -300,7 +299,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedNotificationCenter-postNotificationName:object:userInfo:deliverImmediately:">postNotificationName:&nbsp;object:&nbsp;userInfo:&nbsp;deliverImmediately:&nbsp;</a></h3>
-    - (void) <b>postNotificationName:</b> (NSString*)notificationName<b> object:</b> (NSString*)anObject<b> userInfo:</b> (NSDictionary*)userInfo<b> deliverImmediately:</b> (BOOL)deliverImmediately;<br />
+    - (void) <b>postNotificationName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)notificationName<b> object:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)anObject<b> userInfo:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)userInfo<b> deliverImmediately:</b> (BOOL)deliverImmediately;<br />
     <p>
       
             The primitive notification posting method... <br /> The
@@ -313,7 +312,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDistributedNotificationCenter-removeObserver:name:object:">removeObserver:&nbsp;name:&nbsp;object:&nbsp;</a></h3>
-    - (void) <b>removeObserver:</b> (id)anObserver<b> name:</b> (NSString*)notificationName<b> object:</b> (NSString*)anObject;<br />
+    - (void) <b>removeObserver:</b> (id)anObserver<b> name:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)notificationName<b> object:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)anObject;<br />
     <p>
       
             Removes the observer from the center.
@@ -341,6 +340,57 @@
           
     </p>
     <hr width="25%" align="left" />
+<a name="_NSDistributedNotificationCenter_ivars"/>    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for NSDistributedNotificationCenter Class</h2>
+    <h3><a name="ivariable$NSDistributedNotificationCenter*_centerLock">_centerLock</a></h3>
+    @protected NSRecursiveLock* <b>_centerLock</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSDistributedNotificationCenter*_remote">_remote</a></h3>
+    @protected id <b>_remote</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSDistributedNotificationCenter*_suspended">_suspended</a></h3>
+    @protected BOOL <b>_suspended</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSDistributedNotificationCenter*_type">_type</a></h3>
+    @protected NSString* <b>_type</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
     <br />
     <a href="Base.html">Up</a>
     </font>

@@ -1,875 +1,791 @@
 <HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on September, 7  2004 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
 <HEAD>
-<!-- Created by texi2html 1.56k from manual.texi on 26 January 2004 -->
+<TITLE>Objective-C GNUstep Base Programming Manual: Objects</TITLE>
 
-<TITLE>Objective-C, Programming Manual - The Objective-C Language</TITLE>
+<META NAME="description" CONTENT="Objective-C GNUstep Base Programming Manual: Objects">
+<META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Objects">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
 </HEAD>
-<BODY>
-Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_2.html">previous</A>, <A HREF="manual_4.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
-<P><HR><P>
 
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
-<H1><A NAME="SEC10" HREF="manual_toc.html#TOC10">The Objective-C Language</A></H1>
-
+<A NAME="SEC38"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC37"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 3. Working with Objects </H1>
+<!--docid::SEC38::-->
 <P>
-In the previous chapter you were introduced to some basic object-oriented programming terms. This chapter will expand on these terms, and introduce you to some new ones, while concentrating on how they apply to the Objective-C language and the GNUstep base library. First let us look at some non OO additions that Objective-C makes to ANSI C.
 
+Objective-C and GNUstep provide a rich object allocation and memory management
+framework.  Objective-C affords independent memory allocation and
+initialization steps for objects, and GNUstep supports three alternative
+schemes for memory management.
+</P><P>
 
-
-
-<H2><A NAME="SEC11" HREF="manual_toc.html#TOC11">Non OO Additions</A></H2>
-
+<HR SIZE="6">
+<A NAME="SEC39"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC40"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 3.1 Initializing and Allocating Objects </H2>
+<!--docid::SEC39::-->
 <P>
-Objective-C makes a few non OO additions to the syntax of the C programming
-language that include:
+
+Unlike most object-oriented languages, Objective-C exposes memory allocation
+for objects and initialization as two separate steps.  In particular, every
+class provides an '<CODE>+alloc</CODE>' method for creating blank new instances.
+However, initialization is carried out by an instance method, not a class
+method.  By convention, the default initialization method is '<CODE>-init</CODE>'.
+The general procedure for obtaining a newly initialized object is thus:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id newObj = [[SomeClass alloc] init];
+</pre></td></tr></table></P><P>
+
+Here, the call to <CODE>alloc</CODE> returns an uninitialized instance, on which
+<CODE>init</CODE> is then invoked.  (Actually, <CODE>alloc</CODE> <I>does</I> set all
+instance variable memory to 0, and it initializes the special <CODE>isa</CODE>
+variable mentioned earlier which points to the object's class, allowing it to
+respond to messages.)  The <CODE>alloc</CODE> and <CODE>init</CODE> calls may be collapsed
+for convenience into a single call:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id newObj = [SomeClass new];
+</pre></td></tr></table></P><P>
+
+The default implementation of <CODE>new</CODE> simply calls <CODE>alloc</CODE> and
+<CODE>init</CODE> as above, however other actions are possible.  For example,
+<CODE>new</CODE> could be overridden to reuse an existing object and just call
+<CODE>init</CODE> on it (skipping the <CODE>alloc</CODE> step).  (Technically this kind of
+instantiation management can be done inside <CODE>init</CODE> as well -- it
+can deallocate the receiving object and return another one in its place.
+However this practice is not recommended; the <CODE>new</CODE> method should be
+used for this instead since it avoids unnecessary memory allocation for
+instances that are not used.)
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC40"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC41"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 3.1.1 Initialization with Arguments </H3>
+<!--docid::SEC40::-->
+<P>
+
+In many cases you want to initialize an object with some specific information.
+For example a <CODE>Point</CODE> object might need to be given an <I>x, y</I> position.
+In this case the class may define additional initializers, such as:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id pt = [[Point alloc] initWithX: 1.5 Y: 2.0];
+</pre></td></tr></table></P><P>
+
+Again, a <CODE>new</CODE> method may be defined, though sometimes the word "new"
+is not used in the name:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id pt = [Point newWithX: 1.5 Y: 2.0];
+  // alternative
+id pt = [Point pointAtX: 1.5 Y: 2.0];
+</pre></td></tr></table></P><P>
+
+In general the convention in Objective-C is to name initializers in a way that
+is intuitive for their classes.  Initialization is covered in more detail in
+<A HREF="manual_4.html#SEC51">Instance Initialization</A>.  Finally, it is acceptable for an
+<CODE>init...</CODE> method to return <CODE>nil</CODE> at times when insufficient memory
+is available or it is passed an invalid argument; for example the argument to
+the <CODE>NSString</CODE> method <CODE>initWithContentsOfFile:</CODE> may be an erroneous
+file name.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC41"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC40"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC42"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC42"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 3.1.2 Memory Allocation and Zones </H3>
+<!--docid::SEC41::-->
+<P>
+
+Memory allocation for objects in GNUstep supports the ability to specify that
+memory is to be taken from a particular region of addressable memory.  In the
+days that computer RAM was relatively limited, it was important to be able to
+ensure that parts of a large application that needed to interact with one
+another could be held in working memory at the same time, rather than
+swapping back and forth from disk.  This could be done by specifying that
+particular objects were to be allocated from a particular region of memory,
+rather than scattered across all of memory at the whim of the operating
+system.  The OS would then keep these objects in memory at one time, and swap
+them out at the same time, perhaps to make way for a separate portion of the
+application that operated mostly independently.  (Think of a word processor
+that keeps structures for postscript generation for printing separate from
+those for managing widgets in the onscreen editor.)
+</P><P>
+
+With the growth of computer RAM and the increasing sophistication of memory
+management by operating systems, it is not as important these days to control
+the regions where memory is allocated from, however it may be of use in
+certain situations.  For example, you may wish to save time by allocating
+memory in large chunks, then cutting off pieces yourself for object
+allocation.  If you know you are going to be allocating large numbers of
+objects of a certain size, it may pay to create a zone that allocates memory
+in multiples of this size.  The GNUstep/Objective-C mechanisms supporting
+memory allocation are therefore described here.
+</P><P>
+
+The fundamental structure describing a region of memory in GNUstep is called a
+<I>Zone</I>, and it is represented by the <CODE>NSZone</CODE> struct.  All
+<CODE>NSObject</CODE> methods dealing with the allocation of memory optionally take
+an <CODE>NSZone</CODE> argument specifying the Zone to get the memory from.  For
+example, in addition to the fundamental <CODE>alloc</CODE> method described above,
+there is the <CODE>allocWithZone:</CODE> method:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>+ (id) alloc;
++ (id) allocWithZone: (NSZone*)zone;
+</pre></td></tr></table></P><P>
+
+Both methods will allocate memory to hold an object, however the first one
+automatically takes the memory from a default Zone (which is returned by the
+<CODE>NSDefaultMallocZone()</CODE> function).  When it is necessary to group objects
+in the same area of memory, or allocate in chunks - perhaps for performance
+reasons, you may create a Zone from where you would allocate those objects by
+using the <CODE>NSCreateZone</CODE> function.  This will minimise the paging
+required by your application when accessing those objects frequently.
+</P><P>
+
+Low level memory allocation is performed by the <CODE>NSAllocateObject()</CODE>
+function.  This is rarely used but available when you require more advanced
+control or performance. This function is called by <CODE>[NSObject
++allocWithZone:]</CODE>.  However, if you call <CODE>NSAllocateObject()</CODE> directly to
+create an instance of a class you did not write, you may break some
+functionality of that class, such as caching of frequently used objects.
+</P><P>
+
+Other <CODE>NSObject</CODE> methods besides <CODE>alloc</CODE> that may optionally take
+Zones include <CODE>-copy</CODE> and <CODE>-mutableCopy</CODE>.  For 95% of cases you
+will probably not need to worry about Zones at all; unless performance is
+critical, you can just use the methods without zone arguments, that take the
+default zone.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC42"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC41"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 3.1.3 Memory Deallocation </H3>
+<!--docid::SEC42::-->
+<P>
+
+Objects should be deallocated from memory when they are no longer needed.
+While there are several alternative schemes for managing this process (see
+next section), they all eventually resort to calling the <CODE>NSObject</CODE>
+method <CODE>-dealloc</CODE>, which is more or less the opposite of <CODE>-alloc</CODE>.
+It returns the memory occupied by the object to the Zone from which it was
+originally allocated.  The <CODE>NSObject</CODE> implementation of the method
+deallocates only instance variables.  Additional allocated, unshared memory
+used by the object must be deallocated separately.  Other entities that depend
+solely on the deallocated receiver, including complete objects, must also be
+deallocated separately.  Usually this is done by subclasses overriding
+<CODE>-dealloc</CODE> (see <A HREF="manual_4.html#SEC51">Instance Deallocation</A>).
+</P><P>
+
+As with <CODE>alloc</CODE>, the underlying implementation utilizes a function
+(<CODE>NSDeallocateObject()</CODE>) that can be used by your code if you know what
+you are doing.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC43"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC42"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC44"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 3.2 Memory Management </H2>
+<!--docid::SEC43::-->
+<P>
+
+In an object-oriented environment, ensuring that all memory is freed when it
+is no longer needed can be a challenge.  To assist in this regard, there are
+three alternative forms of memory management available in Objective-C:
+</P><P>
 
 <UL>
+<LI>Explicit<BR>
+You allocate objects using <CODE>alloc</CODE>, <CODE>copy</CODE> etc, and deallocate
+them when you have finished with them (using <CODE>dealloc</CODE>).
+This gives you complete control over memory management, and is highly
+efficient, but error prone.
+<P>
 
-<LI>
+<LI>Retain count<BR>
+You use the OpenStep retain/release mechanism, along with autorelease
+pools which provide a degree of automated memory management.  This gives
+a good degree of control over memory management, but requires some care
+in following simple rules.  It's pretty efficient.
+<P>
 
-A boolean data type (<CODE>BOOL</CODE>) capable of storing either of the
-values <CODE>YES</CODE> or <CODE>NO</CODE>.<BR>
-A <CODE>BOOL</CODE> is a scalar value and can be used like the familiar
-<CODE>int</CODE> and <CODE>char</CODE> data types.<BR>
-A <CODE>BOOL</CODE> value of <CODE>NO</CODE> is zero, while <CODE>YES</CODE> is non-zero.
-
-<LI>
-
-The use of a pair of slashes (<CODE>//</CODE>) to mark text up to the end
-of the line as a comment.
-
-<LI>
-
-The <CODE>#import</CODE> preprocessor directive was added, but its use is deprecated (it still works but it should not be used for new programs).
+<LI>Garbage collection<BR>
+You build the GNUstep base library with garbage collection, and link
+with the Boehm GC library <small>...</small> then never bother about
+releasing/deallocating memory.  This requires a slightly different
+approach to programming <small>...</small> you need to take care about what happens
+when objects are deallocated <small>...</small> but don't need to worry about
+deallocating them.
 </UL>
-
-
-
-<H2><A NAME="SEC12" HREF="manual_toc.html#TOC12">Objects</A></H2>
 <P>
-<A NAME="IDX10"></A>
 
+The recommended approach is to use some standard macros defined in
+<CODE>NSObject.h</CODE> which encapsulate the retain/release/autorelease mechanism,
+but which permit efficient use of the garbage collection system if you build
+your software with that.  We will justify this recommendation after describing
+the three alternatives in greater detail.
+</P><P>
 
+<HR SIZE="6">
+<A NAME="SEC44"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 3.2.1 Explicit Memory Management </H3>
+<!--docid::SEC44::-->
 <P>
-Object-oriented (OO) programming is based on the notion that a software system can be composed of objects that interact with each other in a manner that parallels the interaction of objects in the physical world.
 
+This is the standard route to memory management taken in C and C++ programs.
+As in standard C when using <CODE>malloc</CODE>, or in C++ when using <CODE>new</CODE> and
+<CODE>delete</CODE>, you need to keep track of every object created through an
+<CODE>alloc</CODE> call and destroy it by use of <CODE>dealloc</CODE> when it is no longer
+needed.  You must make sure to no longer reference deallocated objects;
+although messaging them will not cause a segmentation fault as in C/C++, it
+will still lead to your program behaving in unintended ways.
+</P><P>
 
+This approach is generally <I>not</I> recommended since the Retain/Release style
+of memory management is significantly less leak-prone while still being quite
+efficient.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC45"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC44"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC46"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 3.2.2 OpenStep-Style (Retain/Release) Memory Management </H3>
+<!--docid::SEC45::-->
 <P>
-This model makes it easier for the programmer to understand how software works since it makes programming more intuitive. The use of objects also makes it easier during program design: take a big problem and consider it in small pieces, the individual objects, and how they relate to each other.
 
-
-<P>
-Objects are like mini programs that can function on their own when requested by the program or even another object. An object can receive messages and then act on these messages to alter the state of itself (the size and position of a rectangle object in a drawing program for example).
-
-
-<P>
-In software an object consists of instance variables (data) that represent the state of the object, and methods (like C functions) that act on these variables in response to messages.
-
-
-<P>
-As a programmer creating an application or tool, all you need do is send messages to the appropriate objects rather than call functions that manipulate data as you would with a procedural program. 
-
-
-<P>
-The syntax for sending a message to an object, as shown below, is one of the additions that Objective-C adds to ANSI C.
-
-
-
-<PRE>
-[objectName message]; 
-</PRE>
-
-<P>
-Note the use of the square [ ] brackets surrounding the name of the object and message.
-
-
-<P>
-Rather than 'calling' one of its methods, an object is said to 'perform' one of its methods in response to a message. The format that a message can take is discussed later in this section.  
-
-
-
-
-<H3><A NAME="SEC13" HREF="manual_toc.html#TOC13">Id and nil</A></H3>
-
-<P>
-Objective-C defines a new type to identify an object: <CODE>id</CODE>, a type that points to an object's data (its instance variables). The following code declares the variable 'button' as an object (as opposed to 'button' being declared an integer, character or some other data type).
-
-<PRE>
-id button;
-</PRE>
-
-<P>
-When the button object is eventually created the variable name 'button' will point to the object's data, but before it is created the variable could be assigned the numeric value 0, to indicate to other code that the object does not yet exist.
-
-
-<P>
-Objective-C defines a new keyword <CODE>nil</CODE> for this assignment, where <CODE>nil</CODE> is of type <CODE>id</CODE> with the numeric value 0. In the button example, the assignment could look like this:
-
-
-
-<PRE>
-id button = nil;
-</PRE>
-
-<P>
-which assigns <CODE>nil</CODE> in the declaration of the variable.
-
-
-<P>
-You can then test the value of an object to determine whether the object exists, perhaps before sending the object a message. If the test fails, then the object does not exist and your code can execute an alternative statement.
-
-<PRE>
-if (anObject != nil)
-  ... /* send message */
-else ... /* do something else */
-</PRE>
-
-<P>
-The header file <CODE>objc/objc.h</CODE> defines <CODE>id</CODE>, <CODE>nil</CODE>, and other basic types of the Objective-C language. It can be included in your source code with the compiler directive <CODE>#include &#60;Foundation/Foundation.h&#62;</CODE>.
-
-
-
-
-<H3><A NAME="SEC14" HREF="manual_toc.html#TOC14">Messages</A></H3>
-<P>
-<A NAME="IDX11"></A>
-
-
-<P>
-A message in Objective-C is the mechanism by which you pass instructions
-to objects.  You may tell the object to do something for you, tell it to
-change its internal state, or ask it for information.
-
-
-<P>
-A message usually invokes a method, causing the receiving object
-to respond in some way.
-Objects and data are manipulated by sending messages to them.
-Like C-functions they have return types, but function specific to the object.
-
-
-<P>
-Objects respond to messages that make specific requests.
-Message expressions are enclosed in square brackets and include the
-receiver or object name and the message or method name along with
-any arguments.
-
-
-<P>
-To send a message to an object, use the syntax:
-
-
-<P>
-<CODE>[receiver messagename];</CODE>
-
-
-<P>
-where <CODE>receiver</CODE> is the object.
-
-
-<P>
-The run-time system invokes object methods that are specified by messages.
-For example, to invoke the display method of the mySquare object the
-following message is used:
-
-
-<P>
-<CODE>[mySquare display];</CODE>
-Messages may include arguments that are prefixed by colons, in which
-case the colons are part of the message name, so the following message
-is used to invoke the <CODE>setFrameOrigin::</CODE> method:
-
-
-<P>
-<CODE>[button setFrameOrigin: 10.0 : 10.0];</CODE>
-
-
-<P>
-Labels describing arguments precede colons:
-
-
-<P>
-<CODE>[button setWidth: 20.0 height: 122.0];</CODE>
-invokes the method named <CODE>setWidth:height:</CODE>
-Messages that take a variable number of arguments are of the form:
-
-
-<P>
-<CODE>[receiver makeList: list, argOne, argTwo, argThree];</CODE>
-
-
-<P>
-A message to nil does NOT crash the application (while in Java messages
-to null raise exceptions); the Objective-C application does nothing.
-
-
-<P>
-For example:
-
-
-<P>
-<CODE>[nil display];</CODE>
-
-
-<P>
-will do nothing.
-
-
-<P>
-If a message to nil is supposed to return an object, it will return nil.
-But if the method is supposed to return something else, then the
-return value of that method when invoked on nil, is undefined.
-The programmer therefore
-needs to avoid using the return value in this instance.
-
-
-
-
-<H3><A NAME="SEC15" HREF="manual_toc.html#TOC15">Polymorphism</A></H3>
-<P>
-<A NAME="IDX12"></A>
-
-
-<P>
-Polymorphism refers to the fact that two different objects may
-respond differently to the same message. For example when client
-objects receive an alike message from a server object, they may
-respond differently. Using Dynamic Binding, the run-time system
-determines which code to execute according to the object type.
-
-
-
-
-<H2><A NAME="SEC16" HREF="manual_toc.html#TOC16">Classes</A></H2>
-<P>
-<A NAME="IDX13"></A>
-<EM>needs to be clearer/readable and say what a class is? also explain
-instances!</EM><BR>
-Objects form groups or classes, and those in the same class hold
-the same type of data, and may execute the same methods.
-Objects are defined by their originating classes.
-Each class compilation sees the creation of a factory or class object
-that builds instances of the class. Instances and Objects are synonymous,
-and are the components that are operating entities in the running program.
-
-
-
-
-<H3><A NAME="SEC17" HREF="manual_toc.html#TOC17">Inheritance</A></H3>
-<P>
-<A NAME="IDX14"></A>
-
-
-<P>
-Most of the programmer's time is spent defining classes.
-Inheritance helps reduce coding time by providing a convenient way of
-reusing code.
-For example, the NSButton class defines data (or instance variables) and methods to create button objects of a certain type, so a subclass of NSButton could be produced to create buttons of another type - which may perhaps have a different border colour. Equally NSTextField can be used to define a subclass that perhaps draws a different border, by reusing definitions and data in the superclass.
-
-
-<P>
-Inheritance places all classes in a logical hierarchy or tree
-structure that may have the NSObject class at its root.
-All classes may have subclasses, and all except the root class
-may have superclasses. When a class object creates a new instance,
-the new object holds the data for its class, superclass,
-and superclasses extending to the root class (typically NSObject).
-Additional data may be added to classes so as to provide
-specific functions and application logic.
-
-
-<P>
-When a new object is created, it is allocated memory space,
-and its data in the form of its instance variables are initialised.
-The object holds the <CODE>isa</CODE> variable refers to the object's class,
-and this also provides access to classes in the object's inheritance
-path.
-
-
-<P>
-An Objective-C class has an:
-
-
-
-<UL>
-<LI>
-
-interface declaring instance variables, methods and the superclass name.
-
-<LI>
-
-implementation that defines the class in terms of operational code that
-implements the methods.
-</UL>
-
-<P>
-Typically these entities are confined to separate files
-with .h and .m extensions for Interface and Implementation files,
-respectively. However they may be merged
-into one file, and a single file may implement multiple classes.
-
-
-
-
-<H3><A NAME="SEC18" HREF="manual_toc.html#TOC18">Inheritance of Methods</A></H3>
-<P>
-<A NAME="IDX15"></A>
-
-
-<P>
-Each new class inherits methods and instance variables from another class. This
-results in a class hierarchy with the root class at the core, and every class
-(except the root) has a superclass as its parent, and all classes may have
-numerous subclasses as their children. Each class therefore is a refinement of
-its superclass(es).
-
-
-
-
-<H3><A NAME="SEC19" HREF="manual_toc.html#TOC19">Overriding Methods</A></H3>
-<P>
-<A NAME="IDX16"></A>
-
-
-<P>
-Objects may access methods defined for their class, superclass,
-superclass' superclass, extending to the root class.
-Classes may be defined with methods that overwrite their namesakes
-in ancestor classes. These new methods are then inherited by
-subclasses, but other methods in the new class can locate the
-overridden methods. Additionally redefined methods may include
-overridden methods.
-
-
-
-
-<H3><A NAME="SEC20" HREF="manual_toc.html#TOC20">Abstract Classes</A></H3>
-<P>
-<A NAME="IDX17"></A>
-<A NAME="IDX18"></A>
-
-
-<P>
-Abstract classes or abstract superclasses such as NSObject define
-methods and instance variables used by multiple subclasses.
-Their purpose is to reduce the development effort required to
-create subclasses and application structures.
-When we get technical, we make a distinction between a pure abstract
-class whose methods are defined but instance variables are not,
-and a semi-abstract class where instance variables are defined).
-An abstract class is not expected to actually produce functional
-instances since crucial parts of the code are expected to be
-provided by subclasses.
-Abstract classes reduce the development effort required to create
-subclasses and application structures.
-
-
-
-
-<H3><A NAME="SEC21" HREF="manual_toc.html#TOC21">Class Clusters</A></H3>
-<P>
-<A NAME="IDX19"></A>
-<A NAME="IDX20"></A>
-
-
-<P>
-A class cluster is an abstract base class, and a group of private, concrete
-subclasses.  It is used to hide implementation details from the programmer
-(who is only allowed to use the interface provided by the abstract class),
-so that the actual design can be modified (probably optimised) at a later
-date, without breaking any code that uses the cluster.
-Consider a scenario where it is necessary to create a class hierarchy
-to define objects holding different types including <B>chars</B>, <B>ints</B>,
-<B>short</B>, <B>LongInt</B>, <B>floats</B> and <B>doubles</B>.
-Of course, different types could be defined in the same class
-since it is possible to <B>cast</B> or <B>change</B> them from one to the next.
-Their allocated storage differs, however, so it would be inefficient
-to bundle them in the same class and to convert them in this way.
-
-
-<P>
-The solution to this problem is to use a class cluster:
-define an abstract superclass that specifies and declares
-components for subclasses, but does not declare instance variables.
-Rather this declaration is left to its subclasses, which share the
-<B>programmatic interface</B> that is declared by the abstract superclass.
-
-
-<P>
-When you create an object using a cluster interface, you are
-given an object of another class - from a concrete class in the cluster.
-
-
-
-
-<H2><A NAME="SEC22" HREF="manual_toc.html#TOC22">Using the GNUstep Base Library</A></H2>
-<P>
-<A NAME="IDX21"></A>
-<A NAME="IDX22"></A>
-
-
-<P>
-*** 
-Add something here about using the base library. Some suggestions:
-
-
-<P>
-Explain class documentation, what it is (documented class interface that programmers can use), how to use it (the need to read it and comply with the  interface methods and arguments), and how to get it (www.gnustep.org).
-
-
-<P>
-Also explain some of the terminology, like 'returns a copy of the receiving object'.
-***
-
-
-
-
-<H2><A NAME="SEC23" HREF="manual_toc.html#TOC23">NSObject: The Root Class</A></H2>
-<P>
-<A NAME="IDX23"></A>
-<A NAME="IDX24"></A>
-<A NAME="IDX25"></A>
-
-
-<P>
-NSObject is a root class that provides the framework for all objects,
-their interactions, and their integration in the run-time system.
-NSObject defines the <CODE>isa</CODE> instance variable that connects
-every object with its class
-NSObject or an alternative root class:
-
-
-
-<UL>
-
-<LI>
-
-allocates instances
-
-<LI>
-
-connects instances to their class
-
-<LI>
-
-forces the run-time system to discover instances involuntarily.
-</UL>
-
-<P>
-The NSObject interface is defined as the methods declared by itself, and
-those defined by the NSObject protocol. This division ensures that objects
-inheriting from other root classes can act as ordinary objects that do not
-inherit from NSObject. NSObject provides the facilities for inheriting
-classes whose instances are given a behaviour that includes the
-ability to:
-
-
+The standard OpenStep system of memory management employs retain counts.
+When an object is created, it has a retain count of 1.  When an object
+is retained, the retain count is incremented.  When it is released the
+retain count is decremented, and when the retain count goes to zero the
+object gets deallocated.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  Coin	*c = [[Coin alloc] initWithValue: 10];
+
+    // Put coin in pouch,
+  [c retain];	// Calls 'retain' method (retain count now 2)
+    // Remove coin from pouch
+  [c release];	// Calls 'release' method (retain count now 1)
+    // Drop in bottomless well
+  [c release];	// Calls 'release' ... (retain count 0) then 'dealloc'
+</pre></td></tr></table></P><P>
+
+One way of thinking about the initial retain count of 1 on the object is that
+a call to <CODE>alloc</CODE> (or <CODE>copy</CODE>) implicitly calls <CODE>retain</CODE> as
+well.  There are a couple of default conventions about how <CODE>retain</CODE> and
+<CODE>release</CODE> are to be used in practice.
+</P><P>
 
 <UL>
 <LI>
-
-create objects.
-
-<LI>
-
-initialize objects.
-
-<LI>
-
-deallocate objects.
+<I>If a block of code causes an object to be allocated, it "owns" this
+object and is responsible for releasing it.  If a block of code merely
+receives a created object from elsewhere, it is <B>not</B> responsible for
+releasing it.</I>
+<P>
 
 <LI>
+<I>More generally, the total number of <CODE>retain</CODE>s in a block should be
+matched by an equal number of <CODE>release</CODE>s.</I>
+<P>
 
-compare objects.
-
-<LI>
-
-archive objects.
-
-<LI>
-
-perform methods selected at run-time.
-
-<LI>
-
-query objects about their methods.
-
-<LI>
-
-query objects about their position in the inheritance hierarchy.
-
-<LI>
-
-forward messages to other objects (See Section respondsToSelector).
 </UL>
-
-
-
-<H3><A NAME="SEC24" HREF="manual_toc.html#TOC24">Initializing Objects</A></H3>
 <P>
-All objects inherit from the NSObject class, and their initialization requires:
 
-<UL>
-<LI>
+Thus, a typical usage pattern is:
+</P><P>
 
- an <CODE>isa</CODE> instance variable that points to a class structure.
-<LI>
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *msg = [[NSString alloc] initWithString: @"Test message."];
+  NSLog(msg);
+    // we created msg with alloc -- release it
+  [msg release];
+</pre></td></tr></table></P><P>
 
- initialization of <CODE>isa</CODE> is performed by <CODE>alloc</CODE> and
- <CODE>allocWithZone:</CODE> methods that are also used to create
- (allocate memory for) new instances of classes.
-</UL>
+Retain and release must also be used for instance variables that are objects:
+</P><P>
 
-
-
-<H2><A NAME="SEC25" HREF="manual_toc.html#TOC25">Static Typing</A></H2>
-
-<P>
-Type checking is good programming practice because it catches errors;
-it checks code, but does not change compiled code.
-
-
-<P>
-When declaring an object type, static typing permits a class name to
-be used instead of an <CODE>id</CODE>. In the
-following example Type Checking verifies that the myString object
-is an appropriate type.
-
-
-
-<PRE>
-NSString *myString = anObject;
-</PRE>
-
-<P>
-Objects can be statically typed as pointers to a class,
-by making the pointer explicit (as opposed to hidden using <CODE>id</CODE>).
-Static typing permits the compiler to run some obvious checks,
-forewarning of such errors as message incompatibilities.
-A subclass can be used where a superclass is expected, but not vice-versa.
-
-
-<P>
-Formal protocols may be included in type definitions, giving another tier of
-type checking to the compiler. Protocol names are included between angle
-brackets:
-
-
-
-<PRE>
-
-- (id &#60;Formatting&#62;) formattingService;
-id &#60;ReferenceCounting,AutoFreeing&#62; specificObject;
-
-</PRE>
-
-<P>
-Formal protocols may declare a list of methods that are visible at source and
-run-time levels, so objects may introspect themselves at runtime to verify that
-they conform to protocols, and the compiler may check for types:
-
-
-
-<PRE>
-
-@protocol ProtocolTitle
-declare methods
-@end
-
-</PRE>
-
-
-
-<H3><A NAME="SEC26" HREF="manual_toc.html#TOC26">Type Introspection</A></H3>
-
-<P>
-Before sending a message you should check that the receiver is the
-correct class or has the appropriate method.
-The <CODE>isMemberOfClass:</CODE> method defined in the NSObject class
-verifies that the receiver is of a specific class:
-
-
-
-<PRE>
-if ([namedObject isMemberOfClass: specificClass] == YES)
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (void)setFoo:(FooClass *newFoo)
 {
-  // code here
+    // first, assert reference to newFoo
+  [newFoo retain];
+    // now release reference to foo (do second since maybe newFoo == foo)
+  [foo release];
+    // finally make the new assignment; old foo was released and may
+    // be destroyed if retain count has reached 0
+  foo = newFoo;
 }
-</PRE>
+</pre></td></tr></table></P><P>
 
-<P>
-The <CODE>isKindOfClass:</CODE> method checks to see if the receiver is
-in a specific inheritance path:
+Because of this retain/release management, it is safest to use accessor
+methods to set variables even within a class:
+</P><P>
 
-
-
-<PRE>
-if ([namedObject isKindOfClass: specificClass] == YES)
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (void)resetFoo
 {
-  // code here
+  FooClass *foo = [[FooClass alloc] init];
+  [self setFoo: foo];
+    // since -setFoo just retained, we can and should
+    // undo the retain done by alloc
+  [foo release];
 }
-</PRE>
+</pre></td></tr></table></P><P>
 
+<B>Exceptions</B>
+</P><P>
 
+In practice, the extra method call overhead should be avoided in performance
+critical areas and the instance variable should be set directly.  However in
+all other cases it has proven less error-prone in practice to consistently use
+the accessor.
+</P><P>
 
-<H2><A NAME="SEC27" HREF="manual_toc.html#TOC27">Working with Class Objects</A></H2>
+There are certain situations in which the rule of having retains and releases
+be equal in a block should be violated.  For example, the standard
+implementation of a container class <CODE>retain</CODE>s each object that is added
+to it, and <CODE>release</CODE>s it when it is removed, in a separate method.  In
+general you need to be careful in these cases that retains and releases match.
+</P><P>
 
+<HR SIZE="6">
+<A NAME="SEC46"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC47"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 3.2.2.1 Autorelease Pools </H4>
+<!--docid::SEC46::-->
 <P>
-The compiler creates a class or factory object that instantiates objects
-or instances based on the class definitions; class objects are agents
-able to instantiate instances in the run-time system. A class object is
-not an instance and is without instance variables, though it does holds
-static variables and the class instance's prototype also; but it cannot
-implement methods for instances of the class.
 
+One important case where the retain/release system has difficulties is when
+an object needs to be transferred or handed off to another.  You don't want
+to retain the transferred object in the transferring code, but neither do you
+want the object to be destroyed before the handoff can take place.  The
+OpenStep/GNUstep solution to this is the <I>autorelease pool</I>.  An
+autorelease pool is a special mechanism that will retain objects it is given
+for a limited time -- always enough for a transfer to take place.  This
+mechanism is accessed by calling <CODE>autorelease</CODE> on an object instead of
+<CODE>release</CODE>.  <CODE>Autorelease</CODE> first adds the object to the active
+autorelease pool, which retains it, then sends a <CODE>release</CODE> to the
+object.  At some point later on, the pool will send the object a second
+<CODE>release</CODE> message, but by this time the object will presumably either
+have been retained by some other code, or is no longer needed and can thus be
+deallocated.  For example:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (NSString *) getStatus
+{
+  NSString *status =
+    [[NSString alloc] initWithFormat: "Count is %d", [self getCount]];
+   // set to be released sometime in the future
+  [status autorelease];
+  return status;
+}
+</pre></td></tr></table></P><P>
+
+Any block of code that calls <CODE>-getStatus</CODE> can also forego retaining the
+return value if it just needs to use it locally.  If the return value is to be
+stored and used later on however, it should be retained:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  ...
+  NSString *status = [foo getStatus];
+    // 'status' is still being retained by the autorelease pool
+  NSLog(status);
+  return;
+    // status will be released automatically later
+</pre></td></tr></table></P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  ...
+  currentStatus = [foo getStatus];
+    // currentStatus is an instance variable; we do not want its value
+    // to be destroyed when the autorelease pool cleans up, so we
+    // retain it ourselves
+  [currentStatus retain];
+</pre></td></tr></table></P><P>
+
+<B>Convenience Constructors</B>
+</P><P>
+
+A special case of object transfer occurs when a <I>convenience</I> constructor is
+called (instead of <CODE>alloc</CODE> followed by <CODE>init</CODE>) to create an object.
+(Convenience constructors are class methods that create a new instance and do
+not start with "new".)  In this case, since the convenience method is the
+one calling <CODE>alloc</CODE>, it is responsible for releasing it, and it does so
+by calling <CODE>autorelease</CODE> before returning.  Thus, if you receive an
+object created by any convenience method, it is autoreleased, so you don't
+need to release it if you are just using it temporarily, and you DO need to
+retain it if you want to hold onto it for a while.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (NSString *) getStatus
+{
+    NSString *status =
+        [NSString stringWithFormat: "Count is %d", [self getCount]];
+    // 'status' has been autoreleased already
+    return status;
+}
+</pre></td></tr></table></P><P>
+
+<B>Pool Management</B>
+</P><P>
+
+An autorelease pool is created automatically if you are using the GNUstep
+GUI classes, however if you are just using the GNUstep Base classes for a
+nongraphical application, you must create and release autorelease pools
+yourself:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+</pre></td></tr></table></P><P>
+
+Once a pool has been created, any autorelease calls will automatically find
+it.  To close out a pool, releasing all of its objects, simply release the
+pool itself:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  [pool release];
+</pre></td></tr></table></P><P>
+
+To achieve finer control over autorelease behavior you may also create
+additional pools and release them in a nested manner.  Calls to
+<CODE>autorelease</CODE> will always use the most recently created pool.
+</P><P>
+
+Finally, note that <CODE>autorelease</CODE> calls are significantly slower than
+plain <CODE>release</CODE>.  Therefore you should only use them when they are
+necessary.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC47"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC46"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC48"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC48"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 3.2.2.2 Avoiding Retain Cycles </H4>
+<!--docid::SEC47::-->
 <P>
-A class definition may include class methods that are defined for the
-class object.
-A class object inherits class methods from superclasses,
-while instances inherit instance methods. Class objects may receive messages, 
-and inherit methods from superclasses, but are without instance variables 
-except those created using the class definition.
 
+One difficulty that sometimes occurs with the retain/release system is that
+cycles can arise in which, essentially, Object A has retained Object B, and
+Object B has also retained Object A.  In this situation, neither A nor B will
+ever be deallocated, even if they become completely disconnected from the rest
+of the program.  In practice this type of situation may involve more than two
+objects and multiple retain links.  The only way to avoid such cycles is to be
+careful with your designs.  If you notice a situation where a retain cycle
+could arise, remove at least one of the links in the chain, but not in such a
+way that references to deallocated objects might be mistakenly used.
+</P><P>
 
-
-
-<H3><A NAME="SEC28" HREF="manual_toc.html#TOC28">Referring to Class Objects</A></H3>
-
+<HR SIZE="6">
+<A NAME="SEC48"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC47"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H4> 3.2.2.3 Summary </H4>
+<!--docid::SEC48::-->
 <P>
-To return the class version number of the <CODE>NSString</CODE> class
-using a method inherited from the NSObject class:
 
+The following summarizes the retain/release-related methods:
+</P><P>
 
+<TABLE>
+<TR><TD>Method </TD><TD> Description</TD>
+</TR>
+<TR><TD><CODE>-retain</CODE></TD>
+</TD><TD> increases the reference count of an object by 1
+</TR>
+<TR><TD><CODE>-release</CODE></TD>
+</TD><TD> decreases the reference count of an object by 1
+</TR>
+<TR><TD><CODE>-autorelease</CODE></TD>
+</TD><TD> decreases the reference count of an object by 1 at some stage in the future
+</TR>
+<TR><TD><CODE>-alloc</CODE></TD>
+</TD><TD> allocates memory for an object, and returns it with retain count of 1
+</TR>
+<TR><TD><CODE>-copy</CODE></TD>
+</TD><TD> makes a copy of an object, and returns it with retain count of 1
+</TR>
+<TR><TD><CODE>-new</CODE></TD>
+</TD><TD> allocates memory for an object, and returns it in an autoreleased state
+(retain=1, but will be released automatically at some stage in the future)
+</TR>
+<TR><TD><CODE>-dealloc</CODE></TD>
+</TD><TD> deallocates object immediately (regardless of value of retain count)
+</TR></TABLE>
 <P>
-<CODE>int versionNumber = [NSString version];</CODE>
 
-
-<P>
-The class name <CODE>NSString</CODE> is that of the class object, which is the receiver 
-in the above message expression. When not dealing with class objects, 
-instances and classes are used to obtain the class <CODE>id</CODE>:
-
-
-
-<PRE>
-id stringClass = [stringObject class];
-id mStringClass = [NSMutableString class];
-</PRE>
-
-<P>
-Class objects may be typed <CODE>id</CODE>, and specifically typed to the Class:
-
-
-
-<PRE>
-Class stringClass = [stringObject class];
-Class mStringClass = [NSMutableString class];
-</PRE>
-
-<P>
-Class objects are of the type Class, rather like the class name is
-used to statically type instances.
-
-
-
-
-<H3><A NAME="SEC29" HREF="manual_toc.html#TOC29">Creating Instances</A></H3>
-
-<P>
-Class objects create new instances; to use the NSDate class to create
-a new <CODE>NSDate</CODE> instance and assign it to the <CODE>date</CODE> variable:
-
-
-
-<PRE>
-id date;
-date = [NSDate alloc];
-</PRE>
-
-<P>
-The alloc method equates the object's instance variables to zero
-with the exception of the <CODE>isa</CODE> variable, and also allocates
-memory for them. Complete initialisation of the object however
-relies on the <CODE>init</CODE> method that primes 'date' to receive messages:
-
-
-<P>
-<CODE>date = [[NSDate alloc] init];</CODE>
-
-
-<P>
-The alloc method returns a new instance that implements the
-<CODE>init</CODE> method, and like all instances and class objects
-it holds at least one method. The <CODE>init</CODE> method may take
-arguments so as to pass values.
-
-
-
-
-<H3><A NAME="SEC30" HREF="manual_toc.html#TOC30">Factory Patterns</A></H3>
-<P>
-<EM>Nicola to complete</EM><BR>
-(To be completed.)
-
-
-
-
-<H3><A NAME="SEC31" HREF="manual_toc.html#TOC31">Factory or Class Objects</A></H3>
-<P>
-Each class compilation sees the creation of a <B>factory object</B>
-or <B>class object</B> that builds class-specific objects. Objects
-instantiated by the factory object at run-time are <B>instances</B>
-of the class. Class names begin with an uppercase letter, while
-instance names begin with lowercase letter.
-
-
-<P>
-The compiler may create as many class objects as there are defined classes.
-The class objects are conventional objects that may be dynamically typed,
-receivers, and the recipients of class methods in superclasses.
-
-
-
-
-<H3><A NAME="SEC32" HREF="manual_toc.html#TOC32">NSClassFromString</A></H3>
-
-<P>
-Class names are about the only names with global visibility in Objective-C.
-If a class is unknown at compilation but is available as a string at run time,
-<CODE>NSClassFromString</CODE> may be used to return the class object:
-
-
-
-<PRE>
-..
-if ([anObject isKindOf: NSClassFromString(classTitle)] == YES)
-..
-</PRE>
-
-<P>
-The function returns nil if it is passed a string holding an invalid class name.
-Class names, global variables and function exist in the same
-name space, so classes and global variables may not share the same name.
-
-
-
-
-<H3><A NAME="SEC33" HREF="manual_toc.html#TOC33">respondsToSelector and NSStringFromClass</A></H3>
-
-<P>
-Run-time errors result when objects are stimulated to perform methods
-absent from their repertoire. These errors are avoided by checking the
-receiver's available methods, and if statically typed the compiler will
-report them. Testing for this error may be left until run-time when the
-message selector or the receiver's class varies.
-The <CODE>respondsToSelector:</CODE> method inspects a receiver for compatibility
-by sending them the method selector as an argument, and subsequently
-returning a verification.
-
-<PRE>
-
-if ([userObject respondsToSelector: @selector(setOrigin::)] == YES)
-  {
-    [userObject setOrigin: 2.0 : 2.0];
-  }
-else
-  {
-    NSLog(@"% out of range", NSStringFromClass([userObject class]));
-  }
-</PRE>
-
-
-
-<H2><A NAME="SEC34" HREF="manual_toc.html#TOC34">Naming Conventions</A></H2>
-
+The following are the main conventions you need to remember:
+</P><P>
 
 <UL>
+<LI>
+If a unit of code allocates, retains, or copies an object, the same unit,
+loosely speaking, is responsible for releasing or autoreleasing it at some
+future point.  It is best to balance retains and releases within each
+individual block of code.
+<P>
 
 <LI>
-
-Global variables may NOT share the same name as classes, because both
-entities are allocated the same name space.
-
-<LI>
-
-Files with an .m extension hold Objective-C source code, while those with a
-.h extension define protocols, or define classes and category interfaces.
-
-<LI>
-
-Implementation files have an <CODE>.m</CODE> extension.
-
-<LI>
-
-Interface files have a <CODE>.h</CODE> extension.
-
-<LI>
-
-Class, category and protocol names begin with an uppercase letter.
-
-<LI>
-
-Methods, instance variables, and variables holding instances begin
-with a lowercase letter.
-
-<LI>
-
-A class may define methods using the same names as those held in other classes.
-(See Overriding Methods.)
-
-<LI>
-
-A class may define instance variables using the same names as those
-held in other classes.
-
-<LI>
-
-A class category may have the same name as another class category.
-
-<LI>
-
-An instance method and a class method may share the same name.
-
-<LI>
-
-A protocol may have the same name as a class, category, or any other entity.
-
-<LI>
-
-A method and an instance variable may share the same name.
-
+If you receive an autoreleased object, it will normally remain valid for the
+rest of the current method call and can even be returned as the result of the
+method.  If you need to store it away for future use (e.g. as an instance
+variable), you must retain it.
 </UL>
-
-
-
-<H3><A NAME="SEC35" HREF="manual_toc.html#TOC35">Pitfalls of Using Class Names</A></H3>
 <P>
-<EM>Richard to complete</EM><BR>
-(To be completed.)
 
-
-
-
-<H2><A NAME="SEC36" HREF="manual_toc.html#TOC36">The NSString Class</A></H2>
-
+<HR SIZE="6">
+<A NAME="SEC49"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC48"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC50"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC50"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 3.2.3 Garbage Collection Based Memory Management </H3>
+<!--docid::SEC49::-->
 <P>
-The NSString class defines objects holding character streams or <B>strings</B> using any spoken language. A 
-<B>static</B> instance of NSString is allocated at compile time. The creation of a static
-instance of NSString is achieved using the <CODE>@"..."</CODE> construct and a pointer:
 
+The GNUstep system can be optionally compiled with a memory sweeping
+<B>garbage collection</B> mechanism using the Boehm conservative garbage
+collection library (<A HREF="http://www.hpl.hp.com/personal/Hans_Boehm/gc">http://www.hpl.hp.com/personal/Hans_Boehm/gc</A>).
+In this case, you need not worry about retaining and releasing objects; the
+garbage collector will automatically track which objects are still referred to
+at any given point within the program, and which are not.  Those that are not
+are automatically deallocated.  The situation is largely similar to
+programming in Java, except that garbage collection will only be triggered
+during memory allocation requests and will be less efficient since pointers
+in C are not always explicitly marked.
+</P><P>
 
+Whether in Java or Objective-C, life is still not completely worry-free under
+garbage collection however.  You still must "help the garbage collector
+along" by explicitly dropping references to objects when they become
+unneeded.  Failing to do this is easier than you might think, and leads to
+memory leaks.
+</P><P>
 
-<PRE>
-NSString *wasp = @"Brainstorm";
-</PRE>
+When GNUstep was compiled with garbage collection, the macro flag
+<CODE>GS_WITH_GC</CODE> will be defined, which you can use in programs to determine
+whether you need to call <CODE>retain</CODE>, <CODE>release</CODE>, etc..  Rather than
+doing this manually, however, you may use special macros in place of the
+<CODE>retain</CODE> and <CODE>release</CODE> method calls.  These macros call the methods
+in question when garbage collection is <I>not</I> available, but do nothing when
+it is.
+</P><P>
 
+<TABLE>
+<TR><TD>Macro </TD><TD> Functionality</TD>
+
+</TR>
+<TR><TD><CODE>RETAIN(foo);</CODE></TD>
+</TD><TD> <CODE>[foo retain];</CODE>
+
+</TR>
+<TR><TD><CODE>RELEASE(foo);</CODE></TD>
+</TD><TD> <CODE>[foo release];</CODE>
+
+</TR>
+<TR><TD><CODE>AUTORELEASE(foo);</CODE></TD>
+</TD><TD> <CODE>[foo autorelease];</CODE>
+
+</TR>
+<TR><TD><CODE>ASSIGN(foo, bar);</CODE></TD>
+</TD><TD> <CODE>[bar retain]; [foo release]; foo = bar;</CODE>
+
+</TR>
+<TR><TD><CODE>ASSIGNCOPY(foo, bar);</CODE></TD>
+</TD><TD> <CODE>[foo release]; foo = [bar copy];</CODE>
+
+</TR>
+<TR><TD><CODE>DESTROY(foo);</CODE></TD>
+</TD><TD> <CODE>[foo release]; foo = nil;</CODE>
+</TR></TABLE>
 <P>
-<CODE>wasp</CODE> is a variable that refers to an NSString object representing
-the ASCII string "Brainstorm".
 
+In the latter three "convenience" macros, appropriate <CODE>nil</CODE> checks are
+made so that no retain/release messages are sent to <CODE>nil</CODE>.
+</P><P>
 
-<P><HR><P>
-Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_2.html">previous</A>, <A HREF="manual_4.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
+Some authorities recommend that you always use the RETAIN/RELEASE macros in
+place of the actual method calls, in order to allow running in a non-garbage
+collecting GNUstep environment yet also save unneeded method calls in the case
+your code runs in a garbage collecting enviromnent.  On the other hand, if you
+know you are always going to be running in a non-garbage collecting
+environment, there is no harm in using the method calls, and if you know you
+will always have garbage collection available you can save development effort
+by avoiding any use of retain/release or RETAIN/RELEASE.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC50"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 3.2.4 Current Recommendations </H3>
+<!--docid::SEC50::-->
+<P>
+
+As of May 2004 the garbage collection in GNUstep was still considered beta
+quality (some bugs exist).  In the OS X world, Apple's Cocoa does <I>not</I>
+employ garbage collection, and it is not clear whether there are plans to
+implement it.  Therefore the majority of GNUstep programmers use the
+RETAIN/RELEASE approach to memory management.
+</P><P>
+
+<A NAME="Classes"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>September, 7  2004</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
 </BODY>
 </HTML>

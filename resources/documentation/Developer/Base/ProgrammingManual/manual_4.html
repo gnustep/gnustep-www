@@ -1,72 +1,124 @@
 <HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on September, 7  2004 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
 <HEAD>
-<!-- Created by texi2html 1.56k from manual.texi on 26 January 2004 -->
+<TITLE>Objective-C GNUstep Base Programming Manual: Classes</TITLE>
 
-<TITLE>Objective-C, Programming Manual - Writing New Classes</TITLE>
+<META NAME="description" CONTENT="Objective-C GNUstep Base Programming Manual: Classes">
+<META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Classes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
 </HEAD>
-<BODY>
-Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_3.html">previous</A>, <A HREF="manual_5.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
-<P><HR><P>
 
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
-<H1><A NAME="SEC37" HREF="manual_toc.html#TOC37">Writing New Classes</A></H1>
+<A NAME="SEC51"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC50"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC52"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 4. Writing New Classes </H1>
+<!--docid::SEC51::-->
 <P>
-<A NAME="IDX26"></A>
 
+Objective-C class definitions are always divided into two parts: an
+<I>interface</I> and an <I>implementation</I>.  This division mirrors the common C
+library division into a header file with function declarations, which is
+distributed to all users of a library, and a source file with the
+implementations, which is only used to compile the library and is generally
+not distributed to users.  A class interface declares instance variables,
+methods and the superclass name, while the implementation file holds the
+operational code that implements those methods.  Typically the interface and
+implementation are held in separate files, using the <CODE>.h</CODE> and <CODE>.m</CODE>
+extensions, respectively. They may, however, be merged into one file, and a
+single file may implement many classes.
+</P><P>
 
+<HR SIZE="6">
+<A NAME="SEC52"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC53"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 4.1 Interface </H2>
+<!--docid::SEC52::-->
 <P>
-<EM>Would you add Hands-on coding examples at the marked points, and perhaps any additional pertinent examples? Francis</EM><BR>
 
+The interface is included in the source using <CODE>#include</CODE>:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include "SomeClass.h"
+</pre></td></tr></table></P><P>
 
-
-<H2><A NAME="SEC38" HREF="manual_toc.html#TOC38">Interface</A></H2>
-<P>
-<A NAME="IDX27"></A>
-
-
-<P>
-A class interface declares instance variables, methods and
-the superclass name, while the implementation file holds the
-operational code that implements those methods. The interface
-is included in the source using <CODE>#include</CODE>:
-
-
-
-<PRE>
-#include "baseclass.h"
-</PRE>
-
-<P>
-Typically the Interface and Implementation are held in separate files,
-using the .h and .m extensions, respectively. They may, however,
-be merged into one file, and a single file may implement many classes.
-
-
-<P>
 To ensure that a Header file is included only once, it is usual to
 protect it with pre-compiler defines:
+</P><P>
 
-
-
-<PRE>
-#ifndef _MY_CLASS_H_INCLUDED
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#ifndef _MY_CLASS_H_INCLUDED
 #define _MY_CLASS_H_INCLUDED
 
 /* HEADER FILE */
 #endif
-</PRE>
+</pre></td></tr></table></P><P>
 
+This is the standard C technique to protect header files from being included
+more than once.  A cleaner alternative, introduced in Objective-C, is to use
+the <CODE>#import</CODE> directive instead of <CODE>#include</CODE>.  The compiler will
+automatically include <CODE>#import</CODE>ed files no more than once, even if
+multiple <CODE>import</CODE> statements are encountered.  Thus, you can do away
+with the messy preprocessor conditionals in the header file.
+</P><P>
+
+You should be careful, however, to only use <CODE>#import</CODE> for Objective-C
+interface headers, and continue using <CODE>#include</CODE> for standard C files.
+It is possible, though not likely, that regular C headers may rely on being
+included multiple times in some cases.  Also, you may need to include the
+compiler directive <CODE>-Wno-import</CODE> to gcc to avoid a didactic warning to
+this effect.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC53"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC52"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC54"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC52"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.1.1 Interface Capabilities </H3>
+<!--docid::SEC53::-->
 <P>
-This is the standard C technique to protect header files from
-being included more than once.
 
-
-
-
-<H3><A NAME="SEC39" HREF="manual_toc.html#TOC39">Interface Capabilities</A></H3>
-
-<P>
 The interface file declares new classes that can be used by
 source code, holding all the information necessary to use the
 classes from other Objective-C code. Firstly, the file reveals
@@ -76,199 +128,269 @@ programmers of what variables are inherited when they create subclasses.
 Finally, the interface file may inform other software entities
 of the messages that can be sent to the class object and to the
 instances of the class. 
+</P><P>
 
+Interface files use the <CODE>.h</CODE> extension as for ordinary C header files.
+(If you use emacs, put a line "<CODE>// -*-ObjC-*-</CODE>" at the top of your file
+to use the correct mode.)
+</P><P>
 
-<P>
-The syntax of a class interface is of the form:
+Here is an example of a class interface declaration:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import &#60;Foundation/NSObject.h&#62;
 
-<P>
-<EM>I would like a better example interface than this? So would you create something more real?</EM><BR>
+@interface Point : NSObject
+{
+@private
+    // instance variables only accessible to instances of this class ...
+@protected
+    // instance variables accessible to instances of this class or subclasses
+  float x;
+  float y;
+@public
+    // instance variables accessible by all code ...
+}
 
+// class methods
++ new;
++ newWithX: (float)x0 Y: (float)y0;
 
-
-<PRE>
-// Need something here.
-</PRE>
-
+// instance methods
+- init;
+- initWithX: (float)x0 Y: (float)y0;
+- (float) x;  // (field accessor)
+- (float) y;
+- (void) setX: (float)newX;
+- (void) setY: (float)newY;
+@end
+</pre></td></tr></table></P><P>
 
 <UL>
 <LI>
+The interface file should import the interface of the superclass of the class
+it is defining.
+<P>
 
+<LI>
 The interface is enclosed between the compiler directives
 <CODE>@interface</CODE> and <CODE>@end</CODE>.
+<P>
 
 <LI>
-
-<CODE>@interface ThisClass : ThisClassSuperClass</CODE> names the class
-and links it to the superclass. If no superclass is named, and the
+<CODE>@interface Point : Object</CODE> names the class
+and links it to the superclass.  If no superclass is named, and the
 directive is without a colon, the compiler assumes that a root class
-is being created.
+is being created.  You more than likely don't want to do this.
+<P>
 
 <LI>
-
-Braces enclose declared instance variables, each class' instance will
-have all theses instance variables including instance variables
+Braces enclose declared instance variables; each class's instance will
+have all these instance variables including instance variables
 inherited from the superclass, and from the superclass of the
 superclass, extending to the root class.
+<P>
 
 <LI>
-
-Method declarations that begin with a "+" sign are class methods, and
-are defined for the class object. 
-A class object inherits class methods from superclasses.
+Instance variables may be declared as <CODE>private</CODE>, <CODE>protected</CODE>, or
+<CODE>public</CODE>.  An instance's <I>private</I> variables may only be accessed by
+instances of this class.  An instance's <I>protected</I> variables may be
+accessed by instances of this class or instances of subclasses of this class.
+<I>Public</I> variables may be accessed by any code.  This is analogous to the
+usage in C++ and Java.  If you do not mark your instance variable declaration
+explicitly, it is made <CODE>protected</CODE> by default.
+<P>
 
 <LI>
+Method declarations that begin with a "+" sign are class methods, and are
+defined for the class object.  Thus, you can call them without creating an
+instance, and their implementations do not have access to any instance
+variables.  A class object inherits class methods from superclasses.
+<P>
 
+<LI>
 Method declarations that begin with a "-" sign are instance methods,
-and are defined for class instances. Class instances inherit instance
+and are defined for class instances.  Class instances inherit instance
 methods from superclasses.
+<P>
 
 <LI>
-
 A method may share the name of an instance variable. 
+<P>
 
 <LI>
-
-A method return type is declared using the standard C syntax:
-
-<PRE>
-- (float) scale;
-</PRE>
-
-which is a method returning a float.
+A method return type is declared using the C syntax for type casts:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (float) x;
+</pre></td></tr></table>which is a method returning a float.
+<P>
 
 <LI>
-
 Argument types can be declared in the same way as method return types:
-
-<PRE>
-- (void) setRadius: (float)aRadius;
-</PRE>
-
-which is a method that returns nothing, and takes a single float as
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (void) setX: (float)newX;
+</pre></td></tr></table>which is a method that returns nothing, and takes a single float as
 its argument.
+<P>
 
 Note. The default type for methods and messages (<CODE>id</CODE>) is assumed
 when a return or argument type is not explicitly declared.
-For example, <CODE>-name;</CODE> implicitly means a method returning <CODE>id</CODE>
+For example, '<CODE>-name</CODE>' implicitly means a method returning <CODE>id</CODE>
 (i.e. an object). It is usually better to avoid this and use
 explicit typing as in
-
-<PRE>
-- (NSString*) name;
-</PRE>
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (NSString*) name;
+</pre></td></tr></table></P><P>
 
 </UL>
-
-
-
-<H3><A NAME="SEC40" HREF="manual_toc.html#TOC40">Including Interfaces</A></H3>
 <P>
-Source modules (including Objective-C listings and interface files)
-may integrate interfaces using <CODE>#include</CODE>. Thereafter the source
-module may utilize the classes in those interfaces so as to:
 
-
+<HR SIZE="6">
+<A NAME="SEC54"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC53"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC55"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC55"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC52"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.1.2 Including Interfaces </H3>
+<!--docid::SEC54::-->
+Source code (including Objective-C implementation and interface files) may
+integrate interfaces using <CODE>#import</CODE> (or <CODE>#include</CODE>).  Thereafter
+the source module may utilize the classes in those interfaces so as to:
+<P>
 
 <UL>
 <LI>
-
 Make instances of them.
+<P>
 
 <LI>
-
 Send messages to invoke methods declared for them.
+<P>
 
 <LI>
-
 Refer to instance variables in them.
+<P>
 
 </UL>
-
 <P>
-With the exception of the root class, all working interfaces
-integrate a superclass using either <CODE>#include</CODE> - as was
-seen in the previous simplified interface file example.
-As a result the vast majority of class files begin with a
-standard form that includes their superclasses, and thus
-places them in the class hierarchy:
 
+With the exception of the root class, all working interfaces integrate a
+superclass using either <CODE>#import</CODE> or <CODE>#include</CODE> -- as was seen in
+the previous simplified interface file example.  As a result the vast majority
+of class files begin with a standard form that includes their superclasses,
+and thus places them in the class hierarchy:
+</P><P>
 
-<P>
-<EM> Here I have another example - would you replace it with something more meaningful?</EM>
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "SomeSuperclass.h"
 
-
-
-<PRE>
-#include "Superclass.h"
-@interface InterfaceName : InterfaceSuperclass
+@interface SomeClass : SomeSuperclass
 {
-  // instance variables
+  // instance variables ...
 }
-Declared methods
-</PRE>
+  // method declarations ...
+@end
+</pre></td></tr></table></P><P>
 
-
-
-<H3><A NAME="SEC41" HREF="manual_toc.html#TOC41">Referring to Classes - @class</A></H3>
+<HR SIZE="6">
+<A NAME="SEC55"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC54"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC52"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.1.3 Referring to Classes - @class </H3>
+<!--docid::SEC55::-->
 <P>
-It is possible for a source module to refer to classes without
-including their interface files. This is useful when you just
-need to tell the compiler that a certain word is a class name,
-but you want to avoid the overhead of including the whole interface
-file for that class. 
 
+It is possible for a source module to refer to classes without including their
+interface files. This is useful when you just need to tell the compiler that a
+certain word is a class name, but you want to avoid the overhead of including
+the whole interface file for that class.
+</P><P>
 
-<P>
-If you are implementing a new class, you always need to include
-the interface of the superclass using <CODE>#include</CODE>;
-<CODE>@class</CODE> cannot be used in this case because the compiler
-needs to know the details of the superclass and its instance
-variables etc., so as to create a fully working new class.
-If you try using @class in this case, compilation will abort.
+For example, to inform the compiler that <CODE>Border</CODE> and <CODE>Square</CODE> are
+classes without including their full interface file, the following syntax is
+used:
+</P><P>
 
-
-<P>
-<B>Note. When you need to send methods to an object, it's better
-to include the full class interface. Even in that case - it's
-better *only* because it allows better type checking -
-which is good of course - but not essential.  And - to say it
-all - if you use @class that way, the compiler complains as soon
-as you try to send a message to an object of a class declared
-using @class, so that you know you need to include the
-interface for full type checking.  This means it's a good idea
-to always try with @class if possible and only include the
-interface if the compiler complains that it can't type-check
-without the full interface.</B>
-
-
-<P>
-To inform the compiler that <B>Border</B> and <B>Square</B> are classes without including their full interface file, the following syntax is used:
-
-
-<P>
 <CODE>@class Border, Square;</CODE>
+</P><P>
 
-
-<P>
 Class names may also appear in interface files at times when
 instance variables, return values and arguments are statically typed:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "Foundation/NSObject.h"
 
+@class Point
+
+@interface Square : NSObject
+{
+@protected
+  Point *lowerLeft;
+  float sideLength;
+}
++ newWithLowerLeft: (Point *)lowerLeft sideLength: (float)sideLength;
+
+- initWithLowerLeft: (Point *)lowerLeft sideLength: (float)sideLength;
+
+- (Point *) lowerLeft;
+- (float) sideLength;
+- (void) setLowerLeft: (Point *)newLowerLeft;
+- (void) setSideLength: (float)newSideLength;
+@end
+</pre></td></tr></table></P><P>
+
+Here, we see the <CODE>Point</CODE> class we declared earlier being used as a
+component in <CODE>Square</CODE>'s definition.  Because this class is only referred
+to here to declare variables and method signatures, it suffices to reference
+it only using the <CODE>@class</CODE> directive.  On the other hand, the
+implementation file may need to send messages to <CODE>Point</CODE> instances and
+would be better of importing the interface in this case.
+</P><P>
+
+The compiler will produce a warning if you don't include it, and no type
+checking can be performed (to see if class instances respond to the messages
+you send to them), but compilation will succeed.  It is best to take advantage
+of type-checking when you can, however, and include interfaces that messages
+are to be sent to.
+</P><P>
+
+There is one situation where you <I>must</I> include the interface however.  If
+you are implementing a new class, you always need to include the interface of
+the superclass; <CODE>@class</CODE> cannot be used in this case because the
+compiler needs to know the details of the superclass and its instance
+variables etc., so as to create a fully working new class.  If you try using
+<CODE>@class</CODE> in this situation, compilation will abort.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC56"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC55"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC57"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 4.2 Implementation </H2>
+<!--docid::SEC56::-->
 <P>
-- (void) set
 
-
-<P>
-<EM>Another example of a class interface is required here, and perhaps an example of a class cluster would be useful as this is mentioned in chapter 1.</EM><BR>
-a simple example of a class interface &#60;fixme: what example ?&#62;
-
-
-
-
-<H2><A NAME="SEC42" HREF="manual_toc.html#TOC42">Implementation</A></H2>
-<P>
 An interface file declares a class, while an implementation file
 implements it. The separation between the interface and
 implementation file yields a black box concept where the programmer
@@ -276,336 +398,946 @@ using the class need only be concerned with the interface and its
 declared methods, superclasses, and instance variables.
 The implementation of classes is transparent to the programmer
 who may use them without detailed knowledge of their structures. 
+</P><P>
 
+Implementation files use the <CODE>.m</CODE> extension, to distinguish them from
+ordinary C files.
+</P><P>
 
+<HR SIZE="6">
+<A NAME="SEC57"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC58"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.2.1 Writing an Implementation </H3>
+<!--docid::SEC57::-->
 <P>
-In the C programming language C structures are singular entities
-that encapsulate multiple data elements. The fields therein reside
-in <B>name spaces</B> so they do not interfere with alike named
-entities that are outside the structure. So the name spaces
-define another partition.
 
-
-<P>
-Such C structures relate to C functions that provide the
-application logic or defined mechanisms. Within a C structure
-data elements may be local to a function, and are protected in
-their name space.
-
-
-
-
-<H3><A NAME="SEC43" HREF="manual_toc.html#TOC43">Writing an Implementation</A></H3>
-<P>
 An implementation file contents are encapsulated between
-@implementation and @end directives:
+<CODE>@implementation</CODE> and <CODE>@end</CODE> directives:
+</P><P>
 
-
-
-<PRE>
-#include "ClassTitle .h"
-@implementation ClassName :Superclass
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "Point.h"
+@implementation Point
+// method implementations
++ new
 {
-  // instance variables
+  // statements ...
 }
-// methods
+
++newWithX: (float)x Y: (float)y
+{
+  // statements ...
+}
+
+// ...
+
+- (void) setY: (float)newY
+{
+  // statements ...
+}
+
 @end
-</PRE>
+</pre></td></tr></table></P><P>
 
-<P>
-The Implementation file uses <CODE>#include</CODE> to include a named
-interface file holding all declarations. Thereafter, the
-implementation need not declare instance variables, rather it
-may be dedicated to defining methods that may include a number
-of arguments; these are declared in the same way as the interface
-file but without the semicolon:
+The implementation file uses <CODE>#import</CODE> to include a named interface file
+holding all declarations.  Then it places method implementations for the class
+between <CODE>@implementation</CODE> and <CODE>@end</CODE> directives.  Each method
+declared in the interface must be implemented.  Instance variables may be
+referred to in instance methods (the ones with a "-" in front of them) but
+not class methods (the ones with a "+").
+</P><P>
 
-
-
-<PRE>
-</PRE>
-
-
-
-<H3><A NAME="SEC44" HREF="manual_toc.html#TOC44">Referring to Instance Variables</A></H3>
-
-<P>
-When an instance method of a certain object is called, the method can
-refer to the object's instance variables directly by name.  
-
-
-<P>
-The following example illustrates how a method definition refers to the
-receiving object's <B>instance variable</B> called <CODE>line</CODE>.
-
-
-
-<PRE>
-- (void) setLine: (BOOL)flag
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (float) x
 {
-  line = flag;
+  return x;
 }
-</PRE>
 
-<P>
-You can access instance variables of other instances of the same class by using the operator <CODE>-&#62;</CODE>. 
-
-
-<P>
-<EM>Example here.</EM>
-
-
-<P>
-The following code fragment demonstrates how the GPRS class may declare a statically typed object as an instance variable called qosfive:
-
-
-
-<PRE>
-@interface GPRS :NSObject
+- (void) setX: (float)newX
 {
-    Connect *qosfive;
-    int frequency;
-    struct features *chargeband;
+  x = newX;
 }
-</PRE>
+</pre></td></tr></table></P><P>
 
+<HR SIZE="6">
+<A NAME="SEC58"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC57"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC59"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC59"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.2.2 Super and Self </H3>
+<!--docid::SEC58::-->
 <P>
-Because qosfive is typed to the same class, the instance variables of the statically typed class are in the scope of the class. So the Connect method may set them directly:
 
+To assist in writing instance methods, Objective-C provides the two reserved
+words <B><CODE>self</CODE></B> and <B><CODE>super</CODE></B>.  <CODE>Self</CODE> is used to refer to
+the current instance, and is useful for, among other things, invoking other
+methods on the instance:
+</P><P>
 
-
-<PRE>
--makeAnotherQosfive
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (Foo *) foo
 {
-    if (!qosfive) {
-        qosfive =[[Connect alloc ] init ];
-        qosfive-&#62;frequency =frequency;
-        qosfive-&#62;chargeband =chargeband;
+  if (![self fooIsInitialized])
+    [self initializeFoo];
+  return foo;
+}
+</pre></td></tr></table></P><P>
+
+<CODE>Super</CODE> is used to refer to method implementations in the superclass of
+the instance.  It is useful when overriding methods and when writing
+initializers, as discussed in the next section.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC59"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC58"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC60"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC60"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.2.3 Instance Initialization </H3>
+<!--docid::SEC59::-->
+<P>
+
+Instance initialization is one of the trickier aspects of getting started in
+Objective-C.  Recall that instances of a class are created by use of the class
+<CODE>alloc</CODE> method (inherited from <CODE>NSObject</CODE>) but are initialized by
+instance methods.  This works a little differently than in C++ and Java, where
+constructors are special methods that are neither class nor instance methods.
+In particular, since initializer methods are inherited instance methods, they
+may still be called even if you have not implemented them in your class.  For
+example, it is always valid to invoke
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>SomeComplexClass *c = [[SomeComplexClass alloc] init];
+</pre></td></tr></table></P><P>
+
+Even if you have not implemented <CODE>init</CODE> in <CODE>SomeComplexClass</CODE>, the
+superclass's implementation will be invoked, or, ultimately,
+<CODE>NSObject</CODE>'s if no other ancestors implement it.  Obviously, this could
+result in some of <CODE>SomeComplexClass</CODE>'s internal state being left
+uninitialized.  For this reason, you should always either provide an
+<CODE>init</CODE> implementation, or document whether it should be used.  We will
+return to this concern below.
+</P><P>
+
+Typically, a class will also provide one or more <CODE>initWith...</CODE> methods
+for initialization with arguments, and it may optionally also provide
+convenience class methods that act like constructors.  The general approach
+to implementing these is illustrated here for the <CODE>Point</CODE> class.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>+ new
+{
+  Point *point = [[self alloc] init];
+    // note "self" refers to the "Point" _class_ object!
+  return AUTORELEASE(point);
+}
+
++ newWithX: (float)x0 Y: (float)y0
+{
+  Point *point = [[self alloc] initWithX: x Y: y];
+  return AUTORELEASE(point);
+}
+
+- init
+{
+  return [self initWithX: 0.0 Y: 0.0];
+}
+
+// this is the "designated" initializer
+- initWithX: (float)x0 Y: (float)y0
+{
+  self = [super init];
+  if (self != nil)
+    {
+      x = x0;
+      y = y0;
     }
-    return qosfive;
+  return self;
 }
-</PRE>
+</pre></td></tr></table></P><P>
 
-<P>
-<B>Note. When the object is not a receiver, it is necessary that the object be <B>statically typed</B> in the class declaration.</B>
- 
+Notice that, first, the convenience constructors (<CODE>new</CODE> and
+<CODE>newWithX:Y:</CODE>) execute <CODE>[self alloc]</CODE> to begin with.  The
+"<CODE>self</CODE>" here refers to the <I>class</I> object, since it is used inside a
+<I>class</I> method.  Thus the effect is the same as if "<CODE>[Point alloc]</CODE>"
+had been executed in external code.  Second, notice that they autorelease the
+new instance before returning it.  This is to follow the rules of memory
+management discussed in <A HREF="manual_3.html#SEC38">Memory Management</A>.  Third,
+note that the <CODE>new..</CODE>  methods each call a corresponding <CODE>init...</CODE>
+method.  It is not necessary to maintain such a one to one correspondence but
+it is a common convention to have the convenience implementations rely on
+instance <CODE>init</CODE> methods as shown.
+</P><P>
 
+<B>Designated Initializer</B>
+</P><P>
 
+Finally, notice that the <CODE>initWithX:Y:</CODE> method is marked as the
+"designated" initializer.  This concept is important to ensure proper
+initialization for classes within a hierarchy.  The designated initializer
+should be the one with the most control over the nature of the new instance,
+and should be the one that all other initializers "ground out" in.  In
+other words, all other initializers should be chained so that they either
+call the designated initializer, or they call another initializer that
+(eventually) calls it.
+</P><P>
 
+The importance of having a designated initializer is this: when a subclass is
+created, it need only override the designated initializer to ensure that all
+of its instances are properly initialized.  If this is not done, external
+code could invoke an initializer that initializes only the superclass's
+instance variables, and not the subclass's.  To avoid this, each class
+designates a "ground out" initializer to which other initializers
+ultimately delegate.  Then the subclass overrides this initializer, and in
+its own designated initializer, makes a call to it, to ensure that the
+superclass is initialized properly.  Thus:
+</P><P>
 
-<H3><A NAME="SEC45" HREF="manual_toc.html#TOC45">Instance Variable Scope</A></H3>
-
-<P>
-In Objective-C instance variable have three types of <B>scope</B> or accessibility:
-
-<UL>
-<LI>
-
-<CODE>@private</CODE> restricts the instance variable to the declaring class, and not to inheriting classes.
-
-<LI>
-
-<CODE>@protected</CODE> restricts the instance variable to the declaring class and inheriting
-classes - this is the default scope.
-
-<LI>
-
-<CODE>@public</CODE> globalises the instance variable, removing all the aforementioned restrictions.
-
-</UL>
-
-
-
-<H3><A NAME="SEC46" HREF="manual_toc.html#TOC46">Accessing Object Data Structures</A></H3>
-<P>
-The instance variables or data structures of objects are accessed by sending the object messages. An Objective-C object's instance variables may be changed to a <B>public</B> scope by converting them into a C structure. 
-
-
-<P>
-The <CODE>@defs(className)</CODE> directive produces a declaration list, where <CODE>public</CODE> is used as a pointer to the structure that approximates an instance of <CODE>Gprschannel</CODE>:
-
-
-
-<PRE>
-struct gprschannelDef {
-    @defs(Gprschannel)
-}*public;
-</PRE>
-
-<P>
-An object's instance variables may be given <B>public scope</B> through a <CODE>Gprschannel id</CODE> assigned to the pointer:
-
-<PRE>
-id aGprschannel;
-aWorker =[[Gprschannel alloc ] init ];
-public =(struct gprschannelDef *)aGprschannel;
-public-&#62;boss =nil;
-</PRE>
-
-
-
-<H3><A NAME="SEC47" HREF="manual_toc.html#TOC47">Super and Self</A></H3>
-
-<P>
-In the implementation of an Objective-C method, you may use the two reserved words <B>self</B> and <B>super</B>
-
-
-<P>
-<EM>example here</EM>
-.
-In Objective-C some control over messaging is provided by <B>self</B> and <B>super</B>. <B>Self</B> searches for the 
-method implementation in the receiving object's class. 
-
-
-<P>
-<B>Super</B> begins searching for the method implementation in the superclass of the class that defines the method with super.
-
-
-<P>
-A method implementation may refer to the target object as <B>self</B> or <B>super</B>, where 
-control is provided over which object performs the method. 
-
-
-<P>
-To demonstrate the difference between <B>self</B> and <B>super</B> consider three classes:
-
-
-
-<UL>
-<LI>
-
-One
-
-<LI>
-
-Two - One's superclass
-
-<LI>
-
-Three - Two's superclass
-</UL>
-
-<P>
-All three classes define a method called <B>traffic</B>, while Two defines a method called <B>Alert</B> that depends on <B>traffic</B>.
-
-
-<P>
-Sending a message to the One object to invoke the <B>Alert</B> method, causes the <B>Alert</B> method to send a <B>traffic</B> message to the same One object.  
-
-
-<P>
-The following source code would search for the traffic method defined in One (or self's class).
-
-
-
-<PRE>
--Alert
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>@implementation SuperClass
+- initWithA: (int)a
 {
-[self traffic ];
-...
+  return [self initWithA:a B:0];  // 0 is default value
 }
-</PRE>
 
-<P>
-When Two’s source code calls this object super, the messaging routine will find the version of traffic defined in Three (the <B>superclass</B> of Two).
-
-
-
-<PRE>
--Alert
+// designated init for SuperClass
+- initWithA: (int)a B: (int)b
 {
-[super traffic ];
-...
+  self = [super init];
+  myA = a;
+  myB = b;
+  return self;
 }
-</PRE>
-
-<P>
-<B>Self</B> is a variable name that may be assigned new values particularly in definitions 
-of class methods that often focus on class instances as opposed to class objects. For example, 
-a method might combine allocation and initialization of an instance:
-
-
-
-<PRE>
-
-+(id)newRect
-{
-    return [[self alloc ] init ];
-}
-
-</PRE>
-
-<P>
-When in class methods self refers to class objects, and when in instance methods self 
-refers to instances. <B>self</B> and <B>super</B> focus on the receiver that is the object 
-being stimulated by a message. 
-
-
-<P>
-<EM>Nicola/Richard add an example for self and super here - or two examples?</EM>
-
-
-<P>
-implementation of the example class interface
-
-
-
-
-<H2><A NAME="SEC48" HREF="manual_toc.html#TOC48">Categories</A></H2>
-<P>
-A category may serve to replace a subclass; when adding methods to an existing declared class, and not to a new class, a <B>category name</B> is used. 
-An interface file may declare methods under a category name that is also used in the implementation file for the definitions of those methods.  
-Category methods are added to the class, and instances of the class will have the methods as part of their behaviour. As is the case with other methods, category methods are inherited by all the class' subclasses.
-
-
-
-
-<H3><A NAME="SEC49" HREF="manual_toc.html#TOC49">Adding to Classes</A></H3>
-
-<P>
-A category interface has the form: 
-
-
-
-<PRE>
-#include "ClassTitle .h"
-@interface ClassTitle (CategoryTitle )
-     declared methods
 @end
-</PRE>
 
-<P>
-The category may include a interface, so as to allow its methods to access the instance variables of named classes.
+@implementation SubClass
 
+// overrides SuperClass's designated init
+- initWithA: (int)a B: (int)b
+{
+  return [self initWithA: (int)a B: (int)b C: (int)c];
+}
 
-<P>
-A category implementation file has the form:
-
-
-
-<PRE>
-#include "CategoryTitle .h"
-@implementation ClassTitle (CategoryTitle )
-    definitions of methods 
+// designated init for SubClass
+- initWithA: (int)a B: (int)b C: (int)c
+{
+  self = [super initWithA: a B: b];
+  myC = c;
+  return self;
+}
 @end
-</PRE>
+</pre></td></tr></table></P><P>
 
+Note, as shown above, unlike in some other object-oriented languages,
+'<CODE>self</CODE>' is a variable that can be redefined.  For example, we could have
+written the <CODE>new</CODE> constructor above like this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>{
+  self = [[self alloc] init];
+    // note "self" now refers to the new instance!
+  [self setX: 1.0];
+  return AUTORELEASE(self);
+}
+</pre></td></tr></table></P><P>
+
+Another point to note is that Objective-C does not enforce calling superclass
+initializers before carrying out subclass initialization.  Although above the
+first call in the designated initializer was always <CODE>[super ...]</CODE>, this
+was not required, and if you need to set something up before <CODE>super</CODE>
+acts, you are free to do so.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC60"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC59"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC61"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC61"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.2.4 Flexible Initialization </H3>
+<!--docid::SEC60::-->
 <P>
-Category methods may replace the conventional methods inherited by the class.
 
+As mentioned before, it is possible for an initialization process to, if
+desired, return not a new object but an existing object.  This may be done in
+one of two ways.  If you are doing it from a convenience class method like
+<CODE>new</CODE>, then use something like the following:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>+ new
+{
+  if (singleton == nil)
+    singleton = [[self alloc] init];
+  return singleton;
+}
+</pre></td></tr></table></P><P>
+
+Note this example presupposes the existence of a class variable,
+'<CODE>singleton</CODE>'.  Class variables as such don't exist in Objective-C but
+can be simulated, as discussed below.
+</P><P>
+
+If you want to possibly return an existing instance from an init instance
+method like <CODE>init</CODE>, the procedure is slightly more complicated:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- init
+{
+  if (singleton != nil)
+    {
+      RELEASE(self);
+      self = RETAIN(singleton);
+    }
+    else
+    {
+      singleton = self;
+    }
+  return self;
+}
+</pre></td></tr></table></P><P>
+
+Here, we explicitly <B>deallocate</B> the current instance and replace it with
+the desired existing instance.  Because this might happen, you should always
+be careful to use the returned value from an <CODE>init</CODE> method:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id anObject = [SomeClass alloc];
+  // this is bad:
+[anObject init];
+  // anObject might have been deallocated!
+  // do this instead:
+anObject = [anObject init];
+</pre></td></tr></table></P><P>
+
+One scenario where this actually occurs in the GNUstep libraries is with the
+class <CODE>NSConnection</CODE>.  It only permits one connection to exist
+between any two ports, so if you call <CODE>initWithReceivePort:sendPort:</CODE>
+when a connection for the ports exists, the method will deallocate
+the newly allocated instance, and return the current conflicting object,
+rather than the receiver.
+</P><P>
+
+In general, it is better to catch this type of requirement in a "<CODE>new</CODE>"
+class method rather than an instance "<CODE>init</CODE>" method so as to avoid
+the unnecessary allocation of instances that will not be used, however this
+is not always possible given other design constraints.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC61"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC60"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.2.5 Instance Deallocation </H3>
+<!--docid::SEC61::-->
 <P>
-<B>Note. A category should not be considered a substitute for a subclass. </B>
 
+As described in <A HREF="manual_3.html#SEC38">Memory Management</A>,
+objects should be deallocated when they are no longer needed.  When garbage
+collection is not being used, this is done through explicit calls to the
+<CODE>dealloc</CODE> method.  When GC <I>is</I> being used, <CODE>dealloc</CODE> is still
+called implicitly, and should be implemented.  However the tasks of the
+<CODE>dealloc</CODE> method are fewer in this case.
+</P><P>
 
+When garbage collection is <I>not</I> active, the <CODE>dealloc</CODE> method must
+release all other objects that this instance has retained.  Usually these are
+those instance variables that are objects rather than primitive types.  In
+certain cases such as container classes, other objects must be released as
+well.  In addition, if the instance has acquired any external resources, such
+as a network connection or open file descriptor, these should be relinquished
+as well.  Likewise, any memory that has been directly allocated through use
+of <CODE>malloc</CODE> or other functions should be released.
+</P><P>
 
+When garbage collection <I>is</I> active, the <CODE>dealloc</CODE> method is still
+responsible to relinquish external resources, but other GNUstep objects need
+not be released, since they will be garbage collected once this instance has
+been.
+</P><P>
 
-<H3><A NAME="SEC50" HREF="manual_toc.html#TOC50">Using Categories</A></H3>
+If you cannot be sure whether your class will be running in a
+garbage-collecting environment, it never hurts to execute all of the releases
+of other objects.  This will not harm the operation of the garbage collector,
+though it will result in pointless calls to the retain/release methods that
+are stubbed out under garbage collection.  If this could cause a performance
+hit in your application, you should use the RETAIN/RELEASE macros instead of
+the function calls.
+</P><P>
+
+Here is an example of a <CODE>dealloc</CODE> implementation:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- dealloc
+{
+  RELEASE(anInstanceVariableObject);
+  NSZoneFree(NULL, myMemory);
+  [super dealloc];
+}
+</pre></td></tr></table></P><P>
+
+Here, we use the <CODE>RELEASE</CODE> macro to release an instance variable, and the
+<CODE>NSZoneFree</CODE> function to free memory that was earlier allocated with
+<CODE>NSZoneMalloc</CODE> or a related function.  (See <A HREF="manual_8.html#SEC117">8. Base Library</A> for
+discussion of GNUstep's raw memory allocation functions.)  The <CODE>NULL</CODE>
+used indicates that the memory was from the default zone, and is equivalent
+to saying '<CODE>NSDefaultMallocZone()</CODE>' instead.
+</P><P>
+
+Finally, notice we end with a call to <CODE>[super dealloc]</CODE>.  This should
+always be done in <CODE>dealloc</CODE> implementations, and you should never
+concern yourself with deallocating structures that are associated with a
+superclass, since it will take care of this itself.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC62"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC61"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC63"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 4.3 Protocols </H2>
+<!--docid::SEC62::-->
 <P>
-Categories are useful for extending existing classes, so as to add new methods to frameworks. Categories are often used to separate the implementation of a new class into a number of source files. The obvious benefits of this program development strategy include: grouping subject-oriented methods; incremental compilation for large classes; help to logically divide the class when being created by a number of developers; and, permit configuration-specific classes targeting particular applications.
 
+Protocols in Objective-C provide a level of flexibility beyond class
+structure in determining what messages objects respond to.  They are similar
+to interfaces in Java but more flexible.
+</P><P>
 
-<P><HR><P>
-Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_3.html">previous</A>, <A HREF="manual_5.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
+There are two types of protocol in Objective-C: <B>informal</B> protocols, where
+we document methods to which objects will respond, and specify how they should
+behave, and <B>formal</B> protocols, where we provide a list of methods that an
+object will support in a format where the compiler can check things, and the
+runtime can also check that an object conforms to the protocol.  Informal
+protocols are merely convention, but are useful where we want to say that some
+system will work as long as it (or its delegate) implements some subset of a
+group of methods.  Formal protocols are of more use when we want the compiler
+or runtime to check that an object implements all of a group of methods
+itself.  Formal protocols form an inheritance hierarchy like classes, and a
+given class may conform to more than one protocol.  Thus, formal protocols are
+identical in many respects to Java <I>interfaces</I>.
+</P><P>
+
+As in Java, a particularly important use of protocols is in defining the
+methods that an object in a remote process can respond to <small>...</small> by setting
+the protocol used by a local proxy object, you can avoid having to send
+messages to the remote process to check what methods are available - you can
+simply check the local protocol object.  This will be covered later in
+<A HREF="manual_7.html#SEC96">7. Distributed Objects</A>.
+</P><P>
+
+Informal protocols are closely associated with <I>Categories</I>, another
+Objective-C language facility, and will be discussed in the next section.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC63"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC64"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.3.1 Declaring a Formal Protocol </H3>
+<!--docid::SEC63::-->
+<P>
+
+A formal protocol is declared as a series of method declarations, just like a
+class interface.  The difference is that a protocol declaration begins with
+<CODE>@protocol</CODE> rather than <CODE>@interface</CODE>, and has an optional
+<B>super</B> protocol specified in angle brackets.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>@protocol List
+- (void) add:        (id) item;
+- (void) remove:     (id) item;
+- getAtIndex:        (int)idx;
+- (void) clear;
+@end
+
+@protocol LinkedList &#60;List&#62;
+- (void) addFirst:   (id)item;
+- (void) addLast:    (id)item;
+- getFirst;
+- getLast;
+@end
+</pre></td></tr></table></P><P>
+
+<HR SIZE="6">
+<A NAME="SEC64"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC63"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC65"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC65"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.3.2 Implementing a Formal Protocol </H3>
+<!--docid::SEC64::-->
+<P>
+
+If you want your class to conform to a protocol, you declare it in your
+interface, and implement the methods in your declaration:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>@interface BiQueue &#60;LinkedList&#62;
+{
+  // instance variables ...
+}
+  // method declarations ...
+  // [don't need to redeclare those for the LinkedList protocol]
+- takeFirst
+- takeLast
+@end
+
+...
+
+@implementation BiQueue
+  // must implement both List's and LinkedList's methods ...
+- add:        (id) item
+{
+  // ...
+}
+
+- addFirst:   (id)item
+{
+  // ...
+}
+@end
+</pre></td></tr></table></P><P>
+
+To declare conformance to multiple protocols, do something like this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>@interface ContainerWindow &#60; List, Window &#62;
+  ...
+@end
+</pre></td></tr></table></P><P>
+
+The implementation must include all methods in both protocols.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC65"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC64"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.3.3 Using a Formal Protocol </H3>
+<!--docid::SEC65::-->
+<P>
+
+To use a formal protocol, simply send objects the messages in the protocol.
+If you want type-checking, you must either use the type of a class
+implementing the protocol, or use a special syntax:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>...
+BiQueue queue = [[BiQueue alloc] init];
+  // send a LinkedList message
+[queue addFirst: anObject];
+
+  // alternatively, we may stipulate only that an object conforms to the
+  // protocol in the following way:
+id&#60;LinkedList&#62; todoList = [system getTodoList];
+task = [todoList getFirst];
+...
+</pre></td></tr></table></P><P>
+
+In the last part of this example, we declare that <CODE>todoList</CODE> is an
+object that conforms to the <CODE>LinkedList</CODE> protocol, but do not specify
+what class it may be an instance of.
+</P><P>
+
+If you are not sure the returned object does indeed conform to the protocol
+you are interested in, you can check it:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>if ([anObject conformsToProtocol: aProtocol] == YES)
+  {
+    // We can go ahead and use the object.
+  }
+else
+  {
+    NSLog(@"Object of class %@ ignored ... does not conform to 
+      protocol", NSStringFromClass([anObject class]));
+  }
+</pre></td></tr></table></P><P>
+
+Finally, you can specify an object conforming to <I>multiple</I> protocols in
+the same way you declare it in an interface:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id &#60;LinkedList, Window&#62;   windowContainerOfUnknownClass;
+</pre></td></tr></table></P><P>
+
+<HR SIZE="6">
+<A NAME="SEC66"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC65"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC67"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 4.4 Categories </H2>
+<!--docid::SEC66::-->
+<P>
+
+Categories provide a way in Objective-C to add new methods to an existing
+class, without declaring a subclass.  Once the category is declared and
+implemented, all instances of the existing class that are created will include
+the capability to respond to the new methods.  Furthermore, subclasses of the
+class will inherit these methods.  However, it is not possible to add instance
+variables to a class using a category.  Categories do not have an obvious
+parallel in other major object-oriented languages (with the exception of
+Ruby), but it is well worth taking the trouble to understand them and the
+benefits they can provide.
+</P><P>
+
+A category is declared in connection with the class it is going to modify.
+(You can think of it as a new "category" of instances of this class.)
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "Point.h"
+
+@interface Point (Transformable)
+- translateByX: (float)tx Y: (float)ty;
+- rotateByAngle: (float)radians;
+- scaleByAmountX: (float)xscale Y: (float)yscale;
+@end
+</pre></td></tr></table></P><P>
+
+You then provide an implementation file more or less analogously to that for
+a class, where you implement just the new methods:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "PointTransformable.h"
+
+@implementation Point (Transformable)
+- (void) translateByX: (float)tx Y: (float)ty
+{
+  x += tx;
+  y += ty;
+  return self;
+}
+
+- (void) rotateByAngle: (float)radians
+{
+  // ...
+}
+
+- (void) scaleByAmountX: (float)xscale Y: (float)yscale
+{
+  // ...
+}
+@end
+</pre></td></tr></table></P><P>
+
+Notice that you have access to instance variables of the class you are
+creating a category of; this includes private and protected variables.
+</P><P>
+
+One of the primary uses of categories is illustrated by this example.  Suppose
+you are working with a third party drawing package that uses some geometrical
+classes such as <CODE>Point</CODE> and <CODE>Line</CODE>.  You are developing an animation
+program based on the package and need the ability to move things around.
+Rather than employing a complex subclassing or aggregation scheme to add these
+capabilities, you simply define the <CODE>Transformable</CODE> category for each of
+the geometrical entities.  At runtime, all instances of these entities,
+whether created by you or the package itself, have the additional methods.
+The presence of these methods does not affect the existing operation of this
+or any third party package, but allows you to conveniently implement the
+enhanced functionality you need.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC67"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC68"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.4.1 Category Overrides </H3>
+<!--docid::SEC67::-->
+<P>
+
+You can also use categories to override methods that a class already has.  If
+you do so, you cannot access an existing implementation in the class itself,
+however you can still call <CODE>[super someMethod]</CODE> to access an
+implementation inherited from a superclass.  You obviously need to be careful
+not to break existing functionality.
+</P><P>
+
+You can add multiple categories to a class by declaring them and implementing
+them separately.  Instances of the class will then implement <I>all</I> of the
+categories declared.  The order in which the category implementations are
+searched for methods is not defined, therefore you cannot override a method
+implemented in one category with an implementation in another.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC68"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC67"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC69"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC69"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.4.2 Categories as an Implementation Tool </H3>
+<!--docid::SEC68::-->
+<P>
+
+Categories are not just useful for extending an existing class.  Another major
+use for categories is to separate the implementation of a <I>new</I> class into a
+number of source files.  (Each file implements one category of the new class,
+and at runtime instances of the class respond to the methods in all the
+categories.)  The benefits of this program development strategy include:
+grouping subject-oriented methods; incremental compilation for large classes;
+helping to logically divide the class when being created by a number of
+developers; and, permitting configuration-specific classes targeting
+particular applications.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC69"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC68"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 4.4.3 Categories and Protocols </H3>
+<!--docid::SEC69::-->
+<P>
+
+As described in the previous section, in addition to the <I>formal</I> protocol
+facility described, Objective-C provides for <I>informal</I> protocols.  An
+informal protocol is essentially a category declaration without an
+implementation.  Usually, the informal protocol is declared as a category for
+a high-level object, such as <CODE>NSObject</CODE>, then each class that actually
+wishes to implement something in the protocol lists the methods it chooses to
+implement in its interface and provides implementations in its
+implementation.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC70"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC69"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC71"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC71"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 4.5 Simulating Private and Protected Methods </H2>
+<!--docid::SEC70::-->
+<P>
+
+Unlike most object-oriented languages Objective-C does not provide for method
+scoping.  Instead, all methods are effectively public.  Often, however, it is
+useful to have internal "utility" methods that help a class do its job but
+are hidden from external use.  Rather than cluttering up the class's API with
+a bunch of methods marked "do not use", one wants to make these methods
+visible only to subclasses, or only to the class itself.  Categories can help
+in this regard.
+</P><P>
+
+<B>Using Categories</B>
+</P><P>
+
+One common approach is to define a category within a class's
+<I>implementation</I> file:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>
+#import "Point.h"
+
+@interface Point (Private)
+-(BOOL) isPositiveQuadrant;
+@end
+
+@implementation Point
+  // public method implementations ...
+@end
+
+@implementation Point (Private)
+-(BOOL) isPositiveQuadrant
+{
+  return (x &#62; 0) &#38;&#38; (y &#62; 0) ? YES : NO;
+}
+@end
+</pre></td></tr></table></P><P>
+
+All of this code would appear in the file <CODE>Point.m</CODE>.  What this does is
+add a category to Point defining the private methods.  Since external code
+only "knows about" <CODE>Point</CODE> through its interface file, these additional
+methods are effectively invisible.  However, you should be aware that external
+code is not prevented from actually calling the private methods, if it happens
+to know about them.  However the compiler will produce a warning if you try
+to do this with a typed variable:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>Point *p = [[Point alloc] init];
+  // works, but produces a compile warning
+BOOL b = [p isPositiveQuadrant];
+</pre></td></tr></table></P><P>
+
+The bright side of this is it allows you to simulate <I>protected</I> methods as
+well.  For this, the writer of a subclass must be informed in some way about
+the protected methods, and they will need to put up with the compiler
+warnings.  Alternatively, you could declare the Protected category in a
+separate interface file (e.g., "<CODE>PointProtected.h</CODE>"), and provide this
+interface file with the understanding that it should only be imported and used
+by a subclass's interface file.
+</P><P>
+
+<B>Using Convention</B>
+</P><P>
+
+Another approach to providing <I>protected</I> methods that the class or subclass
+can use is to prefix these methods with an underscore ('_').  These methods
+will still be visible publicly, but programmers will know, by convention, not
+to use them externally, and the <A HREF="manual_9.html#SEC145">GNUstep documentation system</A> will
+automatically mark these in API documentation as off-limits.
+</P><P>
+
+An alternative approach to providing <I>private</I> methods is to simply declare
+them as functions within the implementation file itself.  The catch to this is
+that these functions will <I>not</I> have access to the class's instance
+variables.  You will need to pass these in manually whenever you invoke them
+from an ordinary method.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC71"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 4.6 Simulating Class Variables </H2>
+<!--docid::SEC71::-->
+<P>
+
+While Objective-C does not provide for variables that are associated with the
+class as a whole rather than an instance, these are often useful.  It is
+possible to simulate them to a limited extent by declaring static variables in
+the implementation file for the class (inside the <CODE>@implementation</CODE>
+block).  The variables will not be available to subclasses, unless they
+explicitly declare them "<CODE>extern</CODE>" and are compiled at the same time.
+</P><P>
+
+...
+</P><P>
+
+<A NAME="Advanced Messaging"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>September, 7  2004</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
 </BODY>
 </HTML>

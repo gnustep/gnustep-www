@@ -1,1176 +1,840 @@
 <HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on September, 7  2004 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
 <HEAD>
-<!-- Created by texi2html 1.56k from manual.texi on 26 January 2004 -->
+<TITLE>Objective-C GNUstep Base Programming Manual: Exception Handling</TITLE>
 
-<TITLE>Objective-C, Programming Manual - Distributed Objects</TITLE>
+<META NAME="description" CONTENT="Objective-C GNUstep Base Programming Manual: Exception Handling">
+<META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Exception Handling">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
 </HEAD>
-<BODY>
-Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_5.html">previous</A>, <A HREF="manual_7.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
-<P><HR><P>
 
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
-<H1><A NAME="SEC69" HREF="manual_toc.html#TOC69">Distributed Objects</A></H1>
+<A NAME="SEC80"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC79"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 6. Exception Handling, Logging, and Assertions </H1>
+<!--docid::SEC80::-->
 <P>
-<A NAME="IDX31"></A>
 
+No matter how well a program is designed, if it has to interact with a user or
+other aspect of the outside world in any way, the code is bound to
+occasionally meet with cases that are either invalid or just plain unexpected.
+A very simple example is when a program asks the user to enter a filename, and
+the user enters the name of a file that does not exist, or does not enter a
+name at all.  Perhaps a valid filename <I>is</I> entered, but, due to a previous
+disk write error the contents are garbled.  Any number of things can go wrong.
+In addition, programmer error inevitably occurs and needs to be taken account
+of.  Internal functions may be called with invalid arguments, either due to
+unexpected paths being taken through the code, or silly things like typos
+using the wrong variable for something.  When these problems happen (and they
+<I>will</I> happen), it is better to handle them gracefully than for the program
+to crash, or worse, to continue processing but in an erroneous way.
+</P><P>
 
+To allow for this, many computer languages provide two types of facilities.
+The first is referred to as <I>exception handling</I> or sometimes <I>error
+trapping</I>.  The second is referred to as <I>assertion checking</I>.  Exceptions
+allow the program to catch errors when they occur and react to them
+explicitly.  Assertions allow a programmer to establish that certain
+conditions hold before attempting to execute a particular operation.  GNUstep
+provides both of these facilities, and we will cover each in turn.  The
+assertion facility is tied in with the GNUstep <I>logging</I> facilities, so we
+describe those as well.
+</P><P>
+
+To use any of the facilities described in this chapter requires that you
+include <CODE>Foundation/NSException.h</CODE>.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC81"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC82"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 6.1 Exceptions </H2>
+<!--docid::SEC81::-->
 <P>
-Until now we have been concentrating on using the Objective-C language
-to create programs that execute in a single process. But what if you
-want your program to interact with objects in other processes, perhaps
-running on different machines?
 
+GNUstep exception handling provides for two things:
+</P><P>
 
+<OL>
+<LI>
+When an error condition is detected during execution, control is passed to a
+special error-handling routine, which is given information on the error that
+occurred.
+<LI>
+This routine may itself, if it chooses, pass this information up the function
+call stack to the next higher level of control.  Often higher level code is
+more aware of the context in which the error is occurring, and can therefore
+make a better decision as to how to react.
+</OL>
 <P>
-As a simple example, we may have a client process that needs to access a
-telephone directory stored on a remote server. The client process could
-send a message to the server that contained a person's name, and the
-server could respond by returning that person's number.
 
-
+<HR SIZE="6">
+<A NAME="SEC82"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC83"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.1 Catching and Handling Exceptions </H3>
+<!--docid::SEC82::-->
 <P>
-The GNUstep base library provides a powerful set of classes that make
-this type of remote messaging not only possible, but easy to program. So
-what do these classes do and how can we use them? To answer that we must
-first look at the way code interacts with objects in a single process,
-and then look at how we can achieve the same interaction with objects
-that exist in different processes.
 
+GNUstep exception handling is implemented through the macros <CODE>NS_DURING</CODE>,
+<CODE>NS_HANDLER</CODE>, and <CODE>NS_ENDHANDLER</CODE> in conjunction with the
+<CODE>NSException</CODE> class.  The following illustrates the pattern:
+</P><P>
 
-
-
-<H2><A NAME="SEC70" HREF="manual_toc.html#TOC70">Object Interaction</A></H2>
-<P>
-<A NAME="IDX32"></A>
-
-
-<P>
-To continue with the example above, if the telephone directory existed
-in the same process as the code that was accessing it, then a simple
-message would return the wanted telephone number.
-
-
-
-<PRE>
-  NSString *wantedNumber = [telephoneDirectory teleNumber: personName];
-</PRE>
-
-<P>
-Now object and method names just hold pointers to memory addresses. The
-code executed at run time in response to the <CODE>teleNumber</CODE> message
-is located at an address held by the name of the responding method (a
-variable), while data in the telephone directory is located at an
-address held by the <CODE>telephoneDirectory</CODE> variable.
-
-
-<P>
-In a single process these addresses can be accessed by the client code
-at run time, but if the telephone directory is located on a remote
-server, then the address of the remote object is not known in the client
-process (the <CODE>telephoneDirectory</CODE> object and its responding method
-are said to exist in a separate 'address space').
-
-
-<P>
-The Objective-C run-time library was not designed for this inter-process
-communication or 'remote messaging'.
-
-
-
-
-<H2><A NAME="SEC71" HREF="manual_toc.html#TOC71">The GNUstep Solution</A></H2>
-<P>
-<A NAME="IDX33"></A>
-<A NAME="IDX34"></A>
-<A NAME="IDX35"></A>
-<A NAME="IDX36"></A>
-<A NAME="IDX37"></A>
-<A NAME="IDX38"></A>
-
-
-<P>
-GNUstep overcomes these limitations by providing you with classes that
-form, what is known as, a 'distributed objects' architecture that
-extends the capabilities of the run-time system.
-
-
-<P>
-With the addition of a few lines of code in the client and server
-programs, these extensions allow you to send a message to a remote
-process by constructing a simple Objective-C statement. In the telephone
-directory example, the statement to retrieve the telephone number would
-now look something like this:
-
-
-
-<PRE>
-  NSString *wantedNumber = [proxyForDirectory teleNumber: personName];
-</PRE>
-
-<P>
-Compare this to the original statement:
-
-
-
-<PRE>
-  NSString *wantedNumber = [telephoneDirectory teleNumber: personName];
-</PRE>
-
-<P>
-Notice that the only difference between the two statements is the name
-of the object receiving the message, i.e. <CODE>proxyForDirectory</CODE>
-rather than <CODE>telephoneDirectory</CODE>. GNUstep makes it as simple as
-this to communicate with an object in another process.
-
-
-<P>
-The variable <CODE>proxyForDirectory</CODE> is known as a 'proxy' for the
-remote <CODE>telephoneDirectory</CODE> object. A proxy is simply a substitute
-for the remote object, with an address in the 'address space' of the
-local client process, that receives messages and forwards them on to the
-remote server process in a suitably coded form.
-
-
-<P>
-Let us now take a look at the additional lines of code required to make
-this 'remote messaging' possible.
-
-
-
-
-<H3><A NAME="SEC72" HREF="manual_toc.html#TOC72">Code at the Server</A></H3>
-<P>
-<A NAME="IDX39"></A>
-<A NAME="IDX40"></A>
-
-
-<P>
-In order to respond to client messages, the responding server object
-must be set as the 'root object' of an instance of the NSConnection
-class, and this NSConnection must be registered with the network by
-name. Making an object available to client processes in this way is
-known as 'vending' the object. The registered name for the NSConnection
-is used by the client when obtaining a proxy for the responding server
-object over the network.
-
-
-<P>
-The only other code you need to consider is the code that listens for
-incoming messages. This 'runloop' as it is known, is started by sending
-a <CODE>run</CODE> message to an instance of the NSRunLoop class.  Since an
-NSRunLoop object is created automatically for each process, there is no
-need to create one yourself. Simply get the default runloop, which is
-returned by the <CODE>currentRunLoop</CODE> class method.
-
-
-<P>
-When the runloop detects an incoming message, the message is passed to
-the root object of the NSConnection, which performs a method in response
-to the message and returns a variable of the appropriate type. The
-NSConnection manages all inter-process communication, decoding incoming
-messages and encoding any returned values.
-
-
-<P>
-The code to vend the <CODE>telephoneDirectory</CODE> object and start the
-runloop would look something like this:
-
-
-
-<PRE>
-  /*
-   * Remember, create an instance of the 
-   * NSAutoreleasePool class.
-   */
-  CREATE_AUTORELEASE_POOL(pool);
-
-  /* 
-   * Get the default NSConnection object
-   * (a new one is automatically created if none exists). 
-   */
-  NSConnection *connXion = [NSConnection defaultConnection];
-  
-  /*
-   * Set the responding server object as
-   * the root object for this connection.
-   */
-  [connXion setRootObject: telephoneDirectory];
-  
-  /* 
-   * Try to register a name for the NSConnection,
-   * and report an error if this is not possible.
-   */
-  if ([connXion registerName: @"DirectoryServer"] == NO) 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NS_DURING
   {
-    NSLog(@"Unable to register as 'DirectoryServer'");
-    NSLog(@"Perhaps another copy of this program is running?");
-    exit(1);
+    // do something risky ...
   }
-  
-  /* Start the current runloop. */
-  [[NSRunLoop currentRunLoop] run];
-  
-  /* Release the pool */
-  RELEASE(pool);
-</PRE>
+NS_HANDLER
+  {
+    // a problem occurred; inform user or take another tack ...
+  }
+NS_ENDHANDLER
+  // back to normal code...
+</pre></td></tr></table></P><P>
 
+For instance:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (DataTree *) readDataFile: (String *)filename
+{
+  ParseTree *parse = nil;
+  NS_DURING
+    {
+      FileHandle *handle = [self getFileHandle: filename];
+      parse = [parser parseFile: handle];
+    }
+  NS_HANDLER
+    {
+      if ([[localException name] isEqualToString: MyFileNotFoundException])
+        {
+          NS_VALUERETURN([self readDataFile: fallbackFilename]);
+        }
+      else if ([[localException name] isEqualToString: NSParseErrorException])
+        {
+          NS_VALUERETURN([self readDataFileInOldFormat: filename]);
+        }
+      else
+        {
+          [localException raise];
+        }
+    }
+  NS_ENDHANDLER
+  return [[DataTree alloc] initFromParseTree: parse];
+}
+</pre></td></tr></table></P><P>
+
+Here, a file is parsed, with the possibility of at least two different errors:
+not finding the file and the file being misformatted.  If a problem does
+occur, the code in the <CODE>NS_HANDLER</CODE> block is jumped to.  Information on
+the error is passed to this code in the <CODE>localException</CODE> variable, which
+is an instance of <CODE>NSException</CODE>.  The handler code examines the name of
+the exception to determine if it can implement a work-around.  In the first
+two cases, an alternative approach is available, and so the
+<CODE>NS_VALUERETURN</CODE> macro is used to return an alternative value to the
+<CODE>readDataFile:</CODE> caller.  Note that it is <I>not</I> allowed to simply write
+"<CODE>return x;</CODE>" inside an exception handler, owing to the nature of the
+behind-the-scenes C constructs implementing the mechanism (the <CODE>setjmp()</CODE>
+and <CODE>longjmp()</CODE> functions).  If you are in a void function not returning
+a value, you may use simply "<CODE>NS_VOIDRETURN</CODE>" instead.  Finally, notice
+that in the third case above the handler does not recognize the exception
+type, so it passes it one level up to the caller by calling <CODE>-raise</CODE> on
+the exception object.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC83"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC82"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC84"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC84"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.2 Passing Exceptions Up the Call Stack </H3>
+<!--docid::SEC83::-->
 <P>
-These additional lines of code turn a program into a distributed objects
-server, ready to respond to incoming client messages.
 
+If the caller of <CODE>-readDataFile:</CODE> has enclosed the call inside its own
+<CODE>NS_DURING</CODE> <small>...</small> <CODE>NS_HANDLER</CODE> <small>...</small> <CODE>NS_ENDHANDLER</CODE> block,
+it will be able to catch this exception and react to it in the same way as we
+saw here.  Being at a higher level of execution, it may be able to take
+actions more appropriate than the <CODE>-readDataFile:</CODE> method could have.
+</P><P>
 
+If, on the other hand, the caller had <I>not</I> enclosed the call, it would not
+get a chance to react, but the exception would be passed up to the caller of
+<I>this</I> code.  This is repeated until the top control level is reached, and
+then as a last resort <CODE>NSUncaughtExceptionHandler</CODE> is called.  This is a
+built-in function that will print an error message to the console and exit
+the program immediately.  If you don't want this to happen it is possible to
+override this function by calling
+<CODE>NSSetUncaughtExceptionHandler(fn_ptr)</CODE>.  Here, <CODE>fn_ptr</CODE> should be
+the name of a function with this signature (defined in <CODE>NSException.h</CODE>):
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>void NSUncaughtExceptionHandler(NSException *exception);
+</pre></td></tr></table></P><P>
 
-<H3><A NAME="SEC73" HREF="manual_toc.html#TOC73">Code at the Client</A></H3>
+One possibility would be to use this to save files or any other unsaved state
+before an application exits because of an unexpected error.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC84"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC83"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC85"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC85"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.3 Where do Exceptions Originate? </H3>
+<!--docid::SEC84::-->
 <P>
-<A NAME="IDX41"></A>
-<A NAME="IDX42"></A>
 
+You may be wondering at this point where exceptions come from in the first
+place.  There are two main possibilities.  The first is from the Base library;
+many of its classes raise exceptions when they run into error conditions.  The
+second is that application code itself raises them, as described in the next
+section.  Exceptions do <I>not</I> arise automatically from C-style error
+conditions generated by C libraries.  Thus, if you for example call the
+<CODE>strtod()</CODE> function to convert a C string to a double value, you still
+need to check <CODE>errno</CODE> yourself in standard C fashion.
+</P><P>
 
+Another case that exceptions are <I>not</I> raised in is in the course of
+messaging.  If a message is sent to <CODE>nil</CODE>, it is silently ignored
+without error.  If a message is sent to an object that does not implement it,
+the <CODE>forwardInvocation</CODE> method is called instead, as discussed in
+<A HREF="manual_5.html#SEC72">5. Advanced Messaging</A>.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC85"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC84"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC86"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC86"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.4 Creating Exceptions </H3>
+<!--docid::SEC85::-->
 <P>
-At the client, all you need do is obtain a proxy for the responding
-server object, using the name that was registered for the NSConnection
-at the server.
 
+If you want to explicitly create an exception for passing a particular error
+condition upwards to calling code, you may simply create an
+<CODE>NSException</CODE> object and <CODE>raise</CODE> it:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSException myException = [[NSException alloc]
+                              initWithName: @"My Exception"
+                                    reason: @"[Description of the cause...]"
+                                  userInfo: nil];
+[myException raise];
+ // code in block after here is unreachable..
+</pre></td></tr></table></P><P>
 
-<PRE>
-  /* Create an instance of the NSAutoreleasePool class */
-  CREATE_AUTORELEASE_POOL(pool);
+The <CODE>userInfo</CODE> argument here is a <CODE>NSDictionary</CODE> of key-value pairs
+containing application-specific additional information about the error.  You
+may use this to pass arbitrary arguments within your application.  (Because
+this is a convenience for developers, it should have been called
+<CODE>developerInfo</CODE>..)
+</P><P>
 
-  /* Get the proxy */
-  id proxy = [NSConnection 
-              rootProxyForConnectionWithRegisteredName:
-	      <I>registeredServerName</I>
-	      host: <I>hostName</I>]; 
-	      
-  /* The rest of your program code goes here */
-  
-  /* Release the pool */
-  RELEASE(pool);
-</PRE>
+Alternatively, you can create the exception and raise it in one call with
+<CODE>+raise</CODE>:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>[NSException raise: @"My Exception"
+            format: @"Parse error occurred at line %d.",lineNumber];
+</pre></td></tr></table></P><P>
+
+Here, the <CODE>format</CODE> argument takes a printf-like format analogous to
+<CODE>[NSString -stringWithFormat:]</CODE> discussed <A HREF="manual_2.html#SEC12">Strings in GNUstep</A>.  In general, you should not use arbitrary names for
+exceptions as shown here but constants that will be recognized throughout your
+application.  In fact, GNUstep defines some standard constants for this
+purpose in <CODE>NSException.h</CODE>:
+</P><P>
+
+<DL COMPACT>
+<DT><CODE>NSCharacterConversionException</CODE>
+<DD>An exception when character set conversion fails.
+<DT><CODE>NSGenericException</CODE>
+<DD>A generic exception for general purpose usage.
+<DT><CODE>NSInternalInconsistencyException</CODE>
+<DD>An exception for cases where unexpected state is detected within an object.
+<DT><CODE>NSInvalidArgumentException</CODE>
+<DD>An exception used when an invalid argument is passed to a method or function.
+<DT><CODE>NSMallocException</CODE>
+<DD>An exception used when the system fails to allocate required memory.
+<DT><CODE>NSParseErrorException</CODE>
+<DD>An exception used when some form of parsing fails.
+<DT><CODE>NSRangeException</CODE>
+<DD>An exception used when an out-of-range value is encountered.
+</DL>
 <P>
-The code that obtains the proxy automatically creates an NSConnection
-object for managing the inter-process communication, so there is no need
-to create one yourself. If the <I>hostName</I> in this statement is 'nil',
-then only the local host will be searched to find the
-<I>registeredServerName</I>. If <I>hostName</I> is "*", then all hosts on the
-network will be searched.
 
+Also, some Foundation classes define their own more specialized exceptions:
+</P><P>
 
+<DL COMPACT>
+<DT><CODE>NSFileHandleOperationException (NSFileHandle.h)</CODE>
+<DD>An exception used when a file error occurs.
+<DT><CODE>NSInvalidArchiveOperationException (NSKeyedArchiver.h)</CODE>
+<DD>An archiving error has occurred.
+<DT><CODE>NSInvalidUnarchiveOperationException (NSKeyedUnarchiver.h)</CODE>
+<DD>An unarchiving error has occurred.
+<DT><CODE>NSPortTimeoutException (NSPort.h)</CODE>
+<DD>Exception raised if a timeout occurs during a port send or receive operation.
+<DT><CODE>NSUnknownKeyException (NSKeyValueCoding.h)</CODE>
+<DD> An exception for an unknown key.
+</DL>
 <P>
-In the telephone directory example, the code to obtain the proxy from
-any host on the network would be:
 
-
-
-<PRE>
-  id proxyForDirectory = [NSConnection
-                          rootProxyForConnectionWithRegisteredName: 
-                          @"DirectoryServer" 
-			  host: "*"]; 
-</PRE>
-
+<HR SIZE="6">
+<A NAME="SEC86"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC85"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.5 When to Use Exceptions </H3>
+<!--docid::SEC86::-->
 <P>
-With this additional line of code in the client program, you can now
-construct a simple Objective-C statement to communicate with the remote
-object.
 
+As might be evident from the <CODE>-readDataFile:</CODE> example above, if a
+certain exception can be anticipated, it can also be checked for, so you
+don't necessarily need the exception mechanism.  You may want to use
+exceptions anyway if it simplifies the code paths.  It is also good practice
+to catch exceptions when it can be seen that an unexpected problem might
+arise, as any time file, network, or database operations are undertaken, for
+instance.
+</P><P>
 
+Another important case where exceptions are useful is when you need to pass
+detailed information up to the calling method so that it can react
+appropriately.  Without the ability to raise an exception, you are limited to
+the standard C mechanism of returning a value that will hopefully be
+recognized as invalid, and perhaps using an <CODE>errno</CODE>-like strategy where
+the caller knows to examine the value of a certain global variable.  This is
+inelegant, difficult to enforce, and leads to the need, with void methods, to
+document that "the caller should check <CODE>errno</CODE> to see if any problems
+arose".
+</P><P>
 
-<PRE>
-  NSString *wantedNumber = [proxyForDirectory teleNumber: personName];
-</PRE>
-
-
-
-<H3><A NAME="SEC74" HREF="manual_toc.html#TOC74">Using a Protocol</A></H3>
+<HR SIZE="6">
+<A NAME="SEC87"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC86"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC88"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 6.2 Logging </H2>
+<!--docid::SEC87::-->
 <P>
-<A NAME="IDX43"></A>
-<A NAME="IDX44"></A>
 
+GNUstep provides several distinct logging facilities best suited for different
+purposes.
+</P><P>
 
+<HR SIZE="6">
+<A NAME="SEC88"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC89"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.2.1 NSLog </H3>
+<!--docid::SEC88::-->
 <P>
-A client process does not need to know the class of a remote server
-object to avoid run-time errors, it only needs to know the messages to
-which the remote object responds. This can be determined by the client
-at run-time, by asking the server if it responds to a particular message
-before the message is sent.
 
+The simplest of these is the <CODE>NSLog(NSString *format, ...)</CODE>  function.
+For example:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSLog(@"Error occurred reading file at line %d.", lineNumber);
+</pre></td></tr></table></P><P>
+
+This would produce, on the console (stderr) of the application calling it,
+something like:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>2004-05-08 22:46:14.294 SomeApp[15495] Error occurred reading file at line 20.
+</pre></td></tr></table></P><P>
+
+The behavior of this function may be controlled in two ways.  First, the user
+default <CODE>GSLogSyslog</CODE> can be set to "<CODE>YES</CODE>", which will send
+these messages to the syslog on systems that support that (Unix variants).
+Second, the function GNUstep uses to write the log messages can be
+overridden, or the file descriptor the existing function writes to can be
+overridden:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  // these changes must be enclosed within a lock for thread safety
+NSLock *logLock = GSLogLock();
+[logLock lock];
+
+  // to change the file descriptor:
+_NSLogDescriptor = &#60;fileDescriptor&#62;;
+  // to change the function itself:
+_NSLog_printf_handler = &#60;functionName&#62;;
+
+[logLock unlock];
+</pre></td></tr></table></P><P>
+
+Due to locking mechanisms used by the logging facility, you should protect
+these changes using the lock provided by <CODE>GSLogLock()</CODE> (see <A HREF="manual_8.html#SEC117">Threads and Run Control</A> on locking).
+</P><P>
+
+The <CODE>NSLog</CODE> function was defined in OpenStep and is also available in Mac
+OS X Cocoa, although the overrides described above may not be.  The next set of
+logging facilities to be described are only available under GNUstep.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC89"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC88"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC90"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC90"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.2.2 NSDebugLog, NSWarnLog </H3>
+<!--docid::SEC89::-->
 <P>
-If the methods implemented at the server are stated in a formal
-protocol, then the client can ask the server if it conforms to the
-protocol, reducing the network traffic required for the individual
-message/response requests.
 
+The facilities provided by the <CODE>NSDebugLog</CODE> and <CODE>NSWarnLog</CODE> families
+of functions support source code method name and line-number reporting and
+allow compile- and run-time control over logging level.
+</P><P>
 
-<P>
-A further advantage is gained at compile time, when the compiler will
-issue a warning if the server fails to implement any method declared in
-the protocol, or if the client contains any message to which the server
-cannot respond.
+The <CODE>NSDebugLog</CODE> functions are enabled at compile time by default.  To
+turn them off, set <CODE>'diagnose = no'</CODE> in your makefile, or undefine
+<CODE>GSDIAGNOSE</CODE> in your code before including <CODE>NSDebug.h</CODE>.  To turn
+them off at runtime, call <CODE>[[NSProcessInfo processInfo]
+setDebugLoggingEnabled: NO]</CODE>.  (An <CODE>NSProcessInfo</CODE> instance is
+automatically instantiated in a running GNUstep application and may be
+obtained by invoking <CODE>[NSProcessInfo processInfo]</CODE>.)
+</P><P>
 
+At runtime, whether or not logging is enabled, a debug log method is called
+like this:
+</P><P>
 
-<P>
-The protocol is saved to a header file and then included in both client
-and server programs with the usual compiler <CODE>#include</CODE>
-directive. Only the server program needs to implement the methods
-declared in the protocol. To enable compiler checking in the client
-program, extend the type declaration for the proxy to this protocol, and
-cast the returned proxy object to the same extended type.
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSDebugLLog(@"ParseError", @"Error parsing file at line %d.", lineNumber);
+</pre></td></tr></table></P><P>
 
-
-<P>
-In the telephone directory example, if the declared protocol was
-<CODE>TelephoneDirectory</CODE>, declared in header file
-<CODE>protocolHeader.h</CODE>, then the client code would now look like this:
-
-
-
-<PRE>
-  #include "protocolHeader.h";
-  
-  /* Extend the type declaration */
-  id&#60;TelephoneDirectory&#62; proxyForDirectory;
-
-  /* Cast the returned proxy object to the extended type */  
-  proxyForDirectory = (id&#60;TelephoneDirectory&#62;) [NSConnection
-                       rootProxyForConnectionWithRegisteredName: 
-                       @"DirectoryServer" 
-		       host: "*"]; 
-</PRE>
-
-<P>
-Since class names and protocol names do not share the same 'address
-space' in a process, the declared protocol and the class of the
-responding server object can share the same name, making code easier to
-understand.
-
-
-<P>
-For example, <CODE>proxyForDirectory</CODE> at the client could be a proxy for
-an instance of the <CODE>TelephoneDirectory</CODE> class at the server, and
-this class could implement the <CODE>TelephoneDirectory</CODE> protocol.
-
-
-
-
-<H2><A NAME="SEC75" HREF="manual_toc.html#TOC75">An Example Game Server</A></H2>
-<P>
-<A NAME="IDX45"></A>
-
-
-<P>
-It would be tempting to show a complete example of the telephone
-directory program, but a minimal amount of additional code is required
-to turn the previous examples into a working implementation. Instead we
-will look at an example called GameServer that uses distributed objects
-in a client/server game.
-
-
-<P>
-<I>Exercise: Create a working client/server telephone directory on your
-own by adding a few lines of code to the previous examples, perhaps with
-a telephone directory holding only two or three names and numbers. At
-first you could implement this as a single process and then when it
-works, modify the code to run as client/server processes running on the
-same machine. (Try passing the person's name into the client program as
-a command-line argument. The server need only test the name, e.g. if
-personName = "Fred" return "number".)</I>
-
-
-<P>
-<I>All you need do is create two directories, one for the client and one
-for the server. Each directory will hold a GNUmakefile, the
-client/server source code, and a copy of the protocol header file. When
-the files compile, first run the server and then the client. What
-happens when you run the client without the server? How would you
-display a "No Server Connection" warning at the client? Appendix B
-contains a small working example that you can compare with your own
-implementation.</I>
-
-
-
-
-<H3><A NAME="SEC76" HREF="manual_toc.html#TOC76">What GameServer Does</A></H3>
-<P>
-<A NAME="IDX46"></A>
-
-
-<P>
-Although there is no actual game to play, and while the code to vend an
-object and connect to a remote process is similar to that already shown,
-the code does show a number of additional techniques that can be used in
-other client/server programs.
-
-
+Here, the first argument to <CODE>NSDebugLog</CODE>, "<CODE>ParseError</CODE>", is a
+string <I>key</I> that specifies the category of message.  The message will only
+actually be logged (through a call to <CODE>NSLog()</CODE>) if this key is in the
+set of active debug categories maintained by the <CODE>NSProcessInfo</CODE> object
+for the application.  Normally, this list is empty.  There are
+three ways for string keys to make it onto this list:
+</P><P>
 
 <UL>
-<LI>When the client attempts to join the game, the server checks that
-
-the client is entitled to join, based on the last time the client
-played. 
-The rule is: if the client lost the last game, then they cannot re-play 
-for the next 2 hours; but if the client won the last game, then they can 
-re-play the game at any time (a reward for winning).<BR><BR>
-
-<LI>The server also makes sure the client is not already connected and
-
-playing the game (i.e. they cannot play two games at the same time -
-that would be cheating).<BR><BR>
-
-<LI>In addition to a proxy for the server being obtained at the
-
-client, a proxy for the client is received at the server. This allows 
-two-way messaging, where the client can send messages to the server and 
-the server can send messages to the client (e.g. the state of play may
-be affected by the actions of other players, or by other events at the 
-server).<BR><BR>
-
-Two protocols will therefore be required, one for the methods
-implemented at the server and one for those implemented at the client.
+<LI>
+Provide one or more startup arguments of the form <CODE>--GNU-Debug=&#60;key&#62;</CODE> to
+the program.  These are processed by GNUstep and removed from the argument
+list before any user code sees them.
+<LI>
+Call <CODE>[NSProcessInfo debugSet]</CODE> at runtime, which returns an
+<CODE>NSMutableSet</CODE>.  You can add (or remove) strings to this set directly.
+<LI>
+The <CODE>GNU-Debug</CODE> user default nay contain a comma-separated list of keys.
+However, note that <CODE>[NSUserDefaults standardUserDefaults]</CODE> must first be
+called before this will take effect (to read in the defaults initially).
 </UL>
-
 <P>
-Have a look at the program code and added comments. Can you work out
-what is happening at the server and client? If you have any difficulties
-then refer to the relevant sections in this manual, or to class
-documentation at the GNUstep or Apple web-sites.
 
+While any string can be used as a debug key, conventionally three types of
+keys are commonly used.  The first type expresses a "level of importance"
+for the message, for example, "Debug", "Info", "Warn", or "Error".
+The second type of key that is used is class name.  The GNUstep Base classes
+used this approach.  For example if you want to activate debug messages for
+the <CODE>NSBundle</CODE>" class, simply add '<CODE>NSBundle</CODE>' to the list of keys.
+The third category of key is the default key, '<CODE>dflt</CODE>'.  This key can be
+used whenever the specificity of the other key types is not required.  Note
+that it still needs to be turned on like any other logging key before
+messasges will actually be logged.
+</P><P>
 
+There is a family of <CODE>NSDebugLog</CODE> functions with slightly differing
+behaviors:
+</P><P>
 
-
-<H3><A NAME="SEC77" HREF="manual_toc.html#TOC77">Protocol Adopted at Client</A></H3>
-
+<DL COMPACT>
+<DT><CODE>NSDebugLLog(key, format, args,...)</CODE>
+<DD>Basic debug log function already discussed.
+<DT><CODE>NSDebugLog(format, args,...)</CODE>
+<DD>Equivalent to <CODE>NSDebugLLog</CODE> with key "dflt" (for default).
+<DT><CODE>NSDebugMLLog(level, format, args,...)</CODE>
+<DD>Equivalent to <CODE>NSDebugLLog</CODE> but includes information on which method the
+logging call was made from in the message.
+<DT><CODE>NSDebugMLog(format, args,...)</CODE>
+<DD>Same, but use 'dflt' log key.
+<DT><CODE>NSDebugFLLog(level, format, args,...)</CODE>
+<DD>As <CODE>NSDebugMLLog</CODE> but includes information on a function rather than a
+method.
+<DT><CODE>NSDebugFLog(format, args,...)</CODE>
+<DD>As previous but using 'dflt' log key.
+</DL>
 <P>
-We have chosen <CODE>GameClient</CODE> as the name of both the protocol
-adopted at the client and the class of the responding client object. The
-header file declaring this protocol will simply declare the methods that
-the class must implement.
 
+The implementations of the <CODE>NSDebugLog</CODE> functions are optimized so that
+they consume little time when logging is turned off.  In particular, if debug
+logging is deactivated at compile time, there is NO performance cost, and if
+it is completely deactivated at runtime, each call entails only a boolean
+test.  Thus, they can be left in production code.
+</P><P>
 
+There is also a family of <CODE>NSWarn</CODE> functions.  They are similar to the
+<CODE>NSDebug</CODE> functions except that they do not take a key.  Instead, warning
+messages are shown by default unless they are disabled at compile time by
+setting <CODE>'warn = no'</CODE> or undefining <CODE>GSWARN</CODE>, or at runtime by
+<I>adding</I> "<CODE>NoWarn</CODE>" to <CODE>[NSProcessInfo debugSet]</CODE>.
+(Command-line argument <CODE>--GNU-Debug=NoWarn</CODE> and adding "NoWarn" to the
+<CODE>GNU-Debug</CODE> user default will also work.)  <CODE>NSWarnLog()</CODE>,
+<CODE>NSWarnLLog()</CODE>, <CODE>NSWarnMLLog</CODE>, <CODE>NSWarnMLog</CODE>,
+<CODE>NSWarnFLLog</CODE>, and <CODE>NSWarnFLog</CODE> are all similar to their
+<CODE>NSDebugLog</CODE> counterparts.
+</P><P>
 
-<PRE>
-@protocol GameClient
-- (void) clientMessage: (bycopy NSString *)theMessage;
-- (int) clientReply;
-
-// Other methods would be added that  
-// reflect the nature of the game.
-
-@end
-</PRE>
-
+<HR SIZE="6">
+<A NAME="SEC90"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC89"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC91"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC91"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.2.3 Last Resorts: GSPrintf and fprintf </H3>
+<!--docid::SEC90::-->
 <P>
-The protocol will be saved as <CODE>GameClient.h</CODE>.
 
+Both the <CODE>NSDebugLog</CODE> and the simpler <CODE>NSLog</CODE> facilities utilize a
+fair amount of machinery - they provide locking and timestamping for example.
+Sometimes this is not appropriate, or might be too heavyweight in a case where
+you are logging an error which might involve the application being in some
+semi-undefined state with corrupted memory or worse.  You can use the
+<CODE>GSPrintf()</CODE> function, which simply converts a format string to UTF-8 and
+writes it to a given file:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>GSPrintf(stderr, "Error at line %d.", n);
+</pre></td></tr></table></P><P>
 
+If even this might be too much (it uses the <CODE>NSString</CODE> and <CODE>NSData</CODE>
+classes), you can always use the C function <CODE>fprintf()</CODE>:
+</P><P>
 
-<H3><A NAME="SEC78" HREF="manual_toc.html#TOC78">Protocol Adopted at Server</A></H3>
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>fprintf(stderr, "Error at line %d.", n);
+</pre></td></tr></table></P><P>
 
+Except under extreme circumstances, the preferred logging approach is either
+<CODE>NSDebugLog</CODE>/<CODE>NSWarnLog</CODE>, due the the compile- and run-time
+configurability they offer, or <CODE>NSLog</CODE>.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC91"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC90"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.2.4 Profiling Facilities </H3>
+<!--docid::SEC91::-->
 <P>
-We have chosen <CODE>GameServer</CODE> as the name of both the protocol
-adopted at the server and the class of the responding server object. The
-header file declaring this protocol will simply declare the methods that
-the class must implement.
 
+GNUstep supports optional programmatic access to object allocation
+statistics.  To initiate collection of statistics, call the function
+<CODE>GSDebugAllocationActive(BOOL active)</CODE> with an argument of
+"<CODE>YES</CODE>".  To turn it off, call it with "<CODE>NO</CODE>".  The overhead
+of statistics collection is only incurred when it is active.  To access the
+statistics, use the set of <CODE>GSDebugAllocation...()</CODE> functions defined in
+<CODE>NSDebug.h</CODE>.
+</P><P>
 
-
-<PRE>
-@protocol GameServer
-- (BOOL) mayJoin: (id)client asPlayer: (bycopy NSString*)name;
-- (int) startGame: (bycopy NSString*)name;
-- (BOOL) endGame: (bycopy NSString*)name;
-
-// Other methods would be added that  
-// reflect the nature of the game.
-
-@end
-</PRE>
-
+<HR SIZE="6">
+<A NAME="SEC92"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC91"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC93"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 6.3 Assertions </H2>
+<!--docid::SEC92::-->
 <P>
-The protocol will be saved as <CODE>GameServer.h</CODE>.
 
+Assertions provide a way for the developer to state that certain conditions
+must hold at a certain point in source code execution.  If the conditions do
+not hold, an exception is automatically raised (and succeeding code in the
+block is not executed).  This avoids an operation from taking place with
+illegal inputs that may lead to worse problems later.
+</P><P>
 
+The use of assertions is generally accepted to be an efficient means of
+improving code quality, for, like unit testing, they can help rapidly uncover
+a developer's implicit or mistaken assumptions about program behavior.
+However this is only true to the extent that you carefully design the nature
+and placement of your assertions.  There is an excellent discussion of this
+issue bundled in the documentation with Sun's Java distribution.
+</P><P>
 
-
-<H3><A NAME="SEC79" HREF="manual_toc.html#TOC79">Code at the Client</A></H3>
-
+<HR SIZE="6">
+<A NAME="SEC93"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC94"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.3.1 Assertions and their Handling </H3>
+<!--docid::SEC93::-->
 <P>
-The client code contains the <CODE>main</CODE> function and the
-<CODE>GameClient</CODE> class declaration and implementation.
 
+Assertions allow the developer to establish that certain conditions hold
+before undertaking an operation.  In GNUstep, the standard means to make an
+assertion is to use one of a collection of <CODE>NSAssert</CODE> macros.  The
+general form of these macros is:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSAssert(&#60;boolean test&#62;, &#60;formatString&#62;, &#60;argumentsToFormat&#62;);
+</pre></td></tr></table></P><P>
+
+For instance:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSAssert1(x == 10, "X should have been 10, but it was %d.", x);
+</pre></td></tr></table></P><P>
+
+If the test '<CODE>x == 10</CODE>' evaluates to <CODE>true</CODE>, <CODE>NSLog()</CODE> is
+called with information on the method and line number of the failure, together
+with the format string and argument.  The resulting console message will look
+like this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>Foo.m:126  Assertion failed in Foo(instance), method Bar.  X should have been
+10, but it was 5.
+</pre></td></tr></table></P><P>
+
+After this is logged, an exception is raised of type
+'<CODE>NSInternalInconsistencyException</CODE>', with this string as its
+description.
+</P><P>
+
+In order to provide the method and line number information, the
+<CODE>NSAssert()</CODE> routine must be implemented as a macro, and therefore to
+handle different numbers of arguments to the format string, there are 5
+assertion macros for methods: <CODE>NSAssert(condition, description)</CODE>,
+<CODE>NSAssert1(condition, format, arg1)</CODE>, <CODE>NSAssert2(condition, format,
+arg1, arg2)</CODE>, ..., <CODE>NSAssert5(...)</CODE>.
+</P><P>
+
+If you need to make an assertion inside a regular C function (not an
+Objective-C method), use the equivalent macros <CODE>NSCAssert()</CODE>, etc..
+</P><P>
+
+<I><B>Note</B></I>, you can completely disable assertions (saving the time for the
+boolean test and avoiding the exception if fails) by putting <CODE>#define
+NS_BLOCK_ASSERTIONS</CODE> before you include <CODE>NSException.h</CODE>.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC94"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC93"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC92"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.3.2 Custom Assertion Handling </H3>
+<!--docid::SEC94::-->
 <P>
-The <CODE>main()</CODE> function attempts to connect to the server, while the
-<CODE>GameClient</CODE> class adopts the <CODE>GameClient</CODE> protocol.
 
+The aforementioned behavior of logging an assertion failure and raising an
+exception can be overridden if desired.  You need to create a subclass of
+<CODE>NSAssertionHandler</CODE> and register an instance in each thread in which
+you wish the handler to be used.  This is done by calling:
+</P><P>
 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>[[[NSThread currentThread] threadDictionary]
+    setObject:myAssertionHandlerInstance forKey:&Numl;SAssertionHandler"];
+</pre></td></tr></table></P><P>
 
-<PRE>
-#include &#60;Foundation/Foundation.h&#62;
-#include "GameServer.h"
-#include "GameClient.h"
+See <A HREF="manual_8.html#SEC117">Threads and Run Control</A> for more information on what
+this is doing.
+</P><P>
 
-/* 
- * GameClient class declaration: 
- * Adopt the GameClient protocol.
- */
-@interface GameClient : NSObject &#60;GameClient&#62;
-@end
-
-/* 
- * GameClient class implementation.
- */
-@implementation GameClient
-
-/* 
- * Implement clientMessage: as declared in the protocol.
- * The method simply prints a message at the client.
- */
-- (void) clientMessage: (NSString*)theMessage
-{
-  printf([theMessage cString]);
-}
-
-/* 
- * Implement clientReply: as declared in the protocol.
- * The method simply returns the character entered 
- * at the client keyboard.
- */
-- (int) clientReply
-{
-  return getchar();
-}
-@end  // End of GameClient class implementation.
-
-/*
- * The main function of the client program.
- */
-int main(int argc, char **argv)
-{
-  CREATE_AUTORELEASE_POOL(pool);
-  id&#60;GameServer&#62; server;
-  int result;
-  NSString *name;
-  id client;
-
-  /*
-   * The NSUserName() function returns the name of the
-   * current user, which is sent to the server when we 
-   * try to join the game.
-   */
-  name = NSUserName();
-
-  /*
-   * Create a GameClient object that is sent to
-   * the server when we try to join the game. 
-   */
-  client = AUTORELEASE([GameClient new]);
-
-  /*
-   * Try to get a proxy for the root object of a server 
-   * registered under the name 'JoinGame'. Since the host 
-   * is '*', we can connect to any server on the local network.
-   */
-  server = (id&#60;GameServer&#62;)[NSConnection 
-                            rootProxyForConnectionWithRegisteredName: 
-                            @"JoinGame" host: @"*"];
-  if(server == nil) 
-    {
-      printf("\n** No Connection to GameServer **\n");
-      result = 1;
-    }
-    
-  /*
-   * Try to join the game, passing a GameClient object as 
-   * the client, and our user-name as name. The 'client'
-   * argument will be received as a proxy at the server.
-   */
-  else if ([server mayJoin: client asPlayer: name] == NO)
-    {
-      result = 1; // We cannot join the game.
-    }
-  else
-    {
-      /*
-       * At this point, we would actually start to play the game.
-       */
-      [server startGame: name]; // Start playing game.
-      [server endGame: name]; // Finally end the game.
-      result = 0;
-    }
-  RELEASE(pool);
-  return result;
-}
-</PRE>
-
+<HR SIZE="6">
+<A NAME="SEC95"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC94"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 6.4 Comparison with Java </H2>
+<!--docid::SEC95::-->
 <P>
-To summarise the code at the client:
 
-
+GNUstep's exception handling facilities are, modulo syntax, equivalent to
+those in Java in all but three respects:
+</P><P>
 
 <UL>
-<LI>We obtained a proxy for the server and can now communicate
-
-with the server using the methods declared in the <CODE>GameServer</CODE> 
-protocol.<BR><BR>
-
-<LI>We passed a <CODE>GameClient</CODE> object and our user-name to the
-
-server (the <CODE>GameClient</CODE> object is received as a proxy at the 
-server).  The server can now communicate with the client using the 
-methods declared in the <CODE>GameClient</CODE> protocol.<BR><BR>
-
-<LI>When the game is in progress, the server can alter the state
-
-of the client object to reflect the success of the player.
+<LI>
+There is no provision for a "finally" block executed after either the main
+code or the exception handler code.
+<LI>
+You cannot declare the exception types that could be raised by a method in its
+signature.  In Java this is possible and the compiler uses this to enforce
+that a caller should catch exceptions if they might be generated by a method.
+<LI>
+Correspondingly, there is no support in the <A HREF="manual_9.html#SEC145">documentation system</A>
+for documenting exceptions potentially raised by a method.  (This will
+hopefully be rectified soon.)
 </UL>
-
-
-
-<H3><A NAME="SEC80" HREF="manual_toc.html#TOC80">Code at the Server</A></H3>
-
 <P>
-The server code contains the <CODE>main</CODE> function and the 
-<CODE>GameServer</CODE> class declaration and implementation. 
 
+The logging facilities provided by <CODE>NSDebugLog</CODE> and company are similar
+to but a bit more flexible than those provided in the Java/JDK 1.4 logging APIs,
+which were based on the IBM/Apache Log4J project.
+</P><P>
+
+The assertion facilities are similar to but a bit more flexible than those in
+Java/JDK 1.4 since you can override the assertion handler.
+</P><P>
+
+<A NAME="Distributed Objects"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>September, 7  2004</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
 
-<P>
-The <CODE>main()</CODE> function vends the server's root object and starts the
-runloop, while the <CODE>GameServer</CODE> class adopts the <CODE>GameServer</CODE>
-protocol. The class also implements methods that initialise and
-deallocate the root object's instance variables (dictionaries that hold
-player information).
-
-
-
-<PRE>
-#include &#60;Foundation/Foundation.h&#62;
-#include "GameServer.h"
-#include "GameClient.h"
-
-/* 
- * GameServer class declaration:
- * Adopt the GameServer protocol and declare  
- * GameServer instance variables.
- */
-@interface GameServer : NSObject &#60;GameServer&#62;
-{
-  NSMutableDictionary *delayUntil; // Delays to re-joining GameServer.
-  NSMutableDictionary *currentPlayers; // Proxies to each client.
-  NSMutableDictionary *hasWon; // Success in game for each player.
-}
-@end
-
-/* 
- * GameServer class implementation.
- */
-@implementation GameServer
-
-/* Initialise GameServer's instance variables. */
-- (id) init
-{
-  self = [super init];
-  if (self != nil)
-    {
-      /* 
-       * Create a dictionary for a maximum of 
-       * 10 named players that will hold a 
-       * re-joining time delay.
-       */
-      delayUntil = [[NSMutableDictionary alloc] 
-                     initWithCapacity: 10];
-      /* 
-       * Create a dictionary that will hold the 
-       * names of these players and a proxy for
-       * the received client objects.
-       */
-      currentPlayers = [[NSMutableDictionary alloc] 
-                       initWithCapacity: 10];
-
-      /* 
-       * Create a dictionary that will record 
-       * a win for any of these named players.
-       */
-      hasWon = [[NSMutableDictionary alloc] 
-                 initWithCapacity: 10];
-    }
-  return self;
-}
-
-/* Release GameServer's instance variables. */
-- (void) dealloc
-{
-  RELEASE(delayUntil);
-  RELEASE(currentPlayers);
-  RELEASE(hasWon);
-  [super dealloc];
-}
-
-/*
- * Implement mayJoin:: as declared in the protocol.
- * Adds the client to the list of current players. 
- * Each player is represented at the server by both
- * name and by proxy to the received client object.
- * A player cannot join the game if they are already playing,
- * or if joining has been delayed until a later date.
- */
-- (BOOL) mayJoin: (id)client asPlayer: (NSString*)name
-{
-  NSDate  *delay; // The time a player can re-join the game.
-  NSString *aMessage;
-
-  if (name == nil)
-    {
-      NSLog(@"Attempt to join nil user");
-      return NO;
-    }
-    
-  /* Has the player already joined the game? */
-  if ([currentPlayers objectForKey: name] != nil)
-    {
-      /* Inform the client that they cannot join. */
-      aMessage = @"\nSorry, but you are already playing GameServer!\n";
-      [client clientMessage: aMessage];
-      return NO;
-    }
-    
-  /* Get the player's time delay for re-joining. */
-  delay = [delayUntil objectForKey: name];
-  
-  /* 
-   * Can the player join the game? Yes if there is 
-   * no restriction or if the time delay has passed; 
-   * otherwise no, they cannot join.
-   */
-  if (delay == nil || [delay timeIntervalSinceNow] &#60;= 0.0)
-    {
-      /* Remove the old restriction on re-joining the game. */
-      [delayUntil removeObjectForKey: name];
-      
-      /* Add the player to the list of current players. */
-      [currentPlayers setObject: client forKey: name];
-      [hasWon setObject: @"NO" forKey: name]; // They've not won yet.
-      
-      /* Inform the client that they have joined the game. */
-      aMessage = @"\nWelcome to GameServer\n";
-      [client clientMessage: aMessage];
-      return YES;
-    }
-  else  
-    {
-      /* Inform the client that they cannot re-join. */
-      aMessage = @"\nSorry, you cannot re-join GameServer yet.\n";
-      [client clientMessage: aMessage];
-      return NO; 
-    }
-}
-
-/* 
- * Implement startGame: as declared in the protocol.
- * Simply ask the player if they want to win, and get
- * there reply.
- */
-- (int) startGame: (NSString *)name
-{
-  NSString *aMessage;
-  id client;
-  int reply;
-  
-  client = [currentPlayers objectForKey: name];
-  
-  aMessage = @"\nDo you want to win this game? (Y/N &#60;RET&#62;) ... ";
-  [client clientMessage: aMessage];
-  
-  reply = [client clientReply];
-  if(reply == 'y' || reply == 'Y')
-    [hasWon setObject: @"YES" forKey: name]; // They win.
-  else [hasWon setObject: @"NO" forKey: name]; // They loose.
-  return 0;
-}
-
-/* 
- * Implement endGame: as declared in the protocol.
- * Removes a player from the game, and either sets
- * a restriction on the player re-joining or removes
- * the current restriction.
- */
-- (BOOL) endGame: (NSString*)name
-{
-  id client;
-  NSString *aMessage, *yesOrNo;
-  NSDate *now, *delay;
-  NSTimeInterval twoHours = 2 * 60 * 60; // Seconds in 2 hours.
-  
-  if (name == nil)
-    {
-      NSLog(@"Attempt to end nil user");
-      return NO;
-    }
-    
-  now = [NSDate date];
-  delay = [now addTimeInterval: twoHours];
-  client = [currentPlayers objectForKey: name];
-  yesOrNo = [hasWon objectForKey: name];
-  
-  if ([yesOrNo isEqualToString: @"YES"]) // Has player won?
-    {
-      /* 
-       * Player wins, no time delay to re-joining the game.
-       * Remove any re-joining restriction and send
-       * a message to the client. 
-       */
-      [delayUntil removeObjectForKey: name];
-      aMessage = @"\nWell played: you can re-join GameServer at any time.\n";
-      [client clientMessage: aMessage];
-      
-    }
-  else // Player lost
-    { 
-      /* 
-       * Set a time delay for re-joining the game, 
-       * and send a message to the client.
-       */
-      [delayUntil setObject: delay forKey: name];
-      aMessage = @"\nYou lost, but you can re-join GameServer in 2 hours.\n";
-      [client clientMessage: aMessage];
-    }
-
-  /* Remove the player from the current game. */
-  [currentPlayers removeObjectForKey: name];
-  [hasWon removeObjectForKey: name];
-  return YES;
-}
-
-@end  // End of GameServer class implementation
-
-/*
- * The main function of the server program simply 
- * vends the root object and starts the runloop.
- */
-int main(int argc, char** argv)
-{
-  CREATE_AUTORELEASE_POOL(pool);
-  GameServer	*server;
-  NSConnection	*connXion;
-
-  server = AUTORELEASE([GameServer new]);
-  connXion = [NSConnection defaultConnection];
-  [connXion setRootObject: server];
-  [connXion registerName: @"JoinGame"];
-  [[NSRunLoop currentRunLoop] run];
-  RELEASE(pool);
-  return 0;
-}
-</PRE>
-
-<P>
-To summarise the code at the server:
-
-
-
-<UL>
-<LI>We vend the server's root object and start a runloop,
-
-allowing clients to connect with the server.<BR><BR>
-
-<LI>When we receive a proxy for a client object, we communicate
-
-with that client using methods declared in the <CODE>ClientServer</CODE> 
-protocol.<BR><BR>
-
-<LI>We create three dictionary objects, each referenced by player
-
-name. <CODE>currentUsers</CODE> holds proxies for each of the current 
-players; <CODE>delayUntil</CODE> holds times when each player can re-join 
-the game; and <CODE>hasWon</CODE> holds a string for each player, which is 
-set to "YES" if the player wins.<BR><BR>
-
-<LI>When the game is in progress, the server can alter the state of
-
-each client object to reflect the success of each player.
-</UL>
-
-<P>
-I hope you managed to understand most of the code in this example. If
-you are reading the on-screen version, then you can copy and paste the
-code to suitably named files, create makefiles, and then make and run
-each program. What message is displayed if you immediately try to
-re-join a game after loosing? And after winning?
-
-
-<P>
-<I>Exercise: Modify the server code so that the server records the
-number of wins for each player, and displays this information at both
-the start and end of each game.</I>
-
-
-
-
-<H2><A NAME="SEC81" HREF="manual_toc.html#TOC81">Language Support for Distributed Objects</A></H2>
-
-<P>
-Objective-C provides special 'type' qualifiers that can be used in a
-protocol to control the way that message arguments are passed between
-remote processes, while at run time, the run-time system transparently
-uses what is known as 'forward invocation' to forward messages to a
-remote process.
-
-
-
-
-<H3><A NAME="SEC82" HREF="manual_toc.html#TOC82">Protocol Type Qualifiers</A></H3>
-<P>
-<A NAME="IDX47"></A>
-<A NAME="IDX48"></A>
-<A NAME="IDX49"></A>
-<A NAME="IDX50"></A>
-<A NAME="IDX51"></A>
-When message arguments are passed by value then the receiving method can
-only alter the copy it receives, and not the value of the original
-variable. When an argument is passed by reference (as a pointer), the
-receiving method has access to the original variable and can alter that
-variable's data. In this case the argument is effectively passed 'in' to
-the method, and then passed 'out' of the method (on method return).
-
-
-<P>
-When an argument is passed by reference to a remote object, the network
-must handle this two-way traffic, whether or not the remote object
-modifies the received argument.
-
-
-<P>
-Type qualifiers can be used in a protocol to control the way these
-messages are handled, and to indicate whether or not the sending process
-will wait for the remote process to return.
-
-
-
-<UL>
-<LI>The <B>oneway</B> qualifier is used in conjunction with a
-
-<CODE>void</CODE> return type to inform the run-time system that the sending 
-process does not need to wait for the receiving method to return (known 
-as 'asynchronous' messaging). The protocol declaration for the receiving 
-method would look something like this:<BR><BR>
-
-<CODE>- (<B>oneway</B> void)noWaitForReply;</CODE><BR><BR>
-
-<LI>The <B>in, out </B> and <B>inout</B> qualifiers can be used with pointer
-
-arguments to control the direction in which an argument is passed. The
-protocol declaration for the receiving methods would look something like 
-this:<BR>
-
-
-<PRE>
-/* 
- * The value that 'number' points to will be passed <B>in</B> to the remote process.
- * (No need to return the argument's value from the remote process.)
- */
-<CODE>- setValue: (<B>in</B> int *)number;</CODE>
-
-/* 
- * The value that 'number' points to will be passed <B>out</B> of the remote process.
- * (No need to send the argument's value to the remote process.)
- */
-<CODE>- getValue: (<B>out</B> int *)number;</CODE>
-
-/* 
- * The value that 'number' points to is first passed <B>in</B> to the remote
- * process, but will eventually be the value that is passed <B>out</B> of the   
- * remote process. (Send and return the argument's value.)
- */
-<CODE>- changeValue: (<B>inout</B> int *)number;</CODE>
-</PRE>
-
-Passing of arguments by reference is very restricted in Objective-C.
-it applies only to pointers to C data types, not to objects, and except
-for the special case of a pointer to a nul terminated C string (<B>char*</B>)
-the pointer is assumed to refer to a single data item of the specified
-type.
-
-
-<PRE>
-/*
- * A method passing an unsigned short integer by reference.
- */
-<CODE>- updateCounter: (<B>inout</B> unsigned shortn *)value;</CODE>
-
-/*
- * A method passing a structure by reference.
- */
-<CODE>- updateState: (<B>inout</B> struct stateInfo *)value;</CODE>
-
-/*
- * As a special case, a char (or equivalent typedef) passed by reference
- * is assumed to be a nul terminated string ... there is no way to pass
- * a single character by reference:
- */
-<CODE>- updateBuffer: (<B>inout</B> char *)str;</CODE>
-
-</PRE>
-
-<LI>The <B>bycopy</B> and <B>byref</B> qualifiers can be used in a protocol
-
-when the argument or return type is an object.<BR><BR>
-
-An object is normally passed by reference and received in the remote
-process as a proxy. When an object is passed by copy, then a copy of 
-the object will be received in the remote process, allowing the remote 
-process to directly interact with the copy. Protocol declarations would 
-look something like this:<BR>
-
-
-<PRE>
-/* 
- * Copy of object will be received in the remote process.
- */
-- sortNames: (<B>bycopy</B> id)listOfNames;
-
-/* 
- * Copy of object will be returned by the remote process.
- */
-- (<B>bycopy</B> id)returnNames;
-</PRE>
-
-By default, large objects are normally sent <B>byref</B>, while small
-objects like <CODE>NSStrings</CODE> are normally sent <B>bycopy</B>, but you
-cannot rely on these defaults being adopted and should explicitly state
-the qualifier in the protocol.<BR><BR>
-
-The <B>bycopy</B> qualifier can also be used in conjunction with the
-<B>out</B> qualifier, to indicate that an object will be passed <B>out</B> of
-the remote process by copy rather than by proxy (no need to send the
-object).<BR>
-
-
-<PRE>
-/*
- * The object will not be received in the remote process, but the object
- * will be returned <B>bycopy</B>.
- */
-- sortAndReturn: (<B>bycopy out</B> id *)listOfNames;
-</PRE>
-
-You should be aware that some classes ignore the <B>bycopy</B> qualifier
-and the object will be sent by reference. The <B>bycopy</B> qualifier will
-also be ignored if the remote process does not have the class of the
-object in its address space, since an object's instance variables are
-accessed through the object's methods.<BR><BR>
-
-When a copy of an object is sent to a remote process, only the object's
-instance variables are sent and received (an object's methods exist in
-the address space of the object's class, not in the address space of the
-individual object).
-
-</UL>
-
-
-
-<H3><A NAME="SEC83" HREF="manual_toc.html#TOC83">Message Forwarding</A></H3>
-<P>
-<A NAME="IDX52"></A>
-<A NAME="IDX53"></A>
-When a proxy forwards a message to a remote object, the GNUstep run-time
-extensions automatically implement what is known as 'forward
-invocation'. At run-time, the message received at the proxy is
-automatically re-packaged and sent to the proxy's
-<CODE>forwardInvocation:</CODE> method. This method determines whether or not
-a remote object exists that can respond to the received message,
-forwarding the message on (or not), depending on the reply.<BR>
-
-
-<P>
-While this handling of messages by the proxy is transparent to the
-distributed objects programmer, any object can implement forward
-invocation, allowing it to pass on messages for which it has no
-responding method. Forward invocation is discussed in more detail in the
-next chapter.
-
-
-
-
-<H2><A NAME="SEC84" HREF="manual_toc.html#TOC84">Error Checking</A></H2>
-<P>
-<A NAME="IDX54"></A>
-<A NAME="IDX55"></A>
-
-
-<P>
-When dealing with distributed objects your code must be able to handle
-the following situations: failure to vend the server object, exceptions
-raised at run-time, and failure of the network connection.
-
-
-
-
-<H3><A NAME="SEC85" HREF="manual_toc.html#TOC85">Vending the Server Object</A></H3>
-<P>
-When vending the server object, your code must be able to handle the
-situation in which the network does not accept the proposed registered
-name for the server.
-
-
-
-
-<H3><A NAME="SEC86" HREF="manual_toc.html#TOC86">Catching Exceptions</A></H3>
-<P>
-There are two situations to consider.
-
-<UL>
-<LI>An <CODE>NSPortTimeoutException</CODE> is raised.<BR><BR>
-
-This exception is raised if a message takes too long to arrive at the
-remote process, or if a reply takes too long to return. This will happen
-if the remote process is busy, has hung, or if there is a problem with
-the network. The best way to handle the exception is to close the
-connection to the remote process.<BR><BR>
-
-<LI>An exception is raised in the remote process while the remote
-
-process is executing a method.<BR><BR>
-In most cases you can deal directly with these exceptions in the process
-in which they were raised; i.e. without having to consider the network
-connection itself.
-</UL>
-
-
-
-<H3><A NAME="SEC87" HREF="manual_toc.html#TOC87">The Connection Fails</A></H3>
-<P>
-You can register an observer object to receive a notification, in the
-form of a <CODE>connectionDidDie:</CODE> message, when a registered connection
-fails. The argument to this message will be an <CODE>NSNotification</CODE>
-object that returns the failed connection when it receives an
-<CODE>object</CODE> message.
-
-
-<P>
-To receive this 'notification' the observer must implement the
-<CODE>connectionDidDie:</CODE> method, but can be an instance of any class. The
-observer can then handle the failure gracefully, by releasing any
-references to the failed connection and releasing proxies that used the
-connection. Registering an object to receive this notification is
-described in more detail in the <CODE>NSConnection</CODE> class documentation.
-
-
-
-
-<H3><A NAME="SEC88" HREF="manual_toc.html#TOC88">GameServer Example with Error Checking</A></H3>
-
-<P>
-Earlier on in this section we looked at an example client/server program
-called GameServer, and you will find a further example of this program,
-with additional error checking, in Appendix B.
-
-
-<P><HR><P>
-Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_5.html">previous</A>, <A HREF="manual_7.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
 </BODY>
 </HTML>

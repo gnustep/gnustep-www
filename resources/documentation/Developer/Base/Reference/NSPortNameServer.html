@@ -4,7 +4,7 @@
     <title>NSPortNameServer class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSPortNameServer">NSPortNameServer class reference</a></h1>
@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.51</p>
-    <p><b>Date:</b> 2003/07/22 08:52:37</p>
+    <p><b>Version:</b> 1.54</p>
+    <p><b>Date:</b> 2004/08/17 06:33:07</p>
     <p><b>Copyright:</b> (C) 1998,1999,2003 Free Software Foundation, Inc.</p>
 
         <div>
@@ -56,21 +56,38 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Subclass of
+          <a rel="gsdoc" href="#class$NSPortNameServer">NSPortNameServer</a>
+
+            taking/returning instances of
+            <a rel="gsdoc" href="NSPort.html#class$NSMessagePort">NSMessagePort</a>
+
+              . Port removal functionality is not supported; if you
+              want to cancel a service, you have to destroy the
+              port (invalidate the
+              <a rel="gsdoc" href="NSPort.html#class$NSMessagePort">NSMessagePort</a>
+
+                given to
+                <a rel="gsdoc" href="#method$NSPortNameServer-registerPort:forName:">[NSPortNameServer&nbsp;-registerPort:forName:]</a>
+).
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSMessagePortNameServer+sharedInstance">+sharedInstance</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSMessagePortNameServer+sharedInstance">sharedInstance&nbsp;</a></h3>
     + (id) <b>sharedInstance</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Obtain single instance for this host.
           
     </p>
     <hr width="25%" align="left" />
@@ -78,7 +95,7 @@
           <h1><a name="002000000000">
         Software documentation for the NSPortNameServer class
       </a></h1>
-    <h2><a name="class$NSPortNameServer">NSPortNameServer</a> : NSObject</h2>
+    <h2><a name="class$NSPortNameServer">NSPortNameServer</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -89,8 +106,8 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -99,11 +116,22 @@
           for working with port name servers... objects used to
           manage access to ports in the distributed objects
           system (see
-          NSConnection
+          <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
 
             ).
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer(GNUstep)-namesForPort:">-namesForPort:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer(GNUstep)-removePort:">-removePort:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer(GNUstep)-removePort:forName:">-removePort:forName:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer+systemDefaultPortNameServer">+systemDefaultPortNameServer</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-portForName:">-portForName:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-portForName:onHost:">-portForName:onHost:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-registerPort:forName:">-registerPort:forName:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-removePortForName:">-removePortForName:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSPortNameServer+systemDefaultPortNameServer">systemDefaultPortNameServer&nbsp;</a></h3>
     + (id) <b>systemDefaultPortNameServer</b>;<br />
@@ -116,12 +144,14 @@
             OpenStep/OPENSTEP/NeXTstep
             behavior, so GNUstep returns a name server which
             deals with NSSocketPort objects capable of being used
-            for inter-host communications.
+            for inter-host communications... unless it is running
+            in compatibility mode. <br /> This may change in future
+            releases.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortNameServer-portForName:">portForName:&nbsp;</a></h3>
-    - (NSPort*) <b>portForName:</b> (NSString*)name;<br />
+    - (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*) <b>portForName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
     <p>
       
             Looks up the port with the specified <var>name</var>
@@ -142,7 +172,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortNameServer-portForName:onHost:">portForName:&nbsp;onHost:&nbsp;</a></h3>
-    - (NSPort*) <b>portForName:</b> (NSString*)name<b> onHost:</b> (NSString*)host;<br />
+    - (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*) <b>portForName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> onHost:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)host;<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
@@ -158,7 +188,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortNameServer-registerPort:forName:">registerPort:&nbsp;forName:&nbsp;</a></h3>
-    - (BOOL) <b>registerPort:</b> (NSPort*)port<b> forName:</b> (NSString*)name;<br />
+    - (BOOL) <b>registerPort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)port<b> forName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
@@ -176,7 +206,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortNameServer-removePortForName:">removePortForName:&nbsp;</a></h3>
-    - (BOOL) <b>removePortForName:</b> (NSString*)name;<br />
+    - (BOOL) <b>removePortForName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
@@ -206,15 +236,15 @@ Subclasses <strong>should</strong> override this method.<br />
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
           This is the nameserver handling ports used for
           distributed objects communications (see
-          NSConnection
+          <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
 
             ) between hosts. <br /> Use the
             <a rel="gsdoc" href="#method$NSSocketPortNameServer+sharedInstance">
@@ -225,67 +255,85 @@ Subclasses <strong>should</strong> override this method.<br />
             and initialising one.
         
     </p>
-    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for NSSocketPortNameServer Class</h2>
-    <h3><a name="ivariable$NSSocketPortNameServer*_nameMap">_nameMap</a></h3>
-    @private NSMapTable* <b>_nameMap</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSSocketPortNameServer*_portMap">_portMap</a></h3>
-    @private NSMapTable* <b>_portMap</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+    <hr width="50%" align="left" />
+    <a href="#_NSSocketPortNameServer_ivars">Instance Variables</a>
+    <br/><br/>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSSocketPortNameServer+sharedInstance">+sharedInstance</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSSocketPortNameServer-portForName:onHost:">-portForName:onHost:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSSocketPortNameServer-registerPort:forName:">-registerPort:forName:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSSocketPortNameServer-removePortForName:">-removePortForName:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSSocketPortNameServer+sharedInstance">sharedInstance&nbsp;</a></h3>
     + (id) <b>sharedInstance</b>;<br />
     <p>
       
             Returns the shared name server object for
-            NSSocketPort
+            <a rel="gsdoc" href="NSPort.html#class$NSSocketPort">NSSocketPort</a>
 
               objects.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSSocketPortNameServer-portForName:onHost:">portForName:&nbsp;onHost:&nbsp;</a></h3>
-    - (NSPort*) <b>portForName:</b> (NSString*)name<b> onHost:</b> (NSString*)host;<br />
+    - (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*) <b>portForName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> onHost:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)host;<br />
     <p>
       
             Concrete implementation of
-            <a rel="gsdoc" href="#method$NSPortNameServer-portForName:onHost:">[NSPortNameServer-portForName:onHost:]</a>
+            <a rel="gsdoc" href="#method$NSPortNameServer-portForName:onHost:">[NSPortNameServer&nbsp;-portForName:onHost:]</a>
  <br /> Looks up and returns a port with the specified <var>name</var> and <var>host</var>. <br /> If <var>host</var> is <code>nil</code> or an empty string, this performs a lookup for a port on the current <var>host</var>. <br /> If <var>host</var> is an asterisk (&apos;*&apos;) then the lookup returns the first port found with the specified <var>name</var> on any machine on the local network. <br /> Returns <code>nil</code> if no matching port could be found.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSSocketPortNameServer-registerPort:forName:">registerPort:&nbsp;forName:&nbsp;</a></h3>
-    - (BOOL) <b>registerPort:</b> (NSPort*)port<b> forName:</b> (NSString*)name;<br />
+    - (BOOL) <b>registerPort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)port<b> forName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
     <p>
       
             Concrete implementation of
-            <a rel="gsdoc" href="#method$NSPortNameServer-registerPort:forName:">[NSPortNameServer-registerPort:forName:]</a>
+            <a rel="gsdoc" href="#method$NSPortNameServer-registerPort:forName:">[NSPortNameServer&nbsp;-registerPort:forName:]</a>
  <br /> Registers the <var>port</var> with the specified <var>name</var> such that it is available on all the IP addresses of the host on which the process is running. <br /> Returns <code>YES</code> on success, <code>NO</code> on failure (eg the <var>name</var> is already in use or there is a problem registering for some reason).
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSSocketPortNameServer-removePortForName:">removePortForName:&nbsp;</a></h3>
-    - (BOOL) <b>removePortForName:</b> (NSString*)name;<br />
+    - (BOOL) <b>removePortForName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
     <p>
       
             Concrete implementation of
-            <a rel="gsdoc" href="#method$NSPortNameServer-removePortForName:">[NSPortNameServer-removePortForName:]</a>
+            <a rel="gsdoc" href="#method$NSPortNameServer-removePortForName:">[NSPortNameServer&nbsp;-removePortForName:]</a>
  <br /> Unregisters the specified <var>name</var> from any associated port on the local host. <br /> Returns <code>YES</code> on succes, <code>NO</code> on failure.
           
     </p>
     <hr width="25%" align="left" />
+<a name="_NSSocketPortNameServer_ivars"/>    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for NSSocketPortNameServer Class</h2>
+    <h3><a name="ivariable$NSSocketPortNameServer*_nameMap">_nameMap</a></h3>
+    @protected NSMapTable* <b>_nameMap</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSSocketPortNameServer*_portMap">_portMap</a></h3>
+    @protected NSMapTable* <b>_portMap</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
 
           <h1><a name="004000000000">
         Software documentation for the
@@ -301,9 +349,9 @@ Subclasses <strong>should</strong> override this method.<br />
     <blockquote>
       <b>Standards:</b>
       <ul>
+        <li>NotOpenStep</li>
         <li>NotMacOS-X</li>
         <li>GNUstep</li>
-        <li>NotOpenStep</li>
       </ul>
     </blockquote>
     <p>
@@ -311,9 +359,15 @@ Subclasses <strong>should</strong> override this method.<br />
           Some extensions to make cleaning up port names easier.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-namesForPort:">-namesForPort:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-removePort:">-removePort:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-removePort:forName:">-removePort:forName:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSPortNameServer(GNUstep)-namesForPort:">namesForPort:&nbsp;</a></h3>
-    - (NSArray*) <b>namesForPort:</b> (NSPort*)port;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>namesForPort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)port;<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
@@ -323,7 +377,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortNameServer(GNUstep)-removePort:">removePort:&nbsp;</a></h3>
-    - (BOOL) <b>removePort:</b> (NSPort*)port;<br />
+    - (BOOL) <b>removePort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)port;<br />
     <p>
       
             Remove all names registered with the receiver for
@@ -333,7 +387,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortNameServer(GNUstep)-removePort:forName:">removePort:&nbsp;forName:&nbsp;</a></h3>
-    - (BOOL) <b>removePort:</b> (NSPort*)port<b> forName:</b> (NSString*)name;<br />
+    - (BOOL) <b>removePort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)port<b> forName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       

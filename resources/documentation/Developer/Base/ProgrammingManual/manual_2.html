@@ -1,331 +1,1328 @@
 <HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on September, 7  2004 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
 <HEAD>
-<!-- Created by texi2html 1.56k from manual.texi on 26 January 2004 -->
+<TITLE>Objective-C GNUstep Base Programming Manual: Objective-C</TITLE>
 
-<TITLE>Objective-C, Programming Manual - Introduction</TITLE>
+<META NAME="description" CONTENT="Objective-C GNUstep Base Programming Manual: Objective-C">
+<META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Objective-C">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
 </HEAD>
-<BODY>
-Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_1.html">previous</A>, <A HREF="manual_3.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
-<P><HR><P>
 
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
-<H1><A NAME="SEC2" HREF="manual_toc.html#TOC2">Introduction</A></H1>
-
+<A NAME="SEC12"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_1.html#SEC11"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC13"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 2. The Objective-C Language </H1>
+<!--docid::SEC12::-->
 <P>
-The aim of this manual is to introduce you to the Objective-C language and the GNUstep development environment. The manual is organised to give you a tutorial introduction to the language, by using examples whenever possible, rather than providing a lengthy description of the language. 
 
+In the previous chapter you were introduced to some basic object-oriented
+programming terms. This chapter will expand on these terms, and introduce you
+to some new ones, while concentrating on how they apply to the Objective-C
+language and the GNUstep base library. First let us look at some non OO
+additions that Objective-C makes to ANSI C.
+</P><P>
 
+<HR SIZE="6">
+<A NAME="SEC13"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC14"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 2.1 Non OO Additions </H2>
+<!--docid::SEC13::-->
 <P>
-While Objective-C is not a difficult language to learn or use, some of the terms may be unfamiliar, especially to those that have not programmed using an object-oriented programming language before. Whenever possible, concepts will be explained in simple terms rather than in more advanced programming terms. So to start I'll give you a brief description of object-oriented programming, the Objective-C language and the GNUstep development environment.
 
-
-<P>
-The descriptions are not authoritative, and given only as a grounding for the topics that follow.
-
-
-
-
-<H2><A NAME="SEC3" HREF="manual_toc.html#TOC3">What is Object-Oriented Programming?</A></H2>
-<P>
-<A NAME="IDX1"></A>
-
-
-<P>
-There are several object-oriented (OO) programming languages in common use today and you have probably heard of some of them: C++ and Java for example, and of course Objective-C. OO languages all have one thing in common: they allow you to design and write programs in a different way than if you used a traditional procedural language like C or Pascal.
-
-
-<P>
-Procedural languages provide the programmer with basic building blocks that consist of data types, (integers, characters, float etc) and functions that act on that data. This forces the program designer to design the program using these same building blocks. Quite often this requires quite a leap in imagination between what the program must do and how it can be implemented.
-
-
-<P>
-Object-oriented languages allow the program designer to think in terms of building blocks that are closer to what the program will actually do. Rather than think in terms of data and functions that act on that data, OO languages provide you with objects and the ability to send messages to those objects. Objects are, in a sense, like mini programs that can function on their own when requested by the program or even another object. 
-
-
-<P>
-For example, an object may exist that can draw a rectangle in a window; all you need to do as a programmer is send the appropriate messages to that object. The messages could tell the object the size of the rectangle and position in the window, and of course tell the object to draw itself. Program design and implementation is now reduced to sending messages to the appropriate objects rather than calling functions to manipulate data.
-
-
-
-
-<H3><A NAME="SEC4" HREF="manual_toc.html#TOC4">Some Basic OO Terminology</A></H3>
-<P>
-<A NAME="IDX2"></A>
-
-
-<P>
-OO languages add to the vocabulary of more traditional programming languages, and it may help if you become familiar with some of the basic terms before jumping in to the language itself.
-
-
-<P>
-Objects
-
-
-<P>
-As stated previously, an object is one of the basic building blocks in OO programming. An object can receive messages and then act on these messages to alter the state of itself (the size and position of a rectangle object for example). In software an object consists of instance variables (data) that represent the state of the object, and methods (like C functions) that act on these variables in response to messages.
-
-
-<P>
-Rather than 'calling' one of its methods, an object is said to 'perform' one of its methods in response to a message. (A method is known as a 'member function' in C++.)
-
-
-<P>
-Classes
-
-
-<P>
-All objects of the same type are said to be members of the same class. To continue with the rectangle example, every rectangle could belong to a rectangle class, where the class defines the instance variables and the methods of all rectangles. 
-
-
-<P>
-A class definition by itself does not create an object but instead acts like a template for each object in that class. When an object is created an 'instance' of that class is said to exist. An instance of a class (an object) has the same data structure (instance variables) and methods as every other object in that class.
-
-
-<P>
-Inheritance
-
-
-<P>
-When you define a new class you can base it on an existing class. The new class would then 'inherit' the data structure and methods of the class that you based it on. You are then free to add instance variables and methods, or even modify inherited methods, to change the behavior of the new class (how it reacts to messages).
-
-
-<P>
-The base class is known as the 'superclass' and the new class as the 'subclass' of this superclass. As an example, there could be a superclass called 'shapes' with a data structure and methods to size, position and draw itself, on which you could base the rectangle class.
-
-
-<P>
-Polymorphism
-
-
-<P>
-Unlike functions in a procedural program such as C, where every function must have a unique name, a method (or instance variable) in one class can have the same name as that in another class. 
-
-
-<P>
-This means that two objects could respond to the same message in completely different ways, since identically named methods may do completely different things. A draw message sent to a rectangle object would not produce the same shape as a draw message sent to a circle object.
-
-
-<P>
-Encapsulation
-
-
-<P>
-An object hides its instance variables and method implementations from other parts of the program. This encapsulation allows the programmer that uses an object to concentrate on what the object does rather than how it is implemented.
-
-
-<P>
-Also, providing the interface to an object does not change (the methods of an object and how they respond to received messages) then the implementation of an object can be improved without affecting any programs that use it.
-
-
-<P>
-Dynamic Typing and Binding
-
-
-<P>
-Due to polymorhism, the method performed in response to a message depends on the class (type) of the receiving object. In an OO program the type, or class, of an object can be determined at run time (dynamic typing) rather than at compile time (static typing). 
-
-
-<P>
-The method performed (what happens as a result of this message) can then be determined during program execution and could, for example, be determined by user action or some other external event. Binding a message to a particular method at run time is known as dynamic binding.
-
-
-
-
-<H2><A NAME="SEC5" HREF="manual_toc.html#TOC5">What is Objective-C?</A></H2>
-<P>
-<A NAME="IDX3"></A>
-<A NAME="IDX4"></A>
-
-
-<P>
-Objective-C is a powerful object-oriented (OO) language that extends the procedural language ANSI C with the addition of a few keywords and compiler directives, plus one syntactical addition (for sending messages to objects). This simple extension of ANSI C is made possible by an Objective-C runtime library (libobjc) that is generally transparent to the Objective-C programmer.
-
-
-<P>
-During compilation of Objective-C source code, OO extensions in the language compile to C function calls to the runtime library. It is the runtime library that makes dynamic typing and binding possible, and that makes Objective-C a true object-oriented language.
-
-
-<P>
-Since Objective-C extends ANSI C with a few additional language constructs (the compiler directives and syntactical addition), you may freely include C code in your Objective-C programs. In fact an Objective-C program may look familiar to the C programmer since it is constructed using the traditional <CODE>main</CODE> function.
-
-
-
-<PRE>
-#include &#60;stdio.h&#62;
-#include &#60;objc/objc.h&#62;
-
-int main (void)
-{
-
-  /* Objective C and C code */
-  
-  return(0);
-}
-</PRE>
-
-<P>
-Objective-C source files are compiled using the standard GNU <B>gcc</B> compiler. The compiler recognises Objective-C source files by the .m file extension, C files by the .c extension and header files by the .h extension.
-
-
-<P>
-As an example, the command <B>$gcc -o testfile testfile.m -lobjc</B> would compile the Objective-C source file <CODE>testfile.m</CODE> to an executable named <CODE>testfile</CODE>. The <CODE>-lobjc</CODE> compiler option is required for linking an Objective-C program to the runtime library.
-
-
-<P>
-The GNUstep <B>make</B> utility provides an alternative (and simple) way to compile large projects, and this useful utility is discussed in the next section.
-
-
-
-
-<H2><A NAME="SEC6" HREF="manual_toc.html#TOC6">What is GNUstep?</A></H2>
-<P>
-<A NAME="IDX5"></A>
-<A NAME="IDX6"></A>
-
-
-<P>
-GNUstep is an object-oriented development environment that provides the Objective-C programmer with a range of utilities and libraries for building large, cross-platform, applications and tools. 
-
-
-<P>
-This manual does not discuss the full functionality of GNUstep but concentrates on using the GNUstep base library to create non-graphical programs, and the GNUstep <B>make</B> utility to compile these programs. Further information about GNUstep can be found at <A HREF="http://www.gnustep.org">http://www.gnustep.org</A>. 
-
-
-
-
-<H3><A NAME="SEC7" HREF="manual_toc.html#TOC7">GNUstep Base Library</A></H3>
-<P>
-<A NAME="IDX7"></A>
-
-
-<P>
-The GNUstep base library contains a powerful set of non-graphical Objective-C classes that can readily be used in your programs. At present there are approximately 70 different classes available, including classes to handle strings and arrays, dates and times, distributed objects, URLs and file systems (to name but a few).
-
-
-<P>
-Classes in the base library are easily identified since they begin with the upper case characters 'NS', as in <CODE>NSString</CODE>. Some examples in this manual use classes from the base library, but for complete documentation on the base library visit the GNUstep web site at <A HREF="http://www.gnustep.org">http://www.gnustep.org</A>.
-
-
-
-
-<H3><A NAME="SEC8" HREF="manual_toc.html#TOC8">GNUstep Make Utility</A></H3>
-<P>
-<A NAME="IDX8"></A>
-
-
-<P>
-The GNUstep <B>make</B> utility is the GNU version of the UNIX make utility. So what does it do? It simplifies the process of building (compiling and linking) a large project. You simply type <B>make</B> at the command prompt and the make utility takes care of file dependencies, only re-compiling source files that have changed, or that depend on files that have changed, since the last 'make' (a header file for example).
-
-
-<P>
-Before using <B>make</B> you must first create a 'makefile' that lists all the files and file dependencies in your project. The easiest way to do this is to copy an existing makefile and change it to suit your own project.
-
-
-<P>
-The make utility will be used to build the Objective-C examples shown in this manual, and when an example can be compiled then the makefile will also be shown. Further information about makefiles and the make utility can be found in Appendix C.
-
-
-
-
-<H2><A NAME="SEC9" HREF="manual_toc.html#TOC9">Building Your First Objective-C Program</A></H2>
-<P>
-<A NAME="IDX9"></A>
-
-
-<P>
-The following example will show you how to create and compile an Objective-C program. The example simply displays a text message on the screen, and there are easier ways to to do this, but the example does demonstrate a number of object-oriented features of Objective-C, and also demonstrates the use of <B>make</B> to compile an Objective-C program.
-
-
-
-<OL>
+Objective-C makes a few non OO additions to the syntax of the C programming
+language that include:
+<UL>
 
 <LI>
-
-Create a new project directory to hold your project.<BR><BR>
+A boolean data type (<CODE>BOOL</CODE>) capable of storing either of the
+values <CODE>YES</CODE> or <CODE>NO</CODE>.<BR>
+A <CODE>BOOL</CODE> is a scalar value and can be used like the familiar
+<CODE>int</CODE> and <CODE>char</CODE> data types.<BR>
+A <CODE>BOOL</CODE> value of <CODE>NO</CODE> is zero, while <CODE>YES</CODE> is non-zero.
+<P>
 
 <LI>
+The use of a pair of slashes (<CODE>//</CODE>) to mark text up to the end
+of the line as a comment.
+<P>
 
-Create the following Objective-C source code using your favourite text
-editor and save it in the project directory with the filename <CODE>source.m</CODE>.
+<LI>
+The <CODE>#import</CODE> preprocessor directive was added; it directs the compiler
+to include a file only if it has not previously been included for the current
+compilation.  This directive should only be used for Objective-C headers and
+not ordinary C headers, since the latter may actually rely on being included
+more than once in certain cases to support their functionality.
+</UL>
+<P>
 
+<HR SIZE="6">
+<A NAME="SEC14"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC13"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC15"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 2.2 Objects </H2>
+<!--docid::SEC14::-->
+<P>
 
-<PRE>
-#include &#60;stdio.h&#62;
+Object-oriented (OO) programming is based on the notion that a software system
+can be composed of objects that interact with each other in a manner that
+parallels the interaction of objects in the physical world.
+</P><P>
 
-/* 
- * The next #include line is generally present in all Objective-C
- * source files that use GNUstep.  The Foundation.h header file
- * includes all the other standard header files you need.
- */
-#include &#60;Foundation/Foundation.h&#62;  
+This model makes it easier for the programmer to understand how software works
+since it makes programming more intuitive. The use of objects also makes it
+easier during program design: take a big problem and consider it in small
+pieces, the individual objects, and how they relate to each other.
+</P><P>
 
-/*
- * Declare the Test class that implements the class method (classStringValue).
- */
-@interface Test
-+ (const char *) classStringValue;
-@end
+Objects are like mini programs that can function on their own when requested
+by the program or even another object. An object can receive messages and then
+act on these messages to alter the state of itself (the size and position of a
+rectangle object in a drawing program for example).
+</P><P>
 
-/*
- * Define the Test class and the class method (classStringValue).
- */
-@implementation Test
-+ (const char *) classStringValue;
+In software an object consists of instance variables (data) that represent the
+state of the object, and methods (like C functions) that act on these
+variables in response to messages.
+</P><P>
+
+As a programmer creating an application or tool, all you need do is send
+messages to the appropriate objects rather than call functions that manipulate
+data as you would with a procedural program.
+</P><P>
+
+The syntax for sending a message to an object, as shown below, is one of the
+additions that Objective-C adds to ANSI C.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>[objectName message]; 
+</pre></td></tr></table></P><P>
+
+Note the use of the square [ ] brackets surrounding the name of the object and
+message.
+</P><P>
+
+Rather than 'calling' one of its methods, an object is said to 'perform' one
+of its methods in response to a message. The format that a message can take is
+discussed later in this section.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC15"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC14"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC16"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC14"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.2.1 Id and nil </H3>
+<!--docid::SEC15::-->
+<P>
+
+Objective-C defines a new type to identify an object: <CODE>id</CODE>, a type that
+points to an object's data (its instance variables). The following code
+declares the variable '<CODE>button</CODE>' as an object (as opposed to
+'<CODE>button</CODE>' being declared an integer, character or some other data type).
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id button;
+</pre></td></tr></table></P><P>
+
+When the button object is eventually created the variable name '<CODE>button</CODE>'
+will point to the object's data, but before it is created the variable could
+be assigned a special value to indicate to other code that the object does not
+yet exist.
+</P><P>
+
+Objective-C defines a new keyword <CODE>nil</CODE> for this assignment, where
+<CODE>nil</CODE> is of type <CODE>id</CODE> with an unassigned value. In the button
+example, the assignment could look like this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id button = nil;
+</pre></td></tr></table></P><P>
+
+which assigns <CODE>nil</CODE> in the declaration of the variable.
+</P><P>
+
+You can then test the value of an object to determine whether the object
+exists, perhaps before sending the object a message. If the test fails, then
+the object does not exist and your code can execute an alternative statement.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>if (anObject != nil)
+  ... /* send message */
+else
+  ... /* do something else */
+</pre></td></tr></table></P><P>
+
+The header file <CODE>objc/objc.h</CODE> defines <CODE>id</CODE>, <CODE>nil</CODE>, and other
+basic types of the Objective-C language. It is automatically included in your
+source code when you use the compiler directive <CODE>#include
+&#60;Foundation/Foundation.h&#62;</CODE> to include the GNUstep Base class definitions.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC16"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC15"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC17"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC17"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC14"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.2.2 Messages </H3>
+<!--docid::SEC16::-->
+<P>
+
+A message in Objective-C is the mechanism by which you pass instructions
+to objects.  You may tell the object to do something for you, tell it to
+change its internal state, or ask it for information.
+</P><P>
+
+A message usually invokes a method, causing the receiving object to respond in
+some way.  Objects and data are manipulated by sending messages to them.  Like
+C-functions they have return types, but function specific to the object.
+</P><P>
+
+Objects respond to messages that make specific requests.
+Message expressions are enclosed in square brackets and include the
+receiver or object name and the message or method name along with
+any arguments.
+</P><P>
+
+To send a message to an object, use the syntax:
+</P><P>
+
+<CODE>[receiver messagename];</CODE>
+</P><P>
+
+where <CODE>receiver</CODE> is the object.
+</P><P>
+
+The run-time system invokes object methods that are specified by messages.
+For example, to invoke the display method of the mySquare object the
+following message is used:
+</P><P>
+
+<CODE>[mySquare display];</CODE>
+</P><P>
+
+Messages may include arguments that are prefixed by colons, in which
+case the colons are part of the message name, so the following message
+is used to invoke the <CODE>setFrameOrigin::</CODE> method:
+</P><P>
+
+<CODE>[button setFrameOrigin: 10.0 : 10.0];</CODE>
+</P><P>
+
+Labels describing arguments precede colons:
+</P><P>
+
+<CODE>[button setWidth: 20.0 height: 122.0];</CODE>
+</P><P>
+
+invokes the method named <CODE>setWidth:height:</CODE>
+</P><P>
+
+Messages that take a variable number of arguments are of the form:
+</P><P>
+
+<CODE>[receiver makeList: list, argOne, argTwo, argThree];</CODE>
+</P><P>
+
+A message to <CODE>nil</CODE> does NOT crash the application (while in Java messages
+to <CODE>null</CODE> raise exceptions); the Objective-C application does nothing.
+</P><P>
+
+For example:
+</P><P>
+
+<CODE>[nil display];</CODE>
+</P><P>
+
+will do nothing.
+</P><P>
+
+If a message to <CODE>nil</CODE> is supposed to return an object, it will return
+<CODE>nil</CODE>.  But if the method is supposed to return a primitive type such as
+an <CODE>int</CODE>, then the return value of that method when invoked on
+<CODE>nil</CODE>, is undefined.  The programmer therefore needs to avoid using the
+return value in this instance.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC17"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC16"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC14"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.2.3 Polymorphism </H3>
+<!--docid::SEC17::-->
+<P>
+
+Polymorphism refers to the fact that two different objects may
+respond differently to the same message. For example when client
+objects receive an alike message from a server object, they may
+respond differently. Using Dynamic Binding, the run-time system
+determines which code to execute according to the object type.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC18"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC17"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC19"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 2.3 Classes </H2>
+<!--docid::SEC18::-->
+<P>
+
+A <B>class</B> in Objective-C is a <I>type of object</I>, much like a structure
+definition in C except that in addition to variables, a class has code --
+method implementations -- associated with it.  When you create an <I>instance</I>
+of a class, also known as an <I>object</I>, memory for each of its variables is
+allocated, including a pointer to the class definition itself, which tells the
+Objective-C runtime where to find the method code, among other things.
+Whenever an object is sent a message, the runtime finds this code and
+executes it, using the variable values that are set for this object.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC19"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC20"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.3.1 Inheritance </H3>
+<!--docid::SEC19::-->
+<P>
+
+Most of the programmer's time is spent defining classes.
+Inheritance helps reduce coding time by providing a convenient way of
+reusing code.
+For example, the <CODE>NSButton</CODE> class defines data (or instance variables) and methods to create button objects of a certain type, so a subclass of <CODE>NSButton</CODE> could be produced to create buttons of another type - which may perhaps have a different border colour. Equally <CODE>NSTextField</CODE> can be used to define a subclass that perhaps draws a different border, by reusing definitions and data in the superclass.
+</P><P>
+
+Inheritance places all classes in a logical hierarchy or tree structure that
+may have the <CODE>NSObject</CODE> class at its root.  (The root object may be
+changed by the developer; in GNUstep it is <CODE>NSObject</CODE>, but in "plain"
+Objective-C it is a class called "<CODE>Object</CODE>" supplied with the runtime.)
+All classes may have subclasses, and all except the root class do have
+superclasses. When a class object creates a new instance, the new object holds
+the data for its class, superclass, and superclasses extending to the root
+class (typically <CODE>NSObject</CODE>).  Additional data may be added to classes so
+as to provide specific functions and application logic.
+</P><P>
+
+When a new object is created, it is allocated memory space and its data in the
+form of its instance variables are initialised.  Every object has at least one
+instance variable (inherited from <CODE>NSObject</CODE>) called <CODE>isa</CODE>, which is
+initialized to refer to the object's class.  Through this reference, access is
+also afforded to classes in the object's inheritance path.
+</P><P>
+
+In terms of source code, an Objective-C class definition has an:
+</P><P>
+
+<UL>
+<LI>
+<I>interface</I> declaring instance variables, methods and the superclass name;
+and an
+<P>
+
+<LI>
+<I>implementation</I> that defines the class in terms of operational code that
+implements the methods.
+</UL>
+<P>
+
+Typically these entities are confined to separate files
+with <CODE>.h</CODE> and <CODE>.m</CODE> extensions for Interface and Implementation files,
+respectively. However they may be merged
+into one file, and a single file may implement multiple classes.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC20"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC19"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC21"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC21"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.3.2 Inheritance of Methods </H3>
+<!--docid::SEC20::-->
+<P>
+
+Each new class inherits methods and instance variables from another class. This
+results in a class hierarchy with the root class at the core, and every class
+(except the root) has a superclass as its parent, and all classes may have
+numerous subclasses as their children. Each class therefore is a refinement of
+its superclass(es).
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC21"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC20"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC22"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC22"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.3.3 Overriding Methods </H3>
+<!--docid::SEC21::-->
+<P>
+
+Objects may access methods defined for their class, superclass,
+superclass' superclass, extending to the root class.
+Classes may be defined with methods that overwrite their namesakes
+in ancestor classes. These new methods are then inherited by
+subclasses, but other methods in the new class can locate the
+overridden methods. Additionally redefined methods may include
+overridden methods.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC22"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC21"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC23"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC23"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.3.4 Abstract Classes </H3>
+<!--docid::SEC22::-->
+<P>
+
+Abstract classes or abstract superclasses such as <CODE>NSObject</CODE> define
+methods and instance variables used by multiple subclasses.
+Their purpose is to reduce the development effort required to
+create subclasses and application structures.
+When we get technical, we make a distinction between a pure abstract
+class whose methods are defined but instance variables are not,
+and a semi-abstract class where instance variables are defined).
+</P><P>
+
+An abstract class is not expected to actually produce functional
+instances since crucial parts of the code are expected to be
+provided by subclasses.  In practice, abstract classes may either stub out key
+methods with no-op implementations, or leave them unimplemented entirely.  In
+the latter case, the compiler will produce a warning (but not an error).
+</P><P>
+
+Abstract classes reduce the development effort required to create
+subclasses and application structures.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC23"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC22"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC18"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.3.5 Class Clusters </H3>
+<!--docid::SEC23::-->
+<P>
+
+A class cluster is an abstract base class, and a group of private, concrete
+subclasses.  It is used to hide implementation details from the programmer
+(who is only allowed to use the interface provided by the abstract class), so
+that the actual design can be modified (probably optimised) at a later date,
+without breaking any code that uses the cluster.
+</P><P>
+
+Consider a scenario where it is necessary to create a class hierarchy to
+define objects holding different types including <B>chars</B>, <B>ints</B>,
+<B>shorts</B>, <B>longs</B>, <B>floats</B> and <B>doubles</B>.  Of course, different types
+could be defined in the same class since it is possible to <B>cast</B> or
+<B>change</B> them from one to the next.  Their allocated storage differs,
+however, so it would be inefficient to bundle them in the same class and to
+convert them in this way.
+</P><P>
+
+The solution to this problem is to use a class cluster:
+define an abstract superclass that specifies and declares
+components for subclasses, but does not declare instance variables.
+Rather this declaration is left to its subclasses, which share the
+<B>programmatic interface</B> that is declared by the abstract superclass.
+</P><P>
+
+When you create an object using a cluster interface, you are
+given an object of another class - from a concrete class in the cluster.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC24"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC23"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC25"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC26"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC26"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 2.4 NSObject: The Root Class </H2>
+<!--docid::SEC24::-->
+<P>
+
+In GNUstep, <CODE>NSObject</CODE> is a root class that provides a base
+implementation for all objects, their interactions, and their integration in
+the run-time system.  <CODE>NSObject</CODE> defines the <CODE>isa</CODE> instance variable
+that connects every object with its class.
+</P><P>
+
+In other Objective-C environments besides GNUstep, <CODE>NSObject</CODE> will be
+replaced by a different class.  In many cases this will be a default class
+provided with the Objective-C runtime.  In the GNU runtime for example, the
+base class is called <CODE>Object</CODE>.  Usually base classes define a similar set
+of methods to what is described here for <CODE>NSObject</CODE>, however there are
+variations.
+</P><P>
+
+The most basic functions associated with the <CODE>NSObject</CODE> class (and
+inherited by all subclasses) are the following:
+</P><P>
+
+<UL>
+
+<LI>
+allocate instances
+<P>
+
+<LI>
+connect instances to their classes
+<P>
+
+</UL>
+<P>
+
+In addition, <CODE>NSObject</CODE> supports the following functionality:
+</P><P>
+
+<UL>
+
+<LI>
+initialize instances
+<P>
+
+<LI>
+deallocate instances
+<P>
+
+<LI>
+compare self with another object
+<P>
+
+<LI>
+archive self
+<P>
+
+<LI>
+perform methods selected at run-time
+<P>
+
+<LI>
+provide reflective information at runtime to queries about declared methods
+<P>
+
+<LI>
+provide reflective information at runtime to queries about position in the
+inheritance hierarchy
+<P>
+
+<LI>
+forward messages to other objects.
+</UL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC25"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC26"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC26"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC24"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC26"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.4.1 The NSObject Protocol </H3>
+<!--docid::SEC25::-->
+<P>
+
+In fact, the <CODE>NSObject</CODE> class is a bit more complicated than just
+described.  In reality, its method declarations are split into two components:
+essential and ancillary.  The essential methods are those that are needed by
+<I>any</I> root class in the GNUstep/Objective-C environment.  They are declared
+in an "<CODE>NSObject</CODE> protocol" which should be implemented by any other
+root class you define (see <A HREF="manual_4.html#SEC51">Protocols</A>).  The ancillary
+methods are those specific to the <CODE>NSObject</CODE> class itself but need not be
+implemented by any other root class.  It is not important to know which
+methods are of which type unless you actually intend to write an alternative
+root class, something that is rarely done.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC26"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC25"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC27"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC29"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC29"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 2.5 Static Typing </H2>
+<!--docid::SEC26::-->
+<P>
+
+Recall that the <CODE>id</CODE> type may be used to refer to any class of object.
+While this provides for great runtime flexibility (so that, for example, a
+generic <CODE>List</CODE> class may contain objcts of any instance), it prevents the
+compiler from checking whether objects implement the messages you send them.
+To allow type checking to take place, Objective-C therefore also allows you to
+use class names as variable types in code.  In the following example, type
+checking verifies that the <CODE>myString</CODE> object is an appropriate type.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre> // compiler verifies, if anObject's type is known, that it is an NSString:
+NSString *myString = anObject;
+ // now, compiler verifies that NSString declares an int 'length' method:
+int len = [myString length];
+</pre></td></tr></table></P><P>
+
+Note that objects are declared as pointers, unlike when <CODE>id</CODE> is used.
+This is because the pointer operator is implicit for <CODE>id</CODE>.  Also, when
+the compiler performs type checking, a subclass is always permissible where
+any ancestor class is expected, but not vice-versa.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC27"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC26"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC28"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC29"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC26"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC29"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.5.1 Type Introspection </H3>
+<!--docid::SEC27::-->
+<P>
+
+Static typing is not always appropriate.  For example, you may wish to store
+objects of multiple types within a list or other container structure.  In
+these situations, you can still perform type-checking manually if you need to
+send an untyped object a particular message.  The <CODE>isMemberOfClass:</CODE>
+method defined in the <CODE>NSObject</CODE> class verifies that the receiver is of a
+specific class:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>if ([namedObject isMemberOfClass: specificClass] == YES)
+  {
+    // code here
+  }
+</pre></td></tr></table></P><P>
+
+The test will return false if the object is a member of a subclass of the
+specific class given - an exact match is required.  If you are merely
+interested in whether a given object <I>descends</I> from a particular class, the
+<CODE>isKindOfClass:</CODE> method can be used instead:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>if ([namedObject isKindOfClass: specificClass] == YES)
+  {
+    // code here
+  }
+</pre></td></tr></table></P><P>
+
+There are other ways of determining whether an object responds to a particular
+method, as will be discussed in <A HREF="manual_5.html#SEC72">5. Advanced Messaging</A>.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC28"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC27"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC29"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC29"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC26"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC29"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.5.2 Referring to Instance Variables </H3>
+<!--docid::SEC28::-->
+<P>
+
+As you will see later, classes may define some or all of their instance
+variables to be <I>public</I> if they wish.  This means that any other object or
+code block can access them using the standard "<CODE>-></CODE>" structure access
+operator from C.  For this to work, the object must be statically typed (not
+referred to by an <CODE>id</CODE> variable).
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>   Bar *bar = [foo getBar];
+   int c = bar-&#62;value * 2;   // 'value' is an instance variable
+</pre></td></tr></table></P><P>
+
+In general, direct instance variable access from outside of a class is not
+recommended programming practice, aside from in exceptional cases where
+performance is at a premium.  Instead, you should define special methods
+called <I>accessors</I> that provide the ability to retrieve or set instance
+variables if necessary:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (int) value
 {
-  return "This is the string value of the Test class";
+    return value;
 }
-@end
 
-/*
- * The main() function: pass a message to the Test class
- * and print the returned string.
- */
-int main(void)
+- (void) setValue: (int) newValue
 {
-  printf("%s\n", [Test classStringValue]);
+    value = newValue;
+}
+</pre></td></tr></table></P><P>
+
+While it is not shown here, accessors may perform arbitrary operations before
+returning or setting internal variable values, and there need not even be a
+direct correspondence between the two.  Using accessor methods consistently
+allows this to take place when necessary for implementation reasons without
+external code being aware of it.  This property of <I>encapsulation</I> makes
+large code bases easier to maintain.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC29"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC28"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC30"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC31"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC31"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 2.6 Working with Class Objects </H2>
+<!--docid::SEC29::-->
+<P>
+
+Classes themselves are maintained internally as objects in their own right in
+Objective-C, however they do not possess the instance variables defined by the
+classes they represent, and they cannot be created or destroyed by user code.
+They do respond to class methods, as in the following:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id result = [SomeClassName doSomething];
+</pre></td></tr></table></P><P>
+
+Classes respond to the class methods their class defines, as well as those
+defined by their superclasses.  However, it is not allowed to override an
+inherited class method.
+</P><P>
+
+You may obtain the class object corresponding to an instance object at runtime
+by a method call; the class object is an instance of the "<CODE>Class</CODE>"
+class.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  // all of these assign the same value
+id stringClass1 = [stringObject class];
+Class stringClass2 = [stringObject class];
+id stringClass3 = [NSString class];
+</pre></td></tr></table></P><P>
+
+Classes may also define a version number (by overriding that defined in
+<CODE>NSObject</CODE>):
+</P><P>
+
+<CODE>int versionNumber = [NSString version];</CODE>
+</P><P>
+
+This facility allows developers to access the benefits of versioning for
+classes if they so choose.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC30"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC29"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC31"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC31"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC29"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC31"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.6.1 Locating Classes Dynamically </H3>
+<!--docid::SEC30::-->
+<P>
+
+Class names are about the only names with global visibility in Objective-C.
+If a class name is unknown at compilation but is available as a string at run
+time, the GNUstep library <CODE>NSClassFromString</CODE> function may be used to
+return the class object:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>if ([anObject isKindOf: NSClassFromString("SomeClassName")] == YES)
+  {
+    // do something ...
+  }
+</pre></td></tr></table></P><P>
+
+The function returns <CODE>Nil</CODE> if it is passed a string holding an invalid
+class name.  Class names, global variables and functions (but not methods)
+exist in the same name space, so no two of these entities may share the same
+name.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC31"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC30"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC32"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC32"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 2.7 Naming Constraints and Conventions </H2>
+<!--docid::SEC31::-->
+<P>
+
+The following lists the full uniqueness constraints on names in Objective-C.
+</P><P>
+
+<UL>
+
+<LI>
+Neither gGlobal variables nor function names may share the same name as
+classes, because all three entities are allocated the same (global) name
+space.
+<P>
+
+<LI>
+A class may define methods using the same names as those held in other classes.
+(See <A HREF="manual_2.html#SEC12">Overriding Methods</A> above.)
+<P>
+
+<LI>
+A class may define instance variables using the same names as those
+held in other classes.
+<P>
+
+<LI>
+A class category may have the same name as another class category.
+<P>
+
+<LI>
+An instance method and a class method may share the same name.
+<P>
+
+<LI>
+A protocol may have the same name as a class, category, or any other entity.
+<P>
+
+<LI>
+A method and an instance variable may share the same name.
+<P>
+
+</UL>
+<P>
+
+There are also a number of conventions used in practice.  These help to make
+code more readable and also help avoid naming conflicts.  Conventions are
+particularly important since Objective-C does not have any namespace
+partitioning facilities like Java or other languages.
+</P><P>
+
+<UL>
+
+<LI>
+Class, category and protocol names begin with an uppercase letter.
+<P>
+
+<LI>
+Methods, instance variables, and variables holding instances begin
+with a lowercase letter.
+<P>
+
+<LI>
+Second and subsequent words in a name should begin with a capital letter, as
+in "ThisIsALongName", not "Thisisalongname".  As can be seen, this makes
+long names more readable.
+<P>
+
+<LI>
+Classes intended to be used as libraries (Frameworks, in NeXTstep parlance)
+should utilize a unique two or three letter prefix.  For example, the
+Foundation classes all begin with 'NS', as in "NSArray, and classes in the
+OmniFoundation from Omni Group (a popular library for OpenStep) began with
+"OF".
+<P>
+
+<LI>
+Classes and methods intended to be used only be the developers maintaining
+them should be prefixed by an underscore, as in "_SomePrivateClass" or
+"_somePrivateMethod".  Capitalization rules should still be followed.
+<P>
+
+<LI>
+Functions intended for global use should beging with a capital letter, and
+use prefixing conventions as for classes.
+<P>
+
+</UL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC32"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC31"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC33"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 2.8 Strings in GNUstep </H2>
+<!--docid::SEC32::-->
+<P>
+
+Strings in GNUstep can be handled in one of two ways.  The first way is the C
+approach of using an array of <CODE>char</CODE>.  In this case you may use the
+"<CODE>STR</CODE>" type defined in Objective-C in place of <CODE>char[]</CODE>.
+</P><P>
+
+The second approach is to rely on the <CODE>NSString</CODE> class and associated
+subclasses in the GNUstep Base library, and compiler support for them.  Using
+this approach allows use of the methods in the
+<A HREF="../Reference/NSString.html">NSString API</A>.  In addition, the
+<CODE>NSString</CODE> class provides the means to initialize strings using
+printf-like formats.
+</P><P>
+
+The <CODE>NSString</CODE> class defines objects holding raw <B>Unicode</B> character
+streams or <B>strings</B>. Unicode is a 16-bit worldwide standard used to define
+character sets for all spoken languages.  In GNUstep parlance the Unicode
+character is of type <B>unichar</B>.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC33"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC32"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC34"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC32"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.8.1 Creating NSString Static Instances </H3>
+<!--docid::SEC33::-->
+<P>
+
+A <B>static</B> instance is allocated at compile time. The creation of a static
+instance of <CODE>NSString</CODE> is achieved using the <CODE>@"..."</CODE>  construct
+and a pointer:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSString *w = @"Brainstorm";
+</pre></td></tr></table></P><P>
+
+Here, <CODE>w</CODE> is a variable that refers to an <CODE>NSString</CODE> object
+representing the ASCII string "Brainstorm".
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC34"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC33"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC35"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC35"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC32"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.8.2 NSString +stringWithFormat: </H3>
+<!--docid::SEC34::-->
+<P>
+
+The class method <CODE>stringWithFormat:</CODE> may also be used to create instances
+of <CODE>NSString</CODE>, and broadly echoes the <CODE>printf()</CODE> function in the C
+programming language. <CODE>stringWithFormat:</CODE> accepts a list of arguments
+whose processed result is placed in an <CODE>NSString</CODE> that becomes a return
+value as illustrated below:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>int		qos = 5;
+NSString	*gprsChannel;
+
+gprschannel = [NSString stringWithFormat: @"The GPRS channel is %d", 
+                qos];
+
+</pre></td></tr></table></P><P>
+
+The example will produce an <CODE>NSString</CODE> called <CODE>gprsChannel</CODE>
+holding the string "The GPRS channel is 5". 
+</P><P>
+
+<CODE>stringWithFormat:</CODE> recognises the <CODE>%@</CODE> conversion specification
+that is used to specify an additional <CODE>NSString</CODE>: 
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSString *one;
+NSString *two;
+
+one = @"Brainstorm";
+two = [NSString stringWithFormat: @"Our trading name is %@", one];
+</pre></td></tr></table></P><P>
+
+The example assigns the variable <CODE>two</CODE> the string "Our trading name is
+Brainstorm."  The <CODE>%@</CODE> specification can be used to output an object's
+description - as returned by the <CODE>NSObject</CODE> <CODE>-description</CODE> method),
+which is useful when debugging, as in:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSObject *obj = [anObject aMethod];
+
+NSLog (@"The method returned: %@", obj);
+</pre></td></tr></table></P><P>
+
+<HR SIZE="6">
+<A NAME="SEC35"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC34"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC36"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC36"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC32"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.8.3 C String Conversion </H3>
+<!--docid::SEC35::-->
+When a program needs to call a C library function it is useful to convert
+between <CODE>NSString</CODE>s and standard ASCII C strings (not fixed at compile
+time).  To create an <CODE>NSString</CODE> using the contents of the returned C
+string (from the above example), use the <CODE>NSString</CODE> class method
+<CODE>stringWithCString:</CODE>:
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>char *function (void);
+
+char *result;
+NSString *string;
+
+result = function ();
+string = [NSString stringWithCString: result];
+</pre></td></tr></table></P><P>
+
+To convert an <CODE>NSString</CODE> to a standard C ASCII string,
+use the <CODE>cString</CODE> method of the <CODE>NSString</CODE> class: 
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>char		*result;
+NSString	*string;
+
+string = @"Hi!";
+result = [string cString];
+</pre></td></tr></table></P><P>
+
+<HR SIZE="6">
+<A NAME="SEC36"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC35"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC37"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC37"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC32"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.8.4 NSMutableString </H3>
+<!--docid::SEC36::-->
+<CODE>NSString</CODE>s are immutable objects; meaning that once they are created,
+they cannot be modified. This results in optimised <CODE>NSString</CODE> code. To
+modify a string, use the subclass of <CODE>NSString</CODE>, called
+<CODE>NSMutableString</CODE>.  Use a <CODE>NSMutableString</CODE> wherever a
+<CODE>NSString</CODE> could be used.
+<P>
+
+An <CODE>NSMutableString</CODE> responds to methods that modify the string directly -
+which is not possible with a generic <CODE>NSString</CODE>. 
+To create a <CODE>NSMutableString</CODE>use <CODE>stringWithFormat:</CODE>: 
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSString *name = @"Brainstorm";
+NSMutableString *str;
+str = [NSMutableString stringWithFormat: @"Hi!, %@", name];
+</pre></td></tr></table></P><P>
+
+While <CODE>NSString</CODE>'s implementation of <CODE>stringWithFormat:</CODE> returns
+a <CODE>NSString</CODE>, <CODE>NSMutableString</CODE>'s implementation returns an
+<CODE>NSMutableString</CODE>. 
+</P><P>
+
+<B>Note. Static strings created with the <CODE>@"..."</CODE> construct are
+always immutable.</B>
+</P><P>
+
+<CODE>NSMutableString</CODE>s are rarely used because to modify a string, you
+normally create a new string derived from an existing one.
+</P><P>
+
+A useful method of the <CODE>NSMutableString</CODE> class is <CODE>appendString:</CODE>,
+which takes an <CODE>NSString</CODE> argument, and appends it to the receiver:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSString	*name = @"Brainstorm";
+NSString	*greeting = @"Hello";
+NSMutableString	*s;
+
+s = AUTORELEASE ([NSMutableString new]);
+[s appendString: greeting];
+[s appendString: @", "];
+[s appendString: name];
+</pre></td></tr></table></P><P>
+
+This code produces the same result as:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSString *name = @"Brainstorm";
+NSString *greeting = @"Hello";
+NSMutableString *s;
+
+s = [NSMutableString stringWithFormat: @"%@, %@", greeting, name];
+</pre></td></tr></table></P><P>
+
+<HR SIZE="6">
+<A NAME="SEC37"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC36"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC32"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 2.8.5 Loading and Saving Strings </H3>
+<!--docid::SEC37::-->
+<P>
+
+The the GNUstep Base library has numerous string manipulation features,
+and among the most notable are those relating to writing/reading
+strings to/from files. To write the contents of a string to a file,
+use the <CODE>writeToFile:atomically:</CODE> method: 
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
+
+int
+main (void)
+{
+  CREATE_AUTORELEASE_POOL(pool);
+  NSString *name = @"This string was created by GNUstep";
+
+  if ([name writeToFile: @"/home/nico/testing" atomically: YES])
+    {
+      NSLog (@"Success");
+    }
+  else 
+    {
+      NSLog (@"Failure");
+    }
+  RELEASE(pool);
   return 0;
 }
-</PRE>
+</pre></td></tr></table></P><P>
 
-The text between comment markers (/* */) is ignored by the compiler but indicates to someone reading the source file what each part of the program does. The program is an example of a (class) method responding to a message. Can you see how it works?<BR><BR>
+<CODE>writeToFile:atomically:</CODE> returns YES for success, and NO for failure.
+If the atomically flag is YES, then the library first writes the string
+into a file with a temporary name, and, when the writing has been
+successfully done, renames the file to the specified filename.
+This prevents erasing the previous version of filename unless
+writing has been successful. This is a useful feature, which should be enabled.
+</P><P>
 
-A message is sent to the <CODE>Test</CODE> class as an argument to <CODE>printf()</CODE>, requesting the string value of that class. The <CODE>Test</CODE> class performs its <CODE>classStringValue</CODE> method in response to this message and returns a string that is finally printed. No object is created in this program since a class method does not require an instance of a class in order to respond to a message.<BR><BR>
+To read the contents of a file into a string, use
+<CODE>stringWithContentsOfFile:</CODE>, as shown in the following
+example that reads <CODE>@"/home/Brainstorm/test"</CODE>: 
+</P><P>
 
-You will learn more about class methods in the next chapter.<BR><BR>
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
 
-<LI>
+int
+main (void)
+{
+  CREATE_AUTORELEASE_POOL(pool);
+  NSString *string;
+  NSString *filename = @"/home/nico/test";
 
-Now create the makefile, again using your favourite text editor, and save it in the same project directory with the filename <CODE>GNUmakefile</CODE>.
+  string = [NSString stringWithContentsOfFile: filename];
+  if (string == nil)
+    {
+      NSLog (@"Problem reading file %@", filename);
+      /*
+       * &#60;missing code: do something to manage the error...&#62;
+       * &#60;exit perhaps ?&#62;
+       */
+    }
 
+  /*
+   * &#60;missing code: do something with string...&#62;
+   */
 
-<PRE>
-include $(GNUSTEP_MAKEFILES)/common.make
+  RELEASE(pool);
+  return 0;
+}
 
-TOOL_NAME = LogTest
-LogTest_OBJC_FILES = source.m
+</pre></td></tr></table></P><P>
 
-include $(GNUSTEP_MAKEFILES)/tool.make
-</PRE>
+<A NAME="Objects"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>September, 7  2004</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
 
-If you look at the makefile above you will notice the two lines that tell the make utility to build a tool with the filename <CODE>LogTest</CODE> from the Objective-C source file <CODE>source.m</CODE>. You could copy and modify this makefile for later projects you may have: just change the tool name and list the new source files.<BR><BR>
-
-The two 'include' lines are just a way of keeping your makefile simple, by including two 'ready-made' makefiles that someone else created.<BR><BR>
-
-<LI>
-
-You can now compile the project using make. At the system command prompt, change to the project directory and enter the <B>make</B> command.<BR><BR>
-
-<LI>
-
-Run the program (for Linux enter <B>./LogTest</B> at the command prompt). The message "This is the string value of the Test class" will be displayed (assuming there were no errors).
-
-</OL>
-
-<P>
-You have now compiled and run you first Objective-C program. Hungry for more? Then read on.
-
-
-<P><HR><P>
-Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_1.html">previous</A>, <A HREF="manual_3.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
 </BODY>
 </HTML>

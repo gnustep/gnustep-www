@@ -4,7 +4,7 @@
     <title>NSHost class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSHost">NSHost class reference</a></h1>
@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.45</p>
-    <p><b>Date:</b> 2003/07/31 23:49:31</p>
+    <p><b>Version:</b> 1.46</p>
+    <p><b>Date:</b> 2004/07/02 10:37:54</p>
     <p><b>Copyright:</b> (C) 1996, 1997,1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -39,7 +39,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSHost class
       </a></h1>
-    <h2><a name="class$NSHost">NSHost</a> : NSObject</h2>
+    <h2><a name="class$NSHost">NSHost</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -50,21 +50,38 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Instances of this class encapsulate host
+          information. Constructors based on host name or
+          numeric address are provided.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost(GNUstep)+localHost">+localHost</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost+currentHost">+currentHost</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost+flushHostCache">+flushHostCache</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost+hostWithAddress:">+hostWithAddress:</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost+hostWithName:">+hostWithName:</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost+isHostCacheEnabled">+isHostCacheEnabled</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost+setHostCacheEnabled:">+setHostCacheEnabled:</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost-address">-address</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost-addresses">-addresses</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost-isEqualToHost:">-isEqualToHost:</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost-name">-name</a></li>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost-names">-names</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSHost+currentHost">currentHost&nbsp;</a></h3>
     + (<a rel="gsdoc" href="#class$NSHost">NSHost</a>*) <b>currentHost</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Get current host object.
           
     </p>
     <hr width="25%" align="left" />
@@ -72,23 +89,30 @@
     + (void) <b>flushHostCache</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Clear cache of host info instances.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSHost+hostWithAddress:">hostWithAddress:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSHost">NSHost</a>*) <b>hostWithAddress:</b> (NSString*)address;<br />
+    + (<a rel="gsdoc" href="#class$NSHost">NSHost</a>*) <b>hostWithAddress:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)address;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Get a host object. Hosts are cached for efficiency. The
+            <var>address</var> must be an IPV4 &quot;dotted decimal&quot;
+            string, e.g.
+
+<pre>
+  NSHost aHost = [NSHost hostWithAddress:@&quot;192.42.172.1&quot;];
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSHost+hostWithName:">hostWithName:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSHost">NSHost</a>*) <b>hostWithName:</b> (NSString*)name;<br />
+    + (<a rel="gsdoc" href="#class$NSHost">NSHost</a>*) <b>hostWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Get info for host with given DNS <var>name</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -96,7 +120,10 @@
     + (BOOL) <b>isHostCacheEnabled</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return host cache management. If enabled, only one
+            object representing each host will be created, and a
+            shared instance will be returned by all methods that
+            return a host.
           
     </p>
     <hr width="25%" align="left" />
@@ -104,23 +131,29 @@
     + (void) <b>setHostCacheEnabled:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Set host cache management. If enabled, only one object
+            representing each host will be created, and a
+            shared instance will be returned by all methods that
+            return a host.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSHost-address">address&nbsp;</a></h3>
-    - (NSString*) <b>address</b>;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>address</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return host address in &quot;dotted decimal&quot; notation,
+            e.g. &quot;192.42.172.1&quot;. Chosen arbitrarily if a host has
+            more than one.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSHost-addresses">addresses&nbsp;</a></h3>
-    - (NSArray*) <b>addresses</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>addresses</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return all known addresses for host in &quot;dotted
+            decimal&quot; notation, e.g. &quot;192.42.172.1&quot;.
           
     </p>
     <hr width="25%" align="left" />
@@ -128,23 +161,25 @@
     - (BOOL) <b>isEqualToHost:</b> (<a rel="gsdoc" href="#class$NSHost">NSHost</a>*)aHost;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Compare hosts. Hosts are equal if they share at
+            least one address
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSHost-name">name&nbsp;</a></h3>
-    - (NSString*) <b>name</b>;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>name</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return host name. Chosen arbitrarily if a host has
+            more than one.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSHost-names">names&nbsp;</a></h3>
-    - (NSArray*) <b>names</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>names</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return all known names for host.
           
     </p>
     <hr width="25%" align="left" />
@@ -164,21 +199,35 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Adds synonym for
+          <a rel="gsdoc" href="#method$NSHost+currentHost">
+            +currentHost
+          </a>
+
+          .
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSHost.html#method$NSHost+localHost">+localHost</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSHost(GNUstep)+localHost">localHost&nbsp;</a></h3>
     + (<a rel="gsdoc" href="#class$NSHost">NSHost</a>*) <b>localHost</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Synonym for
+            <a rel="gsdoc" href="#method$NSHost+currentHost">
+              +currentHost
+            </a>
+
+            .
           
     </p>
     <hr width="25%" align="left" />

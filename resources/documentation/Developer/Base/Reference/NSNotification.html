@@ -4,7 +4,7 @@
     <title>NSNotificationCenter class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSNotification">NSNotificationCenter class reference</a></h1>
@@ -20,8 +20,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.23</p>
-    <p><b>Date:</b> 2003/06/07 01:24:41</p>
+    <p><b>Version:</b> 1.24</p>
+    <p><b>Date:</b> 2004/06/22 22:40:38</p>
     <p><b>Copyright:</b> (C) 1996,1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -47,7 +47,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSNotification class
       </a></h1>
-    <h2><a name="class$NSNotification">NSNotification</a> : NSObject</h2>
+    <h2><a name="class$NSNotification">NSNotification</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -57,26 +57,47 @@
     <blockquote>
       <dl>
         <dt><b>Conforms to:</b></dt>
-        <dd>NSCopying</dd>
-        <dd>NSCoding</dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(NSCopying)">NSCopying</a></dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(NSCoding)">NSCoding</a></dd>
       </dl>
     </blockquote>
     <blockquote>
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            Represents a notification for posting to an
+            <a rel="gsdoc" href="#class$NSNotificationCenter">NSNotificationCenter</a>
+. Consists of a name, an object, and an optional dictionary. The notification center will check for observers registered to receive either notifications with the name, the object, or both and pass the notification instance on to them.    </p>
+    <p>
+       
+    </p>
+    <p>
+This class is actually the interface for a class cluster, so instances will be of a (private) subclass.    </p>
+    <p>
+      
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotification+notificationWithName:object:">+notificationWithName:object:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotification+notificationWithName:object:userInfo:">+notificationWithName:object:userInfo:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotification-name">-name</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotification-object">-object</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotification-userInfo">-userInfo</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSNotification+notificationWithName:object:">notificationWithName:&nbsp;object:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSNotification">NSNotification</a>*) <b>notificationWithName:</b> (NSString*)name<b> object:</b> (id)object;<br />
+    + (<a rel="gsdoc" href="#class$NSNotification">NSNotification</a>*) <b>notificationWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> object:</b> (id)object;<br />
     <p>
       
             Create a new autoreleased notification by calling
@@ -86,22 +107,18 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNotification+notificationWithName:object:userInfo:">notificationWithName:&nbsp;object:&nbsp;userInfo:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSNotification">NSNotification</a>*) <b>notificationWithName:</b> (NSString*)name<b> object:</b> (id)object<b> userInfo:</b> (NSDictionary*)info;<br />
+    + (<a rel="gsdoc" href="#class$NSNotification">NSNotification</a>*) <b>notificationWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> object:</b> (id)object<b> userInfo:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)info;<br />
     <p>
       
-            Create a new autoreleased notification. Concrete
-            subclasses override this method to create actual
-            notification objects.
+            Create a new autoreleased notification.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNotification-name">name&nbsp;</a></h3>
-    - (NSString*) <b>name</b>;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>name</b>;<br />
     <p>
       
-            Concrete subclasses of NSNotification are
-            responsible for implementing this method to
-            return the notification name.
+            Returns the notification name.
           
     </p>
     <hr width="25%" align="left" />
@@ -109,19 +126,15 @@
     - (id) <b>object</b>;<br />
     <p>
       
-            Concrete subclasses of NSNotification are
-            responsible for implementing this method to
-            return the notification object.
+            Returns the notification object.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNotification-userInfo">userInfo&nbsp;</a></h3>
-    - (NSDictionary*) <b>userInfo</b>;<br />
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>userInfo</b>;<br />
     <p>
       
-            Concrete subclasses of NSNotification are
-            responsible for implementing this method to
-            return the notification user information.
+            Returns the notification user information.
           
     </p>
     <hr width="25%" align="left" />
@@ -130,7 +143,7 @@
         Software documentation for the NSNotificationCenter
         class
       </a></h1>
-    <h2><a name="class$NSNotificationCenter">NSNotificationCenter</a> : NSObject</h2>
+    <h2><a name="class$NSNotificationCenter">NSNotificationCenter</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -140,47 +153,131 @@
     <blockquote>
       <dl>
         <dt><b>Conforms to:</b></dt>
-        <dd>GCFinalization</dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(GCFinalization)">GCFinalization</a></dd>
       </dl>
     </blockquote>
     <blockquote>
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
-        
-    </p>
-    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for NSNotificationCenter Class</h2>
-    <h3><a name="ivariable$NSNotificationCenter*_table">_table</a></h3>
-    @private void* <b>_table</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
           
     </p>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+    <p>
+
+            GNUstep provides a framework for sending messages
+            between objects within a process called
+            <em>notifications</em>. Objects register with an
+            <code>NSNotificationCenter</code> to be informed
+            whenever other objects post
+            <a rel="gsdoc" href="#class$NSNotification">NSNotification</a>
+
+              s to it matching certain criteria. The notification
+              center processes notifications synchronously --
+              that is, control is only returned to the
+              notification poster once every recipient of
+              the notification has received it and processed it.
+              Asynchronous processing is possible using an
+              <a rel="gsdoc" href="NSNotificationQueue.html#class$NSNotificationQueue">NSNotificationQueue</a>
+.    </p>
+    <p>
+       
+    </p>
+    <p>
+Obtain an instance using the <a rel="gsdoc" href="#method$NSNotificationCenter+defaultCenter">+defaultCenter</a>
+ method.    </p>
+    <p>
+       
+    </p>
+    <p>
+In a multithreaded process, notifications are always sent on the thread that they are posted from.    </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                Use the
+                <a rel="gsdoc" href="NSDistributedNotificationCenter.html#class$NSDistributedNotificationCenter">NSDistributedNotificationCenter</a>
+for interprocess communications on the same machine.    </p>
+    <p>
+      
+        
+    </p>
+    <hr width="50%" align="left" />
+    <a href="#_NSNotificationCenter_ivars">Instance Variables</a>
+    <br/><br/>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter(GNUstep)-setImmutableInPost:">-setImmutableInPost:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter(GNUstep)-setLockingDisabled:">-setLockingDisabled:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter+defaultCenter">+defaultCenter</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-addObserver:selector:name:object:">-addObserver:selector:name:object:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-postNotification:">-postNotification:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-postNotificationName:object:">-postNotificationName:object:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-postNotificationName:object:userInfo:">-postNotificationName:object:userInfo:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-removeObserver:">-removeObserver:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-removeObserver:name:object:">-removeObserver:name:object:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSNotificationCenter+defaultCenter">defaultCenter&nbsp;</a></h3>
     + (<a rel="gsdoc" href="#class$NSNotificationCenter">NSNotificationCenter</a>*) <b>defaultCenter</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the default notification center being used
+            for this task (process). This is used for all
+            notifications posted by the Base library
+            unless otherwise noted.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNotificationCenter-addObserver:selector:name:object:">addObserver:&nbsp;selector:&nbsp;name:&nbsp;object:&nbsp;</a></h3>
-    - (void) <b>addObserver:</b> (id)observer<b> selector:</b> (SEL)selector<b> name:</b> (NSString*)name<b> object:</b> (id)object;<br />
+    - (void) <b>addObserver:</b> (id)observer<b> selector:</b> (SEL)selector<b> name:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> object:</b> (id)object;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Registers <var>observer</var> to receive
+              notifications with the <var>name</var>
+              notificationName and/or containing
+              <var>object</var> (one or both of these two must be
+              non-nil; <code>nil</code> acts like a wildcard).
+              When a notification of <var>name</var>
+              <var>name</var> containing <var>object</var> is
+              posted, <var>observer</var> receives a
+              <var>selector</var> message with this notification
+              as the argument. The notification center waits for the
+              <var>observer</var> to finish processing the
+              message, then informs the next registree
+              matching the notification, and after all of this
+              is done, control returns to the poster of the
+              notification. Therefore the processing in
+              the <var>selector</var> implementation should be
+              short.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The notification center does not retain
+              <var>observer</var> or <var>object</var>.
+              Therefore, you should always send
+              removeObserver: or
+              removeObserver:name:object:
+              to the notification center before releasing these
+              objects.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -197,7 +294,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNotificationCenter-postNotificationName:object:">postNotificationName:&nbsp;object:&nbsp;</a></h3>
-    - (void) <b>postNotificationName:</b> (NSString*)name<b> object:</b> (id)object;<br />
+    - (void) <b>postNotificationName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> object:</b> (id)object;<br />
     <p>
       
             Creates and posts a notification using the
@@ -207,7 +304,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNotificationCenter-postNotificationName:object:userInfo:">postNotificationName:&nbsp;object:&nbsp;userInfo:&nbsp;</a></h3>
-    - (void) <b>postNotificationName:</b> (NSString*)name<b> object:</b> (id)object<b> userInfo:</b> (NSDictionary*)info;<br />
+    - (void) <b>postNotificationName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> object:</b> (id)object<b> userInfo:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)info;<br />
     <p>
       
             The preferred method for posting a notification. <br />
@@ -223,18 +320,49 @@
     - (void) <b>removeObserver:</b> (id)observer;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Deregisters <var>observer</var> from all
+            notifications. This should be called before
+            the <var>observer</var> is deallocated.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSNotificationCenter-removeObserver:name:object:">removeObserver:&nbsp;name:&nbsp;object:&nbsp;</a></h3>
-    - (void) <b>removeObserver:</b> (id)observer<b> name:</b> (NSString*)name<b> object:</b> (id)object;<br />
+    - (void) <b>removeObserver:</b> (id)observer<b> name:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> object:</b> (id)object;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Deregisters <var>observer</var> for
+            notifications matching <var>name</var> and/or
+            <var>object</var>. If either or both is
+            <code>nil</code>, they act like wildcards. The
+            <var>observer</var> may still remain registered for
+            other notifications; use
+            <a rel="gsdoc" href="#method$NSNotificationCenter-removeObserver:">
+              -removeObserver:
+            </a>
+
+            to remove it from all. If <var>observer</var> is
+            <code>nil</code>, the effect is to remove all
+            registrees for the specified notifications,
+            unless both <var>observer</var> and <var>name</var>
+            are <code>nil</code>, in which case nothing is done.
           
     </p>
     <hr width="25%" align="left" />
+<a name="_NSNotificationCenter_ivars"/>    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for NSNotificationCenter Class</h2>
+    <h3><a name="ivariable$NSNotificationCenter*_table">_table</a></h3>
+    @protected void* <b>_table</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
 
           <h1><a name="003000000000">
         Software documentation for the
@@ -251,22 +379,32 @@
     <blockquote>
       <b>Standards:</b>
       <ul>
+        <li>NotOpenStep</li>
         <li>NotMacOS-X</li>
         <li>GNUstep</li>
-        <li>NotOpenStep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Defines some extensions for maximising posting
+          performance - these options are NOT adjustable
+          for the default notification center.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-setImmutableInPost:">-setImmutableInPost:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-setLockingDisabled:">-setLockingDisabled:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSNotificationCenter(GNUstep)-setImmutableInPost:">setImmutableInPost:&nbsp;</a></h3>
     - (BOOL) <b>setImmutableInPost:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            You can turn on &apos;immutability&apos; if you KNOW that the
+            posting of a notification will never result in an
+            attempt to modify the center. In this case, the
+            center can optimise delivery of notifications.
           
     </p>
     <hr width="25%" align="left" />
@@ -274,7 +412,9 @@
     - (BOOL) <b>setLockingDisabled:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            You can disable locking in a multi-threaded program if
+            you KNOW that only one thread will ever use the
+            notification center.
           
     </p>
     <hr width="25%" align="left" />

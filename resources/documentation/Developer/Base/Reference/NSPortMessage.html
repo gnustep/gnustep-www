@@ -4,7 +4,7 @@
     <title>NSPortMessage class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSPortMessage">NSPortMessage class reference</a></h1>
@@ -36,7 +36,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSPortMessage class
       </a></h1>
-    <h2><a name="class$NSPortMessage">NSPortMessage</a> : NSObject</h2>
+    <h2><a name="class$NSPortMessage">NSPortMessage</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -47,56 +47,72 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            The data transported for distributed objects
+            communications is sent over the network
+            encapsulated by NSPortMessage objects, which
+            consist of two
+            <a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>
+
+              s (sender and receiver, not sent over the network) and
+              a body consisting of one or more
+              <a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>
+
+                or
+                <a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>
+
+                  objects. (Data in the
+                  <a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>
+
+                    must be in network byte order.)
+                      </p>
+    <p>
+      
+                  
+    </p>
+    <p>
+
+                    See the
+                    <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
+
+                      and
+                      <a rel="gsdoc" href="NSPortCoder.html#class$NSPortCoder">NSPortCoder</a>
+classes.    </p>
+    <p>
+      
         
     </p>
-    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for NSPortMessage Class</h2>
-    <h3><a name="ivariable$NSPortMessage*_components">_components</a></h3>
-    @private NSMutableArray* <b>_components</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSPortMessage*_msgid">_msgid</a></h3>
-    @private unsigned int <b>_msgid</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSPortMessage*_recv">_recv</a></h3>
-    @private NSPort* <b>_recv</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSPortMessage*_send">_send</a></h3>
-    @private NSPort* <b>_send</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+    <hr width="50%" align="left" />
+    <a href="#_NSPortMessage_ivars">Instance Variables</a>
+    <br/><br/>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage(private)-_components">-_components</a></li>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage-components">-components</a></li>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage-initWithMachMessage:">-initWithMachMessage:</a></li>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage-initWithSendPort:receivePort:components:">-initWithSendPort:receivePort:components:</a></li>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage-msgid">-msgid</a></li>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage-receivePort">-receivePort</a></li>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage-sendBeforeDate:">-sendBeforeDate:</a></li>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage-sendPort">-sendPort</a></li>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage-setMsgid:">-setMsgid:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSPortMessage-components">components&nbsp;</a></h3>
-    - (NSArray*) <b>components</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>components</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the message components originally used to
+            constitute this message.
           
     </p>
     <hr width="25%" align="left" />
@@ -104,15 +120,26 @@
     - (id) <b>initWithMachMessage:</b> (void*)buffer;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            OpenStep compatibility.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortMessage-initWithSendPort:receivePort:components:">initWithSendPort:&nbsp;receivePort:&nbsp;components:&nbsp;</a></h3>
-    - (id) <b>initWithSendPort:</b> (NSPort*)aPort<b> receivePort:</b> (NSPort*)anotherPort<b> components:</b> (NSArray*)items;<br />
+    - (id) <b>initWithSendPort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)aPort<b> receivePort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)anotherPort<b> components:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)items;<br />
+This is a designated initialiser for the class.<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes to send message described by
+            <var>items</var> (which should contain only
+            <a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>
+
+              and/or
+              <a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>
+
+                objects, with contents in network byte order)
+                over <var>aPort</var>. If/when a reply to the
+                message is sent, it will arrive on
+                <var>anotherPort</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -120,31 +147,45 @@
     - (unsigned) <b>msgid</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns ID for message. This is not used by the
+            distributed objects system, but may be used in
+            custom ways by cooperating applications to sort or
+            otherwise organize messages. Set to 0 initially.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortMessage-receivePort">receivePort&nbsp;</a></h3>
-    - (NSPort*) <b>receivePort</b>;<br />
+    - (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*) <b>receivePort</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            For an outgoing message, returns the port on which a
+            reply to this message will arrive. For an incoming
+            message, returns the port this message arrived on.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortMessage-sendBeforeDate:">sendBeforeDate:&nbsp;</a></h3>
-    - (BOOL) <b>sendBeforeDate:</b> (NSDate*)when;<br />
+    - (BOOL) <b>sendBeforeDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)when;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Request that the message be sent before
+            <var>when</var>. Will block until either sends it
+            (returns <code>YES</code>) or <var>when</var>
+            expires (returns <code>NO</code>). The latter may
+            occur if many messages are queued up (by multiple
+            threads) faster than they can be sent over the
+            network.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSPortMessage-sendPort">sendPort&nbsp;</a></h3>
-    - (NSPort*) <b>sendPort</b>;<br />
+    - (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*) <b>sendPort</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            For an outgoing message, returns the port the receiver
+            will send itself through. For an incoming message,
+            returns the port replies to the receiver should be
+            sent through.
           
     </p>
     <hr width="25%" align="left" />
@@ -152,10 +193,64 @@
     - (void) <b>setMsgid:</b> (unsigned)anId;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets ID for message. This is not used by the
+            distributed objects system, but may be used in
+            custom ways by cooperating applications to sort or
+            otherwise organize messages.
           
     </p>
     <hr width="25%" align="left" />
+<a name="_NSPortMessage_ivars"/>    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for NSPortMessage Class</h2>
+    <h3><a name="ivariable$NSPortMessage*_components">_components</a></h3>
+    @protected NSMutableArray* <b>_components</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSPortMessage*_msgid">_msgid</a></h3>
+    @protected unsigned int <b>_msgid</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSPortMessage*_recv">_recv</a></h3>
+    @protected NSPort* <b>_recv</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSPortMessage*_send">_send</a></h3>
+    @protected NSPort* <b>_send</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
 
           <h1><a name="002000000000">
         Software documentation for the NSPortMessage(private)
@@ -171,9 +266,9 @@
     <blockquote>
       <b>Standards:</b>
       <ul>
+        <li>NotOpenStep</li>
         <li>NotMacOS-X</li>
         <li>GNUstep</li>
-        <li>NotOpenStep</li>
       </ul>
     </blockquote>
     <p>
@@ -183,9 +278,13 @@
           the package. You should not use them in external code.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPortMessage.html#method$NSPortMessage-_components">-_components</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSPortMessage(private)-_components">_components&nbsp;</a></h3>
-    - (NSMutableArray*) <b>_components</b>;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSMutableArray">NSMutableArray</a>*) <b>_components</b>;<br />
     <p>
       
             <em>Warning</em> the underscore at the start of the

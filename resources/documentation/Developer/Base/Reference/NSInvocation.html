@@ -4,7 +4,7 @@
     <title>NSInvocation class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSInvocation">NSInvocation class reference</a></h1>
@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.60</p>
-    <p><b>Date:</b> 2003/08/24 23:07:40</p>
+    <p><b>Version:</b> 1.62</p>
+    <p><b>Date:</b> 2004/08/20 17:53:16</p>
     <p><b>Copyright:</b> (C) 1998,2003 Free Software Foundation, Inc.</p>
 
         <div>
@@ -43,7 +43,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSInvocation class
       </a></h1>
-    <h2><a name="class$NSInvocation">NSInvocation</a> : NSObject</h2>
+    <h2><a name="class$NSInvocation">NSInvocation</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -54,8 +54,8 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -64,10 +64,10 @@
     </p>
     <p>
 
-            The NSInvocation class implements a mechanism of
-            constructing messages (as NSInvocation
-            instances), sending these to other objects, and
-            handling the returned values.
+            The <code>NSInvocation</code> class implements a
+            mechanism of constructing messages (as
+            <code>NSInvocation</code> instances), sending these
+            to other objects, and handling the returned values.
               </p>
     <p>
       
@@ -75,12 +75,13 @@
     </p>
     <p>
 
-            An NSInvocation object may contain a target object to
-            which a message can be sent, or may send the message
-            to an arbitrary object. <br /> Each message consists of
-            a selector for that method and an argument list. Once the
-            message has been sent, the invocation will contain
-            a return value whose contents may be copied out of it.
+            An <code>NSInvocation</code> object may contain a target
+            object to which a message can be sent, or may send
+            the message to an arbitrary object. <br /> Each message
+            consists of a selector for that method and an
+            argument list. Once the message has been sent, the
+            invocation will contain a return value whose
+            contents may be copied out of it.
               </p>
     <p>
       
@@ -107,7 +108,7 @@
 
             method) can be done at any time, but a standard use
             of this is by the
-            [NSObject-forwardInvocation:]
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-forwardInvocation:">[NSObject&nbsp;-forwardInvocation:]</a>
  method which is called whenever a method is not implemented by the class of the object to which it was sent.
               </p>
     <p>
@@ -117,116 +118,57 @@
     <p>
 
             Related to the class are two convenience macros...
-            
+            <a rel="gsdoc" href="Functions.html#macro$NS_MESSAGE">
               NS_MESSAGE()
-            
+            </a>
 
             and
-            
+            <a rel="gsdoc" href="Functions.html#macro$NS_INVOCATION">
               NS_INVOCATION()
-            
+            </a>
 
-            to allow easy construction of invocations with all the
-            arguments set up.
+            ... to allow easy construction of invocations with all
+            the arguments set up.
               </p>
     <p>
       
         
     </p>
-    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for NSInvocation Class</h2>
-    <h3><a name="ivariable$NSInvocation*_argsRetained">_argsRetained</a></h3>
-    @private BOOL <b>_argsRetained</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_cframe">_cframe</a></h3>
-    @private void* <b>_cframe</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_dummy">_dummy</a></h3>
-    @private void* <b>_dummy</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_info">_info</a></h3>
-    @private NSArgumentInfo* <b>_info</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_numArgs">_numArgs</a></h3>
-    @private unsigned int <b>_numArgs</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_retval">_retval</a></h3>
-    @private void* <b>_retval</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_selector">_selector</a></h3>
-    @private SEL <b>_selector</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_sendToSuper">_sendToSuper</a></h3>
-    @private BOOL <b>_sendToSuper</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_sig">_sig</a></h3>
-    @private NSMethodSignature* <b>_sig</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_target">_target</a></h3>
-    @private id <b>_target</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_validReturn">_validReturn</a></h3>
-    @private BOOL <b>_validReturn</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+    <hr width="50%" align="left" />
+    <a href="#_NSInvocation_ivars">Instance Variables</a>
+    <br/><br/>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-initWithArgframe:selector:">-initWithArgframe:selector:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-initWithMethodSignature:">-initWithMethodSignature:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-initWithSelector:">-initWithSelector:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-initWithTarget:selector:,...">-initWithTarget:selector:,...</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-returnFrame:">-returnFrame:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-sendsToSuper">-sendsToSuper</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-setSendsToSuper:">-setSendsToSuper:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSInvocation(GSCompatibility)-initWithArgframe:selector:">-initWithArgframe:selector:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSInvocation(GSCompatibility)-returnFrame:">-returnFrame:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForInvocation:">+_newProxyForInvocation:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForMessage:">+_newProxyForMessage:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_returnInvocationAndDestroyProxy:">+_returnInvocationAndDestroyProxy:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+invocationWithMethodSignature:">+invocationWithMethodSignature:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-argumentsRetained">-argumentsRetained</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-getArgument:atIndex:">-getArgument:atIndex:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-getReturnValue:">-getReturnValue:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-invoke">-invoke</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-invokeWithTarget:">-invokeWithTarget:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-methodSignature">-methodSignature</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-retainArguments">-retainArguments</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-selector">-selector</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setArgument:atIndex:">-setArgument:atIndex:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setReturnValue:">-setReturnValue:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setSelector:">-setSelector:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setTarget:">-setTarget:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-target">-target</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSInvocation+invocationWithMethodSignature:">invocationWithMethodSignature:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSInvocation">NSInvocation</a>*) <b>invocationWithMethodSignature:</b> (NSMethodSignature*)_signature;<br />
+    + (<a rel="gsdoc" href="#class$NSInvocation">NSInvocation</a>*) <b>invocationWithMethodSignature:</b> (<a rel="gsdoc" href="NSMethodSignature.html#class$NSMethodSignature">NSMethodSignature</a>*)_signature;<br />
     <p>
       
             Returns an invocation instance which can be used to
@@ -302,7 +244,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSInvocation-methodSignature">methodSignature&nbsp;</a></h3>
-    - (NSMethodSignature*) <b>methodSignature</b>;<br />
+    - (<a rel="gsdoc" href="NSMethodSignature.html#class$NSMethodSignature">NSMethodSignature</a>*) <b>methodSignature</b>;<br />
     <p>
       
             Returns the method signature of the invocation.
@@ -406,6 +348,141 @@
           
     </p>
     <hr width="25%" align="left" />
+<a name="_NSInvocation_ivars"/>    <br/><hr width="50%" align="left" />
+    <h2>Instance Variables for NSInvocation Class</h2>
+    <h3><a name="ivariable$NSInvocation*_argsRetained">_argsRetained</a></h3>
+    @protected BOOL <b>_argsRetained</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_cframe">_cframe</a></h3>
+    @protected void* <b>_cframe</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_dummy">_dummy</a></h3>
+    @protected void* <b>_dummy</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_info">_info</a></h3>
+    @protected NSArgumentInfo* <b>_info</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_numArgs">_numArgs</a></h3>
+    @protected unsigned int <b>_numArgs</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_retval">_retval</a></h3>
+    @protected void* <b>_retval</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_selector">_selector</a></h3>
+    @protected SEL <b>_selector</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_sendToSuper">_sendToSuper</a></h3>
+    @protected BOOL <b>_sendToSuper</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_sig">_sig</a></h3>
+    @protected NSMethodSignature* <b>_sig</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_target">_target</a></h3>
+    @protected id <b>_target</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_validReturn">_validReturn</a></h3>
+    @protected BOOL <b>_validReturn</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br/><hr width="50%" align="left" /><br/>
 
           <h1><a name="002000000000">
         Software documentation for the NSInvocation(GNUstep)
@@ -421,18 +498,29 @@
     <blockquote>
       <b>Standards:</b>
       <ul>
+        <li>NotOpenStep</li>
         <li>NotMacOS-X</li>
         <li>GNUstep</li>
-        <li>NotOpenStep</li>
       </ul>
     </blockquote>
     <p>
       
           Provides some minor extensions and some utility
-          methods to aid integration of NSInvocation with the
-          ObjectiveC runtime.
+          methods to aid integration of
+          <code>NSInvocation</code> with the Objective-C
+          runtime.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithArgframe:selector:">-initWithArgframe:selector:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithMethodSignature:">-initWithMethodSignature:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithSelector:">-initWithSelector:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithTarget:selector:,...">-initWithTarget:selector:,...</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-returnFrame:">-returnFrame:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-sendsToSuper">-sendsToSuper</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setSendsToSuper:">-setSendsToSuper:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSInvocation(GNUstep)-initWithArgframe:selector:">initWithArgframe:&nbsp;selector:&nbsp;</a></h3>
     - (id) <b>initWithArgframe:</b> (arglist_t)frame<b> selector:</b> (SEL)aSelector;<br />
@@ -447,7 +535,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSInvocation(GNUstep)-initWithMethodSignature:">initWithMethodSignature:&nbsp;</a></h3>
-    - (id) <b>initWithMethodSignature:</b> (NSMethodSignature*)aSignature;<br />
+    - (id) <b>initWithMethodSignature:</b> (<a rel="gsdoc" href="NSMethodSignature.html#class$NSMethodSignature">NSMethodSignature</a>*)aSignature;<br />
 This is a designated initialiser for the class.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
@@ -522,10 +610,10 @@ Subclasses <strong>should</strong> override this method.<br />
       
             Sets the <var>flag</var> to tell the invocation that
             it should actually invoke a method in the superclass of
-            the target rather than the method of the target
-            itsself. <br /> This extension permits an
-            invocation to act like a regular method call
-            sent to <em>super</em> in the method of a class.
+            the target rather than the method of the target itself.
+            <br /> This extension permits an invocation to act
+            like a regular method call sent to <em>super</em> in
+            the method of a class.
           
     </p>
     <hr width="25%" align="left" />
@@ -545,26 +633,32 @@ Subclasses <strong>should</strong> override this method.<br />
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
           These methods are for internal use only... not public
           API <br /> They are used by the
-          
+          <a rel="gsdoc" href="Functions.html#macro$NS_INVOCATION">
             NS_INVOCATION()
-          
+          </a>
 
           and
-          
+          <a rel="gsdoc" href="Functions.html#macro$NS_MESSAGE">
             NS_MESSAGE()
-          
+          </a>
 
           macros to help create invocations.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_newProxyForInvocation:">+_newProxyForInvocation:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_newProxyForMessage:">+_newProxyForMessage:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_returnInvocationAndDestroyProxy:">+_returnInvocationAndDestroyProxy:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSInvocation(MacroSetup)+_newProxyForInvocation:">_newProxyForInvocation:&nbsp;</a></h3>
     + (id) <b>_newProxyForInvocation:</b> (id)target;<br />

@@ -4,7 +4,7 @@
     <title>NSRunLoop class reference</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$NSRunLoop">NSRunLoop class reference</a></h1>
@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.112</p>
-    <p><b>Date:</b> 2004/03/28 11:13:36</p>
+    <p><b>Version:</b> 1.115</p>
+    <p><b>Date:</b> 2004/07/29 15:30:47</p>
     <p><b>Copyright:</b> (C) 1996-1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -52,7 +52,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSRunLoop class
       </a></h1>
-    <h2><a name="class$NSRunLoop">NSRunLoop</a> : NSObject</h2>
+    <h2><a name="class$NSRunLoop">NSRunLoop</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -62,33 +62,109 @@
     <blockquote>
       <dl>
         <dt><b>Conforms to:</b></dt>
-        <dd>GCFinalization</dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(GCFinalization)">GCFinalization</a></dd>
       </dl>
     </blockquote>
     <blockquote>
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            <code>NSRunLoop</code> instances handle various
+            utility tasks that must be performed repetitively
+            in an application, such as processing input events,
+            listening for distributed objects communications,
+            firing
+            <a rel="gsdoc" href="NSTimer.html#class$NSTimer">NSTimer</a>
+
+              s, and sending notifications and other messages
+              asynchronously.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              In general, there is one run loop per thread in an
+              application, which may always be obtained
+              through the
+              <code>
+                <a rel="gsdoc" href="#method$NSRunLoop+currentRunLoop">
+                  +currentRunLoop
+                </a>
+
+              </code>
+              method, however unless you are using the AppKit
+              and the
+              <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSApplication.html#class$NSApplication">NSApplication</a>
+
+                class, the run loop will not be started unless
+                you explicitly send it a
+                <code>
+                  <a rel="gsdoc" href="#method$NSRunLoop-run">
+                    -run
+                  </a>
+
+                </code>
+                message.
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                At any given point, a run loop operates in a single
+                <em>mode</em>, usually
+                <code>NSDefaultRunLoopMode</code>. Other options
+                include <code>NSConnectionReplyMode</code>, and
+                certain modes used by the AppKit.
+                  </p>
+    <p>
+      
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(GNUstepExtensions)-addEvent:type:watcher:forMode:">-addEvent:type:watcher:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(GNUstepExtensions)-removeEvent:type:forMode:all:">-removeEvent:type:forMode:all:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(OPENSTEP)-addPort:forMode:">-addPort:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(OPENSTEP)-cancelPerformSelector:target:argument:">-cancelPerformSelector:target:argument:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(OPENSTEP)-cancelPerformSelectorsWithTarget:">-cancelPerformSelectorsWithTarget:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(OPENSTEP)-configureAsServer">-configureAsServer</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(OPENSTEP)-performSelector:target:argument:order:modes:">-performSelector:target:argument:order:modes:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(OPENSTEP)-removePort:forMode:">-removePort:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop+currentRunLoop">+currentRunLoop</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-acceptInputForMode:beforeDate:">-acceptInputForMode:beforeDate:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-addTimer:forMode:">-addTimer:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-currentMode">-currentMode</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-limitDateForMode:">-limitDateForMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-run">-run</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-runMode:beforeDate:">-runMode:beforeDate:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-runUntilDate:">-runUntilDate:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSRunLoop+currentRunLoop">currentRunLoop&nbsp;</a></h3>
     + (<a rel="gsdoc" href="#class$NSRunLoop">NSRunLoop</a>*) <b>currentRunLoop</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the run loop instance for the current
+            thread.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRunLoop-acceptInputForMode:beforeDate:">acceptInputForMode:&nbsp;beforeDate:&nbsp;</a></h3>
-    - (void) <b>acceptInputForMode:</b> (NSString*)mode<b> beforeDate:</b> (NSDate*)limit_date;<br />
+    - (void) <b>acceptInputForMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode<b> beforeDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)limit_date;<br />
     <p>
       
             Listen for events from input sources. <br /> If
@@ -102,7 +178,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRunLoop-addTimer:forMode:">addTimer:&nbsp;forMode:&nbsp;</a></h3>
-    - (void) <b>addTimer:</b> (NSTimer*)timer<b> forMode:</b> (NSString*)mode;<br />
+    - (void) <b>addTimer:</b> (<a rel="gsdoc" href="NSTimer.html#class$NSTimer">NSTimer</a>*)timer<b> forMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
     <p>
       
             Adds a <var>timer</var> to the loop in the specified
@@ -112,7 +188,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRunLoop-currentMode">currentMode&nbsp;</a></h3>
-    - (NSString*) <b>currentMode</b>;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>currentMode</b>;<br />
     <p>
       
             Returns the current mode of this runloop. If the
@@ -122,7 +198,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRunLoop-limitDateForMode:">limitDateForMode:&nbsp;</a></h3>
-    - (NSDate*) <b>limitDateForMode:</b> (NSString*)mode;<br />
+    - (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*) <b>limitDateForMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
     <p>
       
             Fires timers whose fire date has passed, and checks
@@ -137,12 +213,19 @@
     - (void) <b>run</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Runs the loop in <code>NSDefaultRunLoopMode</code> by
+            repeated calls to
+            <a rel="gsdoc" href="#method$NSRunLoop-runMode:beforeDate:">
+              -runMode:beforeDate:
+            </a>
+
+            while there are still input sources. Exits when no
+            more input sources remain.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRunLoop-runMode:beforeDate:">runMode:&nbsp;beforeDate:&nbsp;</a></h3>
-    - (BOOL) <b>runMode:</b> (NSString*)mode<b> beforeDate:</b> (NSDate*)date;<br />
+    - (BOOL) <b>runMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode<b> beforeDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)date;<br />
     <p>
       
             Calls
@@ -163,10 +246,18 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRunLoop-runUntilDate:">runUntilDate:&nbsp;</a></h3>
-    - (void) <b>runUntilDate:</b> (NSDate*)date;<br />
+    - (void) <b>runUntilDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)date;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Runs the loop in <code>NSDefaultRunLoopMode</code> by
+            repeated calls to
+            <a rel="gsdoc" href="#method$NSRunLoop-runMode:beforeDate:">
+              -runMode:beforeDate:
+            </a>
+
+            while there are still input sources. Exits when no
+            more input sources remain, or <var>date</var> is
+            reached, whichever occurs first.
           
     </p>
     <hr width="25%" align="left" />
@@ -176,7 +267,7 @@
         NSObject(OptionalPortRunLoop)
         informal protocol
       </a></h1>
-    <h2>NSObject(<a name="category$NSObject(OptionalPortRunLoop)">OptionalPortRunLoop</a>)</h2>
+    <h2><a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(OptionalPortRunLoop)">OptionalPortRunLoop</a>)</h2>
     <blockquote>
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -187,21 +278,36 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Defines implementation-helper method
+          <a rel="gsdoc" href="#method$NSObject-getFds:count:">
+            -getFds:count:
+          </a>
+
+          .
+          <strong>
+            This interface will probably change. Do not rely on
+            it.
+          </strong>
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSObject-getFds:count:">-getFds:count:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSObject(OptionalPortRunLoop)-getFds:count:">getFds:&nbsp;count:&nbsp;</a></h3>
     - (void) <b>getFds:</b> (int*)fds<b> count:</b> (int*)count;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            If a InPort object responds to this, it is sent just
+            before we are about to wait listening for input.
+            This interface will probably change.
           
     </p>
     <hr width="25%" align="left" />
@@ -222,8 +328,8 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -231,7 +337,7 @@
           These are general purpose methods for letting objects
           ask the runloop to watch for events for them. Only one
           object at a time may be watching for a particular
-          event in a mode, but that object may add itsself as a
+          event in a mode, but that object may add itself as a
           watcher many times as long as each addition is
           matched by a removal (the run loop keeps count).
           Alternatively, the &apos;removeAll&apos; parameter may
@@ -244,9 +350,14 @@
           of times it has been added.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-addEvent:type:watcher:forMode:">-addEvent:type:watcher:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-removeEvent:type:forMode:all:">-removeEvent:type:forMode:all:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSRunLoop(GNUstepExtensions)-addEvent:type:watcher:forMode:">addEvent:&nbsp;type:&nbsp;watcher:&nbsp;forMode:&nbsp;</a></h3>
-    - (void) <b>addEvent:</b> (void*)data<b> type:</b> (RunLoopEventType)type<b> watcher:</b> (id<<a rel="gsdoc" href="#protocol$(RunLoopEvents)">RunLoopEvents</a>>)watcher<b> forMode:</b> (NSString*)mode;<br />
+    - (void) <b>addEvent:</b> (void*)data<b> type:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$RunLoopEventType">RunLoopEventType</a>)type<b> watcher:</b> (id<<a rel="gsdoc" href="#protocol$(RunLoopEvents)">RunLoopEvents</a>>)watcher<b> forMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
     <p>
       
             Adds a runloop <var>watcher</var> matching the
@@ -273,7 +384,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRunLoop(GNUstepExtensions)-removeEvent:type:forMode:all:">removeEvent:&nbsp;type:&nbsp;forMode:&nbsp;all:&nbsp;</a></h3>
-    - (void) <b>removeEvent:</b> (void*)data<b> type:</b> (RunLoopEventType)type<b> forMode:</b> (NSString*)mode<b> all:</b> (BOOL)removeAll;<br />
+    - (void) <b>removeEvent:</b> (void*)data<b> type:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$RunLoopEventType">RunLoopEventType</a>)type<b> forMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode<b> all:</b> (BOOL)removeAll;<br />
     <p>
       
             Removes a runloop watcher matching the specified
@@ -306,21 +417,34 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          OpenStep-compatibility methods for
+          <a rel="gsdoc" href="#class$NSRunLoop">NSRunLoop</a>
+
+            . These methods are also all in OS X.
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-addPort:forMode:">-addPort:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-cancelPerformSelector:target:argument:">-cancelPerformSelector:target:argument:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-cancelPerformSelectorsWithTarget:">-cancelPerformSelectorsWithTarget:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-configureAsServer">-configureAsServer</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-performSelector:target:argument:order:modes:">-performSelector:target:argument:order:modes:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-removePort:forMode:">-removePort:forMode:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSRunLoop(OPENSTEP)-addPort:forMode:">addPort:&nbsp;forMode:&nbsp;</a></h3>
-    - (void) <b>addPort:</b> (NSPort*)port<b> forMode:</b> (NSString*)mode;<br />
+    - (void) <b>addPort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)port<b> forMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Adds <var>port</var> to be monitored in given
+            <var>mode</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -335,9 +459,9 @@
             up match those supplied. <br /> Matching of the
             <var>argument</var> may be either by pointer equality
             or by use of the
-            
-              [NSObject-isEqual:]
-            
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+              [NSObject&nbsp;-isEqual:]
+            </a>
 
             method.
           
@@ -356,12 +480,14 @@
     - (void) <b>configureAsServer</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Configure event processing for acting as a server
+            process for distributed objects. (In the current
+            implementation this is a no-op.)
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRunLoop(OPENSTEP)-performSelector:target:argument:order:modes:">performSelector:&nbsp;target:&nbsp;argument:&nbsp;order:&nbsp;modes:&nbsp;</a></h3>
-    - (void) <b>performSelector:</b> (SEL)aSelector<b> target:</b> (id)target<b> argument:</b> (id)argument<b> order:</b> (unsigned int)order<b> modes:</b> (NSArray*)modes;<br />
+    - (void) <b>performSelector:</b> (SEL)aSelector<b> target:</b> (id)target<b> argument:</b> (id)argument<b> order:</b> (unsigned int)order<b> modes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)modes;<br />
     <p>
       
             Sets up sending of <var>aSelector</var> to
@@ -378,10 +504,12 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSRunLoop(OPENSTEP)-removePort:forMode:">removePort:&nbsp;forMode:&nbsp;</a></h3>
-    - (void) <b>removePort:</b> (NSPort*)port<b> forMode:</b> (NSString*)mode;<br />
+    - (void) <b>removePort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)port<b> forMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes <var>port</var> to be monitored from given
+            <var>mode</var>. Ports are also removed if they are
+            detected to be invalid.
           
     </p>
     <hr width="25%" align="left" />
@@ -400,8 +528,8 @@
       <b>Standards:</b>
       <ul>
         <li>MacOS-X</li>
-        <li>GNUstep</li>
         <li>OpenStep</li>
+        <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
@@ -409,19 +537,27 @@
           This protocol documents the callback messages that an
           object receives if it has registered to receive run
           loop events using
-          <a rel="gsdoc" href="#method$NSRunLoop-addEvent:type:watcher:forMode:">[NSRunLoop-addEvent:type:watcher:forMode:]</a>
+          <a rel="gsdoc" href="#method$NSRunLoop-addEvent:type:watcher:forMode:">[NSRunLoop&nbsp;-addEvent:type:watcher:forMode:]</a>
 
         
     </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$(RunLoopEvents)-receivedEvent:type:extra:forMode:">-receivedEvent:type:extra:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$(RunLoopEvents)-timedOutEvent:type:forMode:">-timedOutEvent:type:forMode:</a></li>
+    </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$(RunLoopEvents)-receivedEvent:type:extra:forMode:">receivedEvent:&nbsp;type:&nbsp;extra:&nbsp;forMode:&nbsp;</a></h3>
-    - (void) <b>receivedEvent:</b> (void*)data<b> type:</b> (RunLoopEventType)type<b> extra:</b> (void*)extra<b> forMode:</b> (NSString*)mode;<br />
+    - (void) <b>receivedEvent:</b> (void*)data<b> type:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$RunLoopEventType">RunLoopEventType</a>)type<b> extra:</b> (void*)extra<b> forMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
     <p>
       
             Callback message sent to object when the event it
             it waiting for occurs. The &apos;data&apos; and &apos;type&apos; valueds are
             those passed in the original
-            addEvent:type:watcher:forMode:
+            <a rel="gsdoc" href="#method$NSRunLoop-addEvent:type:watcher:forMode:">
+              -addEvent:type:watcher:forMode:
+            </a>
+
             method. The &apos;extra&apos; value may be additional
             <var>data</var> returned depending on the
             <var>type</var> of event.
@@ -429,7 +565,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$(RunLoopEvents)-timedOutEvent:type:forMode:">timedOutEvent:&nbsp;type:&nbsp;forMode:&nbsp;</a></h3>
-    - (NSDate*) <b>timedOutEvent:</b> (void*)data<b> type:</b> (RunLoopEventType)type<b> forMode:</b> (NSString*)mode;<br />
+    - (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*) <b>timedOutEvent:</b> (void*)data<b> type:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$RunLoopEventType">RunLoopEventType</a>)type<b> forMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
     <p>
       
             Callback message sent to object waiting for an
