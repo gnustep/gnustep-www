@@ -83,11 +83,11 @@ read_table()
 int
 write_table_start(FILE *stream)
 {
-  fprintf(stream, "<table border=""0"" width=""600"">\n");
+  fprintf(stream, "<table border=\"0\" width=\"600\">\n");
   fprintf(stream, "   <tr>\n");
-  fprintf(stream, "     <td width=""104"" bgcolor=""#00000""><big><strong><font color=""#FFFFFF"">Sources</font></strong></big></td>\n");
-  fprintf(stream, "     <td width=""65"" bgcolor=""#000000""><p align=""center""><strong><big><font color=""#FFFFFF"">Version</font></big></strong></td>\n");
-  fprintf(stream, "     <td width=""291"" bgcolor=""#000000""><p align=""center""><big><strong><font color""#FFFFFF"">Notes</font></strong></big></td>\n");
+  fprintf(stream, "     <td width=\"104\" bgcolor=\"#000000\"><big><strong>Sources</strong></big></td>\n");
+  fprintf(stream, "     <td width=\"65\" bgcolor=\"#000000\" align=\"center\"><strong><big>Version</big></strong></td>\n");
+  fprintf(stream, "     <td width=\"291\" bgcolor=\"#000000\" align=\"center\"><big><strong>Notes</strong></big></td>\n");
   fprintf(stream, "   </tr>\n");
   return 0;
 } 
@@ -95,11 +95,10 @@ write_table_start(FILE *stream)
 int
 write_table_end(FILE *stream)
 {
-  fprintf(stream, "  </tr>\n");
   fprintf(stream, "  <tr>\n");
-  fprintf(stream, "    <td width=""194"" bgcolor=""#000000""></td>\n");
-  fprintf(stream, "    <td width=""65"" bgcolor=""#000000""></td>\n");
-  fprintf(stream, "    <td width=""191"" bgcolor=""#000000""></td>\n");
+  fprintf(stream, "    <td width=\"194\" bgcolor=\"#000000\"></td>\n");
+  fprintf(stream, "    <td width=\"65\" bgcolor=\"#000000\"></td>\n");
+  fprintf(stream, "    <td width=\"191\" bgcolor=\"#000000\"></td>\n");
   fprintf(stream, "  </tr>\n");
   fprintf(stream, "</table>\n");
   return 0;
@@ -117,11 +116,11 @@ write_source(FILE *stream, stable_t entry)
   if (entry.file && strcmp(entry.file, "NONE") != 0)
     sprintf(location, "%s/%s-%s.tar.gz", location, entry.file, entry.version);
   fprintf(stream, "  <tr>\n");
-  fprintf(stream, "    <td width=""104"" bgcolor=""#C0C0C0"">\n");
+  fprintf(stream, "    <td width=\"104\" bgcolor=\"#C0C0C0\">\n");
   fprintf(stream, "    <strong><big>%s</big></strong></td>\n", entry.name);
-  fprintf(stream, "    <td width=""65"" bgcolor=""#C0C0C0""><p align=""center"">\n");
-  fprintf(stream, "    <a href=""%s""><strong><big>%s</big></strong></a></td>\n", location, entry.version);
-  fprintf(stream, "    <td width=""291"" bgcolor=""#C0C0C0"">%s</td>\n",
+  fprintf(stream, "    <td width=\"65\" bgcolor=\"#C0C0C0\" align=\"center\">\n");
+  fprintf(stream, "    <a href=\"%s\"><strong><big>%s</big></strong></a></td>\n", location, entry.version);
+  fprintf(stream, "    <td width=\"291\" bgcolor=\"#C0C0C0\">%s</td>\n",
 	  entry.description);
   fprintf(stream, "  </tr>\n");
   return 0;
@@ -143,7 +142,7 @@ write_srpm(FILE *stream, stable_t entry)
 	      location, entry.file, entry.version);
       sprintf(name, "%s-%s-1.src.rpm", 
 	      entry.file, entry.version);
-      fprintf(stream, "  <li><a href=""%s"">%s</a>\n", location, name);
+      fprintf(stream, "  <li><a href=\"%s\">%s</a>\n", location, name);
     }
   return 0;
 }
@@ -164,7 +163,7 @@ write_rpm_arch(FILE *stream, const char *arch, stable_t entry)
 	      location, entry.file, entry.version, arch);
       sprintf(name, "%s-%s-1.%s.rpm", 
 	      entry.file, entry.version, arch);
-      fprintf(stream, "  <li><a href=""%s"">%s</a>\n", location, name);
+      fprintf(stream, "  <li><a href=\"%s\">%s</a>\n", location, name);
     }
   return 0;
 }
@@ -182,17 +181,19 @@ write_file(int i)
       return 0;
     }
 
-  fprintf(stream, "<HTML>\n");
-  fprintf(stream, "<HEAD>\n");
-  fprintf(stream, "<TITLE>GNUstep Prerequisits</TITLE>\n");
-  fprintf(stream, "</HEAD>\n");
-  fprintf(stream, "<BODY BGCOLOR=""#6C6C80"" TEXT=""#FFFFFF"" LINK=""#DDFFDD"" VLINK=""#99FF99"" ALINK=""#33FF33"">\n");
+  fprintf(stream, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+  fprintf(stream, "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n");
+  fprintf(stream, "          \"DTD/xhtml1-transitional.dtd\">\n");
+  fprintf(stream, "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n");
+  fprintf(stream, "<head>\n");
+  fprintf(stream, "<link href=\"../common.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
+  fprintf(stream, "<title>GNUstep: %s</title>\n", products[i]);
+  fprintf(stream, "</head>\n");
+  fprintf(stream, "<body>\n");
   fprintf(stream, "\n");
-  fprintf(stream, "<font face=""helvetica,arial,sans-serif"" size=3>\n");
+  fprintf(stream, "<img src=\"images/disks.png\" alt=\"Disks\"/><h1>GNUstep: %s</h1>", products[i]);
   fprintf(stream, "\n");
-  fprintf(stream, "<nobr><img src=""images/disks.png""><H1>GNUstep %s</H1></nobr>", products[i]);
-  fprintf(stream, "<p>\n\n");
-  fprintf(stream, "<H3><a name=""src"">Source</a></H3>\n");
+  fprintf(stream, "<h3><a name=\"src\">Source</a></h3>\n");
 
   write_table_start(stream);
   j = 0;
@@ -205,14 +206,14 @@ write_file(int i)
     }
   write_table_end(stream);
 
-  fprintf(stream, "<p>\n\n");
-  fprintf(stream, "RPMs are available in the rpm directory on the ftp\n");
+  fprintf(stream, "\n");
+  fprintf(stream, "<p>RPMs are available in the rpm directory on the ftp\n");
   fprintf(stream, "servers. Look for the source and other packages on\n");
-  fprintf(stream, "the main ftp site or <a href=""sources.html#ftp"">mirrors</a><p><p><p>\n");
+  fprintf(stream, "the main ftp site or <a href=\"sources.html#ftp\">mirrors</a></p>\n");
 
 #if 0
 
-  fprintf(stream, "<H3><a href=""%s/rpms/srpms"" name=""srpm"">Source RPMs</a></H3>\n", GFTP);
+  fprintf(stream, "<h3><a href=\"%s/rpms/srpms\" name=\"srpm\">Source RPMs</a></h3>\n", GFTP);
 #if 0
   fprintf(stream, "\n<ul>\n");
   j = 0;
@@ -227,13 +228,13 @@ write_file(int i)
 #endif
 
   fprintf(stream, "<p>\n\n");
-  fprintf(stream, "<H3><a href=""%s/rpms"" name=""rpm"">RPMs</a></H3>\n",
+  fprintf(stream, "<h3><a href=\"%s/rpms\" name=\"rpm\">RPMs</a></h3>\n",
 	  GFTP);
   fprintf(stream, "\n<ul>\n");
   k = 0;
   while (archs[k])
     {
-      fprintf(stream, "<H3><a href=""%s/rpms/%s"">%s</a></H3>\n", GFTP, 
+      fprintf(stream, "<h3><a href=\"%s/rpms/%s\">%s</a></h3>\n", GFTP, 
       		archs[k], archs[k]);
 #if 0
       j = 0;
