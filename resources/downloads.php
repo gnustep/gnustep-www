@@ -237,7 +237,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN778">GNUstep GUI</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-gui-0.8.5.tar.gz">0.8.5</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.8.4.tar.gz">0.8.4</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.8.6.tar.gz">0.8.6</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
@@ -245,7 +245,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN817">GNUstep Backend</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-back-0.8.5.tar.gz">0.8.5</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-0.8.4.tar.gz">0.8.4</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-0.8.6.tar.gz">0.8.6</a></td>
 <td>Generic back-end</td>
 </tr>
 
