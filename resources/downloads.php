@@ -222,7 +222,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-make-1.6.0.tar.gz">1.6.0</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-1.7.0.tar.gz">1.7.0</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-1.7.1.tar.gz">1.7.1</a></td>
 <td>Makefile Package</td>
 </tr>
 
@@ -230,7 +230,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-base-1.6.0.tar.gz">1.6.0</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.7.0.tar.gz">1.7.0</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.7.1.tar.gz">1.7.1</a></td>
 <td>Foundation</td>
 </tr>
 
@@ -238,7 +238,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep GUI</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-gui-0.8.5.tar.gz">0.8.5</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.8.6.tar.gz">0.8.6</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.8.7.tar.gz">0.8.7</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
@@ -246,7 +246,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Backend</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-back-0.8.5.tar.gz">0.8.5</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-0.8.6.tar.gz">0.8.6</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-0.8.7.tar.gz">0.8.7</a></td>
 <td>Generic back-end</td>
 </tr>
 
