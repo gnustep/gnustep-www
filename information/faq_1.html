@@ -1,45 +1,38 @@
-<HTML>
-<HEAD>
-<!-- Created by texi2html 1.56k from faq.texi on 28 February 2002 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Untitled Document - GNUstep Frequently Asked Questions with Answers</title>
+        <style type="text/css">
+                BODY { font-family: sans-serif}
+        </style>
+</head>
+<body>
+<p>Go to the first, previous, next, last section, <a href="faq_toc.html">table of contents</a>.</p>
 
-<TITLE>Untitled Document - GNUstep Frequently Asked Questions with Answers</TITLE>
-</HEAD>
-<BODY>
-Go to the first, previous, next, last section, <A HREF="faq_toc.html">table of contents</A>.
-<P><HR><P>
+<hr />
 
+<h1><a name="SEC1" href="faq_toc.html#TOC1">GNUstep Frequently Asked Questions with Answers</a></h1>
 
-<H1><A NAME="SEC1" HREF="faq_toc.html#TOC1">GNUstep Frequently Asked Questions with Answers</A></H1>
+<p>Last updated 28 February 2002.
+Please send corrections to <a href="mailto:gnustep-maintainer@gnu.org">gnustep-maintainer@gnu.org</a>. Also look
+at the user FAQ for more user oriented questions.</p>
 
-<P>
-Last updated 28 February 2002.
-Please send corrections to <A HREF="mailto:gnustep-maintainer@gnu.org">gnustep-maintainer@gnu.org</A>. Also look
-at the user FAQ for more user oriented questions.
+<h2><a name="SEC2" href="faq_toc.html#TOC2">Compatibility</a></h2>
 
+<h3><a name="SEC3" href="faq_toc.html#TOC3">Is it easy to port OPENSTEP and Rhapsody programs to GNUstep?</a></h3>
 
-
-
-<H2><A NAME="SEC2" HREF="faq_toc.html#TOC2">Compatibility</A></H2>
-
-
-
-<H3><A NAME="SEC3" HREF="faq_toc.html#TOC3">Is it easy to port OPENSTEP and Rhapsody programs to GNUstep?</A></H3>
-
-<P>
-It is probably easy for simple programs. There are some portability
+<p>It is probably easy for simple programs. There are some portability
 tools
-to make this easier (<A HREF="http://www.gnustep.org/resources/source_port.html">http://www.gnustep.org/resources/source_port.html</A>),
+to make this easier (<a href="http://www.gnustep.org/resources/source_port.html">http://www.gnustep.org/resources/source_port.html</a>),
 or rewrite the Makefiles yourself.  You will also have to
 translate the NIB files (if there are any) to GNUstep model files using
-the nib2gmodel program (from <A HREF="ftp://ftp.gnustep.org/pub/gnustep/dev-apps">ftp://ftp.gnustep.org/pub/gnustep/dev-apps</A>).
+the nib2gmodel program (from <a href="ftp://ftp.gnustep.org/pub/gnustep/dev-apps">ftp://ftp.gnustep.org/pub/gnustep/dev-apps</a>).</p>
 
+<h3><a name="SEC4" href="faq_toc.html#TOC4">Can I transfer archived data from GNUstep to Cocoa?</a></h3>
 
-
-
-<H3><A NAME="SEC4" HREF="faq_toc.html#TOC4">Can I transfer archived data from GNUstep to Cocoa?</A></H3>
-
-<P>
-Apple's archiving format is proprietary and not documented, so this
+<p>Apple's archiving format is proprietary and not documented, so this
 poses a problem for anyone wanting to implement compatibility with it.
 However, even if we reverse engineered the format, there are enough
 differences between the class and ivar layouts to make this sort of
@@ -47,69 +40,47 @@ compatibility difficult. Not to mention the fact that we would
 constantly have to keep up with the changes Apple made. Also Apple's
 archiving format, as far as we know, would not be compatible between
 different machines because of endiness issues, although GNUstep doesn't
-have this problem.
+have this problem.</p>
 
-
-<P>
-Your best bet is to implement your own archiving format that would work
+<p>Your best bet is to implement your own archiving format that would work
 both with GNUstep and Cocoa. Fortuneatly, you don't have to start from
 scratch, since this has been essentially done for you in the nib2gmodel
 tool, which has an archiver that works both on GNUstep and Cocoa. It
 might be nice to split this off into a separate project to make it
-easier for other people to do the same thing.
+easier for other people to do the same thing.</p>
 
+<h3><a name="SEC5" href="faq_toc.html#TOC5">Does distributed objects work between GNUstep and Cocoa?</a></h3>
 
+<p>See the answer to the previous question (on archive compatibility) for
+why this won't work either.</p>
 
+<h3><a name="SEC6" href="faq_toc.html#TOC6">Is there an Interface Builder for GNUstep?</a></h3>
 
-<H3><A NAME="SEC5" HREF="faq_toc.html#TOC5">Does distributed objects work between GNUstep and Cocoa?</A></H3>
-
-<P>
-See the answer to the previous question (on archive compatibility) for
-why this won't work either.
-
-
-
-
-<H3><A NAME="SEC6" HREF="faq_toc.html#TOC6">Is there an Interface Builder for GNUstep?</A></H3>
-
-<P>
-There is an Interface Builder for GNUstep called Gorm, but it is
+<p>There is an Interface Builder for GNUstep called Gorm, but it is
 in alpha release, so it may not work perfectly. You can download it from
 the ftp site or via http.
-The Project Manager ProjectCenter is also available.
+The Project Manager ProjectCenter is also available.</p>
 
+<h3><a name="SEC7" href="faq_toc.html#TOC7">Can I use my original NIB files?</a></h3>
 
-
-
-<H3><A NAME="SEC7" HREF="faq_toc.html#TOC7">Can I use my original NIB files?</A></H3>
-
-<P>
- No - NeXT/Apple never documented their nib format, so GNUstep supports
+<p>No - NeXT/Apple never documented their nib format, so GNUstep supports
 both the 'gmodel' format (which stores information as text
 (property-lists) and can therefore be edited 'by hand') and binary
 archive format (which can be edited by Gorm).  There IS a conversion
 tool called nib2gmodel that can be compiled under OPENSTEP to convert
-OPENSTEP nib files to GNUstep gmodel files.
+OPENSTEP nib files to GNUstep gmodel files.</p>
 
+<h3><a name="SEC8" href="faq_toc.html#TOC8">Can one use the hybrid "Objective-C++"</a></h3>
 
-
-
-<H3><A NAME="SEC8" HREF="faq_toc.html#TOC8">Can one use the hybrid "Objective-C++"</A></H3>
-
-<P>
-No. at present the GNU compiler (gcc) does not support
+<p>No. at present the GNU compiler (gcc) does not support
 "Objective-C++". Apple has submitted patches for this, but it is up to
 the GCC steering commitee to decide if they want to add them. If you
 would like to see this, please politely and respectfully lobby them at
-<A HREF="gcc@gnu.org">gcc@gnu.org</A>.
+<a href="gcc@gnu.org">gcc@gnu.org</a>.</p>
 
+<h3><a name="SEC9" href="faq_toc.html#TOC9">Is there a plan to support the Java/YellowBox Bindings?</a></h3>
 
-
-
-<H3><A NAME="SEC9" HREF="faq_toc.html#TOC9">Is there a plan to support the Java/YellowBox Bindings?</A></H3>
-
-<P>
-Yes. The GNustep Java library/bridge called JIGS is available now.  JIGS
+<p>Yes. The GNustep Java library/bridge called JIGS is available now.  JIGS
 is a free (LGPL) Java Interface for GNUstep; it can automatically wrap
 Objective-C libraries based on GNUstep, making them accessible directly
 to the Java programmer as if they were Java libraries. As a side effect,
@@ -117,433 +88,287 @@ it is also possible to use the whole engine in the reverse way: JIGS
 provides a high level API to allow Objective-C programmers to start java
 virtual machines inside GNUstep Objective-C code and access java objects
 in the java virtual machine transparently, as if they were objective-C
-objects.
+objects.</p>
 
+<h3><a name="SEC10" href="faq_toc.html#TOC10">What if I compile GNUstep under OPENSTEP/MacOS X Server?</a></h3>
 
-
-
-<H3><A NAME="SEC10" HREF="faq_toc.html#TOC10">What if I compile GNUstep under OPENSTEP/MacOS X Server?</A></H3>
-
-<P>
-GNUstep uses the X-windows display postscript extension.
+<p>GNUstep uses the X-windows display postscript extension.
 The interface to that is not the same as the interface to the
 OPENSTEP/MacOS-X windows server.  While someone could write a
 backend library to provide the interface, nobody has bothered to
-date.
+date.</p>
 
+<p>Also, the GNUstep base library is still being ported to Darwin.</p>
 
-<P>
-Also, the GNUstep base library is still being ported to Darwin.
+<h3><a name="SEC11" href="faq_toc.html#TOC11">Is the Objective C API for GTK related?</a></h3>
 
+<p>No.  GNUstep applications provide their GUI via the OpenStep
+API, which provides fully object-oriented access to GUI manipulation.</p>
 
-
-
-<H3><A NAME="SEC11" HREF="faq_toc.html#TOC11">Is the Objective C API for GTK related?</A></H3>
-
-<P>
-  No.  GNUstep applications provide their GUI via the OpenStep
-API, which provides fully object-oriented access to GUI manipulation.
-
-
-<P>
-  The object-oriented nature of the libraries and language make it much easier
+<p>The object-oriented nature of the libraries and language make it much easier
 for new users to create their own subclasses rather than simply using the
-supplied widgets as in other frameworks.
+supplied widgets as in other frameworks.</p>
 
+<h3><a name="SEC12" href="faq_toc.html#TOC12">How about implementing parts of the Application Kit with GTK?</a></h3>
 
-
-
-<H3><A NAME="SEC12" HREF="faq_toc.html#TOC12">How about implementing parts of the Application Kit with GTK?</A></H3>
-
-<P>
-  Yes and No - The GNUstep architecture provides a single,
+<p>Yes and No - The GNUstep architecture provides a single,
 platform-independent, API for handling all aspects of GUI interaction
 (implemented in the gstep-gui library), with a backend architecture
 that permits you to have different display models (display postscript,
 X-windows, win32, berlin ...) while letting you use the same code
 for printing as for displaying. Use of GTK in the frontend gui
-library would remove some of those advantages without adding any.
+library would remove some of those advantages without adding any.</p>
 
-
-<P>
-That being said, a backend library could be implemented using gtk
+<p>That being said, a backend library could be implemented using gtk
 if anyone wanted to do so.  Since the frontend library handles most
 of the work involved in implementing the OpenStep API, the backend
 is a relatively thin layer and the advantages of GTK over direct
 xlib or win32 calls is likely to be minimal.  If/when GTK is ported
 to more systems, a backend written using it could be a valuable
-asset - volunteers are, as always, wecome.
+asset - volunteers are, as always, wecome.</p>
 
+<h2><a name="SEC13" href="faq_toc.html#TOC13">Compiling and Developing</a></h2>
 
+<h3><a name="SEC14" href="faq_toc.html#TOC14">How can I get started programming?</a></h3>
 
-
-<H2><A NAME="SEC13" HREF="faq_toc.html#TOC13">Compiling and Developing</A></H2>
-
-
-
-<H3><A NAME="SEC14" HREF="faq_toc.html#TOC14">How can I get started programming?</A></H3>
-
-<P>
-  Good question.  Read the tutorials at the GNUstep web site. Also look at
+<p>Good question.  Read the tutorials at the GNUstep web site. Also look at
 Apple's documentation (pointers in the Resources section on the GNUstep web
-site.
+site.</p>
 
+<h3><a name="SEC15" href="faq_toc.html#TOC15">How can I help with GNUstep?</a></h3>
 
+<ol>
+<li>Write/debug library code</li>
+<li>Write documentation</li>
+<li>Update the task list and library headers</li>
+<li>Write applications</li>
+</ol>
 
-
-<H3><A NAME="SEC15" HREF="faq_toc.html#TOC15">How can I help with GNUstep?</A></H3>
-
-
-<OL>
-<LI>Write/debug library code
-
-<LI>Write documentation
-
-<LI>Update the task list and library headers
-
-<LI>Write applications
-
-</OL>
-
-<P>
-Let people know what you are doing.  Break your project up into
+<p>Let people know what you are doing.  Break your project up into
 the smallest units you can.  Feed back frequent updates to the
-maintainers.  Ask questions in the discussion mailing list.
+maintainers.  Ask questions in the discussion mailing list.</p>
 
-
-<P>
-Do remember that any changes beyond a few lines of code (or
+<p>Do remember that any changes beyond a few lines of code (or
 documentation) require a disclaimer or copyright assignment to the
 Free Software Foundation before they can be incorporated into the
 project.  Get in touch with the maintainer of the library you are
-working on about this.
+working on about this.</p>
 
-
-<P>
-Don't start with large-scale reorganisation of anything - instead,
+<p>Don't start with large-scale reorganisation of anything - instead,
 get a general idea in mind of what you want to do, and proceed as
 much as possible with incremental changes that don't break anything
 - that way you can make those incremental changes available to the
-rest of the community at frequent intervals.
+rest of the community at frequent intervals.</p>
 
-
-<P>
-Don't be afraid to give up - there is no shame in finding out that
+<p>Don't be afraid to give up - there is no shame in finding out that
 you have take on too large/complex a project.  It's much better to
 'resign' and take on a smaller job than to just stop without telling
-anyone.
+anyone.</p>
 
-
-<P>
-Please document the code you add or change (using autogsdoc comments
+<p>Please document the code you add or change (using autogsdoc comments
 that begin with a slash and two asterices). But PLEASE, do not copy from
-the Apple documentation or any other copyrighted documentation.
+the Apple documentation or any other copyrighted documentation.</p>
 
+<h3><a name="SEC16" href="faq_toc.html#TOC16">Helping develop GNUstep</a></h3>
 
-
-
-<H3><A NAME="SEC16" HREF="faq_toc.html#TOC16">Helping develop GNUstep</A></H3>
-
-<P>
-There is plenty of unimplemented stuff in the gui library and
+<p>There is plenty of unimplemented stuff in the gui library and
 backend libraries that volunteers can work on - just browse through
-the code and see if it conforms to the documentation.
+the code and see if it conforms to the documentation.</p>
 
+<p>Specific tasks are noted in the developers section on the GNUstep
+website.</p>
 
-<P>
-Specific tasks are noted in the developers section on the GNUstep
-website.
+<p>Once you have coded something, you could always write a testcase
+and documentation for it :-)</p>
 
+<h3><a name="SEC17" href="faq_toc.html#TOC17">Helping document GNUstep</a></h3>
 
-<P>
-Once you have coded something, you could always write a testcase
-and documentation for it :-)
-
-
-
-
-<H3><A NAME="SEC17" HREF="faq_toc.html#TOC17">Helping document GNUstep</A></H3>
-
-<P>
-All class documentation is written directly in the source code itself
+<p>All class documentation is written directly in the source code itself
 and translated using the autogsdoc program. See the source code and
-documentation for autogsdoc for information on documenting the classes.
+documentation for autogsdoc for information on documenting the classes.</p>
 
-
-<P>
-Newcomers could write documentation for individual classes by
+<p>Newcomers could write documentation for individual classes by
 comparing the OpenStep specification, the MacOS-X documentation,
 and the GNUstep source.  Documentation should clearly note where
 individual methods are specific to OpenStep, MacOS-X or are GNustep
-extensions.
+extensions.</p>
 
+<p>More experienced people could write documentation on general
+programming topics, and tutorials for new users.</p>
 
-<P>
-More experienced people could write documentation on general
-programming topics, and tutorials for new users.
-
-
-<P>
-Anyone willing to write documentation, either tutorials for using
+<p>Anyone willing to write documentation, either tutorials for using
 GNUstep, or reference documentation for individual classes, should
 either write it in gsdoc or as plain ascii text for someone else to
-format into gsdoc.
+format into gsdoc.</p>
 
+<p>GNUstep documentation should have copyright assigned to the Free
+Software Foundation.</p>
 
-<P>
-GNUstep documentation should have copyright assigned to the Free
-Software Foundation.
+<h3><a name="SEC18" href="faq_toc.html#TOC18">How do I update the task list?</a></h3>
 
-
-
-
-<H3><A NAME="SEC18" HREF="faq_toc.html#TOC18">How do I update the task list?</A></H3>
-
-<P>
- The task list (<A HREF="http://savannah.gnu.org/pm/?group_id=99">http://savannah.gnu.org/pm/?group_id=99</A>) is 
+<p>The task list (<a href="http://savannah.gnu.org/pm/?group_id=99">http://savannah.gnu.org/pm/?group_id=99</a>) is 
 supposed to tell people what jobs are waiting to be done. Feel free to
 add to it or update the tasks that are there (you need to create a login
-for yourself first).
+for yourself first).</p>
 
-
-<P>
-One job of major importance that pretty much anyone can do is to
+<p>One job of major importance that pretty much anyone can do is to
 look for jobs to add to the task list.  In the case of methods from
 the OpenStep specification or the MacOS-X documentation not being
 present in the GNUstep libraries, it is also helpful to add the
-method prototypes to the library header files.
+method prototypes to the library header files.</p>
 
+<p>Send any changes or additions to <a href="mailto:bug-gnustep@gnu.org">bug-gnustep@gnu.org</a>.</p>
 
-<P>
-Send any changes or additions to <A HREF="mailto:bug-gnustep@gnu.org">bug-gnustep@gnu.org</A>.
+<p>A beginner can look through the MacOS-X documentation, the OpenStep
+specification and the GNUstep source and contribute task items.</p>
 
-
-<P>
-A beginner can look through the MacOS-X documentation, the OpenStep
-specification and the GNUstep source and contribute task items.
-
-
-<P>
-If a class or method is in MacOS-X and OpenStep but is not in
+<p>If a class or method is in MacOS-X and OpenStep but is not in
 GNUstep - it's a high priority TODO and should at least be added
 to the GNUstep headers and a dummy version added to the source with
-a FIXME comment.
+a FIXME comment.</p>
 
-
-<P>
-If a class or method is in MacOS-X but not OpenStep or GNUstep -
+<p>If a class or method is in MacOS-X but not OpenStep or GNUstep -
 it's a low priority TODO.  It should be added to the GNUstep headers
-bracketed in <CODE>#ifndef STRICT_OPENSTEP</CODE>
+bracketed in <code>#ifndef STRICT_OPENSTEP</code></p>
 
-
-<P>
-If a class or method is in OpenStep but not in MacOS-X or GNUstep
+<p>If a class or method is in OpenStep but not in MacOS-X or GNUstep
 - it's a low priority TODO.  It should be added to the GNUstep
-headers bracketed in <CODE>#ifndef STRICT_MACOS_X</CODE>
+headers bracketed in <code>#ifndef STRICT_MACOS_X</code></p>
 
+<p>There are a couple of people working on this already, so it's a
+good idea to get in touch with Adam or Richard to coordinate efforts.</p>
 
-<P>
-There are a couple of people working on this already, so it's a
-good idea to get in touch with Adam or Richard to coordinate efforts.
+<h3><a name="SEC19" href="faq_toc.html#TOC19">How do I start writing tests?</a></h3>
 
+<p>You can write testcases - where the libraries fail tests, you
+could either fix the problem, or add it to the task list.</p>
 
-
-
-<H3><A NAME="SEC19" HREF="faq_toc.html#TOC19">How do I start writing tests?</A></H3>
-
-<P>
- You can write testcases - where the libraries fail tests, you
-could either fix the problem, or add it to the task list.
-
-
-<P>
-To write testcases, you need to use anonymous CVS to install the
+<p>To write testcases, you need to use anonymous CVS to install the
 latest GNUstep snapshots you can find. Then checkout the 'tests'
 module from CVS.  In the 'tests' directory, you will find a
-regression testing framework.
-In order to use this you will also need a recent (v 1.3.2 or later) copy of
+regression testing framework.</p>
+<p>In order to use this you will also need a recent (v 1.3.2 or later) copy of
 Guile (you can get this from a GNU ftp site) and will need to check-out,
-built, and installed the 'guile' package from the GNUstep CVS repository.
+built, and installed the 'guile' package from the GNUstep CVS repository.</p>
 
+<h3><a name="SEC20" href="faq_toc.html#TOC20">How do I start writing applications?</a></h3>
 
-
-
-<H3><A NAME="SEC20" HREF="faq_toc.html#TOC20">How do I start writing applications?</A></H3>
-
-<P>
- You can either look at the links on the GNUstep website for
+<p>You can either look at the links on the GNUstep website for
 applications that have been started, and email their owners to
-volunteer to help, or you can start your own project.
+volunteer to help, or you can start your own project.</p>
 
+<h3><a name="SEC21" href="faq_toc.html#TOC21">How can I help with the GNUstep website?</a></h3>
 
+<p>Talk to Adam Fedor <a href="mailto:fedor@gnu.org">fedor@gnu.org</a>, the maintainer.</p>
 
-
-<H3><A NAME="SEC21" HREF="faq_toc.html#TOC21">How can I help with the GNUstep website?</A></H3>
-
-<P>
- Talk to Adam Fedor <A HREF="mailto:fedor@gnu.org">fedor@gnu.org</A>, the maintainer.
-
-
-<P>
-The GNUstep website is kept as a CVS module, but the largest portions
+<p>The GNUstep website is kept as a CVS module, but the largest portions
 of it (the FAQ and the Documentation) are actually
-generated from files in the individual GNUstep packages.
+generated from files in the individual GNUstep packages.</p>
 
-
-<P>
-If you want to update the FAQ or documentation  - grab
+<p>If you want to update the FAQ or documentation  - grab
 the latest snapshot of the GNUstep core you can find, update it
 from the CVS repository, and work with the contents of the appropriate
-documentation directory.
+documentation directory.</p>
 
-
-<P>
-If you want to work on other parts of the website, you can grab a copy
+<p>If you want to work on other parts of the website, you can grab a copy
 of the website via anonymous CVS. See
-<A HREF="http://savannah.gnu.org/cvs/?group_id=99">http://savannah.gnu.org/cvs/?group_id=99</A> for instructions on how
-to do that.
+<a href="http://savannah.gnu.org/cvs/?group_id=99">http://savannah.gnu.org/cvs/?group_id=99</a> for instructions on how
+to do that.</p>
 
+<p>The main task with the website is to figure out which bits are
+out-of-date (or wrong) and update/mark-as-outdated as required.</p>
 
-<P>
-The main task with the website is to figure out which bits are
-out-of-date (or wrong) and update/mark-as-outdated as required.
+<h2><a name="SEC22" href="faq_toc.html#TOC22">GNU Objective C Compiler and Runtime</a></h2>
 
+<h3><a name="SEC23" href="faq_toc.html#TOC23">What is the Objective C Runtime?</a></h3>
 
+<p>The Objective C Runtime Library provides C functions and data structures
+required to execute an Objective C program.</p>
 
-
-<H2><A NAME="SEC22" HREF="faq_toc.html#TOC22">GNU Objective C Compiler and Runtime</A></H2>
-
-
-
-<H3><A NAME="SEC23" HREF="faq_toc.html#TOC23">What is the Objective C Runtime?</A></H3>
-
-<P>
-The Objective C Runtime Library provides C functions and data structures
-required to execute an Objective C program. 
-
-
-<P>
-The GNU Objective C Runtime Library offers everything NeXT's runtime
-does, including Categories, Protocols, <SAMP>`+poseAs:'</SAMP>, thread-safety,
+<p>The GNU Objective C Runtime Library offers everything NeXT's runtime
+does, including Categories, Protocols, <samp>`+poseAs:'</samp>, thread-safety,
 class initialization on demand, delayed loading of classes, and
-initialization of static instances (such as @""-style string objects). 
+initialization of static instances (such as @""-style string objects).</p>
 
+<p>It also has several improvements over NeXT's implementation:</p>
 
-<P>
-It also has several improvements over NeXT's implementation:
-
-
-
-<UL>
-
-<LI>NeXT's runtime requires an extra function call (objc_msgSend) for
-
+<ul>
+<li>NeXT's runtime requires an extra function call (objc_msgSend) for
 each message that is sent; (the function looks up the receiving
 instance's implementation of the method).  GNU's implementation is
 faster because it does not use an extra function call.  Instead, it
 inlines a short piece of code that makes two pointer hops into a method
 dispatch table; because the code is inlined, it does not incur the
-overhead of a function call.
+overhead of a function call.</li>
 
-<LI>When running in thread-safe mode, NeXT's runtime must aquire a
-
+<li>When running in thread-safe mode, NeXT's runtime must aquire a
 global mutual exclusion lock every time a message is sent; this is
 extremely slow.  GNU's runtime, amazingly, sends messages just as fast
 in thread-safe mode as it does in single-thread mode--the code path
 does not contain even a single extra instruction!  The GNU runtime only
 needs locks when certainly structures are written, not read; the
 structures are written relatively infrequently: only at class
-initialization and when <SAMP>`+poseAs:'</SAMP> is called.
+initialization and when <samp>`+poseAs:'</samp> is called.</li>
 
-<LI>GNU's runtime provides "selector-types" along with each
-
+<li>GNU's runtime provides "selector-types" along with each
 selector; NeXT's does not.  A selector-type is a string that describes
 the C variable types for the method's return and argument values.  Among
 other uses, selector-types is extrememly helpful for fast distributed
-objects implementations, (see GNUstep Base Library Section, below).
+objects implementations, (see GNUstep Base Library Section, below).</li>
 
-<LI>Many of the GNU functions have different names than their
-
+<li>Many of the GNU functions have different names than their
 corresponding NeXT functions; the GNU names conform to the GNU coding
-standards.
+standards.</li>
+</ul>
 
-</UL>
+<h3><a name="SEC24" href="faq_toc.html#TOC24">Does it allow a mixture of Objective C and C++?</a></h3>
 
+<p>No.  
+See see section <a href="faq_1.html#SEC8">Can one use the hybrid "Objective-C++"</a></p>
 
+<h3><a name="SEC25" href="faq_toc.html#TOC25">Where can I find more information?</a></h3>
 
-<H3><A NAME="SEC24" HREF="faq_toc.html#TOC24">Does it allow a mixture of Objective C and C++?</A></H3>
+<p>The FAQ associated with the newsgroup <samp>`comp.lang.objective-c'</samp>
+contains more information about GNU Objective C.</p>
 
-<P>
-No.  
-See see section <A HREF="faq_1.html#SEC8">Can one use the hybrid "Objective-C++"</A>
+<h2><a name="SEC26" href="faq_toc.html#TOC26">GNUstep Base Library</a></h2>
 
+<h3><a name="SEC27" href="faq_toc.html#TOC27">What is the GNUstep Base Library?</a></h3>
 
-
-
-<H3><A NAME="SEC25" HREF="faq_toc.html#TOC25">Where can I find more information?</A></H3>
-
-<P>
-The FAQ associated with the newsgroup <SAMP>`comp.lang.objective-c'</SAMP>
-contains more information about GNU Objective C.
-
-
-
-
-<H2><A NAME="SEC26" HREF="faq_toc.html#TOC26">GNUstep Base Library</A></H2>
-
-
-
-<H3><A NAME="SEC27" HREF="faq_toc.html#TOC27">What is the GNUstep Base Library?</A></H3>
-
-<P>
-The GNUstep Base Library is a library of general-purpose, non-graphical
+<p>The GNUstep Base Library is a library of general-purpose, non-graphical
 Objective C objects.  For example, it includes classes for strings,
 object collections, byte streams, typed coders, invocations,
 notifications, notification dispatchers, moments in time, network ports,
 remote object messaging support (distributed objects), event loops, and
-random number generators.
+random number generators.</p>
 
+<p>It provides functionality that aims to implement the non-graphical
+portion of the OpenStep standard (the Foundation library).</p>
 
-<P>
-It provides functionality that aims to implement the non-graphical
-portion of the OpenStep standard (the Foundation library).  
+<h3><a name="SEC28" href="faq_toc.html#TOC28">What is its current state of development?</a></h3>
 
-
-
-
-<H3><A NAME="SEC28" HREF="faq_toc.html#TOC28">What is its current state of development?</A></H3>
-
-<P>
-GNUstep base is currently stable and implements probably 99% of the
+<p>GNUstep base is currently stable and implements probably 99% of the
 functionality of the OpenStep classes and most all of the new Carbon
 classes.
 Normal work can already be done using the library since the
 missing 1 percent are the least-often-used features or are simply not
-up to date with the latest Carbon spec.
+up to date with the latest Carbon spec.</p>
 
+<h3><a name="SEC29" href="faq_toc.html#TOC29">What are the features of GNU Distributed Objects?</a></h3>
 
-
-
-<H3><A NAME="SEC29" HREF="faq_toc.html#TOC29">What are the features of GNU Distributed Objects?</A></H3>
-
-<P>
-GNU Distributed Objects has many of the features of other distributed
+<p>GNU Distributed Objects has many of the features of other distributed
 objects implementations, but, since it is free software, it can be
 ported to platforms for which other distributed objects implementations
-are not available.
+are not available.</p>
 
-
-<P>
-[NOTE: The GNU distributed object facilities have the same ease-of-use
+<p>[NOTE: The GNU distributed object facilities have the same ease-of-use
 as NeXT's; be warned, however, that they are not compatible with each
 other.  They have different class heirarchies, different instance
 variables, different method names, different implementation strategies
 and different network message formats.  You cannot communicate with a
-NeXT NSConnection using a GNU NSConnection.  
+NeXT NSConnection using a GNU NSConnection.</p>
 
-
-<P>
-Here are some differences between GNU distributed objects and NeXT's
+<p>Here are some differences between GNU distributed objects and NeXT's
 distributed objects: NeXT NSDistantObject asks it's remote
 target for the method encoding types and caches the results; GNU
 NSDistantObject gets the types directly from the local GNU "typed selector"
@@ -553,40 +378,28 @@ the local process.  The NSProxy for the remote root object always has name 0
 and, once set, you cannot change the root object of a NSConnection; the GNU
 Proxy for the remote root object has a target address value just like
 all other Proxy's, and you can change the root object as many times as
-you like. ].
+you like. ].</p>
 
+<h2><a name="SEC30" href="faq_toc.html#TOC30">GNUstep GUI Library</a></h2>
 
+<h3><a name="SEC31" href="faq_toc.html#TOC31">What is the GUI Library?</a></h3>
 
-
-<H2><A NAME="SEC30" HREF="faq_toc.html#TOC30">GNUstep GUI Library</A></H2>
-
-
-
-<H3><A NAME="SEC31" HREF="faq_toc.html#TOC31">What is the GUI Library?</A></H3>
-
-<P>
-The GNUstep GUI Library is a library of objects useful for writing
+<p>The GNUstep GUI Library is a library of objects useful for writing
 graphical applications.  For example, it includes classes for drawing
 and manipulating graphics objects on the screen: windows, menus,
 buttons, sliders, text fields, and events.  There are also many
 peripheral classes that offer operating-system-independent interfaces to
 images, cursors, colors, fonts, pasteboards, printing.  There are also
 workspace support classes such as data links, open/save panels,
-context-dependent help, spell checking.
+context-dependent help, spell checking.</p>
 
-
-<P>
-It provides functionality that aims to implement the <SAMP>`AppKit'</SAMP>
+<p>It provides functionality that aims to implement the <samp>`AppKit'</samp>
 portion of the OpenStep standard.  However the implementation has
-been written to take advantage of GNUstep enhancements wherever possible.
+been written to take advantage of GNUstep enhancements wherever possible.</p>
 
+<h3><a name="SEC32" href="faq_toc.html#TOC32">Explain the organization of the front- and back-ends</a></h3>
 
-
-
-<H3><A NAME="SEC32" HREF="faq_toc.html#TOC32">Explain the organization of the front- and back-ends</A></H3>
-
-<P>
-The GNUstep GUI Library is divided into a front- and back-end.  The
+<p>The GNUstep GUI Library is divided into a front- and back-end.  The
 front-end contains the majority of implementation, but leaves out the
 low-level drawing and event code.  A back-end can override whatever
 methods necessary in order to implement low-level drawing event
@@ -595,69 +408,47 @@ platforms.  The default GNU back-end will run on top of X Windows.
 Other back-ends could allow GNUstep to run on OpenGL and WIN32
 graphics/event platforms.  Much work will be saved by this clean
 separation between front- and back-end, because it allows different
-platforms to share the large amount of front-end code.
+platforms to share the large amount of front-end code.</p>
 
+<h3><a name="SEC33" href="faq_toc.html#TOC33">What is the current state of development of the front-end?</a></h3>
 
-
-
-<H3><A NAME="SEC33" HREF="faq_toc.html#TOC33">What is the current state of development of the front-end?</A></H3>
-
-<P>
-Many of the classes are well implemented, if not thouroughly tested.
+<p>Many of the classes are well implemented, if not thouroughly tested.
 See the GNUstep web sites and read status information contained in the
-distribution for the most up-to-date information.
+distribution for the most up-to-date information.</p>
 
+<h3><a name="SEC34" href="faq_toc.html#TOC34">What is the current state of development of the X/DPS back-end?</a></h3>
 
+<p>It works, but is slow and buggy. A lot of work could be done.</p>
 
+<h2><a name="SEC35" href="faq_toc.html#TOC35">GNUstep DisplayGhostScript Server</a></h2>
 
-<H3><A NAME="SEC34" HREF="faq_toc.html#TOC34">What is the current state of development of the X/DPS back-end?</A></H3>
+<h3><a name="SEC36" href="faq_toc.html#TOC36">What is the Display Ghostscript Server?</a></h3>
 
-<P>
-It works, but is slow and buggy. A lot of work could be done.
+<p>It is a free implementation of a Display PostScript server based on the
+GNU Ghostscript program developed by Aladdin Enterprises and now owned by artofcode LLC.</p>
 
+<h3><a name="SEC37" href="faq_toc.html#TOC37">What is its current state of development?</a></h3>
 
-
-
-<H2><A NAME="SEC35" HREF="faq_toc.html#TOC35">GNUstep DisplayGhostScript Server</A></H2>
-
-
-
-<H3><A NAME="SEC36" HREF="faq_toc.html#TOC36">What is the Display Ghostscript Server?</A></H3>
-
-<P>
-It is a free implementation of a Display PostScript server based on the
-GNU Ghostscript program developed by Aladdin Enterprises and now owned by artofcode LLC.
-
-
-
-
-<H3><A NAME="SEC37" HREF="faq_toc.html#TOC37">What is its current state of development?</A></H3>
-
-<P>
-GNU contracted with Aladdin Enterprises to add some key features to GNU
+<p>GNU contracted with Aladdin Enterprises to add some key features to GNU
 Ghostscript so it could be used as a DPS server. This work has mostly
 been done, although Aladdin did not completely finish the work that they
 were contracted for.  (Because the work took longer than specified and
 was not completed, Aladdin agreed to waive approximately $10,000 in
 promised fees for the work that was actually done and delivered.)  DGS
 works fairly well with a single context.  Alpha channel and compositing
-currently doesn't work.
+currently doesn't work.</p>
 
+<h3><a name="SEC38" href="faq_toc.html#TOC38">What is the relationship between the Display Ghostscript Server and X Windows?</a></h3>
 
+<p>Display Ghostscript runs on top of X Windows.</p>
 
-
-<H3><A NAME="SEC38" HREF="faq_toc.html#TOC38">What is the relationship between the Display Ghostscript Server and X Windows?</A></H3>
-
-<P>
-Display Ghostscript runs on top of X Windows.
-
-
-
-<PRE>
+<pre>
 All trademarks mentioned on in this FAQ belong to their owners.
-</PRE>
+</pre>
 
-<P><HR><P>
-Go to the first, previous, next, last section, <A HREF="faq_toc.html">table of contents</A>.
-</BODY>
-</HTML>
+<hr />
+
+Go to the first, previous, next, last section, <a href="faq_toc.html">table of contents</a>.
+
+</body>
+</html>
