@@ -9,19 +9,15 @@
     <h1><a name="title$NSDictionary">NSDictionary class reference</a></h1>
     <h3>Authors</h3>
     <dl>
-      <dt>Andrew Kachites McCallum(<a href="mailto:mccallum@gnu.ai.mit.edu"><code>
-        mccallum@gnu.ai.mit.edu
-      </code></a>)</dt>
+      <dt>Andrew Kachites McCallum (<a href="mailto:mccallum@gnu.ai.mit.edu"><code>mccallum@gnu.ai.mit.edu</code></a>)</dt>
       <dd>
       </dd>
-      <dt>Adam Fedor(<a href="mailto:fedor@boulder.colorado.edu"><code>
-        fedor@boulder.colorado.edu
-      </code></a>)</dt>
+      <dt>Adam Fedor (<a href="mailto:fedor@boulder.colorado.edu"><code>fedor@boulder.colorado.edu</code></a>)</dt>
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.98</p>
-    <p><b>Date:</b> 2003/04/07 08:26:40</p>
+    <p><b>Version:</b> 1.100</p>
+    <p><b>Date:</b> 2003/07/15 16:35:11</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1997 Free Software Foundation, Inc.</p>
 
         <div>
@@ -74,6 +70,7 @@
     <ul>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary+dictionary">+dictionary</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary+dictionaryWithContentsOfFile:">+dictionaryWithContentsOfFile:</a></li>
+      <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary+dictionaryWithContentsOfURL:">+dictionaryWithContentsOfURL:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary+dictionaryWithDictionary:">+dictionaryWithDictionary:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary+dictionaryWithObject:forKey:">+dictionaryWithObject:forKey:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary+dictionaryWithObjects:forKeys:">+dictionaryWithObjects:forKeys:</a></li>
@@ -104,6 +101,7 @@
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileSystemNumber">-fileSystemNumber</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileType">-fileType</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-initWithContentsOfFile:">-initWithContentsOfFile:</a></li>
+      <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-initWithContentsOfURL:">-initWithContentsOfURL:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-initWithDictionary:">-initWithDictionary:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-initWithDictionary:copyItems:">-initWithDictionary:copyItems:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-initWithObjects:forKeys:">-initWithObjects:forKeys:</a></li>
@@ -134,6 +132,16 @@
       
             Returns a dictionary using the file located at
             <var>path</var>. The file must be a property list
+            containing a dictionary as its root object.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary+dictionaryWithContentsOfURL:">dictionaryWithContentsOfURL:</a></h3>
+    + (id) <b>dictionaryWithContentsOfURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)aURL;<br />
+    <p>
+      
+            Returns a dictionary using the contents of
+            <var>aURL</var>. The URL must be a property list
             containing a dictionary as its root object.
           
     </p>
@@ -184,7 +192,7 @@
       
             Returns a dictionary created using the list given
             as argument. The list is alernately composed of objects
-            and keys. Thus, the list's length must be pair.
+            and keys. Thus, the list&apos;s length must be pair.
           
     </p>
     <hr width="25%" align="left" />
@@ -192,7 +200,7 @@
     - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>allKeys</b>;<br />
     <p>
       
-            Returns an array containing all the dictionary's
+            Returns an array containing all the dictionary&apos;s
             keys.
           
     </p>
@@ -201,7 +209,7 @@
     - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>allKeysForObject:</b> (id)anObject;<br />
     <p>
       
-            Returns an array containing all the dictionary's
+            Returns an array containing all the dictionary&apos;s
             keys that are associated with <var>anObject</var>.
           
     </p>
@@ -210,7 +218,7 @@
     - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>allValues</b>;<br />
     <p>
       
-            Returns an array containing all the dictionary's
+            Returns an array containing all the dictionary&apos;s
             objects.
           
     </p>
@@ -338,6 +346,55 @@
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary-initWithContentsOfURL:">initWithContentsOfURL:</a></h3>
+    - (id) <b>initWithContentsOfURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)aURL;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Initialises the dictionary with the contents
+              of the specified URL, which must contain a dictionary
+              in property-list format.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              In GNUstep, the property-list format may be either the
+              OpenStep format (ASCII data), or the MacOS-X
+              format (URF8 XML data)... this method will
+              recognise which it is.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              If there is a failure to load the URL for any reason,
+              the receiver will be released and the method will
+              return <code>nil</code>.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Works by invoking
+              <a rel="gsdoc" href="NSString.html#method$NSString-initWithContentsOfURL:">[NSString&nbsp;-initWithContentsOfURL:]</a>
+ and <a rel="gsdoc" href="NSString.html#method$NSString-propertyList">[NSString&nbsp;-propertyList]</a>
+ then checking that the result is a dictionary.
+                </p>
+    <p>
+      
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSDictionary-initWithDictionary:">initWithDictionary:</a></h3>
     - (id) <b>initWithDictionary:</b> (<a rel="gsdoc" href="#class$NSDictionary">NSDictionary</a>*)otherDictionary;<br />
     <p>
@@ -385,7 +442,7 @@ This is a designated initialiser for the class.<br />
       
             Initialises a dictionary created using the list
             given as argument. The list is alernately composed of
-            objects and keys. Thus, the list's length must be
+            objects and keys. Thus, the list&apos;s length must be
             pair.
           
     </p>

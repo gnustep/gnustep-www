@@ -9,24 +9,18 @@
     <h1><a name="title$NSBundle">NSBundle class reference</a></h1>
     <h3>Authors</h3>
     <dl>
-      <dt>Adam Fedor(<a href="mailto:fedor@boulder.colorado.edu"><code>
-        fedor@boulder.colorado.edu
-      </code></a>)</dt>
+      <dt>Adam Fedor (<a href="mailto:fedor@boulder.colorado.edu"><code>fedor@boulder.colorado.edu</code></a>)</dt>
       <dd>
       </dd>
-      <dt>Mirko Viviani(<a href="mailto:mirko.viviani@rccr.cremona.it"><code>
-        mirko.viviani@rccr.cremona.it
-      </code></a>)</dt>
+      <dt>Mirko Viviani (<a href="mailto:mirko.viviani@rccr.cremona.it"><code>mirko.viviani@rccr.cremona.it</code></a>)</dt>
       <dd>
       </dd>
-      <dt>Nicola Pero(<a href="mailto:nicola@brainstorm.co.uk"><code>
-        nicola@brainstorm.co.uk
-      </code></a>)</dt>
+      <dt>Nicola Pero (<a href="mailto:nicola@brainstorm.co.uk"><code>nicola@brainstorm.co.uk</code></a>)</dt>
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.121</p>
-    <p><b>Date:</b> 2003/05/08 17:29:52</p>
+    <p><b>Version:</b> 1.123</p>
+    <p><b>Date:</b> 2003/06/28 05:33:15</p>
     <p><b>Copyright:</b> (C) 
       1995, 1997, 1999, 2001, 2002 Free Software Foundation, Inc.
     </p>
@@ -139,6 +133,7 @@
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-bundlePath">-bundlePath</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-bundleVersion">-bundleVersion</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-classNamed:">-classNamed:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep-devel/System/Library/Documentation/Developer/Gui/Reference/NSHelpManager.html#method$NSBundle-contextHelpForKey:">-contextHelpForKey:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-executablePath">-executablePath</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-infoDictionary">-infoDictionary</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-initWithPath:">-initWithPath:</a></li>
@@ -147,9 +142,11 @@
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-localizations">-localizations</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-localizedInfoDictionary">-localizedInfoDictionary</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-localizedStringForKey:value:table:">-localizedStringForKey:value:table:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep-devel/System/Library/Documentation/Developer/Gui/Reference/NSImage.html#method$NSBundle-pathForImageResource:">-pathForImageResource:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathForResource:ofType:">-pathForResource:ofType:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathForResource:ofType:inDirectory:">-pathForResource:ofType:inDirectory:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathForResource:ofType:inDirectory:forLocalization:">-pathForResource:ofType:inDirectory:forLocalization:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep-devel/System/Library/Documentation/Developer/Gui/Reference/NSSound.html#method$NSBundle-pathForSoundResource:">-pathForSoundResource:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathsForResourcesOfType:inDirectory:">-pathsForResourcesOfType:inDirectory:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathsForResourcesOfType:inDirectory:forLocalization:">-pathsForResourcesOfType:inDirectory:forLocalization:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-preferredLocalizations">-preferredLocalizations</a></li>
@@ -163,10 +160,10 @@
     <p>
       
             Return an array enumerating all the bundles in the
-            application. This does not include frameworks.
-            <br /> Returns an array of all the bundles which do
-            not belong to frameworks. <br /> This always contains
-            the main bundle.
+            application. This * does not include
+            frameworks. <br /> Returns an array of all the
+            bundles which do not belong to frameworks. <br />
+            This always contains the main bundle.
           
     </p>
     <hr width="25%" align="left" />
@@ -175,9 +172,9 @@
     <p>
       
             Return an array enumerating all the frameworks in
-            the application. This does not include normal bundles.
-            <br /> Returns an array containing all the known
-            bundles representing frameworks.
+            the application. This * does not include normal
+            bundles. <br /> Returns an array containing all
+            the known bundles representing frameworks.
           
     </p>
     <hr width="25%" align="left" />
@@ -224,9 +221,9 @@
     <p>
       
             Return a bundle for the <var>path</var> at
-            <var>path</var>. If <var>path</var> doesn't exist or
-            is not readable, return <code>nil</code>. If you want
-            the main bundle of an application or a tool, it's
+            <var>path</var>. If <var>path</var> doesn&apos;t exist or
+            is * not readable, return <code>nil</code>. If you want
+            the main bundle of an * application or a tool, it&apos;s
             better if you use
             <a rel="gsdoc" href="#method$NSBundle+mainBundle">
               +mainBundle
@@ -248,10 +245,10 @@
               executable. If the executable is an
               application, this is the main application
               bundle (the xxx.app directory); if the executable
-              is a tool, this is a bundle 'naturally' associated
+              is a tool, this is a bundle &apos;naturally&apos; associated
               with the tool: if the tool executable is
               xxx/Tools/ix86/linux-gnu/gnu-gnu-gnu/Control
-              then the tool's main bundle directory is
+              then the tool&apos;s main bundle directory is
               xxx/Tools/Resources/Control.
                 </p>
     <p>
@@ -260,9 +257,9 @@
     </p>
     <p>
 
-              NB: traditionally tools didn't have a main bundle --
-              this is a recent GNUstep extension, but it's quite
-              nice and it's here to stay.
+              NB: traditionally tools didn&apos;t have a main bundle --
+              this is a recent GNUstep extension, but it&apos;s quite
+              nice and it&apos;s here to stay.
                 </p>
     <p>
       
@@ -310,7 +307,7 @@
     </p>
     <p>
 
-              (when the tool has not yet been installed, it's
+              (when the tool has not yet been installed, it&apos;s
               similar -
               xxx/shared_obj/ix86/linux-gnu/gnu-gnu-gnu/Control
               and the main bundle directory is
@@ -437,14 +434,14 @@
 This is a designated initialiser for the class.<br />
     <p>
       
-            Init the bundle for reading resources from
-            <var>path</var>. <var>path</var> must be an absolute
-            <var>path</var> to a directory on disk. If
-            <var>path</var> is <code>nil</code> or doesn't exist,
-            initWithPath: returns <code>nil</code>. If a
-            bundle for that <var>path</var> already existed, it
-            is returned in place of the receiver (and the receiver
-            is deallocated).
+            * Init the bundle for reading resources from
+            <var>path</var>. <var>path</var> must be an *
+            absolute <var>path</var> to a directory on disk.
+            If <var>path</var> is <code>nil</code> or doesn&apos;t *
+            exist, initWithPath: returns <code>nil</code>. If a
+            bundle for that <var>path</var> * already existed,
+            it is returned in place of the receiver (and the *
+            receiver is deallocated).
           
     </p>
     <hr width="25%" align="left" />
@@ -452,7 +449,7 @@ This is a designated initialiser for the class.<br />
     - (BOOL) <b>isLoaded</b>;<br />
     <p>
       
-            Returns <code>YES</code> if the receiver's code is
+            Returns <code>YES</code> if the receiver&apos;s code is
             loaded, otherwise, returns <code>NO</code>.
           
     </p>
@@ -538,9 +535,9 @@ This is a designated initialiser for the class.<br />
 
 <pre>
      root path/Resources/bundlePath
-     root path/Resources/bundlePath/"language.lproj"
+     root path/Resources/bundlePath/&quot;language.lproj&quot;
      root path/bundlePath
-     root path/bundlePath/"language.lproj"
+     root path/bundlePath/&quot;language.lproj&quot;
    </pre>
       
             
@@ -606,7 +603,7 @@ This is a designated initialiser for the class.<br />
       
             Returns the list of localizations that the bundle
             uses to search for information. This is based on the
-            user's preferences.
+            user&apos;s preferences.
           
     </p>
     <hr width="25%" align="left" />
@@ -738,11 +735,11 @@ This is a designated initialiser for the class.<br />
     <p>
       
             This method is an experimental GNUstep extension, and
-            might change. At the moment, search on the standard
-            GNUstep directories (starting from
-            GNUSTEP_USER_ROOT, and going on to
-            GNUSTEP_SYSTEM_ROOT) for a directory
-            Libraries/Resources/'libraryName'/.
+            * might change. At the moment, search on the standard
+            GNUstep * directories (starting from
+            GNUSTEP_USER_ROOT, and going on to *
+            GNUSTEP_SYSTEM_ROOT) for a directory *
+            Libraries/Resources/&apos;libraryName&apos;/.
             <br /> Return a bundle which accesses the first
             existing directory from the list
             GNUSTEP_USER_ROOT/Libraries/Resources/libraryName/
@@ -780,7 +777,7 @@ This is a designated initialiser for the class.<br />
     + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>pathForLibraryResource:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> ofType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)ext<b> inDirectory:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)bundlePath;<br />
     <p>
       
-            Find a resource in the "Library" directory
+            Find a resource in the &quot;Library&quot; directory
           
     </p>
     <hr width="25%" align="left" />

@@ -9,19 +9,15 @@
     <h1><a name="title$NSDistantObject">NSDistantObject class reference</a></h1>
     <h3>Authors</h3>
     <dl>
-      <dt>Richard Frith-Macdonald(<a href="mailto:richard@brainstorm.co.uk"><code>
-        richard@brainstorm.co.uk
-      </code></a>)</dt>
+      <dt>Richard Frith-Macdonald (<a href="mailto:richard@brainstorm.co.uk"><code>richard@brainstorm.co.uk</code></a>)</dt>
       <dd>
       </dd>
-      <dt>Andrew Kachites McCallum(<a href="mailto:mccallum@gnu.ai.mit.edu"><code>
-        mccallum@gnu.ai.mit.edu
-      </code></a>)</dt>
+      <dt>Andrew Kachites McCallum (<a href="mailto:mccallum@gnu.ai.mit.edu"><code>mccallum@gnu.ai.mit.edu</code></a>)</dt>
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.42</p>
-    <p><b>Date:</b> 2002/12/10 11:30:56</p>
+    <p><b>Version:</b> 1.52</p>
+    <p><b>Date:</b> 2003/07/20 18:43:35</p>
     <p><b>Copyright:</b> (C) 1997 Free Software Foundation, Inc.</p>
 
         <div>
@@ -66,7 +62,10 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Instances of this class act as proxies to remote
+          objects using the Distributed Objects system. They
+          also hold references to local objects which are vended
+          to remote processes.
         
     </p>
     <b>Method summary</b>
@@ -80,6 +79,7 @@
       <li><a rel="gsdoc" href="NSDistantObject.html#method$NSDistantObject-gcFinalize">-gcFinalize</a></li>
       <li><a rel="gsdoc" href="NSDistantObject.html#method$NSDistantObject-initWithLocal:connection:">-initWithLocal:connection:</a></li>
       <li><a rel="gsdoc" href="NSDistantObject.html#method$NSDistantObject-initWithTarget:connection:">-initWithTarget:connection:</a></li>
+      <li><a rel="gsdoc" href="NSDistantObject.html#method$NSDistantObject-methodSignatureForSelector:">-methodSignatureForSelector:</a></li>
       <li><a rel="gsdoc" href="NSDistantObject.html#method$NSDistantObject-selectorTypeForProxy:">-selectorTypeForProxy:</a></li>
       <li><a rel="gsdoc" href="NSDistantObject.html#method$NSDistantObject-setProtocolForProxy:">-setProtocolForProxy:</a></li>
     </ul>
@@ -88,7 +88,9 @@
     + (<a rel="gsdoc" href="#class$NSDistantObject">NSDistantObject</a>*) <b>proxyWithLocal:</b> (id)anObject<b> connection:</b> (<a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>*)aConnection;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates and returns a proxy associated with
+            <var>aConnection</var> which will hold a reference to
+            the local object <var>anObject</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -96,7 +98,10 @@
     + (<a rel="gsdoc" href="#class$NSDistantObject">NSDistantObject</a>*) <b>proxyWithTarget:</b> (unsigned)anObject<b> connection:</b> (<a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>*)aConnection;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates and returns a proxy associated with
+            <var>aConnection</var> which will provide a link to a
+            remote object whose reference locally is
+            <var>anObject</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -104,7 +109,10 @@
     - (<a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>*) <b>connectionForProxy</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the
+            <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
+
+              instance with which the receiver is associated.
           
     </p>
     <hr width="25%" align="left" />
@@ -112,7 +120,9 @@
     - (id) <b>initWithLocal:</b> (id)anObject<b> connection:</b> (<a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>*)aConnection;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialises and returns a proxy associated with
+            <var>aConnection</var> which will hold a reference to
+            the local object <var>anObject</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -120,7 +130,45 @@
     - (id) <b>initWithTarget:</b> (unsigned)target<b> connection:</b> (<a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>*)aConnection;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialises and returns a proxy associated with
+            <var>aConnection</var> which will provide a link to a
+            remote object whose reference locally is
+            <var>target</var>.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDistantObject-methodSignatureForSelector:">methodSignatureForSelector:</a></h3>
+    - (<a rel="gsdoc" href="NSMethodSignature.html#class$NSMethodSignature">NSMethodSignature</a>*) <b>methodSignatureForSelector:</b> (SEL)aSelector;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Returns the method signature describing the
+              arguments and return types of the method in the
+              object referred to by the receiver which
+              implements the aSelecto message.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This method may need to refer to another process
+              (causing relatively slow network communication)
+              and apprximately double the time taken for sending a
+              distributed objects message, so you are
+              advised to use the
+              <a rel="gsdoc" href="#method$NSDistantObject-setProtocolForProxy:">
+                -setProtocolForProxy:
+              </a>
+
+              method to avoid this occurring.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -128,7 +176,74 @@
     - (void) <b>setProtocolForProxy:</b> (Protocol*)aProtocol;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              A key method for Distributed Objects performance. This
+              sets the a protocol that the distant object referred
+              to by the proxy should conform to. When messages in
+              that protocol are sent to the proxy, the proxy knows
+              that it does not need to ask the remote object for
+              the method siagnature in order to send the message to
+              it, but can send the message straight away based on
+              the local method signature information obtained from
+              the protocol.
+                </p>
+    <p>
+      
+
+<pre>
+   if ([anObj isProxy] == YES)
+     {
+       [anObj setProtocolForProxy: @protocol(MyProtocol)];
+     }
+ </pre>
+      
+            
+    </p>
+    <p>
+
+              It is <em>highly recommended</em> that you make use of
+              this facility, but you must beware that versions of
+              the compiler prior to 3.3 suffer a serious bug with
+              respect to the @protocol directive. If the
+              protocol referred to is not declared and
+              implemented in the file where @protocol is
+              used to refer to the protocol by name, a runtime
+              error will occur when you try to use it.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Beware, if you don&apos;t use this method to set the
+              protocol, the system might well ask the remote
+              process for method signature information, and the
+              remote process might get it <em>wrong</em>. This
+              is because the class of the remote object needs to
+              have been declared to conform to the protocol in
+              order for it to know about any protocol qualifiers
+              (the keywords
+              <code>bycopy, byref, in, out, inout,</code> and
+              <code>oneway</code>). If the author of the server
+              process forgot to do this, the type information
+              returned from that process may not be what you
+              are expecting.
+                </p>
+    <p>
+      
+            The class of the server object should be declared like
+            this...
+
+<pre>
+ @interface MyServerClass : NSObject &lt;MyProtocol&gt;
+ ...
+ @end
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -173,19 +288,11 @@
       <li><a rel="gsdoc" href="NSDistantObject.html#method$NSDistantObject-selectorTypeForProxy:">-selectorTypeForProxy:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSDistantObject(GNUstepExtensions)-awakeAfterUsingCoder:">awakeAfterUsingCoder:</a></h3>
-    - (id) <b>awakeAfterUsingCoder:</b> (<a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>*)aDecoder;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
     <h3><a name="method$NSDistantObject(GNUstepExtensions)-classForPortCoder">classForPortCoder</a></h3>
     - (Class) <b>classForPortCoder</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the class of the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -193,7 +300,8 @@
     - (id) <b>forward:</b> (SEL)aSel<b> :</b> (arglist_t)frame;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            For backward compatibility... do not use this method.
+            <br /> Handle old fashioned forwarding to the proxy.
           
     </p>
     <hr width="25%" align="left" />
@@ -201,7 +309,8 @@
     - (void) <b>gcFinalize</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Used by the garbage collection system to tidy up when
+            a proxy is destroyed.
           
     </p>
     <hr width="25%" align="left" />
@@ -209,7 +318,14 @@
     - (const char*) <b>selectorTypeForProxy:</b> (SEL)selector;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            For backward compatibility... do not use this method.
+            <br /> Returns the type information... the modern
+            way of doing this is with the
+            <a rel="gsdoc" href="#method$NSDistantObject-methodSignatureForSelector:">
+              -methodSignatureForSelector:
+            </a>
+
+            method.
           
     </p>
     <hr width="25%" align="left" />

@@ -9,19 +9,15 @@
     <h1><a name="title$NSProcessInfo">NSProcessInfo class reference</a></h1>
     <h3>Authors</h3>
     <dl>
-      <dt>Georg Tuparev(<a href="mailto:Tuparev@EMBL-Heidelberg.de"><code>
-        Tuparev@EMBL-Heidelberg.de
-      </code></a>)</dt>
+      <dt>Georg Tuparev (<a href="mailto:Tuparev@EMBL-Heidelberg.de"><code>Tuparev@EMBL-Heidelberg.de</code></a>)</dt>
       <dd>
       </dd>
-      <dt>Richard Frith-Macdonald(<a href="mailto:rfm@gnu.org"><code>
-        rfm@gnu.org
-      </code></a>)</dt>
+      <dt>Richard Frith-Macdonald (<a href="mailto:rfm@gnu.org"><code>rfm@gnu.org</code></a>)</dt>
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.90</p>
-    <p><b>Date:</b> 2003/03/31 02:59:56</p>
+    <p><b>Version:</b> 1.95</p>
+    <p><b>Date:</b> 2003/07/17 09:27:31</p>
     <p><b>Copyright:</b> (C) 1995-2001 Free Software Foundation, Inc.</p>
 
         <div>
@@ -67,6 +63,7 @@
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo+initializeWithArguments:count:environment:">+initializeWithArguments:count:environment:</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo+processInfo">+processInfo</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-arguments">-arguments</a></li>
+      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-debugLoggingEnabled">-debugLoggingEnabled</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-debugSet">-debugSet</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-environment">-environment</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-globallyUniqueString">-globallyUniqueString</a></li>
@@ -75,6 +72,7 @@
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-operatingSystemName">-operatingSystemName</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-processIdentifier">-processIdentifier</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-processName">-processName</a></li>
+      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-setDebugLoggingEnabled:">-setDebugLoggingEnabled:</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-setLogFile:">-setLogFile:</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-setProcessName:">-setProcessName:</a></li>
     </ul>
@@ -190,7 +188,7 @@
         <li>
           
                 NSGNULinuxOperatingSystem -
-                the GNUstep 'standard'
+                the GNUstep &apos;standard&apos;
               
         </li>
         <li>
@@ -273,7 +271,9 @@
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo+initializeWithArguments:count:environment:">+initializeWithArguments:count:environment:</a></li>
+      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-debugLoggingEnabled">-debugLoggingEnabled</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-debugSet">-debugSet</a></li>
+      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-setDebugLoggingEnabled:">-setDebugLoggingEnabled:</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-setLogFile:">-setLogFile:</a></li>
     </ul>
     <hr width="50%" align="left" />
@@ -288,15 +288,40 @@
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSProcessInfo(GNUstep)-debugLoggingEnabled">debugLoggingEnabled</a></h3>
+    - (BOOL) <b>debugLoggingEnabled</b>;<br />
+    <p>
+      
+            Returns a indication of whether debug logging is
+            enabled. This returns <code>YES</code> unless a
+            call to
+            <a rel="gsdoc" href="#method$NSProcessInfo-setDebugLoggingEnabled:">
+              -setDebugLoggingEnabled:
+            </a>
+
+            has been used to turn logging off.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSProcessInfo(GNUstep)-debugSet">debugSet</a></h3>
     - (<a rel="gsdoc" href="NSSet.html#class$NSMutableSet">NSMutableSet</a>*) <b>debugSet</b>;<br />
     <p>
       
             This method returns a set of debug levels set using
-            the --GNU-Debug=... command line option. <br /> You can
-            modify this set to change the debug logging under
-            your programs control... but such modifications are
-            not thread-safe.
+            the --GNU-Debug=... command line option and/or the
+            GNU-Debug user default. <br /> You can modify
+            this set to change the debug logging under your
+            programs control... but such modifications are not
+            thread-safe.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSProcessInfo(GNUstep)-setDebugLoggingEnabled:">setDebugLoggingEnabled:</a></h3>
+    - (void) <b>setDebugLoggingEnabled:</b> (BOOL)flag;<br />
+    <p>
+      
+            This method permits you to turn all debug logging on
+            or off without modifying the set of debug levels in use.
           
     </p>
     <hr width="25%" align="left" />

@@ -9,24 +9,18 @@
     <h1><a name="title$NSArray">NSArray class reference</a></h1>
     <h3>Authors</h3>
     <dl>
-      <dt>Andrew Kachites McCallum(<a href="mailto:mccallum@gnu.ai.mit.edu"><code>
-        mccallum@gnu.ai.mit.edu
-      </code></a>)</dt>
+      <dt>Andrew Kachites McCallum (<a href="mailto:mccallum@gnu.ai.mit.edu"><code>mccallum@gnu.ai.mit.edu</code></a>)</dt>
       <dd>
       </dd>
-      <dt>Adam Fedor(<a href="mailto:fedor@boulder.colorado.edu"><code>
-        fedor@boulder.colorado.edu
-      </code></a>)</dt>
+      <dt>Adam Fedor (<a href="mailto:fedor@boulder.colorado.edu"><code>fedor@boulder.colorado.edu</code></a>)</dt>
       <dd>
       </dd>
-      <dt>Richard Frith-Macdonald(<a href="mailto:richard@brainstorm.co.uk"><code>
-        richard@brainstorm.co.uk
-      </code></a>)</dt>
+      <dt>Richard Frith-Macdonald (<a href="mailto:richard@brainstorm.co.uk"><code>richard@brainstorm.co.uk</code></a>)</dt>
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.127</p>
-    <p><b>Date:</b> 2003/04/06 17:20:04</p>
+    <p><b>Version:</b> 1.129</p>
+    <p><b>Date:</b> 2003/07/15 16:35:11</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1998 Free Software Foundation, Inc.</p>
 
         <div>
@@ -91,6 +85,7 @@
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+array">+array</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithArray:">+arrayWithArray:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithContentsOfFile:">+arrayWithContentsOfFile:</a></li>
+      <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithContentsOfURL:">+arrayWithContentsOfURL:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithObject:">+arrayWithObject:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithObjects:,...">+arrayWithObjects:,...</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithObjects:count:">+arrayWithObjects:count:</a></li>
@@ -112,6 +107,7 @@
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithArray:">-initWithArray:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithArray:copyItems:">-initWithArray:copyItems:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithContentsOfFile:">-initWithContentsOfFile:</a></li>
+      <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithContentsOfURL:">-initWithContentsOfURL:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithObjects:,...">-initWithObjects:,...</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithObjects:count:">-initWithObjects:count:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-insertionPosition:usingFunction:context:">-insertionPosition:usingFunction:context:</a></li>
@@ -166,6 +162,26 @@
             and initialised using the
             <a rel="gsdoc" href="#method$NSArray-initWithContentsOfFile:">
               -initWithContentsOfFile:
+            </a>
+
+            method. See the documentation for those methods for
+            more detail.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSArray+arrayWithContentsOfURL:">arrayWithContentsOfURL:</a></h3>
+    + (id) <b>arrayWithContentsOfURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)aURL;<br />
+    <p>
+      
+            Returns an autoreleased array from the contenta of
+            <var>aURL</var>. The new array is created using
+            <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone:">
+              +allocWithZone:
+            </a>
+
+            and initialised using the
+            <a rel="gsdoc" href="#method$NSArray-initWithContentsOfURL:">
+              -initWithContentsOfURL:
             </a>
 
             method. See the documentation for those methods for
@@ -250,7 +266,7 @@
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            Returns the number of elements contained in the
+            * Returns the number of elements contained in the
             receiver.
           
     </p>
@@ -345,7 +361,7 @@ Subclasses <strong>should</strong> override this method.<br />
       
             Returns the index of the first object found in the
             receiver which is equal to <var>anObject</var>
-            (using anObject's
+            (using anObject&apos;s
             <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
               -isEqual:
             </a>
@@ -360,7 +376,7 @@ Subclasses <strong>should</strong> override this method.<br />
       
             Returns the index of the first object found in
             <var>aRange</var> of receiver which is equal to
-            <var>anObject</var> (using anObject's
+            <var>anObject</var> (using anObject&apos;s
             <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
               -isEqual:
             </a>
@@ -469,6 +485,55 @@ Subclasses <strong>should</strong> override this method.<br />
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSArray-initWithContentsOfURL:">initWithContentsOfURL:</a></h3>
+    - (id) <b>initWithContentsOfURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)aURL;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Initialises the array with the contents of
+              the specified URL, which must contain an array in
+              property-list format.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              In GNUstep, the property-list format may be either the
+              OpenStep format (ASCII data), or the MacOS-X
+              format (URF8 XML data)... this method will
+              recognise which it is.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              If there is a failure to load the URL for any reason,
+              the receiver will be released, the method will return
+              <code>nil</code>, and a warning may be logged.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Works by invoking
+              <a rel="gsdoc" href="NSString.html#method$NSString-initWithContentsOfURL:">[NSString&nbsp;-initWithContentsOfURL:]</a>
+ and <a rel="gsdoc" href="NSString.html#method$NSString-propertyList">[NSString&nbsp;-propertyList]</a>
+ then checking that the result is an array.
+                </p>
+    <p>
+      
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSArray-initWithObjects:,...">initWithObjects:,...</a></h3>
     - (id) <b>initWithObjects:</b> (id)firstObject<b>,...</b>;<br />
     <p>
@@ -483,10 +548,10 @@ Subclasses <strong>should</strong> override this method.<br />
 This is a designated initialiser for the class.<br />
     <p>
       
-            Initialize the array with <var>count</var>
-            <var>objects</var>. <br /> Retains each object placed
-            in the array. <br /> Like all initializers, may change
-            the value of self before returning it.
+            * Initialize the array with <var>count</var>
+            <var>objects</var>. <br /> * Retains each object
+            placed in the array. <br /> * Like all initializers,
+            may change the value of self before returning it.
           
     </p>
     <hr width="25%" align="left" />
@@ -556,9 +621,9 @@ This is a designated initialiser for the class.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            Returns the object at the specified
-            <var>index</var>. Raises an exception of the
-            <var>index</var> is beyond the array.
+            * Returns the object at the specified <var>index</var>. *
+            Raises an exception of the <var>index</var> is
+            beyond the array.
           
     </p>
     <hr width="25%" align="left" />
@@ -805,9 +870,9 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            Adds <var>anObject</var> at the end of the array, thus
-            increasing the size of the array. The object is
-            retained upon addition.
+            * Adds <var>anObject</var> at the end of the array, thus
+            increasing the size of * the array. The object
+            is retained upon addition.
           
     </p>
     <hr width="25%" align="left" />
@@ -835,8 +900,8 @@ Subclasses <strong>should</strong> override this method.<br />
 This is a designated initialiser for the class.<br />
     <p>
       
-            Initialise the array with the specified capacity
-            ... this should ensure that the array can have
+            * Initialise the array with the specified capacity...
+            this * should ensure that the array can have
             <var>numItems</var> added efficiently.
           
     </p>
@@ -846,11 +911,11 @@ This is a designated initialiser for the class.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            Inserts an object into the receiver at the
-            specified location. <br /> Raises an exception if
-            given an array <var>index</var> which is too large.
-            <br /> The size of the array increases by one.
-            <br /> The object is retained by the array.
+            * Inserts an object into the receiver at the specified
+            location. <br /> * Raises an exception if given
+            an array <var>index</var> which is too large. <br /> *
+            The size of the array increases by one. <br /> * The
+            object is retained by the array.
           
     </p>
     <hr width="25%" align="left" />
@@ -906,9 +971,9 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            Removes an object from the receiver at the
-            specified location. <br /> The size of the array
-            decreases by one. <br /> Raises an exception if
+            * Removes an object from the receiver at the specified
+            location. <br /> * The size of the array
+            decreases by one. <br /> * Raises an exception if
             given an array <var>index</var> which is too large.
             <br />
           
@@ -975,10 +1040,10 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            Places an object into the receiver at the specified
-            location. <br /> Raises an exception if given an
-            array <var>index</var> which is too large. <br /> The
-            object is retained by the array.
+            * Places an object into the receiver at the specified
+            location. <br /> * Raises an exception if given
+            an array <var>index</var> which is too large. <br /> *
+            The object is retained by the array.
           
     </p>
     <hr width="25%" align="left" />
@@ -1074,7 +1139,7 @@ Subclasses <strong>should</strong> override this method.<br />
             <var>item</var> to be added, the second is the
             <var>item</var> already in the array. The function
             should return NSOrderedAscending if the
-            <var>item</var> to be added is 'less than' the
+            <var>item</var> to be added is &apos;less than&apos; the
             <var>item</var> in the array, NSOrderedDescending if
             it is greater, and NSOrderedSame if it is equal.
           

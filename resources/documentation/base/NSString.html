@@ -9,14 +9,12 @@
     <h1><a name="title$NSString">NSString class reference</a></h1>
     <h3>Authors</h3>
     <dl>
-      <dt>Andrew Kachites McCallum(<a href="mailto:mccallum@gnu.ai.mit.edu"><code>
-        mccallum@gnu.ai.mit.edu
-      </code></a>)</dt>
+      <dt>Andrew Kachites McCallum (<a href="mailto:mccallum@gnu.ai.mit.edu"><code>mccallum@gnu.ai.mit.edu</code></a>)</dt>
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.291</p>
-    <p><b>Date:</b> 2003/03/31 02:59:56</p>
+    <p><b>Version:</b> 1.295</p>
+    <p><b>Date:</b> 2003/07/08 08:39:45</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -277,7 +275,7 @@
     <p>
 
             A constant NSString can be created using the following
-            syntax: <code>@"..."</code>, where the contents of
+            syntax: <code>@&quot;...&quot;</code>, where the contents of
             the quotes are the string, using only ASCII characters.
               </p>
     <p>
@@ -346,6 +344,8 @@
       <li><a rel="gsdoc" href="NSString.html#method$NSString-dataUsingEncoding:allowLossyConversion:">-dataUsingEncoding:allowLossyConversion:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-description">-description</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-doubleValue">-doubleValue</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep-devel/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString-drawAtPoint:withAttributes:">-drawAtPoint:withAttributes:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep-devel/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString-drawInRect:withAttributes:">-drawInRect:withAttributes:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-fastestEncoding">-fastestEncoding</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-fileSystemRepresentation">-fileSystemRepresentation</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-floatValue">-floatValue</a></li>
@@ -396,6 +396,7 @@
       <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfString:">-rangeOfString:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfString:options:">-rangeOfString:options:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-rangeOfString:options:range:">-rangeOfString:options:range:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep-devel/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString-sizeWithAttributes:">-sizeWithAttributes:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-smallestEncoding">-smallestEncoding</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByAbbreviatingWithTildeInPath">-stringByAbbreviatingWithTildeInPath</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByAppendingFormat:,...">-stringByAppendingFormat:,...</a></li>
@@ -440,7 +441,7 @@
       
             Return the class used to store constant strings
             (those ascii strings placed in the source code using
-            the @"this is a string" syntax). <br /> Use this method
+            the @&quot;this is a string&quot; syntax). <br /> Use this method
             to obtain the constant string class rather than using
             the obsolete name <em>NXConstantString</em> in your
             code... with more recent compiler versions the name of
@@ -472,7 +473,7 @@
 
               You should <em>NOT</em> override this method in an
               attempt to change the encoding being used... it
-              won't work.
+              won&apos;t work.
                 </p>
     <p>
       
@@ -620,7 +621,7 @@
     - (BOOL) <b>boolValue</b>;<br />
     <p>
       
-            If the string consists of the words 'true' or 'yes'
+            If the string consists of the words &apos;true&apos; or &apos;yes&apos;
             (case insensitive) or begins with a non-zero numeric
             value, return <code>YES</code>, otherwise return
             <code>NO</code>.
@@ -762,7 +763,11 @@
     - (double) <b>doubleValue</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the strings content as a double. Skips
+            leading whitespace. <br /> Conversion is not
+            localised (ie uses &apos;.&apos; as the decimal separator).
+            <br /> Returns 0.0 on underflow or if the string
+            does not contain a number.
           
     </p>
     <hr width="25%" align="left" />
@@ -786,7 +791,11 @@
     - (float) <b>floatValue</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the strings content as a double. Skips
+            leading whitespace. <br /> Conversion is not
+            localised (ie uses &apos;.&apos; as the decimal separator).
+            <br /> Returns 0.0 on underflow or if the string
+            does not contain a number.
           
     </p>
     <hr width="25%" align="left" />
@@ -960,10 +969,10 @@
 This is a designated initialiser for the class.<br />
     <p>
       
-            This is the most basic initialiser for unicode
-            strings. In the GNUstep implementation, your
-            subclasses may override this initialiser in
-            order to have all others function.
+            * This is the most basic initialiser for unicode strings.
+            * In the GNUstep implementation, your subclasses may
+            override * this initialiser in order to have all
+            others function.
           
     </p>
     <hr width="25%" align="left" />
@@ -1146,7 +1155,7 @@ This is a designated initialiser for the class.<br />
             Returns a string containing the last path component
             of the receiver. <br /> The path component is the last
             non-empty substring delimited by the ends of the
-            string or by path * separator ('/') characters.
+            string or by path * separator (&apos;/&apos;) characters.
             <br /> If the receiver is an empty string, it is
             simply returned. <br /> If there are no non-empty
             substrings, the root string is returned.
@@ -1212,7 +1221,7 @@ This is a designated initialiser for the class.<br />
       
             Returns the path components of the reciever
             separated into an array. <br /> If the receiver
-            begins with a '/' character then that is used as the
+            begins with a &apos;/&apos; character then that is used as the
             first element in the array. <br /> Empty components
             are removed.
           
@@ -1225,7 +1234,7 @@ This is a designated initialiser for the class.<br />
             Returns a new string containing the path extension
             of the receiver. <br /> The path extension is a suffix
             on the last path component which starts with the
-            extension separator (a '.') (for example.tiff is
+            extension separator (a &apos;.&apos;) (for example.tiff is
             the pathExtension for /foo/bar.tiff). <br /> Returns an
             empty string if no such extension exists.
           
@@ -1253,10 +1262,10 @@ This is a designated initialiser for the class.<br />
 
               There are three readable <em>property list</em>
               storage formats - The binary format used by
-              NSSerializer
+              <a rel="gsdoc" href="NSSerialization.html#class$NSSerializer">NSSerializer</a>
 
-                does not concern us here, but there are two 'human
-                readable' formats, the <em>traditional</em>
+                does not concern us here, but there are two &apos;human
+                readable&apos; formats, the <em>traditional</em>
                 OpenStep format (which is extended in GNUstep)
                 and the <em>XML</em> format.
                   </p>
@@ -1333,7 +1342,7 @@ This is a designated initialiser for the class.<br />
                     element).
 
 <pre>
-       ( "one", "two", "three" )
+       ( &quot;one&quot;, &quot;two&quot;, &quot;three&quot; )
      </pre>
           
             In XML format, an array is an element whose name is
@@ -1380,7 +1389,7 @@ This is a designated initialiser for the class.<br />
               objects, but older code will not read
               <em>property lists</em> containing this extension.
               <br /> This format consists of an asterisk follwed
-              by the letter 'D' then a date/time in YYYY-MM-DD
+              by the letter &apos;D&apos; then a date/time in YYYY-MM-DD
               HH:MM:SS +/-ZZZZ format, all enclosed within
               angle brackets.
 
@@ -1415,7 +1424,7 @@ This is a designated initialiser for the class.<br />
 
 <pre>
        {
-         "key1" = "value1";
+         &quot;key1&quot; = &quot;value1&quot;;
        }
      </pre>
           
@@ -1499,7 +1508,7 @@ This is a designated initialiser for the class.<br />
             </li>
             <li>
               
-                    <strong>"</strong> a quote character
+                    <strong>&quot;</strong> a quote character
                   
             </li>
             <li>
@@ -1540,17 +1549,17 @@ This is a designated initialiser for the class.<br />
           
 
 <pre>
-       "hello world &amp; others"
+       &quot;hello world &amp; others&quot;
      </pre>
           
             In XML format, the string is simply stored in UTF8
             format as the content of a <code>string</code>
             element, and the only character escapes required
-            are those used by XML such as the '&amp;lt;' markup
-            representing a '&lt;' character.
+            are those used by XML such as the &apos;&amp;lt;&apos; markup
+            representing a &apos;&lt;&apos; character.
 
 <pre>
-       &lt;string&gt;hello world &amp;amp; others&lt;/string&gt;"
+       &lt;string&gt;hello world &amp;amp; others&lt;/string&gt;&quot;
      </pre>
           
           
@@ -1572,7 +1581,7 @@ This is a designated initialiser for the class.<br />
               from a simplified file format. This format is a
               traditional style property list file
               containing a single dictionary, but with the
-              leading '{' and trailing '}' characters omitted.
+              leading &apos;{&apos; and trailing &apos;}&apos; characters omitted.
                 </p>
     <p>
       
@@ -1593,9 +1602,9 @@ This is a designated initialiser for the class.<br />
 
 <pre>  
    // Strings file entries follow -
-   key1 = " a string value";
+   key1 = &quot; a string value&quot;;
    key2;	// This key has an empty string as a value.
-   "Another key" = "a longer string value for th third key";
+   &quot;Another key&quot; = &quot;a longer string value for th third key&quot;;
  </pre>
       
           
@@ -1707,7 +1716,7 @@ This is a designated initialiser for the class.<br />
     <p>
       
             Returns a string where a prefix of the current
-            user's home directory is abbreviated by '~', or
+            user&apos;s home directory is abbreviated by &apos;~&apos;, or
             returns the receiver if it was not found to have
             the home directory as a prefix.
           
@@ -1737,9 +1746,9 @@ This is a designated initialiser for the class.<br />
       
             Returns a new string with the path extension given
             in <var>aString</var> appended to the receiver after the
-            extensionSeparator ('.'). <br /> If the
-            receiver has trailing '/' characters which are not
-            part of the root directory, those '/' characters are
+            extensionSeparator (&apos;.&apos;). <br /> If the
+            receiver has trailing &apos;/&apos; characters which are not
+            part of the root directory, those &apos;/&apos; characters are
             stripped before the extension separator is added.
           
     </p>
@@ -1777,7 +1786,7 @@ This is a designated initialiser for the class.<br />
             removed from the receiver. <br /> Strips any
             trailing path separators before checking for the
             extension separator. <br /> Does not consider a
-            string starting with the extension separator ('.')
+            string starting with the extension separator (&apos;.&apos;)
             to be a path extension.
           
     </p>
@@ -1787,7 +1796,7 @@ This is a designated initialiser for the class.<br />
     <p>
       
             Returns a string created by expanding the initial
-            tilde ('~') and any following username to be the home
+            tilde (&apos;~&apos;) and any following username to be the home
             directory of the current user or the named user.
             <br /> Returns the receiver if it was not possible
             to expand it.
@@ -1834,8 +1843,8 @@ This is a designated initialiser for the class.<br />
                 -stringByExpandingTildeInPath
               </a>
 
-              to expand tilde expressions. <br /> Simplifies '//'
-              and '/./' sequences. <br /> Removes any '/private'
+              to expand tilde expressions. <br /> Simplifies &apos;//&apos;
+              and &apos;/./&apos; sequences. <br /> Removes any &apos;/private&apos;
               prefix.
                 </p>
     <p>
@@ -1846,7 +1855,7 @@ This is a designated initialiser for the class.<br />
 
               For absolute paths, uses
               <a rel="gsdoc" href="#method$NSString-stringByResolvingSymlinksInPath">-stringByResolvingSymlinksInPath</a>
- to resolve any links, then gets rid of '/../' sequences.
+ to resolve any links, then gets rid of &apos;/../&apos; sequences.
                 </p>
     <p>
       
@@ -1983,7 +1992,7 @@ This is a designated initialiser for the class.<br />
 
             The NXConstantString class is used to hold constant
             8-bit character string objects produced by the
-            compiler where it sees @"..." in the source. The
+            compiler where it sees @&quot;...&quot; in the source. The
             compiler generates the instances of this class -
             which has three instance variables -
               </p>

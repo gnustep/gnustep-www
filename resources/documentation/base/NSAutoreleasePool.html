@@ -9,14 +9,15 @@
     <h1><a name="title$NSAutoreleasePool">NSAutoreleasePool class reference</a></h1>
     <h3>Authors</h3>
     <dl>
-      <dt>Andrew Kachites McCallum(<a href="mailto:mccallum@gnu.ai.mit.edu"><code>
-        mccallum@gnu.ai.mit.edu
-      </code></a>)</dt>
+      <dt>Andrew Kachites McCallum (<a href="mailto:mccallum@gnu.ai.mit.edu"><code>mccallum@gnu.ai.mit.edu</code></a>)</dt>
+      <dd>
+      </dd>
+      <dt>Richard Frith-Macdonald (<a href="mailto:rfm@gnu.org"><code>rfm@gnu.org</code></a>)</dt>
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.48</p>
-    <p><b>Date:</b> 2003/01/03 20:14:46</p>
+    <p><b>Version:</b> 1.51</p>
+    <p><b>Date:</b> 2003/06/15 05:24:07</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1997 Free Software Foundation, Inc.</p>
 
         <div>
@@ -46,8 +47,47 @@
     </p>
     <p>
 
-            This class maintains a stack of autorelease pools
-            objects in each thread.
+            The standard OpenStep system of memory management
+            employs retain counts. When an object is created,
+            it has a retain count of 1. When an object is retained,
+            the retain count is incremented. When it is released
+            the retain count is decremented, and when the retain
+            count goes to zero the object gets deallocated.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            A simple retain/release mechanism is not very interesting
+            ... so it&apos;s spiced up with autorelease pools. You can
+            use the
+            <a rel="gsdoc" href="Functions.html#macro$AUTORELEASE">
+              AUTORELEASE()
+            </a>
+
+            macro to call the
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-autorelease">
+              [NSObject&nbsp;-autorelease]
+            </a>
+
+            method, which adds an object to the current
+            autorelease pool by calling
+            <a rel="gsdoc" href="#method$NSAutoreleasePool+addObject:">[NSAutoreleasePool&nbsp;+addObject:]</a>
+. <br /> An autorelease pool simply maintains a reference to each object added to it, and for each addition, the autorelease pool will call the <a rel="gsdoc" href="NSObject.html#method$NSObject-release">[NSObject&nbsp;-release]</a>
+ method of the object when the pool is released. So doing an <a rel="gsdoc" href="Functions.html#macro$AUTORELEASE">AUTORELEASE()</a>
+ is just the same as doing a <a rel="gsdoc" href="Functions.html#macro$RELEASE">RELEASE()</a>
+, but deferred until the current autorelease pool is deallocated.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The NSAutoreleasePool class maintains a separate stack
+            of autorelease pools objects in each thread.
               </p>
     <p>
       
@@ -69,6 +109,109 @@
             the stack) is removed from the stack.
               </p>
     <p>
+      
+          
+    </p>
+    <p>
+
+            This mechanism provides a simple but controllable and
+            reasonably efficient way of managing temporary
+            objects. An object can be autoreleased and then
+            passed around and used until the topmost pool in the
+            stack is destroyed.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            Most methods return objects which are either owned by
+            autorelease pools or by the receiver of the
+            method, so the lifetime of the returned object can
+            be assumed to be the shorter of the lifetime of the
+            current autorelease pool, or that of the receiver
+            on which the method was called. <br /> The exceptions to
+            this are those object returned by -
+              </p>
+    <p>
+      
+          
+      <dl>
+        <dt>
+              <a rel="gsdoc" href="NSObject.html#method$NSObject+alloc">
+                [NSObject&nbsp;+alloc]
+              </a>
+
+              ,
+              <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone:">[NSObject&nbsp;+allocWithZone:]</a>
+
+            </dt>
+        <dd>
+          
+              Methods whose names begin with alloc return an
+              uninitialised object, owned by the caller.
+            
+        </dd>
+        <dt>
+              <a rel="gsdoc" href="NSObject.html#method$NSObject-init">
+                [NSObject&nbsp;-init]
+              </a>
+
+            </dt>
+        <dd>
+          
+              Methods whose names begin with init return an
+              initialised version of the receiving object,
+              owned by the caller. <br /> NB. The returned object
+              may not actualy be the same as the receiver...
+              sometimes an init method releases the original
+              receiver and returns an alternative.
+            
+        </dd>
+        <dt>
+              <a rel="gsdoc" href="NSObject.html#method$NSObject+new">
+                [NSObject&nbsp;+new]
+              </a>
+
+            </dt>
+        <dd>
+          
+              Methods whose names begin with new combine the
+              effects of allocation and initialisation.
+            
+        </dd>
+        <dt>
+              <a rel="gsdoc" href="NSObject.html#method$NSObject-copy">
+                [NSObject&nbsp;-copy]
+              </a>
+
+              ,
+              <a rel="gsdoc" href="NSObject.html#method$(NSCopying)-copyWithZone:">[&lt;NSCopying&gt;-copyWithZone:]</a>
+
+            </dt>
+        <dd>
+          
+              Methods whose names begin with copy create a copy
+              of the receiver which is owned by the caller.
+            
+        </dd>
+        <dt>
+              <a rel="gsdoc" href="NSObject.html#method$NSObject-mutableCopy">
+                [NSObject&nbsp;-mutableCopy]
+              </a>
+
+              ,
+              <a rel="gsdoc" href="NSObject.html#method$(NSMutableCopying)-mutableCopyWithZone:">[&lt;NSMutableCopying&gt;-mutableCopyWithZone:]</a>
+
+            </dt>
+        <dd>
+          
+              Methods whose names begin with mutableCopy create
+              a copy of the receiver which is owned by the caller.
+            
+        </dd>
+      </dl>
       
         
     </p>
@@ -92,7 +235,10 @@
             <em>Warning</em> the underscore at the start of the
             name of this method indicates that it is private, for
             internal use only, and you should not use the
-            method in your code.
+            method in your code. <br /> Destroys all the
+            autorelease pools in the <var>thread</var>. You
+            should not call this directly, it&apos;s called
+            automatically when a <var>thread</var> exits.
           
     </p>
     <hr width="25%" align="left" />
@@ -102,7 +248,8 @@
       
             Adds the specified object to the current autorelease
             pool. If there is no autorelease pool in the thread,
-            a warning is logged.
+            a warning is logged and the object is leaked (ie it will
+            not be released).
           
     </p>
     <hr width="25%" align="left" />
@@ -190,7 +337,8 @@
     + (void) <b>resetTotalAutoreleasedObjects</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Resets (to zero) the count of autoreleased objects
+            in the current thread.
           
     </p>
     <hr width="25%" align="left" />
@@ -231,7 +379,16 @@ Default value is maxint.    </p>
     + (unsigned) <b>totalAutoreleasedObjects</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the number of objects which have been
+            autoreleased in the current thread since the
+            last call to
+            <a rel="gsdoc" href="#method$NSAutoreleasePool+resetTotalAutoreleasedObjects">
+              +resetTotalAutoreleasedObjects
+            </a>
+
+            . <br /> NB. This is not normally supported... enable it
+            as a compile time option by editing NSAutoreleasePool.m
+            when building the base library.
           
     </p>
     <hr width="25%" align="left" />
