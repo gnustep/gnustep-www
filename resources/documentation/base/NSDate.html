@@ -25,8 +25,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.76</p>
-    <p><b>Date:</b> 2002/11/27 12:52:28</p>
+    <p><b>Version:</b> 1.77</p>
+    <p><b>Date:</b> 2003/05/16 12:45:02</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -61,7 +61,10 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          NSDate is the abstract base class of a cluster of date
+          classes. <br /> An NSDate object encapsulates a
+          constant date/time to a high resolution represented
+          by the NSTimeInterval typedef.
         
     </p>
     <b>Method summary</b>
@@ -100,7 +103,8 @@
     + (id) <b>date</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance representing the
+            current date/time.
           
     </p>
     <hr width="25%" align="left" />
@@ -108,7 +112,11 @@
     + (id) <b>dateWithNaturalLanguageString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)string;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance representing the
+            date and time given by <var>string</var>. The value of
+            <var>string</var> may be a 'natural' specification as
+            specified by the preferences in the user defaults
+            database, allowing phrases like 'last tuesday'
           
     </p>
     <hr width="25%" align="left" />
@@ -116,7 +124,94 @@
     + (id) <b>dateWithNaturalLanguageString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)string<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Returns an autoreleased instance representing the
+              date and time given by <var>string</var>. The value
+              of <var>string</var> may be a 'natural' specification
+              as specified by the preferences in the user defaults
+              database, allowing phrases like 'last tuesday'
+                </p>
+    <p>
+      
+            The <var>locale</var> contains keys such as -
+            
+      <dl>
+        <dt>NSDateTimeOrdering</dt>
+        <dd>
+          
+                Controls the use of ambiguous numbers. This is
+                done as a sequence of the letters D(ay), M(onth),
+                Y(ear), and H(our). YMDH means that the first
+                number encountered is assumed to be a year, the
+                second a month, the third a day, and the last an
+                hour.
+              
+        </dd>
+        <dt>NSEarlierTimeDesignations</dt>
+        <dd>
+          
+                An array of strings for times in the past. <br />
+                Defaults are <em>ago</em>, <em>last</em>,
+                <em>past</em>, <em>prior</em>
+              
+        </dd>
+        <dt>NSHourNameDesignations</dt>
+        <dd>
+          
+                An array of arrays of strings identifying the time
+                of day. Each array has an hour as its first value,
+                and one or more words as subsequent values. <br />
+                Defaults are: (0, midnight), (10, mornint),
+                (12, noon, lunch), (14, afternoon), (19, dinner).
+              
+        </dd>
+        <dt>NSLaterTimeDesignations</dt>
+        <dd>
+          
+                An array of strings for times in the future. <br />
+                Default is <em>next</em>
+              
+        </dd>
+        <dt>NSNextDayDesignations</dt>
+        <dd>
+          
+                The day after today. Default is <em>tomorrow.</em>
+              
+        </dd>
+        <dt>NSNextNextDayDesignations</dt>
+        <dd>
+          
+                The day after tomorrow. Default is
+                <em>nextday.</em>
+              
+        </dd>
+        <dt>NSPriorDayDesignations</dt>
+        <dd>
+          
+                The day before today. Default is
+                <em>yesterday.</em>
+              
+        </dd>
+        <dt>NSThisDayDesignations</dt>
+        <dd>
+          
+                Identifies the current day. Default is
+                <em>today.</em>
+              
+        </dd>
+        <dt>NSYearMonthWeekDesignations</dt>
+        <dd>
+          
+                An array giving the word for year, month, and week.
+                <br /> Defaults are <em>year</em>,
+                <em>month</em> and <em>week</em>.
+              
+        </dd>
+      </dl>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -124,7 +219,10 @@
     + (id) <b>dateWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)description;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance with the date and
+            time value given by the string using the ISO standard
+            format YYYY-MM-DD HH:MM:SS +/-HHHMM (all the fields
+            of which must be present).
           
     </p>
     <hr width="25%" align="left" />
@@ -132,7 +230,9 @@
     + (id) <b>dateWithTimeIntervalSince1970:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)seconds;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance with the offset
+            from the unix system reference date of 1 January 1970,
+            GMT.
           
     </p>
     <hr width="25%" align="left" />
@@ -140,7 +240,9 @@
     + (id) <b>dateWithTimeIntervalSinceNow:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)seconds;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance with the offset
+            from the current date/time given by <var>seconds</var>
+            (which may be fractional).
           
     </p>
     <hr width="25%" align="left" />
@@ -148,7 +250,9 @@
     + (id) <b>dateWithTimeIntervalSinceReferenceDate:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)seconds;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance with the offset
+            from the OpenStep reference date of 1 January 2001,
+            GMT.
           
     </p>
     <hr width="25%" align="left" />
@@ -156,7 +260,8 @@
     + (id) <b>distantFuture</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance with th date/time
+            set in the far future.
           
     </p>
     <hr width="25%" align="left" />
@@ -164,7 +269,8 @@
     + (id) <b>distantPast</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance with th date/time
+            set in the far past.
           
     </p>
     <hr width="25%" align="left" />
@@ -172,7 +278,8 @@
     + (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>) <b>timeIntervalSinceReferenceDate</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the time interval between the current date
+            and the reference date (1 January 2001, GMT).
           
     </p>
     <hr width="25%" align="left" />
@@ -180,7 +287,9 @@
     - (id) <b>addTimeInterval:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)seconds;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased NSDate instance whose value
+            if offset from that of the receiver by
+            <var>seconds</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -188,7 +297,11 @@
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSDate">NSDate</a>*)otherDate;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns NSOrderedDescending if the receiver is
+            later than <var>otherDate</var>, Returns
+            NSOrderedAscending if the receiver is
+            earlier than <var>otherDate</var>, Otherwise,
+            returns NSOrderedSame.
           
     </p>
     <hr width="25%" align="left" />
@@ -196,7 +309,13 @@
     - (<a rel="gsdoc" href="NSCalendarDate.html#class$NSCalendarDate">NSCalendarDate</a>*) <b>dateWithCalendarFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)formatString<b> timeZone:</b> (<a rel="gsdoc" href="NSTimeZone.html#class$NSTimeZone">NSTimeZone</a>*)timeZone;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance of the
+            <a rel="gsdoc" href="NSCalendarDate.html#class$NSCalendarDate">NSCalendarDate</a>
+
+              class whose date/time value is the same as that of
+              the receiver, and which uses the
+              <var>formatString</var> and <var>timeZone</var>
+              specified.
           
     </p>
     <hr width="25%" align="left" />
@@ -204,7 +323,9 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>description</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string representation of the receiver
+            formatted according to the default format string,
+            time zone, and locale.
           
     </p>
     <hr width="25%" align="left" />
@@ -212,7 +333,9 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithCalendarFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format<b> timeZone:</b> (<a rel="gsdoc" href="NSTimeZone.html#class$NSTimeZone">NSTimeZone</a>*)aTimeZone<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)l;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string representation of the receiver
+            formatted according to the specified
+            <var>format</var> string, time zone, and locale.
           
     </p>
     <hr width="25%" align="left" />
@@ -220,7 +343,9 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string representation of the receiver
+            formatted according to the default format string
+            and time zone, but using the given <var>locale</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -228,7 +353,9 @@
     - (<a rel="gsdoc" href="#class$NSDate">NSDate</a>*) <b>earlierDate:</b> (<a rel="gsdoc" href="#class$NSDate">NSDate</a>*)otherDate;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the earlier of the receiver and
+            <var>otherDate</var>. <br /> If the two represent
+            identical date/time values, returns the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -236,7 +363,10 @@
     - (id) <b>initWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)description;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an instance with the date and time value
+            given by the string using the ISO standard format
+            YYYY-MM-DD HH:MM:SS +/-HHHMM (all the fields of
+            which must be present).
           
     </p>
     <hr width="25%" align="left" />
@@ -244,7 +374,8 @@
     - (id) <b>initWithTimeInterval:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)secsToBeAdded<b> sinceDate:</b> (<a rel="gsdoc" href="#class$NSDate">NSDate</a>*)anotherDate;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an instance with the given offset from
+            <var>anotherDate</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -252,7 +383,8 @@
     - (id) <b>initWithTimeIntervalSince1970:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)seconds;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an instance with the offset from the unix
+            system reference date of 1 January 1970, GMT.
           
     </p>
     <hr width="25%" align="left" />
@@ -260,15 +392,18 @@
     - (id) <b>initWithTimeIntervalSinceNow:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)secsToBeAdded;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an instance with the offset from the
+            current date/time.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDate-initWithTimeIntervalSinceReferenceDate:">initWithTimeIntervalSinceReferenceDate:</a></h3>
     - (id) <b>initWithTimeIntervalSinceReferenceDate:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)secs;<br />
+This is a designated initialiser for the class.<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an instance with the given offset from the
+            OpenStep reference date of 1 January 2001, GMT.
           
     </p>
     <hr width="25%" align="left" />
@@ -284,7 +419,9 @@
     - (<a rel="gsdoc" href="#class$NSDate">NSDate</a>*) <b>laterDate:</b> (<a rel="gsdoc" href="#class$NSDate">NSDate</a>*)otherDate;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the earlier of the receiver and
+            <var>otherDate</var>. <br /> If the two represent
+            identical date/time values, returns the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -292,7 +429,9 @@
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>) <b>timeIntervalSince1970</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the time interval between the receivers
+            value and the unix system reference date of 1 January
+            1970, GMT.
           
     </p>
     <hr width="25%" align="left" />
@@ -300,7 +439,11 @@
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>) <b>timeIntervalSinceDate:</b> (<a rel="gsdoc" href="#class$NSDate">NSDate</a>*)otherDate;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the time interval between the receivers
+            value and that of the <var>otherDate</var> argument.
+            If <var>otherDate</var> is earlier than the receiver,
+            the returned value will be positive, if it is later it
+            will be negative.
           
     </p>
     <hr width="25%" align="left" />
@@ -308,7 +451,11 @@
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>) <b>timeIntervalSinceNow</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the time interval between the receivers
+            value and the current date/time. If the receiver
+            represents a date/time in the past this will be
+            negative, if it is in the future the returned
+            value will be positive.
           
     </p>
     <hr width="25%" align="left" />
@@ -316,7 +463,9 @@
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>) <b>timeIntervalSinceReferenceDate</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the time interval between the receivers
+            value and the OpenStep reference date of 1 Jan 2001
+            GMT.
           
     </p>
     <hr width="25%" align="left" />

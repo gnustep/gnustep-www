@@ -9,15 +9,20 @@
     <h1><a name="title$NSInvocation">NSInvocation class reference</a></h1>
     <h3>Authors</h3>
     <dl>
+      <dt>Richard Frith-Macdonald(<a href="mailto:richard@brainstorm.co.uk"><code>
+        richard@brainstorm.co.uk
+      </code></a>)</dt>
+      <dd>
+      </dd>
       <dt>Andrew Kachites McCallum(<a href="mailto:mccallum@gnu.ai.mit.edu"><code>
         mccallum@gnu.ai.mit.edu
       </code></a>)</dt>
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.50</p>
-    <p><b>Date:</b> 2003/02/04 18:18:47</p>
-    <p><b>Copyright:</b> (C) 1998 Free Software Foundation, Inc.</p>
+    <p><b>Version:</b> 1.55</p>
+    <p><b>Date:</b> 2003/04/17 06:20:17</p>
+    <p><b>Copyright:</b> (C) 1998,2003 Free Software Foundation, Inc.</p>
 
         <div>
       <hr width="50%" align="left" />
@@ -29,6 +34,10 @@
         <li>
           <a href="#002000000000">Software documentation for the NSInvocation(GNUstep)
         category</a>
+        </li>
+        <li>
+          <a href="#003000000000">Software documentation for the
+        NSInvocation(MacroSetup) category</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
@@ -54,11 +63,84 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            The NSInvocation class implements a mechanism of
+            constructing messages (as NSInvocation
+            instances), sending these to other objects, and
+            handling the returned values.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            An NSInvocation object may contain a target object to
+            which a message can be sent, or may send the message
+            to an arbitrary object. <br /> Each message consists of
+            a selector for that method and an argument list. Once the
+            message has been sent, the invocation will contain
+            a return value whose contents may be copied out of it.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The target, selector, and arguments of an instance be
+            constructed dynamically, providing a great deal
+            of power/flexibility.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The sending of the message to the target object (using
+            the <a rel="gsdoc" href="#method$NSInvocation-invoke">-invoke</a>
+ or
+            <a rel="gsdoc" href="#method$NSInvocation-invokeWithTarget:">
+              -invokeWithTarget:
+            </a>
+
+            method) can be done at any time, but a standard use
+            of this is by the
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-forwardInvocation:">[NSObject&nbsp;-forwardInvocation:]</a>
+ method which is called whenever a method is not implemented by the class of the object to which it was sent.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            Related to the class are two convenience macros...
+            <a rel="gsdoc" href="Functions.html#macro$NS_MESSAGE">
+              NS_MESSAGE()
+            </a>
+
+            and
+            <a rel="gsdoc" href="Functions.html#macro$NS_INVOCATION">
+              NS_INVOCATION()
+            </a>
+
+            to allow easy construction of invocations with all the
+            arguments set up.
+              </p>
+    <p>
+      
         
     </p>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_newProxyForInvocation:">+_newProxyForInvocation:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_newProxyForMessage:">+_newProxyForMessage:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_returnInvocationAndDestroyProxy:">+_returnInvocationAndDestroyProxy:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+invocationWithMethodSignature:">+invocationWithMethodSignature:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-argumentsRetained">-argumentsRetained</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-getArgument:atIndex:">-getArgument:atIndex:</a></li>
@@ -66,7 +148,6 @@
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithArgframe:selector:">-initWithArgframe:selector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithMethodSignature:">-initWithMethodSignature:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithSelector:">-initWithSelector:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithTarget:selector:">-initWithTarget:selector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithTarget:selector:,...">-initWithTarget:selector:,...</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-invoke">-invoke</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-invokeWithTarget:">-invokeWithTarget:</a></li>
@@ -87,7 +168,18 @@
     + (<a rel="gsdoc" href="#class$NSInvocation">NSInvocation</a>*) <b>invocationWithMethodSignature:</b> (<a rel="gsdoc" href="NSMethodSignature.html#class$NSMethodSignature">NSMethodSignature</a>*)_signature;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an invocation instance which can be used to
+            send messages to a target object using the described
+            signature. <br /> You must set the target and
+            selector (using
+            <a rel="gsdoc" href="#method$NSInvocation-setTarget:">
+              -setTarget:
+            </a>
+
+            and -setSelector:) before you attempt to use the
+            invocation. <br /> Raises an
+            NSInvalidArgumentException if
+            the signature is <code>nil</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -95,7 +187,9 @@
     - (BOOL) <b>argumentsRetained</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a flag to indicate whether object arguments
+            of the invocation (including its target) are retained by
+            the invocation.
           
     </p>
     <hr width="25%" align="left" />
@@ -103,7 +197,12 @@
     - (void) <b>getArgument:</b> (void*)buffer<b> atIndex:</b> (int)index;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Copies the argument identified by <var>index</var>
+            into the memory location specified by the
+            <var>buffer</var> argument. <br /> An
+            <var>index</var> of zero is the target object, an
+            <var>index</var> of one is the selector, so the
+            actual method arguments start at <var>index</var> 2.
           
     </p>
     <hr width="25%" align="left" />
@@ -111,7 +210,15 @@
     - (void) <b>getReturnValue:</b> (void*)buffer;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Copies the invocations return value to the location
+            pointed to by <var>buffer</var> if a return value
+            has been set (see the
+            <a rel="gsdoc" href="#method$NSInvocation-setReturnValue:">
+              -setReturnValue:
+            </a>
+
+            method). <br /> If there isn't a return value then
+            this method raises an exception.
           
     </p>
     <hr width="25%" align="left" />
@@ -119,7 +226,8 @@
     - (void) <b>invoke</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sends the message encapsulated in the invocation to
+            its target.
           
     </p>
     <hr width="25%" align="left" />
@@ -127,7 +235,8 @@
     - (void) <b>invokeWithTarget:</b> (id)anObject;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sends the message encapsulated in the invocation to
+            <var>anObject</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -135,7 +244,7 @@
     - (<a rel="gsdoc" href="NSMethodSignature.html#class$NSMethodSignature">NSMethodSignature</a>*) <b>methodSignature</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the method signature of the invocation.
           
     </p>
     <hr width="25%" align="left" />
@@ -143,7 +252,9 @@
     - (void) <b>retainArguments</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Instructs the invocation to retain its object
+            arguments (including the target). The default is
+            not to retain them.
           
     </p>
     <hr width="25%" align="left" />
@@ -151,7 +262,8 @@
     - (SEL) <b>selector</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the selector of the invocation (the
+            argument at index 1)
           
     </p>
     <hr width="25%" align="left" />
@@ -159,7 +271,39 @@
     - (void) <b>setArgument:</b> (void*)buffer<b> atIndex:</b> (int)index;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the argument identified by <var>index</var> from
+            the memory location specified by the <var>buffer</var>
+            argument. <br /> Using an <var>index</var> of 0
+            is equivalent to calling
+            <a rel="gsdoc" href="#method$NSInvocation-setTarget:">
+              -setTarget:
+            </a>
+
+            and using an argument of 1 is equivalent to
+            <a rel="gsdoc" href="#method$NSInvocation-setSelector:">
+              -setSelector:
+            </a>
+
+            <br /> Proper arguments start at <var>index</var> 2.
+            <br /> NB. Unlike
+            <a rel="gsdoc" href="#method$NSInvocation-setTarget:">
+              -setTarget:
+            </a>
+
+            and
+            <a rel="gsdoc" href="#method$NSInvocation-setSelector:">
+              -setSelector:
+            </a>
+
+            the value of <var>buffer</var> must be
+            <em>a pointer to</em> the argument to be set in the
+            invocation. <br /> If
+            <a rel="gsdoc" href="#method$NSInvocation-retainArguments">
+              -retainArguments
+            </a>
+
+            was called, then any object argument set in the
+            receiver is retained by it.
           
     </p>
     <hr width="25%" align="left" />
@@ -167,7 +311,8 @@
     - (void) <b>setReturnValue:</b> (void*)buffer;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the return value of the invocation to the item
+            that <var>buffer</var> points to.
           
     </p>
     <hr width="25%" align="left" />
@@ -175,7 +320,7 @@
     - (void) <b>setSelector:</b> (SEL)aSelector;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the selector for the invocation.
           
     </p>
     <hr width="25%" align="left" />
@@ -183,7 +328,12 @@
     - (void) <b>setTarget:</b> (id)anObject;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the target object for the invocation. <br /> If
+            <a rel="gsdoc" href="#method$NSInvocation-retainArguments">
+              -retainArguments
+            </a>
+
+            was called, then the target is retained.
           
     </p>
     <hr width="25%" align="left" />
@@ -191,7 +341,7 @@
     - (id) <b>target</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the target object of the invocation.
           
     </p>
     <hr width="25%" align="left" />
@@ -217,7 +367,9 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Provides some minor extensions and some utility
+          methods to aid integration of NSInvocation with the
+          ObjectiveC runtime.
         
     </p>
     <b>Method summary</b>
@@ -225,7 +377,6 @@
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithArgframe:selector:">-initWithArgframe:selector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithMethodSignature:">-initWithMethodSignature:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithSelector:">-initWithSelector:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithTarget:selector:">-initWithTarget:selector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithTarget:selector:,...">-initWithTarget:selector:,...</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-returnFrame:">-returnFrame:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-sendsToSuper">-sendsToSuper</a></li>
@@ -236,15 +387,32 @@
     - (id) <b>initWithArgframe:</b> (arglist_t)frame<b> selector:</b> (SEL)aSelector;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Internal use. <br /> Initialises the receiver with
+            a known selector and argument list as supplied to the
+            forward:: method by the ObjectiveC runtime when
+            it is unable to locate an implementation for mthe
+            selector in a class.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSInvocation(GNUstep)-initWithMethodSignature:">initWithMethodSignature:</a></h3>
     - (id) <b>initWithMethodSignature:</b> (<a rel="gsdoc" href="NSMethodSignature.html#class$NSMethodSignature">NSMethodSignature</a>*)aSignature;<br />
+This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialised an invocation instance which can be
+            used to send messages to a target object using
+            <var>aSignature</var>. <br /> You must set the target
+            and selector (using
+            <a rel="gsdoc" href="#method$NSInvocation-setTarget:">
+              -setTarget:
+            </a>
+
+            and -setSelector:) before you attempt to use the
+            invocation. <br /> Raises an
+            NSInvalidArgumentException if
+            <var>aSignature</var> is <code>nil</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -252,7 +420,16 @@
     - (id) <b>initWithSelector:</b> (SEL)aSelector;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Tries to produce a method signature based on
+            <var>aSelector</var> and uses that to initialise self
+            by calling the
+            <a rel="gsdoc" href="#method$NSInvocation-initWithMethodSignature:">
+              -initWithMethodSignature:
+            </a>
+
+            method. <br /> If the argument type of
+            <var>aSelector</var> cannot be determined, this
+            releases self and returns <code>nil</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -260,7 +437,9 @@
     - (id) <b>initWithTarget:</b> (id)anObject<b> selector:</b> (SEL)aSelector<b>,...</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialises the reciever with the specified
+            target, selector, and a variable number of
+            arguments.
           
     </p>
     <hr width="25%" align="left" />
@@ -268,7 +447,9 @@
     - (void*) <b>returnFrame:</b> (arglist_t)argFrame;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Internal use. <br /> Provides a return frame that
+            the ObjectiveC runtime can use to return the result of
+            an invocation to a calling function.
           
     </p>
     <hr width="25%" align="left" />
@@ -276,7 +457,11 @@
     - (BOOL) <b>sendsToSuper</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the status of the flag set by
+            <a rel="gsdoc" href="#method$NSInvocation-setSendsToSuper:">
+              -setSendsToSuper:
+            </a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -284,7 +469,88 @@
     - (void) <b>setSendsToSuper:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the <var>flag</var> to tell the invocation that
+            it should actually invoke a method in the superclass of
+            the target rather than the method of the target
+            itsself. <br /> This extension permits an
+            invocation to act like a regular method call
+            sent to <em>super</em> in the method of a class.
+          
+    </p>
+    <hr width="25%" align="left" />
+
+          <h1><a name="003000000000">
+        Software documentation for the
+        NSInvocation(MacroSetup) category
+      </a></h1>
+    <h2><a rel="gsdoc" href="#class$NSInvocation">NSInvocation</a>(<a name="category$NSInvocation(MacroSetup)">MacroSetup</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSInvocation.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          These methods are for internal use only... not public
+          API <br /> They are used by the
+          <a rel="gsdoc" href="Functions.html#macro$NS_INVOCATION">
+            NS_INVOCATION()
+          </a>
+
+          and
+          <a rel="gsdoc" href="Functions.html#macro$NS_MESSAGE">
+            NS_MESSAGE()
+          </a>
+
+          macros to help create invocations.
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_newProxyForInvocation:">+_newProxyForInvocation:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_newProxyForMessage:">+_newProxyForMessage:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_returnInvocationAndDestroyProxy:">+_returnInvocationAndDestroyProxy:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSInvocation(MacroSetup)+_newProxyForInvocation:">_newProxyForInvocation:</a></h3>
+    + (id) <b>_newProxyForInvocation:</b> (id)target;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSInvocation(MacroSetup)+_newProxyForMessage:">_newProxyForMessage:</a></h3>
+    + (id) <b>_newProxyForMessage:</b> (id)target;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSInvocation(MacroSetup)+_returnInvocationAndDestroyProxy:">_returnInvocationAndDestroyProxy:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSInvocation">NSInvocation</a>*) <b>_returnInvocationAndDestroyProxy:</b> (id)proxy;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />

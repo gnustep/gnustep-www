@@ -25,8 +25,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.123</p>
-    <p><b>Date:</b> 2003/01/20 17:18:06</p>
+    <p><b>Version:</b> 1.127</p>
+    <p><b>Date:</b> 2003/04/06 17:20:04</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1998 Free Software Foundation, Inc.</p>
 
         <div>
@@ -75,7 +75,15 @@
     </blockquote>
     <p>
       
-          A simple, low overhead, ordered container for objects.
+          A simple, low overhead, ordered container for objects. All
+          the objects in the container are retained by it. The
+          container may not contain <code>nil</code> (though
+          it may contain
+          <a rel="gsdoc" href="NSNull.html#method$NSNull+null">
+            [NSNull&nbsp;+null]
+          </a>
+
+          ).
         
     </p>
     <b>Method summary</b>
@@ -84,7 +92,6 @@
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithArray:">+arrayWithArray:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithContentsOfFile:">+arrayWithContentsOfFile:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithObject:">+arrayWithObject:</a></li>
-      <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithObjects:">+arrayWithObjects:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithObjects:,...">+arrayWithObjects:,...</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithObjects:count:">+arrayWithObjects:count:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-arrayByAddingObject:">-arrayByAddingObject:</a></li>
@@ -105,7 +112,6 @@
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithArray:">-initWithArray:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithArray:copyItems:">-initWithArray:copyItems:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithContentsOfFile:">-initWithContentsOfFile:</a></li>
-      <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithObjects:">-initWithObjects:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithObjects:,...">-initWithObjects:,...</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithObjects:count:">-initWithObjects:count:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-insertionPosition:usingFunction:context:">-insertionPosition:usingFunction:context:</a></li>
@@ -602,7 +608,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSArray-sortedArrayUsingFunction:context:">sortedArrayUsingFunction:context:</a></h3>
-    - (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*) <b>sortedArrayUsingFunction:</b> (int(*)(id,id,void*))comparator<b> context:</b> (void*)context;<br />
+    - (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*) <b>sortedArrayUsingFunction:</b> (NSComparisonResult(*)(id,id,void*))comparator<b> context:</b> (void*)context;<br />
     <p>
       
             Returns an autoreleased array in which the objects
@@ -614,7 +620,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSArray-sortedArrayUsingFunction:context:hint:">sortedArrayUsingFunction:context:hint:</a></h3>
-    - (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*) <b>sortedArrayUsingFunction:</b> (int(*)(id,id,void*))comparator<b> context:</b> (void*)context<b> hint:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)hint;<br />
+    - (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*) <b>sortedArrayUsingFunction:</b> (NSComparisonResult(*)(id,id,void*))comparator<b> context:</b> (void*)context<b> hint:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)hint;<br />
     <p>
       
             Returns an autoreleased array in which the objects
@@ -1007,7 +1013,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSMutableArray-sortUsingFunction:context:">sortUsingFunction:context:</a></h3>
-    - (void) <b>sortUsingFunction:</b> (int(*)(id,id,void*))compare<b> context:</b> (void*)context;<br />
+    - (void) <b>sortUsingFunction:</b> (NSComparisonResult(*)(id,id,void*))compare<b> context:</b> (void*)context;<br />
     <p>
       
             Sorts the array according to the supplied

@@ -20,8 +20,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.40</p>
-    <p><b>Date:</b> 2003/01/03 20:14:47</p>
+    <p><b>Version:</b> 1.42</p>
+    <p><b>Date:</b> 2003/04/22 15:18:44</p>
     <p><b>Copyright:</b> (C) 1996,1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -129,7 +129,13 @@
     + (id) <b>scannerWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create and return a scanner that scans
+            <var>aString</var>. <br /> Uses
+            <a rel="gsdoc" href="#method$NSScanner-initWithString:">
+              -initWithString:
+            </a>
+
+            and with no locale set.
           
     </p>
     <hr width="25%" align="left" />
@@ -331,10 +337,10 @@
     <p>
       
             After initial skipping (if any), this method scans
-            for <em>aString</em> and places the <var>string</var>
-            ound in <em>stringValue</em> if that is not null.
-            <br /> Returns <code>YES</code> if anything is
-            scanned, <code>NO</code> otherwise.
+            for <var>string</var> and places the characters found
+            in <var>value</var> if that is not null. <br /> Returns
+            <code>YES</code> if anything is scanned,
+            <code>NO</code> otherwise.
           
     </p>
     <hr width="25%" align="left" />
@@ -355,14 +361,63 @@
     - (BOOL) <b>scanUpToString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)string<b> intoString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>**)value;<br />
     <p>
       
-            After initial skipping (if any), this method scans
-            characters until it finds <em>aString</em>. The
-            scanned characters are placed in
-            <em>stringValue</em> if that is not null. If
-            <em>aString</em> is not found, all the characters up
-            to the end of the scanned <var>string</var> will be
-            returned. <br /> Returns <code>YES</code> if
-            anything is scanned, <code>NO</code> otherwise.
+            
+    </p>
+    <p>
+
+              After initial skipping (if any), this method scans
+              characters until it finds <var>string</var>.
+              The scanned characters are placed in <var>value</var>
+              if that is not null. If <var>string</var> is not
+              found, all the characters up to the end of the
+              scanned <var>string</var> will be returned.
+                </p>
+    <p>
+      
+            Returns <code>YES</code> if anything is scanned,
+            <code>NO</code> otherwise. <br />
+            
+    </p>
+    <p>
+
+              NB. If the current scanner location points to a copy
+              of <var>string</var>, or points to skippable
+              characters immediately before a copy of
+              <var>string</var> then this method returns
+              <code>NO</code> since it finds no characters to
+              store in <var>value</var> before it finds
+              <var>string</var>.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              To count the occurrances of <var>string</var>, this
+              should be used in conjunction with the
+              <a rel="gsdoc" href="#method$NSScanner-scanString:intoString:">
+                -scanString:intoString:
+              </a>
+
+              method.
+                </p>
+    <p>
+      
+
+<pre>
+ NSString *ch = @"["; 
+ unsigned total = 0; 
+
+ [scanner scanUpToString: ch intoString: NULL]; 
+ while ([scanner scanString: ch intoString: NULL] == YES)
+  { 
+    total++;
+    [scanner scanUpToString: ch intoString: NULL]; 
+  } 
+ NSLog(@"total %d", total); 
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />

@@ -30,8 +30,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.63</p>
-    <p><b>Date:</b> 2002/12/08 20:18:34</p>
+    <p><b>Version:</b> 1.67</p>
+    <p><b>Date:</b> 2003/04/17 06:20:17</p>
     <p><b>Copyright:</b> (C) 1996-2000 Free Software Foundation, Inc.</p>
 
         <div>
@@ -70,22 +70,71 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          This class encapsulates OpenStep threading. See
+          <a rel="gsdoc" href="NSLock.html#class$NSLock">NSLock</a>
+
+            and its subclasses for handling synchronisation between
+            threads. <br /> Each process begins with a main
+            thread and additional threads can be created using
+            NSThread. The GNUstep implementation of OpenStep
+            has been carefully designed so that the internals of
+            the base library do not use threading (except for
+            methods which explicitly deal with threads of
+            course) so that you can write applications without
+            threading. Non-threaded applications re more
+            efficient (no locking is required) and are easier
+            to debug during development.
         
     </p>
     <hr width="50%" align="left" />
     <h3>Instance variables</h3>
     <h3><a name="ivariable$NSThread*_autorelease_vars">_autorelease_vars</a></h3>
     @public struct autorelease_thread_vars <b>_autorelease_vars</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_exception_handler">_exception_handler</a></h3>
     @public NSHandler* <b>_exception_handler</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_gcontext">_gcontext</a></h3>
     @public id <b>_gcontext</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_thread_dictionary">_thread_dictionary</a></h3>
     @public NSMutableDictionary* <b>_thread_dictionary</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
     <hr width="25%" align="left" />
     <b>Method summary</b>
     <ul>
@@ -233,7 +282,13 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Extra methods to permit messages to be sent to an
+          object such that they are executed in the
+          <em>main</em> thread. <br /> The main thread is the
+          thread in which the GNUstep system is started, and
+          where the GNUstep gui is used, it is the thread in
+          which gui drawing operations <strong>must</strong> be
+          performed.
         
     </p>
     <b>Method summary</b>
@@ -274,9 +329,22 @@
 
               The selector is performed when the runloop of the
               main thread next runs in one of the modes specified
-              in <var>anArray</var>. if there are no modes in
-              <var>anArray</var>, the method has no effect and
-              simply returns immediately.
+              in <var>anArray</var>. <br /> Where this method has
+              been called more than once before the runloop of the
+              main thread runs in the required mode, the order in
+              which the operations in the main thread is done is
+              the same as that in which they were added using this
+              method.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              If there are no modes in <var>anArray</var>, the
+              method has no effect and simply returns
+              immediately.
                 </p>
     <p>
       
@@ -288,10 +356,10 @@
               method should wait until the selector has been
               performed before returning. <br />
               <strong>NB.</strong> This method does
-              <em>not</em> cause the run loop of the main thread
-              to be run... so if the run loop is not executed by
-              some code in the main thread, the thread waiting for
-              the perform to complete will block forever.
+              <em>not</em> cause the runloop of the main thread to
+              be run... so if the runloop is not executed by some
+              code in the main thread, the thread waiting for the
+              perform to complete will block forever.
                 </p>
     <p>
       
@@ -301,11 +369,11 @@
 
               As a special case, if <var>aFlag</var> ==
               <code>YES</code> and the current thread is the
-              main thread, the modes array is ignord and the
+              main thread, the modes array is ignored and the
               selector is performed immediately. This behavior
               is necessary to avoid the main thread being blocked by
               waiting for a perform which will never happen
-              because the run loop is not executing.
+              because the runloop is not executing.
                 </p>
     <p>
       
