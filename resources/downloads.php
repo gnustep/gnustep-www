@@ -58,6 +58,7 @@ SPAN.cont {border-top:thin white solid; padding-top:0.5em;
 $site = $HTTP_GET_VARS["site"];
 
 function download($link) {
+  global $site; // Why do I have to even declare this? Stupid language.
   echo($site.$link);
 }
 
