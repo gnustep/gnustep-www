@@ -131,8 +131,8 @@ the appropriate column.</p>
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#THE.OBJECTIVE-C.COMPILER">gcc</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-3.3.1.tar.gz">3.3.1</a></td>
-<td class="unst">-</td>
+<td class="stab"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-2.95.3.tar.gz">2.95.3</a></td>
+<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-3.3.1.tar.gz">3.3.1</a></td>
 <td>GNU C &amp; Objective-C Compiler</td>
 </tr>
 
