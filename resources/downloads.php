@@ -221,7 +221,7 @@ echo("/\">\n");
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="core/gnustep-make-1.6.0.tar.gz">1.6.0</a></td>
+<td class="stab"><a href="core/gnustep-make-1.8.0.tar.gz">1.8.0</a></td>
 <td class="unst"><a href="core/gnustep-make-1.7.4.tar.gz">1.7.4</a></td>
 <td>Makefile Package</td>
 </tr>
@@ -229,7 +229,7 @@ echo("/\">\n");
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="core/gnustep-base-1.6.0.tar.gz">1.6.0</a></td>
+<td class="stab"><a href="core/gnustep-base-1.8.0.tar.gz">1.8.0</a></td>
 <td class="unst"><a href="core/gnustep-base-1.7.4.tar.gz">1.7.4</a></td>
 <td>Foundation</td>
 </tr>
@@ -332,7 +332,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.stupid-design.com/martin/GNUstep/GNUMail.app/GNUMail.app-Installation.html">Pantomime</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0pre2.tar.gz?rid=77">1.1.0pre2</a></td>
+<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0.tar.gz?rid=77">1.1.0</a></td>
 <td class="unst">-</td>
 <td>GNUMail framework - see also <a href="http://www.collaboration-world.com/pantomime">description</a></td>
 </tr>
@@ -367,7 +367,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#GNUSTEP.WORKSPACE">Gorm</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="dev-apps/Gorm-0.3.0.tar.gz">0.3.0
+<td class="stab"><a href="dev-apps/Gorm-0.3.1.tar.gz">0.3.1
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Graphical interface builder</td>
@@ -376,7 +376,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#GNUSTEP.WORKSPACE">Project Center</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="dev-apps/ProjectCenter-0.3.0.tar.gz">0.3.0
+<td class="stab"><a href="dev-apps/ProjectCenter-0.3.5.tar.gz">0.3.5
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Project developer</td>
