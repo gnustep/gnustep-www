@@ -1,0 +1,138 @@
+<html>
+
+    <head>
+    <title>NSNib</title>
+  </head>
+  <body>
+    <a href="Gui.html">Up</a>
+    <br />
+    <h1><a name="title$NSNib">NSNib</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Gregory John Casamento (<a href="mailto:greg_casamento@yahoo.com"><code>greg_casamento@yahoo.com</code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <blockquote>
+      
+      This class serves as a container for a nib file. It&apos;s
+      possible to load a nib file from a URL or from a bundle.
+      Using this class the nib file can now be &quot;preloaded&quot; and
+      instantiated multiple times when/if needed. Also,
+      since it&apos;s possible to initialize this class using a NSURL
+      it&apos;s possible to load nib files from remote locations.
+      <br /> This class uses: NSNibOwner and
+      NSNibTopLevelObjects to allow the caller to
+      specify the owner of the nib during instantiation and
+      receive an array containing the top level objects of the
+      nib file.
+    
+    </blockquote>
+    <p><b>Copyright:</b> (C) 2004 Free Software Foundation, Inc.</p>
+
+        <div>
+    </div>
+
+          <h1><a name="001000000000">
+        Software documentation for the NSNib class
+      </a></h1>
+    <h2><a name="class$NSNib">NSNib</a> : <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>AppKit/NSNib.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <dl>
+        <dt><b>Conforms to:</b></dt>
+        <dd><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#protocol$(NSCoding)">NSCoding</a></dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSNib.html#method$NSNib-initWithContentsOfURL:">-initWithContentsOfURL:</a></li>
+      <li><a rel="gsdoc" href="NSNib.html#method$NSNib-initWithNibNamed:bundle:">-initWithNibNamed:bundle:</a></li>
+      <li><a rel="gsdoc" href="NSNib.html#method$NSNib-instantiateNibWithExternalNameTable:">-instantiateNibWithExternalNameTable:</a></li>
+      <li><a rel="gsdoc" href="NSNib.html#method$NSNib-instantiateNibWithExternalNameTable:withZone:">-instantiateNibWithExternalNameTable:withZone:</a></li>
+      <li><a rel="gsdoc" href="NSNib.html#method$NSNib-instantiateNibWithOwner:topLevelObjects:">-instantiateNibWithOwner:topLevelObjects:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSNib-initWithContentsOfURL:">initWithContentsOfURL:</a></h3>
+    - (id) <b>initWithContentsOfURL:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)nibFileURL;<br />
+    <p>
+      
+            Load the NSNib object from the specified URL. This
+            location can be any type of resource capable of
+            being pointed to by the NSURL object. A file in the
+            local file system or a file on an ftp site.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSNib-initWithNibNamed:bundle:">initWithNibNamed:bundle:</a></h3>
+    - (id) <b>initWithNibNamed:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)nibNamed<b> bundle:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSBundle.html#class$NSBundle">NSBundle</a>*)bundle;<br />
+    <p>
+      
+            Load the nib indicated by
+            <code><var>nibNamed</var></code>. If the
+            <code><var>bundle</var></code> argument is
+            <code>nil</code>, then the main <var>bundle</var> is
+            used to resolve the path, otherwise the
+            <var>bundle</var> which is supplied will be used.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSNib-instantiateNibWithExternalNameTable:">instantiateNibWithExternalNameTable:</a></h3>
+    - (BOOL) <b>instantiateNibWithExternalNameTable:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*)externalNameTable;<br />
+    <p>
+      
+            This method instantiates the nib file. The
+            <var>externalNameTable</var> dictionary accepts the
+            NSNibOwner and NSNibTopLevelObjects entries
+            described earlier. It is recommended, for
+            subclasses whose purpose is to change the
+            behaviour of nib loading, to override this
+            method.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSNib-instantiateNibWithExternalNameTable:withZone:">instantiateNibWithExternalNameTable:withZone:</a></h3>
+    - (BOOL) <b>instantiateNibWithExternalNameTable:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*)externalNameTable<b> withZone:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSZone">NSZone</a>*)zone;<br />
+    <p>
+      
+            This is a GNUstep specific method. This method is used
+            when the caller wants the objects instantiated in the
+            nib to be stored in the given
+            <code><var>zone</var></code>.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSNib-instantiateNibWithOwner:topLevelObjects:">instantiateNibWithOwner:topLevelObjects:</a></h3>
+    - (BOOL) <b>instantiateNibWithOwner:</b> (id)owner<b> topLevelObjects:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>**)topLevelObjects;<br />
+    <p>
+      
+            This method instantiates the nib file. It utilizes the
+            instantiateNibWithExternalNameTable:
+            method to, in a convenient way, allow the user to
+            specify both keys accepted by the nib loading
+            process.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br />
+    <a href="Gui.html">Up</a>
+  </body>
+</html>
