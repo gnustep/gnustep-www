@@ -45,7 +45,12 @@ SPAN.cont {border-top:thin white solid; padding-top:0.5em;
 <?php
 
 echo("\n<base href=\"");
-echo($HTTP_GET_VARS["site"]);
+if (isset($HTTP_GET_VARS["site"])) {
+  echo($HTTP_GET_VARS["site"]);
+  }
+else {
+  echo("ftp://ftp.gnustep.org/pub/gnustep/");
+  }
 echo("/\">\n");
 
 ?>
