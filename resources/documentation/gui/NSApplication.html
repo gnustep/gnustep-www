@@ -739,7 +739,20 @@
     - (BOOL) <b>sendAction:</b> (SEL)aSelector<b> to:</b> (id)aTarget<b> from:</b> (id)sender;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sends the <var>aSelector</var> message to the
+            receiver returned by the
+            <a rel="gsdoc" href="#method$NSApplication-targetForAction:to:from:">
+              -targetForAction:to:from:
+            </a>
+
+            method (to which the <var>aTarget</var> and
+            <var>sender</var> arguments are passed). <br /> The
+            method in the receiver must expect a single argument
+            ... the <var>sender</var>. <br /> Any value returned by
+            the method in the receiver is ignored. <br /> This
+            method returns <code>YES</code> on success,
+            <code>NO</code> on failure (when no receiver can be
+            found for <var>aSelector</var>).
           
     </p>
     <hr width="25%" align="left" />
@@ -908,7 +921,11 @@
     - (id) <b>targetForAction:</b> (SEL)theAction<b> to:</b> (id)theTarget<b> from:</b> (id)sender;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            If <var>theTarget</var> responds to <var>theAction</var>
+            it is returned, otherwise the application searches for
+            an object which will handle <var>theAction</var> and
+            returns the first object found. <br /> Returns
+            <code>nil</code> on failure.
           
     </p>
     <hr width="25%" align="left" />
@@ -924,7 +941,9 @@
     - (BOOL) <b>tryToPerform:</b> (SEL)aSelector<b> with:</b> (id)anObject;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Attempts to perform <var>aSelector</var> using
+            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-tryToPerform:with:">[NSResponder&nbsp;-tryToPerform:with:]</a>
+ and if that is not possible, attempts to get the application delegate to perform the <var>aSelector</var>. <br /> Returns <code>YES</code> if an object was found to perform <var>aSelector</var>, <code>NO</code> otherwise.
           
     </p>
     <hr width="25%" align="left" />

@@ -112,8 +112,8 @@ echo("/\">\n");
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#THE.OBJECTIVE-C.COMPILER">gcc</a></td>
 <td class="req">Required</td>
-<td class="stab">2.9.3</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-3.2.tar.gz">3.2</a></td>
+<td class="stab"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-3.3.1.tar.gz">3.3.1</a></td>
+<td class="unst">-</td>
 <td>GNU C &amp; Objective-C Compiler</td>
 </tr>
 
@@ -128,8 +128,8 @@ echo("/\">\n");
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#FOREIGN.FUNCTION.INTERFACES">libffi</a></td>
 <td class="req">Optional</td>
-<td class="stab">gcc 3.1</td>
-<td class="unst">gcc 3.2</td>
+<td class="stab">gcc 3.3.1</td>
+<td class="unst"><div class="cent">-</div></td>
 <td>Alternative to ffcall</td>
 </tr>
 
@@ -184,8 +184,8 @@ echo("/\">\n");
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#WINDOWMANAGER">WindowMaker</a></td>
 <td class="req">Recommended</td>
-<td class="stab">0.80.0</td>
-<td class="unst"><a href="http://windowmaker.org/pub/source/release/WindowMaker-0.80.1.tar.bz2">0.80.1</a></td>
+<td class="stab"><a href="http://windowmaker.org/pub/source/release/WindowMaker-0.80.2.tar.bz2">0.80.2</a></td>
+<td class="unst"><div class="cent">-</div></td>
 <td>Window manager &amp; desktop</td>
 </tr>
 
@@ -222,7 +222,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-make-1.6.0.tar.gz">1.6.0</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-1.7.3.tar.gz">1.7.3</a></td>
+<td class="unst"><a href="core/gnustep-make-1.7.3.tar.gz">1.7.3</a></td>
 <td>Makefile Package</td>
 </tr>
 
@@ -230,7 +230,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-base-1.6.0.tar.gz">1.6.0</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.7.3.tar.gz">1.7.3</a></td>
+<td class="unst"><a href="core/gnustep-base-1.7.3.tar.gz">1.7.3</a></td>
 <td>Foundation</td>
 </tr>
 
@@ -238,7 +238,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep GUI</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-gui-0.8.5.tar.gz">0.8.5</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.8.8.tar.gz">0.8.8</a></td>
+<td class="unst"><a href="core/gnustep-gui-0.8.9.tar.gz">0.8.9</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
@@ -246,7 +246,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Backend</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-back-0.8.5.tar.gz">0.8.5</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-0.8.8.tar.gz">0.8.8</a></td>
+<td class="unst"><a href="core/gnustep-back-0.8.9.tar.gz">0.8.9</a></td>
 <td>Generic back-end</td>
 </tr>
 
@@ -369,8 +369,7 @@ packages and applications may require you to install these libraries
 <td class="req">Recommended</td>
 <td class="stab"><a href="dev-apps/Gorm-0.3.0.tar.gz">0.3.0
 </a></td>
-<td class="unst"><a href="dev-apps/Gorm-0.2.6.tar.gz">0.2.6
-</a></td>
+<td class="unst"><div class="cent">-</div></td>
 <td>Graphical interface builder</td>
 </tr>
 
