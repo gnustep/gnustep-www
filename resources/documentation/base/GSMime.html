@@ -1,50 +1,1408 @@
-<html><head>
- <title>GNUstep MIME parser</title>
-</head>
-<body>
-<a href ="Base.html">[Up] </a>
-<h1>GNUstep MIME parser</h1>
-<h3>Authors </h3>
- <dl>
-<dt><a href ="http://www.gnustep.org/developers/whoiswho.html">Richard Frith-Macdonald</a>
-<dd>
-</dl>
-<p>Version: $Revision: 1.4 $</p>
-<p>Date: $Date: 2002/07/28 04:10:54 $</p>
-<h2><a name ="cont-0">Mime Parser</a></h2>
-<p>
+<html>
+  <head>
+    <title>The MIME parsing system</title>
+  </head>
+  <body>
+    <a href="Base.html">Up</a>
+    <br />
+    <h1><a name="title$GSMime">The MIME parsing system</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Richard frith-Macdonald(<a href="mailto:rfm@gnu.org"><code>
+        rfm@gnu.org
+      </code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> 1.35</p>
+    <p><b>Date:</b> 2002/08/20 10:22:05</p>
+    <p><b>Copyright:</b> (C) 2000 Free Software Foundation, Inc.</p>
+    <div>
+      <hr width="50%" align="left" />
+      <h3>Contents -</h3>
+      <ol>
+        <li>
+          <a href="#001000000000">Mime Parser</a>
+        </li>
+        <li>
+          <a href="#002000000000">Software documentation for the GSMimeCodingContext
+        class</a>
+        </li>
+        <li>
+          <a href="#003000000000">Software documentation for the GSMimeDocument class</a>
+        </li>
+        <li>
+          <a href="#004000000000">Software documentation for the GSMimeHeader class</a>
+        </li>
+        <li>
+          <a href="#005000000000">Software documentation for the GSMimeParser class</a>
+        </li>
+      </ol>
+      <hr width="50%" align="left" />
+    </div>
+    <h1><a name="001000000000">Mime Parser</a></h1>
+    <p>
 
-        The GNUstep Mime parser.  This is collection Objective-C classes
-	for representing MIME (and HTTP) documents and managing conversions
-	to and from convenient internal formats.
-      </p>
-<p>
+        The GNUstep Mime parser. This is collection Objective-C
+        classes for representing MIME (and HTTP) documents and
+        managing conversions to and from convenient internal
+        formats.
+          </p>
+    <p>
+The idea is to center round two classes -    </p>
+    <dl>
+      <dt>document</dt>
+      <dd>
+        
+          A container for the actual data (and headers) of a
+          mime/http document, this is also used to create raw
+          MIME data for sending.
+        
+      </dd>
+      <dt>parser</dt>
+      <dd>
+        
+          An object that can be fed data and will parse it into a
+          document. This object also provides various utility
+          methods and an API that permits overriding in order
+          to extend the functionality to cope with new document
+          types.
+        
+      </dd>
+    </dl>
+    <h1><a name="002000000000">
+        Software documentation for the GSMimeCodingContext
+        class
+      </a></h1>
+    <h2><a name="class$GSMimeCodingContext">GSMimeCodingContext</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/GSMime.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          The most rudimentary context... this is used for decoding
+          plain text and binary dat (ie data which is not really
+          decoded at all) and all other decoding work is done
+          by a subclass.
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeCodingContext-atEnd">-atEnd</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeCodingContext-setAtEnd:">-setAtEnd:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$GSMimeCodingContext-atEnd">atEnd</a></h3>
+    - (BOOL) <b>atEnd</b>;<br />
+    <p>
+      
+            Returns the current value of the 'atEnd' flag.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeCodingContext-setAtEnd:">setAtEnd:</a></h3>
+    - (void) <b>setAtEnd:</b> (BOOL)flag;<br />
+    <p>
+      
+            Sets the current value of the 'atEnd' <var>flag</var>.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h1><a name="003000000000">
+        Software documentation for the GSMimeDocument class
+      </a></h1>
+    <h2><a name="class$GSMimeDocument">GSMimeDocument</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/GSMime.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          
+    </p>
+    <p>
 
-	Eventually the goal is to center round three classes -
-      </p>
-<dl>
-<dt>document
-<dd>
-	  A container for the actual data (and headers) of a mime/http document.
-	
-<dt>parser
-<dd>
-	  An object that can be fed data and will parse it into a document.
-	  This object also provides various utility methods  and an API
-	  that permits overriding in order to extend the functionality to
-	  cope with new document types.
-	
-<dt>unparser
-<dd>
-	  An object to take a mime/http document and produce a data object
-	  suitable for transmission.
-	
-</dl>
-<h3><a name ="cont-1">The classes</a></h3>
-<ul>
-<li ><a href ="GSMimeDocument.html">GSMimeDocument</a>
-<li ><a href ="GSMimeParser.html">GSMimeParser</a>
-</ul>
-</body>
+            This class is intended to provide a wrapper for MIME
+            messages permitting easy access to the contents of
+            a message and providing a basis for parsing an unparsing
+            messages that have arrived via email or as a web
+            document.
+              </p>
+    <p>
+    </p>
+    <p>
 
- </html>
+            The class keeps track of all the document headers, and
+            provides methods for modifying and examining the
+            headers that apply to a document.
+              </p>
+    <p>
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument+charsetFromEncoding:">+charsetFromEncoding:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument+decodeBase64:">+decodeBase64:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument+decodeBase64String:">+decodeBase64String:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument+encodeBase64:">+encodeBase64:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument+encodeBase64String:">+encodeBase64String:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument+encodingFromCharset:">+encodingFromCharset:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-addContent:">-addContent:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-addHeader:">-addHeader:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-allHeaders">-allHeaders</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-content">-content</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-contentByID:">-contentByID:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-contentByName:">-contentByName:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-contentFile">-contentFile</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-contentID">-contentID</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-contentName">-contentName</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-contentSubType">-contentSubType</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-contentType">-contentType</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-contentsByName:">-contentsByName:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-convertToData">-convertToData</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-convertToText">-convertToText</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-deleteHeader:">-deleteHeader:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-deleteHeaderNamed:">-deleteHeaderNamed:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-headerNamed:">-headerNamed:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-headersNamed:">-headersNamed:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-makeContentID">-makeContentID</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-rawMimeData">-rawMimeData</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-rawMimeData:">-rawMimeData:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-setContent:">-setContent:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-setContent:type:name:">-setContent:type:name:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-setContent:type:subType:name:">-setContent:type:subType:name:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-setHeader:">-setHeader:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$GSMimeDocument+charsetFromEncoding:">charsetFromEncoding:</a></h3>
+    + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>charsetFromEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)enc;<br />
+    <p>
+      
+            Return the MIME characterset name corresponding to
+            the specified string encoding.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument+decodeBase64:">decodeBase64:</a></h3>
+    + (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>decodeBase64:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)source;<br />
+    <p>
+      
+            Decode the <var>source</var> data from base64
+            encoding and return the result.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument+decodeBase64String:">decodeBase64String:</a></h3>
+    + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>decodeBase64String:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)source;<br />
+    <p>
+      
+            Converts the base64 encoded data in
+            <var>source</var> to a decoded ASCII string using the
+            <a rel="gsdoc" href="#method$GSMimeDocument+decodeBase64:">
+              +decodeBase64:
+            </a>
+
+            method. If the encoded data does not represent an
+            ASCII string, you should use the
+            <a rel="gsdoc" href="#method$GSMimeDocument+decodeBase64:">
+              +decodeBase64:
+            </a>
+
+            method directly.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument+encodeBase64:">encodeBase64:</a></h3>
+    + (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>encodeBase64:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)source;<br />
+    <p>
+      
+            Encode the <var>source</var> data to base64 encoding
+            and return the result.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument+encodeBase64String:">encodeBase64String:</a></h3>
+    + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>encodeBase64String:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)source;<br />
+    <p>
+      
+            Converts the ASCII string <var>source</var> into
+            base64 encoded data using the
+            <a rel="gsdoc" href="#method$GSMimeDocument+encodeBase64:">
+              +encodeBase64:
+            </a>
+
+            method. If the original data is not an ASCII
+            string, you should use the
+            <a rel="gsdoc" href="#method$GSMimeDocument+encodeBase64:">
+              +encodeBase64:
+            </a>
+
+            method directly.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument+encodingFromCharset:">encodingFromCharset:</a></h3>
+    + (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>) <b>encodingFromCharset:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)charset;<br />
+    <p>
+      
+            Return the string encoding corresponding to the
+            specified MIME characterset name.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-addContent:">addContent:</a></h3>
+    - (void) <b>addContent:</b> (id)newContent;<br />
+    <p>
+      
+            Adds a part to a multipart document
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-addHeader:">addHeader:</a></h3>
+    - (void) <b>addHeader:</b> (<a rel="gsdoc" href="#class$GSMimeHeader">GSMimeHeader</a>*)info;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This method may be called to add a header to the
+              document. The header must be a mutable
+              dictionary object that contains at least the
+              fields that are standard for all headers.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              Certain well-known headers are restricted to one
+              occurrance in an email, and when extra copies
+              are added they replace originals.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              The mime-version header is special... it is inserted
+              before any other mime headers rather than being
+              added at the end.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-allHeaders">allHeaders</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>allHeaders</b>;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This method returns an array containing GSMimeHeader
+              objects representing the headers associated with
+              the document.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              The order of the headers in the array is the order of
+              the headers in the document.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-content">content</a></h3>
+    - (id) <b>content</b>;<br />
+    <p>
+      
+            This returns the content data of the document in the
+            appropriate format for the type of data -
+            
+      <dl>
+        <dt>text</dt>
+        <dd>
+          an NSString object
+        </dd>
+        <dt>binary</dt>
+        <dd>
+          an NSData object
+        </dd>
+        <dt>multipart</dt>
+        <dd>
+          
+                an NSArray object containing GSMimeDocument objects
+              
+        </dd>
+      </dl>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-contentByID:">contentByID:</a></h3>
+    - (id) <b>contentByID:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)key;<br />
+    <p>
+      
+            Search the content of this document to locate a part
+            whose content ID matches the specified <var>key</var>
+            . Recursively descend into other documents. <br /> Return
+            <code>nil</code> if no match is found, the matching
+            GSMimeDocument otherwise.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-contentByName:">contentByName:</a></h3>
+    - (id) <b>contentByName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)key;<br />
+    <p>
+      
+            Search the content of this document to locate a part
+            whose content-type name or content-disposition name
+            matches the specified <var>key</var>. Recursively
+            descend into other documents. <br /> Return
+            <code>nil</code> if no match is found, the matching
+            GSMimeDocument otherwise.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-contentFile">contentFile</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>contentFile</b>;<br />
+    <p>
+      
+            Convenience method to fetch the content file
+            name from the header.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-contentID">contentID</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>contentID</b>;<br />
+    <p>
+      
+            Convenience method to fetch the content ID from
+            the header.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-contentName">contentName</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>contentName</b>;<br />
+    <p>
+      
+            Convenience method to fetch the content name
+            from the header.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-contentSubType">contentSubType</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>contentSubType</b>;<br />
+    <p>
+      
+            Convenience method to fetch the content
+            sub-type from the header.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-contentType">contentType</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>contentType</b>;<br />
+    <p>
+      
+            Convenience method to fetch the content type
+            from the header.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-contentsByName:">contentsByName:</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>contentsByName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)key;<br />
+    <p>
+      
+            Search the content of this document to locate all
+            parts whose content-type name or content-disposition
+            name matches the specified <var>key</var>. Do
+            <em>NOT</em> recurse into other documents. <br />
+            Return <code>nil</code> if no match is found, an
+            array of matching GSMimeDocument instances otherwise.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-convertToData">convertToData</a></h3>
+    - (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>convertToData</b>;<br />
+    <p>
+      
+            Return the content as an NSData object (unless it is
+            multipart) <br /> Perform conversion from text
+            to data using the charset specified in the content-type
+            header, or infer the charset, and update the header
+            accordingly.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-convertToText">convertToText</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>convertToText</b>;<br />
+    <p>
+      
+            Return the content as an NSString object (unless it
+            is multipart)
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-deleteHeader:">deleteHeader:</a></h3>
+    - (void) <b>deleteHeader:</b> (<a rel="gsdoc" href="#class$GSMimeHeader">GSMimeHeader</a>*)aHeader;<br />
+    <p>
+      
+            This method removes all occurrances of header objects
+            identical to the one supplied as an argument.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-deleteHeaderNamed:">deleteHeaderNamed:</a></h3>
+    - (void) <b>deleteHeaderNamed:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
+    <p>
+      
+            This method removes all occurrances of headers whose
+            <var>name</var> matches the supplied string.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-headerNamed:">headerNamed:</a></h3>
+    - (<a rel="gsdoc" href="#class$GSMimeHeader">GSMimeHeader</a>*) <b>headerNamed:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
+    <p>
+      
+            This method returns the first header whose
+            <var>name</var> equals the supplied argument.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-headersNamed:">headersNamed:</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>headersNamed:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
+    <p>
+      
+            This method returns an array of GSMimeHeader objects
+            for all headers whose names equal the supplied
+            argument.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-makeContentID">makeContentID</a></h3>
+    - (<a rel="gsdoc" href="#class$GSMimeHeader">GSMimeHeader</a>*) <b>makeContentID</b>;<br />
+    <p>
+      
+            Create new content ID header, set it as the content
+            ID of the document and return it.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-rawMimeData">rawMimeData</a></h3>
+    - (<a rel="gsdoc" href="NSData.html#class$NSMutableData">NSMutableData</a>*) <b>rawMimeData</b>;<br />
+    <p>
+      
+            Return an NSData object representing the MIME
+            document as raw data ready to be sent via an email
+            system. <br /> Calls
+            <a rel="gsdoc" href="#method$GSMimeDocument-rawMimeData:">
+              -rawMimeData:
+            </a>
+
+            with the isOuter flag set to <code>YES</code>.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-rawMimeData:">rawMimeData:</a></h3>
+    - (<a rel="gsdoc" href="NSData.html#class$NSMutableData">NSMutableData</a>*) <b>rawMimeData:</b> (BOOL)isOuter;<br />
+    <p>
+      
+            Return an NSData object representing the MIME
+            document as raw data ready to be sent via an email
+            system. <br /> The <var>isOuter</var> flag denotes
+            whether this document is the outermost part of a
+            MIME message, or is a part of a multipart message.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-setContent:">setContent:</a></h3>
+    - (void) <b>setContent:</b> (id)newContent;<br />
+    <p>
+      
+            Sets a new value for the content of the document.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-setContent:type:name:">setContent:type:name:</a></h3>
+    - (void) <b>setContent:</b> (id)newContent<b> type:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)type<b> name:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
+    <p>
+      
+            Convenience method calling
+            <a rel="gsdoc" href="#method$GSMimeDocument-setContent:type:subType:name:">
+              -setContent:type:subType:name:
+            </a>
+
+            to set content and <var>type</var>. If the
+            <var>type</var> argument contains a slash '/') then
+            it is split into <var>type</var> and subtype parts,
+            otherwise, the subtype is assumed to be
+            <code>nil</code>.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-setContent:type:subType:name:">setContent:type:subType:name:</a></h3>
+    - (void) <b>setContent:</b> (id)newContent<b> type:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)type<b> subType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)subType<b> name:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
+    <p>
+      
+            Convenience method to set the content of the
+            document along with creating a content-type header
+            for it.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-setHeader:">setHeader:</a></h3>
+    - (void) <b>setHeader:</b> (<a rel="gsdoc" href="#class$GSMimeHeader">GSMimeHeader</a>*)info;<br />
+    <p>
+      
+            This method may be called to set a header in the
+            document. Any other headers with the same name
+            will be removed from the document.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h1><a name="004000000000">
+        Software documentation for the GSMimeHeader class
+      </a></h1>
+    <h2><a name="class$GSMimeHeader">GSMimeHeader</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/GSMime.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader+makeQuoted:">+makeQuoted:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader+makeToken:">+makeToken:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-initWithName:value:parameters:">-initWithName:value:parameters:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-name">-name</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-objectForKey:">-objectForKey:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-objects">-objects</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-parameterForKey:">-parameterForKey:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-parameters">-parameters</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-rawMimeData">-rawMimeData</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-setName:">-setName:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-setObject:forKey:">-setObject:forKey:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-setParameter:forKey:">-setParameter:forKey:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-setParameters:">-setParameters:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-setValue:">-setValue:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-text">-text</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-value">-value</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$GSMimeHeader+makeQuoted:">makeQuoted:</a></h3>
+    + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>makeQuoted:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)v;<br />
+    <p>
+      
+            Makes the value into a quoted string if necessary.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader+makeToken:">makeToken:</a></h3>
+    + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>makeToken:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)t;<br />
+    <p>
+      
+            Convert the supplied string to a standardized token
+            by making it lowercase and removing all illegal
+            characters.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-initWithName:value:parameters:">initWithName:value:parameters:</a></h3>
+    - (id) <b>initWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)n<b> value:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)v<b> parameters:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)p;<br />
+This is a designated initialiser for the class.<br />
+    <p>
+      
+            Initialise a GSMimeHeader supplying a name, a
+            value and a dictionary of any parameters occurring
+            after the value.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-name">name</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>name</b>;<br />
+    <p>
+      
+            Returns the name of this header... a lowercase
+            string.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-objectForKey:">objectForKey:</a></h3>
+    - (id) <b>objectForKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)k;<br />
+    <p>
+      
+            Return extra information specific to a particular
+            header type.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-objects">objects</a></h3>
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>objects</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-parameterForKey:">parameterForKey:</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>parameterForKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)k;<br />
+    <p>
+      
+            Return the named parameter value.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-parameters">parameters</a></h3>
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>parameters</b>;<br />
+    <p>
+      
+            Returns the parameters of this header... a
+            dictionary whose keys are all lowercase strings,
+            and whosre value is a string which may contain mixed
+            case.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-rawMimeData">rawMimeData</a></h3>
+    - (<a rel="gsdoc" href="NSData.html#class$NSMutableData">NSMutableData</a>*) <b>rawMimeData</b>;<br />
+    <p>
+      
+            Returns the full text of the header, built from its
+            component parts, and including a terminating
+            CR-LF
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-setName:">setName:</a></h3>
+    - (void) <b>setName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)s;<br />
+    <p>
+      
+            Sets the name of this header... converts to lowercase
+            and removes illegal characters. If given a
+            <code>nil</code> or empty string argument, sets the
+            name to 'unknown'.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-setObject:forKey:">setObject:forKey:</a></h3>
+    - (void) <b>setObject:</b> (id)o<b> forKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)k;<br />
+    <p>
+      
+            Method to store specific information for particular
+            types of header.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-setParameter:forKey:">setParameter:forKey:</a></h3>
+    - (void) <b>setParameter:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)v<b> forKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)k;<br />
+    <p>
+      
+            Sets a parameter of this header... converts name to
+            lowercase and removes illegal characters. <br />
+            If a <code>nil</code> parameter name is supplied,
+            removes any parameter with the specified key.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-setParameters:">setParameters:</a></h3>
+    - (void) <b>setParameters:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)d;<br />
+    <p>
+      
+            Sets all parameters of this header... converts names
+            to lowercase and removes illegal characters from them.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-setValue:">setValue:</a></h3>
+    - (void) <b>setValue:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)s;<br />
+    <p>
+      
+            Sets the value of this header (without changing
+            parameters) <br /> If given a <code>nil</code>
+            argument, set an empty string value.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-text">text</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>text</b>;<br />
+    <p>
+      
+            Returns the full text of the header, built from its
+            component parts, and including a terminating
+            CR-LF
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-value">value</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>value</b>;<br />
+    <p>
+      
+            Returns the value of this header (excluding any
+            parameters)
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h1><a name="005000000000">
+        Software documentation for the GSMimeParser class
+      </a></h1>
+    <h2><a name="class$GSMimeParser">GSMimeParser</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/GSMime.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            This class provides support for parsing MIME messages
+            into GSMimeDocument objects. Each parser object
+            maintains an associated document into which data
+            is stored.
+              </p>
+    <p>
+    </p>
+    <p>
+
+            You supply the document to be parsed as one or more
+            data items passed to the <code>Parse:</code> method,
+            and (if the method always returns <code>YES</code>, you
+            give it a final <code>nil</code> argument to mark the
+            end of the document.
+              </p>
+    <p>
+    </p>
+    <p>
+
+            On completion of parsing a valid document, the
+            <code>document</code> method returns the resulting
+            parsed document.
+              </p>
+    <p>
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser+documentFromData:">+documentFromData:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser+mimeParser">+mimeParser</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-contextFor:">-contextFor:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-data">-data</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-decodeData:fromRange:intoData:withContext:">-decodeData:fromRange:intoData:withContext:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-expectNoHeaders">-expectNoHeaders</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-isComplete">-isComplete</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-isHttp">-isHttp</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-isInBody">-isInBody</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-isInHeaders">-isInHeaders</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-mimeDocument">-mimeDocument</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-parse:">-parse:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-parseHeader:">-parseHeader:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-scanHeaderBody:into:">-scanHeaderBody:into:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-scanName:">-scanName:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-scanPastSpace:">-scanPastSpace:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-scanSpecial:">-scanSpecial:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-scanToken:">-scanToken:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeParser-setIsHttp">-setIsHttp</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$GSMimeParser+documentFromData:">documentFromData:</a></h3>
+    + (<a rel="gsdoc" href="#class$GSMimeDocument">GSMimeDocument</a>*) <b>documentFromData:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)mimeData;<br />
+    <p>
+      
+            Convenience method to parse a single data item
+            as a MIME message and return the resulting document.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser+mimeParser">mimeParser</a></h3>
+    + (<a rel="gsdoc" href="#class$GSMimeParser">GSMimeParser</a>*) <b>mimeParser</b>;<br />
+    <p>
+      
+            Create and return a parser.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-contextFor:">contextFor:</a></h3>
+    - (<a rel="gsdoc" href="#class$GSMimeCodingContext">GSMimeCodingContext</a>*) <b>contextFor:</b> (<a rel="gsdoc" href="#class$GSMimeHeader">GSMimeHeader</a>*)info;<br />
+    <p>
+      
+            Return a coding context object to be used for
+            decoding data according to the scheme specified in
+            the header.
+            
+    </p>
+    <p>
+
+              The default implementation supports the following
+              transfer encodings specified in either a
+              <code>transfer-encoding</code> of
+              <code>content-transfer-encoding</code> header -
+                </p>
+    <p>
+      <ul>
+        <li>
+          base64
+        </li>
+        <li>
+          quoted-printable
+        </li>
+        <li>
+          binary (no coding actually performed)
+        </li>
+        <li>
+          7bit (no coding actually performed)
+        </li>
+        <li>
+          8bit (no coding actually performed)
+        </li>
+        <li>
+          chunked (for HTTP/1.1)
+        </li>
+      </ul>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-data">data</a></h3>
+    - (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>data</b>;<br />
+    <p>
+      
+            Return the data accumulated in the parser. If the
+            parser is still parsing headers, this will be the
+            header data read so far. If the parse has parsed the
+            body of the message, this will be the data of the
+            body, with any transfer encoding removed.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-decodeData:fromRange:intoData:withContext:">decodeData:fromRange:intoData:withContext:</a></h3>
+    - (BOOL) <b>decodeData:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)sData<b> fromRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange<b> intoData:</b> (<a rel="gsdoc" href="NSData.html#class$NSMutableData">NSMutableData</a>*)dData<b> withContext:</b> (<a rel="gsdoc" href="#class$GSMimeCodingContext">GSMimeCodingContext</a>*)con;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Decodes the raw data from the specified range in
+              the source data object and appends it to the
+              destination data object. The context object
+              provides information about the content encoding
+              type in use, and the state of the decoding
+              operation.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              This method may be called repeatedly to
+              incrementally decode information as it
+              arrives on some communications channel. It should
+              be called with a <code>nil</code> source data item (or
+              with the atEnd flag of the context set to
+              <code>YES</code>) in order to flush any
+              information held in the context to the output
+              data object.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              You may override this method in order to implement
+              additional coding schemes.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-expectNoHeaders">expectNoHeaders</a></h3>
+    - (void) <b>expectNoHeaders</b>;<br />
+    <p>
+      
+            This method may be called to tell the parser that it
+            should not expect to parse any headers, and that the
+            data it will receive is body data. <br /> If the parse
+            is already in the body, or is complete, this method has
+            no effect. <br /> This is for use when some other
+            utility has been used to parse headers, and you
+            have set the headers of the document owned by the
+            parser accordingly. You can then use the
+            GSMimeParser to read the body data into the
+            document.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-isComplete">isComplete</a></h3>
+    - (BOOL) <b>isComplete</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if the document parsing is
+            known to be completed successfully. Returns
+            <code>NO</code> if either more data is needed, or if
+            the parser encountered an error.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-isHttp">isHttp</a></h3>
+    - (BOOL) <b>isHttp</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if the parser is parsing
+            an HTTP document rather than a true MIME document.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-isInBody">isInBody</a></h3>
+    - (BOOL) <b>isInBody</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if all the document
+            headers have been parsed but the document body
+            parsing may not yet be complete.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-isInHeaders">isInHeaders</a></h3>
+    - (BOOL) <b>isInHeaders</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if parsing of the document
+            headers has not yet been completed.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-mimeDocument">mimeDocument</a></h3>
+    - (<a rel="gsdoc" href="#class$GSMimeDocument">GSMimeDocument</a>*) <b>mimeDocument</b>;<br />
+    <p>
+      
+            Returns the GSMimeDocument instance into which data
+            is being parsed or has been parsed.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-parse:">parse:</a></h3>
+    - (BOOL) <b>parse:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)d;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This method is called repeatedly to pass raw mime
+              data into the parser. It returns <code>YES</code> as
+              long as it wants more data to complete parsing of a
+              document, and <code>NO</code> if parsing is
+              complete, either due to having reached the end
+              of a document or due to an error.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              Since it is not always possible to determine if the
+              end of a MIME document has been reached from its
+              content, the method may need to be called with a
+              <code>nil</code> or empty argument after you have
+              passed all the data to it... this tells it that
+              the data is complete.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              The parser attempts to be as flexible as possible and
+              to continue parsing wherever it can. If an error
+              occurs in parsing, the
+              <a rel="gsdoc" href="#method$GSMimeParser-isComplete">
+                -isComplete
+              </a>
+
+              method will always return <code>NO</code>, even
+              after the
+              <a rel="gsdoc" href="#method$GSMimeParser-parse:">
+                -parse:
+              </a>
+
+              method has been called with a <code>nil</code>
+              argument.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              A multipart document will be parsed to content
+              consisting of an NSArray of GSMimeDocument
+              instances representing each part. <br />
+              Otherwise, a document will become content of
+              type NSData, unless it is of content type
+              <em>text</em>, in which case it will be an NSString.
+              <br /> If a document has no content type
+              specified, it will be treated as <em>text</em>
+              , unless it is identifiable as a <em>file</em> (eg. t
+              has a content-disposition header containing a
+              filename parameter).
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-parseHeader:">parseHeader:</a></h3>
+    - (BOOL) <b>parseHeader:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aHeader;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This method is called to parse a header line
+              <em>for the current document</em>, split its
+              contents into a GSMimeHeader object, and add
+              that information to the document. <br /> The method
+              is normally used internally by the
+              <a rel="gsdoc" href="#method$GSMimeParser-parse:">
+                -parse:
+              </a>
+
+              method, but you may also call it to parse an
+              entire header line and add it to the document
+              (this may be useful in conjunction with the
+              <a rel="gsdoc" href="#method$GSMimeParser-expectNoHeaders">
+                -expectNoHeaders
+              </a>
+
+              method, to parse a document body data into a
+              document where the headers are available from a
+              separate source).
+                </p>
+    <p>
+<pre>
+
+   GSMimeParser *parser = [GSMimeParser mimeParser];
+
+   [parser parseHeader: @"content-type: text/plain"];
+   [parser expectNoHeaders];
+   [parser parse: bodyData];
+   [parser parse: nil];
+ 
+</pre>
+    </p>
+    <p>
+
+              The standard implementation of this method scans the
+              header name and then calls
+              <a rel="gsdoc" href="#method$GSMimeParser-scanHeaderBody:into:">
+                -scanHeaderBody:into:
+              </a>
+
+              to complete the parsing of the header.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              This method also performs consistency checks on
+              headers scanned so it is recommended that it is
+              not overridden, but that subclasses override
+              <a rel="gsdoc" href="#method$GSMimeParser-scanHeaderBody:into:">
+                -scanHeaderBody:into:
+              </a>
+
+              to implement custom scanning.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              As a special case, for HTTP support, this method also
+              parses lines in the format of HTTP responses as if
+              they were headers named <code>http</code>. The
+              resulting header object contains additional
+              object values -
+                </p>
+    <p>
+      <dl>
+        <dt>HttpMajorVersion</dt>
+        <dd>
+          The first part of the version number
+        </dd>
+        <dt>HttpMinorVersion</dt>
+        <dd>
+          The second part of the version number
+        </dd>
+        <dt>NSHTTPPropertyServerHTTPVersionKey</dt>
+        <dd>
+          The full HTTP protocol version number
+        </dd>
+        <dt>NSHTTPPropertyStatusCodeKey</dt>
+        <dd>
+          The HTTP status code
+        </dd>
+        <dt>NSHTTPPropertyStatusReasonKey</dt>
+        <dd>
+          
+                The text message (if any) after the status code
+              
+        </dd>
+      </dl>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-scanHeaderBody:into:">scanHeaderBody:into:</a></h3>
+    - (BOOL) <b>scanHeaderBody:</b> (<a rel="gsdoc" href="NSScanner.html#class$NSScanner">NSScanner</a>*)scanner<b> into:</b> (<a rel="gsdoc" href="#class$GSMimeHeader">GSMimeHeader</a>*)info;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This method is called to parse a header line and
+              split its contents into an <var>info</var>
+              dictionary.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              On entry, the dictionary is already partially filled,
+              the name argument is a lowercase representation of
+              the header name, and the <var>scanner</var> is set to
+              a scan location immediately after the colon in the
+              header string.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              If the header is parsed successfully, the method
+              should return <code>YES</code>, otherwise
+              <code>NO</code>.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              You should not call this method directly yourself,
+              but may override it to support parsing of new
+              headers.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              You should be aware of the parsing that the standard
+              implementation performs, and that
+              <em>needs</em> to be done for certain headers in
+              order to permit the parser to work generally -
+                </p>
+    <p>
+      <dl>
+        <dt>content-disposition</dt>
+        <dd>
+          
+                
+          <dl>
+            <dt>Value</dt>
+            <dd>
+              
+                    The content disposition (excluding parameters)
+                    as a lowercase string.
+                  
+            </dd>
+          </dl>
+        </dd>
+        <dt>content-type</dt>
+        <dd>
+          
+                
+          <dl>
+            <dt>SubType</dt>
+            <dd>
+              The MIME subtype lowercase
+            </dd>
+            <dt>Type</dt>
+            <dd>
+              The MIME type lowercase
+            </dd>
+            <dt>value</dt>
+            <dd>
+              
+                    The full MIME type (xxx/yyy) in lowercase
+                  
+            </dd>
+          </dl>
+        </dd>
+        <dt>content-transfer-encoding</dt>
+        <dd>
+          
+                
+          <dl>
+            <dt>Value</dt>
+            <dd>
+              
+                    The transfer encoding type in lowercase
+                  
+            </dd>
+          </dl>
+        </dd>
+        <dt>http</dt>
+        <dd>
+          
+                
+          <dl>
+            <dt>HttpVersion</dt>
+            <dd>
+              The HTTP protocol version number
+            </dd>
+            <dt>HttpMajorVersion</dt>
+            <dd>
+              
+                    The first component of the version number
+                  
+            </dd>
+            <dt>HttpMinorVersion</dt>
+            <dd>
+              
+                    The second component of the version number
+                  
+            </dd>
+            <dt>HttpStatus</dt>
+            <dd>
+              
+                    The response status value (numeric code)
+                  
+            </dd>
+            <dt>Value</dt>
+            <dd>
+              The text message (if any)
+            </dd>
+          </dl>
+        </dd>
+        <dt>transfer-encoding</dt>
+        <dd>
+          
+                
+          <dl>
+            <dt>Value</dt>
+            <dd>
+              
+                    The transfer encoding type in lowercase
+                  
+            </dd>
+          </dl>
+        </dd>
+      </dl>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-scanName:">scanName:</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>scanName:</b> (<a rel="gsdoc" href="NSScanner.html#class$NSScanner">NSScanner</a>*)scanner;<br />
+    <p>
+      
+            A convenience method to use a <var>scanner</var> (that is
+            set up to scan a header line) to scan a name - a simple
+            word.
+            
+      <ul>
+        <li>
+          Leading whitespace is ignored.
+        </li>
+      </ul>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-scanPastSpace:">scanPastSpace:</a></h3>
+    - (BOOL) <b>scanPastSpace:</b> (<a rel="gsdoc" href="NSScanner.html#class$NSScanner">NSScanner</a>*)scanner;<br />
+    <p>
+      
+            A convenience method to scan past any whitespace in the
+            <var>scanner</var> in preparation for scanning
+            something more interesting that comes after it.
+            Returns <code>YES</code> if any space was read,
+            <code>NO</code> otherwise.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-scanSpecial:">scanSpecial:</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>scanSpecial:</b> (<a rel="gsdoc" href="NSScanner.html#class$NSScanner">NSScanner</a>*)scanner;<br />
+    <p>
+      
+            A convenience method to use a <var>scanner</var> (that is
+            set up to scan a header line) to scan in a special
+            character that terminated a token previously
+            scanned. If the token was terminated by whitespace
+            and no other special character, the string returned
+            will contain a single space character.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-scanToken:">scanToken:</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>scanToken:</b> (<a rel="gsdoc" href="NSScanner.html#class$NSScanner">NSScanner</a>*)scanner;<br />
+    <p>
+      
+            A convenience method to use a <var>scanner</var> (that is
+            set up to scan a header line) to scan a header token -
+            either a quoted string or a simple word.
+            
+      <ul>
+        <li>
+          Leading whitespace is ignored.
+        </li>
+        <li>
+          
+                Backslash escapes in quoted text are
+                converted
+              
+        </li>
+      </ul>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeParser-setIsHttp">setIsHttp</a></h3>
+    - (void) <b>setIsHttp</b>;<br />
+    <p>
+      
+            Method to inform the parser that the data it is
+            parsing is an HTTP document rather than true MIME.
+            This method is called internally if the parser detects
+            an HTTP response line at the start of the headers it is
+            parsing.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br />
+    <a href="Base.html">Up</a>
+  </body>
+</html>

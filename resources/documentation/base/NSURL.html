@@ -1,175 +1,571 @@
-<html><head>
- <title>NSURL</title>
-</head>
-<body>
-<a href ="NSTimer.html">[Previous] </a>
-<a href ="Base.html">[Up] </a>
-<a href ="NSURLHandle.html">[Next] </a>
-<h1>NSURL</h1>
-<h3>Authors </h3>
- <dl>
-<dt><a href ="http://www.gnustep.org/developers/whoiswho.html">Richard Frith-Macdonald</a>
-<dd>
-</dl>
-<p>Version: $Revision: 1.4 $</p>
-<p>Date: $Date: 2002/07/28 04:10:54 $</p>
-<h2><a name ="cont-0">NSURL</a></h2>
-<h2><a name ="NSURL">NSURL</a></h2>
-<p><b>Declared in: </b> Foundation/NSURL.h</p>
-<p><b>Inherits from: </b> NSObject</p>
-<p><b>Conforms to: </b> NSCoding
-</p>
-<hr>
+<html>
+  <head>
+    <title>NSURL class reference</title>
+  </head>
+  <body>
+    <a href="Base.html">Up</a>
+    <br />
+    <h1><a name="title$NSURL">NSURL class reference</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Manuel Guesdon(<a href="mailto:mguesdon@sbuilders.com"><code>
+        mguesdon@sbuilders.com
+      </code></a>)</dt>
+      <dd>
+      </dd>
+      <dt>Richard Frith-Macdonald(<a href="mailto:rfm@gnu.org"><code>
+        rfm@gnu.org
+      </code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> 1.28</p>
+    <p><b>Date:</b> 2002/08/24 09:35:26</p>
+    <p><b>Copyright:</b> (C) 1999 Free Software Foundation, Inc.</p>
+    <div>
+      <hr width="50%" align="left" />
+      <h3>Contents -</h3>
+      <ol>
+        <li>
+          <a href="#001000000000">Software documentation for the NSURL class</a>
+        </li>
+        <li>
+          <a href="#002000000000">Software documentation for the NSObject(NSURLClient)
+        category</a>
+        </li>
+      </ol>
+      <hr width="50%" align="left" />
+    </div>
+    <h1><a name="001000000000">
+        Software documentation for the NSURL class
+      </a></h1>
+    <h2><a name="class$NSURL">NSURL</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSURL.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <dl>
+        <dt><b>Conforms to:</b></dt>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(NSCoding)">NSCoding</a></dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(NSCopying)">NSCopying</a></dd>
+        <dd><a rel="gsdoc" href="NSURLHandle.html#protocol$(NSURLHandleClient)">NSURLHandleClient</a></dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>NotOpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          This class permits manipulation of URLs and the
+          resources to which they refer. They can be used to
+          represent absolute URLs or relative URLs which are
+          based upon an absolute URL. The relevant RFCs
+          describing how a URL is formatted, and what is
+          legal in a URL are - 1808, 1738, and 2396. <br />
+          Handling of the underlying resources is carried out
+          by NSURLHandle objects, but NSURL provides a simoplified
+          API wrapping these objects.
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL+URLWithString:">+URLWithString:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL+URLWithString:relativeToURL:">+URLWithString:relativeToURL:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL+fileURLWithPath:">+fileURLWithPath:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-URLHandleUsingCache:">-URLHandleUsingCache:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-absoluteString">-absoluteString</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-absoluteURL">-absoluteURL</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-baseURL">-baseURL</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-fragment">-fragment</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-host">-host</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-initFileURLWithPath:">-initFileURLWithPath:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-initWithScheme:host:path:">-initWithScheme:host:path:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-initWithString:">-initWithString:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-initWithString:relativeToURL:">-initWithString:relativeToURL:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-isFileURL">-isFileURL</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-loadResourceDataNotifyingClient:usingCache:">-loadResourceDataNotifyingClient:usingCache:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-parameterString">-parameterString</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-password">-password</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-path">-path</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-port">-port</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-propertyForKey:">-propertyForKey:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-query">-query</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-relativePath">-relativePath</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-relativeString">-relativeString</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-resourceDataUsingCache:">-resourceDataUsingCache:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-resourceSpecifier">-resourceSpecifier</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-scheme">-scheme</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-setProperty:forKey:">-setProperty:forKey:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-setResourceData:">-setResourceData:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-standardizedURL">-standardizedURL</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSURL-user">-user</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSURL+URLWithString:">URLWithString:</a></h3>
+    + (id) <b>URLWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aUrlString;<br />
+    <p>
+      
+            Create and return a URL with the supplied string,
+            which should be a string (containing percent escape
+            codes where necessary) conforming to the description
+            (in RFC2396) of an absolute URL. <br /> Calls
+            <a rel="gsdoc" href="#method$NSURL-initWithString:">
+              -initWithString:
+            </a>
 
           
-<h2>Instance Variables </h2>
-<ul>
-</ul>
-<h2>Methods </h2>
-<ul>
-<li ><a href ="NSURL.html#method-0">+URLWithString:</a>
-<li ><a href ="NSURL.html#method-1">+URLWithString:relativeToURL:</a>
-<li ><a href ="NSURL.html#method-2">+fileURLWithPath:</a>
-<li ><a href ="NSURL.html#method-3">-loadResourceDataNotifyingClient:usingCache:</a>
-<li ><a href ="NSURL.html#method-4">-parameterString</a>
-<li ><a href ="NSURL.html#method-5">-password</a>
-<li ><a href ="NSURL.html#method-6">-path</a>
-<li ><a href ="NSURL.html#method-7">-port</a>
-<li ><a href ="NSURL.html#method-8">-propertyForKey:</a>
-<li ><a href ="NSURL.html#method-9">-query</a>
-<li ><a href ="NSURL.html#method-10">-relativePath</a>
-<li ><a href ="NSURL.html#method-11">-relativeString</a>
-<li ><a href ="NSURL.html#method-12">-resourceDataUsingCache:</a>
-<li ><a href ="NSURL.html#method-13">-resourceSpecifier</a>
-<li ><a href ="NSURL.html#method-14">-scheme</a>
-<li ><a href ="NSURL.html#method-15">-setProperty:</a>
-<li ><a href ="NSURL.html#method-16">-setResourceData:</a>
-<li ><a href ="NSURL.html#method-17">-standardizedURL</a>
-<li ><a href ="NSURL.html#method-18">-user</a>
-</ul>
-<hr><h2>Class Methods </h2>
-<h3><a name ="method-0">URLWithString:</a></h3>
-+ (id) <b>URLWithString:</b> (NSString*)URLString;<br>
-
-	    Initializes with a string as specified in RFCs 1738 and 1808
-          
- <hr>
-<h3><a name ="method-1">URLWithString:relativeToURL:</a></h3>
-+ (id) <b>URLWithString:</b> (NSString*)URLString <b>relativeToURL:</b> (NSURL*)baseURL;<br>
-
-	    Initializes relative to a base URL, with a string as
-	    specified in RFCs 1738 and 1808
-          
- <hr>
-<h3><a name ="method-2">fileURLWithPath:</a></h3>
-+ (id) <b>fileURLWithPath:</b> (NSString*)path;<br>
-
-	    Initializes as a file schem URL with the specified path.
-          
- <hr>
-<hr><h2>Instances Methods </h2>
-<h3><a name ="method-3">loadResourceDataNotifyingClient:usingCache:</a></h3>
-- (void) <b>loadResourceDataNotifyingClient:</b> (id)client <b>usingCache:</b> (BOOL)shouldUseCache;<br>
-
-	    Loads the resource data for the specified URL.
-	    <p>
-
-	      If <em>shouldUseCache</em> is <code>YES</code> then an attempt
-	      will be made to locate a cached NSURLHandle to provide the
-	      resource data, otherwise a new handle will be created and
-	      cached.
-	    </p>
-
-	    <p>
-
-	      If the handle does not have the data available, it will be
-	      asked to load the data in the background by calling its
-	      loadInBackground  method.
-	    </p>
-
-	    <p>
-
-	      The specified client (if non-nil) will be set up to recieve
-	      notifications of the progress fo the background load process.
-	    </p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL+URLWithString:relativeToURL:">URLWithString:relativeToURL:</a></h3>
+    + (id) <b>URLWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aUrlString<b> relativeToURL:</b> (<a rel="gsdoc" href="#class$NSURL">NSURL</a>*)aBaseUrl;<br />
+    <p>
+      
+            Create and return a URL with the supplied string,
+            which should be a string (containing percent escape
+            codes where necessary) conforming to the description
+            (in RFC2396) of a relative URL. <br /> Calls
+            <a rel="gsdoc" href="#method$NSURL-initWithString:relativeToURL:">
+              -initWithString:relativeToURL:
+            </a>
 
           
- <hr>
-<h3><a name ="method-4">parameterString</a></h3>
-- (NSString*) <b>parameterString</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL+fileURLWithPath:">fileURLWithPath:</a></h3>
+    + (id) <b>fileURLWithPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aPath;<br />
+    <p>
+      
+            Create and return a file URL with the supplied path.
+            <br /> The value of <var>aPath</var> must be a valid
+            filesystem path. <br /> Calls
+            <a rel="gsdoc" href="#method$NSURL-initFileURLWithPath:">
+              -initFileURLWithPath:
+            </a>
 
           
- <hr>
-<h3><a name ="method-5">password</a></h3>
-- (NSString*) <b>password</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-URLHandleUsingCache:">URLHandleUsingCache:</a></h3>
+    - (<a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a>*) <b>URLHandleUsingCache:</b> (BOOL)shouldUseCache;<br />
+    <p>
+      
+            Returns an NSURLHandle instance which may be used
+            to write data to the resource represented by the
+            receiver URL, or read data from it. <br /> The
+            <var>shouldUseCache</var> flag indicates whether a
+            cached handle may be returned or a new one should be
+            created.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-absoluteString">absoluteString</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>absoluteString</b>;<br />
+    <p>
+      
+            Returns the full string describing the receiver
+            resiolved against its base.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-absoluteURL">absoluteURL</a></h3>
+    - (<a rel="gsdoc" href="#class$NSURL">NSURL</a>*) <b>absoluteURL</b>;<br />
+    <p>
+      
+            If the receiver is an absolute URL, returns self.
+            Otherwise returns an absolute URL referring to
+            the same resource as the receiver.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-baseURL">baseURL</a></h3>
+    - (<a rel="gsdoc" href="#class$NSURL">NSURL</a>*) <b>baseURL</b>;<br />
+    <p>
+      
+            If the receiver is a relative URL, returns its base URL.
+            <br /> Otherwise, returns <code>nil</code>.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-fragment">fragment</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>fragment</b>;<br />
+    <p>
+      
+            Returns the fragment portion of the receiver or
+            <code>nil</code> if there is no fragment supplied in
+            the URL. <br /> The fragment is everything in the
+            original URL string after a '#' <br /> File URLs
+            do not have fragments.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-host">host</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>host</b>;<br />
+    <p>
+      
+            Returns the host portion of the receiver or
+            <code>nil</code> if there is no host supplied in the
+            URL. <br /> Percent escape sequences in the user
+            string are translated and the string treated as
+            UTF8. <br />
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-initFileURLWithPath:">initFileURLWithPath:</a></h3>
+    - (id) <b>initFileURLWithPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aPath;<br />
+    <p>
+      
+            Initialise as a file URL with the specified path
+            (which must be a valid path on the local
+            filesystem). <br /> Converts relative paths to
+            absolute ones. <br /> Appends a trailing slash to
+            the path when necessary if it specifies a directory.
+            <br /> Calls
+            <a rel="gsdoc" href="#method$NSURL-initWithScheme:host:path:">
+              -initWithScheme:host:path:
+            </a>
 
           
- <hr>
-<h3><a name ="method-6">path</a></h3>
-- (NSString*) <b>path</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-initWithScheme:host:path:">initWithScheme:host:path:</a></h3>
+    - (id) <b>initWithScheme:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aScheme<b> host:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aHost<b> path:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aPath;<br />
+    <p>
+      
+            Initialise by building a URL string from the
+            supplied parameters and calling
+            <a rel="gsdoc" href="#method$NSURL-initWithString:relativeToURL:">
+              -initWithString:relativeToURL:
+            </a>
 
           
- <hr>
-<h3><a name ="method-7">port</a></h3>
-- (NSNumber*) <b>port</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-initWithString:">initWithString:</a></h3>
+    - (id) <b>initWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aUrlString;<br />
+    <p>
+      
+            Initialise as an absolute URL. <br /> Calls
+            <a rel="gsdoc" href="#method$NSURL-initWithString:relativeToURL:">
+              -initWithString:relativeToURL:
+            </a>
 
           
- <hr>
-<h3><a name ="method-8">propertyForKey:</a></h3>
-- (id) <b>propertyForKey:</b> (NSString*)propertyKey;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-initWithString:relativeToURL:">initWithString:relativeToURL:</a></h3>
+    - (id) <b>initWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aUrlString<b> relativeToURL:</b> (<a rel="gsdoc" href="#class$NSURL">NSURL</a>*)aBaseUrl;<br />
+This is a designated initialiser for the class.<br />
+    <p>
+      
+            Initialised using <var>aUrlString</var> and
+            <var>aBaseUrl</var>. The value of <var>aBaseUrl</var>
+            may be <code>nil</code>, but <var>aUrlString</var> must
+            be non-nil. <br /> If the string cannot be parsed the
+            method returns <code>nil</code>.
           
- <hr>
-<h3><a name ="method-9">query</a></h3>
-- (NSString*) <b>query</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-isFileURL">isFileURL</a></h3>
+    - (BOOL) <b>isFileURL</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if the recevier is a file
+            URL, <code>NO</code> otherwise.
           
- <hr>
-<h3><a name ="method-10">relativePath</a></h3>
-- (NSString*) <b>relativePath</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-loadResourceDataNotifyingClient:usingCache:">loadResourceDataNotifyingClient:usingCache:</a></h3>
+    - (void) <b>loadResourceDataNotifyingClient:</b> (id)client<b> usingCache:</b> (BOOL)shouldUseCache;<br />
+    <p>
+      
+            Loads resource data for the specified
+            <var>client</var>.
+            
+    </p>
+    <p>
 
+              If <var>shouldUseCache</var> is <code>YES</code> then
+              an attempt will be made to locate a cached NSURLHandle
+              to provide the resource data, otherwise a new handle
+              will be created and cached.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              If the handle does not have the data available, it
+              will be asked to load the data in the background by
+              calling its loadInBackground method.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              The specified <var>client</var> (if non-nil) will be
+              set up to receive notifications of the progress of
+              the background load process.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-parameterString">parameterString</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>parameterString</b>;<br />
+    <p>
+      
+            Returns the parameter portion of the receiver or
+            <code>nil</code> if there is no parameter supplied
+            in the URL. <br /> The parameters are everything in the
+            original URL string after a ';' but before the
+            query. <br /> File URLs do not have parameters.
           
- <hr>
-<h3><a name ="method-11">relativeString</a></h3>
-- (NSString*) <b>relativeString</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-password">password</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>password</b>;<br />
+    <p>
+      
+            Returns the password portion of the receiver or
+            <code>nil</code> if there is no password supplied in
+            the URL. <br /> Percent escape sequences in the user
+            string are translated and the string treated as UTF8
+            in GNUstep but this appears to be broken in MacOS-X.
+            <br /> NB. because of its security implications it
+            is recommended that you do not use URLs with users and
+            passwords unless necessary.
           
- <hr>
-<h3><a name ="method-12">resourceDataUsingCache:</a></h3>
-- (NSData*) <b>resourceDataUsingCache:</b> (BOOL)shouldUseCache;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-path">path</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>path</b>;<br />
+    <p>
+      
+            Returns the path portion of the receiver. <br />
+            Replaces percent escapes with unescaped values,
+            interpreting non-ascii character sequences as
+            UTF8. <br /> NB. This does not conform strictly to
+            the RFCs, in that it includes a leading slash ('/')
+            character (wheras the path part of a URL strictly
+            should not) and the interpretation of non-ascii
+            character is (strictly speaking) undefined.
+            <br /> Also, this breaks strict conformance in that
+            a URL of file scheme is treated as having a path
+            (contrary to RFCs)
           
- <hr>
-<h3><a name ="method-13">resourceSpecifier</a></h3>
-- (NSString*) <b>resourceSpecifier</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-port">port</a></h3>
+    - (<a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>*) <b>port</b>;<br />
+    <p>
+      
+            Returns the port portion of the receiver or
+            <code>nil</code> if there is no port supplied in the
+            URL. <br /> Percent escape sequences in the user
+            string are translated in GNUstep but this appears to
+            be broken in MacOS-X.
           
- <hr>
-<h3><a name ="method-14">scheme</a></h3>
-- (NSString*) <b>scheme</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-propertyForKey:">propertyForKey:</a></h3>
+    - (id) <b>propertyForKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)propertyKey;<br />
+    <p>
+      
+            Asks a URL handle to return the property for the
+            specified key and returns the result.
           
- <hr>
-<h3><a name ="method-15">setProperty:</a></h3>
-- (BOOL) <b>setProperty:</b> (id)property;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-query">query</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>query</b>;<br />
+    <p>
+      
+            Returns the query portion of the receiver or
+            <code>nil</code> if there is no query supplied in
+            the URL. <br /> The query is everything in the original
+            URL string after a '?' but before the fragment. <br />
+            File URLs do not have queries.
           
- <hr>
-<h3><a name ="method-16">setResourceData:</a></h3>
-- (BOOL) <b>setResourceData:</b> (NSData*)data;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-relativePath">relativePath</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>relativePath</b>;<br />
+    <p>
+      
+            Returns the path of the receiver, without taking
+            any base URL into account. If the receiver is an
+            absolute URL,
+            <a rel="gsdoc" href="#method$NSURL-relativePath">
+              -relativePath
+            </a>
 
+            is the same as <a rel="gsdoc" href="#method$NSURL-path">-path</a>
+
+            . <br /> Returns <code>nil</code> if there is no path
+            specified for the URL.
           
- <hr>
-<h3><a name ="method-17">standardizedURL</a></h3>
-- (NSURL*) <b>standardizedURL</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-relativeString">relativeString</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>relativeString</b>;<br />
+    <p>
+      
+            Returns the relative portion of the URL string. If
+            the receiver is not a relative URL, this returns the
+            same as absoluteString.
           
- <hr>
-<h3><a name ="method-18">user</a></h3>
-- (NSString*) <b>user</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-resourceDataUsingCache:">resourceDataUsingCache:</a></h3>
+    - (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>resourceDataUsingCache:</b> (BOOL)shouldUseCache;<br />
+    <p>
+      
+            Loads the resource data for the represented URL and
+            returns the result. The shoulduseCache flag
+            determines whether an existing cached
+            NSURLHandle can be used to provide the data.
           
- <hr>
-</body>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-resourceSpecifier">resourceSpecifier</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>resourceSpecifier</b>;<br />
+    <p>
+      
+            Returns the resource specifier of the URL... the
+            part which lies after the scheme.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-scheme">scheme</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>scheme</b>;<br />
+    <p>
+      
+            Returns the scheme of the receiver.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-setProperty:forKey:">setProperty:forKey:</a></h3>
+    - (BOOL) <b>setProperty:</b> (id)property<b> forKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)propertyKey;<br />
+    <p>
+      
+            Calls [
+            <a rel="gsdoc" href="#method$NSURLHandle-writeProperty:forKey:">NSURLHandle-writeProperty:forKey:</a>
+] to set the named <var>property</var>.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-setResourceData:">setResourceData:</a></h3>
+    - (BOOL) <b>setResourceData:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)data;<br />
+    <p>
+      
+            Calls [
+            <a rel="gsdoc" href="#method$NSURLHandle-writeData:">
+              NSURLHandle-writeData:
+            </a>
 
- </html>
+            ] to write the specified <var>data</var> object to the
+            resource identified by the receiver URL. <br />
+            Returns the result.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-standardizedURL">standardizedURL</a></h3>
+    - (<a rel="gsdoc" href="#class$NSURL">NSURL</a>*) <b>standardizedURL</b>;<br />
+    <p>
+      
+            Returns a URL with '/./' and '/../' sequences
+            resolved etc.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSURL-user">user</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>user</b>;<br />
+    <p>
+      
+            Returns the user portion of the receiver or
+            <code>nil</code> if there is no user supplied in the
+            URL. <br /> Percent escape sequences in the user
+            string are translated and the whole is treated as
+            UTF8 data. <br /> NB. because of its security
+            implications it is recommended that you do not
+            use URLs with users and passwords unless necessary.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h1><a name="002000000000">
+        Software documentation for the NSObject(NSURLClient)
+        category
+      </a></h1>
+    <h2><a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSURLClient)">NSURLClient</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSURL.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>NotOpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          An informal protocol to which clients may conform if they
+          wish to be notified of the progress in loading a URL for
+          them. The default implementations of these methods do
+          nothing.
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSObject-URL:resourceDataDidBecomeAvailable:">-URL:resourceDataDidBecomeAvailable:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSObject-URL:resourceDidFailLoadingWithReason:">-URL:resourceDidFailLoadingWithReason:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSObject-URLResourceDidCancelLoading:">-URLResourceDidCancelLoading:</a></li>
+      <li><a rel="gsdoc" href="NSURL.html#method$NSObject-URLResourceDidFinishLoading:">-URLResourceDidFinishLoading:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSObject-URL:resourceDataDidBecomeAvailable:">URL:resourceDataDidBecomeAvailable:</a></h3>
+    - (void) <b>URL:</b> (<a rel="gsdoc" href="#class$NSURL">NSURL</a>*)sender<b> resourceDataDidBecomeAvailable:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)newBytes;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject-URL:resourceDidFailLoadingWithReason:">URL:resourceDidFailLoadingWithReason:</a></h3>
+    - (void) <b>URL:</b> (<a rel="gsdoc" href="#class$NSURL">NSURL</a>*)sender<b> resourceDidFailLoadingWithReason:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)reason;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject-URLResourceDidCancelLoading:">URLResourceDidCancelLoading:</a></h3>
+    - (void) <b>URLResourceDidCancelLoading:</b> (<a rel="gsdoc" href="#class$NSURL">NSURL</a>*)sender;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject-URLResourceDidFinishLoading:">URLResourceDidFinishLoading:</a></h3>
+    - (void) <b>URLResourceDidFinishLoading:</b> (<a rel="gsdoc" href="#class$NSURL">NSURL</a>*)sender;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br />
+    <a href="Base.html">Up</a>
+  </body>
+</html>

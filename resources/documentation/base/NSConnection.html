@@ -1,649 +1,996 @@
-<html><head>
- <title>NSConnection</title>
-</head>
-<body>
-<a href ="NSConditionLock.html">[Previous] </a>
-<a href ="Base.html">[Up] </a>
-<a href ="NSCountedSet.html">[Next] </a>
-<h1>NSConnection</h1>
-<h3>Authors </h3>
- <dl>
-<dt><a href ="http://www.gnustep.org/developers/whoiswho.html">Richard Frith-Macdonald</a>
-<dd>
-</dl>
-<p>Version: $Revision: 1.4 $</p>
-<p>Date: $Date: 2002/07/28 04:10:54 $</p>
-<h2><a name ="cont-0">NSConnection</a></h2>
-<h2><a name ="NSConnection">NSConnection</a></h2>
-<p><b>Declared in: </b> Foundation/NSConnection.h</p>
-<p><b>Inherits from: </b> NSObject</p>
-<p><b>Conforms to: </b> NSObject
-</p>
-<hr>
-
-	    NSConnection objects are used to manage communications between
-	    objects in different processes, in different machines, or in
-	    different threads.
+<html>
+  <head>
+    <title>NSConnection class reference</title>
+  </head>
+  <body>
+    <a href="Base.html">Up</a>
+    <br />
+    <h1><a name="title$NSConnection">NSConnection class reference</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Andrew Kachites McCallum(<a href="mailto:mccallum@gnu.ai.mit.edu"><code>
+        mccallum@gnu.ai.mit.edu
+      </code></a>)</dt>
+      <dd>
+      </dd>
+      <dt>Richard Frith-Macdonald(<a href="mailto:rfm@gnu.org"><code>
+        rfm@gnu.org
+      </code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> 1.100</p>
+    <p><b>Date:</b> 2002/08/20 15:14:13</p>
+    <p><b>Copyright:</b> (C) 
+      1994, 1995, 1996, 1997, 2000 Free Software Foundation, Inc.
+    </p>
+    <div>
+      <hr width="50%" align="left" />
+      <h3>Contents -</h3>
+      <ol>
+        <li>
+          <a href="#001000000000">Software documentation for the NSConnection class</a>
+        </li>
+        <li>
+          <a href="#002000000000">Software documentation for the
+        NSConnection(GNUstepExtensions)
+        category</a>
+        </li>
+        <li>
+          <a href="#003000000000">Software documentation for the
+        Object(NSConnectionDelegate)
+        category</a>
+        </li>
+        <li>
+          <a href="#004000000000">Software documentation for the Object(NSPortCoder)
+        category</a>
+        </li>
+      </ol>
+      <hr width="50%" align="left" />
+    </div>
+    <h1><a name="001000000000">
+        Software documentation for the NSConnection class
+      </a></h1>
+    <h2><a name="class$NSConnection">NSConnection</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSConnection.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          NSConnection objects are used to manage
+          communications between objects in different
+          processes, in different machines, or in different
+          threads.
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+allConnections">+allConnections</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+connectionWithReceivePort:sendPort:">+connectionWithReceivePort:sendPort:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+connectionWithRegisteredName:host:">+connectionWithRegisteredName:host:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+connectionWithRegisteredName:host:usingNameServer:">+connectionWithRegisteredName:host:usingNameServer:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+currentConversation">+currentConversation</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+defaultConnection">+defaultConnection</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+newRegisteringAtName:withRootObject:">+newRegisteringAtName:withRootObject:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+rootProxyForConnectionWithRegisteredName:host:">+rootProxyForConnectionWithRegisteredName:host:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+rootProxyForConnectionWithRegisteredName:host:usingNameServer:">+rootProxyForConnectionWithRegisteredName:host:usingNameServer:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-addRequestMode:">-addRequestMode:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-addRunLoop:">-addRunLoop:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-delegate">-delegate</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-enableMultipleThreads">-enableMultipleThreads</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-forwardForProxy:selector:argFrame:">-forwardForProxy:selector:argFrame:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-forwardInvocation:forProxy:">-forwardInvocation:forProxy:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-gcFinalize">-gcFinalize</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-independentConversationQueueing">-independentConversationQueueing</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-initWithReceivePort:sendPort:">-initWithReceivePort:sendPort:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-invalidate">-invalidate</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-isValid">-isValid</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-localObjects">-localObjects</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-multipleThreadsEnabled">-multipleThreadsEnabled</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-receivePort">-receivePort</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-registerName:">-registerName:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-registerName:withNameServer:">-registerName:withNameServer:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-remoteObjects">-remoteObjects</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-removeRequestMode:">-removeRequestMode:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-removeRunLoop:">-removeRunLoop:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-replyTimeout">-replyTimeout</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-requestModes">-requestModes</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-requestTimeout">-requestTimeout</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-rootObject">-rootObject</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-rootProxy">-rootProxy</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-runInNewThread">-runInNewThread</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-sendPort">-sendPort</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-setDelegate:">-setDelegate:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-setIndependentConversationQueueing:">-setIndependentConversationQueueing:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-setReplyTimeout:">-setReplyTimeout:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-setRequestMode:">-setRequestMode:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-setRequestTimeout:">-setRequestTimeout:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-setRootObject:">-setRootObject:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-statistics">-statistics</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-typeForSelector:remoteTarget:">-typeForSelector:remoteTarget:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSConnection+allConnections">allConnections</a></h3>
+    + (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>allConnections</b>;<br />
+    <p>
+      
+            Returns an array containing all the NSConnection
+            objects known to the system. These connections will
+            be valid at the time that the array was created, but may
+            be invalidated by other threads before you get to
+            examine the array.
           
-<h2>Instance Variables </h2>
-<ul>
-</ul>
-<h2>Methods </h2>
-<ul>
-<li ><a href ="NSConnection.html#method-0">+allConnections</a>
-<li ><a href ="NSConnection.html#method-1">+connectionWithReceivePort:</a>
-<li ><a href ="NSConnection.html#method-2">+connectionWithRegisteredName:host:</a>
-<li ><a href ="NSConnection.html#connectionWithRegisteredName:host:usingNameServer:">+connectionWithRegisteredName:host:usingNameServer:</a>
-<li ><a href ="NSConnection.html#method-3">+currentConversation</a>
-<li ><a href ="NSConnection.html#method-4">+defaultConnection</a>
-<li ><a href ="NSConnection.html#method-5">+newRegisteringAtName:withRootObject:</a>
-<li ><a href ="NSConnection.html#method-7">+rootProxyForConnectionWithRegisteredName:host:</a>
-<li ><a href ="NSConnection.html#rootProxyForConnectionWithRegisteredName:host:usingNameServer:">+rootProxyForConnectionWithRegisteredName:host:usingNameServer:</a>
-<li ><a href ="NSConnection.html#method-8">-addRequestMode:</a>
-<li ><a href ="NSConnection.html#method-9">-addRunLoop:</a>
-<li ><a href ="NSConnection.html#method-36">-authenticateComponents:withData:</a>
-<li ><a href ="NSConnection.html#method-37">-authenticationDataForComponents:</a>
-<li ><a href ="NSConnection.html#connection:shouldMakeNewConnection">-connection:shouldMakeNewConnection:</a>
-<li ><a href ="NSConnection.html#method-10">-delegate</a>
-<li ><a href ="NSConnection.html#method-11">-enableMultipleThreads</a>
-<li ><a href ="NSConnection.html#method-12">-independentConversationQueueing</a>
-<li ><a href ="NSConnection.html#initWithReceivePort:sendPort:">-initWithReceivePort:sendPort:</a>
-<li ><a href ="NSConnection.html#method-13">-invalidate</a>
-<li ><a href ="NSConnection.html#method-14">-isValid</a>
-<li ><a href ="NSConnection.html#method-15">-localObjects</a>
-<li ><a href ="NSConnection.html#method-38">-makeNewConnection:</a>
-<li ><a href ="NSConnection.html#method-16">-multipleThreadsEnabled</a>
-<li ><a href ="NSConnection.html#method-17">-receivePort</a>
-<li ><a href ="NSConnection.html#method-18">-registerName:</a>
-<li ><a href ="NSConnection.html#method-19">-registerName:withNameServer:</a>
-<li ><a href ="NSConnection.html#method-20">-remoteObjects</a>
-<li ><a href ="NSConnection.html#method-21">-removeRequestMode:</a>
-<li ><a href ="NSConnection.html#method-22">-removeRunLoop:</a>
-<li ><a href ="NSConnection.html#method-23">-replyTimeout</a>
-<li ><a href ="NSConnection.html#method-24">-requestModes</a>
-<li ><a href ="NSConnection.html#method-25">-requestTimeout</a>
-<li ><a href ="NSConnection.html#method-26">-rootObject</a>
-<li ><a href ="NSConnection.html#method-27">-rootProxy</a>
-<li ><a href ="NSConnection.html#method-28">-runInNewThread</a>
-<li ><a href ="NSConnection.html#method-29">-sendPort</a>
-<li ><a href ="NSConnection.html#method-30">-setDelegate:</a>
-<li ><a href ="NSConnection.html#method-31">-setIndependentConversationQueueing:</a>
-<li ><a href ="NSConnection.html#method-32">-setReplyTimeout:</a>
-<li ><a href ="NSConnection.html#method-33">-setRequestTimeout:</a>
-<li ><a href ="NSConnection.html#method-34">-setRootObject:</a>
-<li ><a href ="NSConnection.html#method-35">-statistics</a>
-</ul>
-<hr><h2>Class Methods </h2>
-<h3><a name ="method-0">allConnections</a></h3>
-+ (NSArray*) <b>allConnections</b>;<br>
-
-	    Returns an array containing all the NSConnection objects known to
-	    the system. These connections will be valid at the time that the
-	    array was created, but may be invalidated by other threads
-	    before you get to examine the array.
-          
- <hr>
-<h3><a name ="method-1">connectionWithReceivePort:</a></h3>
-+ (NSConnection*) <b>connectionWithReceivePort:</b> (NSPort*)receivePort;<br>
-
-	    Returns a connection created using
-	    <a href ="#initWithReceivePort:sendPort:">
-	    initWithReceivePort:sendPort:</a>
-          
- <hr>
-<h3><a name ="method-2">connectionWithRegisteredName:host:</a></h3>
-+ (NSConnection*) <b>connectionWithRegisteredName:</b> (NSString*)name <b>host:</b> (NSString*)hostName;<br>
-
-	    <p>
-
-	      Returns an NSConnection object whose send port is that of the
-	      NSConnection registered under <em>name</em> on the host
-	      <em>hostName</em>.
-	    </p>
-
-	    <p>
-
-	      This method calls
-	      <a href ="#connectionWithRegisteredName:host:usingNameServer:">
-	      connectionWithRegisteredName:host:usingNameServer:</a> using
-	      the default system name server.
-            </p>
-
-          
- <hr>
-<h3><a name ="connectionWithRegisteredName:host:usingNameServer:">connectionWithRegisteredName:host:usingNameServer:</a></h3>
-+ (NSConnection*) <b>connectionWithRegisteredName:</b> (NSString*)name <b>host:</b> (NSString*)host <b>usingNameServer:</b> (NSPortNameServer*)server;<br>
-
-	    <p>
-
-	      Returns an NSConnection object whose send port is that of the
-	      NSConnection registered under <em>name</em> on <em>host</em>.
-	    </p>
-
-	    <p>
-
-	      The nameserver <em>server</em> is used to look up the send
-	      port to be used for the connection.
-            </p>
-
-	    <p>
-
-	      If <em>host</em> is <code>nil</code> or an empty string,
-	      the host is taken to be the local machine.
-	      If it is an asterisk ('*') then the nameserver checks all
-	      hosts on the local subnet (unless the nameserver is one
-	      that only manages local ports).
-	      In the GNUstep implementation, the local host is searched before
-	      any other hosts.
-	    </p>
-
-	    <p>
-
-	      If no NSConnection can be found for <em>name</em> and
-	      <em>host</em>host, the method returns <code>nil</code>.
-	    </p>
-
-	    <p>
-
-	      The returned object has the default NSConnection of the
-	      current thread as its parent (it has the same receive port
-	      as the default connection).
-	    </p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection+connectionWithReceivePort:sendPort:">connectionWithReceivePort:sendPort:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*) <b>connectionWithReceivePort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)r<b> sendPort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)s;<br />
+    <p>
+      
+            Returns a connection initialised using
+            <a rel="gsdoc" href="#method$NSConnection-initWithReceivePort:sendPort:">
+              -initWithReceivePort:sendPort:
+            </a>
 
           
- <hr>
-<h3><a name ="method-3">currentConversation</a></h3>
-+ (id) <b>currentConversation</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection+connectionWithRegisteredName:host:">connectionWithRegisteredName:host:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*) <b>connectionWithRegisteredName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)n<b> host:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)h;<br />
+    <p>
+      
+            
+    </p>
+    <p>
 
-	    Not implemented
+              Returns an NSConnection object whose send port is
+              that of the NSConnection registered under the name
+              <var>n</var> on the host <var>h</var>
+                </p>
+    <p>
+    </p>
+    <p>
+
+              This method calls
+              <a rel="gsdoc" href="#method$NSConnection+connectionWithRegisteredName:host:usingNameServer:">+connectionWithRegisteredName:host:usingNameServer:</a>
+ using the default system name server.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection+connectionWithRegisteredName:host:usingNameServer:">connectionWithRegisteredName:host:usingNameServer:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*) <b>connectionWithRegisteredName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)n<b> host:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)h<b> usingNameServer:</b> (<a rel="gsdoc" href="NSPortNameServer.html#class$NSPortNameServer">NSPortNameServer</a>*)s;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Returns an NSConnection object whose send port is
+              that of the NSConnection registered under
+              <em>name</em> on <em>host</em>.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              The nameserver <em>server</em> is used to look up the
+              send port to be used for the connection.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              If <em>host</em> is <code>nil</code> or an empty
+              string, the host is taken to be the local
+              machine. If it is an asterisk ('*') then the
+              nameserver checks all hosts on the local
+              subnet (unless the nameserver is one that only
+              manages local ports). In the GNUstep
+              implementation, the local host is
+              searched before any other hosts.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              If no NSConnection can be found for <em>name</em> and
+              <em>host</em> host, the method returns
+              <code>nil</code>.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              The returned object has the default NSConnection of
+              the current thread as its parent (it has the same
+              receive port as the default connection).
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection+currentConversation">currentConversation</a></h3>
+    + (id) <b>currentConversation</b>;<br />
+    <p>
+      
           
- <hr>
-<h3><a name ="method-4">defaultConnection</a></h3>
-+ (NSConnection*) <b>defaultConnection</b>;<br>
-
-	    Returns the default NSConnection for the current thread.
-	    <br>
-	    Creates a new instance if necessary.
-	    <br>
-	    The default connection has a single NSPort object used for
-            both sending and receiving - this it can't be used to
-	    connect to a remote process, but can be used to vend objects.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection+defaultConnection">defaultConnection</a></h3>
+    + (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*) <b>defaultConnection</b>;<br />
+    <p>
+      
+            Returns the default connection for a thread. <br />
+            Creates a new instance if necessary. <br /> The
+            default connection has a single NSPort object used
+            for both sending and receiving - this it can't be used
+            to connect to a remote process, but can be used to vend
+            objects. <br /> Possible problem - if the
+            connection is invalidated, it won't be cleaned
+            up until this thread calls this method again. The
+            connection and it's ports could hang around for
+            a very long time.
           
- <hr>
-<h3><a name ="method-5">newRegisteringAtName:withRootObject:</a></h3>
-+ (NSConnection*) <b>newRegisteringAtName:</b> (NSString*)name <b>withRootObject:</b> (id)anObject;<br>
-Standards:  GNUstep NotMacOS-X NotOpenStep<br>
-
-	    This used to be the preferred mechanism for creating a GNUstep
-	    server NSConnection ... it is now deprecated.
-	    <br>
-	    This is a convenience method for -
-	    <a name ="label-6">example </a>
-<pre>
-
-  NSConnection	*conn;
-
-  conn = [[NSConnection alloc] initWithReceivePort: [NSPort port]
-					  sendPort: nil];
-  [conn setRootObject: anObject];
-  if ([conn registerName: name] == NO)
-    {
-      DESTROY(conn);
-    }
-  return conn;
-	    
- </pre>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection+rootProxyForConnectionWithRegisteredName:host:">rootProxyForConnectionWithRegisteredName:host:</a></h3>
+    + (<a rel="gsdoc" href="NSDistantObject.html#class$NSDistantObject">NSDistantObject</a>*) <b>rootProxyForConnectionWithRegisteredName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)n<b> host:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)h;<br />
+    <p>
+      
+            This method calls
+            <a rel="gsdoc" href="#method$NSConnection+rootProxyForConnectionWithRegisteredName:host:usingNameServer:">+rootProxyForConnectionWithRegisteredName:host:usingNameServer:</a>
+ to return a proxy for a root object on the remote connection with the send port registered under name <var>n</var> on host <var>h</var>.
           
- <hr>
-<h3><a name ="method-7">rootProxyForConnectionWithRegisteredName:host:</a></h3>
-+ (NSDistantObject*) <b>rootProxyForConnectionWithRegisteredName:</b> (NSString*)name <b>host:</b> (NSString*)host;<br>
-
-	    This method calls <a href ="#rootProxyForConnectionWithRegisteredName:host:usingNameServer:">
-	    rootProxyForConnectionWithRegisteredName:host:usingNameServer:</a>
-	    to return a proxy for a root object on the remote connection with
-	    the send port registered under <em>name</em> on <em>host</em>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection+rootProxyForConnectionWithRegisteredName:host:usingNameServer:">rootProxyForConnectionWithRegisteredName:host:usingNameServer:</a></h3>
+    + (<a rel="gsdoc" href="NSDistantObject.html#class$NSDistantObject">NSDistantObject</a>*) <b>rootProxyForConnectionWithRegisteredName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)n<b> host:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)h<b> usingNameServer:</b> (<a rel="gsdoc" href="NSPortNameServer.html#class$NSPortNameServer">NSPortNameServer</a>*)s;<br />
+    <p>
+      
+            This method calls
+            <a rel="gsdoc" href="#method$NSConnection+connectionWithRegisteredName:host:usingNameServer:">+connectionWithRegisteredName:host:usingNameServer:</a>
+ to get a connection, then sends it a <a rel="gsdoc" href="#method$NSConnection-rootProxy">-rootProxy</a>
+ message to get a proxy for the root object being vended by the remote connection. Returns the proxy or <code>nil</code> if it couldn't find a connection or if the root object for the connection has not been set.
           
- <hr>
-<h3><a name ="rootProxyForConnectionWithRegisteredName:host:usingNameServer:">rootProxyForConnectionWithRegisteredName:host:usingNameServer:</a></h3>
-+ (NSDistantObject*) <b>rootProxyForConnectionWithRegisteredName:</b> (NSString*)name <b>host:</b> (NSString*)host <b>usingNameServer:</b> (NSPortNameServer*)server;<br>
-Standards:  GNUstep MacOS-X NotOpenStep<br>
-
-	    This method calls
-	    <a href ="NSConnection.html#connectionWithRegisteredName:host:usingNameServer:">
-	    connectionWithRegisteredName:host:usingNameServer:</a>
-	    to get a connection, then sends it a
-	    <a href ="#rootproxy">rootProxy</a> message to get a proxy for
-	    the root object being vended by the remote connection.
-	    Returns the proxy or <code>nil</code> if it couldn't find
-	    a connection or if the root object for the connection has
-	    not been set.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-addRequestMode:">addRequestMode:</a></h3>
+    - (void) <b>addRequestMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
+    <p>
+      
+            Adds <var>mode</var> to the run loop modes that the
+            NSConnection will listen to for incoming
+            messages.
           
- <hr>
-<hr><h2>Instances Methods </h2>
-<h3><a name ="method-8">addRequestMode:</a></h3>
-- (void) <b>addRequestMode:</b> (NSString*)mode;<br>
-
-	    Adds <em>mode</em> to the run loop modes that the NSConnection
-	    will listen to for incoming messages.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-addRunLoop:">addRunLoop:</a></h3>
+    - (void) <b>addRunLoop:</b> (<a rel="gsdoc" href="NSRunLoop.html#class$NSRunLoop">NSRunLoop</a>*)loop;<br />
+    <p>
+      
+            Adds <var>loop</var> to the set of run loops that the
+            NSConnection will listen to for incoming
+            messages.
           
- <hr>
-<h3><a name ="method-9">addRunLoop:</a></h3>
-- (void) <b>addRunLoop:</b> (NSRunLoop*)loop;<br>
-
-	    Adds <em>loop</em> to the set of run loops that the NSConnection
-	    will listen to for incoming messages.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-delegate">delegate</a></h3>
+    - (id) <b>delegate</b>;<br />
+    <p>
+      
+            Returns the delegate of the NSConnection.
           
- <hr>
-<h3><a name ="method-10">delegate</a></h3>
-- (id) <b>delegate</b>;<br>
-
-	    Returns the delegate of the NSConnection.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-enableMultipleThreads">enableMultipleThreads</a></h3>
+    - (void) <b>enableMultipleThreads</b>;<br />
+    <p>
+      
+            Sets the NSConnection configuration so that multiple
+            threads may use the connection to send requests to
+            the remote connection. <br /> This option is inherited
+            by child connections. <br /> NB. A connection with
+            multiple threads enabled will run slower than a
+            normal connection.
           
- <hr>
-<h3><a name ="method-11">enableMultipleThreads</a></h3>
-- (void) <b>enableMultipleThreads</b>;<br>
-
-	    Sets the NSConnection configuration so that multiple threads may
-	    use the connection to send requests to the remote connection.
-	    <br>
-	    This option is inherited by child connections.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-independentConversationQueueing">independentConversationQueueing</a></h3>
+    - (BOOL) <b>independentConversationQueueing</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if the NSConnection is
+            configured to handle remote messages atomically,
+            <code>NO</code> otherwise. <br /> This option is
+            inherited by child connections.
           
- <hr>
-<h3><a name ="method-12">independentConversationQueueing</a></h3>
-- (BOOL) <b>independentConversationQueueing</b>;<br>
-
-	    Returns <code>YES</code> if the NSConnection is configured to
-	    handle remote messages atomically, <code>NO</code> otherwise.
-	    <br>
-	    This option is inherited by child connections.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-initWithReceivePort:sendPort:">initWithReceivePort:sendPort:</a></h3>
+    - (id) <b>initWithReceivePort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)r<b> sendPort:</b> (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*)s;<br />
+This is a designated initialiser for the class.<br />
+    <p>
+      
+            Initialises an NSConnection with the receive
+            port <var>r</var> and the send port <var>s</var>.
+            <br /> Behavior varies with the port values as
+            follows -
+            
+      <dl>
+        <dt><var>r</var> is <code>nil</code></dt>
+        <dd>
           
- <hr>
-<h3><a name ="initWithReceivePort:sendPort:">initWithReceivePort:sendPort:</a></h3>
-<b>This is the designated initialiser </b><br>
-- (id) <b>initWithReceivePort:</b> (NSPort*)recv <b>sendPort:</b> (NSPort*)send;<br>
-
-	    Initialises an NSConnection with <em>recv</em> and <em>send</em>.
-	    <br>
-	    Behavior varies with the port values as follows -
-	    <dl>
-<dt><em>recv</em> is <code>nil</code>
-<dd>
-		The NSConnection is released and the method returns
-	        <code>nil</code>.
-	      
-<dt><em>send</em> is <code>nil</code>
-<dd>
-		The NSConnection uses <em>recv</em> as the send port as
-		well as the receive port.
-	      
-<dt><em>send</em> is the same as <em>recv</em>
-<dd>
-		The NSConnection is usable only for vending objects.
-	      
-<dt>A connection with the same ports exists
-<dd>
-		The new connection is released and the old connection
-		is retained and returned.
-	      
-<dt>A connection with the same ports (swapped) exists
-<dd>
-		The new connection is initialised as normal, and will
-		communicate with the old connection.
-	      
-</dl>
-
-	    <p>
-
-	      If a connection exists whose send and receive ports are
-	      both the same as the new connections receive port, that
-	      existing connection is deemed to be the parent of the
-	      new connection.  The new connection inherits configuration
-	      information from the parent, and the delegate of the
-	      parent has a chance to adjust ythe configuration of the
-	      new connection or veto its creation.
-	      <br>
-	      NSConnectionDidInitializeNotification is posted once a new
-	      connection is initialised.
-	    </p>
-
+                The NSConnection is released and the method returns
+                <code>nil</code>.
+              
+        </dd>
+        <dt><var>s</var> is <code>nil</code></dt>
+        <dd>
           
- <hr>
-<h3><a name ="method-13">invalidate</a></h3>
-- (void) <b>invalidate</b>;<br>
-
-	    Marks the receiving NSConnection as invalid.
-	    <br>
-	    Removes the NSConnections ports from any run loops.
-	    <br>
-	    Posts an NSConnectionDidDieNotification.
-	    <br>
-	    Invalidates all remote objects and local proxies.
+                The NSConnection uses <var>r</var> as the send port
+                as well as the receive port.
+              
+        </dd>
+        <dt>
+                <var>s</var> is the same as <var>r</var>
+              </dt>
+        <dd>
           
- <hr>
-<h3><a name ="method-14">isValid</a></h3>
-- (BOOL) <b>isValid</b>;<br>
-
-	    Returns <code>YES</code> if the connection is invalid,
-	    <code>NO</code> otherwise.
+                The NSConnection is usable only for vending
+                objects.
+              
+        </dd>
+        <dt>
+                A connection with the same ports exists
+              </dt>
+        <dd>
           
- <hr>
-<h3><a name ="method-15">localObjects</a></h3>
-- (NSArray*) <b>localObjects</b>;<br>
-
-	    Returns an array of all the local proxies to objects that
-	    are retained by the remote connection.
+                The new connection is released and the old
+                connection is retained and returned.
+              
+        </dd>
+        <dt>
+                A connection with the same ports (swapped) exists
+              </dt>
+        <dd>
           
- <hr>
-<h3><a name ="method-16">multipleThreadsEnabled</a></h3>
-- (BOOL) <b>multipleThreadsEnabled</b>;<br>
+                The new connection is initialised as normal, and
+                will communicate with the old connection.
+              
+        </dd>
+      </dl>
+    </p>
+    <p>
 
-	    Returns <code>YES</code> if the connection permits
-	    multiple threads to use it to send requests,
-	    <code>NO</code> otherwise.
+              If a connection exists whose send and receive ports
+              are both the same as the new connections receive
+              port, that existing connection is deemed to be the
+              parent of the new connection. The new connection
+              inherits configuration information from the
+              parent, and the delegate of the parent has a
+              chance to adjust ythe configuration of the new
+              connection or veto its creation. <br />
+              NSConnectionDidInitializeNotification
+              is posted once a new connection is initialised.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-invalidate">invalidate</a></h3>
+    - (void) <b>invalidate</b>;<br />
+    <p>
+      
+            Marks the receiving NSConnection as invalid. <br />
+            Removes the NSConnections ports from any run loops.
+            <br /> Posts an NSConnectionDidDieNotification.
+            <br /> Invalidates all remote objects and local
+            proxies.
           
- <hr>
-<h3><a name ="method-17">receivePort</a></h3>
-- (NSPort*) <b>receivePort</b>;<br>
-
-	    Returns the NSPort object on which incoming messages are
-	    recieved.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-isValid">isValid</a></h3>
+    - (BOOL) <b>isValid</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if the connection is
+            invalid, <code>NO</code> otherwise.
           
- <hr>
-<h3><a name ="method-18">registerName:</a></h3>
-- (BOOL) <b>registerName:</b> (NSString*)name;<br>
-
-	    Simply invokes <a href ="#registerName:usingNameServer:">
-	    registerName:usingNameServer:</a> passing it the default
-	    system nameserver.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-localObjects">localObjects</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>localObjects</b>;<br />
+    <p>
+      
+            Returns an array of all the local proxies to
+            objects that are retained by the remote connection.
           
- <hr>
-<h3><a name ="method-19">registerName:withNameServer:</a></h3>
-- (BOOL) <b>registerName:</b> (NSString*)name <b>withNameServer:</b> (NSPortNameServer*)server;<br>
-Standards:  GNUstep MacOS-X NotOpenStep<br>
-
-	    Registers the recieve port of the NSConnection as <em>name</em> and
-	    unregisters the previous name (if any).
-	    <br>
-	    Returns <code>YES</code> on success, <code>NO</code> on failure.
-	    <br>
-	    On failure, the connection remains registered under the
-	    previous name.
-	    <br>
-	    Supply <code>nil</code> as <em>name</em> to unregister the
-	    NSConnection.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-multipleThreadsEnabled">multipleThreadsEnabled</a></h3>
+    - (BOOL) <b>multipleThreadsEnabled</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if the connection permits
+            multiple threads to use it to send requests,
+            <code>NO</code> otherwise.
           
- <hr>
-<h3><a name ="method-20">remoteObjects</a></h3>
-- (NSArray*) <b>remoteObjects</b>;<br>
-
-	    Returns an array of proxies to all the remote objects known to
-	    the NSConnection.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-receivePort">receivePort</a></h3>
+    - (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*) <b>receivePort</b>;<br />
+    <p>
+      
+            Returns the NSPort object on which incoming
+            messages are recieved.
           
- <hr>
-<h3><a name ="method-21">removeRequestMode:</a></h3>
-- (void) <b>removeRequestMode:</b> (NSString*)mode;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-registerName:">registerName:</a></h3>
+    - (BOOL) <b>registerName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
+    <p>
+      
+            Simply invokes
+            <a rel="gsdoc" href="#method$NSConnection-registerName:usingNameServer:">
+              -registerName:usingNameServer:
+            </a>
 
-	    Removes <em>mode</em> from the run loop modes used to recieve
-	    incoming messages.
+            passing it the default system nameserver.
           
- <hr>
-<h3><a name ="method-22">removeRunLoop:</a></h3>
-- (void) <b>removeRunLoop:</b> (NSRunLoop*)loop;<br>
-
-	    Removes <em>loop</em> from the run loops used to recieve
-	    incoming messages.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-registerName:withNameServer:">registerName:withNameServer:</a></h3>
+    - (BOOL) <b>registerName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> withNameServer:</b> (<a rel="gsdoc" href="NSPortNameServer.html#class$NSPortNameServer">NSPortNameServer</a>*)svr;<br />
+    <p>
+      
+            Registers the recieve port of the NSConnection as
+            <var>name</var> and unregisters the previous value
+            (if any). <br /> Returns <code>YES</code> on success,
+            <code>NO</code> on failure. <br /> On failure, the
+            connection remains registered under the previous
+            <var>name</var>. <br /> Supply <code>nil</code> as
+            <var>name</var> to unregister the NSConnection.
           
- <hr>
-<h3><a name ="method-23">replyTimeout</a></h3>
-- (NSTimeInterval) <b>replyTimeout</b>;<br>
-
-	    Returns the timeout interval used when waiting for a reply to
-	    a request sent on the NSConnection.  This value is inherited
-	    from the parent connection or may be set using the
-	    setReplyTimeout: method.  The default value is the maximum
-	    delay (effectively infinite).
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-remoteObjects">remoteObjects</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>remoteObjects</b>;<br />
+    <p>
+      
+            Returns an array of proxies to all the remote
+            objects known to the NSConnection.
           
- <hr>
-<h3><a name ="method-24">requestModes</a></h3>
-- (NSArray*) <b>requestModes</b>;<br>
-
-	    Returns an array of all the run loop modes that the NSConnection
-	    uses when waiting for an incoming request.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-removeRequestMode:">removeRequestMode:</a></h3>
+    - (void) <b>removeRequestMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
+    <p>
+      
+            Removes <var>mode</var> from the run loop modes
+            used to recieve incoming messages.
           
- <hr>
-<h3><a name ="method-25">requestTimeout</a></h3>
-- (NSTimeInterval) <b>requestTimeout</b>;<br>
-
-	    Returns the timeout interval used when waiting for a send
-	    operation to complete.  This value is inherited
-	    from the parent connection or may be set using the
-	    setRequestTimeout: method.  The default value is the maximum
-	    delay (effectively infinite).
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-removeRunLoop:">removeRunLoop:</a></h3>
+    - (void) <b>removeRunLoop:</b> (<a rel="gsdoc" href="NSRunLoop.html#class$NSRunLoop">NSRunLoop</a>*)loop;<br />
+    <p>
+      
+            Removes <var>loop</var> from the run loops used to
+            recieve incoming messages.
           
- <hr>
-<h3><a name ="method-26">rootObject</a></h3>
-- (id) <b>rootObject</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-replyTimeout">replyTimeout</a></h3>
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>) <b>replyTimeout</b>;<br />
+    <p>
+      
+            Returns the timeout interval used when waiting for
+            a reply to a request sent on the NSConnection. This value
+            is inherited from the parent connection or may be set
+            using the
+            <a rel="gsdoc" href="#method$NSConnection-setReplyTimeout:">
+              -setReplyTimeout:
+            </a>
 
-	    Returns the object that is made available by this connection
-	    or by its parent (the object is associated with the receive
-	    port).
-	    <br>
-	    Returns <code>nil</code> if no root object has been set.
+            method. <br /> Under MacOS-X the default value is
+            documented as the maximum delay (effectively
+            infinite), but under GNUstep it is set to a more
+            useful 300 seconds.
           
- <hr>
-<h3><a name ="method-27">rootProxy</a></h3>
-- (NSDistantObject*) <b>rootProxy</b>;<br>
-
-	    Returns the proxy for the root object of the remote NSConnection.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-requestModes">requestModes</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>requestModes</b>;<br />
+    <p>
+      
+            Returns an array of all the run loop modes that the
+            NSConnection uses when waiting for an incoming
+            request.
           
- <hr>
-<h3><a name ="method-28">runInNewThread</a></h3>
-- (void) <b>runInNewThread</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-requestTimeout">requestTimeout</a></h3>
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>) <b>requestTimeout</b>;<br />
+    <p>
+      
+            Returns the timeout interval used when trying to
+            send a request on the NSConnection. This value is
+            inherited from the parent connection or may be
+            set using the
+            <a rel="gsdoc" href="#method$NSConnection-setRequestTimeout:">
+              -setRequestTimeout:
+            </a>
 
-	    Removes the NSConnection from the current threads default
-	    run loop, then creates a new thread and runs the NSConnection
-	    in it.
+            method. <br /> Under MacOS-X the default value is
+            documented as the maximum delay (effectively
+            infinite), but under GNUstep it is set to a more
+            useful 300 seconds.
           
- <hr>
-<h3><a name ="method-29">sendPort</a></h3>
-- (NSPort*) <b>sendPort</b>;<br>
-
-	    Returns the port on which the NSConnection sends messages.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-rootObject">rootObject</a></h3>
+    - (id) <b>rootObject</b>;<br />
+    <p>
+      
+            Returns the object that is made available by this
+            connection or by its parent (the object is
+            associated with the receive port). <br />
+            Returns <code>nil</code> if no root object has been
+            set.
           
- <hr>
-<h3><a name ="method-30">setDelegate:</a></h3>
-- (void) <b>setDelegate:</b> (id)delegate;<br>
-
-	    Sets the NSConnection's delegate (without retaining it).
-	    <br>
-	    The delegate is able to control some of the NSConnection's
-	    behavior by implementing methods in an informal protocol.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-rootProxy">rootProxy</a></h3>
+    - (<a rel="gsdoc" href="NSDistantObject.html#class$NSDistantObject">NSDistantObject</a>*) <b>rootProxy</b>;<br />
+    <p>
+      
+            Returns the proxy for the root object of the remote
+            NSConnection.
           
- <hr>
-<h3><a name ="method-31">setIndependentConversationQueueing:</a></h3>
-- (void) <b>setIndependentConversationQueueing:</b> (BOOL)flag;<br>
-
-	    Sets whether or not the NSConnection should handle requests
-	    arriving from the remote NSConnection atomically.
-	    <br>
-	    By default, this is set to <code>NO</code> ... if set to
-	    <code>YES</code> then any messages arriving while one message
-	    is being dealt with, will be queued.
-	    <br>
-	    NB. careful - use of this option can cause deadlocks.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-runInNewThread">runInNewThread</a></h3>
+    - (void) <b>runInNewThread</b>;<br />
+    <p>
+      
+            Removes the NSConnection from the current threads
+            default run loop, then creates a new thread and
+            runs the NSConnection in it.
           
- <hr>
-<h3><a name ="method-32">setReplyTimeout:</a></h3>
-- (void) <b>setReplyTimeout:</b> (NSTimeInterval)seconds;<br>
-
-	    Sets the time interval that the NSConnection will wait for a
-	    reply to one of its requests before raising an
-	    NSPortTimeoutException.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-sendPort">sendPort</a></h3>
+    - (<a rel="gsdoc" href="NSPort.html#class$NSPort">NSPort</a>*) <b>sendPort</b>;<br />
+    <p>
+      
+            Returns the port on which the NSConnection sends
+            messages.
           
- <hr>
-<h3><a name ="method-33">setRequestTimeout:</a></h3>
-- (void) <b>setRequestTimeout:</b> (NSTimeInterval)seconds;<br>
-
-	    Sets the time interval that the NSConnection will wait to send
-	    one of its requests before raising an NSPortTimeoutException.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-setDelegate:">setDelegate:</a></h3>
+    - (void) <b>setDelegate:</b> (id)anObj;<br />
+    <p>
+      
+            Sets the NSConnection's delegate (without retaining
+            it). <br /> The delegate is able to control some of
+            the NSConnection's behavior by implementing methods in
+            an informal protocol.
           
- <hr>
-<h3><a name ="method-34">setRootObject:</a></h3>
-- (void) <b>setRootObject:</b> (id)anObject;<br>
-
-	    Sets the root object that is vended by the connection.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-setIndependentConversationQueueing:">setIndependentConversationQueueing:</a></h3>
+    - (void) <b>setIndependentConversationQueueing:</b> (BOOL)flag;<br />
+    <p>
+      
+            Sets whether or not the NSConnection should handle
+            requests arriving from the remote NSConnection
+            atomically. <br /> By default, this is set to
+            <code>NO</code>... if set to <code>YES</code> then
+            any messages arriving while one message is being dealt
+            with, will be queued. <br /> NB. careful - use of
+            this option can cause deadlocks.
           
- <hr>
-<h3><a name ="method-35">statistics</a></h3>
-- (NSDictionary*) <b>statistics</b>;<br>
-
-	    Returns an object containing various statistics for the
-	    NSConnection.
-	    <br>
-	    On GNUstep the dictionary contains -
-	    <dl>
-<dt>NSConnectionRepliesReceived
-<dd>
-		The number of messages replied to by the remote NSConnection
-	      
-<dt>NSConnectionRepliesSent
-<dd>
-		The number of replies sent to the remote NSConnection
-	      
-<dt>NSConnectionRequestsReceived
-<dd>
-		The number of messages recieved from the remote NSConnection
-	      
-<dt>NSConnectionRequestsSent
-<dd>
-		The number of messages sent to the remote NSConnection
-	      
-<dt>NSConnectionLocalCount
-<dd>
-		The number of local objects currently vended
-	      
-<dt>NSConnectionProxyCount
-<dd>
-		The number of remote objects currently in use
-	      
-</dl>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-setReplyTimeout:">setReplyTimeout:</a></h3>
+    - (void) <b>setReplyTimeout:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)to;<br />
+    <p>
+      
+            Sets the time interval that the NSConnection will wait
+            for a reply <var>to</var> one of its requests before
+            raising an NSPortTimeoutException.
           
- <hr>
-<h3><a name ="method-36">authenticateComponents:withData:</a></h3>
-- (BOOL) <b>authenticateComponents:</b> (NSMutableArray*)components <b>withData:</b> (NSData*)authentication;<br>
-Standards:  GNUstep MacOS-X NotOpenStep<br>
-
-	    <p>
-
-	      This is not an NSConnection method, but is a method that may
-	      be implemented by the delegate of an NSConnection object.
-	    </p>
-
-	    <p>
-
-	      If the delegate implements this method, the NSConnection will
-	      invoke the method for every message request or reply it receives
-	      from the remote NSConnection.  The delegate should use the
-	      <em>authentication</em> data to check all the NSData objects
-	      in the <em>components</em> array (ignoring NSPort objects),
-	      and return <code>YES</code> if they are valid, <code>NO</code>
-	      otherwise.
-	    </p>
-
-	    <p>
-
-	      If the method returns <code>NO</code> then an
-	      NSFailedAuthentication exception will be raised.
-	    </p>
-
-	    <p>
-
-	      In GNUstep the <em>components</em> array is mutable, allowing
-	      you to replace the NSData objects with your own version.
-	    </p>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-setRequestMode:">setRequestMode:</a></h3>
+    - (void) <b>setRequestMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
+    <p>
+      
+            Sets the runloop <var>mode</var> in which requests
+            will be sent to the remote end of the connection.
           
- <hr>
-<h3><a name ="method-37">authenticationDataForComponents:</a></h3>
-- (NSData*) <b>authenticationDataForComponents:</b> (NSMutableArray*)components;<br>
-Standards:  GNUstep MacOS-X NotOpenStep<br>
-
-	    <p>
-
-	    This is not an NSConnection method, but is a method that may
-	    be implemented by the delegate of an NSConnection object.
-	    </p>
-
-	    <p>
-
-	      If the delegate implements this method, the NSConnection will
-	      invoke the method for every message request ro reply it sends
-	      to the remote NSConnection.  The delegate should generate
-	      authentication data by examining all the NSData objects
-	      in the <em>components</em> array (ignoring NSPort objects),
-	      and return the authentication data that can be used by the
-	      remote NSConnection.
-	    </p>
-
-	    <p>
-
-	      If the method returns <code>nil</code> then an
-	      NSGenericException exception will be raised.
-	    </p>
-
-	    <p>
-
-	      In GNUstep the <em>components</em> array is mutable, allowing
-	      you to replace the NSData objects with your own version.
-	    </p>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-setRequestTimeout:">setRequestTimeout:</a></h3>
+    - (void) <b>setRequestTimeout:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)to;<br />
+    <p>
+      
+            Sets the time interval that the NSConnection will wait
+            <var>to</var> send one of its requests before raising
+            an NSPortTimeoutException.
           
- <hr>
-<h3><a name ="connection:shouldMakeNewConnection">connection:shouldMakeNewConnection:</a></h3>
-- (BOOL) <b>connection:</b> (NSConnection*)parentConnection <b>shouldMakeNewConnection:</b> (NSConnection*)newConnnection;<br>
-Standards:  GNUstep MacOS-X NotOpenStep<br>
-
-	    <p>
-
-	      This is not an NSConnection method, but is a method that may
-	      be implemented by the delegate of an NSConnection object.
-	    </p>
-
-	    <p>
-
-	      If the delegate implements this method, it will be called
-	      whenever a new NSConnection is created that has this
-	      NSConnection as its parent.  The delegate may take this
-	      opportunity to adjust the configuration of the new
-	      connection and may return a boolean value to tell the
-	      parent whether the creation of the new connection is to
-	      be permitted or not.
-	    </p>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-setRootObject:">setRootObject:</a></h3>
+    - (void) <b>setRootObject:</b> (id)anObj;<br />
+    <p>
+      
+            Sets the root object that is vended by the connection.
           
- <hr>
-<h3><a name ="method-38">makeNewConnection:</a></h3>
-- (BOOL) <b>makeNewConnection:</b> (NSConnection*)newConnection;<br>
-Standards:  OpenStep<br>
-
-	    <p>
-
-	      This is not an NSConnection method, but is a method that may
-	      be implemented by the delegate of an NSConnection object.
-	    </p>
-
-	    <p>
-
-	      This is the old equivalent of
-	      <a href ="NSConnection.html#connection:shouldMakeNewConnection">
-	      connection:shouldMakeNewConnection</a>
-	      and its use is now deprecated.
-	    </p>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-statistics">statistics</a></h3>
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>statistics</b>;<br />
+    <p>
+      
+            Returns an object containing various statistics for
+            the NSConnection. <br /> On GNUstep the dictionary
+            contains -
+            
+      <dl>
+        <dt>NSConnectionRepliesReceived</dt>
+        <dd>
           
- <hr>
-</body>
+                The number of messages replied to by the remote
+                NSConnection
+              
+        </dd>
+        <dt>NSConnectionRepliesSent</dt>
+        <dd>
+          
+                The number of replies sent to the remote
+                NSConnection
+              
+        </dd>
+        <dt>NSConnectionRequestsReceived</dt>
+        <dd>
+          
+                The number of messages recieved from the remote
+                NSConnection
+              
+        </dd>
+        <dt>NSConnectionRequestsSent</dt>
+        <dd>
+          
+                The number of messages sent to the remote
+                NSConnection
+              
+        </dd>
+        <dt>NSConnectionLocalCount</dt>
+        <dd>
+          
+                The number of local objects currently vended
+              
+        </dd>
+        <dt>NSConnectionProxyCount</dt>
+        <dd>
+          
+                The number of remote objects currently in use
+              
+        </dd>
+      </dl>
+    </p>
+    <hr width="25%" align="left" />
+    <h1><a name="002000000000">
+        Software documentation for the
+        NSConnection(GNUstepExtensions)
+        category
+      </a></h1>
+    <h2><a rel="gsdoc" href="#class$NSConnection">NSConnection</a>(<a name="category$NSConnection(GNUstepExtensions)">GNUstepExtensions</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSConnection.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <dl>
+        <dt><b>Conforms to:</b></dt>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(GCFinalization)">GCFinalization</a></dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+newRegisteringAtName:withRootObject:">+newRegisteringAtName:withRootObject:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-forwardForProxy:selector:argFrame:">-forwardForProxy:selector:argFrame:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-forwardInvocation:forProxy:">-forwardInvocation:forProxy:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-gcFinalize">-gcFinalize</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-typeForSelector:remoteTarget:">-typeForSelector:remoteTarget:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSConnection+newRegisteringAtName:withRootObject:">newRegisteringAtName:withRootObject:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*) <b>newRegisteringAtName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> withRootObject:</b> (id)anObject;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-forwardForProxy:selector:argFrame:">forwardForProxy:selector:argFrame:</a></h3>
+    - (retval_t) <b>forwardForProxy:</b> (<a rel="gsdoc" href="NSDistantObject.html#class$NSDistantObject">NSDistantObject</a>*)object<b> selector:</b> (SEL)sel<b> argFrame:</b> (arglist_t)argframe;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-forwardInvocation:forProxy:">forwardInvocation:forProxy:</a></h3>
+    - (void) <b>forwardInvocation:</b> (<a rel="gsdoc" href="NSInvocation.html#class$NSInvocation">NSInvocation</a>*)inv<b> forProxy:</b> (<a rel="gsdoc" href="NSDistantObject.html#class$NSDistantObject">NSDistantObject</a>*)object;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-gcFinalize">gcFinalize</a></h3>
+    - (void) <b>gcFinalize</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSConnection-typeForSelector:remoteTarget:">typeForSelector:remoteTarget:</a></h3>
+    - (const char*) <b>typeForSelector:</b> (SEL)sel<b> remoteTarget:</b> (unsigned)target;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h1><a name="003000000000">
+        Software documentation for the
+        Object(NSConnectionDelegate)
+        category
+      </a></h1>
+    <h2>Object(<a name="category$Object(NSConnectionDelegate)">NSConnectionDelegate</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSConnection.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          This category represents an informal protocol to which
+          NSConnection delegates may conform...
+          implementing these methods has the effect
+          documented.
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSConnection.html#method$Object-authenticateComponents:withData:">-authenticateComponents:withData:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$Object-authenticationDataForComponents:">-authenticationDataForComponents:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$Object-connection:didConnect:">-connection:didConnect:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$Object-connection:shouldMakeNewConnection:">-connection:shouldMakeNewConnection:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$Object-makeNewConnection:sender:">-makeNewConnection:sender:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$Object-authenticateComponents:withData:">authenticateComponents:withData:</a></h3>
+    - (BOOL) <b>authenticateComponents:</b> (<a rel="gsdoc" href="NSArray.html#class$NSMutableArray">NSMutableArray</a>*)components<b> withData:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)authenticationData;<br />
+    <p>
+      
+            
+    </p>
+    <p>
 
- </html>
+              This is not an NSConnection method, but is a method
+              that may be implemented by the delegate of an
+              NSConnection object.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              If the delegate implements this method, the
+              NSConnection will invoke the method for
+              every message request or reply it receives from the
+              remote NSConnection. The delegate should use the
+              authentication data to check all the
+              NSData objects in the <var>components</var> array
+              (ignoring NSPort objects), and return
+              <code>YES</code> if they are valid,
+              <code>NO</code> otherwise.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              If the method returns <code>NO</code> then an
+              NSFailedAuthentication exception
+              will be raised.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              In GNUstep the <var>components</var> array is mutable,
+              allowing you to replace the NSData objects with
+              your own version.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$Object-authenticationDataForComponents:">authenticationDataForComponents:</a></h3>
+    - (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>authenticationDataForComponents:</b> (<a rel="gsdoc" href="NSArray.html#class$NSMutableArray">NSMutableArray</a>*)components;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This is not an NSConnection method, but is a method
+              that may be implemented by the delegate of an
+              NSConnection object.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              If the delegate implements this method, the
+              NSConnection will invoke the method for
+              every message request ro reply it sends to the
+              remote NSConnection. The delegate should generate
+              authentication data by examining all the
+              NSData objects in the <var>components</var> array
+              (ignoring NSPort objects), and return the
+              authentication data that can be used by
+              the remote NSConnection.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              If the method returns <code>nil</code> then an
+              NSGenericException exception will be
+              raised.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              In GNUstep the <var>components</var> array is mutable,
+              allowing you to replace the NSData objects with
+              your own version.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$Object-connection:didConnect:">connection:didConnect:</a></h3>
+    - (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*) <b>connection:</b> (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*)ancestorConn<b> didConnect:</b> (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*)newConn;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$Object-connection:shouldMakeNewConnection:">connection:shouldMakeNewConnection:</a></h3>
+    - (BOOL) <b>connection:</b> (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*)parent<b> shouldMakeNewConnection:</b> (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*)newConnection;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This is not an NSConnection method, but is a method
+              that may be implemented by the delegate of an
+              NSConnection object.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              If the delegate implements this method, it will be
+              called whenever a new NSConnection is created that
+              has this NSConnection as its <var>parent</var>. The
+              delegate may take this opportunity to adjust the
+              configuration of the new connection and may
+              return a boolean value to tell the
+              <var>parent</var> whether the creation of the new
+              connection is to be permitted or not.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$Object-makeNewConnection:sender:">makeNewConnection:sender:</a></h3>
+    - (BOOL) <b>makeNewConnection:</b> (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*)newConnection<b> sender:</b> (<a rel="gsdoc" href="#class$NSConnection">NSConnection</a>*)parent;<br />
+    <p>
+      
+            An old fashioned synonym for
+            <a rel="gsdoc" href="#method$Object(NSConnectionDelegate)-connection:shouldMakeNewConnection:">-connection:shouldMakeNewConnection:</a>
+ - don't use this.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h1><a name="004000000000">
+        Software documentation for the Object(NSPortCoder)
+        category
+      </a></h1>
+    <h2>Object(<a name="category$Object(NSPortCoder)">NSPortCoder</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSConnection.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSConnection.html#method$Object-classForPortCoder">-classForPortCoder</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$Object-replacementObjectForPortCoder:">-replacementObjectForPortCoder:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$Object-classForPortCoder">classForPortCoder</a></h3>
+    - (Class) <b>classForPortCoder</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$Object-replacementObjectForPortCoder:">replacementObjectForPortCoder:</a></h3>
+    - (id) <b>replacementObjectForPortCoder:</b> (<a rel="gsdoc" href="NSPortCoder.html#class$NSPortCoder">NSPortCoder</a>*)aCoder;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br />
+    <a href="Base.html">Up</a>
+  </body>
+</html>

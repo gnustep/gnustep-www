@@ -1,84 +1,201 @@
-<html><head>
- <title>NSThread</title>
-</head>
-<body>
-<a href ="NSTask.html">[Previous] </a>
-<a href ="Base.html">[Up] </a>
-<a href ="NSTimeZone.html">[Next] </a>
-<h1>NSThread</h1>
-<h3>Authors </h3>
- <dl>
-<dt><a href ="http://www.gnustep.org/developers/whoiswho.html">Richard Frith-Macdonald</a>
-<dd>
-</dl>
-<p>Version: $Revision: 1.4 $</p>
-<p>Date: $Date: 2002/07/28 04:10:54 $</p>
-<h2><a name ="cont-0">NSThread</a></h2>
-<h2><a name ="NSThread">NSThread</a></h2>
-<p><b>Declared in: </b> Foundation/NSThread.h</p>
-<p><b>Inherits from: </b> NSObject</p>
-<p><b>Conforms to: </b> NSObject
-</p>
-<hr>
+<html>
+  <head>
+    <title>NSThread class reference</title>
+  </head>
+  <body>
+    <a href="Base.html">Up</a>
+    <br />
+    <h1><a name="title$NSThread">NSThread class reference</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Scott Christley(<a href="mailto:scottc@net-community.com"><code>
+        scottc@net-community.com
+      </code></a>)</dt>
+      <dd>
+      </dd>
+      <dt>Andrew Kachites McCallum(<a href="mailto:mccallum@gnu.ai.mit.edu"><code>
+        mccallum@gnu.ai.mit.edu
+      </code></a>)</dt>
+      <dd>
+      </dd>
+      <dt>Richard Frith-Macdonald(<a href="mailto:richard@brainstorm.co.uk"><code>
+        richard@brainstorm.co.uk
+      </code></a>)</dt>
+      <dd>
+      </dd>
+      <dt>Nicola Pero(<a href="mailto:n.pero@mi.flashnet.it"><code>
+        n.pero@mi.flashnet.it
+      </code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> 1.53</p>
+    <p><b>Date:</b> 2002/08/30 12:30:50</p>
+    <p><b>Copyright:</b> (C) 1996-2000 Free Software Foundation, Inc.</p>
+    <div>
+      <hr width="50%" align="left" />
+      <h3>Contents -</h3>
+      <ol>
+        <li>
+          <a href="#001000000000">Software documentation for the NSThread class</a>
+        </li>
+      </ol>
+      <hr width="50%" align="left" />
+    </div>
+    <h1><a name="001000000000">
+        Software documentation for the NSThread class
+      </a></h1>
+    <h2><a name="class$NSThread">NSThread</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSThread.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <hr width="50%" align="left" />
+    <h3>Instance variables</h3>
+    <h3><a name="ivariable$NSThread*_autorelease_vars">_autorelease_vars</a></h3>
+    @public  <b>_autorelease_vars</b>;<br />
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSThread*_exception_handler">_exception_handler</a></h3>
+    @public  <b>_exception_handler</b>;<br />
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSThread*_gcontext">_gcontext</a></h3>
+    @public  <b>_gcontext</b>;<br />
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSThread*_thread_dictionary">_thread_dictionary</a></h3>
+    @public  <b>_thread_dictionary</b>;<br />
+    <hr width="25%" align="left" />
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSThread+currentThread">+currentThread</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSThread+detachNewThreadSelector:toTarget:withObject:">+detachNewThreadSelector:toTarget:withObject:</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSThread+exit">+exit</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSThread+isMultiThreaded">+isMultiThreaded</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSThread+setThreadPriority:">+setThreadPriority:</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSThread+sleepUntilDate:">+sleepUntilDate:</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSThread+threadPriority">+threadPriority</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSThread-threadDictionary">-threadDictionary</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSThread+currentThread">currentThread</a></h3>
+    + (<a rel="gsdoc" href="#class$NSThread">NSThread</a>*) <b>currentThread</b>;<br />
+    <p>
+      
+            
+    </p>
+    <p>
 
+              Returns the NSThread object corresponding to the
+              current thread.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              NB. In GNUstep the library internals use the
+              GSCurrentThread() function as a more
+              efficient mechanism for doing this job - so you
+              cannot use a category to override this method and
+              expect the library internals to use your
+              implementation.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSThread+detachNewThreadSelector:toTarget:withObject:">detachNewThreadSelector:toTarget:withObject:</a></h3>
+    + (void) <b>detachNewThreadSelector:</b> (SEL)aSelector<b> toTarget:</b> (id)aTarget<b> withObject:</b> (id)anArgument;<br />
+    <p>
+      
+            Create a new thread - use this method rather than
+            alloc-init
           
-<h2>Instance Variables </h2>
-<ul>
-</ul>
-<h2>Methods </h2>
-<ul>
-<li ><a href ="NSThread.html#method-0">+currentThread</a>
-<li ><a href ="NSThread.html#method-1">+detachNewThreadSelector:toTarget:(id)aTarget  withObject:</a>
-<li ><a href ="NSThread.html#method-2">+exit</a>
-<li ><a href ="NSThread.html#method-3">+isMultiThreaded</a>
-<li ><a href ="NSThread.html#method-4">+sleepUntilDate:</a>
-<li ><a href ="NSThread.html#method-5">-threadDictionary</a>
-</ul>
-<hr><h2>Class Methods </h2>
-<h3><a name ="method-0">currentThread</a></h3>
-+ (NSThread*) <b>currentThread</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSThread+exit">exit</a></h3>
+    + (void) <b>exit</b>;<br />
+    <p>
+      
+            Terminating a thread What happens if the thread
+            doesn't call
+            <a rel="gsdoc" href="#method$NSThread+exit">
+              +exit
+            </a>
 
-	    <p>
-
-	      Returns the NSThread object corresponding to the current thread.
-	    </p>
-
-	    <p>
-
-	      NB. In GNUstep the library internals use the GSCurrentThread()
-	      function as a more efficient mechanism for doing this job - so
-	      you cannot use a category to override this method and expect
-	      the library internals to use your implementation.
-	    </p>
-
+            - it doesn't terminate!
           
- <hr>
-<h3><a name ="method-1">detachNewThreadSelector:toTarget:(id)aTarget  withObject:</a></h3>
-+ (void) <b>detachNewThreadSelector:</b> (SEL)aSelector <b>toTarget:(id)aTarget  withObject:</b> (id)anArgument;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSThread+isMultiThreaded">isMultiThreaded</a></h3>
+    + (BOOL) <b>isMultiThreaded</b>;<br />
+    <p>
+      
+            Returns a flag to say whether the application is
+            multi-threaded or not. An application is
+            considered to be multi-threaded if any thread
+            other than the main thread has been started,
+            irrespective of whether that thread has since
+            terminated.
           
- <hr>
-<h3><a name ="method-2">exit</a></h3>
-+ (void) <b>exit</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSThread+setThreadPriority:">setThreadPriority:</a></h3>
+    + (void) <b>setThreadPriority:</b> (double)pri;<br />
+    <p>
+      
+            Set the priority of the current thread. This is a value
+            in the range 0.0 (lowest) to 1.0 (highest) which is
+            mapped to the underlying system priorities. The
+            current gnu objc runtime supports three priority
+            levels which you can obtain using values of 0.0,
+            0.5, and 1.0
           
- <hr>
-<h3><a name ="method-3">isMultiThreaded</a></h3>
-+ (BOOL) <b>isMultiThreaded</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSThread+sleepUntilDate:">sleepUntilDate:</a></h3>
+    + (void) <b>sleepUntilDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)date;<br />
+    <p>
+      
+            Delaying a thread... pause until the specified
+            <var>date</var>.
           
- <hr>
-<h3><a name ="method-4">sleepUntilDate:</a></h3>
-+ (void) <b>sleepUntilDate:</b> (NSDate*)aDate;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSThread+threadPriority">threadPriority</a></h3>
+    + (double) <b>threadPriority</b>;<br />
+    <p>
+      
+            Return the priority of the current thread.
           
- <hr>
-<hr><h2>Instances Methods </h2>
-<h3><a name ="method-5">threadDictionary</a></h3>
-- (NSMutableDictionary*) <b>threadDictionary</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSThread-threadDictionary">threadDictionary</a></h3>
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSMutableDictionary">NSMutableDictionary</a>*) <b>threadDictionary</b>;<br />
+    <p>
+      
+            Return the thread dictionary. This dictionary can be
+            used to store arbitrary thread specific data. <br />
+            NB. This cannot be autoreleased, since we cannot be
+            sure that the autorelease pool for the thread will
+            continue to exist for the entire life of the
+            thread!
           
- <hr>
-</body>
-
- </html>
+    </p>
+    <hr width="25%" align="left" />
+    <br />
+    <a href="Base.html">Up</a>
+  </body>
+</html>

@@ -1,196 +1,367 @@
-<html><head>
- <title>NSTimeZone</title>
-</head>
-<body>
-<a href ="NSThread.html">[Previous] </a>
-<a href ="Base.html">[Up] </a>
-<a href ="NSTimer.html">[Next] </a>
-<h1>NSTimeZone</h1>
-<h3>Authors </h3>
- <dl>
-<dt><a href ="http://www.gnustep.org/developers/whoiswho.html">Richard Frith-Macdonald</a>
-<dd>
-</dl>
-<p>Version: $Revision: 1.4 $</p>
-<p>Date: $Date: 2002/07/28 04:10:54 $</p>
-<h2><a name ="cont-0">NSTimeZone</a></h2>
-<h2><a name ="NSTimeZone">NSTimeZone</a></h2>
-<p><b>Declared in: </b> Foundation/NSTimeZone.h</p>
-<p><b>Inherits from: </b> NSObject</p>
-<p><b>Conforms to: </b> NSCoding
-</p>
-<hr>
-
-        <p>
-
-	If the GNUstep time zone datafiles become too out of date, one
-	can download an updated database from <a href ="ftp://elsie.nci.nih.gov/pub/">ftp://elsie.nci.nih.gov/pub/</a>
-	and compile it as specified in the README file in the
-	NSTimeZones directory.
-
-	Time zone names in NSDates should be GMT, MET etc. not
-	Europe/Berlin, America/Washington etc.
-
-	The problem with this is that various time zones may use the
-	same abbreviation (e.g. Australia/Brisbane and
-	America/New_York both use EST), and some time zones
-	may have different rules for daylight saving time even if the
-	abbreviation and offsets from UTC are the same.
-
-	The problems with depending on the OS for providing time zone
-	info are that some methods for the NSTimeZone classes might be
-	difficult to implement, and also that time zone names may vary
-	wildly between OSes (this could be a big problem when
-	archiving is used between different systems).
-	</p>
-
-	
-<h2>Instance Variables </h2>
-<ul>
-</ul>
-<h2>Methods </h2>
-<ul>
-<li ><a href ="NSTimeZone.html#method-0">+abbreviationDictionary</a>
-<li ><a href ="NSTimeZone.html#method-1">+defaultTimeZone</a>
-<li ><a href ="NSTimeZone.html#method-3">+knownTimeZoneNames</a>
-<li ><a href ="NSTimeZone.html#method-2">+localTimeZone</a>
-<li ><a href ="NSTimeZone.html#method-4">+resetSystemTimeZone</a>
-<li ><a href ="NSTimeZone.html#method-5">+setDefaultTimeZone:</a>
-<li ><a href ="NSTimeZone.html#method-6">+systemTimeZone</a>
-<li ><a href ="NSTimeZone.html#method-7">+timeZoneForSecondsFromGMT:</a>
-<li ><a href ="NSTimeZone.html#method-8">+timeZoneWithAbbreviation:</a>
-<li ><a href ="NSTimeZone.html#method-9">+timeZoneWithName:</a>
-<li ><a href ="NSTimeZone.html#method-10">+timeZoneWithName:</a>
-<li ><a href ="NSTimeZone.html#method-11">-abbreviation</a>
-<li ><a href ="NSTimeZone.html#method-12">-abbreviationForDate:</a>
-<li ><a href ="NSTimeZone.html#method-13">-data</a>
-<li ><a href ="NSTimeZone.html#method-14">-description</a>
-<li ><a href ="NSTimeZone.html#method-16">-initWithName:</a>
-<li ><a href ="NSTimeZone.html#method-15">-initWithName:</a>
-<li ><a href ="NSTimeZone.html#method-17">-isDaylightSavingTime</a>
-<li ><a href ="NSTimeZone.html#method-18">-isDaylightSavingTimeForDate:</a>
-<li ><a href ="NSTimeZone.html#method-19">-isEqualToTimeZone:</a>
-<li ><a href ="NSTimeZone.html#method-20">-name</a>
-<li ><a href ="NSTimeZone.html#method-21">-secondsFromGMT</a>
-<li ><a href ="NSTimeZone.html#method-22">-secondsFromGMTForDate:</a>
-</ul>
-<hr><h2>Class Methods </h2>
-<h3><a name ="method-0">abbreviationDictionary</a></h3>
-+ (NSDictionary*) <b>abbreviationDictionary</b>;<br>
-
+<html>
+  <head>
+    <title>NSTimeZone class reference</title>
+  </head>
+  <body>
+    <a href="Base.html">Up</a>
+    <br />
+    <h1><a name="title$NSTimeZone">NSTimeZone class reference</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Yoo C. Chung(<a href="mailto:wacko@laplace.snu.ac.kr"><code>
+        wacko@laplace.snu.ac.kr
+      </code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> 1.42</p>
+    <p><b>Date:</b> 2002/08/20 10:22:05</p>
+    <p><b>Copyright:</b> (C) 1997 Free Software Foundation, Inc.</p>
+    <div>
+      <hr width="50%" align="left" />
+      <h3>Contents -</h3>
+      <ol>
+        <li>
+          <a href="#001000000000">Software documentation for the NSTimeZone class</a>
+        </li>
+        <li>
+          <a href="#002000000000">Software documentation for the NSTimeZoneDetail class</a>
+        </li>
+      </ol>
+      <hr width="50%" align="left" />
+    </div>
+    <h1><a name="001000000000">
+        Software documentation for the NSTimeZone class
+      </a></h1>
+    <h2><a name="class$NSTimeZone">NSTimeZone</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSTimeZone.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
           
- <hr>
-<h3><a name ="method-1">defaultTimeZone</a></h3>
-+ (NSTimeZone*) <b>defaultTimeZone</b>;<br>
+    </p>
+    <p>
 
+            If the GNUstep time zone datafiles become too out of
+            date, one can download an updated database from
+            <a href="ftp://elsie.nci.nih.gov/pub/">>
+              ftp://elsie.nci.nih.gov/pub/
+            </a>
+            and compile it as specified in the README file in the
+            NSTimeZones directory. Time zone names in
+            NSDates should be GMT, MET etc. not Europe/Berlin,
+            America/Washington etc. The problem with
+            this is that various time zones may use the same
+            abbreviation (e.g. Australia/Brisbane and
+            America/New_York both use EST), and some
+            time zones may have different rules for daylight
+            saving time even if the abbreviation and offsets
+            from UTC are the same. The problems with depending on
+            the OS for providing time zone info are that some
+            methods for the NSTimeZone classes might be
+            difficult to implement, and also that time zone
+            names may vary wildly between OSes (this could be a
+            big problem when archiving is used between different
+            systems).
+              </p>
+    <p>
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+abbreviationDictionary">+abbreviationDictionary</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+abbreviationMap">+abbreviationMap</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+defaultTimeZone">+defaultTimeZone</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+localTimeZone">+localTimeZone</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+resetSystemTimeZone">+resetSystemTimeZone</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+setDefaultTimeZone:">+setDefaultTimeZone:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+systemTimeZone">+systemTimeZone</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+timeZoneArray">+timeZoneArray</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+timeZoneForSecondsFromGMT:">+timeZoneForSecondsFromGMT:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+timeZoneWithAbbreviation:">+timeZoneWithAbbreviation:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+timeZoneWithName:">+timeZoneWithName:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+timeZoneWithName:data:">+timeZoneWithName:data:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-abbreviation">-abbreviation</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-abbreviationForDate:">-abbreviationForDate:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-initWithName:">-initWithName:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-initWithName:data:">-initWithName:data:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-isDaylightSavingTime">-isDaylightSavingTime</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-isDaylightSavingTimeForDate:">-isDaylightSavingTimeForDate:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-isEqualToTimeZone:">-isEqualToTimeZone:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-name">-name</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-secondsFromGMT">-secondsFromGMT</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-secondsFromGMTForDate:">-secondsFromGMTForDate:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-timeZoneDetailArray">-timeZoneDetailArray</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-timeZoneDetailForDate:">-timeZoneDetailForDate:</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone-timeZoneName">-timeZoneName</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSTimeZone+abbreviationDictionary">abbreviationDictionary</a></h3>
+    + (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>abbreviationDictionary</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-2">localTimeZone</a></h3>
-+ (NSTimeZone*) <b>localTimeZone</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+abbreviationMap">abbreviationMap</a></h3>
+    + (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>abbreviationMap</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-3">knownTimeZoneNames</a></h3>
-+ (NSArray*) <b>knownTimeZoneNames</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+defaultTimeZone">defaultTimeZone</a></h3>
+    + (<a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a>*) <b>defaultTimeZone</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-4">resetSystemTimeZone</a></h3>
-+ (void) <b>resetSystemTimeZone</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+localTimeZone">localTimeZone</a></h3>
+    + (<a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a>*) <b>localTimeZone</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-5">setDefaultTimeZone:</a></h3>
-+ (void) <b>setDefaultTimeZone:</b> (NSTimeZone*)aTimeZone;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+resetSystemTimeZone">resetSystemTimeZone</a></h3>
+    + (void) <b>resetSystemTimeZone</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-6">systemTimeZone</a></h3>
-+ (NSTimeZone*) <b>systemTimeZone</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+setDefaultTimeZone:">setDefaultTimeZone:</a></h3>
+    + (void) <b>setDefaultTimeZone:</b> (<a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a>*)aTimeZone;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-7">timeZoneForSecondsFromGMT:</a></h3>
-+ (NSTimeZone*) <b>timeZoneForSecondsFromGMT:</b> (int)seconds;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+systemTimeZone">systemTimeZone</a></h3>
+    + (<a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a>*) <b>systemTimeZone</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-8">timeZoneWithAbbreviation:</a></h3>
-+ (NSTimeZone*) <b>timeZoneWithAbbreviation:</b> (NSString*)abbreviation;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+timeZoneArray">timeZoneArray</a></h3>
+    + (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>timeZoneArray</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-9">timeZoneWithName:</a></h3>
-+ (NSTimeZone*) <b>timeZoneWithName:</b> (NSString*)aTimeZoneName;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+timeZoneForSecondsFromGMT:">timeZoneForSecondsFromGMT:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a>*) <b>timeZoneForSecondsFromGMT:</b> (int)seconds;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-10">timeZoneWithName:</a></h3>
-+ (NSTimeZone*) <b>timeZoneWithName:</b> (NSString*)aTimeZoneName;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+timeZoneWithAbbreviation:">timeZoneWithAbbreviation:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a>*) <b>timeZoneWithAbbreviation:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)abbreviation;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<hr><h2>Instances Methods </h2>
-<h3><a name ="method-11">abbreviation</a></h3>
-- (NSString*) <b>abbreviation</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+timeZoneWithName:">timeZoneWithName:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a>*) <b>timeZoneWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aTimeZoneName;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-12">abbreviationForDate:</a></h3>
-- (NSString*) <b>abbreviationForDate:</b> (NSDate*)aDate;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+timeZoneWithName:data:">timeZoneWithName:data:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a>*) <b>timeZoneWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> data:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)data;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-13">data</a></h3>
-- (NSData*) <b>data</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-abbreviation">abbreviation</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>abbreviation</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-14">description</a></h3>
-- (NSString*) <b>description</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-abbreviationForDate:">abbreviationForDate:</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>abbreviationForDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)when;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-15">initWithName:</a></h3>
-- (id) <b>initWithName:</b> (NSString*)aName;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-initWithName:">initWithName:</a></h3>
+    - (id) <b>initWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-16">initWithName:</a></h3>
-- (id) <b>initWithName:</b> (NSString*)aName;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-initWithName:data:">initWithName:data:</a></h3>
+    - (id) <b>initWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> data:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)data;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-17">isDaylightSavingTime</a></h3>
-- (BOOL) <b>isDaylightSavingTime</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-isDaylightSavingTime">isDaylightSavingTime</a></h3>
+    - (BOOL) <b>isDaylightSavingTime</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-18">isDaylightSavingTimeForDate:</a></h3>
-- (BOOL) <b>isDaylightSavingTimeForDate:</b> (NSDate*)aDate;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-isDaylightSavingTimeForDate:">isDaylightSavingTimeForDate:</a></h3>
+    - (BOOL) <b>isDaylightSavingTimeForDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)aDate;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-19">isEqualToTimeZone:</a></h3>
-- (BOOL) <b>isEqualToTimeZone:</b> (NSTimeZone*)aTimeZone;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-isEqualToTimeZone:">isEqualToTimeZone:</a></h3>
+    - (BOOL) <b>isEqualToTimeZone:</b> (<a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a>*)aTimeZone;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-20">name</a></h3>
-- (NSString*) <b>name</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-name">name</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>name</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-21">secondsFromGMT</a></h3>
-- (int) <b>secondsFromGMT</b>;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-secondsFromGMT">secondsFromGMT</a></h3>
+    - (int) <b>secondsFromGMT</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-22">secondsFromGMTForDate:</a></h3>
-- (int) <b>secondsFromGMTForDate:</b> (NSDate*)aDate;<br>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-secondsFromGMTForDate:">secondsFromGMTForDate:</a></h3>
+    - (int) <b>secondsFromGMTForDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)when;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-</body>
-
- </html>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-timeZoneDetailArray">timeZoneDetailArray</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>timeZoneDetailArray</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-timeZoneDetailForDate:">timeZoneDetailForDate:</a></h3>
+    - (<a rel="gsdoc" href="#class$NSTimeZoneDetail">NSTimeZoneDetail</a>*) <b>timeZoneDetailForDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)date;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone-timeZoneName">timeZoneName</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>timeZoneName</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h1><a name="002000000000">
+        Software documentation for the NSTimeZoneDetail class
+      </a></h1>
+    <h2><a name="class$NSTimeZoneDetail">NSTimeZoneDetail</a> : <a rel="gsdoc" href="#class$NSTimeZone">NSTimeZone</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSTimeZone.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>OpenStep</li>
+        <li>NotMacOS-X</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZoneDetail-isDaylightSavingTimeZone">-isDaylightSavingTimeZone</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZoneDetail-timeZoneAbbreviation">-timeZoneAbbreviation</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZoneDetail-timeZoneSecondsFromGMT">-timeZoneSecondsFromGMT</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSTimeZoneDetail-isDaylightSavingTimeZone">isDaylightSavingTimeZone</a></h3>
+    - (BOOL) <b>isDaylightSavingTimeZone</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZoneDetail-timeZoneAbbreviation">timeZoneAbbreviation</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>timeZoneAbbreviation</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZoneDetail-timeZoneSecondsFromGMT">timeZoneSecondsFromGMT</a></h3>
+    - (int) <b>timeZoneSecondsFromGMT</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <br />
+    <a href="Base.html">Up</a>
+  </body>
+</html>

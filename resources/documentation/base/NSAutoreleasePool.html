@@ -1,159 +1,227 @@
-<html><head>
- <title>NSAutoreleasePool</title>
-</head>
-<body>
-<a href ="NSAttributedString.html">[Previous] </a>
-<a href ="Base.html">[Up] </a>
-<a href ="NSBundle.html">[Next] </a>
-<h1>NSAutoreleasePool</h1>
-<h3>Authors </h3>
- <dl>
-<dt><a href ="http://www.gnustep.org/developers/whoiswho.html">Richard Frith-Macdonald</a>
-<dd>
-</dl>
-<p>Version: $Revision: 1.4 $</p>
-<p>Date: $Date: 2002/07/28 04:10:54 $</p>
-<h2><a name ="cont-0">NSAutoreleasePool</a></h2>
-<h2><a name ="NSAutoreleasePool">NSAutoreleasePool</a></h2>
-<p><b>Declared in: </b> Foundation/NSAutoreleasePool.h</p>
-<p><b>Inherits from: </b> NSObject</p>
-<p><b>Conforms to: </b> NSObject
-</p>
-<hr>
-
-	    <p>
-
-	      This class maintains a stack of autorelease pools objects
-	      in each thread.
-	    </p>
-
-	    <p>
-
-	      When an autorelease pool is created, it is automatically
-	      added to the stack of pools in the thread.
-	    </p>
-
-	    <p>
-
-	      When a pool is destroyed, it (and any pool later in
-	      the stack) is removed from the stack.
-	    </p>
-
+<html>
+  <head>
+    <title>NSAutoreleasePool class reference</title>
+  </head>
+  <body>
+    <a href="Base.html">Up</a>
+    <br />
+    <h1><a name="title$NSAutoreleasePool">NSAutoreleasePool class reference</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Andrew Kachites McCallum(<a href="mailto:mccallum@gnu.ai.mit.edu"><code>
+        mccallum@gnu.ai.mit.edu
+      </code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> 1.47</p>
+    <p><b>Date:</b> 2002/08/20 10:22:04</p>
+    <p><b>Copyright:</b> (C) 1995, 1996, 1997 Free Software Foundation, Inc.</p>
+    <div>
+      <hr width="50%" align="left" />
+      <h3>Contents -</h3>
+      <ol>
+        <li>
+          <a href="#001000000000">Software documentation for the NSAutoreleasePool class</a>
+        </li>
+      </ol>
+      <hr width="50%" align="left" />
+    </div>
+    <h1><a name="001000000000">
+        Software documentation for the NSAutoreleasePool class
+      </a></h1>
+    <h2><a name="class$NSAutoreleasePool">NSAutoreleasePool</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSAutoreleasePool.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
           
-<h2>Instance Variables </h2>
-<ul>
-</ul>
-<h2>Methods </h2>
-<ul>
-<li ><a href ="NSAutoreleasePool.html#method-0">+addObject:</a>
-<li ><a href ="NSAutoreleasePool.html#method-3">+autoreleaseCountForObject:</a>
-<li ><a href ="NSAutoreleasePool.html#method-2">+enableRelease:</a>
-<li ><a href ="NSAutoreleasePool.html#method-4">+freeCache</a>
-<li ><a href ="NSAutoreleasePool.html#method-5">+setPoolCountThreshold:</a>
-<li ><a href ="NSAutoreleasePool.html#method-1">-addObject:</a>
-</ul>
-<hr><h2>Class Methods </h2>
-<h3><a name ="method-0">addObject:</a></h3>
-+ (void) <b>addObject:</b> (id)anObject;<br>
+    </p>
+    <p>
 
-	    <p>
+            This class maintains a stack of autorelease pools
+            objects in each thread.
+              </p>
+    <p>
+    </p>
+    <p>
 
-	      Adds the specified object to the current autorelease pool.
-	      If there is no autorelease pool in the thread,
-	      a warning is logged.
-	    </p>
+            When an autorelease pool is created, it is
+            automatically added to the stack of pools in
+            the thread.
+              </p>
+    <p>
+    </p>
+    <p>
 
+            When a pool is destroyed, it (and any pool later in
+            the stack) is removed from the stack.
+              </p>
+    <p>
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+_endThread:">+_endThread:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+addObject:">+addObject:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+autoreleaseCountForObject:">+autoreleaseCountForObject:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+enableRelease:">+enableRelease:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+freeCache">+freeCache</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+resetTotalAutoreleasedObjects">+resetTotalAutoreleasedObjects</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+setPoolCountThreshhold:">+setPoolCountThreshhold:</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+totalAutoreleasedObjects">+totalAutoreleasedObjects</a></li>
+      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool-addObject:">-addObject:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSAutoreleasePool+_endThread:">_endThread:</a></h3>
+    + (void) <b>_endThread:</b> (<a rel="gsdoc" href="NSThread.html#class$NSThread">NSThread</a>*)thread;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-2">enableRelease:</a></h3>
-+ (void) <b>enableRelease:</b> (BOOL)flag;<br>
-Standards:  GNUstep NotMacOS-X NotOpenStep<br>
-
-	    <p>
-
-	      Specifies whether objects contained in autorelease pools are to
-	      be released when the pools are deallocated (by default YES).
-	    </p>
-
-	    <p>
-
-	      You can set this to NO for debugging purposes.
-	    </p>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSAutoreleasePool+addObject:">addObject:</a></h3>
+    + (void) <b>addObject:</b> (id)anObj;<br />
+    <p>
+      
+            Adds the specified object to the current autorelease
+            pool. If there is no autorelease pool in the thread,
+            a warning is logged.
           
- <hr>
-<h3><a name ="method-3">autoreleaseCountForObject:</a></h3>
-+ (unsigned) <b>autoreleaseCountForObject:</b> (id)anObject;<br>
-Standards:  GNUstep NotMacOS-X NotOpenStep<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSAutoreleasePool+autoreleaseCountForObject:">autoreleaseCountForObject:</a></h3>
+    + (unsigned) <b>autoreleaseCountForObject:</b> (id)anObject;<br />
+    <p>
+      
+            
+    </p>
+    <p>
 
-	    <p>
+              Counts the number of times that the specified
+              object occurs in autorelease pools in the current
+              thread.
+                </p>
+    <p>
+    </p>
+    <p>
 
-	      Counts the number of times that the specified object occurs
-	      in autorelease pools in the current thread.
-	    </p>
+              This method is <em>slow</em> and should probably
+              only be used for debugging purposes.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSAutoreleasePool+enableRelease:">enableRelease:</a></h3>
+    + (void) <b>enableRelease:</b> (BOOL)enable;<br />
+    <p>
+      
+            
+    </p>
+    <p>
 
-	    <p>
+              Specifies whether objects contained in
+              autorelease pools are to be released when the
+              pools are deallocated (by default <code>YES</code>
+              ).
+                </p>
+    <p>
+    </p>
+    <p>
 
-	      This method is <em>slow</em> and should probably only be
-	      used for debugging purposes.
-	    </p>
+              You can set this to <code>NO</code> for debugging
+              purposes.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSAutoreleasePool+freeCache">freeCache</a></h3>
+    + (void) <b>freeCache</b>;<br />
+    <p>
+      
+            
+    </p>
+    <p>
 
+              When autorelease pools are deallocated, the memory
+              they used is retained in a cache for re-use so that
+              new polls can be created very quickly.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              This method may be used to empty that cache,
+              ensuring that the minimum memory is used by the
+              application.
+                </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSAutoreleasePool+resetTotalAutoreleasedObjects">resetTotalAutoreleasedObjects</a></h3>
+    + (void) <b>resetTotalAutoreleasedObjects</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-4">freeCache</a></h3>
-+ (void) <b>freeCache</b>;<br>
-Standards:  GNUstep NotMacOS-X NotOpenStep<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSAutoreleasePool+setPoolCountThreshhold:">setPoolCountThreshhold:</a></h3>
+    + (void) <b>setPoolCountThreshhold:</b> (unsigned)c;<br />
+    <p>
+      
+            
+    </p>
+    <p>
 
-	    <p>
+              Specifies a limit to the number of objects that
+              may be added to an autorelease pool. When this limit
+              is reached an exception is raised.
+                </p>
+    <p>
+    </p>
+    <p>
 
-	      When autorelease pools are deallocated, the memory they used
-	      is retained in a cache for re-use so that new polls can be
-	      created very quickly.
-	    </p>
-
-	    <p>
-
-	      This method may be used to empty that cache, ensuring that
-	      the minimum memory is used by the application.
-	    </p>
-
+              You can set this to a smallish value to catch
+              problems with code that autoreleases too many
+              objects to operate efficiently.
+                </p>
+    <p>
+    </p>
+    <p>
+Default value is maxint.    </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSAutoreleasePool+totalAutoreleasedObjects">totalAutoreleasedObjects</a></h3>
+    + (unsigned) <b>totalAutoreleasedObjects</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
- <hr>
-<h3><a name ="method-5">setPoolCountThreshold:</a></h3>
-+ (void) <b>setPoolCountThreshold:</b> (unsigned)c;<br>
-Standards:  GNUstep NotMacOS-X NotOpenStep<br>
-
-	    <p>
-
-	      Specifies a limit to the number of objects that may be added to
-	      an autorelease pool.  When this limit is reached an exception is
-	      raised.
-	    </p>
-
-	    <p>
-
-	      You can set this to a smallish value to catch problems with code
-	      that autoreleases too many objects to operate efficiently.
-	    </p>
-
-	    <p>
-
-	      Default value is maxint.
-	    </p>
-
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSAutoreleasePool-addObject:">addObject:</a></h3>
+    - (void) <b>addObject:</b> (id)anObj;<br />
+    <p>
+      
+            Adds the specified object to this autorelease pool.
           
- <hr>
-<hr><h2>Instances Methods </h2>
-<h3><a name ="method-1">addObject:</a></h3>
-- (void) <b>addObject:</b> (id)anObject;<br>
-
-	    <p>
-
-	      Adds the specified object to this autorelease pool.
-	    </p>
-
-          
- <hr>
-</body>
-
- </html>
+    </p>
+    <hr width="25%" align="left" />
+    <br />
+    <a href="Base.html">Up</a>
+  </body>
+</html>

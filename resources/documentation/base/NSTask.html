@@ -1,283 +1,403 @@
-<html><head>
- <title>NSTask</title>
-</head>
-<body>
-<a href ="NSString.html">[Previous] </a>
-<a href ="Base.html">[Up] </a>
-<a href ="NSThread.html">[Next] </a>
-<h1>NSTask</h1>
-<h3>Authors </h3>
- <dl>
-<dt><a href ="http://www.gnustep.org/developers/whoiswho.html">Richard Frith-Macdonald</a>
-<dd>
-</dl>
-<p>Version: $Revision: 1.4 $</p>
-<p>Date: $Date: 2002/07/28 04:10:54 $</p>
-<h2><a name ="cont-0">NSTask</a></h2>
-<h2><a name ="NSTask">NSTask</a></h2>
-<p><b>Declared in: </b> Foundation/NSTask.h</p>
-<p><b>Inherits from: </b> NSObject</p>
-<p><b>Conforms to: </b> NSObject
-</p>
-<hr>
-
-	    The NSTask class provides a mechanism to run separate tasks
-	    under (limited) control of your program.
+<html>
+  <head>
+    <title>NSTask class reference</title>
+  </head>
+  <body>
+    <a href="Base.html">Up</a>
+    <br />
+    <h1><a name="title$NSTask">NSTask class reference</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Richard Frith-Macdonald(<a href="mailto:richard@brainstorm.co.uk"><code>
+        richard@brainstorm.co.uk
+      </code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> 1.54</p>
+    <p><b>Date:</b> 2002/05/10 06:39:10</p>
+    <p><b>Copyright:</b> (C) 1998,1999 Free Software Foundation, Inc.</p>
+    <div>
+      <hr width="50%" align="left" />
+      <h3>Contents -</h3>
+      <ol>
+        <li>
+          <a href="#001000000000">Software documentation for the NSTask class</a>
+        </li>
+      </ol>
+      <hr width="50%" align="left" />
+    </div>
+    <h1><a name="001000000000">
+        Software documentation for the NSTask class
+      </a></h1>
+    <h2><a name="class$NSTask">NSTask</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSTask.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <dl>
+        <dt><b>Conforms to:</b></dt>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(GCFinalization)">GCFinalization</a></dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          The NSTask class provides a mechanism to run separate
+          tasks under (limited) control of your program.
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask+launchedTaskWithLaunchPath:arguments:">+launchedTaskWithLaunchPath:arguments:</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-arguments">-arguments</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-currentDirectoryPath">-currentDirectoryPath</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-environment">-environment</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-interrupt">-interrupt</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-isRunning">-isRunning</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-launch">-launch</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-launchPath">-launchPath</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-processIdentifier">-processIdentifier</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-resume">-resume</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-setArguments:">-setArguments:</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-setCurrentDirectoryPath:">-setCurrentDirectoryPath:</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-setEnvironment:">-setEnvironment:</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-setLaunchPath:">-setLaunchPath:</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-setStandardError:">-setStandardError:</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-setStandardInput:">-setStandardInput:</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-setStandardOutput:">-setStandardOutput:</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-standardError">-standardError</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-standardInput">-standardInput</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-standardOutput">-standardOutput</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-suspend">-suspend</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-terminate">-terminate</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-terminationStatus">-terminationStatus</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-usePseudoTerminal">-usePseudoTerminal</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-validatedLaunchPath">-validatedLaunchPath</a></li>
+      <li><a rel="gsdoc" href="NSTask.html#method$NSTask-waitUntilExit">-waitUntilExit</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSTask+launchedTaskWithLaunchPath:arguments:">launchedTaskWithLaunchPath:arguments:</a></h3>
+    + (<a rel="gsdoc" href="#class$NSTask">NSTask</a>*) <b>launchedTaskWithLaunchPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> arguments:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)args;<br />
+    <p>
+      
+            Creates and launches a task, returning an
+            autoreleased task object. Supplies the
+            <var>path</var> to the executable and an array of
+            argument. The task inherits the parents
+            environment and I/O.
           
-<h2>Instance Variables </h2>
-<ul>
-</ul>
-<h2>Methods </h2>
-<ul>
-<li ><a href ="NSTask.html#method-0">+launchedTaskWithLaunchPath:arguments:</a>
-<li ><a href ="NSTask.html#method-1">-arguments</a>
-<li ><a href ="NSTask.html#method-2">-currentDirectoryPath</a>
-<li ><a href ="NSTask.html#method-3">-environment</a>
-<li ><a href ="NSTask.html#method-4">-interrupt</a>
-<li ><a href ="NSTask.html#method-5">-isRunning</a>
-<li ><a href ="NSTask.html#method-6">-launch</a>
-<li ><a href ="NSTask.html#method-7">-launchPath</a>
-<li ><a href ="NSTask.html#method-8">-processIdentifer</a>
-<li ><a href ="NSTask.html#method-19">-resume</a>
-<li ><a href ="NSTask.html#method-9">-setArguments:</a>
-<li ><a href ="NSTask.html#method-10">-setCurrentDirectoryPath:</a>
-<li ><a href ="NSTask.html#method-11">-setEnvironment:</a>
-<li ><a href ="NSTask.html#method-12">-setLaunchPath:</a>
-<li ><a href ="NSTask.html#method-13">-setStandardError:</a>
-<li ><a href ="NSTask.html#method-14">-setStandardInput:</a>
-<li ><a href ="NSTask.html#method-15">-setStandardOutput:</a>
-<li ><a href ="NSTask.html#method-16">-standardError</a>
-<li ><a href ="NSTask.html#method-17">-standardInput</a>
-<li ><a href ="NSTask.html#method-18">-standardOutput</a>
-<li ><a href ="NSTask.html#method-20">-suspend</a>
-<li ><a href ="NSTask.html#method-21">-terminate</a>
-<li ><a href ="NSTask.html#method-22">-terminationStatus</a>
-<li ><a href ="NSTask.html#method-23">-usePseudoTerminal</a>
-<li ><a href ="NSTask.html#method-24">-waitUntilExit</a>
-</ul>
-<hr><h2>Class Methods </h2>
-<h3><a name ="method-0">launchedTaskWithLaunchPath:arguments:</a></h3>
-+ (NSTask*) <b>launchedTaskWithLaunchPath:</b> (NSString*)path <b>arguments:</b> (NSArray*)arguments;<br>
-
-	    Creates and launches a task, returning an autoreleased task object.
-	    Supplies the path to the executable and an array of argument.
-	    The task inherits the parents environment and I/O.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-arguments">arguments</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>arguments</b>;<br />
+    <p>
+      
+            Returns the arguments set for the task.
           
- <hr>
-<hr><h2>Instances Methods </h2>
-<h3><a name ="method-1">arguments</a></h3>
-- (NSArray*) <b>arguments</b>;<br>
-
-	    Returns the arguments set for the task.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-currentDirectoryPath">currentDirectoryPath</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>currentDirectoryPath</b>;<br />
+    <p>
+      
+            Returns the working directory set for the task.
           
- <hr>
-<h3><a name ="method-2">currentDirectoryPath</a></h3>
-- (NSString*) <b>currentDirectoryPath</b>;<br>
-
-	    Returns the working directory set for the task.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-environment">environment</a></h3>
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>environment</b>;<br />
+    <p>
+      
+            Returns the environment set for the task.
           
- <hr>
-<h3><a name ="method-3">environment</a></h3>
-- (NSDictionary*) <b>environment</b>;<br>
-
-	    Returns the environment set for the task.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-interrupt">interrupt</a></h3>
+    - (void) <b>interrupt</b>;<br />
+    <p>
+      
+            Sends an interrupt signal to the receiver and any
+            subtasks. <br /> If the task has not been
+            launched, raises an NSInvalidArgumentException.
+            <br /> Has no effect on a task that has already
+            terminated. <br /> This is rather like the
+            terminate method, but the child process may not
+            choose to terminate in response to an interrupt.
           
- <hr>
-<h3><a name ="method-4">interrupt</a></h3>
-- (void) <b>interrupt</b>;<br>
-
-	    Sends an interrupt signal to the receiver and any subtasks.<br>
-	    If the task has not been launched, raises an
-	    NSInvalidArgumentException.<br> 
-	    Has no effect on a task that has already terminated.<br>
-	    This is rather like the terminate method, but the child
-	    process may not choose to terminate in response to an interrupt.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-isRunning">isRunning</a></h3>
+    - (BOOL) <b>isRunning</b>;<br />
+    <p>
+      
+            Checks to see if the task is currently running.
           
- <hr>
-<h3><a name ="method-5">isRunning</a></h3>
-- (BOOL) <b>isRunning</b>;<br>
-
-	    Checks to see if the task is currently running.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-launch">launch</a></h3>
+    - (void) <b>launch</b>;<br />
+    <p>
+      
+            Launches the task. <br /> Raises an
+            NSInvalidArgumentException if
+            the launch path is not set or if the subtask cannot be
+            started for some reason (eg. the executable does
+            not exist).
           
- <hr>
-<h3><a name ="method-6">launch</a></h3>
-- (void) <b>launch</b>;<br>
-
-	    Launches the task.<br>
-	    Raises an NSInvalidArgumentException if the launch path is not
-	    set or if the subtask cannot be started for some reason
-	    (eg. the executable does not exist).
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-launchPath">launchPath</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>launchPath</b>;<br />
+    <p>
+      
+            Returns the launch path set for the task.
           
- <hr>
-<h3><a name ="method-7">launchPath</a></h3>
-- (NSString*) <b>launchPath</b>;<br>
-
-	    Returns the launch path set for the task.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-processIdentifier">processIdentifier</a></h3>
+    - (int) <b>processIdentifier</b>;<br />
+    <p>
+      
+            Returns the number identifying the child process on
+            this system.
           
- <hr>
-<h3><a name ="method-8">processIdentifer</a></h3>
-- (int) <b>processIdentifer</b>;<br>
-
-	    Returns the number identifying the child process on this system.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-resume">resume</a></h3>
+    - (BOOL) <b>resume</b>;<br />
+    <p>
+      
+            Sends a cont signal to the receiver and any subtasks.
+            <br /> If the task has not been launched, raises an
+            NSInvalidArgumentException.
+            <br />
           
- <hr>
-<h3><a name ="method-9">setArguments:</a></h3>
-- (void) <b>setArguments:</b> (NSArray*)arguments;<br>
-
-	    Sets an array of arguments to be supplied to the task when it
-	    is launched.  The default is an empty array.  This method cannot
-	    be used after a task is launched ...
-	    it raises an NSInvalidArgumentException. 
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-setArguments:">setArguments:</a></h3>
+    - (void) <b>setArguments:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)args;<br />
+    <p>
+      
+            Sets an array of arguments to be supplied to the task
+            when it is launched. The default is an empty array.
+            This method cannot be used after a task is launched...
+            it raises an NSInvalidArgumentException.
           
- <hr>
-<h3><a name ="method-10">setCurrentDirectoryPath:</a></h3>
-- (void) <b>setCurrentDirectoryPath:</b> (NSString*)path;<br>
-
-	    Sets the home directory in which the task is to be run.
-	    The default is the parent processes directory. 
-	    This method cannot be used after a task is launched ...
-	    it raises an NSInvalidArgumentException. 
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-setCurrentDirectoryPath:">setCurrentDirectoryPath:</a></h3>
+    - (void) <b>setCurrentDirectoryPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
+    <p>
+      
+            Sets the home directory in which the task is to be
+            run. The default is the parent processes directory.
+            This method cannot be used after a task is launched...
+            it raises an NSInvalidArgumentException.
           
- <hr>
-<h3><a name ="method-11">setEnvironment:</a></h3>
-- (void) <b>setEnvironment:</b> (NSDictionary*)environmentDictionary;<br>
-
-	    Sets the environment variables for the task to be run.
-	    The default is the parent processes environment. 
-	    This method cannot be used after a task is launched ...
-	    it raises an NSInvalidArgumentException. 
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-setEnvironment:">setEnvironment:</a></h3>
+    - (void) <b>setEnvironment:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)env;<br />
+    <p>
+      
+            Sets the environment variables for the task to be run.
+            The default is the parent processes environment. This
+            method cannot be used after a task is launched... it
+            raises an NSInvalidArgumentException.
           
- <hr>
-<h3><a name ="method-12">setLaunchPath:</a></h3>
-- (void) <b>setLaunchPath:</b> (NSString*)path;<br>
-
-	    Sets the path to the executable file to be run.
-	    There is no default for this - you must set the launch path.
-	    This method cannot be used after a task is launched ...
-	    it raises an NSInvalidArgumentException. 
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-setLaunchPath:">setLaunchPath:</a></h3>
+    - (void) <b>setLaunchPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
+    <p>
+      
+            Sets the <var>path</var> to the executable file to be
+            run. There is no default for this - you must set the
+            launch <var>path</var>. This method cannot be used
+            after a task is launched... it raises an
+            NSInvalidArgumentException.
           
- <hr>
-<h3><a name ="method-13">setStandardError:</a></h3>
-- (void) <b>setStandardError:</b> (id)file;<br>
-
-	    Sets the standard error stream for the task.<br>
-	    This is normally a writable NSFileHandle object.
-	    If this is an NSPipe, the write end of the pipe is
-	    automatically closed on launching.<br>
-	    The default behavior is to inherit the parent processes
-	    stderr output.<br>
-	    This method cannot be used after a task is launched ...
-	    it raises an NSInvalidArgumentException. 
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-setStandardError:">setStandardError:</a></h3>
+    - (void) <b>setStandardError:</b> (id)hdl;<br />
+    <p>
+      
+            Sets the standard error stream for the task. <br />
+            This is normally a writable NSFileHandle object. If
+            this is an NSPipe, the write end of the pipe is
+            automatically closed on launching. <br /> The
+            default behavior is to inherit the parent processes
+            stderr output. <br /> This method cannot be used
+            after a task is launched... it raises an
+            NSInvalidArgumentException.
           
- <hr>
-<h3><a name ="method-14">setStandardInput:</a></h3>
-- (void) <b>setStandardInput:</b> (id)file;<br>
-
-	    Sets the standard input stream for the task.<br>
-	    This is normally a readable NSFileHandle object.
-	    If this is an NSPipe, the read end of the pipe is
-	    automatically closed on launching.<br>
-	    The default behavior is to inherit the parent processes
-	    stdin stream.<br>
-	    This method cannot be used after a task is launched ...
-	    it raises an NSInvalidArgumentException. 
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-setStandardInput:">setStandardInput:</a></h3>
+    - (void) <b>setStandardInput:</b> (id)hdl;<br />
+    <p>
+      
+            Sets the standard input stream for the task. <br />
+            This is normally a readable NSFileHandle object. If
+            this is an NSPipe, the read end of the pipe is
+            automatically closed on launching. <br /> The
+            default behavior is to inherit the parent processes
+            stdin stream. <br /> This method cannot be used after
+            a task is launched... it raises an
+            NSInvalidArgumentException.
           
- <hr>
-<h3><a name ="method-15">setStandardOutput:</a></h3>
-- (void) <b>setStandardOutput:</b> (id)file;<br>
-
-	    Sets the standard output stream for the task.<br>
-	    This is normally a writable NSFileHandle object.
-	    If this is an NSPipe, the write end of the pipe is
-	    automatically closed on launching.<br>
-	    The default behavior is to inherit the parent processes
-	    stdout stream.<br>
-	    This method cannot be used after a task is launched ...
-	    it raises an NSInvalidArgumentException. 
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-setStandardOutput:">setStandardOutput:</a></h3>
+    - (void) <b>setStandardOutput:</b> (id)hdl;<br />
+    <p>
+      
+            Sets the standard output stream for the task. <br />
+            This is normally a writable NSFileHandle object. If
+            this is an NSPipe, the write end of the pipe is
+            automatically closed on launching. <br /> The
+            default behavior is to inherit the parent processes
+            stdout stream. <br /> This method cannot be used
+            after a task is launched... it raises an
+            NSInvalidArgumentException.
           
- <hr>
-<h3><a name ="method-16">standardError</a></h3>
-- (id) <b>standardError</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-standardError">standardError</a></h3>
+    - (id) <b>standardError</b>;<br />
+    <p>
+      
+            Returns the standard error stream for the task - an
+            NSFileHandle unless an NSPipe was passed to
+            <a rel="gsdoc" href="#method$NSTask-setStandardError:">
+              -setStandardError:
+            </a>
 
-	    Returns the standard error stream for the task - an NSFileHandle
-	    unless an NSPipe was passed to setStandardError:
           
- <hr>
-<h3><a name ="method-17">standardInput</a></h3>
-- (id) <b>standardInput</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-standardInput">standardInput</a></h3>
+    - (id) <b>standardInput</b>;<br />
+    <p>
+      
+            Returns the standard input stream for the task - an
+            NSFileHandle unless an NSPipe was passed to
+            <a rel="gsdoc" href="#method$NSTask-setStandardInput:">
+              -setStandardInput:
+            </a>
 
-	    Returns the standard input stream for the task - an NSFileHandle
-	    unless an NSPipe was passed to setStandardInput:
           
- <hr>
-<h3><a name ="method-18">standardOutput</a></h3>
-- (id) <b>standardOutput</b>;<br>
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-standardOutput">standardOutput</a></h3>
+    - (id) <b>standardOutput</b>;<br />
+    <p>
+      
+            Returns the standard output stream for the task -
+            an NSFileHandle unless an NSPipe was passed to
+            <a rel="gsdoc" href="#method$NSTask-setStandardOutput:">
+              -setStandardOutput:
+            </a>
 
-	    Returns the standard output stream for the task - an NSFileHandle
-	    unless an NSPipe was passed to setStandardOutput:
           
- <hr>
-<h3><a name ="method-19">resume</a></h3>
-- (BOOL) <b>resume</b>;<br>
-
-	    Sends a cont signal to the receiver and any subtasks.<br>
-	    If the task has not been launched, raises an
-	    NSInvalidArgumentException.<br> 
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-suspend">suspend</a></h3>
+    - (BOOL) <b>suspend</b>;<br />
+    <p>
+      
+            Sends a stop signal to the receiver and any subtasks.
+            <br /> If the task has not been launched, raises an
+            NSInvalidArgumentException.
+            <br />
           
- <hr>
-<h3><a name ="method-20">suspend</a></h3>
-- (BOOL) <b>suspend</b>;<br>
-
-	    Sends a stop signal to the receiver and any subtasks.<br>
-	    If the task has not been launched, raises an
-	    NSInvalidArgumentException.<br> 
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-terminate">terminate</a></h3>
+    - (void) <b>terminate</b>;<br />
+    <p>
+      
+            Sends a terminate signal to the receiver and any
+            subtasks. <br /> If the task has not been
+            launched, raises an NSInvalidArgumentException.
+            <br /> Has no effect on a task that has already
+            terminated. <br /> When a task temrinates,
+            either due to this method being called, or normal
+            termination, an NSTaskDidTerminateNotification
+            is posted.
           
- <hr>
-<h3><a name ="method-21">terminate</a></h3>
-- (void) <b>terminate</b>;<br>
-
-	    Sends a terminate signal to the receiver and any subtasks.<br>
-	    If the task has not been launched, raises an
-	    NSInvalidArgumentException.<br> 
-	    Has no effect on a task that has already terminated.<br>
-	    When a task temrinates, either due to this method being called,
-	    or normal termination, an NSTaskDidTerminateNotification is
-	    posted.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-terminationStatus">terminationStatus</a></h3>
+    - (int) <b>terminationStatus</b>;<br />
+    <p>
+      
+            Returns the termination status of the task. <br />
+            If the task has not completed running, raises an
+            NSInvalidArgumentException.
           
- <hr>
-<h3><a name ="method-22">terminationStatus</a></h3>
-- (int) <b>terminationStatus</b>;<br>
-
-	    Returns the termination status of the task.<br>
-	    If the task has not completed running, raises an
-	    NSInvalidArgumentException.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-usePseudoTerminal">usePseudoTerminal</a></h3>
+    - (BOOL) <b>usePseudoTerminal</b>;<br />
+    <p>
+      
+            If the system supports it, this method sets the standard
+            input, output, and error streams to a
+            pseudo-terminal so that, when launched, the
+            child task will act as if it was running
+            interactively on a terminal. The file handles
+            can then be used to communicate with the child. <br />
+            This method cannot be used after a task is launched...
+            it raises an NSInvalidArgumentException. <br /> The
+            standard input, output and error streams cannot be
+            changed after calling this method. <br /> The
+            method returns <code>YES</code> on success,
+            <code>NO</code> on failure.
           
- <hr>
-<h3><a name ="method-23">usePseudoTerminal</a></h3>
-- (BOOL) <b>usePseudoTerminal</b>;<br>
-Standards:  GNUstep NotMacOS-X NotOpenStep<br>
-
-	    If the system supports it, this method sets the standard
-	    input, output, and error streams to a pseudo-terminal so
-	    that, when launched, the child task will act as if it was
-	    running interactively on a terminal.  The file handles
-	    can then be used to communicate with the child.<br>
-	    This method cannot be used after a task is launched ...
-	    it raises an NSInvalidArgumentException.<br>
-	    The standard input, output and error streams cannot be
-	    changed after calling this method.<br>
-	    The method returns YES on success, NO on failure.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-validatedLaunchPath">validatedLaunchPath</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>validatedLaunchPath</b>;<br />
+    <p>
+      
+            Returns a validated launch path or <code>nil</code>
+            . <br /> Allows for the GNUstep host/operating system,
+            and library combination subdirectories in a path,
+            appending them as necessary to try to locate the
+            actual binary to be used. <br /> Checks that the
+            binary file exists and is executable. <br /> Even
+            tries searching the directories in the PATH
+            environment variable to locate a binary if the
+            original alunch path set was not absolute.
           
- <hr>
-<h3><a name ="method-24">waitUntilExit</a></h3>
-- (void) <b>waitUntilExit</b>;<br>
-
-	    Suspends the current thread until the task terminates, by
-	    waiting in NSRunLoop (NSDefaultRunLoopMode) for the task
-	    termination.<br>
-	    Returns immediately if the task is not running.
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTask-waitUntilExit">waitUntilExit</a></h3>
+    - (void) <b>waitUntilExit</b>;<br />
+    <p>
+      
+            Suspends the current thread until the task
+            terminates, by waiting in NSRunLoop
+            (NSDefaultRunLoopMode) for the task
+            termination. <br /> Returns immediately if the
+            task is not running.
           
- <hr>
-</body>
-
- </html>
+    </p>
+    <hr width="25%" align="left" />
+    <br />
+    <a href="Base.html">Up</a>
+  </body>
+</html>
