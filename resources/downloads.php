@@ -352,8 +352,8 @@ packages and applications may require you to install these libraries
 <td class="src">gdl2</td>
 <td class="req">Optional</td>
 <td class="stab"><div class="cent">-</div></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Database Library</td>
+<td class="unst"><a href="libs/gdl2-0.9.1.tar.gz">0.9.1</a></td>
+<td>Database Support Library</td>
 </tr>
 
 <tr>
