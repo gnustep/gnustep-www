@@ -1,0 +1,193 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from manual.texi on 26 July 2002 -->
+
+<TITLE>Objective-C, Programming Manual - Advanced Topics</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_6.html">previous</A>, <A HREF="manual_8.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC89" HREF="manual_toc.html#TOC89">Advanced Topics</A></H1>
+<P>
+<A NAME="IDX56"></A>
+
+
+
+
+<H2><A NAME="SEC90" HREF="manual_toc.html#TOC90">Forwarding</A></H2>
+<P>
+<A NAME="IDX57"></A>
+
+
+<P>
+When an object is unable to respond to a message, the Objective-C
+runtime sends a <CODE>forwardInvocation:</CODE> message to the object, and
+the object is then able to use the information provided to handle the
+message in some way, a common mechanism being to forward the message
+to another object known as a <B>delegate</B>, so that the other object
+can deal with it.
+
+
+
+<PRE>
+- (void) forwardInvocation: (NSInvocation*)objectInvoke
+{
+  if ([forwardObject respondsToSelector: [objectInvoke selector]])
+    return [objectInvoke invokeWithTarget: forwardObject];
+  else
+    return [self doesNotRecognizeSelector: [objectInvoke selector]];
+}
+</PRE>
+
+
+<UL>
+<LI>
+
+<CODE>objectInvoke</CODE> is another object (of the <CODE>NSInvocation</CODE> class)
+which has all the information about the original message sent, including
+its <B>selector</B> and its arguments.
+
+<LI>
+
+ <CODE>self</CODE> refers to the object or receiver.
+</UL>
+
+<P>
+<B>Note.  this is a powerful method for creating software patterns for
+multiple inheritance, journaling, and dispatching messages to
+dynamically loaded code.</B>
+
+
+
+
+<H3><A NAME="SEC91" HREF="manual_toc.html#TOC91">Forwarding and Multiple Inheritance</A></H3>
+<P>
+Forwarding is a form of multiple inheritance. The diagram below shows a simple scenario where an instance of the <CODE>Chat</CODE> class passes the <B>negotiate</B> message to an instance of the <CODE>ChatTwo</CODE> class. The forwarding object therefore inherits methods from its own inheritance path and from that of the receiving object.
+
+
+
+
+<H3><A NAME="SEC92" HREF="manual_toc.html#TOC92">Surrogate Objects</A></H3>
+<P>
+Surrogate objects forward messages to objects that can be assumed to be more complex. The <CODE>forwardInvocation:</CODE> method of the surrogate object receives a message that is to be forwarded; it determines whether or not the receiver exists, and if it does not, then it will attempt to create it. A <B>proxy object</B> is a common example of a surrogate object. A proxy object performs obvious functions that we have already discussed:
+
+
+
+<UL>
+<LI>
+
+provides a local address for a remote object 
+
+<LI>
+
+queues messages
+
+<LI>
+
+forwards messages to typically remote receivers
+
+<LI>
+
+copies and retrieves arguments over the connection. 
+</UL>
+
+
+
+<H3><A NAME="SEC93" HREF="manual_toc.html#TOC93">Forwarding vs Inheritance</A></H3>
+<P>
+The main difference between <B>Forwarding</B> and <B>Inheritance</B> surfaces in the application of methods like <CODE>respondsToSelector</CODE> and <CODE>isKindOfClass:</CODE>. This is because these methods search the inheritance path, but ignore the forwarding path. 
+
+
+<P>
+(See Section 1.6.6 <CODE>respondsToSelector.</CODE>)
+
+
+<P>
+<B>Note. <CODE>respondsToSelector</CODE> does not trace the forwarding chain, and can therefore erroneously report that an object does not respond to a particular message, when it does.</B>
+
+
+
+
+<H2><A NAME="SEC94" HREF="manual_toc.html#TOC94">Exception Handling</A></H2>
+
+
+
+<H2><A NAME="SEC95" HREF="manual_toc.html#TOC95">Copying, Comparing, Hashing Objects</A></H2>
+
+
+<UL>
+
+<LI>
+
+deep copy vs swallow copy
+
+<LI>
+
+simple copy vs mutable copy
+
+<LI>
+
+isEqual:, hash
+
+</UL>
+
+
+
+<H2><A NAME="SEC96" HREF="manual_toc.html#TOC96">Dictionaries, Arrays, Containers</A></H2>
+
+
+
+<H2><A NAME="SEC97" HREF="manual_toc.html#TOC97">Coding</A></H2>
+
+
+<UL>
+
+<LI>
+
+Possibilities offered by Coding
+
+<LI>
+
+Type Encoding
+
+</UL>
+
+
+
+<H2><A NAME="SEC98" HREF="manual_toc.html#TOC98">Property Lists</A></H2>
+
+
+<UL>
+<LI>
+
+What are property lists
+</UL>
+
+
+
+<H2><A NAME="SEC99" HREF="manual_toc.html#TOC99">Bundles</A></H2>
+
+
+
+<H2><A NAME="SEC100" HREF="manual_toc.html#TOC100">UserDefaults</A></H2>
+
+
+
+<H2><A NAME="SEC101" HREF="manual_toc.html#TOC101">Threading</A></H2>
+
+<P>
+General discussion about threading with gnustep base, what is
+thread-safe, what is not, how to start new threads, NSThread briefly
+introduced with examples.
+
+
+<P>
+[Nicola: important: talk about NSConnection enableMultipleThreads]].
+
+
+<P><HR><P>
+Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_6.html">previous</A>, <A HREF="manual_8.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
+</BODY>
+</HTML>

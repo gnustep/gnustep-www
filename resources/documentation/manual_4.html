@@ -1,0 +1,611 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from manual.texi on 26 July 2002 -->
+
+<TITLE>Objective-C, Programming Manual - Writing New Classes</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_3.html">previous</A>, <A HREF="manual_5.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC37" HREF="manual_toc.html#TOC37">Writing New Classes</A></H1>
+<P>
+<A NAME="IDX26"></A>
+
+
+<P>
+<EM>Would you add Hands-on coding examples at the marked points, and perhaps any additional pertinent examples? Francis</EM><BR>
+
+
+
+
+<H2><A NAME="SEC38" HREF="manual_toc.html#TOC38">Interface</A></H2>
+<P>
+<A NAME="IDX27"></A>
+
+
+<P>
+A class interface declares instance variables, methods and
+the superclass name, while the implementation file holds the
+operational code that implements those methods. The interface
+is included in the source using <CODE>#include</CODE>:
+
+
+
+<PRE>
+#include "baseclass.h"
+</PRE>
+
+<P>
+Typically the Interface and Implementation are held in separate files,
+using the .h and .m extensions, respectively. They may, however,
+be merged into one file, and a single file may implement many classes.
+
+
+<P>
+To ensure that a Header file is included only once, it is usual to
+protect it with pre-compiler defines:
+
+
+
+<PRE>
+#ifndef _MY_CLASS_H_INCLUDED
+#define _MY_CLASS_H_INCLUDED
+
+/* HEADER FILE */
+#endif
+</PRE>
+
+<P>
+This is the standard C technique to protect header files from
+being included more than once.
+
+
+
+
+<H3><A NAME="SEC39" HREF="manual_toc.html#TOC39">Interface Capabilities</A></H3>
+
+<P>
+The interface file declares new classes that can be used by
+source code, holding all the information necessary to use the
+classes from other Objective-C code. Firstly, the file reveals
+to the programmer the position of the class in the class hierarchy
+by defining exactly which is the superclass. Secondly, it informs
+programmers of what variables are inherited when they create subclasses.
+Finally, the interface file may inform other software entities
+of the messages that can be sent to the class object and to the
+instances of the class. 
+
+
+<P>
+The syntax of a class interface is of the form:
+
+
+<P>
+<EM>I would like a better example interface than this? So would you create something more real?</EM><BR>
+
+
+
+<PRE>
+// Need something here.
+</PRE>
+
+
+<UL>
+<LI>
+
+The interface is enclosed between the compiler directives
+<CODE>@interface</CODE> and <CODE>@end</CODE>.
+
+<LI>
+
+<CODE>@interface ThisClass : ThisClassSuperClass</CODE> names the class
+and links it to the superclass. If no superclass is named, and the
+directive is without a colon, the compiler assumes that a root class
+is being created.
+
+<LI>
+
+Braces enclose declared instance variables, each class' instance will
+have all theses instance variables including instance variables
+inherited from the superclass, and from the superclass of the
+superclass, extending to the root class.
+
+<LI>
+
+Method declarations that begin with a "+" sign are class methods, and
+are defined for the class object. 
+A class object inherits class methods from superclasses.
+
+<LI>
+
+Method declarations that begin with a "-" sign are instance methods,
+and are defined for class instances. Class instances inherit instance
+methods from superclasses.
+
+<LI>
+
+A method may share the name of an instance variable. 
+
+<LI>
+
+A method return type is declared using the standard C syntax:
+
+<PRE>
+- (float) scale;
+</PRE>
+
+which is a method returning a float.
+
+<LI>
+
+Argument types can be declared in the same way as method return types:
+
+<PRE>
+- (void) setRadius: (float)aRadius;
+</PRE>
+
+which is a method that returns nothing, and takes a single float as
+its argument.
+
+Note. The default type for methods and messages (<CODE>id</CODE>) is assumed
+when a return or argument type is not explicitly declared.
+For example, <CODE>-name;</CODE> implicitly means a method returning <CODE>id</CODE>
+(i.e. an object). It is usually better to avoid this and use
+explicit typing as in
+
+<PRE>
+- (NSString*) name;
+</PRE>
+
+</UL>
+
+
+
+<H3><A NAME="SEC40" HREF="manual_toc.html#TOC40">Including Interfaces</A></H3>
+<P>
+Source modules (including Objective-C listings and interface files)
+may integrate interfaces using <CODE>#include</CODE>. Thereafter the source
+module may utilize the classes in those interfaces so as to:
+
+
+
+<UL>
+<LI>
+
+Make instances of them.
+
+<LI>
+
+Send messages to invoke methods declared for them.
+
+<LI>
+
+Refer to instance variables in them.
+
+</UL>
+
+<P>
+With the exception of the root class, all working interfaces
+integrate a superclass using either <CODE>#include</CODE> - as was
+seen in the previous simplified interface file example.
+As a result the vast majority of class files begin with a
+standard form that includes their superclasses, and thus
+places them in the class hierarchy:
+
+
+<P>
+<EM> Here I have another example - would you replace it with something more meaningful?</EM>
+
+
+
+<PRE>
+#include "Superclass.h"
+@interface InterfaceName : InterfaceSuperclass
+{
+  // instance variables
+}
+Declared methods
+</PRE>
+
+
+
+<H3><A NAME="SEC41" HREF="manual_toc.html#TOC41">Referring to Classes - @class</A></H3>
+<P>
+It is possible for a source module to refer to classes without
+including their interface files. This is useful when you just
+need to tell the compiler that a certain word is a class name,
+but you want to avoid the overhead of including the whole interface
+file for that class. 
+
+
+<P>
+If you are implementing a new class, you always need to include
+the interface of the superclass using <CODE>#include</CODE>;
+<CODE>@class</CODE> cannot be used in this case because the compiler
+needs to know the details of the superclass and its instance
+variables etc., so as to create a fully working new class.
+If you try using @class in this case, compilation will abort.
+
+
+<P>
+<B>Note. When you need to send methods to an object, it's better
+to include the full class interface. Even in that case - it's
+better *only* because it allows better type checking -
+which is good of course - but not essential.  And - to say it
+all - if you use @class that way, the compiler complains as soon
+as you try to send a message to an object of a class declared
+using @class, so that you know you need to include the
+interface for full type checking.  This means it's a good idea
+to always try with @class if possible and only include the
+interface if the compiler complains that it can't type-check
+without the full interface.</B>
+
+
+<P>
+To inform the compiler that <B>Border</B> and <B>Square</B> are classes without including their full interface file, the following syntax is used:
+
+
+<P>
+<CODE>@class Border, Square;</CODE>
+
+
+<P>
+Class names may also appear in interface files at times when
+instance variables, return values and arguments are statically typed:
+
+
+<P>
+- (void) set
+
+
+<P>
+<EM>Another example of a class interface is required here, and perhaps an example of a class cluster would be useful as this is mentioned in chapter 1.</EM><BR>
+a simple example of a class interface &#60;fixme: what example ?&#62;
+
+
+
+
+<H2><A NAME="SEC42" HREF="manual_toc.html#TOC42">Implementation</A></H2>
+<P>
+An interface file declares a class, while an implementation file
+implements it. The separation between the interface and
+implementation file yields a black box concept where the programmer
+using the class need only be concerned with the interface and its
+declared methods, superclasses, and instance variables.
+The implementation of classes is transparent to the programmer
+who may use them without detailed knowledge of their structures. 
+
+
+<P>
+In the C programming language C structures are singular entities
+that encapsulate multiple data elements. The fields therein reside
+in <B>name spaces</B> so they do not interfere with alike named
+entities that are outside the structure. So the name spaces
+define another partition.
+
+
+<P>
+Such C structures relate to C functions that provide the
+application logic or defined mechanisms. Within a C structure
+data elements may be local to a function, and are protected in
+their name space.
+
+
+
+
+<H3><A NAME="SEC43" HREF="manual_toc.html#TOC43">Writing an Implementation</A></H3>
+<P>
+An implementation file contents are encapsulated between
+@implementation and @end directives:
+
+
+
+<PRE>
+#include "ClassTitle .h"
+@implementation ClassName :Superclass
+{
+  // instance variables
+}
+// methods
+@end
+</PRE>
+
+<P>
+The Implementation file uses <CODE>#include</CODE> to include a named
+interface file holding all declarations. Thereafter, the
+implementation need not declare instance variables, rather it
+may be dedicated to defining methods that may include a number
+of arguments; these are declared in the same way as the interface
+file but without the semicolon:
+
+
+
+<PRE>
+</PRE>
+
+
+
+<H3><A NAME="SEC44" HREF="manual_toc.html#TOC44">Referring to Instance Variables</A></H3>
+
+<P>
+When an instance method of a certain object is called, the method can
+refer to the object's instance variables directly by name.  
+
+
+<P>
+The following example illustrates how a method definition refers to the
+receiving object's <B>instance variable</B> called <CODE>line</CODE>.
+
+
+
+<PRE>
+- (void) setLine: (BOOL)flag
+{
+  line = flag;
+}
+</PRE>
+
+<P>
+You can access instance variables of other instances of the same class by using the operator <CODE>-&#62;</CODE>. 
+
+
+<P>
+<EM>Example here.</EM>
+
+
+<P>
+The following code fragment demonstrates how the GPRS class may declare a statically typed object as an instance variable called qosfive:
+
+
+
+<PRE>
+@interface GPRS :NSObject
+{
+    Connect *qosfive;
+    int frequency;
+    struct features *chargeband;
+}
+</PRE>
+
+<P>
+Because qosfive is typed to the same class, the instance variables of the statically typed class are in the scope of the class. So the Connect method may set them directly:
+
+
+
+<PRE>
+-makeAnotherQosfive
+{
+    if (!qosfive) {
+        qosfive =[[Connect alloc ] init ];
+        qosfive-&#62;frequency =frequency;
+        qosfive-&#62;chargeband =chargeband;
+    }
+    return qosfive;
+}
+</PRE>
+
+<P>
+<B>Note. When the object is not a receiver, it is necessary that the object be <B>statically typed</B> in the class declaration.</B>
+ 
+
+
+
+
+<H3><A NAME="SEC45" HREF="manual_toc.html#TOC45">Instance Variable Scope</A></H3>
+
+<P>
+In Objective-C instance variable have three types of <B>scope</B> or accessibility:
+
+<UL>
+<LI>
+
+<CODE>@private</CODE> restricts the instance variable to the declaring class, and not to inheriting classes.
+
+<LI>
+
+<CODE>@protected</CODE> restricts the instance variable to the declaring class and inheriting
+classes - this is the default scope.
+
+<LI>
+
+<CODE>@public</CODE> globalises the instance variable, removing all the aforementioned restrictions.
+
+</UL>
+
+
+
+<H3><A NAME="SEC46" HREF="manual_toc.html#TOC46">Accessing Object Data Structures</A></H3>
+<P>
+The instance variables or data structures of objects are accessed by sending the object messages. An Objective-C object's instance variables may be changed to a <B>public</B> scope by converting them into a C structure. 
+
+
+<P>
+The <CODE>@defs(className)</CODE> directive produces a declaration list, where <CODE>public</CODE> is used as a pointer to the structure that approximates an instance of <CODE>Gprschannel</CODE>:
+
+
+
+<PRE>
+struct gprschannelDef {
+    @defs(Gprschannel)
+}*public;
+</PRE>
+
+<P>
+An object's instance variables may be given <B>public scope</B> through a <CODE>Gprschannel id</CODE> assigned to the pointer:
+
+<PRE>
+id aGprschannel;
+aWorker =[[Gprschannel alloc ] init ];
+public =(struct gprschannelDef *)aGprschannel;
+public-&#62;boss =nil;
+</PRE>
+
+
+
+<H3><A NAME="SEC47" HREF="manual_toc.html#TOC47">Super and Self</A></H3>
+
+<P>
+In the implementation of an Objective-C method, you may use the two reserved words <B>self</B> and <B>super</B>
+
+
+<P>
+<EM>example here</EM>
+.
+In Objective-C some control over messaging is provided by <B>self</B> and <B>super</B>. <B>Self</B> searches for the 
+method implementation in the receiving object's class. 
+
+
+<P>
+<B>Super</B> begins searching for the method implementation in the superclass of the class that defines the method with super.
+
+
+<P>
+A method implementation may refer to the target object as <B>self</B> or <B>super</B>, where 
+control is provided over which object performs the method. 
+
+
+<P>
+To demonstrate the difference between <B>self</B> and <B>super</B> consider three classes:
+
+
+
+<UL>
+<LI>
+
+One
+
+<LI>
+
+Two - One's superclass
+
+<LI>
+
+Three - Two's superclass
+</UL>
+
+<P>
+All three classes define a method called <B>traffic</B>, while Two defines a method called <B>Alert</B> that depends on <B>traffic</B>.
+
+
+<P>
+Sending a message to the One object to invoke the <B>Alert</B> method, causes the <B>Alert</B> method to send a <B>traffic</B> message to the same One object.  
+
+
+<P>
+The following source code would search for the traffic method defined in One (or self's class).
+
+
+
+<PRE>
+-Alert
+{
+[self traffic ];
+...
+}
+</PRE>
+
+<P>
+When Two’s source code calls this object super, the messaging routine will find the version of traffic defined in Three (the <B>superclass</B> of Two).
+
+
+
+<PRE>
+-Alert
+{
+[super traffic ];
+...
+}
+</PRE>
+
+<P>
+<B>Self</B> is a variable name that may be assigned new values particularly in definitions 
+of class methods that often focus on class instances as opposed to class objects. For example, 
+a method might combine allocation and initialization of an instance:
+
+
+
+<PRE>
+
++(id)newRect
+{
+    return [[self alloc ] init ];
+}
+
+</PRE>
+
+<P>
+When in class methods self refers to class objects, and when in instance methods self 
+refers to instances. <B>self</B> and <B>super</B> focus on the receiver that is the object 
+being stimulated by a message. 
+
+
+<P>
+<EM>Nicola/Richard add an example for self and super here - or two examples?</EM>
+
+
+<P>
+implementation of the example class interface
+
+
+
+
+<H2><A NAME="SEC48" HREF="manual_toc.html#TOC48">Categories</A></H2>
+<P>
+A category may serve to replace a subclass; when adding methods to an existing declared class, and not to a new class, a <B>category name</B> is used. 
+An interface file may declare methods under a category name that is also used in the implementation file for the definitions of those methods.  
+Category methods are added to the class, and instances of the class will have the methods as part of their behaviour. As is the case with other methods, category methods are inherited by all the class' subclasses.
+
+
+
+
+<H3><A NAME="SEC49" HREF="manual_toc.html#TOC49">Adding to Classes</A></H3>
+
+<P>
+A category interface has the form: 
+
+
+
+<PRE>
+#include "ClassTitle .h"
+@interface ClassTitle (CategoryTitle )
+     declared methods
+@end
+</PRE>
+
+<P>
+The category may include a interface, so as to allow its methods to access the instance variables of named classes.
+
+
+<P>
+A category implementation file has the form:
+
+
+
+<PRE>
+#include "CategoryTitle .h"
+@implementation ClassTitle (CategoryTitle )
+    definitions of methods 
+@end
+</PRE>
+
+<P>
+Category methods may replace the conventional methods inherited by the class.
+
+
+<P>
+<B>Note. A category should not be considered a substitute for a subclass. </B>
+
+
+
+
+<H3><A NAME="SEC50" HREF="manual_toc.html#TOC50">Using Categories</A></H3>
+<P>
+Categories are useful for extending existing classes, so as to add new methods to frameworks. Categories are often used to separate the implementation of a new class into a number of source files. The obvious benefits of this program development strategy include: grouping subject-oriented methods; incremental compilation for large classes; help to logically divide the class when being created by a number of developers; and, permit configuration-specific classes targeting particular applications.
+
+
+<P><HR><P>
+Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_3.html">previous</A>, <A HREF="manual_5.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
+</BODY>
+</HTML>
