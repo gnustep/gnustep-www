@@ -405,7 +405,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">Project Center</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("dev-apps/ProjectCenter-0.3.5.tar.gz")?>">0.3.5
+<td class="stab"><a href="<?php download("dev-apps/ProjectCenter-0.4.0.tar.gz")?>">0.4.0
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Project developer</td>
