@@ -107,13 +107,26 @@ link.
 "http://packages.debian.org">the normal debian mirrors</a>. Ask if
 you can't find them.</p>
 <h2><a name="gentoo" id="gentoo">Gentoo</a></h2>
-<p>To get GNUstep, type this in a terminal:</p>
-<pre>
-    ACCEPT_KEYWORDS="~x86" emerge gnustep 
-</pre>
-<p>ACCEPT_KEYWORDS is only needed to get the latest (unstable)
-version. The ~x86 is the architecture so it should be changed to
-whatever is apropiate.</p>
+
+<p>The newest GNUstep ebuilds can be emerged using the ~ARCH keyword
+(e.g. ~x86).  This can be specified on the command line (as
+'ACCEPT_KEYWORDS="~x86" emerge ...'), or you can place
+entries for each GNUstep ebuild in /etc/portage/package.keywords
+(the preferred method for "mostly" stable systems).
+More information can be found at "man 5 portage", and
+<a href="http://dev.gentoo.org/~fafhrd/">the maintainer's page</a>.</p>
+
+<p>After keywording the unstable/testing packages (e.g. ~x86 set for the
+GNUstep ebuilds you wish to emerge) you can run the following as root:</p><pre>
+  emerge -pv gnustep-env</pre>
+
+<p>After reviewing what will emerge, you can remove the "-p" (pretend)
+option and run the emerge.  See
+<a href="http://dev.gentoo.org/~fafhrd/">the maintainer's page</a>
+for any further steps or news.  You can
+install GNUstep applications in a similar way: for example,
+"emerge gnumail".</p>
+
 <h2><a name="windows" id="windows">Windows</a></h2>
 <p>An installer that installs the gnustep-make and gnustep-base
 libraries (i.e. the non-gui part) is available at the GNUstep ftp
