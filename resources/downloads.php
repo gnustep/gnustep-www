@@ -124,7 +124,7 @@ the appropriate column.</p>
 
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BINUTILS">binutils</a></td>
-<td class="req">Usually required</td>
+<td class="req">Depends on OS</td>
 <td class="stab">2.9.6</td>
 <td class="unst"><a href="ftp://ftp.gnu.org/gnu/binutils/binutils-2.13.tar.gz">2.13</a></td>
 <td>GNU binutils</td>
@@ -148,7 +148,7 @@ the appropriate column.</p>
 
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#FOREIGN.FUNCTION.INTERFACES">ffcall</a></td>
-<td class="req">Recommended</td>
+<td class="req">Required</td>
 <td class="stab">1.8</td>
 <td class="unst"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
 <td>Message forwarding</td>
@@ -159,7 +159,7 @@ the appropriate column.</p>
 <td class="req">Optional</td>
 <td class="stab">gcc 3.3.1</td>
 <td class="unst"><div class="cent">-</div></td>
-<td>Alternative to ffcall</td>
+<td>Alternative to ffcall (part of gcc)</td>
 </tr>
 
 <tr>
@@ -371,7 +371,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"></td>
+<td class="src">RIGS</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/rigs-0.2.2.tar.gz")?>">0.2.2</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -384,6 +384,14 @@ packages and applications may require you to install these libraries
 <td class="stab"><div class="cent">-</div></td>
 <td class="unst"><a href="<?php download("libs/gdl2-0.9.1.tar.gz")?>">0.9.1</a></td>
 <td>Database Support Library</td>
+</tr>
+
+<tr>
+<td class="src">gdl2</td>
+<td class="req">Optional</td>
+<td class="stab"><a href="<?php download("libs/SQLClient-1.1.0.tar.gz")?>">1.1.0</a></td>
+<td class="unst"><div class="cent">-</div></td>
+<td>Simple OO Interface to SQL databases</td>
 </tr>
 
 <tr>
@@ -433,7 +441,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.gnustep.org/experience/Gorm.html">Gorm</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("dev-apps/Gorm-0.8.0.tar.gz")?>">0.8.0
+<td class="stab"><a href="<?php download("dev-apps/Gorm-0.9.0.tar.gz")?>">0.9.0
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Graphical interface builder</td>
