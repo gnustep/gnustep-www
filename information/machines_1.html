@@ -1,28 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dli">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-        <title>GNUstep.org</title>
-        <link rel="stylesheet" href="../gnustep-main.css" type="text/css" />
-        <style type="text/css" media="screen">
-                @import "../gnustep-main-2.css";
-        </style>
-        <meta http-equiv="Content-type" content="text/html; charset=UTF-8"
-/>
-</head>
-<body>
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on July, 2  2004 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Platform Compatibility: Machine Specific</TITLE>
+
+<META NAME="description" CONTENT="Platform Compatibility: Machine Specific">
+<META NAME="keywords" CONTENT="Platform Compatibility: Machine Specific">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+	<link rel="stylesheet" href="../gnustep-main.css" type="text/css" />	
+	<style type="text/css" media="screen">
+		@import "../gnustep-main-2.css";
+	</style>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
 
 
 <div class="header">
-        <a href="/"><img src="../gnustep-header14.jpg" alt="GNUstep.org"
-width="560" height="74" /></a>
+	<a href="/"><img src="../gnustep-header14.jpg" border="0" alt="GNUstep.org" width="560" height="74" /></a>
 </div>
 
 
 <div class="container">
 
-<div class="content">
-
+	<div class="content"><div id="main">
 <A NAME="SEC1"></A>
 
 <HR SIZE=2>
@@ -64,7 +80,7 @@ knows if GNUstep works on these although they may.
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC19">1.18 RedHat/Intel</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC20">1.19 Slackware/Intel</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC21">1.20 Solaris 2.5.1/Sparc (<EM>Obsolete</EM>)</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC22">1.21 Solaris 2.[67]/Sparc</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC22">1.21 Solaris 2.[678]/Sparc</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC23">1.22 Solaris 2.7/Intel</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC24">1.23 Suse 6.x/Intel</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC25">1.24 Suse/Intel</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
@@ -326,14 +342,8 @@ are installed. See the GNUstep-HOWTO for list of libraries.
 <P>
 
 <DT><SAMP>`Special Instructions'</SAMP>
-<DD>If you're using zsh, some shell variables may not be set correctly when
-executing GNUstep.sh. Try turing on SH_WORD_SPLIT (e.g. 'zsh
---sh-word-split', 'zsh -o shwordsplit', 'zsh -y' or by setting 'setopt
-SH_WORD_SPLIT' in one of zsh's startup files.)
+<DD>For gcc 3.0.4, make WANT_THREADS_SUPPORT=YES
 <P>
-
-For gcc 3.0.4, make WANT_THREADS_SUPPORT=YES
-</P><P>
 
 For libxml2 2.4.24, make WITHOUT_PYTHON=YES
 </P><P>
@@ -699,13 +709,16 @@ This configuration is no longer being tested, but it may still work.
 <A NAME="Solaris/Sparc"></A>
 <HR SIZE="6">
 <A NAME="SEC22"></A>
-<H2> 1.21 Solaris 2.[67]/Sparc </H2>
+<H2> 1.21 Solaris 2.[678]/Sparc </H2>
 <!--docid::SEC22::-->
 <P>
 
+Tested on Solaris version 6, 7, and 8
+</P><P>
+
 <DL COMPACT>
 <DT><SAMP>`Recommended compiler'</SAMP>
-<DD>gcc 3.2.1
+<DD>gcc 3.2.1 or greater
 gcc 2.95.3. Version 2.95.2 has several bugs that GNUstep tickles.
 gcc 3.04. Not 3.1 - does not compile parts of GNUstep.
 <P>
@@ -715,10 +728,7 @@ gcc 3.04. Not 3.1 - does not compile parts of GNUstep.
 <P>
 
 <DT><SAMP>`Special Instructions'</SAMP>
-<DD>No libffi-support unless you use the patch
-<A HREF="http://gcc.gnu.org/ml/java-patches/2002-q3/msg00036.html">http://gcc.gnu.org/ml/java-patches/2002-q3/msg00036.html</A> (not
-particularly recommended).
-<P>
+<DD><P>
 
 Using a POSIX shell (zsh or bash, which should come with Solaris) is
 highly recommended. In fact, some functions, such as compiling frameworks,
@@ -1053,51 +1063,53 @@ Native GUI backend is alpha version.
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>June, 9  2004</I>
+by <I>Adam Fedor</I> on <I>July, 2  2004</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
+</div></div>
+
 </div>
-</div>
-</div>
-</div>
+
 
 <div class="sidebar">
+	
+	<b>General</b><br />
+	  <a href="../">Home page</a><br />
+	  <a href="../information/aboutGNUstep.html">About GNUstep</a><br />
+	  <a href="../information/mission.html">Mission</a><br />
+	  <a href="../information/machines_toc.html">Platforms</a><br />
+	  <a href="../resources/sources.html">Download</a><br />
+	  <a href="../experience/apps.html">Applications</a><br />
+	  <a href="../information/progress.html">Progress</a><br />
+	<br />
+	<b>Resources</b><br />
+	  <a href="../experience/documentation.html">Getting Started</a><br />
+	  <a href="../experience/documentation.html#api">Frameworks</a><br />
+	  <a href="../resources/resources.html">Related Links</a><br />
+	  <a href="http://wiki.gnustep.org/">Wiki Docs</a><br />
+	  <a href="../information/userfaq_toc.html">User FAQ</a><br />
+	  <a href="../information/gethelp.html">Mailing Lists</a><br />
+	 <br />
+	<b>Contributors</b><br />
+	  <a href="http://savannah.gnu.org/projects/gnustep/">Project Page</a><br />
+	  <a href="../developers/whoiswho.html">Who's Who</a>?<br />
+	  <a href="../developers/map.html">Libraries</a><br />
+	  <a href="../information/faq_toc.html">Developer FAQ</a><br />
+	
+	<br />
 
-        <b>General</b><br />
-          <a href="./">Home page</a><br />
-          <a href="information/aboutGNUstep.html">About GNUstep</a><br />
-          <a href="information/mission.html">Mission</a><br />
-          <a href="information/machines_toc.html">Platforms</a><br />
-          <a href="resources/sources.html">Download</a><br />
-          <a href="experience/apps.html">Applications</a><br />
-          <a href="information/progress.html">Progress</a><br />
-        <br />
-        <b>Resources</b><br />
-          <a href="experience/documentation.html">Getting Started</a><br />
-          <a href="experience/documentation.html#api">Frameworks</a><br />
-          <a href="resources/resources.html">Related Links</a><br />
-          <a href="http://wiki.gnustep.org/">Wiki Docs</a><br />
-          <a href="information/userfaq_toc.html">User FAQ</a><br />
-          <a href="information/gethelp.html">Mailing Lists</a><br />
-         <br />
-        <b>Contributors</b><br />
-          <a href="http://savannah.gnu.org/projects/gnustep/">Project
-Page</a><br />
-          <a href="developers/whoiswho.html">Who's Who</a>?<br />
-          <a href="developers/map.html">Libraries</a><br />
-          <a href="information/faq_toc.html">Developer FAQ</a><br />
+    <b><a href="../resources/sites.html">Related Sites...</a></b><br />
+	
+	<br />
 
-        <br />
-
-    <b><a href="resources/sites.html">Related Sites...</a></b><br />
-
-        <br />
-
-        <b><a href="resources/mirrors.html">Mirrors...</a></b><br />
-        <br />
-        Site by <a
-href="mailto:webmasters@gnustep.org">webmasters@gnustep.org</a>
-
+	<b><a href="../resources/mirrors.html">Mirrors...</a></b><br />
+	<br />
+	Site by <a href="mailto:webmasters@gnustep.org">webmasters@gnustep.org</a>
+  
 </div>
-</body>
-</html>
+
+
+
+
+</BODY>
+</HTML>
