@@ -152,7 +152,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN481">openssl</a></td>
 <td class="req">Recommended</td>
 <td class="stab">0.9.6b</td>
-<td class="unst"><a href="http://www.openssl.org/source/openssl-0.9.6g.tar.gz">0.9.6g</a></td>
+<td class="unst"><a href="http://www.openssl.org/source/openssl-0.9.6j.tar.gz">0.9.6j</a></td>
 <td>SSL and TSL support</td>
 </tr>
 
