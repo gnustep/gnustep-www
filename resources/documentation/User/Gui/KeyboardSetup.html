@@ -1,0 +1,144 @@
+<html>
+
+    <head>
+    <title>User Keyboard Setup for GNUstep Libraries</title>
+  </head>
+  <body>
+    <br />
+    <h1><a name="title$KeyboardSetup">User Keyboard Setup for GNUstep Libraries</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt><a href="http://www.gnustep.org/developers/whoiswho.html">Adam Fedor</a> (<a href="mailto:fedor@gnu.org"><code>fedor@gnu.org</code></a>)</dt>
+      <dd>
+      </dd>
+      <dt><a href="http://www.gnustep.org/developers/whoiswho.html">Nicola Pero</a> (<a href="mailto:n.pero@mi.flashnet.it"><code>n.pero@mi.flashnet.it</code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> $Revision: 1.1 $</p>
+    <p><b>Date:</b> $Date: 2004/02/12 04:40:48 $</p>
+
+    
+          <h1><a name="001000000000">Keyboard Setup</a></h1>
+    <p>
+
+        This document describes how to change the mouse and keyboard 
+	mappings so that GNUstep can be used properly.
+	This document applies only to the X-Windows based backend. 
+          </p>
+
+            <h2><a name="001001000000">Defaults Settings</a></h2>
+    <p>
+
+ The OpenStep specification requires 3 main different keyboard 
+ modifiers: @key{CONTROL}, @key{COMMAND} and @key{ALTERNATE}.  
+ @c
+ @itemize @bullet
+ @item @key{COMMAND} is used to enter key equivalents (keyboard shortcuts 
+ for menus or buttons); for example, usually &apos;Quit&apos; on the main 
+ menu of an application is bound to &apos;q&apos;, so you may usually quit 
+ a GNUstep application by pressing @kbd{Command - q}. 
+ @item @key{CONTROL} and @key{ALTERNATE} are two additional modifiers.
+ A typical use of @key{ALTERNATE} is to scroll by pages rather than 
+ by lines; you have to press @key{ALTERNATE} while acting on a scrollbar 
+ with the mouse. 
+ @end itemize
+ @c
+ By default, GNUstep uses @code{Control_L} (left Ctrl) and
+ @code{Control_R} (right Ctrl) as @key{CONTROL}, @code{Alt_L} (left alt)
+ as @key{COMMAND}, and @code{Alt_R} (right alt, sometimes called AltGr)
+ as @key{ALTERNATE}.  As a special exception, if @code{Alt_R} is not
+ bound to any key on your keyboard, GNUstep will try to use
+ @code{Mode_switch} for @key{ALTERNATE} instead.
+     </p>
+    <p>
+
+ If this layout does not work for you, because your keyboard misses some
+ of these keys, or they have different X names or they conflict heavily
+ with your window manager shortcuts (or for any other reason), read on.
+     </p>
+
+       <h2><a name="001002000000">Changing the Default Settings</a></h2>
+    <p>
+
+ Under GNUstep, you may change the default as you wish: 
+ you may choose which keys of your keyboard you want 
+ to use for @key{CONTROL}, @key{COMMAND} and @key{ALTERNATE} 
+ (You may even use different keys for different GNUstep applications, 
+ without conflict).  These settings are internal to GNUstep, 
+ and will not influence the behaviour of other X apps.  
+     </p>
+    <p>
+
+ You may choose up to 2 keys per modifier.  
+     </p>
+    <p>
+
+ Note that, if your keyboard is properly set up for X, 
+ you should @emph{not} need to remap your X keyboard 
+ to use GNUstep.  By changing the defaults, you should be able 
+ to use GNUstep whatever the X keyboard mapping might be.
+     </p>
+    <p>
+
+ What you have to do, is simply to instruct GNUstep to use 
+ different keys for @key{CONTROL}, @key{COMMAND} and @key{ALTERNATE}. 
+     </p>
+    <p>
+
+ The keys to use are determined at the application startup, 
+ by reading the user defaults database.  
+     </p>
+    <p>
+
+
+ To set the keys which will act as @key{CONTROL} you have to set 
+ @code{GSFirstControlKey} and @code{GSSecondControlKey}; and 
+ similarly for the other keys: 
+     </p>
+    <dl>
+    </dl>
+    <p>
+
+ Valid values are all the standard strings for X keys.  
+ To disable completely a key, use @code{NoSymbol} as preference.
+     </p>
+    <p>
+
+ Each value which you do not explicity set is substituted with 
+ its default value.  The default values are: 
+     </p>
+    <dl>
+    </dl>
+    <p>
+
+ What could go wrong is for example that you don&apos;t have an @code{Alt_L}
+ key.  With the default settings, you will not be able to enter the
+ @key{COMMAND} key (which is quite an important key).  What you can do in
+ this case is to use @code{Control_R} as @key{COMMAND}, giving the
+ following commands (from the command line):
+     </p>
+<pre>
+ defaults write NSGlobalDomain GSFirstCommandKey Control_R
+ defaults write NSGlobalDomain GSSecondControlKey NoSymbol
+ </pre>
+    <p>
+
+ These commands write in the GNUstep user database; 
+ the information will be used every time you start a GNUstep application. 
+     </p>
+    <p>
+
+ The first line sets @code{GSFirstCommandKey} to @code{Control_R}, which
+ makes @code{Control_R} to be read as @key{COMMAND}.
+     </p>
+    <p>
+ 
+ The second line disables the second control key, which would otherwise
+ be bound to @code{Control_R} by default. If you omit it,
+ @code{Control_R} will be used at the same time as @key{COMMAND} and as
+ @key{CONTROL}, which is not very useful.
+     </p>
+    <br />
+  </body>
+</html>
