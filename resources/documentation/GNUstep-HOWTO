@@ -1,7 +1,7 @@
    GNUstep HOWTO
    *************
 
-   Last Update: 16 June 2001
+   Last Update: 19 September 2001
 
    This document explains how to build the different components of the
    GNUstep core libraries and GNUstep Launchpad.
@@ -116,12 +116,14 @@ depending on the type of system you are using, include:
      This is a library that provides stack frame handling for
      NSInvocation and NSConnection. This library is highly recommended.
      The previous builtin method for stack frame handling is no longer
-     supported and may be removed in the future.
+     supported and may be removed in the future.  ffcall is under GNU
+     GPL. As a special exception, if used in GNUstep or in derivate
+     works of GNUstep, the included parts of ffcall are under GNU LGPL.
 
 `gnustep-objc package (for gcc version < 3.0)'
      This is a special version of the Objective-C runtime that include
-     several bug fixes and features that have not been officially
-     released yet.  It is available at
+     several bug fixes and features that were not in gcc versions
+     previous to 3.0.  It is available at
      <ftp://ftp.gnustep.org/pub/gnustep/libs> which compiles using the
      GNUstep Makefile package (so you don't have to get the entire gcc
      dist). Make sure to set the THREADING variable in the GNUmakefile.
@@ -785,22 +787,24 @@ building:
 
      make shared=yes
 
-   For static libs, use SHARED=NO, Make sure files and compilation done
-in Unix mode (no ^M in files, EXPORT CYGWIN=BINMODE usually works if
-cygwin is not buggy).  Gdomap services not set up correctly. Must add
-services lines to `C:\WINDOWS\services' (on Windows 98) or xxx (on
+   For static libs, use `shared=no', Make sure files and compilation
+done in Unix mode (no ^M in files, EXPORT CYGWIN=BINMODE usually works
+if cygwin is not buggy).  Gdomap services not set up correctly. Must
+add services lines to `C:\WINDOWS\services' (on Windows 98) or xxx (on
 Windows NT).  Base library only. No native GUI backend.
 
 Windows with MinGW (_Unstable!_)
 ================================
 
 `Recommended compiler'
-     gcc 2.95.2 (MingW release 1999-11-07)
+     gcc 2.95.3-5
 
 `Extra libs needed'
      Objective-C library DLL (<ftp://ftp.gnustep.org/pub/gnustep/libs>)
-     for shared libs. ffcall is not ported to Mingw32 so don't try to
-     use it.
+     for shared libs.  For ffcall, you should get version 1.8b or above
+     (the earlier ones don't compile). There are still some problems
+     with structure passing, but that is generally not supportred on
+     any architecture.
 
 `Special Instructions'
      See the `README.MinGW' file located in the gnustep-make
