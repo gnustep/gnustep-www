@@ -371,6 +371,14 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
+<td class="src"></td>
+<td class="req">Optional</td>
+<td class="stab"><a href="<?php download("libs/rigs-0.2.2.tar.gz")?>">0.2.2</a></td>
+<td class="unst"><div class="cent">-</div></td>
+<td>Ruby bridge</td>
+</tr>
+
+<tr>
 <td class="src">gdl2</td>
 <td class="req">Optional</td>
 <td class="stab"><div class="cent">-</div></td>
