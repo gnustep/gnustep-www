@@ -1,71 +1,75 @@
-  <HTML>
-    <HEAD>
-  <TITLE>GNUstep: Bugs</TITLE>
-</HEAD>
-<BODY BGCOLOR="#6C6C80" TEXT="#FFFFFF" LINK="#FFDDDD" VLINK="#FF9999" ALINK="#FF3333">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+  <title>GNUstep: Bugs</title>
+        <style type="text/css">
+                BODY { font-family: sans-serif}
+        </style>
+</head>
+<body bgcolor="#6C6C80" text="#FFFFFF" link="#FFDDDD" vlink="#FF9999" alink="#FF3333">
 
-<font face="helvetica,arial,sans-serif" size=3>
-<nobr><img src="images/gears.pnh"><img src="../images/title.png" alt="Bugs"></nobr>
-<p>
+<img src="images/gears.png" alt="Gears"/>&nbsp;<img src="../images/title.png" alt="Bugs"/>
 
 
-<h1> Reporting Bugs </h1>
+<h1>Reporting Bugs</h1>
 
-There are two ways to report bugs. The prefered method is to use the
+<p>There are two ways to report bugs. The prefered method is to use the
 <a href="http://savannah.gnu.org/support/?group_id=99">GNUstep Tech Support</a>
 database. You can query the database
-anytime to see the status of your bug report. 
-<p>
-One can also report bugs by
+anytime to see the status of your bug report.</p>
+
+<p>One can also report bugs by
 sending a message to <a href="mailto:bug-gnustep@gnu.org">
-bug-gnustep@gnu.org</a>.
+bug-gnustep@gnu.org</a>.</p>
 
 <h2>What to Report</h2>
 
-There are very few developers and we are often overwhelmed by bug reports.
-So it is vital that you include as much information as possible:
+<p>There are very few developers and we are often overwhelmed by bug reports.
+So it is vital that you include as much information as possible:</p>
 <ul>
 <li>GNUstep version and snapshot date or date of last update from CVS
 (ideally, on finding a bug you should update your system to the latest
 version in the CVS repository, in order to avoid reporting problems that have
-already been fixed).
-<li>Machine/Operating system on which you are running
-<li>Compiler version you use
+already been fixed).</li>
+<li>Machine/Operating system on which you are running</li>
+<li>Compiler version you use</li>
 <li>A description of the problem, along with either a test program to
 demonstrate the problem, or a description of how to make the problem appear in
-one of the test programs that come as part of the GNUstep distribution.
+one of the test programs that come as part of the GNUstep distribution.</li>
 </ul>
 
-The provision of a test/demonstration program is very important for getting the
+<p>The provision of a test/demonstration program is very important for getting the
 bug fixed quickly. Often, with no test program, we will not do anything 
 with the report for a long time unless it is immediately obvious what 
-the problem is.
+the problem is.</p>
 
-<h1> Sending fixes </h1>
+<h1>Sending fixes</h1>
 
-Actually fixing problems is even more appreciated than sending in bug reports.
+<p>Actually fixing problems is even more appreciated than sending in bug reports.
 To do this, first fix the bug and make sure it works. Then send in a diff
 file containing the differences between the old version of the file(s) you
 changed and the new version. Use the diff program to do this. Then
 add a ChangeLog entry in front of this and send the whole things to
-<a href="mailto:bug-gnustep@gnu.org"> bug-gnustep@gnu.org</a>. 
-<p>
-If you use emacs, it is easy to add a ChangeLog entry. Just edit the 
+<a href="mailto:bug-gnustep@gnu.org"> bug-gnustep@gnu.org</a>.</p>
+
+<p>If you use emacs, it is easy to add a ChangeLog entry. Just edit the 
 file you changed, and move the cursor to the function
-or method you changed, then type
-<p>
+or method you changed, then type</p>
+
 <pre>
 M-x add-change-log-entry
 </pre>
-<p>
-and emacs automatically formats an entry in the ChangeLog file with the
+
+<p>and emacs automatically formats an entry in the ChangeLog file with the
 information on the file and function you changed. You just need to add a  
 comment about what was fixed.
 Note: Don't send a diff of the ChangeLog file, just send a copy of your    
-ChangeLog entry normally.  Here is an example fix with a ChangeLog:
+ChangeLog entry normally.  Here is an example fix with a ChangeLog:</p>
 
 <pre>
-Fri Aug  4 13:39:05 1995  Adam Fedor  <fedor@gnu.org>
+Fri Aug  4 13:39:05 1995  Adam Fedor  &lt;fedor@gnu.org&gt;
 
         * src/NSAutoreleasePool.m ([NSAutoreleasePool -addObject:]):
         Remove double_release checking. Increment released_count after
@@ -91,11 +95,11 @@ m:1.3
 ***************
 *** 44,53 ****
      `release' message.  Memory use grows, and grows, and... */
-  static BOOL autorelease_enabled = YES;
+  static BOOL autorelease_enabled =" YES;"
   
 - /* When this is `YES', every call to addObject, checks to make sure 
 -    isn't being set up to release itself too many times. */
-- static BOOL double_release_check_enabled = NO;
+- static BOOL double_release_check_enabled =" NO;"
 - 
   /* When the released_count gets over this value, we call error:.
      In the future, I may change this to raise an exception or call 
@@ -108,22 +112,22 @@ m:1.3
   
 -   if (double_release_check_enabled)
 -     {
--       unsigned release_count = [[self class] autoreleaseCountForObject:anObj];
--       unsigned retain_count = [anObj retainCount];
--       if (release_count > retain_count + 1)
+-       unsigned release_count =" [[self" class] autoreleaseCountForObject:anObj];
+-       unsigned retain_count =" [anObj" retainCount];
+-       if (release_count &gt; retain_count + 1)
 -       [self error:"Autorelease would release object too many times."];
 -     }
 - 
-    if (released_count >= pool_count_warning_threshhold)
+    if (released_count &gt;=" pool_count_warning_threshhold)"
       [self error:"AutoreleasePool count threshhold exceeded."];
   
 -   released_count++;
-    if (released_count == released_size)
+    if (released_count ==" released_size)"
       {
-        released_size *= 2;
+        released_size *=" 2;"
         OBJC_REALLOC(released, id, released_size);
       }
-    released[released_count] = anObj;
+    released[released_count] =" anObj;"
   }
   
   - init
@@ -131,15 +135,15 @@ m:1.3
     if (!autorelease_enabled)
       return;
   
-    if (released_count >= pool_count_warning_threshhold)
+    if (released_count &gt;=" pool_count_warning_threshhold)"
       [self error:"AutoreleasePool count threshhold exceeded."];
   
-    if (released_count == released_size)
+    if (released_count ==" released_size)"
       {
-        released_size *= 2;
+        released_size *=" 2;"
         OBJC_REALLOC(released, id, released_size);
       }
-    released[released_count] = anObj;
+    released[released_count] =" anObj;"
 +   released_count++;
   }
   
@@ -150,38 +154,38 @@ m:1.3
     int i;
   
     if (parent)
-      current_pool = parent;
+      current_pool =" parent;"
     else
-      current_pool = [[NSAutoreleasePool alloc] init];
--   for (i = 0; i < released_count; i++)
+      current_pool =" [[NSAutoreleasePool" alloc] init];
+-   for (i =" 0;" i &lt; released_count; i++)
 -     [released[i] release];
--   OBJC_FREE(released);
-    NSDeallocateObject(self);
+-   objc_free(released);
+    nsdeallocateobject(self);
   }
   
 --- 142,165 ----
   {
     int i;
   
-+   /* Make debugging easier by checking to see if we already dealloced the
-+      object before trying to release it.  Also, take the object out of the
++   /* make debugging easier by checking to see if we already dealloced the
++      object before trying to release it.  also, take the object out of the
 +      released list just before releasing it, so if we are doing 
-+      "double_release_check"ing, then autoreleaseCountForObject: won't find the
++      "double_release_check"ing, then autoreleasecountforobject: won't find the
  
 +      object we are currently releasing. */
-+   for (i = 0; i < released_count; i++)
++   for (i =" 0;" i &lt; released_count; i++)
 +     {
-+       id anObject = released[i];
-+       if (anObject->isa == (void*) 0xdeadface)
++       id anobject =" released[i];"
++       if (anobject-&gt;isa ==" (void*)" 0xdeadface)
 +       [self error:"Autoreleasing deallocated object. Debug after setting [NSObject enableDoubleReleaseCheck:YES] to check for release errors."];
-+       released[i]=0;
++       released[i]="0;"
 +       [anObject release];
 +     }
 +   OBJC_FREE(released);
     if (parent)
-      current_pool = parent;
+      current_pool =" parent;"
     else
-      current_pool = [[NSAutoreleasePool alloc] init];
+      current_pool =" [[NSAutoreleasePool" alloc] init];
     NSDeallocateObject(self);
   }
   
@@ -189,12 +193,12 @@ m:1.3
 *** 173,183 ****
   + (void) enableRelease: (BOOL)enable
   {
-    autorelease_enabled = enable;
+    autorelease_enabled =" enable;"
 - }
 - 
 - + (void) enableDoubleReleaseCheck: (BOOL)enable
 - {
--   double_release_check_enabled = enable;
+-   double_release_check_enabled =" enable;"
   }
   
   + (void) setPoolCountThreshhold: (unsigned)c
@@ -202,37 +206,14 @@ m:1.3
   
 </pre>
 
-<CENTER>
 
-<!-- Webmaster Footer -->
-<CENTER>
-<TABLE CELLSPACING=0 CELLPADDING=0 BGCOLOR="#444450" border=0>
-<TR><td rowspan=2 colspan=2 width=18><img src="../images/topleft.png"
-width=18 height=18></td><td height=3 bgcolor="#ffffff"><img
-src="../images/spacer.png" width=1 height=3></td><td rowspan=2 colspan=2
-width=18><img src="../images/topright.png" width=18
-height=18></td></TR><TR><td><img src="../images/spacer.png" width=1
-height=15></td></TR><TR valign="_top"><TD width=3 bgcolor="#ffffff"><img
-src="../images/spacer.png" width=3 height=1></td><TD width=15><img
-src="../images/spacer.png" width=15 height=1></TD>
-<TD><font face="helvetica,arial,sans-serif" size=2>
+<!-- webmaster footer -->
+<br />
+<br />
 
-Contact Webmaster: <a
-href="mailto:webmasters@gnustep.org">webmasters@gnustep.org</A>
+<font size="-1">
+Contact: <a href="mailto:webmasters@gnustep.org"><font color="white">webmasters@gnustep.org</font></a>
+</font>
 
-</font></TD>
-<TD width=15><img src="../images/spacer.png" width=15 height=1></TD><TD
-width=3 bgcolor="#ffffff"><img src="../images/spacer.png" width=3
-height=1></td></TR><TR><td rowspan=2 colspan=2 width=18><img
-src="../images/baseleft.png" width=18 height=18></td><td><img
-src="../images/spacer.png" width=1 height=15></td><td rowspan=2 colspan=2
-width=18><img src="../images/baseright.png" width=18
-height=18></td></TR><TR><td height=3 bgcolor="#ffffff"><img
-src="../images/spacer.png" width=1 height=3></td></TR>
-</TABLE>
-</CENTER>
-<!-- End of Footer -->
-
-</FONT>
-</BODY>
-</HTML>
+</body>
+</html>
