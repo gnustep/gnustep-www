@@ -4,7 +4,7 @@
     <title>User Defaults Summary for GNUstep Libraries</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <h1><a name="title$DefaultsSummary">User Defaults Summary for GNUstep Libraries</a></h1>
     <h3>Authors</h3>
     <dl>
@@ -15,22 +15,45 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.4 $</p>
-    <p><b>Date:</b> $Date: 2004/09/24 22:26:22 $</p>
+    <p><b>Version:</b> $Revision: 1.5 $</p>
+    <p><b>Date:</b> $Date: 2004/09/25 02:32:55 $</p>
 
     
           <h1><a name="001000000000">Defaults Summary</a></h1>
     <p>
 
-        This document contains a summary of available user default
-        values that one can set to control the operation of the GNUstep
-        libraries.
+        This document contains a summary of available user default values that
+        one can set to control the operation of the GNUstep libraries.  To set
+        a default, use the <code>defaults write (domain) (key) (value)</code>
+        command in a terminal, with the <code>NSGlobalDomain</code> as first
+        argument.  E.g.,
+          </p>
+<pre>
+          defaults write NSGlobalDomain GSBackend libgnustep-art
+      </pre>
+    <p>
+To read out the value set for the default, use <code>defaults read
+         (domain) [(key)]</code>.  If you do not specify the key, every
+         key-value pair in the domain will be printed.
+          </p>
+    <p>
+
+          Other domains besides the system level domain
+          &quot;<code>NSGlobalDomain</code>&quot; include the application domains, named
+          for each application that has registered defaults, and the temporary
+          runtime &quot;<code>NSArgumentDomain</code>&quot; for command line arguments.
+          At runtime there is also a &quot;<code>NSRegistrationDomain</code>&quot;, a
+          second-chance domain in which &quot;defaults for defaults&quot; can be
+          registered, and possibly also domains for specific locales.
           </p>
 
             <h2><a name="001001000000">GUI Library Defaults</a></h2>
     <p>
 
-      Below is a list of defaults used to control the gnustep-gui library.
+        Below is a list of defaults used to control the gnustep-gui library.
+        You can set them either in <code>NSGlobalDomain</code>, to be used
+        everywhere, or in individual application domains, to be used for those
+        apps only.
           </p>
     <dl>
       <dt>GSBackend</dt>
@@ -204,6 +227,26 @@
         
 	  
       </dd>
+      <dt>GSUseWindowmakerIconBackground</dt>
+      <dd>
+        
+	  
+        <p>
+
+	  A boolean value, <code>NO</code> by default. When set to YES,
+	  GNUstep uses the windowmaker icon background
+	  for app icons and mini-windows.
+	          </p>
+        
+	  
+        <p>
+
+	  Note that this only works when using back-art, and the
+	  XWindowBuffer-shape-hack default must be set to YES.
+	          </p>
+        
+	  
+      </dd>
       <dt>GSLogWorkspaceTimeout</dt>
       <dd>
         
@@ -310,6 +353,20 @@
           This defines the application NSPrintOperation will try to
           connect to preview PostScript files, unless there is already
 	  an application registed as a Viewer of ps files.
+                  </p>
+        
+	  
+      </dd>
+      <dt>NSShowNonLocalizedStrings</dt>
+      <dd>
+        
+          
+        <p>
+
+          This is mainly a developer option.  If &quot;YES&quot;, the application will
+          display localization keys instead of strings in its UI.  This can be
+          useful during development to see where a given string in the UI is
+          &quot;coming from&quot;.  Default is &quot;NO&quot;.
                   </p>
         
 	  

@@ -4,7 +4,7 @@
     <title>OpenStep Compliance</title>
   </head>
   <body>
-    <font face="palatino linotype">
+    <font face="serif">
     <a href="Base.html">Up</a>
     <br />
     <h1><a name="title$OpenStepCompliance">OpenStep Compliance</a></h1>
@@ -19,7 +19,7 @@
           <h1><a name="001000000000">Classes</a></h1>
     <p>
 
-      This file documents the complance of all the classes in the
+      This file documents the compliance of all the classes in the
       GNUstep Gui library. Note that the following is just a best guess
       as to the compliance of the classes. Each class was checked to make
       sure it implemented all the documented OpenStep methods and functions.
@@ -93,6 +93,9 @@
       </li>
       <li>
         NSFontManager
+      </li>
+      <li>
+        NSFontPanel
       </li>
       <li>
         NSForm
@@ -177,14 +180,12 @@
     <dl>
       <dt>NSApplication</dt>
       <dd>
-        -preventWindowOrdering, -orderFrontColorPanel:,
-	-orderFrondDataLinkPanel:, -orderFrontHelpPanel:,
-	-runPageLayout: not implemented. In -activateIgnoringOtherApps:,
-	the flag is ignored.
+        -preventWindowOrdering not implemented.
+	In -activateIgnoringOtherApps:, the flag is ignored.
       </dd>
       <dt>NSBitmapImageRep</dt>
       <dd>
-        -initWithFocusedViewRect: not implemented in art backend.
+        -initWithFocusedViewRect: not implemented in Windows backend.
 	+TIFFRepresentationOfImageRepsInArray:usingCompression:factor:
 	not fully implemented.
       </dd>
@@ -193,9 +194,21 @@
         -setFloatingPointFormat:left:right: not implemented.
 	-setEntryType: not complete.
       </dd>
-      <dt>NSFontPanel</dt>
+      <dt>NSDataLink</dt>
       <dd>
-        -setAccessoryView: not implemented. 
+        Mostly unimplemented.
+      </dd>
+      <dt>NSDataLinkManager</dt>
+      <dd>
+        Mostly unimplemented.
+      </dd>
+      <dt>NSDataLinkPanel</dt>
+      <dd>
+        -setAccessoryView:, NSCoding methods not implemented.
+      </dd>
+      <dt>NSEPSImageRep</dt>
+      <dd>
+        Cannot interpret/draw EPS images
       </dd>
       <dt>NSMatrix</dt>
       <dd>
@@ -241,36 +254,22 @@
     </dl>
     <p>
 
-      The following OpenStep classes are not implemented. The usefulness
-      of these classes is marginal, so there is a very low priority on
-      implementing them. However, we would be pleased to accept
-      their contribution should anyone care to implement them and assign
-      the copyright to the Free Software Foundation.
+      The following OpenStep classes are not implemented. These classes
+      are either not very useful or have been replaced by classes with
+      better APIs.
           </p>
     <ul>
       <li>
-        NSCStringText
+        NSCStringText (Unecessary NEXTSTEP compatibility)
       </li>
       <li>
-        NSCoderAdditions
+        NSCoderAdditions (Unecessary NEXTSTEP compatibility)
       </li>
       <li>
-        NSDataLink
+        NSHelpPanel (Replaced by NSHelpManager)
       </li>
       <li>
-        NSDataLinkManager
-      </li>
-      <li>
-        NSDataLinkPanel
-      </li>
-      <li>
-        NSEPSImageRep
-      </li>
-      <li>
-        NSHelpPanel (replaced by NSHelpManager)
-      </li>
-      <li>
-        NSMenuCell (replaced by NSMenuItem[Cell])
+        NSMenuCell (Replaced by NSMenuItem[Cell])
       </li>
     </ul>
     <br />
