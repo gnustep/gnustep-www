@@ -1,0 +1,216 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on September, 3  2004 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Platform Compatibility: Preliminaries</TITLE>
+
+<META NAME="description" CONTENT="Platform Compatibility: Preliminaries">
+<META NAME="keywords" CONTENT="Platform Compatibility: Preliminaries">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+	<link rel="stylesheet" href="../gnustep-main.css" type="text/css" />	
+	<style type="text/css" media="screen">
+		@import "../gnustep-main-2.css";
+	</style>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+
+
+<div class="header">
+	<a href="/"><img src="../gnustep-header14.jpg" border="0" alt="GNUstep.org" width="560" height="74" /></a> </div>
+
+
+<div class="container">
+
+	<div class="content"><div id="main">
+<A NAME="SEC2"></A>
+
+<HR SIZE=2>
+<H1> 2. Summary </H1>
+<!--docid::SEC2::-->
+<P>
+
+In order to compile the libraries, you need to compile and install
+the following packages first (if you don't already have them):
+</P><P>
+
+<UL>
+<LI>gcc (Version 2.95 or greater, 3.0.4 or greater recommended)
+<LI>GNU make (Version 3.75 or greater)
+<LI>gdb (Version 6.0 or greater recommended), if you plan to do any debugging
+</UL>
+<P>
+
+You may also need to install some of the following libraries and
+packages described below. Most of these packages are optional, but some
+are required.
+</P><P>
+
+<DL COMPACT>
+<DT><SAMP>`ffcall libraries (HIGHLY RECOMMENDED)'</SAMP>
+<DD>This is a library that provides stack-frame handling for NSInvocation
+and NSConnection. This library is highly recommended. The previous
+builtin method for stack frame handling is no longer supported and may
+be removed in the future.  ffcall is under GNU GPL. As a special
+exception, if used in GNUstep or in derivate works of GNUstep, the
+included parts of ffcall are under GNU LGPL.
+<P>
+
+<DT><SAMP>`libffi library (ALTERNATIVE RECOMMENDATION)'</SAMP>
+<DD>This is a library that provides stack frame handling for NSInvocation
+and NSConnection similar to ffcall. 
+Use this instead of ffcall. You don't need both.
+<P>
+
+<DT><SAMP>`libxml2 (RECOMMENDED)'</SAMP>
+<DD>The libxml library (Version 2) is used to translate some of the
+documentation for GNUstep and to provide suport for MacOS-X compatible
+XML-based property-lists. It is recommended but not currently required.
+<P>
+
+<DT><SAMP>`libxslt (OPTIONAL)'</SAMP>
+<DD>Stylesheet support for use with XML.
+<P>
+
+<DT><SAMP>`openssl (OPTIONAL)'</SAMP>
+<DD>The openssl library is used to provide support for https connections by
+the NSURL and HSURLHandle classes.  This functionality is
+compiled as a separate bundle since the OpenSSL license is not
+compatible with GPL, and in the hopes that if someone writes an openssl
+replacement, it can quickly be used by creating another bundle.
+<P>
+
+<DT><SAMP>`libiconv (OPTIONAL)'</SAMP>
+<DD>Note: Do not install this library unless you are sure you need it.
+You probably don't need it except perhaps on MinGW.
+Unicode support functions (iconv) come with glibc version 2.1 or greater. If
+you don't have glibc (try iconv --version), you can get the separate 
+libiconv library from 
+<A HREF="http://clisp.cons.org/~haible/packages-libiconv.html">http://clisp.cons.org/~haible/packages-libiconv.html</A>. However,
+neither one is required to use GNUstep.
+<P>
+
+<DT><SAMP>`The TIFF library (libtiff) (Version 3.4beta36 or greater) (REQUIRED)'</SAMP>
+<DD>The GUI library uses this to handle loading and saving TIFF images.
+<P>
+
+<DT><SAMP>`The JPEG library (libjpeg) (RECOMMENDED)'</SAMP>
+<DD>The GUI library uses this to handle loading JPEG images.
+<P>
+
+<DT><SAMP>`The PNG library (libpng) (RECOMMENDED)'</SAMP>
+<DD>The GUI library uses this to handle loading PNG images.
+<P>
+
+<DT><SAMP>`libaudiofile (RECOMMENDED)'</SAMP>
+<DD>The GUI library uses this for the sound server
+<P>
+
+<DT><SAMP>`freetype2 (RECOMMENDED, REQUIRED for art backend)'</SAMP>
+<DD>This is used for font information
+<P>
+
+<DT><SAMP>`libart_lgpl2 (REQUIRED for art backend only)'</SAMP>
+<DD>Drawing library for the art backend.
+<P>
+
+<DT><SAMP>`WindowMaker (Version &#62;= 0.62) (OPTIONAL)'</SAMP>
+<DD>GNUstep and WindowMaker work together to provide a consistant interface.
+Although it is not required, GNUstep will work much better if you use it
+with the WindowMaker window manager. 
+Get WindowMaker from <A HREF="http://www.windowmaker.org">http://www.windowmaker.org</A>.
+<P>
+
+<DT><SAMP>`gnustep-objc package (for gcc version &#60; 3.0 ONLY) (RECOMMENDED)'</SAMP>
+<DD>Note: Do not install this library unless you are sure you need it.
+You probably don't need it except on MinGW.
+This is a special version of the Objective-C runtime that include several
+bug fixes and features that were not in gcc versions previous to 3.0.
+It is available at <A HREF="ftp://ftp.gnustep.org/pub/gnustep/libs">ftp://ftp.gnustep.org/pub/gnustep/libs</A> which
+compiles using the GNUstep Makefile package (so you don't have to get the
+entire gcc dist). Make sure to set the THREADING variable in the GNUmakefile.
+It's possible to compile the library static (make shared=no) and
+just copy to the place where the gcc libobjc library is (type gcc -v to
+get this location). Note you have to install gnustep-make (below) before
+installing this library.
+<P>
+
+<DT><SAMP>`GDB (OPTIONAL)'</SAMP>
+<DD>GDB can be obtained from <A HREF="ftp://ftp.gnu.org/gnu/gdb">ftp://ftp.gnu.org/gnu/gdb</A>. As of release
+6.0, gdb has special support for debugging Objective-C programs.
+    
+<DT><SAMP>`TeX (OPTIONAL)'</SAMP>
+<DD>You need a TeX implementation, like tetex, to compile some of the
+documentation (although most of that is available on the web).
+</DL>
+<P>
+
+<A NAME="Compiling and Installing"></A>
+<HR SIZE="6">
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>September, 3  2004</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+</div></div>
+
+</div>
+
+
+<div class="sidebar">
+	
+	<b>General</b><br />
+	  <a href="../">Home page</a><br />
+	  <a href="../information/aboutGNUstep.html">Introduction</a><br />
+	  <a href="../information/mission.html">Mission</a><br />
+	  <a href="../information/machines_toc.html">Platforms</a><br />
+	  <a href="../resources/sources.html">Download</a><br />
+	  <a href="../experience/apps.html">Applications</a><br />
+	  <a href="../information/userfaq_toc.html">User FAQ</a><br />
+	<br />
+	<b>Developers</b><br />
+	  <a href="../experience/documentation.html">Getting Started</a><br />
+	  <a href="../developers/suite.html">Documentation</a><br />
+	  <a href="http://wiki.gnustep.org/">Wiki Docs</a><br />
+	  <a href="../information/faq_toc.html">Developer FAQ</a><br />
+	  <a href="../developers/map.html">Libraries</a><br />
+	  <a href="../developers/whoiswho.html">Who's Who</a>?<br />
+	 <br />
+	<b>External</b><br />
+	  <a href="http://savannah.gnu.org/projects/gnustep/">Project Page</a><br />
+	  <a href="../resources/resources.html">Related Links</a><br />
+	  <a href="../information/gethelp.html">Mailing Lists</a><br />
+	
+	<br />
+
+        <b><a href="../resources/sites.html">Related Sites...</a></b><br />
+	
+	<br />
+
+	<b><a href="../resources/mirrors.html">Mirrors...</a></b><br />
+	<br />
+	Site by <a href="mailto:webmasters@gnustep.org">webmasters@gnustep.org</a>
+  
+</div>
+
+
+
+
+</BODY>
+</HTML>

@@ -356,6 +356,15 @@ packages and applications may require you to install these libraries
 <td class="unst">-</td>
 <td>GNUMail framework - see also <a href="http://www.collaboration-world.com/pantomime">description</a></td>
 </tr>
+
+<tr>
+<td class="src">PPDs</td>
+<td class="req">Optional</td>
+<td class="stab"><a href="<?php download("libs/gnustep-ppd-1.0.0.tar.gz")?>">1.0.0</a></td>
+<td class="unst">-</td>
+<td>Printer PPDs formerly in gnustep-gui</td>
+</tr>
+
 </tbody>
 
 </table>
