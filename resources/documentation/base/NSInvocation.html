@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.57</p>
-    <p><b>Date:</b> 2003/06/25 10:26:29</p>
+    <p><b>Version:</b> 1.59</p>
+    <p><b>Date:</b> 2003/07/31 23:49:31</p>
     <p><b>Copyright:</b> (C) 1998,2003 Free Software Foundation, Inc.</p>
 
         <div>
@@ -134,28 +134,28 @@
     </p>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_newProxyForInvocation:">+_newProxyForInvocation:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_newProxyForMessage:">+_newProxyForMessage:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+_returnInvocationAndDestroyProxy:">+_returnInvocationAndDestroyProxy:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-initWithArgframe:selector:">-initWithArgframe:selector:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-initWithMethodSignature:">-initWithMethodSignature:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-initWithSelector:">-initWithSelector:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-initWithTarget:selector:,...">-initWithTarget:selector:,...</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-returnFrame:">-returnFrame:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-sendsToSuper">-sendsToSuper</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-setSendsToSuper:">-setSendsToSuper:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForInvocation:">+_newProxyForInvocation:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForMessage:">+_newProxyForMessage:</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_returnInvocationAndDestroyProxy:">+_returnInvocationAndDestroyProxy:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+invocationWithMethodSignature:">+invocationWithMethodSignature:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-argumentsRetained">-argumentsRetained</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-getArgument:atIndex:">-getArgument:atIndex:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-getReturnValue:">-getReturnValue:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithArgframe:selector:">-initWithArgframe:selector:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithMethodSignature:">-initWithMethodSignature:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithSelector:">-initWithSelector:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-initWithTarget:selector:,...">-initWithTarget:selector:,...</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-invoke">-invoke</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-invokeWithTarget:">-invokeWithTarget:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-methodSignature">-methodSignature</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-retainArguments">-retainArguments</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-returnFrame:">-returnFrame:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-selector">-selector</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-sendsToSuper">-sendsToSuper</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setArgument:atIndex:">-setArgument:atIndex:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setReturnValue:">-setReturnValue:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setSelector:">-setSelector:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setSendsToSuper:">-setSendsToSuper:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setTarget:">-setTarget:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-target">-target</a></li>
     </ul>
@@ -397,16 +397,16 @@ This is a designated initialiser for the class.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Initialised an invocation instance which can be used to
-            send messages to * a target object using
-            <var>aSignature</var>. <br /> * You must set the
-            target and selector (using
+            Initialised an invocation instance which can be
+            used to send messages to a target object using
+            <var>aSignature</var>. <br /> You must set the target
+            and selector (using
             <a rel="gsdoc" href="#method$NSInvocation-setTarget:">
               -setTarget:
             </a>
 
-            and -setSelector:) * before you attempt to use the
-            invocation. <br /> * Raises an
+            and -setSelector:) before you attempt to use the
+            invocation. <br /> Raises an
             NSInvalidArgumentException if
             <var>aSignature</var> is <code>nil</code>.
           

@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.129</p>
-    <p><b>Date:</b> 2003/07/15 16:35:11</p>
+    <p><b>Version:</b> 1.130</p>
+    <p><b>Date:</b> 2003/07/31 23:49:31</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1998 Free Software Foundation, Inc.</p>
 
         <div>
@@ -82,6 +82,8 @@
     </p>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSArray.html#method$NSArray(GNUstep)-insertionPosition:usingFunction:context:">-insertionPosition:usingFunction:context:</a></li>
+      <li><a rel="gsdoc" href="NSArray.html#method$NSArray(GNUstep)-insertionPosition:usingSelector:">-insertionPosition:usingSelector:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+array">+array</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithArray:">+arrayWithArray:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray+arrayWithContentsOfFile:">+arrayWithContentsOfFile:</a></li>
@@ -110,8 +112,6 @@
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithContentsOfURL:">-initWithContentsOfURL:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithObjects:,...">-initWithObjects:,...</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithObjects:count:">-initWithObjects:count:</a></li>
-      <li><a rel="gsdoc" href="NSArray.html#method$NSArray-insertionPosition:usingFunction:context:">-insertionPosition:usingFunction:context:</a></li>
-      <li><a rel="gsdoc" href="NSArray.html#method$NSArray-insertionPosition:usingSelector:">-insertionPosition:usingSelector:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-isEqualToArray:">-isEqualToArray:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-lastObject">-lastObject</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-makeObjectsPerform:">-makeObjectsPerform:</a></li>
@@ -266,7 +266,7 @@
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Returns the number of elements contained in the
+            Returns the number of elements contained in the
             receiver.
           
     </p>
@@ -548,10 +548,10 @@ Subclasses <strong>should</strong> override this method.<br />
 This is a designated initialiser for the class.<br />
     <p>
       
-            * Initialize the array with <var>count</var>
-            <var>objects</var>. <br /> * Retains each object
-            placed in the array. <br /> * Like all initializers,
-            may change the value of self before returning it.
+            Initialize the array with <var>count</var>
+            <var>objects</var>. <br /> Retains each object placed
+            in the array. <br /> Like all initializers, may change
+            the value of self before returning it.
           
     </p>
     <hr width="25%" align="left" />
@@ -621,9 +621,9 @@ This is a designated initialiser for the class.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Returns the object at the specified <var>index</var>. *
-            Raises an exception of the <var>index</var> is
-            beyond the array.
+            Returns the object at the specified
+            <var>index</var>. Raises an exception of the
+            <var>index</var> is beyond the array.
           
     </p>
     <hr width="25%" align="left" />
@@ -870,9 +870,9 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Adds <var>anObject</var> at the end of the array, thus
-            increasing the size of * the array. The object
-            is retained upon addition.
+            Adds <var>anObject</var> at the end of the array, thus
+            increasing the size of the array. The object is
+            retained upon addition.
           
     </p>
     <hr width="25%" align="left" />
@@ -900,8 +900,8 @@ Subclasses <strong>should</strong> override this method.<br />
 This is a designated initialiser for the class.<br />
     <p>
       
-            * Initialise the array with the specified capacity...
-            this * should ensure that the array can have
+            Initialise the array with the specified capacity
+            ... this should ensure that the array can have
             <var>numItems</var> added efficiently.
           
     </p>
@@ -911,11 +911,11 @@ This is a designated initialiser for the class.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Inserts an object into the receiver at the specified
-            location. <br /> * Raises an exception if given
-            an array <var>index</var> which is too large. <br /> *
-            The size of the array increases by one. <br /> * The
-            object is retained by the array.
+            Inserts an object into the receiver at the
+            specified location. <br /> Raises an exception if
+            given an array <var>index</var> which is too large.
+            <br /> The size of the array increases by one.
+            <br /> The object is retained by the array.
           
     </p>
     <hr width="25%" align="left" />
@@ -971,9 +971,9 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Removes an object from the receiver at the specified
-            location. <br /> * The size of the array
-            decreases by one. <br /> * Raises an exception if
+            Removes an object from the receiver at the
+            specified location. <br /> The size of the array
+            decreases by one. <br /> Raises an exception if
             given an array <var>index</var> which is too large.
             <br />
           
@@ -1040,10 +1040,10 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Places an object into the receiver at the specified
-            location. <br /> * Raises an exception if given
-            an array <var>index</var> which is too large. <br /> *
-            The object is retained by the array.
+            Places an object into the receiver at the specified
+            location. <br /> Raises an exception if given an
+            array <var>index</var> which is too large. <br /> The
+            object is retained by the array.
           
     </p>
     <hr width="25%" align="left" />

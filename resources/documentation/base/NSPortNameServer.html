@@ -109,13 +109,13 @@
     </p>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer(GNUstep)-namesForPort:">-namesForPort:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer(GNUstep)-removePort:">-removePort:</a></li>
+      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer(GNUstep)-removePort:forName:">-removePort:forName:</a></li>
       <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer+systemDefaultPortNameServer">+systemDefaultPortNameServer</a></li>
-      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-namesForPort:">-namesForPort:</a></li>
       <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-portForName:">-portForName:</a></li>
       <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-portForName:onHost:">-portForName:onHost:</a></li>
       <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-registerPort:forName:">-registerPort:forName:</a></li>
-      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-removePort:">-removePort:</a></li>
-      <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-removePort:forName:">-removePort:forName:</a></li>
       <li><a rel="gsdoc" href="NSPortNameServer.html#method$NSPortNameServer-removePortForName:">-removePortForName:</a></li>
     </ul>
     <hr width="50%" align="left" />
@@ -160,14 +160,14 @@
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Looks up the port with the specified <var>name</var> on
-            <var>host</var> and returns it * or <code>nil</code>
-            if no port is found with that <var>name</var>. <br /> *
+            Looks up the port with the specified <var>name</var>
+            on <var>host</var> and returns it or <code>nil</code> if
+            no port is found with that <var>name</var>. <br />
             Different nameservers have different namespaces
-            appropriate to the * type of port they deal
-            with, so failing to find a named port with one *
-            nameserver does not guarantee that a port does
-            with that <var>name</var> does * not exist.
+            appropriate to the type of port they deal with,
+            so failing to find a named port with one nameserver does
+            not guarantee that a port does with that
+            <var>name</var> does not exist.
           
     </p>
     <hr width="25%" align="left" />
@@ -176,15 +176,14 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Registers <var>port</var> with the supplied
-            <var>name</var>, so that other processes can * look
-            it up to contact it. A <var>port</var> may be registered
-            with more than * one <var>name</var> by making
-            multiple calls to this method. <br /> * Returns
-            <code>YES</code> on success, <code>NO</code>
-            otherwise. <br /> * The common cause for failure
-            is that another <var>port</var> is already registered *
-            with the <var>name</var>. * Raises
+            Registers <var>port</var> with the supplied
+            <var>name</var>, so that other processes can look it
+            up to contact it. A <var>port</var> may be registered
+            with more than one <var>name</var> by making multiple
+            calls to this method. <br /> Returns <code>YES</code>
+            on success, <code>NO</code> otherwise. <br /> The common
+            cause for failure is that another <var>port</var> is
+            already registered with the <var>name</var>. Raises
             NSInvalidArgumentException if
             given bad arguments.
           
@@ -195,11 +194,11 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Removes any port registration for the supplied
-            <var>name</var> (whether * registered in the current
-            process or another). <br /> * The common cause for
-            failure is that no port is registered * with the
-            <var>name</var>. <br /> * Raises
+            Removes any port registration for the supplied
+            <var>name</var> (whether registered in the current
+            process or another). <br /> The common cause for
+            failure is that no port is registered with the
+            <var>name</var>. <br /> Raises
             NSInvalidArgumentException if
             given bad arguments.
           
@@ -326,7 +325,7 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Return all names that have been registered with the
+            Return all names that have been registered with the
             receiver for <var>port</var>.
           
     </p>
@@ -346,8 +345,8 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            * Remove the <var>name</var> if and only if it is
-            registered with the receiver * for the given
+            Remove the <var>name</var> if and only if it is
+            registered with the receiver for the given
             <var>port</var>.
           
     </p>

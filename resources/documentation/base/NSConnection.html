@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.118</p>
-    <p><b>Date:</b> 2003/07/20 15:35:01</p>
+    <p><b>Version:</b> 1.120</p>
+    <p><b>Date:</b> 2003/07/31 23:49:31</p>
     <p><b>Copyright:</b> (C) 
       1994, 1995, 1996, 1997, 2000 Free Software Foundation, Inc.
     </p>
@@ -75,22 +75,23 @@
     </p>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection(GNUstepExtensions)+newRegisteringAtName:withRootObject:">+newRegisteringAtName:withRootObject:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection(GNUstepExtensions)-forwardForProxy:selector:argFrame:">-forwardForProxy:selector:argFrame:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection(GNUstepExtensions)-forwardInvocation:forProxy:">-forwardInvocation:forProxy:</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection(GNUstepExtensions)-gcFinalize">-gcFinalize</a></li>
+      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection(GNUstepExtensions)-typeForSelector:remoteTarget:">-typeForSelector:remoteTarget:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+allConnections">+allConnections</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+connectionWithReceivePort:sendPort:">+connectionWithReceivePort:sendPort:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+connectionWithRegisteredName:host:">+connectionWithRegisteredName:host:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+connectionWithRegisteredName:host:usingNameServer:">+connectionWithRegisteredName:host:usingNameServer:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+currentConversation">+currentConversation</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+defaultConnection">+defaultConnection</a></li>
-      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+newRegisteringAtName:withRootObject:">+newRegisteringAtName:withRootObject:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+rootProxyForConnectionWithRegisteredName:host:">+rootProxyForConnectionWithRegisteredName:host:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection+rootProxyForConnectionWithRegisteredName:host:usingNameServer:">+rootProxyForConnectionWithRegisteredName:host:usingNameServer:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-addRequestMode:">-addRequestMode:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-addRunLoop:">-addRunLoop:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-delegate">-delegate</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-enableMultipleThreads">-enableMultipleThreads</a></li>
-      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-forwardForProxy:selector:argFrame:">-forwardForProxy:selector:argFrame:</a></li>
-      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-forwardInvocation:forProxy:">-forwardInvocation:forProxy:</a></li>
-      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-gcFinalize">-gcFinalize</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-independentConversationQueueing">-independentConversationQueueing</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-initWithReceivePort:sendPort:">-initWithReceivePort:sendPort:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-invalidate">-invalidate</a></li>
@@ -117,7 +118,6 @@
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-setRequestTimeout:">-setRequestTimeout:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-setRootObject:">-setRootObject:</a></li>
       <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-statistics">-statistics</a></li>
-      <li><a rel="gsdoc" href="NSConnection.html#method$NSConnection-typeForSelector:remoteTarget:">-typeForSelector:remoteTarget:</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSConnection+allConnections">allConnections</a></h3>
@@ -335,37 +335,42 @@
 This is a designated initialiser for the class.<br />
     <p>
       
-            * Initialises an NSConnection with the receive port
-            <var>r</var> and the * send port <var>s</var>. <br />
-            * Behavior varies with the port values as follows - *
+            Initialises an NSConnection with the receive
+            port <var>r</var> and the send port <var>s</var>.
+            <br /> Behavior varies with the port values as
+            follows -
             
       <dl>
         <dt><var>r</var> is <code>nil</code></dt>
         <dd>
           
-                * The NSConnection is released and the method returns
-                * <code>nil</code>. *
+                The NSConnection is released and the method returns
+                <code>nil</code>.
               
         </dd>
         <dt><var>s</var> is <code>nil</code></dt>
         <dd>
           
-                * The NSConnection uses <var>r</var> as the send port
-                as * well as the receive port. *
+                The NSConnection uses <var>r</var> as the send port
+                as well as the receive port.
               
         </dd>
-        <dt><var>s</var> is the same as <var>r</var></dt>
+        <dt>
+                <var>s</var> is the same as <var>r</var>
+              </dt>
         <dd>
           
-                * The NSConnection is usable only for vending
-                objects. *
+                The NSConnection is usable only for vending
+                objects.
               
         </dd>
-        <dt>A connection with the same ports exists</dt>
+        <dt>
+                A connection with the same ports exists
+              </dt>
         <dd>
           
-                * The new connection is released and the old
-                connection * is retained and returned. *
+                The new connection is released and the old
+                connection is retained and returned.
               
         </dd>
         <dt>
@@ -373,28 +378,26 @@ This is a designated initialiser for the class.<br />
               </dt>
         <dd>
           
-                * The new connection is initialised as normal, and
-                will * communicate with the old connection. *
+                The new connection is initialised as normal, and
+                will communicate with the old connection.
               
         </dd>
       </dl>
       
-            *
             
     </p>
     <p>
 
-              * If a connection exists whose send and receive ports
-              are * both the same as the new connections receive
-              port, that * existing connection is deemed to be
-              the parent of the * new connection. The new
-              connection inherits configuration *
-              information from the parent, and the delegate
-              of the * parent has a chance to adjust ythe
-              configuration of the * new connection or
-              veto its creation. * <br /> *
+              If a connection exists whose send and receive ports
+              are both the same as the new connections receive
+              port, that existing connection is deemed to be the
+              parent of the new connection. The new connection
+              inherits configuration information from the
+              parent, and the delegate of the parent has a
+              chance to adjust ythe configuration of the new
+              connection or veto its creation. <br />
               NSConnectionDidInitializeNotification
-              is posted once a new * connection is initialised. *
+              is posted once a new connection is initialised.
                 </p>
     <p>
       

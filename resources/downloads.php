@@ -222,7 +222,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-make-1.6.0.tar.gz">1.6.0</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-1.7.2.tar.gz">1.7.2</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-1.7.3.tar.gz">1.7.3</a></td>
 <td>Makefile Package</td>
 </tr>
 
@@ -230,7 +230,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-base-1.6.0.tar.gz">1.6.0</a></td>
-<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.7.2.tar.gz">1.7.2</a></td>
+<td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.7.3.tar.gz">1.7.3</a></td>
 <td>Foundation</td>
 </tr>
 
@@ -291,7 +291,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.EXTENSIONS">GNUstep Guile</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="libs/gnustep-guile-1.1.1.tar.gz">1.1.1</a></td>
+<td class="stab"><a href="libs/gnustep-guile-1.1.2.tar.gz">1.1.2</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Interactive development system</td>
 </tr>
