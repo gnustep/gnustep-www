@@ -1,0 +1,354 @@
+<html>
+
+    <head>
+    <title>User Defaults Summary for GNUstep Libraries</title>
+  </head>
+  <body>
+    <br />
+    <h1><a name="title$DefaultsSummary">User Defaults Summary for GNUstep Libraries</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt><a href="http://www.gnustep.org/developers/whoiswho.html">Adam Fedor</a> (<a href="mailto:fedor@gnu.org"><code>fedor@gnu.org</code></a>)</dt>
+      <dd>
+      </dd>
+      <dt><a href="http://www.gnustep.org/developers/whoiswho.html">Nicola Pero</a> (<a href="mailto:n.pero@mi.flashnet.it"><code>n.pero@mi.flashnet.it</code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> $Revision: 1.1 $</p>
+    <p><b>Date:</b> $Date: 2004/01/27 04:50:48 $</p>
+
+    
+          <h1><a name="001000000000">Defaults Summary</a></h1>
+    <p>
+
+        This document contains a summary of available user default
+        values that one can set to control the operation of the GNUstep
+        libraries.
+          </p>
+
+            <h2><a name="001001000000">GUI Library Defaults</a></h2>
+    <p>
+
+      Below is a list of defaults used to control the gnustep-gui library.
+          </p>
+    <dl>
+      <dt>GSBackend</dt>
+      <dd>
+        
+          
+        <p>
+
+          A string containing the name of the backend bundle to use
+          for display specific GUI handling. The default is
+          &quot;libgnustep-back&quot;. Custom backends can be created during compilation
+	  of the libraries. Any other choice for a name is thus system
+	  specific.
+                  </p>
+        
+	  
+      </dd>
+      <dt>GSBrowserCellFontify</dt>
+      <dd>
+        
+          
+        <p>
+
+          A boolean value, <code>NO</code> by default.  When the feature is on,
+          NSBrowserCell draws non-leaf cells in bold system font.
+          For example, when the feature is on, in a SavePanel (or OpenPanel),
+          directory entries are drawn in bold, while simple files are drawn in
+          non bold.
+                  </p>
+        
+	  
+      </dd>
+      <dt>GSAbortKey</dt>
+      <dd>
+        
+          
+        <p>
+
+	  The key used to abort the insertion of multi-stroke keybinding.
+	  Default is <code>Control-g</code>.
+	          </p>
+        
+	  
+      </dd>
+      <dt>GSAppKitUserBundles</dt>
+      <dd>
+        
+          
+        <p>
+
+	  An array listing the names of bundles that will be automatically
+	  loaded into every application at startup. Typically these will
+	  be &apos;theme&apos; bundles that control the look of the application.
+	          </p>
+        
+	  
+      </dd>
+      <dt>GSQuoteKey</dt>
+      <dd>
+        
+          
+        <p>
+
+	  The key used to quote the next keystroke (so that it is not
+	  interpreted as a keybinding, but just inserted into the text as
+	  it is).  Default is <code>Control-q</code>.
+	          </p>
+        
+	  
+      </dd>
+      <dt>GSFileBrowserHideDotFiles</dt>
+      <dd>
+        
+          
+        <p>
+
+	  A boolean, by default NO.  If you set it to YES, files that
+	  begin with a dot (&apos;.&apos;) are not shown in the NSSavePanel or
+	  NSOpenPanel.
+	          </p>
+        
+	  
+      </dd>
+      <dt>GSInsertControlKeystrokes</dt>
+      <dd>
+        
+          
+        <p>
+
+	  A boolean, by default NO.  If you set it to YES, keystrokes
+	  containing a Control are inserted into the text when they can&apos;t
+	  be interpreted as keybindings.  By default, they are ignored
+	  and cause the computer to beep.
+	          </p>
+        
+	  
+      </dd>
+      <dt>GSKeyBindingsFiles</dt>
+      <dd>
+        
+          
+        <p>
+
+          An array of strings, <code>(DefaultKeyBindings)</code> by
+          default.  The strings in this array (with <code>.dict</code>
+          appended) are the names of the files the library reads to
+          load the keybindings.  For each of these files (in the order), 
+          the library first tries to read the file with that name from
+          the
+          <code>$GNUSTEP_SYSTEM_ROOT/Libraries/Resources/KeyBindings/</code>
+          directory, loading all the keybindings it finds in the file,
+          then it loads the similar file from
+          <code>$GNUSTEP_LOCAL_ROOT</code> and then the similar one
+          from <code>$GNUSTEP_NETWORK_ROOT</code> and at last the one
+          from <code>$GNUSTEP_USER_ROOT</code>.  If you have a single
+	  set of customized keybindings which you want to be loaded in
+          addition to the default ones (or overriding some of the default
+	  ones), just add a <code>DefaultKeybindings.dict</code> file
+	  in your <code>~/GNUstep/Libraries/Resources/KeyBindings/</code>
+          directory, and keybindings from this file are automatically
+          loaded in addition to the default ones; you do not need to
+          change this user default.  If instead you want more keybinding
+          files to be loaded, or you do not want the system default keybindings
+          file to be loaded, you might well need to change it.
+                  </p>
+        
+	  
+      </dd>
+      <dt>GSKeyBindings</dt>
+      <dd>
+        
+          
+        <p>
+
+	  A dictionary, containing keybindings which are loaded by the
+          library after the ones found in the <code>GSKeyBindingsFiles</code>.
+          Might be useful if you have only a couple of keybindings, and
+          don&apos;t want to write a custom keybindings file.  If you have many
+          keybindings, it is recommended that you keep them in a file.
+          The syntax of keybindings entries and files is documented elsewhere.
+                  </p>
+        
+	  
+      </dd>
+      <dt>GSSavePanelShowProgress</dt>
+      <dd>
+        
+          
+        <p>
+
+          A boolean value, <code>NO</code> by default.  When the
+          feature is on, the save panel and its subclasses (such as
+          the open panel) displays &quot;Reading Directory ***..&quot;
+          (progressively adding dots) in the window titlebar while
+          reading very big directories (more than 100 entries).  This
+          is meant to make things friendlier for slow computers.
+                  </p>
+        
+	  
+      </dd>
+      <dt>GSUseFreedesktopThumbnails</dt>
+      <dd>
+        
+          
+        <p>
+
+          A boolean value, <code>NO</code> by default.  When the
+          feature is on, thumbnail files according to the Freedesktop
+	  specification are used in [NSWorkspace iconForFile:] when available.
+                  </p>
+        
+	  
+      </dd>
+      <dt>GSLogWorkspaceTimeout</dt>
+      <dd>
+        
+          
+        <p>
+
+          A boolean value that defaults to <code>NO</code>. This is a
+          obscure and probably not useful default. NSWorkspace tries
+          to receive distributed notifications, but if a distributed
+          objects server cannot be found or some other error occurs,
+          it raises an exception which normally terminates the
+          program. Setting this default causes NSWorkspace to just log
+          the problem without raising an exception.
+                  </p>
+        
+	  
+      </dd>
+      <dt>GSWorkspaceApplication</dt>
+      <dd>
+        
+          
+        <p>
+
+          A string value that defaults to <code>&quot;GWorkspace&quot;</code>.
+          This defines the application NSWorkspace will try to
+          connect to process some operations that require an external
+          application. This is a new feature and has not been tested. 
+                  </p>
+        
+	  
+      </dd>
+      <dt>NSInterfaceStyleDefault</dt>
+      <dd>
+        
+          
+        <p>
+
+          A string describing the interface style. Setting this may
+          change various aspects of how the library draws elements and
+          responds to user interaction. See the NSInterfaceStyle
+          documentation for more information.
+                  </p>
+        
+	  
+      </dd>
+      <dt>NSMenuInterfaceStyle</dt>
+      <dd>
+        
+          
+        <p>
+
+          An interface style specific to menu operation. If not set
+          the NSInterfaceStyleDefault value is used. 
+                  </p>
+        
+	  
+      </dd>
+      <dt>NSCommandKeys</dt>
+      <dd>
+        
+          
+        <p>
+
+          A dictionary of command key equivalents for menu items. The
+          key contains the title of the menu item and the value is the
+          command key equivalent. For instance, one might set the
+          command key for the menu item &quot;Copy&quot; to &quot;C&quot;.
+                  </p>
+        
+	  
+      </dd>
+      <dt>NSHost</dt>
+      <dd>
+        
+          
+        <p>
+
+          Used by NSPasteboard to find the host on which the
+          pasteboard server is running.
+                  </p>
+        
+	  
+      </dd>
+      <dt>NSMeasurementUnit</dt>
+      <dd>
+        
+          
+        <p>
+
+          A string describing the measurement unit for rulers (see the
+          NSRulerView class documentation). The default is
+          Centimeters. Other possible values are Inches, Points, and Picas.
+                  </p>
+        
+	  
+      </dd>
+      <dt>NSPreviewApp</dt>
+      <dd>
+        
+          
+        <p>
+
+          A string value that defaults to <code>&quot;gv&quot;</code>.
+          This defines the application NSPrintOperation will try to
+          connect to preview PostScript files, unless there is already
+	  an application registed as a Viewer of ps files.
+                  </p>
+        
+	  
+      </dd>
+      <dt><em>System Colors</em></dt>
+      <dd>
+        
+          
+        <p>
+
+          System colors are standard colors for drawing various GUI elements,
+          such as buttons, text, scroller, etc. They can be set using
+	  the normal user defaults system. An NSColorList called
+	  &quot;System&quot;  is stored in the users&apos;s private color list
+	  directory. This color list can also be manipulated through the
+	  NSColorList class (typically through a preferences module).
+                  </p>
+        
+	  
+      </dd>
+      <dt><em>System Fonts</em></dt>
+      <dd>
+        
+          
+        <p>
+
+          System Fonts may be set using the defaults system. System
+          fonts are standard fonts for drawing text in GUI
+          elements. They include NSBoldFont, for instance. The value
+          is the name of the font to use. There is also a
+          cooresponding size key (e.g. NSBoldFontSize) for specifying
+          the point size of the font. The keys that can be used for
+          setting the system fonts are described in the documentation
+          for NSFont.
+                  </p>
+        
+	  
+      </dd>
+    </dl>
+    <br />
+  </body>
+</html>

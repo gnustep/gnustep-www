@@ -1,0 +1,1135 @@
+<html>
+
+    <head>
+    <title>NSWindow</title>
+  </head>
+  <body>
+    <a href="Gui.html">Up</a>
+    <br />
+    <h1><a name="title$NSWindow">NSWindow</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Scott Christley (<a href="mailto:scottc@net-community.com"><code>scottc@net-community.com</code></a>)</dt>
+      <dd>
+      </dd>
+      <dt>Felipe A. Rodriguez (<a href="mailto:far@ix.netcom.com"><code>far@ix.netcom.com</code></a>)</dt>
+      <dd>
+      </dd>
+      <dt>Richard Frith-Macdonald (<a href="mailto:richard@brainstorm.co.uk"><code>richard@brainstorm.co.uk</code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <blockquote>
+      The window class
+    </blockquote>
+    <p><b>Copyright:</b> (C) 1996 Free Software Foundation, Inc.</p>
+
+        <div>
+    </div>
+
+          <h1><a name="001000000000">NSWindow</a></h1>
+    <p>
+
+        Instances of the NSWindow class handle on-screen
+        windows, their associated NSViews, and events generate
+        by the user. An NSWindow&apos;s size is defined by its frame
+        rectangle, which encompasses its entire structure,
+        and its content rectangle, which includes only the content.
+          </p>
+    <p>
+
+        Every NSWindow has a content view, the NSView which forms
+        the root of the window&apos;s view hierarchy. This view can be
+        set using the <code>setContentView:</code> method, and
+        accessed through the <code>contentView</code> method.
+        <code>setContentView:</code> replaces the default
+        content view created by NSWindow.
+          </p>
+    <p>
+
+        Other views may be added to the window by using the
+        content view&apos;s <code>addSubview:</code> method. These
+        subviews can also have subviews added, forming a tree
+        structure, the view hierarchy. When an NSWindow must
+        display itself, it causes this hierarchy to draw
+        itself. Leaf nodes in the view hierarchy are drawn
+        last, causing them to potentially obscure views further
+        up in the hierarchy.
+          </p>
+    <p>
+
+        A delegate can be specified for an NSWindow, which will
+        receive notifications of events pertaining to the
+        window. The delegate is set using
+        <code>setDelegate:</code>, and can be retrieved using
+        <code>delegate</code>. The delegate can restrain
+        resizing by implementing the
+        <code>windowWillResize: toSize:</code> method, or
+        control the closing of the window by implementing
+        <code>windowShouldClose:</code>.
+          </p>
+    <h2><a name="class$NSWindow">NSWindow</a> : <a rel="gsdoc" href="NSResponder.html#class$NSResponder">NSResponder</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>AppKit/NSWindow.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <dl>
+        <dt><b>Conforms to:</b></dt>
+        <dd><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#protocol$(NSCoding)">NSCoding</a></dd>
+      </dl>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+contentRectForFrameRect:styleMask:">+contentRectForFrameRect:styleMask:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+defaultDepthLimit">+defaultDepthLimit</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+frameRectForContentRect:styleMask:">+frameRectForContentRect:styleMask:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+menuChanged:">+menuChanged:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+minFrameWidthWithTitle:styleMask:">+minFrameWidthWithTitle:styleMask:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+removeFrameUsingName:">+removeFrameUsingName:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-acceptsMouseMovedEvents">-acceptsMouseMovedEvents</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-alphaValue">-alphaValue</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-animationResizeTime:">-animationResizeTime:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-areCursorRectsEnabled">-areCursorRectsEnabled</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-aspectRatio">-aspectRatio</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-backgroundColor">-backgroundColor</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-backingType">-backingType</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-becomeKeyWindow">-becomeKeyWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-becomeMainWindow">-becomeMainWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-cacheImageInRect:">-cacheImageInRect:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-canBecomeKeyWindow">-canBecomeKeyWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-canBecomeMainWindow">-canBecomeMainWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-canHide">-canHide</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-canStoreColor">-canStoreColor</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-cascadeTopLeftFromPoint:">-cascadeTopLeftFromPoint:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-center">-center</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-close">-close</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-constrainFrameRect:toScreen:">-constrainFrameRect:toScreen:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-contentView">-contentView</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-convertBaseToScreen:">-convertBaseToScreen:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-convertScreenToBase:">-convertScreenToBase:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-counterpart">-counterpart</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-currentEvent">-currentEvent</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-dataWithEPSInsideRect:">-dataWithEPSInsideRect:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-dataWithPDFInsideRect:">-dataWithPDFInsideRect:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-deepestScreen">-deepestScreen</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-defaultButtonCell">-defaultButtonCell</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-delegate">-delegate</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-deminiaturize:">-deminiaturize:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-depthLimit">-depthLimit</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-deviceDescription">-deviceDescription</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-disableCursorRects">-disableCursorRects</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-disableFlushWindow">-disableFlushWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-disableKeyEquivalentForDefaultButtonCell">-disableKeyEquivalentForDefaultButtonCell</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-discardCachedImage">-discardCachedImage</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-discardCursorRects">-discardCursorRects</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-discardEventsMatchingMask:beforeEvent:">-discardEventsMatchingMask:beforeEvent:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-display">-display</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-displayIfNeeded">-displayIfNeeded</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-dragImage:at:offset:event:pasteboard:source:slideBack:">-dragImage:at:offset:event:pasteboard:source:slideBack:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-drawers">-drawers</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-enableCursorRects">-enableCursorRects</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-enableFlushWindow">-enableFlushWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-enableKeyEquivalentForDefaultButtonCell">-enableKeyEquivalentForDefaultButtonCell</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-endEditingFor:">-endEditingFor:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-fax:">-fax:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-fieldEditor:forObject:">-fieldEditor:forObject:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-firstResponder">-firstResponder</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-flushWindow">-flushWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-flushWindowIfNeeded">-flushWindowIfNeeded</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-frame">-frame</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-frameAutosaveName">-frameAutosaveName</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-gState">-gState</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-hasDynamicDepthLimit">-hasDynamicDepthLimit</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-hasShadow">-hasShadow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-hidesOnDeactivate">-hidesOnDeactivate</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-initWithContentRect:styleMask:backing:defer:">-initWithContentRect:styleMask:backing:defer:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-initWithContentRect:styleMask:backing:defer:screen:">-initWithContentRect:styleMask:backing:defer:screen:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-initWithWindowRef:">-initWithWindowRef:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-initialFirstResponder">-initialFirstResponder</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-invalidateCursorRectsForView:">-invalidateCursorRectsForView:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isAutodisplay">-isAutodisplay</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isDocumentEdited">-isDocumentEdited</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isExcludedFromWindowsMenu">-isExcludedFromWindowsMenu</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isFlushWindowDisabled">-isFlushWindowDisabled</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isKeyWindow">-isKeyWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isMainWindow">-isMainWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isMiniaturized">-isMiniaturized</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isOneShot">-isOneShot</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isOpaque">-isOpaque</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isReleasedWhenClosed">-isReleasedWhenClosed</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-isVisible">-isVisible</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-keyDown:">-keyDown:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-keyViewSelectionDirection">-keyViewSelectionDirection</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-level">-level</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-makeFirstResponder:">-makeFirstResponder:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-makeKeyAndOrderFront:">-makeKeyAndOrderFront:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-makeKeyWindow">-makeKeyWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-makeMainWindow">-makeMainWindow</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-maxSize">-maxSize</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-minSize">-minSize</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-miniaturize:">-miniaturize:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-miniwindowImage">-miniwindowImage</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-miniwindowTitle">-miniwindowTitle</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-mouseLocationOutsideOfEventStream">-mouseLocationOutsideOfEventStream</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-nextEventMatchingMask:">-nextEventMatchingMask:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-nextEventMatchingMask:untilDate:inMode:dequeue:">-nextEventMatchingMask:untilDate:inMode:dequeue:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-orderBack:">-orderBack:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-orderFront:">-orderFront:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-orderFrontRegardless">-orderFrontRegardless</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-orderOut:">-orderOut:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-orderWindow:relativeTo:">-orderWindow:relativeTo:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSWindow+contentRectForFrameRect:styleMask:">contentRectForFrameRect:styleMask:</a></h3>
+    + (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>contentRectForFrameRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)aRect<b> styleMask:</b> (unsigned int)aStyle;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow+defaultDepthLimit">defaultDepthLimit</a></h3>
+    + (<a rel="gsdoc" href="TypesAndConstants.html#type$NSWindowDepth">NSWindowDepth</a>) <b>defaultDepthLimit</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow+frameRectForContentRect:styleMask:">frameRectForContentRect:styleMask:</a></h3>
+    + (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>frameRectForContentRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)aRect<b> styleMask:</b> (unsigned int)aStyle;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow+menuChanged:">menuChanged:</a></h3>
+    + (void) <b>menuChanged:</b> (<a rel="gsdoc" href="NSMenu.html#class$NSMenu">NSMenu</a>*)aMenu;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow+minFrameWidthWithTitle:styleMask:">minFrameWidthWithTitle:styleMask:</a></h3>
+    + (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>minFrameWidthWithTitle:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aTitle<b> styleMask:</b> (unsigned int)aStyle;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow+removeFrameUsingName:">removeFrameUsingName:</a></h3>
+    + (void) <b>removeFrameUsingName:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-acceptsMouseMovedEvents">acceptsMouseMovedEvents</a></h3>
+    - (BOOL) <b>acceptsMouseMovedEvents</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-alphaValue">alphaValue</a></h3>
+    - (float) <b>alphaValue</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-animationResizeTime:">animationResizeTime:</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>) <b>animationResizeTime:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)newFrame;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-areCursorRectsEnabled">areCursorRectsEnabled</a></h3>
+    - (BOOL) <b>areCursorRectsEnabled</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-aspectRatio">aspectRatio</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSSize">NSSize</a>) <b>aspectRatio</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-backgroundColor">backgroundColor</a></h3>
+    - (<a rel="gsdoc" href="NSColor.html#class$NSColor">NSColor</a>*) <b>backgroundColor</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-backingType">backingType</a></h3>
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSBackingStoreType">NSBackingStoreType</a>) <b>backingType</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-becomeKeyWindow">becomeKeyWindow</a></h3>
+    - (void) <b>becomeKeyWindow</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-becomeMainWindow">becomeMainWindow</a></h3>
+    - (void) <b>becomeMainWindow</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-cacheImageInRect:">cacheImageInRect:</a></h3>
+    - (void) <b>cacheImageInRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)aRect;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-canBecomeKeyWindow">canBecomeKeyWindow</a></h3>
+    - (BOOL) <b>canBecomeKeyWindow</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if the receiver can be
+            made key. If this method returns <code>NO</code>, the
+            window will not be made key. This implementation
+            returns <code>YES</code> if the window is resizable
+            or has a title bar. You can override this method to
+            change it&apos;s behavior
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-canBecomeMainWindow">canBecomeMainWindow</a></h3>
+    - (BOOL) <b>canBecomeMainWindow</b>;<br />
+    <p>
+      
+            Returns <code>YES</code> if the receiver can be the
+            main window. If this method returns <code>NO</code>,
+            the window will not become the main window. This
+            implementation returns <code>YES</code> if
+            the window is resizable or has a title bar and is
+            visible and is not an NSPanel. You can override
+            this method to change it&apos;s behavior
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-canHide">canHide</a></h3>
+    - (BOOL) <b>canHide</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-canStoreColor">canStoreColor</a></h3>
+    - (BOOL) <b>canStoreColor</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-cascadeTopLeftFromPoint:">cascadeTopLeftFromPoint:</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>) <b>cascadeTopLeftFromPoint:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>)topLeftPoint;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-center">center</a></h3>
+    - (void) <b>center</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-close">close</a></h3>
+    - (void) <b>close</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-constrainFrameRect:toScreen:">constrainFrameRect:toScreen:</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>constrainFrameRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)frameRect<b> toScreen:</b> (<a rel="gsdoc" href="NSScreen.html#class$NSScreen">NSScreen</a>*)screen;<br />
+    <p>
+      
+            Given a proposed frame rectangle, return a modified
+            version which will fit inside the <var>screen</var>
+            .
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-contentView">contentView</a></h3>
+    - (id) <b>contentView</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-convertBaseToScreen:">convertBaseToScreen:</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>) <b>convertBaseToScreen:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>)aPoint;<br />
+    <p>
+      
+            Convert from a point in the base coordinate system
+            for the window to a point in the screen coordinate
+            system.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-convertScreenToBase:">convertScreenToBase:</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>) <b>convertScreenToBase:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>)aPoint;<br />
+    <p>
+      
+            Convert from a point in the screen coordinate
+            system to a point in the screen coordinate system of
+            the receiver.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-counterpart">counterpart</a></h3>
+    - (<a rel="gsdoc" href="#class$NSWindow">NSWindow</a>*) <b>counterpart</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-currentEvent">currentEvent</a></h3>
+    - (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*) <b>currentEvent</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-dataWithEPSInsideRect:">dataWithEPSInsideRect:</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*) <b>dataWithEPSInsideRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)rect;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-dataWithPDFInsideRect:">dataWithPDFInsideRect:</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*) <b>dataWithPDFInsideRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)aRect;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-deepestScreen">deepestScreen</a></h3>
+    - (<a rel="gsdoc" href="NSScreen.html#class$NSScreen">NSScreen</a>*) <b>deepestScreen</b>;<br />
+    <p>
+      
+            Returns the screen the window is on. Unlike
+            (apparently) OpenStep and MacOSX, GNUstep does
+            not support windows being split across multiple screens
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-defaultButtonCell">defaultButtonCell</a></h3>
+    - (<a rel="gsdoc" href="NSButtonCell.html#class$NSButtonCell">NSButtonCell</a>*) <b>defaultButtonCell</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-delegate">delegate</a></h3>
+    - (id) <b>delegate</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-deminiaturize:">deminiaturize:</a></h3>
+    - (void) <b>deminiaturize:</b> (id)sender;<br />
+    <p>
+      
+            Causes the window to deminiaturize. Normally you
+            would not call this method directly. A window is
+            automatically deminiaturized by the user via
+            a mouse click event. Does nothing it the window isn&apos;t
+            miniaturized.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-depthLimit">depthLimit</a></h3>
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSWindowDepth">NSWindowDepth</a>) <b>depthLimit</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-deviceDescription">deviceDescription</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>deviceDescription</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-disableCursorRects">disableCursorRects</a></h3>
+    - (void) <b>disableCursorRects</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-disableFlushWindow">disableFlushWindow</a></h3>
+    - (void) <b>disableFlushWindow</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-disableKeyEquivalentForDefaultButtonCell">disableKeyEquivalentForDefaultButtonCell</a></h3>
+    - (void) <b>disableKeyEquivalentForDefaultButtonCell</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-discardCachedImage">discardCachedImage</a></h3>
+    - (void) <b>discardCachedImage</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-discardCursorRects">discardCursorRects</a></h3>
+    - (void) <b>discardCursorRects</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-discardEventsMatchingMask:beforeEvent:">discardEventsMatchingMask:beforeEvent:</a></h3>
+    - (void) <b>discardEventsMatchingMask:</b> (unsigned int)mask<b> beforeEvent:</b> (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*)lastEvent;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-display">display</a></h3>
+    - (void) <b>display</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-displayIfNeeded">displayIfNeeded</a></h3>
+    - (void) <b>displayIfNeeded</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-dragImage:at:offset:event:pasteboard:source:slideBack:">dragImage:at:offset:event:pasteboard:source:slideBack:</a></h3>
+    - (void) <b>dragImage:</b> (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*)anImage<b> at:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>)baseLocation<b> offset:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSSize">NSSize</a>)initialOffset<b> event:</b> (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*)event<b> pasteboard:</b> (<a rel="gsdoc" href="NSPasteboard.html#class$NSPasteboard">NSPasteboard</a>*)pboard<b> source:</b> (id)sourceObject<b> slideBack:</b> (BOOL)slideFlag;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-drawers">drawers</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>drawers</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-enableCursorRects">enableCursorRects</a></h3>
+    - (void) <b>enableCursorRects</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-enableFlushWindow">enableFlushWindow</a></h3>
+    - (void) <b>enableFlushWindow</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-enableKeyEquivalentForDefaultButtonCell">enableKeyEquivalentForDefaultButtonCell</a></h3>
+    - (void) <b>enableKeyEquivalentForDefaultButtonCell</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-endEditingFor:">endEditingFor:</a></h3>
+    - (void) <b>endEditingFor:</b> (id)anObject;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-fax:">fax:</a></h3>
+    - (void) <b>fax:</b> (id)sender;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-fieldEditor:forObject:">fieldEditor:forObject:</a></h3>
+    - (<a rel="gsdoc" href="NSText.html#class$NSText">NSText</a>*) <b>fieldEditor:</b> (BOOL)createFlag<b> forObject:</b> (id)anObject;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-firstResponder">firstResponder</a></h3>
+    - (<a rel="gsdoc" href="NSResponder.html#class$NSResponder">NSResponder</a>*) <b>firstResponder</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-flushWindow">flushWindow</a></h3>
+    - (void) <b>flushWindow</b>;<br />
+    <p>
+      
+            Flush all drawing in the windows buffer to the screen
+            unless the window is not buffered or flushing is not
+            enabled.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-flushWindowIfNeeded">flushWindowIfNeeded</a></h3>
+    - (void) <b>flushWindowIfNeeded</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-frame">frame</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>frame</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-frameAutosaveName">frameAutosaveName</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>frameAutosaveName</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-gState">gState</a></h3>
+    - (int) <b>gState</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-hasDynamicDepthLimit">hasDynamicDepthLimit</a></h3>
+    - (BOOL) <b>hasDynamicDepthLimit</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-hasShadow">hasShadow</a></h3>
+    - (BOOL) <b>hasShadow</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-hidesOnDeactivate">hidesOnDeactivate</a></h3>
+    - (BOOL) <b>hidesOnDeactivate</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-initWithContentRect:styleMask:backing:defer:">initWithContentRect:styleMask:backing:defer:</a></h3>
+    - (id) <b>initWithContentRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)contentRect<b> styleMask:</b> (unsigned int)aStyle<b> backing:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSBackingStoreType">NSBackingStoreType</a>)bufferingType<b> defer:</b> (BOOL)flag;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Initializes the receiver with a content rect
+              of <var>contentRect</var>, a style mask of
+              <var>styleMask</var>, and a backing store type of
+              <var>backingType</var>.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The style mask values are
+              <code>NSTitledWindowMask</code>, for a window with
+              a title, <code>NSClosableWindowMask</code>, for a
+              window with a close widget,
+              <code>NSMiniaturizableWindowMask</code>, for a
+              window with a miniaturize widget, and
+              <code>NSResizableWindowMask</code>, for a window
+              with a resizing widget. These mask values can be
+              OR&apos;d in any combination.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Backing store values are
+              <code>NSBackingStoreBuffered</code>,
+              <code>NSBackingStoreRetained</code> and
+              <code>NSBackingStoreNonretained</code>.
+                </p>
+    <p>
+      
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-initWithContentRect:styleMask:backing:defer:screen:">initWithContentRect:styleMask:backing:defer:screen:</a></h3>
+    - (id) <b>initWithContentRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)contentRect<b> styleMask:</b> (unsigned int)aStyle<b> backing:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSBackingStoreType">NSBackingStoreType</a>)bufferingType<b> defer:</b> (BOOL)flag<b> screen:</b> (<a rel="gsdoc" href="NSScreen.html#class$NSScreen">NSScreen</a>*)aScreen;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Initializes the receiver with a content rect
+              of <var>contentRect</var>, a style mask of
+              <var>styleMask</var>, a backing store type of
+              <var>backingType</var> and a boolean
+              <var>flag</var>. <var>flag</var> specifies whether
+              the window should be created now (<code>NO</code>),
+              or when it is displayed (<code>YES</code>).
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The style mask values are
+              <code>NSTitledWindowMask</code>, for a window with
+              a title, <code>NSClosableWindowMask</code>, for a
+              window with a close widget,
+              <code>NSMiniaturizableWindowMask</code>, for a
+              window with a miniaturize widget, and
+              <code>NSResizableWindowMask</code>, for a window
+              with a resizing widget. These mask values can be
+              OR&apos;d in any combination.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Backing store values are
+              <code>NSBackingStoreBuffered</code>,
+              <code>NSBackingStoreRetained</code> and
+              <code>NSBackingStoreNonretained</code>.
+                </p>
+    <p>
+      
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-initWithWindowRef:">initWithWindowRef:</a></h3>
+    - (id) <b>initWithWindowRef:</b> (void*)windowRef;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-initialFirstResponder">initialFirstResponder</a></h3>
+    - (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*) <b>initialFirstResponder</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-invalidateCursorRectsForView:">invalidateCursorRectsForView:</a></h3>
+    - (void) <b>invalidateCursorRectsForView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)aView;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isAutodisplay">isAutodisplay</a></h3>
+    - (BOOL) <b>isAutodisplay</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isDocumentEdited">isDocumentEdited</a></h3>
+    - (BOOL) <b>isDocumentEdited</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isExcludedFromWindowsMenu">isExcludedFromWindowsMenu</a></h3>
+    - (BOOL) <b>isExcludedFromWindowsMenu</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isFlushWindowDisabled">isFlushWindowDisabled</a></h3>
+    - (BOOL) <b>isFlushWindowDisabled</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isKeyWindow">isKeyWindow</a></h3>
+    - (BOOL) <b>isKeyWindow</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isMainWindow">isMainWindow</a></h3>
+    - (BOOL) <b>isMainWindow</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isMiniaturized">isMiniaturized</a></h3>
+    - (BOOL) <b>isMiniaturized</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isOneShot">isOneShot</a></h3>
+    - (BOOL) <b>isOneShot</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isOpaque">isOpaque</a></h3>
+    - (BOOL) <b>isOpaque</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isReleasedWhenClosed">isReleasedWhenClosed</a></h3>
+    - (BOOL) <b>isReleasedWhenClosed</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-isVisible">isVisible</a></h3>
+    - (BOOL) <b>isVisible</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-keyDown:">keyDown:</a></h3>
+    - (void) <b>keyDown:</b> (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*)theEvent;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-keyViewSelectionDirection">keyViewSelectionDirection</a></h3>
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSelectionDirection">NSSelectionDirection</a>) <b>keyViewSelectionDirection</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-level">level</a></h3>
+    - (int) <b>level</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-makeFirstResponder:">makeFirstResponder:</a></h3>
+    - (BOOL) <b>makeFirstResponder:</b> (<a rel="gsdoc" href="NSResponder.html#class$NSResponder">NSResponder</a>*)aResponder;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-makeKeyAndOrderFront:">makeKeyAndOrderFront:</a></h3>
+    - (void) <b>makeKeyAndOrderFront:</b> (id)sender;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-makeKeyWindow">makeKeyWindow</a></h3>
+    - (void) <b>makeKeyWindow</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-makeMainWindow">makeMainWindow</a></h3>
+    - (void) <b>makeMainWindow</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-maxSize">maxSize</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSSize">NSSize</a>) <b>maxSize</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-minSize">minSize</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSSize">NSSize</a>) <b>minSize</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-miniaturize:">miniaturize:</a></h3>
+    - (void) <b>miniaturize:</b> (id)sender;<br />
+    <p>
+      
+            Causes the window to miniaturize, that is the window
+            is removed from the screen and it&apos;s counterpart
+            (mini)window is displayed. Does nothing if the
+            window can&apos;t be miniaturized (eg. because it&apos;s
+            already miniaturized).
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-miniwindowImage">miniwindowImage</a></h3>
+    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>miniwindowImage</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-miniwindowTitle">miniwindowTitle</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>miniwindowTitle</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-mouseLocationOutsideOfEventStream">mouseLocationOutsideOfEventStream</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>) <b>mouseLocationOutsideOfEventStream</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-nextEventMatchingMask:">nextEventMatchingMask:</a></h3>
+    - (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*) <b>nextEventMatchingMask:</b> (unsigned int)mask;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-nextEventMatchingMask:untilDate:inMode:dequeue:">nextEventMatchingMask:untilDate:inMode:dequeue:</a></h3>
+    - (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*) <b>nextEventMatchingMask:</b> (unsigned int)mask<b> untilDate:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDate.html#class$NSDate">NSDate</a>*)expiration<b> inMode:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)mode<b> dequeue:</b> (BOOL)deqFlag;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-orderBack:">orderBack:</a></h3>
+    - (void) <b>orderBack:</b> (id)sender;<br />
+    <p>
+      
+            Orders the window to the back of its level.
+            Equivalent to
+            
+              -orderWindow:
+            
+
+            NSWindowBelow relativeTo: 0.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-orderFront:">orderFront:</a></h3>
+    - (void) <b>orderFront:</b> (id)sender;<br />
+    <p>
+      
+            If the application is active, orders the window to the
+            front in its level. If the application is not active,
+            the window is ordered in as far forward as possible in
+            its level without being ordered in front of the key or
+            main window of the currently active app. The current
+            key and main window status is not changed. Equivalent
+            to
+            
+              -orderWindow:
+            
+
+            NSWindowAbove relativeTo: 0.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-orderFrontRegardless">orderFrontRegardless</a></h3>
+    - (void) <b>orderFrontRegardless</b>;<br />
+    <p>
+      
+            Orders the window to the front in its level (even in
+            front of the key and main windows of the current app)
+            regardless of whether the app is current or not.
+            This method should only be used in rare cases where
+            the app is cooperating with another app that is
+            displaying data for it. The current key and main
+            window status is not changed.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-orderOut:">orderOut:</a></h3>
+    - (void) <b>orderOut:</b> (id)sender;<br />
+    <p>
+      
+            Orders the window out from the screen. Equivalent to
+            
+              -orderWindow:
+            
+
+            NSWindowOut relativeTo: 0.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWindow-orderWindow:relativeTo:">orderWindow:relativeTo:</a></h3>
+    - (void) <b>orderWindow:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSWindowOrderingMode">NSWindowOrderingMode</a>)place<b> relativeTo:</b> (int)otherWin;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              If <var>place</var> is NSWindowOut, removes the window
+              from the screen. If <var>place</var> is
+              NSWindowAbove, places the window directly
+              above <var>otherWin</var>, or directly above all
+              windows in its level if <var>otherWin</var> is 0.
+              If <var>place</var> is NSWindowBelow, places the
+              window directly below <var>otherWin</var>, or
+              directly below all windows in its level if
+              <var>otherWin</var> is 0.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              If <var>place</var> is NSWindowAbove or NSWindowBelow
+              and the application is hidden, the application is
+              unhidden.
+                  </p>
+    <p>
+    </p>
+    <hr width="25%" align="left" />
+    <br />
+    <a href="Gui.html">Up</a>
+  </body>
+</html>
