@@ -140,8 +140,8 @@ the appropriate column.</p>
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#FOREIGN.FUNCTION.INTERFACES">ffcall</a></td>
 <td class="req">Recommended</td>
-<td class="stab">1.8d</td>
-<td class="unst"><a href="<?php download("libs/ffcall-1.8d.tar.gz")?>">1.8d</a></td>
+<td class="stab"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
+<td class="unst">-</td>
 <td>Message forwarding</td>
 </tr>
 
