@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<!-- Created by texi2html 1.56k from machines.texi on 14 March 2002 -->
+<!-- Created by texi2html 1.56k from machines.texi on 30 April 2002 -->
 
 <TITLE>Untitled Document - Machines</TITLE>
 </HEAD>
@@ -95,6 +95,27 @@ Unknown
 
 <H2><A NAME="SEC4" HREF="machines_toc.html#TOC4">FreeBSD 3.x</A></H2>
 
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+If you're using zsh, some shell variables may not be set correctly when
+executing GNUstep.sh. Try turing on SH_WORD_SPLIT (e.g. 'zsh
+--sh-word-split', 'zsh -o shwordsplit', 'zsh -y' or by setting 'setopt
+SH_WORD_SPLIT' in one of zsh's startup files.)
+
+</DL>
+
+
+
+<H2><A NAME="SEC5" HREF="machines_toc.html#TOC5">FreeBSD 3.x</A></H2>
+
 <P>
 Compiles "out of the box" on FreeBSD 3.4.
 
@@ -142,7 +163,7 @@ flags to configure: <CODE>CFLAGS="-I/usr/local/include"</CODE> and
 
 
 
-<H2><A NAME="SEC5" HREF="machines_toc.html#TOC5">FreeBSD 2.x (<EM>Unstable!</EM>)</A></H2>
+<H2><A NAME="SEC6" HREF="machines_toc.html#TOC6">FreeBSD 2.x (<EM>Unstable!</EM>)</A></H2>
 
 <DL COMPACT>
 
@@ -174,7 +195,7 @@ You need to use gmake not make to compile the GNUstep packages.
 
 
 
-<H2><A NAME="SEC6" HREF="machines_toc.html#TOC6">GNU-Linux/Intel (RedHat 5.x, 6.x, and 7.0)</A></H2>
+<H2><A NAME="SEC7" HREF="machines_toc.html#TOC7">GNU-Linux/Intel (RedHat 5.x, 6.x, and 7.0)</A></H2>
 
 <DL COMPACT>
 
@@ -184,6 +205,8 @@ With 5.x, the egcs compiler that comes with RedHat. Later versions may
 have gcc installed, although 7.0 comes with a snapshot of gcc (called
 2.96) which is unsuitable for compiling Objective-C code. For 7.0 you
 should install the egcs compatibility packages (or an official gcc release).
+For RedHat 7.2 or later, the default gcc apparently works fine 
+(even if it is 2.96)
 
 <DT><SAMP>`Extra libs needed'</SAMP>
 <DD>
@@ -215,7 +238,7 @@ CC=egcs LDFLAGS="-u shmctl@GLIBC_2.2 -L/lib -lc -u getpwuid_r@GLIBC_2.1.2
 
 
 
-<H2><A NAME="SEC7" HREF="machines_toc.html#TOC7">GNU-Linux/PowerPC (LinuxPPC 5.x)</A></H2>
+<H2><A NAME="SEC8" HREF="machines_toc.html#TOC8">GNU-Linux/PowerPC (LinuxPPC 5.x)</A></H2>
 
 <DL COMPACT>
 
@@ -248,7 +271,7 @@ configuration section).
 
 
 
-<H2><A NAME="SEC8" HREF="machines_toc.html#TOC8">Irix 6.4/MIPS (<EM>Unstable!</EM>)</A></H2>
+<H2><A NAME="SEC9" HREF="machines_toc.html#TOC9">Irix 6.4/MIPS (<EM>Unstable!</EM>)</A></H2>
 
 <DL COMPACT>
 
@@ -270,7 +293,7 @@ errors using gcc 2.8.1.
 
 
 
-<H2><A NAME="SEC9" HREF="machines_toc.html#TOC9">MkLinux/PowerPC (MkLinux DR 3)</A></H2>
+<H2><A NAME="SEC10" HREF="machines_toc.html#TOC10">MkLinux/PowerPC (MkLinux DR 3)</A></H2>
 
 <DL COMPACT>
 
@@ -297,7 +320,7 @@ and glibc library (which has the threads library) and install both.
 
 
 
-<H2><A NAME="SEC10" HREF="machines_toc.html#TOC10">NetBSD</A></H2>
+<H2><A NAME="SEC11" HREF="machines_toc.html#TOC11">NetBSD</A></H2>
 
 <DL COMPACT>
 
@@ -317,7 +340,7 @@ See the README.NetBSD file located in the gnustep-make package.
 
 
 
-<H2><A NAME="SEC11" HREF="machines_toc.html#TOC11">Netwinder (<EM>Unstable!</EM>)</A></H2>
+<H2><A NAME="SEC12" HREF="machines_toc.html#TOC12">Netwinder (<EM>Unstable!</EM>)</A></H2>
 
 <DL COMPACT>
 
@@ -336,7 +359,7 @@ See <A HREF="http://www.netwinder.org/~patrix">http://www.netwinder.org/~patrix<
 
 
 
-<H2><A NAME="SEC12" HREF="machines_toc.html#TOC12">OpenBSD 2.x  (<EM>Unstable!</EM>)</A></H2>
+<H2><A NAME="SEC13" HREF="machines_toc.html#TOC13">OpenBSD 2.x  (<EM>Unstable!</EM>)</A></H2>
 
 <DL COMPACT>
 
@@ -355,7 +378,7 @@ Can only compile with static libraries. Gives a lot of warnings
 
 
 
-<H2><A NAME="SEC13" HREF="machines_toc.html#TOC13">OSF Alpha  (<EM>Unstable!</EM>)</A></H2>
+<H2><A NAME="SEC14" HREF="machines_toc.html#TOC14">OSF Alpha  (<EM>Unstable!</EM>)</A></H2>
 
 <P>
 Information is for Version 3.2C
@@ -377,14 +400,14 @@ Can only compile with static libraries. Compiler may fail when
 linking executables (e.g. gdnc). Standard ranlib and ar programs are
 to feable to create libraries. Should use GNU binutils versions. Linker
 sometimes fails to find symbols, in which case you may need to link with 
-a library twice. For instance, add an extra -lgnustep-xgps in
+a library twice. For instance, add an extra -lgnustep-gui in
 ADDTIONAL_TOOL_LIBS in the GNUmakefile(.preamble).
 
 </DL>
 
 
 
-<H2><A NAME="SEC14" HREF="machines_toc.html#TOC14">Solaris 2.5.1/Sparc</A></H2>
+<H2><A NAME="SEC15" HREF="machines_toc.html#TOC15">Solaris 2.5.1/Sparc</A></H2>
 
 <DL COMPACT>
 
@@ -403,7 +426,7 @@ See the Solaris 2.6 section for more instructions.
 
 
 
-<H2><A NAME="SEC15" HREF="machines_toc.html#TOC15">Solaris 2.[67]/Sparc</A></H2>
+<H2><A NAME="SEC16" HREF="machines_toc.html#TOC16">Solaris 2.[67]/Sparc</A></H2>
 
 <DL COMPACT>
 
@@ -449,7 +472,7 @@ set to 'posix' not 'solaris'.
 
 
 
-<H2><A NAME="SEC16" HREF="machines_toc.html#TOC16">Solaris 2.7/Intel</A></H2>
+<H2><A NAME="SEC17" HREF="machines_toc.html#TOC17">Solaris 2.7/Intel</A></H2>
 
 <DL COMPACT>
 
@@ -476,7 +499,7 @@ instructions above for more information.
 
 
 
-<H2><A NAME="SEC17" HREF="machines_toc.html#TOC17">Suse 6.x/Intel</A></H2>
+<H2><A NAME="SEC18" HREF="machines_toc.html#TOC18">Suse 6.x/Intel</A></H2>
 
 <P>
 GNUstep has been tested on version 6.2-6.4 of Suse
@@ -502,7 +525,7 @@ gdnc doesn't work.  If you recompile the kernel then it starts working.
 
 
 
-<H2><A NAME="SEC18" HREF="machines_toc.html#TOC18">Suse 7.x/Intel</A></H2>
+<H2><A NAME="SEC19" HREF="machines_toc.html#TOC19">Suse 7.x/Intel</A></H2>
 
 <P>
 GNUstep has been tested on version 7.0 of Suse
@@ -526,7 +549,7 @@ See the instructions for Suse 6.x
 
 
 
-<H2><A NAME="SEC19" HREF="machines_toc.html#TOC19">Unixware-2.1.3/Intel</A></H2>
+<H2><A NAME="SEC20" HREF="machines_toc.html#TOC20">Unixware-2.1.3/Intel</A></H2>
 
 <DL COMPACT>
 
@@ -647,7 +670,7 @@ work.
 
 
 
-<H2><A NAME="SEC20" HREF="machines_toc.html#TOC20">Windows with CYGWIN (<EM>Unstable!</EM>)</A></H2>
+<H2><A NAME="SEC21" HREF="machines_toc.html#TOC21">Windows with CYGWIN (<EM>Unstable!</EM>)</A></H2>
 
 <DL COMPACT>
 
@@ -697,7 +720,7 @@ backend.
 
 
 
-<H2><A NAME="SEC21" HREF="machines_toc.html#TOC21">Windows with MinGW (<EM>Unstable!</EM>)</A></H2>
+<H2><A NAME="SEC22" HREF="machines_toc.html#TOC22">Windows with MinGW (<EM>Unstable!</EM>)</A></H2>
 
 <DL COMPACT>
 
