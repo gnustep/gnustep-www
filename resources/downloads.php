@@ -42,15 +42,11 @@ SPAN.cont {border-top:thin white solid; padding-top:0.5em;
 <!-- in this page. Any URLS that are not meant to be relative to the -->
 <!-- download server should be declared as *absolute*. -->
 
+
 <?php
 
 echo("\n<base href=\"");
-if (isset($HTTP_GET_VARS["site"])) {
-  echo($HTTP_GET_VARS["site"]);
-  }
-else {
-  echo("ftp://ftp.gnustep.org/pub/gnustep");
-  }
+echo($HTTP_GET_VARS["site"]);
 echo("/\">\n");
 
 ?>
@@ -65,7 +61,7 @@ echo("/\">\n");
 
 <p>For further information on any particular item, click on the name of the item in the <i>Sources</i> column.</p>
 
-<h2>Pre-requisites <small>(see <a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN129"><i>Check your system</i></a> in Build Guide)</small></h2>
+<h2>Pre-requisites <small>(see <a href="http://documents.made-it.com/GNUstep/buildguide.html#CHECK.YOUR.SYSTEM"><i>Check your system</i></a> in Build Guide)</small></h2>
 
 <p>Please ensure you have at least the <i>Minimum version req'd</i> of each of the following (where needed) on you system, before you install GNUstep. If you need to obtain the software, we suggest that you download the <i>Recommended version.</i></p>
 
@@ -90,7 +86,7 @@ echo("/\">\n");
 <tbody>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN186">make</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#MAKE">make</a></td>
 <td class="req">Required</td>
 <td class="stab">3.75</td>
 <td class="unst"><a href="ftp://ftp.gnu.org/gnu/make/make-3.79.1.tar.gz">3.79.1</a></td>
@@ -98,7 +94,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN223">binutils</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BINUTILS">binutils</a></td>
 <td class="req">Usually required</td>
 <td class="stab">2.9.6</td>
 <td class="unst"><a href="ftp://ftp.gnu.org/gnu/binutils/binutils-2.13.tar.gz">2.13</a></td>
@@ -106,7 +102,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN294">iconv</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#GICONV">iconv</a></td>
 <td class="req">If no glibc</td>
 <td class="stab">1.7</td>
 <td class="unst"><a href="ftp://ftp.ilog.fr/pub/Users/haible/gnu/libiconv-1.7.tar.gz">1.7</a></td>
@@ -114,7 +110,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN318">gcc</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#THE.OBJECTIVE-C.COMPILER">gcc</a></td>
 <td class="req">Required</td>
 <td class="stab">2.9.3</td>
 <td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-3.2.tar.gz">3.2</a></td>
@@ -122,7 +118,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN371">ffcall</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#FOREIGN.FUNCTION.INTERFACES">ffcall</a></td>
 <td class="req">Recommended</td>
 <td class="stab">1.8d</td>
 <td class="unst"><a href="libs/ffcall-1.8d.tar.gz">1.8d</a></td>
@@ -130,7 +126,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src">libffi</td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#FOREIGN.FUNCTION.INTERFACES">libffi</a></td>
 <td class="req">Optional</td>
 <td class="stab">gcc 3.1</td>
 <td class="unst">gcc 3.2</td>
@@ -138,7 +134,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN407">gmp</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#GNUMP">gmp</a></td>
 <td class="req">Optional</td>
 <td class="stab">3.1.1</td>
 <td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gmp/gmp-4.1.tar.gz">4.1</a></td>
@@ -146,7 +142,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN445">guile</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.EXTENSIONS">guile</a></td>
 <td class="req">For guile scripting</td>
 <td class="stab">1.4</td>
 <td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/guile/guile-1.6.0.tar.gz">1.6</a></td>
@@ -154,7 +150,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN481">openssl</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#SSL">openssl</a></td>
 <td class="req">Recommended</td>
 <td class="stab">0.9.6b</td>
 <td class="unst"><a href="http://www.openssl.org/source/openssl-0.9.6j.tar.gz">0.9.6j</a></td>
@@ -162,7 +158,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN520">libtiff</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#TIFF">libtiff</a></td>
 <td class="req">Required</td>
 <td class="stab">3.4036</td>
 <td class="unst"><a href="ftp://ftp.remotesensing.org/pub/libtiff/tiff-v3.5.7.tar.gz">3.5.7</a></td>
@@ -170,7 +166,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN565">libxml</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#XML">libxml</a></td>
 <td class="req">Required</td>
 <td class="stab">2.3.0</td>
 <td class="unst"><a href="ftp://ftp.gnome.org/pub/GNOME/sources/libxml2/2.4/libxml2-2.4.24.tar.bz2">2.4.24</a></td>
@@ -178,7 +174,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN605">audiofile</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#SOUND">audiofile</a></td>
 <td class="req">Recommended</td>
 <td class="stab">0.2.3</td>
 <td class="unst"><a href="ftp://oss.sgi.com/projects/audiofile/download/audiofile-0.2.3.tar.gz">0.2.3</a></td>
@@ -186,7 +182,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN640">WindowMaker</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#WINDOWMANAGER">WindowMaker</a></td>
 <td class="req">Recommended</td>
 <td class="stab">0.80.0</td>
 <td class="unst"><a href="http://windowmaker.org/pub/source/release/WindowMaker-0.80.1.tar.bz2">0.80.1</a></td>
@@ -198,7 +194,7 @@ echo("/\">\n");
 </table>
 
 
-<h2>GNUstep Core <small>(see <i><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN699">Building GNUstep</a></i> in Build Guide)</small></h2>
+<h2>GNUstep Core <small>(see <i><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">Building GNUstep</a></i> in Build Guide)</small></h2>
 
 <p>All GNUstep users should install the following items:</p>
 
@@ -223,7 +219,7 @@ echo("/\">\n");
 <tbody>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN702">GNUstep Make</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-make-1.6.0.tar.gz">1.6.0</a></td>
 <td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-make-1.7.0.tar.gz">1.7.0</a></td>
@@ -231,7 +227,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN747">GNUstep Base</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-base-1.6.0.tar.gz">1.6.0</a></td>
 <td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-1.7.0.tar.gz">1.7.0</a></td>
@@ -239,7 +235,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN778">GNUstep GUI</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep GUI</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-gui-0.8.5.tar.gz">0.8.5</a></td>
 <td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-gui-0.8.6.tar.gz">0.8.6</a></td>
@@ -247,7 +243,7 @@ echo("/\">\n");
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN817">GNUstep Backend</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Backend</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-back-0.8.5.tar.gz">0.8.5</a></td>
 <td class="unst"><a href="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-0.8.6.tar.gz">0.8.6</a></td>
@@ -258,7 +254,7 @@ echo("/\">\n");
 
 </table>
 
-<h2>Additional Libraries/Tools </h2>
+<h2>Additional Libraries/Tools <small>(see <i><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.EXTENSIONS">Building Extensions</a></i> in Build Guide)</small></h2>
 
 <p>These libraries and tools offer additional capabilities. Some
 packages and applications may require you to install these libraries
@@ -285,7 +281,7 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
-<td class="src">Renaissance</td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.EXTENSIONS">Renaissance</a></td>
 <td class="req">Optional</td>
 <td class="stab"><div class="cent">-</div></td>
 <td class="unst"><a href="http://www.gnustep.it/Renaissance/Download/Renaissance-0.6.0.tar.gz">0.6.0</a></td>
@@ -293,7 +289,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN882">GNUstep Guile</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.EXTENSIONS">GNUstep Guile</a></td>
 <td class="req">Optional</td>
 <td class="stab"><a href="libs/gnustep-guile-1.1.1.tar.gz">1.1.1</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -301,7 +297,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN913">StepTalk</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.EXTENSIONS">StepTalk</a></td>
 <td class="req">Optional</td>
 <td class="stab"><a href="libs/StepTalk-0.5.3.tar.gz">0.5.3</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -337,7 +333,7 @@ packages and applications may require you to install these libraries
 
 </table>
 
-<h2>GNUstep Developer Tools <small>(see <i><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN848">Building Extensions </a></i> in Build Guide)</small></h2>
+<h2>GNUstep Developer Tools</h2>
 
 <p>If you intend to develop software for GNUstep, or to port software to GNUstep from another environment, you should install the development tools that are relevant to you from the following list:</p>
 
@@ -362,7 +358,7 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
-<td class="src">Gorm</td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#GNUSTEP.WORKSPACE">Gorm</a></td>
 <td class="req">Recommended</td>
 <td class="stab"><a href="dev-apps/Gorm-0.2.5.tar.gz">0.2.5
 </a></td>
@@ -372,7 +368,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src">Project Center</td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#GNUSTEP.WORKSPACE">Project Center</a></td>
 <td class="req">Recommended</td>
 <td class="stab"><a href="dev-apps/ProjectCenter-0.3.0.tar.gz">0.3.0
 </a></td>
@@ -421,7 +417,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN851">Foundation Extensions</a></td>
+<td class="src">Foundation Extensions</td>
 <td class="req">Not recommended</td>
 <td class="stab"><a href="libs/extensions-0.8.6.tar.gz">0.8.6</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -432,7 +428,7 @@ packages and applications may require you to install these libraries
 
 </table>
 
-<h2>GNUstep Environment <small>(see <i><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN972">GNUstep environment </a></i> in Build Guide)</small></h2>
+<h2>GNUstep Environment <small>(see <i><a href="http://documents.made-it.com/GNUstep/buildguide.html#GNUSTEP.WORKSPACE">GNUstep environment</a></i> in Build Guide)</small></h2>
 
 <p>If you are an end-user who intends to use GNUstep to manage files, run applications etc., please install the items you require from the following list:</p>
 
@@ -457,15 +453,15 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
-<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN976">GWorkspace</a></td>
+<td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#GNUSTEP.WORKSPACE">GWorkspace</a></td>
 <td class="req">Recommended</td>
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.4.1.tar.gz">0.4.1</a></td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.4.5.tar.gz">0.4.5</a></td>
+<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.5.2.tar.gz">0.5.2</a></td>
 <td>File manager for GNUstep</td>
 </tr>
 
 <tr>
-<td class="src">RPM Inspector</td>
+<td class="src"><a href="http://www.gnustep.it/enrico/gworkspace/">RPM Inspector</a></td>
 <td class="req">Optional</td>
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/RpmViewer.tar.gz">RPM Viewer</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -473,7 +469,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src">Localization</td>
+<td class="src"><a href="http://www.gnustep.it/enrico/gworkspace/">Localization</a></td>
 <td class="req">Optional</td>
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/">Various</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -481,7 +477,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src">App Wrappers</td>
+<td class="src"><a href="http://www.gnustep.it/enrico/gworkspace/">App Wrappers</a></td>
 <td class="req">Optional</td>
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/wrappers.tar.gz">Wrappers</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -491,8 +487,8 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.stupid-design.com/martin/GNUstep/GNUMail.app/GNUMail.app-Installation.html">GNUMail</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="usr-apps/GNUMail-1.0.3.tar.gz">1.0.3</a></td>
-<td class="unst"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.0pre1.tar.gz?rid=75">1.1.0pre1</a></td>
+<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.0pre1.tar.gz?rid=75">1.1.0pre1</a></td>
+<td class="unst"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail_v1.1.0pre2.dmg?rid=79">1.1.0pre2</a></td>
 <td>GNU Mail - see also <a href="http://www.collaboration-world.com/gnumail">description</a></td>
 </tr>
 
