@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>GNUstep Developer Tools - GDL2</title>
+<link type="text/css" rel="stylesheet" href="../gnustep-main.css" />
+<style type="text/css" media="screen">
+/*<![CDATA[*/
+                @import "../gnustep-main-2.css";
+/*]]>*/
+</style>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div class="header"><a href="/"><img width="560" src="../gnustep-header14.jpg" height="74" border="0" alt="GNUstep.org" /></a></div>
+<div class="container">
+<div class="content">
+<div id="main">
+<h1><img width="48" src="images/GDL2.png" height="48" alt="GDL2 logo" />GNUstep Database Layer (GDL2)</h1>
+<p>
+The GNUstep Database Library 2 (GDL2) is a set of libraries to map
+Objective-C objects to rows of relational database management systems
+(RDBMS).  It aims to be compatible with Enterprise Objects Framework
+(EOF) as released with WebObjects 4.5 from Apple Inc.  It requires the
+GNUstep Make Package 1.9.1 and the Base Library 1.9.1.  Alternatively
+it is meant to work with other OpenStep-like implementations like
+Cocoa together with the GNUstep BaseAdditions Library 1.9.1.  For UI
+applications which may want to use adaptor specific login panels, you
+should also install the GNUstep GUI Library 0.9.2 and the GNUstep
+Backend Library 0.9.2.  These should also work with AppKit.
+</p>
+<h3><u>Contents</u></h3>
+<p>
+[ <a href="#Introduction">Introduction</a> | 
+<a href="#State">State</a> | 
+<a href="#Documentation">Documentation</a> | 
+<a href="#Download">Download GDL2</a> | 
+<a href="#RelatedLinks">Related links</a> ]</p>
+<br />
+<h3><a name="Introduction" id=
+"Introduction"><u>Introduction</u></a></h3>
+<p>
+GDL2 consists of the following components:
+<ul>
+<li>EOControl (gnustep-db2control)</li>
+
+<p>The fundamental abstraction library which includes many non RDBMS
+related extensions such as KeyValueCoding extensions and other
+categories.  Most importantly it contains the classes which handle the
+coordination of object graphs namely EOEditingContext.</p>
+
+<li>EOAccess (gnustep-db2)</li>
+
+<p>This library implements the underlying mechanism to retrieve and store
+data in RDBMS.  It defines the abstract classes like EOAdaptor which
+are subclassed to interface with concrete RDBMS implementations.</p>
+
+<li>EOInterface (gnustep-db2interface)</li>
+
+<p>This library implements classes used to synchronize UI components such
+as NSTextFields, NSButtons and NSTableViews with the state of objects
+which an EOEditingContext contains.
+*Note this library is still missing in GDL2.  Some people have tried
+to use http://www.mulle-kybernetik.com/software/MulleEOInterface/ with
+some success.</p>
+
+<li>EOAdaptors</li>
+
+<p>This is a collection of concrete EOAdaptor projects needed to connect
+to specific databases.  GDL2 currently only supplies an Adaptor for
+the PostgreSQL database.  Even though the Adaptor is still called
+Postgres95 we aim to support PostgreSQL 7.2 and higher API.  In fact
+the Adaptor may very soon be renamed to PostgreSQL.</p>
+
+<li>EOModeler</li>
+
+<p>GDL2 will offer a UI application to create and maintain .eomodel(d)
+files.  Currently it is not defined if this will be a EOModeler clone
+or different style of application.  Some people have started some
+preliminary work so ask on discuss-gnustep@gnu.org before starting
+on this.</p>
+</ul>
+</p>
+
+<h3><a name="State" id="State"><u>State</u></a></h3>
+
+<p>Currently <i>GDL2</i> is meant for developers who can help test and contribute
+to the current code or are willing to test the interface.  It is not
+ready for general purpose production code.  Having said that, it
+should be mentioned that GDL2 <b>is</b> being used in production environments
+and has been much tested in those contexts.<p>
+
+<p>Expect the current interface to change especially with respect to
+functions and methods not documented in EOF 4.5.  Even the library
+names themselves may change.</p>
+
+<p>With respect to EOF, GDL2 is currently missing EOSharedEditingContext,
+EOMultiReaderLocks and the EOEvent classes.  Also we currently do not
+support the EOSchemaSynchronization methods yet.  But you are likely
+to find many more missing implementations within the source.  If you
+identify something that you need, please let us know at
+<discuss-gnustep@gnu.org> or even better get copyright assignment for
+the FSF and post a patch.</p>
+
+
+<h3><a name="Documentation" id="Documentation"><u>Documentation</u></a></h3>
+
+<p>For installation help, please refer to the INSTALL file included
+in the GDL2 package</p>
+
+<h3><a name="Download" id="Download"><u>How to get GDL2</u></a></h3>
+
+<p>The last offically released version is 0.9.1 (April 2004),
+which you can 
+<a href="ftp://ftp.gnustep.org/pub/gnustep/libs/gdl2-0.9.1.tar.gz">download here</a>.</p>
+
+<h3><a name="RelatedLinks" id="RelatedLinks"><u>Related links</u></a></h3>
+
+<p><a href="http://www.gnustepweb.org">GNUstepWeb</a> (WebObjects 4.5 clone)</p>
+
+</div>
+</div>
+</div>
+<div class="sidebar"><b>General</b><br />
+<a href="../">Home page</a><br />
+<a href="../information/aboutGNUstep.html">About GNUstep</a><br />
+<a href="../information/mission.html">Mission</a><br />
+<a href="../information/machines_toc.html">Platforms</a><br />
+<a href="../resources/sources.html">Download</a><br />
+<a href="../experience/apps.html">Applications</a><br />
+<a href="../information/progress.html">Progress</a><br />
+<br />
+<b>Resources</b><br />
+<a href="../experience/documentation.html">Getting
+Started</a><br />
+<a href="../experience/documentation.html#api">Frameworks</a><br />
+<a href="../resources/resources.html">Related Links</a><br />
+<a href="http://wiki.gnustep.org/">Wiki Docs</a><br />
+<a href="../information/userfaq_toc.html">User FAQ</a><br />
+<a href="../information/gethelp.html">Mailing Lists</a><br />
+<br />
+<b>Contributors</b><br />
+<a href="http://savannah.gnu.org/projects/gnustep/">Project
+Page</a><br />
+<a href="../developers/whoiswho.html">Who's Who</a>?<br />
+<a href="../developers/map.html">Libraries</a><br />
+<a href="../information/faq_toc.html">Developer FAQ</a><br />
+<br />
+<b><a href="../resources/sites.html">Related Sites...</a></b><br />
+<br />
+<b><a href="../resources/mirrors.html">Mirrors...</a></b><br />
+<br />
+Site by <a href=
+"mailto:webmasters@gnustep.org">webmasters@gnustep.org</a></div>
+</body>
+</html>
