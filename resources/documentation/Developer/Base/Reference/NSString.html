@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.329</p>
-    <p><b>Date:</b> 2004/12/29 04:21:37</p>
+    <p><b>Version:</b> 1.336</p>
+    <p><b>Date:</b> 2005/03/31 19:47:41</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -348,17 +348,13 @@ Where an NSString instance method returns an NSString object, the class of the a
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-boolValue">-boolValue</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-substringFromRange:">-substringFromRange:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawAtPoint:withAttributes:">-drawAtPoint:withAttributes:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawInRect:withAttributes:">-drawInRect:withAttributes:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-sizeWithAttributes:">-sizeWithAttributes:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+localizedNameOfStringEncoding:">+localizedNameOfStringEncoding:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+localizedStringWithFormat:,...">+localizedStringWithFormat:,...</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+pathWithComponents:">+pathWithComponents:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString+setPathHandling:">+setPathHandling:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+string">+string</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithCString:">+stringWithCString:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithCString:length:">+stringWithCString:length:</a></li>
@@ -556,9 +552,35 @@ Where an NSString instance method returns an NSString object, the class of the a
     + (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>pathWithComponents:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)components;<br />
     <p>
       
-            Concatenates the strings in the
-            <var>components</var> array placing a path separator
-            between each one and returns the result.
+            Concatenates the path <var>components</var> in
+            the array and returns the result. <br /> This method
+            does not remove empty path <var>components</var>, but
+            does recognize an empty initial component as a special
+            case meaning that the string returned will begin with
+            a slash.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSString+setPathHandling:">setPathHandling:&nbsp;</a></h3>
+    + (void) <b>setPathHandling:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)mode;<br />
+    <p>
+      
+            Sets the path handling <var>mode</var> for the
+            NSString path manipulation methods. <br />
+            <em>unix</em> <var>mode</var> treats paths as
+            Unix/POSIX paths in which a slash (/) is the
+            only path separator, and a single leading slash
+            indicates an absolute path. <br />
+            <em>windows</em> <var>mode</var> treats paths as
+            windows drive-relative or UNC paths in which either
+            slash (/) or backslash (\) may be used as path
+            separators and the &apos;root&apos; of a path may be of
+            the form &apos;C:/&apos; or &apos;//host/share/&apos;. <br /> The
+            <var>mode</var> selected if you provide any other
+            argument to this method is the default
+            <em>gnustep</em> <var>mode</var>, in which the system
+            tries to <em>do-the-right-thing</em> and support both
+            windows and unix style paths at the same time.
           
     </p>
     <hr width="25%" align="left" />
@@ -1014,12 +1036,11 @@ Where an NSString instance method returns an NSString object, the class of the a
     - (const char*) <b>fileSystemRepresentation</b>;<br />
     <p>
       
-            Converts this string, which is assumed to be a
-            path in Unix notation (&apos;/&apos; is file separator, &apos;.&apos; is
-            extension separator) to a C string path expressed
-            in the convention for the host operating system. This
-            string will be automatically freed soon after it is
-            returned, so copy it if you need it for long.
+            Converts the receiver to a C string path expressed
+            in the character encoding appropriate for the local host
+            file system. This string will be automatically freed
+            soon after it is returned, so copy it if you need it
+            for long.
           
     </p>
     <hr width="25%" align="left" />
@@ -1107,13 +1128,12 @@ Where an NSString instance method returns an NSString object, the class of the a
     - (BOOL) <b>getFileSystemRepresentation:</b> (char*)buffer<b> maxLength:</b> (unsigned int)size;<br />
     <p>
       
-            Converts this string, which is assumed to be a
-            path in Unix notation (&apos;/&apos; is file separator, &apos;.&apos; is
-            extension separator) to a C string path expressed
-            in the convention for the host operating system. This
-            string will be stored into <var>buffer</var> if it
-            is shorter than <var>size</var>, otherwise
-            <code>NO</code> is returned.
+            Converts the receiver to a C string path using the
+            character encoding appropriate to the local file
+            system. This string will be stored into
+            <var>buffer</var> if it is shorter than
+            <var>size</var>, otherwise <code>NO</code> is
+            returned.
           
     </p>
     <hr width="25%" align="left" />
@@ -1607,8 +1627,17 @@ Subclasses <strong>should</strong> override this method.<br />
     <p>
       
             Returns <code>YES</code> if the receiver represents
-            an absolute path... i.e. if it begins with a &apos;/&apos; or a
-            &apos;~&apos; <br /> Returns <code>NO</code> otherwise.
+            an absolute path... <br /> Returns <code>NO</code>
+            otherwise. <br /> An absolute path in unix mode
+            is one which begins with a slash or tilde. <br /> In
+            windows mode a drive specification (eg C:) followed
+            by a slash or backslash, is an absolute path, as is any
+            path beginning with a tilde. <br /> In any mode a UNC
+            path (//host/share...) is always absolute. <br /> In
+            gnustep path handling mode, the rules are the same
+            as for windows, except that a path whose root is a slash
+            denotes an absolute path when running on unix and a
+            relative path when running under windows.
           
     </p>
     <hr width="25%" align="left" />
@@ -1644,10 +1673,30 @@ Subclasses <strong>should</strong> override this method.<br />
             Returns a string containing the last path component
             of the receiver. <br /> The path component is the last
             non-empty substring delimited by the ends of the
-            string or by path * separator (&apos;/&apos;) characters.
-            <br /> If the receiver is an empty string, it is
-            simply returned. <br /> If there are no non-empty
-            substrings, the root string is returned.
+            string, or by path separator characters. <br /> If
+            the receiver only contains a root part, this method
+            returns it. <br /> If there are no non-empty
+            substrings, this returns an empty string.
+            <br /> NB. In a windows UNC path, the host and share
+            specification is treated as a single path
+            component, even though it contains separators.
+            So a string of the form &apos;//host/share&apos; may be returned.
+            <br /> Other special cases are apply when the string
+            is the root.
+
+<pre>
+   @&quot;foo/bar&quot; produces @&quot;bar&quot;
+   @&quot;foo/bar/&quot; produces @&quot;bar&quot;
+   @&quot;/foo/bar&quot; produces @&quot;bar&quot;
+   @&quot;/foo&quot; produces @&quot;foo&quot;
+   @&quot;/&quot; produces @&quot;/&quot; (root is a special case)
+   @&quot;&quot; produces @&quot;&quot;
+   @&quot;C:/&quot; produces @&quot;C:/&quot; (root is a special case)
+   @&quot;C:&quot; produces @&quot;C:&quot;
+   @&quot;//host/share/&quot; produces @&quot;//host/share/&quot; (root is a special case)
+   @&quot;//host/share&quot; produces @&quot;//host/share&quot;
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -1738,11 +1787,14 @@ Subclasses <strong>should</strong> override this method.<br />
     - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>pathComponents</b>;<br />
     <p>
       
-            Returns the path components of the reciever
+            Returns the path components of the receiver
             separated into an array. <br /> If the receiver
-            begins with a &apos;/&apos; character then that is used as the
-            first element in the array. <br /> Empty components
-            are removed.
+            begins with a root sequence such as the path
+            separator character (or a drive specification in
+            windows) then that is used as the first element in
+            the array. <br /> Empty components are removed. <br />
+            A trailing path separator (which was not part of the
+            root) is added as the last element in the array.
           
     </p>
     <hr width="25%" align="left" />
@@ -1756,6 +1808,16 @@ Subclasses <strong>should</strong> override this method.<br />
             extension separator (a &apos;.&apos;) (for example.tiff is
             the pathExtension for /foo/bar.tiff). <br /> Returns an
             empty string if no such extension exists.
+
+<pre>
+   @&quot;a.b&quot; produces @&quot;b&quot;
+   @&quot;a.b/&quot; produces @&quot;b&quot;
+   @&quot;/path/a.ext&quot; produces @&quot;ext&quot;
+   @&quot;/path/a.&quot; produces @&quot;&quot;
+   @&quot;/path/.a&quot; produces @&quot;&quot; (.a is not an extension to a file)
+   @&quot;.a&quot; produces @&quot;&quot; (.a is not an extension to a file)
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -1895,7 +1957,7 @@ for more information on what a property list is.    </p>
     <p>
       
 
-<pre>  
+<pre>
    // Strings file entries follow -
    key1 = &quot; a string value&quot;;
    key2;	// This key has an empty string as a value.
@@ -2077,8 +2139,23 @@ for more information on what a property list is.    </p>
     <p>
       
             Returns a new string with the path component given
-            in <var>aString</var> appended to the receiver. Removes
-            trailing separators and multiple separators.
+            in <var>aString</var> appended to the receiver. <br />
+            This removes trailing path separators from the
+            receiver and the root part from <var>aString</var>
+            and replaces them with a single slash as a path
+            separator. <br /> Also condenses any multiple
+            separator sequences in the result into single
+            path separators.
+
+<pre>
+   @&quot;&quot; with @&quot;file&quot; produces @&quot;file&quot;
+   @&quot;path&quot; with @&quot;file&quot; produces @&quot;path/file&quot;
+   @&quot;/&quot; with @&quot;file&quot; produces @&quot;/file&quot;
+   @&quot;/&quot; with @&quot;file&quot; produces @&quot;/file&quot;
+   @&quot;/&quot; with @&quot;/file&quot; produces @&quot;/file&quot;
+   @&quot;path with @&quot;C:/file&quot; produces @&quot;path/file&quot;
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -2087,11 +2164,31 @@ for more information on what a property list is.    </p>
     <p>
       
             Returns a new string with the path extension given
-            in <var>aString</var> appended to the receiver after the
+            in <var>aString</var> appended to the receiver after an
             extensionSeparator (&apos;.&apos;). <br /> If the
-            receiver has trailing &apos;/&apos; characters which are not
-            part of the root directory, those &apos;/&apos; characters are
-            stripped before the extension separator is added.
+            receiver has trailing path separator characters,
+            they are stripped before the extension separator is
+            added. <br /> If the receiver contains no components
+            after the root, the extension cannot be apppended (an
+            extension can only be appended to a file name),
+            so a copy of the unmodified receiver is returned. <br />
+            An empty string may be used as an extension... in which
+            case the extension separator is appended. <br /> This
+            behavior mirrors that of the
+            <a rel="gsdoc" href="#method$NSString-stringByDeletingPathExtension">
+              -stringByDeletingPathExtension
+            </a>
+
+            method.
+
+<pre>
+   @&quot;Mail&quot; with @&quot;app&quot; produces @&quot;Mail.app&quot;
+   @&quot;Mail.app&quot; with @&quot;old&quot; produces @&quot;Mail.app.old&quot;
+   @&quot;file&quot; with @&quot;&quot; produces @&quot;file.&quot;
+   @&quot;/&quot; with @&quot;app&quot; produces @&quot;/&quot; (no file name to append to)
+   @&quot;&quot; with @&quot;app&quot; produces @&quot;&quot; (no file name to append to)
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -2128,9 +2225,26 @@ for more information on what a property list is.    </p>
             Returns a new string with the path extension
             removed from the receiver. <br /> Strips any
             trailing path separators before checking for the
-            extension separator. <br /> Does not consider a
-            string starting with the extension separator (&apos;.&apos;)
-            to be a path extension.
+            extension separator. <br /> NB. This method does
+            not consider a string which contains nothing between
+            the root part and the extension separator (&apos;.&apos;) to be a
+            path extension. This mirrors the behavior of the
+            <a rel="gsdoc" href="#method$NSString-stringByAppendingPathExtension:">
+              -stringByAppendingPathExtension:
+            </a>
+
+            method.
+
+<pre>
+   @&quot;file.ext&quot; produces @&quot;file&quot;
+   @&quot;/file.ext&quot; produces @&quot;/file&quot;
+   @&quot;/file.ext/&quot; produces @&quot;/file&quot; (trailing path separators are ignored)
+   @&quot;/file..ext&quot; produces @&quot;/file.&quot;
+   @&quot;/file.&quot; produces @&quot;/file&quot;
+   @&quot;/.ext&quot; produces @&quot;/.ext&quot; (there is no file to strip from)
+   @&quot;.ext&quot; produces @&quot;.ext&quot; (there is no file to strip from)
+ </pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -2179,7 +2293,9 @@ for more information on what a property list is.    </p>
       
             Replaces path string by one in which path
             components representing symbolic links have been
-            replaced by their referents.
+            replaced by their referents. <br /> If links
+            cannot be resolved, returns an unmodified coopy of
+            the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -2190,8 +2306,12 @@ for more information on what a property list is.    </p>
             Returns a standardised form of the receiver, with
             unnecessary parts removed, tilde characters
             expanded, and symbolic links resolved where
-            possible. <br /> If the string is an invalid
-            path, the unmodified receiver is returned. <br />
+            possible. <br /> NB. Refers to the local
+            filesystem to resolve symbolic links in absolute
+            paths, and to expand tildes... so this can&apos;t be used
+            for general path manipulation. <br /> If the string is
+            an invalid path, the unmodified receiver is returned.
+            <br />
             
     </p>
     <p>
@@ -2202,8 +2322,8 @@ for more information on what a property list is.    </p>
               </a>
 
               to expand tilde expressions. <br /> Simplifies &apos;//&apos;
-              and &apos;/./&apos; sequences. <br /> Removes any &apos;/private&apos;
-              prefix.
+              and &apos;/./&apos; sequences and removes trailing &apos;/&apos; or &apos;.&apos;.
+              <br />
                 </p>
     <p>
       
@@ -2213,7 +2333,7 @@ for more information on what a property list is.    </p>
 
               For absolute paths, uses
               <a rel="gsdoc" href="#method$NSString-stringByResolvingSymlinksInPath">-stringByResolvingSymlinksInPath</a>
- to resolve any links, then gets rid of &apos;/../&apos; sequences.
+ to resolve any links, then gets rid of &apos;/../&apos; sequences and removes any &apos;/private&apos; prefix.
                 </p>
     <p>
       
@@ -2305,7 +2425,7 @@ for more information on what a property list is.    </p>
             Returns a pointer to a null terminated string of
             16-bit unichar The memory pointed to is not owned by
             the caller, so the caller must copy its contents to
-            keep it. Raises an
+            keep it.
           
     </p>
     <hr width="25%" align="left" />

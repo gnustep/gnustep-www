@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.47</p>
-    <p><b>Date:</b> 2004/06/22 22:40:36</p>
+    <p><b>Version:</b> 1.56</p>
+    <p><b>Date:</b> 2005/03/09 17:05:36</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -75,6 +75,7 @@
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+alphanumericCharacterSet">+alphanumericCharacterSet</a></li>
+      <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+capitalizedLetterCharacterSet">+capitalizedLetterCharacterSet</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+characterSetWithBitmapRepresentation:">+characterSetWithBitmapRepresentation:</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+characterSetWithCharactersInString:">+characterSetWithCharactersInString:</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+characterSetWithContentsOfFile:">+characterSetWithContentsOfFile:</a></li>
@@ -87,13 +88,16 @@
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+lowercaseLetterCharacterSet">+lowercaseLetterCharacterSet</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+nonBaseCharacterSet">+nonBaseCharacterSet</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+punctuationCharacterSet">+punctuationCharacterSet</a></li>
-      <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+symbolAndOperatorCharacterSet">+symbolAndOperatorCharacterSet</a></li>
+      <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+symbolCharacterSet">+symbolCharacterSet</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+uppercaseLetterCharacterSet">+uppercaseLetterCharacterSet</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+whitespaceAndNewlineCharacterSet">+whitespaceAndNewlineCharacterSet</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet+whitespaceCharacterSet">+whitespaceCharacterSet</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet-bitmapRepresentation">-bitmapRepresentation</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet-characterIsMember:">-characterIsMember:</a></li>
+      <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet-hasMemberInPlane:">-hasMemberInPlane:</a></li>
       <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet-invertedSet">-invertedSet</a></li>
+      <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet-isSupersetOfSet:">-isSupersetOfSet:</a></li>
+      <li><a rel="gsdoc" href="NSCharacterSet.html#method$NSCharacterSet-longCharacterIsMember:">-longCharacterIsMember:</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSCharacterSet+alphanumericCharacterSet">alphanumericCharacterSet&nbsp;</a></h3>
@@ -107,12 +111,21 @@
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSCharacterSet+capitalizedLetterCharacterSet">capitalizedLetterCharacterSet&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$NSCharacterSet">NSCharacterSet</a>*) <b>capitalizedLetterCharacterSet</b>;<br />
+    <p>
+      
+            Returns a character set containing letters in the
+            unicode Titlecase category.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSCharacterSet+characterSetWithBitmapRepresentation:">characterSetWithBitmapRepresentation:&nbsp;</a></h3>
     + (<a rel="gsdoc" href="#class$NSCharacterSet">NSCharacterSet</a>*) <b>characterSetWithBitmapRepresentation:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)data;<br />
     <p>
       
             Returns a character set containing characters as
-            encoded in the <var>data</var> object.
+            encoded in the <var>data</var> object (8192 bytes)
           
     </p>
     <hr width="25%" align="left" />
@@ -130,13 +143,14 @@
     + (<a rel="gsdoc" href="#class$NSCharacterSet">NSCharacterSet</a>*) <b>characterSetWithContentsOfFile:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aFile;<br />
     <p>
       
-            Initializes from a bitmap. (See
-            <a rel="gsdoc" href="NSBitmapCharSet.html#class$NSBitmapCharSet">NSBitmapCharSet</a>
-
-              .) File must have extension &quot; <code>.bitmap</code> &quot;.
-              (To get around this load the file into data yourself
-              and use [NSCharacterSet
-              -characterSetWithBitmapRepresentation].
+            Initializes from a bitmap (8192 bytes
+            representing 65536 values). <br /> Each bit
+            set in the bitmap represents the fact that a character
+            at that position in the unicode base plane exists in the
+            characterset. <br /> File must have extension
+            &quot; <code>.bitmap</code> &quot;. To get around this load the
+            file into data yourself and use [NSCharacterSet
+            -characterSetWithBitmapRepresentation].
           
     </p>
     <hr width="25%" align="left" />
@@ -226,8 +240,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSCharacterSet+symbolAndOperatorCharacterSet">symbolAndOperatorCharacterSet&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSCharacterSet">NSCharacterSet</a>*) <b>symbolAndOperatorCharacterSet</b>;<br />
+    <h3><a name="method$NSCharacterSet+symbolCharacterSet">symbolCharacterSet&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$NSCharacterSet">NSCharacterSet</a>*) <b>symbolCharacterSet</b>;<br />
     <p>
       
             Returns a character set containing mathematical
@@ -252,7 +266,8 @@
       
             Returns a character set that contains the
             whitespace characters, plus the newline
-            characters, values 0x000A and 0x000D.
+            characters, values 0x000A and 0x000D and
+            nextline 0x0085 character.
           
     </p>
     <hr width="25%" align="left" />
@@ -270,8 +285,8 @@
     <p>
       
             Returns a bitmap representation of the receiver&apos;s
-            character set suitable for archiving or writing
-            to a file, in an NSData object.
+            character set (suitable for archiving or writing
+            to a file), in an NSData object. <br />
           
     </p>
     <hr width="25%" align="left" />
@@ -285,12 +300,39 @@
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSCharacterSet-hasMemberInPlane:">hasMemberInPlane:&nbsp;</a></h3>
+    - (BOOL) <b>hasMemberInPlane:</b> (uint8_t)aPlane;<br />
+    <p>
+      
+            Returns <code>YES</code> if the receiver contains
+            at lerast one character in the specified unicode plane.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSCharacterSet-invertedSet">invertedSet&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$NSCharacterSet">NSCharacterSet</a>*) <b>invertedSet</b>;<br />
     <p>
       
             Returns a character set containing only characters
             that the receiver does not contain.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSCharacterSet-isSupersetOfSet:">isSupersetOfSet:&nbsp;</a></h3>
+    - (BOOL) <b>isSupersetOfSet:</b> (<a rel="gsdoc" href="#class$NSCharacterSet">NSCharacterSet</a>*)aSet;<br />
+    <p>
+      
+            Returns <code>YES</code> is all the characters in
+            <var>aSet</var> are present in the receiver.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSCharacterSet-longCharacterIsMember:">longCharacterIsMember:&nbsp;</a></h3>
+    - (BOOL) <b>longCharacterIsMember:</b> (UTF32Char)aCharacter;<br />
+    <p>
+      
+            Returns <code>YES</code> is the specified 32-bit
+            character is present in the receiver.
           
     </p>
     <hr width="25%" align="left" />

@@ -4,7 +4,7 @@
     <title>User Defaults Summary for GNUstep Backend</title>
   </head>
   <body>
-    <br />
+    <font face="serif">
     <h1><a name="title$DefaultsSummary">User Defaults Summary for GNUstep Backend</a></h1>
     <h3>Authors</h3>
     <dl>
@@ -12,8 +12,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.8 $</p>
-    <p><b>Date:</b> $Date: 2005/02/15 15:29:18 $</p>
+    <p><b>Version:</b> $Revision: 1.9 $</p>
+    <p><b>Date:</b> $Date: 2005/03/31 23:55:23 $</p>
 
     
           <h1><a name="001000000000">Defaults Summary</a></h1>
@@ -85,10 +85,11 @@
         <p>
 
           With the xlib backend, this is a boolean value which
-          defaults to <code>NO</code>. If set to
+          defaults to <code>YES</code>. If set to
           <code>YES</code> and X Windows system has the XFT
           extension, then the application will use anti-aliased fonts
-          as provided by XFT..
+          as provided by XFT. If set to <code>NO</code> anti-aliased fonts
+	  will not be used even when available.
                   </p>
         
 	  
@@ -159,6 +160,21 @@
         
 	  
       </dd>
+      <dt>GSX11HandlesWindowDecorations</dt>
+      <dd>
+        
+	  
+        <p>
+ [X11-based backends only]
+	  A boolean value, by default <code>YES</code>, which indicates if
+	  the backend should let the window manager handle window
+	  decorations. When set to <code>NO</code>, GNUstep-GUI will handle
+	  the window decorations, which is particularly useful if you aren&apos;t
+	  running any window manager.
+	          </p>
+        
+	  
+      </dd>
       <dt>GraphicCompositing</dt>
       <dd>
         
@@ -170,6 +186,20 @@
           to get alpha colors to work when compositing images. This
           may slow down drawing of images, but it is generally
           recommended anyway, particularly on fast systems.
+                  </p>
+        
+	  
+      </dd>
+      <dt>Fast Drawing on 8-bit Displays</dt>
+      <dd>
+        
+          
+        <p>
+ [X11-based backends only]
+	  This is not a user default, but if you are using an 8-bit display
+	  and you define the standard X11 <code>BEST</code> colormap (via
+	  <code>xstdcmap -best</code>), then GNUstep will use this colormap
+	  and enable faster drawing onto 8-bit displays.
                   </p>
         
 	  
@@ -240,10 +270,44 @@
           
         <p>
 
-          This is described more completely in the GUI documentation.
+          These strings correspond to &quot;keysyms&quot; on X11 systems.  On X11,
+          physical keys on the keyboard are equivalent to <em>keycodes</em>.
+          A single keysym may be associated to more than one keycode, and
+          can even be associated to a shifted key.
+                  </p>
+        
+          
+        <p>
+
+          This is described more completely in the <a href="../../../User/Gui/KeyboardSetup.html">GUI documentation on
+          keyboard setup</a>.
                   </p>
         
 	  
+      </dd>
+      <dt>GSModifiersAreKeys</dt>
+      <dd>
+        
+          
+        <p>
+
+          On some keyboards, the default X11 mapping includes keycodes that
+          are mapped to one or another modifier keysym depending on whether
+          &apos;shift&apos; (or in some cases, another key) is pressed.  This is the
+          case on some Apple USB keyboards for example: one key to the left
+          of the spacebar maps to &quot;Option&quot; without shift pressed, and &quot;Alt&quot;
+          with shift pressed.  Such keyboard mappings are often useful in
+          non-English contexts to access accents or non-Roman characters.
+          However if such a key is used as a modifier in GNUstep problems can
+          occur when trying to use the modifier in conjunction with a shifted
+          character.  In particular, you will need to hit and release the
+          modifier and the shift key in a particular order, or else things
+          will not work as expected, and the modifier may become &quot;stuck&quot;.  If
+          you experience such a problem, set <code>GSModifiersAreKeys</code>
+          to <code>YES</code>.
+                  </p>
+        
+          
       </dd>
       <dt>UseWindowMakerIcons</dt>
       <dd>
@@ -291,5 +355,6 @@
       </dd>
     </dl>
     <br />
-  </body>
+    </font>
+</body>
 </html>

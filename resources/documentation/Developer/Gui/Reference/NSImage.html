@@ -17,7 +17,7 @@
     <blockquote>
       Load, manipulate and display images
     </blockquote>
-    <p><b>Copyright:</b> (C) 1996 Free Software Foundation, Inc.</p>
+    <p><b>Copyright:</b> (C) 1996, 2005 Free Software Foundation, Inc.</p>
 
         <div>
       <hr width="50%" align="left" />
@@ -73,6 +73,7 @@
     <br/><br/>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSImage.html#method$NSImage+_standardImageWithName:">+_standardImageWithName:</a></li>
       <li><a rel="gsdoc" href="NSImage.html#method$NSImage+canInitWithPasteboard:">+canInitWithPasteboard:</a></li>
       <li><a rel="gsdoc" href="NSImage.html#method$NSImage+imageFileTypes">+imageFileTypes</a></li>
       <li><a rel="gsdoc" href="NSImage.html#method$NSImage+imageNamed:">+imageNamed:</a></li>
@@ -136,6 +137,17 @@
       <li><a rel="gsdoc" href="NSImage.html#method$NSImage-usesEPSOnResolutionMismatch">-usesEPSOnResolutionMismatch</a></li>
     </ul>
     <hr width="50%" align="left" />
+    <h3><a name="method$NSImage+_standardImageWithName:">_standardImageWithName:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$NSImage">NSImage</a>*) <b>_standardImageWithName:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)name;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            <var>name</var> of this method indicates that it is
+            private, for internal use only, and you should not
+            use the method in your code.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSImage+canInitWithPasteboard:">canInitWithPasteboard:&nbsp;</a></h3>
     + (BOOL) <b>canInitWithPasteboard:</b> (<a rel="gsdoc" href="NSPasteboard.html#class$NSPasteboard">NSPasteboard</a>*)pasteboard;<br />
     <p>
@@ -308,15 +320,49 @@
     - (void) <b>drawAtPoint:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>)point<b> fromRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)srcRect<b> operation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSCompositingOperation">NSCompositingOperation</a>)op<b> fraction:</b> (float)delta;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Calls
+            <a rel="gsdoc" href="#method$NSImage-drawAtPoint:fromRect:operation:fraction:">-drawAtPoint:fromRect:operation:fraction:</a>
+ with <code>dstRect</code> given by <code><var>point</var></code> and the size of <code><var>srcRect</var></code>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSImage-drawInRect:fromRect:operation:fraction:">drawInRect:&nbsp;fromRect:&nbsp;operation:&nbsp;fraction:&nbsp;</a></h3>
-    - (void) <b>drawInRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)dstRect<b> fromRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)srcRect<b> operation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSCompositingOperation">NSCompositingOperation</a>)op<b> fraction:</b> (float)delta;<br />
+    - (void) <b>drawInRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)dstRect<b> fromRect:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)srcRect<b> operation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSCompositingOperation">NSCompositingOperation</a>)op<b> fraction:</b> (float)fraction;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Takes the part of the receiver given by
+              <code><var>srcRect</var></code> and draws it in
+              <code><var>dstRect</var></code> in the current
+              coordinate system, transforming the image as
+              necessary.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The image is drawn as if it was drawn to a cleared
+              window, then dissolved using the
+              <var>fraction</var> <code>delta</code> to another
+              cleared window, and finally composited using
+              <code><var>op</var></code> to the destination.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Note that compositing and dissolving doesn&apos;t work on
+              all devices (printers, in particular).
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />

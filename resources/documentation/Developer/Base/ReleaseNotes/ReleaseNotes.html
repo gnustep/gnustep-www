@@ -12,8 +12,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.9 $</p>
-    <p><b>Date:</b> $Date: 2005/02/15 15:29:18 $</p>
+    <p><b>Version:</b> $Revision: 1.10 $</p>
+    <p><b>Date:</b> $Date: 2005/03/31 23:55:23 $</p>
 
     
           <h1><a name="001000000000">Base Release Notes</a></h1>
@@ -24,7 +24,67 @@
 	migrate to using a newer version of the library.
           </p>
 
-	    <h2><a name="001001000000">Version 1.10.1</a></h2>
+	    <h2><a name="001001000000">Version 1.10.2</a></h2>
+    <p>
+
+	    </p>
+    <dl>
+      <dt>NSContainsRect behavior change</dt>
+      <dd>
+        
+	      The definition of NSContainsRect has changed to
+	      correspond with the current Mac OS X/Cocoa definition. The
+	      sides of the bRect can touch aRect.
+	    
+      </dd>
+      <dt>Unichar file paths</dt>
+      <dd>
+        
+	      Windows supports unichar file paths, but there isn&apos;t
+	      really an API for handling this. GNUstep-specific
+	      methods for dealing with this have been
+	      added, <code>NSFileManager&apos;s
+	      -localFromOpenStepPath</code> and
+	      <code>openStepPathFromLocal</code> and equivalent methods for
+	      <code>NSString</code>. In most cases the Base library should
+	      handle this problem internally, but it&apos;s possible that there
+	      are cases where the developer wants to handle the file name
+	      explicitly with system-specific functions.
+	    
+      </dd>
+      <dt>NSDictionaryErnumerator</dt>
+      <dd>
+        
+	      Some ivars in NSDictionaryEnumerator have changed types,
+	      but the total storage space has not changed. This may
+	      cause problems if you access ivars directly, perhaps
+	      through a subclass.
+	    
+      </dd>
+      <dt>NSNotification -setImmutablePost</dt>
+      <dd>
+        
+	      This GNUstep extension method was removed.
+	    
+      </dd>
+      <dt>NSPort extension methods</dt>
+      <dd>
+        
+	      Unimplemented GNUstep extension methods <code>-close</code>,
+	      <code>-outPackedClass</code>,
+	      and <code>+outPackedClass</code> were removed.
+	    
+      </dd>
+      <dt>NSTimeZone -abbreviationDictionary</dt>
+      <dd>
+        
+	      <code>NSTimeZone</code>&apos;s abbreviation dictionary is now
+	      a proper one-to-one dictionary.
+	    
+      </dd>
+    </dl>
+
+	    <h2><a name="001002000000">Version 1.10.1</a></h2>
     <p>
 
 	    </p>
@@ -65,7 +125,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001002000000">Version 1.10.0</a></h2>
+	    <h2><a name="001003000000">Version 1.10.0</a></h2>
     <p>
 
 	    </p>
@@ -115,7 +175,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001003000000">Version 1.9.2</a></h2>
+	    <h2><a name="001004000000">Version 1.9.2</a></h2>
     <p>
 
 	    </p>

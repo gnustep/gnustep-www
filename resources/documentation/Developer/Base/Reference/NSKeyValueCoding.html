@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.10</p>
-    <p><b>Date:</b> 2004/09/19 23:24:36</p>
+    <p><b>Version:</b> 1.13</p>
+    <p><b>Date:</b> 2005/03/02 13:39:33</p>
     <p><b>Copyright:</b> (C) 2000,2002 Free Software Foundation, Inc.</p>
 
         <div>
@@ -76,8 +76,16 @@
     <ul>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)+accessInstanceVariablesDirectly">+accessInstanceVariablesDirectly</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)+useStoredAccessor">+useStoredAccessor</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-dictionaryWithValuesForKeys:">-dictionaryWithValuesForKeys:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-handleQueryWithUnboundKey:">-handleQueryWithUnboundKey:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-handleTakeValue:forUnboundKey:">-handleTakeValue:forUnboundKey:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-mutableArrayValueForKey:">-mutableArrayValueForKey:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-mutableArrayValueForKeyPath:">-mutableArrayValueForKeyPath:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-setNilValueForKey:">-setNilValueForKey:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-setValue:forKey:">-setValue:forKey:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-setValue:forKeyPath:">-setValue:forKeyPath:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-setValue:forUndefinedKey:">-setValue:forUndefinedKey:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-setValuesForKeysWithDictionary:">-setValuesForKeysWithDictionary:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-storedValueForKey:">-storedValueForKey:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-takeStoredValue:forKey:">-takeStoredValue:forKey:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-takeStoredValuesFromDictionary:">-takeStoredValuesFromDictionary:</a></li>
@@ -85,8 +93,11 @@
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-takeValue:forKeyPath:">-takeValue:forKeyPath:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-takeValuesFromDictionary:">-takeValuesFromDictionary:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-unableToSetNilForKey:">-unableToSetNilForKey:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-validateValue:forKey:error:">-validateValue:forKey:error:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-validateValue:forKeyPath:error:">-validateValue:forKeyPath:error:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-valueForKey:">-valueForKey:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-valueForKeyPath:">-valueForKeyPath:</a></li>
+      <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-valueForUndefinedKey:">-valueForUndefinedKey:</a></li>
       <li><a rel="gsdoc" href="NSKeyValueCoding.html#method$NSObject(NSKeyValueCoding)-valuesForKeys:">-valuesForKeys:</a></li>
     </ul>
     <hr width="50%" align="left" />
@@ -133,28 +144,35 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject(NSKeyValueCoding)-handleQueryWithUnboundKey:">handleQueryWithUnboundKey:&nbsp;</a></h3>
-    - (id) <b>handleQueryWithUnboundKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-dictionaryWithValuesForKeys:">dictionaryWithValuesForKeys:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>dictionaryWithValuesForKeys:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)keys;<br />
     <p>
       
-            Invoked when
+            Returns a dictionary built from values obtained for
+            the specified <var>keys</var>. <br /> By default this
+            is derived by calling
             <a rel="gsdoc" href="#method$NSObject-valueForKey:">
               -valueForKey:
             </a>
 
-            /
-            <a rel="gsdoc" href="#method$NSObject-storedValueForKey:">
-              -storedValueForKey:
+            for each key. Any <code>nil</code> values obtained are
+            represented by an
+            <a rel="gsdoc" href="NSNull.html#class$NSNull">NSNull</a>
+
+              instance.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-handleQueryWithUnboundKey:">handleQueryWithUnboundKey:&nbsp;</a></h3>
+    - (id) <b>handleQueryWithUnboundKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
+    <p>
+      
+            Deprecated... use
+            <a rel="gsdoc" href="#method$NSObject-valueForUndefinedKey:">
+              -valueForUndefinedKey:
             </a>
 
-            are called with a key, which can&apos;t be associated with
-            an accessor method or instance variable. Subclasses may
-            override this method to add custom handling.
-            NSObject raises an NSUnknownKeyException, with a
-            userInfo dictionary containing
-            NSTargetObjectUserInfoKey with
-            the receiver an NSUnknownUserInfoKey with the supplied
-            key entries.
+            instead.
           
     </p>
     <hr width="25%" align="left" />
@@ -162,9 +180,139 @@
     - (void) <b>handleTakeValue:</b> (id)anObject<b> forUnboundKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
     <p>
       
+            Deprecated, use
+            <a rel="gsdoc" href="#method$NSObject-setValue:forUndefinedKey:">
+              -setValue:forUndefinedKey:
+            </a>
+
+            instead.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-mutableArrayValueForKey:">mutableArrayValueForKey:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSMutableArray">NSMutableArray</a>*) <b>mutableArrayValueForKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
+    <p>
+      
+            <strong>Not implemented</strong>... I don&apos;t know
+            what this method is good for... do we need to copy
+            MacOS-X and implement it?
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-mutableArrayValueForKeyPath:">mutableArrayValueForKeyPath:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSMutableArray">NSMutableArray</a>*) <b>mutableArrayValueForKeyPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
+    <p>
+      
+            <strong>Not implemented</strong>... I don&apos;t know
+            what this method is good for... do we need to copy
+            MacOS-X and implement it?
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-setNilValueForKey:">setNilValueForKey:&nbsp;</a></h3>
+    - (void) <b>setNilValueForKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
+    <p>
+      
+            This method is invoked by the NSKeyValueCoding
+            mechanism when an attempt is made to set an null
+            value for a scalar attribute. This implementation
+            raises an NSInvalidArgument exception. Subclasses my
+            override this method to do custom handling. (E.g.
+            setting the value to the equivalent of 0.)
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-setValue:forKey:">setValue:&nbsp;forKey:&nbsp;</a></h3>
+    - (void) <b>setValue:</b> (id)anObject<b> forKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
+    <p>
+      
+            Sets the value if the attribute associated with the
+            key in the receiver. The object is converted to a
+            scalar attribute where applicable (and
+            <a rel="gsdoc" href="#method$NSObject-setNilValueForKey:">
+              -setNilValueForKey:
+            </a>
+
+            is caalled if a <code>nil</code> value is supplied).
+            Tries to use a standard accessor of the form setKey:
+            where &apos;Key&apos; is the supplied argument with the first
+            letter convertyed to uppercase. <br /> If the
+            receiver&apos;s class allows
+            <a rel="gsdoc" href="#method$NSObject+accessInstanceVariablesDirectly">
+              +accessInstanceVariablesDirectly
+            </a>
+
+            it continues with instance variables:
+            
+      <ul>
+        <li>
+          _key
+        </li>
+        <li>
+          _isKey
+        </li>
+        <li>
+          key
+        </li>
+        <li>
+          isKey
+        </li>
+      </ul>
+      
+            Invokes
+            <a rel="gsdoc" href="#method$NSObject-setValue:forUndefinedKey:">
+              -setValue:forUndefinedKey:
+            </a>
+
+            if no accessor mechanism can be found and raises
+            NSInvalidArgumentException if
+            the accesor method doesn&apos;t take exactly one argument or
+            the type is unsupported (e.g. structs). If the receiver
+            expects a scalar value and the value supplied is
+            the NSNull instance or <code>nil</code>, this method
+            invokes
+            <a rel="gsdoc" href="#method$NSObject-setNilValueForKey:">
+              -setNilValueForKey:
+            </a>
+
+            .
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-setValue:forKeyPath:">setValue:&nbsp;forKeyPath:&nbsp;</a></h3>
+    - (void) <b>setValue:</b> (id)anObject<b> forKeyPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
+    <p>
+      
+            Retrieves the object returned by invoking
+            <a rel="gsdoc" href="#method$NSObject-valueForKey:">
+              -valueForKey:
+            </a>
+
+            on the receiver with the first key component supplied by
+            the key path. Then invokes
+            <a rel="gsdoc" href="#method$NSObject-setValue:forKeyPath:">
+              -setValue:forKeyPath:
+            </a>
+
+            recursively on the returned object with rest of
+            the key path. The key components are delimated by &apos;.&apos;.
+            If the key path doesn&apos;t contain any &apos;.&apos;, this method
+            simply invokes
+            <a rel="gsdoc" href="#method$NSObject-setValue:forKey:">
+              -setValue:forKey:
+            </a>
+
+            .
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-setValue:forUndefinedKey:">setValue:&nbsp;forUndefinedKey:&nbsp;</a></h3>
+    - (void) <b>setValue:</b> (id)anObject<b> forUndefinedKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
+    <p>
+      
             Invoked when
-            <a rel="gsdoc" href="#method$NSObject-takeValue:forKey:">
-              -takeValue:forKey:
+            <a rel="gsdoc" href="#method$NSObject-setValue:forKey:">
+              -setValue:forKey:
             </a>
 
             /
@@ -179,7 +327,26 @@
             userInfo dictionary containing
             NSTargetObjectUserInfoKey with
             the receiver an NSUnknownUserInfoKey with the supplied
-            key entries.
+            key entries. <br /> Called when the key passed to
+            <a rel="gsdoc" href="#method$NSObject-setValue:forKey:">
+              -setValue:forKey:
+            </a>
+
+            cannot be used.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-setValuesForKeysWithDictionary:">setValuesForKeysWithDictionary:&nbsp;</a></h3>
+    - (void) <b>setValuesForKeysWithDictionary:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)aDictionary;<br />
+    <p>
+      
+            Uses
+            <a rel="gsdoc" href="#method$NSObject-setValue:forKey:">
+              -setValue:forKey:
+            </a>
+
+            to place the values from <var>aDictionary</var> in the
+            receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -240,8 +407,8 @@
       </ul>
       
             Invokes
-            <a rel="gsdoc" href="#method$NSObject-handleQueryWithUnboundKey:">
-              -handleQueryWithUnboundKey:
+            <a rel="gsdoc" href="#method$NSObject-handleTakeValue:forUnboundKey:">
+              -handleTakeValue:forUnboundKey:
             </a>
 
             if no accessor mechanism can be found and raises
@@ -381,7 +548,12 @@
               -unableToSetNilForKey:
             </a>
 
-            .
+            . <br /> Deprecated... use
+            <a rel="gsdoc" href="#method$NSObject-setValue:forKey:">
+              -setValue:forKey:
+            </a>
+
+            instead.
           
     </p>
     <hr width="25%" align="left" />
@@ -408,7 +580,12 @@
               -takeValue:forKey:
             </a>
 
-            .
+            . <br /> Deprecated... use
+            <a rel="gsdoc" href="#method$NSObject-setValue:forKeyPath:">
+              -setValue:forKeyPath:
+            </a>
+
+            instead.
           
     </p>
     <hr width="25%" align="left" />
@@ -422,7 +599,12 @@
             </a>
 
             on the receiver for each key-value pair, converting
-            NSNull to <code>nil</code>.
+            NSNull to <code>nil</code>. <br /> Deprecated... use
+            <a rel="gsdoc" href="#method$NSObject-setValuesForKeysWithDictionary:">
+              -setValuesForKeysWithDictionary:
+            </a>
+
+            instead.
           
     </p>
     <hr width="25%" align="left" />
@@ -430,12 +612,50 @@
     - (void) <b>unableToSetNilForKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
     <p>
       
-            This method is invoked by the NSKeyValueCoding
-            mechanism when an attempt is made to set an null
-            value for a scalar attribute. This implementation
-            raises an NSInvalidArgument exception. Subclasses my
-            override this method to do custom handling. (E.g.
-            setting the value to the equivalent of 0.)
+            Deprecated... use
+            <a rel="gsdoc" href="#method$NSObject-setNilValueForKey:">
+              -setNilValueForKey:
+            </a>
+
+            instead.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-validateValue:forKey:error:">validateValue:&nbsp;forKey:&nbsp;error:&nbsp;</a></h3>
+    - (BOOL) <b>validateValue:</b> (id*)aValue<b> forKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)anError;<br />
+    <p>
+      
+            Returns a boolean indicating whether the object
+            pointed to by <var>aValue</var> is valid for
+            settting as an attribute of the receiver using the
+            name <var>aKey</var>. On success (<code>YES</code>
+            response) it may return a new value to be used in
+            <var>aValue</var>. On failure (<code>NO</code>
+            response) it may return an error in
+            <var>anError</var>. <br /> The method works by
+            calling a method of the receiver whose name is of
+            the form validateKey:error: if the receiver has
+            implemented such a method, otherwise it simply
+            returns <code>YES</code>.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-validateValue:forKeyPath:error:">validateValue:&nbsp;forKeyPath:&nbsp;error:&nbsp;</a></h3>
+    - (BOOL) <b>validateValue:</b> (id*)aValue<b> forKeyPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)anError;<br />
+    <p>
+      
+            Returns the result of calling
+            <a rel="gsdoc" href="#method$NSObject-validateValue:forKey:error:">
+              -validateValue:forKey:error:
+            </a>
+
+            on the receiver using aPath to determine the key value
+            in the same manner as the
+            <a rel="gsdoc" href="#method$NSObject-valueForKeyPath:">
+              -valueForKeyPath:
+            </a>
+
+            method.
           
     </p>
     <hr width="25%" align="left" />
@@ -445,10 +665,8 @@
       
             Returns the value associated with the supplied key
             as an object. Scalar attributes are converted to
-            corresponding objects. The
-            value-NSKeyValueCoding use the
-            public accessors in favor of the private ones. The
-            search order is: <br /> Accessor methods:
+            corresponding objects. <br /> The search
+            order is: <br /> Accessor methods:
             
       <ul>
         <li>
@@ -457,6 +675,16 @@
         <li>
           key
         </li>
+      </ul>
+       If
+            the receiver&apos;s class allows
+            <a rel="gsdoc" href="#method$NSObject+accessInstanceVariablesDirectly">
+              +accessInstanceVariablesDirectly
+            </a>
+
+            it continues with private accessors:
+            
+      <ul>
         <li>
           _getKey
         </li>
@@ -465,12 +693,7 @@
         </li>
       </ul>
       
-            If the receiver&apos;s class allows
-            <a rel="gsdoc" href="#method$NSObject+accessInstanceVariablesDirectly">
-              +accessInstanceVariablesDirectly
-            </a>
-
-            it continues with instance variables:
+            and then instance variables:
             
       <ul>
         <li>
@@ -482,8 +705,8 @@
       </ul>
       
             Invokes
-            <a rel="gsdoc" href="#method$NSObject-handleQueryWithUnboundKey:">
-              -handleQueryWithUnboundKey:
+            <a rel="gsdoc" href="#method$NSObject-setValue:forUndefinedKey:">
+              -setValue:forUndefinedKey:
             </a>
 
             if no accessor mechanism can be found and raises
@@ -516,6 +739,31 @@
             </a>
 
             .
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSKeyValueCoding)-valueForUndefinedKey:">valueForUndefinedKey:&nbsp;</a></h3>
+    - (id) <b>valueForUndefinedKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aKey;<br />
+    <p>
+      
+            Invoked when
+            <a rel="gsdoc" href="#method$NSObject-valueForKey:">
+              -valueForKey:
+            </a>
+
+            /
+            <a rel="gsdoc" href="#method$NSObject-storedValueForKey:">
+              -storedValueForKey:
+            </a>
+
+            are called with a key, which can&apos;t be associated with
+            an accessor method or instance variable. Subclasses may
+            override this method to add custom handling.
+            NSObject raises an NSUnknownKeyException, with a
+            userInfo dictionary containing
+            NSTargetObjectUserInfoKey with
+            the receiver an NSUnknownUserInfoKey with the supplied
+            key entries. <br />
           
     </p>
     <hr width="25%" align="left" />

@@ -2280,8 +2280,10 @@ is exactly the same as    </p>
           Returns &apos;YES&apos; iff <var>aRect</var> totally encloses
           <var>bRect</var>. NOTE: For this to be the case,
           <var>aRect</var> cannot be empty, nor can any side of
-          <var>bRect</var> coincide with any side of
-          <var>aRect</var>.
+          <var>bRect</var> go beyond any side of <var>aRect</var>
+          . Note that this behavior is different than the original
+          OpenStep behavior, where the sides of
+          <var>bRect</var> could not touch <var>aRect</var>.
         
     </p>
     <hr width="25%" align="left" />
@@ -3222,6 +3224,18 @@ is exactly the same as    </p>
     </p>
     <p>
 
+            In GNUstep, the GSLogThread user default may be set to
+            <code>YES</code> in order to instruct this function
+            to include the internal ID of the mcurrent thread after
+            the process ID. This can help you to track the behavior
+            of a multi-threaded program.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
             The resulting message is then passed to a handler
             function to perform actual output. Locking is
             performed around the call to the function
@@ -3407,33 +3421,29 @@ is exactly the same as    </p>
     <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* GSDefaultsRootForUser(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>userName</b>);<br />
     <p>
       
-          Return the path of the defaults directory for name.
-          <br /> This examines the.GNUsteprc file in the home
-          directory of the user for the GNUSTEP_DEFAULTS_ROOT
-          or the GNUSTEP_USER_ROOT directory definitions.
+          Return the path of the defaults directory for
+          <var>userName</var>. <br /> This examines the.GNUsteprc
+          file in the home directory of the user for the
+          GNUSTEP_DEFAULTS_ROOT or the
+          GNUSTEP_USER_ROOT directory definitions,
+          over-riding those in GNUstep.conf.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$GSSetUserName">GSSetUserName</a></h3>
-    void GSSetUserName(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>name</b>);<br />
+    void GSSetUserName(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>aName</b>);<br />
     <p>
       
           This extension permits a change of username from that
           specified in the LOGNAME environment variable.
           Using it will almost certainly cause trouble if the
           process does not posess the file access priviliges of
-          the new <var>name</var>. This is provided primarily for
-          use by processes that run as system-manager and need to
-          act as particular users. If uses the [NSUserDefaults
+          the new name. This is provided primarily for use by
+          processes that run as system-manager and need to
+          act as particular users. It uses the [NSUserDefaults
           +resetUserDefaults] extension to reset
           the defaults system to use the defaults belonging to the
-          new user. <br /> Sets the user <var>name</var> for this
-          process. This method is supplied to enable setuid
-          programs to run properly as the user indicated by
-          their effective user Id. <br /> This function calls
-          <a rel="gsdoc" href="NSUserDefaults.html#method$NSUserDefaults+resetStandardUserDefaults">[NSUserDefaults&nbsp;+resetStandardUserDefaults]</a>
- as well as changing the value returned by <a rel="gsdoc" href="#function$NSUserName">NSUserName()</a>
- and modifying the user root directory for the process.
+          new user.
         
     </p>
     <hr width="25%" align="left" />
@@ -3502,9 +3512,12 @@ is exactly the same as    </p>
     <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSOpenStepRootDirectory();<br />
     <p>
       
-          Returns the root directory for the OpenStep (GNUstep)
-          installation. This is determined by the
-          GNUSTEP_ROOT environment variable if available.
+          Deprecated function. Returns the location of the
+          <em>root</em> directory of the GNUstep file heirarchy.
+          Don&apos;t assume that /System, /Network etc exist in this
+          path! Use other path utility functions for that. Refer
+          to the GNUstep File System Heirarchy documentation for
+          more info.
         
     </p>
     <hr width="25%" align="left" />
@@ -3513,7 +3526,8 @@ is exactly the same as    </p>
     <p>
       
           Returns an array of search paths to look at for
-          resources.
+          resources. <br /> The paths are returned in domain
+          order: LOCAL, NETWORK then SYSTEM.
         
     </p>
     <hr width="25%" align="left" />
@@ -3524,7 +3538,7 @@ is exactly the same as    </p>
           Returns the standard paths in which applications are
           stored and should be searched for. Calls
           <a rel="gsdoc" href="#function$NSSearchPathForDirectoriesInDomains">NSSearchPathForDirectoriesInDomains()</a>
-
+ <br /> Refer to the GNUstep File System Heirarchy documentation for more info.
         
     </p>
     <hr width="25%" align="left" />
@@ -3532,10 +3546,10 @@ is exactly the same as    </p>
     <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* NSStandardLibraryPaths();<br />
     <p>
       
-          Returns the standard paths in which libraries are
+          Returns the standard paths in which resources are
           stored and should be searched for. Calls
           <a rel="gsdoc" href="#function$NSSearchPathForDirectoriesInDomains">NSSearchPathForDirectoriesInDomains()</a>
-
+ <br /> Refer to the GNUstep File System Heirarchy documentation for more info.
         
     </p>
     <hr width="25%" align="left" />
@@ -3556,10 +3570,15 @@ is exactly the same as    </p>
     <p>
       
           Return the caller&apos;s login name as an NSString object.
-          <br /> Under ms-windows, the &apos;LOGNAME&apos; environment
-          variable is used as the user name. <br /> Under
-          unix-like systems, the name associated with the
-          current effective user ID is used.
+          <br /> Under unix-like systems, the name associated
+          with the current effective user ID is used. <br /> Under
+          ms-windows, the &apos;LOGNAME&apos; environemnt is used, or
+          if that fails, the
+          
+            GetUserName()
+          
+
+          call is used to find the user name.
         
     </p>
     <hr width="25%" align="left" />

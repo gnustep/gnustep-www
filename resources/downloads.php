@@ -285,7 +285,7 @@ or download and install the four core packages separately.
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-base-1.10.1.tar.gz")?>">1.10.1</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-base-1.10.2.tar.gz")?>">1.10.2</a></td>
 <td class="unst">-</td>
 <td>Foundation</td>
 </tr>
@@ -293,7 +293,7 @@ or download and install the four core packages separately.
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep GUI</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-gui-0.9.4.tar.gz")?>">0.9.4</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-gui-0.9.5.tar.gz")?>">0.9.5</a></td>
 <td class="unst">-</td>
 <td>Graphical user interface class library</td>
 </tr>
@@ -301,7 +301,7 @@ or download and install the four core packages separately.
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Backend</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-back-0.9.4.tar.gz")?>">0.9.4</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-back-0.9.5.tar.gz")?>">0.9.5</a></td>
 <td class="unst">-</td>
 <td>Generic back-end</td>
 </tr>

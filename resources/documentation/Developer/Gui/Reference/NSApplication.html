@@ -283,7 +283,10 @@
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSModalSession">NSModalSession</a>) <b>beginModalSessionForWindow:</b> (<a rel="gsdoc" href="NSWindow.html#class$NSWindow">NSWindow</a>*)theWindow;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Set up modal session for <var>theWindow</var>, and, if
+            it is not visible already, puts it up on screen,
+            centering it if it is an NSPanel. It is then
+            ordered front and made key or main window.
           
     </p>
     <hr width="25%" align="left" />
@@ -904,7 +907,28 @@
     - (int) <b>runModalForWindow:</b> (<a rel="gsdoc" href="NSWindow.html#class$NSWindow">NSWindow</a>*)theWindow;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Starts modal event loop for given window, after
+            calling
+            <a rel="gsdoc" href="#method$NSApplication-beginModalSessionForWindow:">
+              -beginModalSessionForWindow:
+            </a>
+
+            . Loop is broken only by stopModal:,
+            <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode:">
+              -stopModalWithCode:
+            </a>
+
+            , or
+            
+              -abortModal:
+            
+
+            , at which time
+            <a rel="gsdoc" href="#method$NSApplication-endModalSession:">
+              -endModalSession:
+            </a>
+
+            is called.
           
     </p>
     <hr width="25%" align="left" />
@@ -926,12 +950,9 @@
 
               Processes any events for a modal session
               described by the <var>theSession</var>
-              variable. Before processing the events, it
-              makes the session window key and orders the window
-              front, so there is no need to do this separately.
-              When finished, it returns the state of the session
-              (i.e. whether it is still running or has been
-              stopped, etc)
+              variable. When finished, it returns the state
+              of the session (i.e. whether it is still running or
+              has been stopped, etc)
                 </p>
     <p>
       
@@ -941,6 +962,29 @@
 
               If there are no pending events for the session, this
               method returns immediately.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Although Apple&apos;s docs state that, before
+              processing the events, it makes the session
+              window key and orders the window front, this
+              method does not attempt to do this, because: 1) we
+              don&apos;t want to interfere with use of other apps
+              during modal session for this app; 2) occasionally
+              other windows are active and should be usable
+              during modal sessions (e.g., a popup dialog from a
+              modal window); 3) most of the time
+              <a rel="gsdoc" href="#method$NSApplication-beginModalSessionForWindow:">
+                -beginModalSessionForWindow:
+              </a>
+
+              will have been called in advance. If the latter is
+              not the case, you may need to order the window front
+              yourself in advance.
                 </p>
     <p>
       

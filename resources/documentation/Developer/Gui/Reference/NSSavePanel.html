@@ -307,8 +307,9 @@
     - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>requiredFileType</b>;<br />
     <p>
       
-            Returns the required file type. The default is no
-            required file type.
+            Returns the required file type. The default,
+            indicated by empty string, is no required file
+            type.
           
     </p>
     <hr width="25%" align="left" />
@@ -469,7 +470,15 @@
             have that extension; The argument type should not
             include the period that begins the extension.
             Invoke this method each time the Save panel is used
-            for another file type within the application.
+            for another file type within the application. If you do
+            not invoke it, or set it to empty string or
+            <code>nil</code>, no extension will be appended,
+            indicated by an empty string returned from
+            <a rel="gsdoc" href="#method$NSSavePanel-requiredFileType">
+              -requiredFileType
+            </a>
+
+            .
           
     </p>
     <hr width="25%" align="left" />
@@ -902,7 +911,10 @@
     - (BOOL) <b>panel:</b> (id)sender<b> shouldShowFilename:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)filename;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sent by NSSavePanel to check whether a file should be
+            displayed in the panel or not. The
+            <var>filename</var> argument is the complete path to
+            the file.
           
     </p>
     <hr width="25%" align="left" />

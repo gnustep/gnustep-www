@@ -12,8 +12,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.13 $</p>
-    <p><b>Date:</b> $Date: 2005/02/15 15:29:18 $</p>
+    <p><b>Version:</b> $Revision: 1.14 $</p>
+    <p><b>Date:</b> $Date: 2005/03/31 23:55:23 $</p>
 
     
           <h1><a name="001000000000">Base</a></h1>
@@ -125,6 +125,20 @@
 		than to the standard error stream.  This is useful in
 		environments where stderr has been re-used strangely for
 		some reason.
+	              </p>
+        
+	    
+      </dd>
+      <dt>GSLogThread</dt>
+      <dd>
+        
+	      
+        <p>
+
+		Setting the user default <code>GSLogThread</code> to
+		<code>YES</code> will cause NSLog and debug output to
+		include the current thread in the logged message.<br />
+		This is useful for debugging multi-threaded applications.
 	              </p>
         
 	    
@@ -578,7 +592,110 @@
       </dd>
     </dl>
 
-	      <h3><a name="001001004000">.GNUsteprc files</a></h3>
+	      <h3><a name="001001004000">GNUstep Configuration File</a></h3>
+    <p>
+
+	    This file is the master configuration file for GNUstep. It
+	    can be used to set the base location of all the standard
+	    paths that GNUstep programs use or know about. The
+	    location of this file depends on how the Base library was
+	    configured and what operating system it was configured
+	    on. On a GNU/Linux system, the default would be
+	    /etc/GNUstep/GNUstep.conf, for instance. This file is not
+	    required. If it does not appear, then default values will
+	    be used for the standard path locations.  System paths are
+	    defined by the following:
+	      </p>
+    <dl>
+      <dt>GNUSTEP_SYSTEM_ROOT</dt>
+      <dd>
+        path in the file heirarchy for system/os things.
+      </dd>
+      <dt>GNUSTEP_NETWORK_ROOT</dt>
+      <dd>
+        path to network mounted resources.
+      </dd>
+      <dt>GNUSTEP_LOCAL_ROOT</dt>
+      <dd>
+        path for non-system resources for the specific machine.
+      </dd>
+    </dl>
+    <p>
+
+	    Paths for each user are defined by the following:
+	      </p>
+    <dl>
+      <dt>USER_GNUSTEP_DIR</dt>
+      <dd>
+        Path under user&apos;s home directory for user specific GNUstep resources (eg. &apos;GNUstep&apos;)
+      </dd>
+      <dt>USER_GNUSTEP_RC</dt>
+      <dd>
+        Name of user configuration file (eg. &apos;.GNUsteprc&apos;)
+      </dd>
+      <dt>USER_GNUSTEP_DEFAULTS</dt>
+      <dd>
+        Name of directory in USER_GNUSTEP_DIR for user defaults files.
+      </dd>
+    </dl>
+    <p>
+
+	    Support is provided to locate OS/PLATFORM directories. A conf file
+	    may provide the definitions below:
+	      </p>
+    <dl>
+      <dt>SYS_PREFS</dt>
+      <dd>
+        Place for system/os preferences (eg. &apos;/etc&apos;)
+      </dd>
+      <dt>SYS_APPS</dt>
+      <dd>
+        Place for system/os applications (eg. &apos;/bin&apos;)
+      </dd>
+      <dt>SYS_LIBS</dt>
+      <dd>
+        Place for system/os shared libraries (eg. &apos;/lib&apos;)
+      </dd>
+      <dt>SYS_ADMIN</dt>
+      <dd>
+        Place for system administration tools (eg. &apos;/sbin&apos;)
+      </dd>
+      <dt>PLATFORM_APPS</dt>
+      <dd>
+        Place for non-gnustep applications (eg. &apos;/usr/bin&apos;)
+      </dd>
+      <dt>PLATFORM_LIBS</dt>
+      <dd>
+        Place for application shared libraries (eg. &apos;/usr/lib&apos;)
+      </dd>
+      <dt>PLATFORM_RESOURCES</dt>
+      <dd>
+        Place for shared application resources (eg. &apos;/usr/share&apos;)
+      </dd>
+      <dt>PLATFORM_ADMIN</dt>
+      <dd>
+        Place for non-critical administrative tools (eg. &apos;/usr/sbin&apos;)
+      </dd>
+      <dt>PLATFORM_LOCAL_APPS</dt>
+      <dd>
+        Place for machine local applications (eg. &apos;/usr/local/bin&apos;)
+      </dd>
+      <dt>PLATFORM_LOCAL_LIBS</dt>
+      <dd>
+        Place for machine local shared libraries (eg. &apos;/usr/local/lib/&apos;)
+      </dd>
+      <dt>PLATFORM_LOCAL_RESOURCES</dt>
+      <dd>
+        Place for machine local resources. (eg. &apos;/usr/local/share&apos;)
+      </dd>
+    </dl>
+    <p>
+
+	      These add to the path for NSSystemDomainMask, or
+	      NSLocalDomainMask as appropriate.
+	        </p>
+
+	      <h3><a name="001001005000">.GNUsteprc files</a></h3>
     <p>
 
 	    The locations of the directories in which user specific files and
@@ -600,7 +717,7 @@
       <dd>
         
 	      The text after the &apos;=&apos; is taken to be the path to the users
-	      files.  If it begins with a &apos;~&apos; character, the users home
+	      defaults files.  If it begins with a &apos;~&apos; character, the users home
 	      directory is prepended to it.
 	    
       </dd>
@@ -615,11 +732,13 @@
     </dl>
     <p>
 
-	    The presence of a <code>.GNUsteprc</code> file in the GNUstep
-	    system directory may provide default paths for all users and
-	    may even override user specific files.  The content of this file
-	    is as for the user specific file, but permits two additional
-	    commands -
+	    The presence of a <code>.GNUsteprc</code> file in the
+	    GNUstep system directory may provide default paths for all
+	    users and may even override user specific files.  This
+	    file has been deprecated in favor of the GNUstep
+	    Configuration File described above. The content of this
+	    file is as for the user specific file, but permits two
+	    additional commands:
 	      </p>
     <dl>
       <dt>FORCE_DEFAULTS_ROOT</dt>
@@ -660,7 +779,6 @@
         <li><a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a></li>
         <li><a rel="gsdoc" href="NSAttributedString.html#class$NSAttributedString">NSAttributedString</a></li>
         <li><a rel="gsdoc" href="NSAutoreleasePool.html#class$NSAutoreleasePool">NSAutoreleasePool</a></li>
-        <li><a rel="gsdoc" href="NSBitmapCharSet.html#class$NSBitmapCharSet">NSBitmapCharSet</a></li>
         <li><a rel="gsdoc" href="NSBundle.html#class$NSBundle">NSBundle</a></li>
         <li><a rel="gsdoc" href="NSCalendarDate.html#class$NSCalendarDate">NSCalendarDate</a></li>
         <li><a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a></li>
@@ -697,7 +815,6 @@
         <li><a rel="gsdoc" href="NSMethodSignature.html#class$NSMethodSignature">NSMethodSignature</a></li>
         <li><a rel="gsdoc" href="NSArray.html#class$NSMutableArray">NSMutableArray</a></li>
         <li><a rel="gsdoc" href="NSAttributedString.html#class$NSMutableAttributedString">NSMutableAttributedString</a></li>
-        <li><a rel="gsdoc" href="NSBitmapCharSet.html#class$NSMutableBitmapCharSet">NSMutableBitmapCharSet</a></li>
         <li><a rel="gsdoc" href="NSCharacterSet.html#class$NSMutableCharacterSet">NSMutableCharacterSet</a></li>
         <li><a rel="gsdoc" href="NSData.html#class$NSMutableData">NSMutableData</a></li>
         <li><a rel="gsdoc" href="NSDictionary.html#class$NSMutableDictionary">NSMutableDictionary</a></li>

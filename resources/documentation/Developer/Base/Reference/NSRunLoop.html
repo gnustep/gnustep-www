@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.117</p>
-    <p><b>Date:</b> 2004/11/19 09:41:34</p>
+    <p><b>Version:</b> 1.120</p>
+    <p><b>Date:</b> 2005/02/23 22:17:54</p>
     <p><b>Copyright:</b> (C) 1996-1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -43,7 +43,11 @@
         category</a>
         </li>
         <li>
-          <a href="#005000000000">Software documentation for the RunLoopEvents protocol</a>
+          <a href="#005000000000">Software documentation for the NSRunLoop(mingw32)
+        category</a>
+        </li>
+        <li>
+          <a href="#006000000000">Software documentation for the RunLoopEvents protocol</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
@@ -106,7 +110,7 @@
               </code>
               method, however unless you are using the AppKit
               and the
-              <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSApplication.html#class$NSApplication">NSApplication</a>
+              NSApplication
 
                 class, the run loop will not be started unless
                 you explicitly send it a
@@ -144,6 +148,8 @@
       <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(OPENSTEP)-configureAsServer">-configureAsServer</a></li>
       <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(OPENSTEP)-performSelector:target:argument:order:modes:">-performSelector:target:argument:order:modes:</a></li>
       <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(OPENSTEP)-removePort:forMode:">-removePort:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(mingw32)-addMsgTarget:withMethod:forMode:">-addMsgTarget:withMethod:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(mingw32)-removeMsgForMode:">-removeMsgForMode:</a></li>
       <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop+currentRunLoop">+currentRunLoop</a></li>
       <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-acceptInputForMode:beforeDate:">-acceptInputForMode:beforeDate:</a></li>
       <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop-addTimer:forMode:">-addTimer:forMode:</a></li>
@@ -515,6 +521,59 @@
     <hr width="25%" align="left" />
 
           <h1><a name="005000000000">
+        Software documentation for the NSRunLoop(mingw32)
+        category
+      </a></h1>
+    <h2><a rel="gsdoc" href="#class$NSRunLoop">NSRunLoop</a>(<a name="category$NSRunLoop(mingw32)">mingw32</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSRunLoop.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          Interface that add method to set target for win32
+          messages. <br />
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(mingw32)-addMsgTarget:withMethod:forMode:">-addMsgTarget:withMethod:forMode:</a></li>
+      <li><a rel="gsdoc" href="NSRunLoop.html#method$NSRunLoop(mingw32)-removeMsgForMode:">-removeMsgForMode:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSRunLoop(mingw32)-addMsgTarget:withMethod:forMode:">addMsgTarget:&nbsp;withMethod:&nbsp;forMode:&nbsp;</a></h3>
+    - (void) <b>addMsgTarget:</b> (id)target<b> withMethod:</b> (SEL)selector<b> forMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
+    <p>
+      
+            Adds a <var>target</var> to the loop in the specified
+            <var>mode</var> for the win32 messages. <br /> Only a
+            target+selector is added in one
+            <var>mode</var>. Successive calls overwrite the
+            previous. <br />
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSRunLoop(mingw32)-removeMsgForMode:">removeMsgForMode:&nbsp;</a></h3>
+    - (void) <b>removeMsgForMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
+    <p>
+      
+            Delete the target of the loop in the specified
+            <var>mode</var> for the win32 messages. <br />
+          
+    </p>
+    <hr width="25%" align="left" />
+
+          <h1><a name="006000000000">
         Software documentation for the RunLoopEvents protocol
       </a></h1>
     <h2><a name="protocol$(RunLoopEvents)">RunLoopEvents</a></h2>
