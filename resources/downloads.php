@@ -342,14 +342,6 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.fsf.org/software/gnu3dkit/gnu3dkit.html">Geometry Kit</a></td>
-<td class="req">Optional</td>
-<td class="stab"><a href="http://www.gnu.org/software/gnu3dkit/GeometryKit-0.7.5.src.tar.gz">0.7.5</a></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Part of 3D Kit</td>
-</tr>
-
-<tr>
 <td class="src">gdl2</td>
 <td class="req">Optional</td>
 <td class="stab"><div class="cent">-</div></td>
