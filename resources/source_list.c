@@ -190,7 +190,7 @@ write_file(int i)
   fprintf(stream, "\n");
   fprintf(stream, "<font face=""helvetica,arial,sans-serif"" size=3>\n");
   fprintf(stream, "\n");
-  fprintf(stream, "<nobr><img src=""images/disks.gif""><H1>GNUstep %s</H1></nobr>", products[i]);
+  fprintf(stream, "<nobr><img src=""images/disks.png""><H1>GNUstep %s</H1></nobr>", products[i]);
   fprintf(stream, "<p>\n\n");
   fprintf(stream, "<H3><a name=""src"">Source</a></H3>\n");
 
