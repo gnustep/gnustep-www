@@ -405,7 +405,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="ihttp://www.gnustep.org/experience/ProjectCenter.html">Project Center</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("dev-apps/ProjectCenter-0.4.0.tar.gz")?>">0.4.0
+<td class="stab"><a href="<?php download("dev-apps/ProjectCenter-0.4.2.tar.gz")?>">0.4.2
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Project developer</td>
@@ -490,8 +490,8 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">GWorkspace</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.4.1.tar.gz">0.4.1</a></td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.5.2.tar.gz">0.5.2</a></td>
+<td class="stab">-</td>
+<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.6.5.tar.gz">0.6.5</a></td>
 <td>File manager for GNUstep</td>
 </tr>
 
