@@ -250,7 +250,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-make-1.8.0.tar.gz")?>">1.8.0</a></td>
-<td class="unst"><a href="<?php download("core/gnustep-make-1.9.1.tar.gz")?>">1.9.1</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-make-1.9.2.tar.gz")?>">1.9.1</a></td>
 <td>Makefile Package</td>
 </tr>
 
@@ -258,7 +258,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-base-1.8.0.tar.gz")?>">1.8.0</a></td>
-<td class="unst"><a href="<?php download("core/gnustep-base-1.9.1.tar.gz")?>">1.9.1</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-base-1.9.2.tar.gz")?>">1.9.1</a></td>
 <td>Foundation</td>
 </tr>
 
@@ -266,7 +266,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep GUI</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-gui-0.9.0.tar.gz")?>">0.9.0</a></td>
-<td class="unst"><a href="<?php download("core/gnustep-gui-0.9.2.tar.gz")?>">0.9.2</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-gui-0.9.3.tar.gz")?>">0.9.2</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
@@ -274,7 +274,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Backend</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-back-0.9.0.tar.gz")?>">0.9.0</a></td>
-<td class="unst"><a href="<?php download("core/gnustep-back-0.9.2.tar.gz")?>">0.9.2</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-back-0.9.3.tar.gz")?>">0.9.2</a></td>
 <td>Generic back-end</td>
 </tr>
 
