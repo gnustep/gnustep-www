@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.326</p>
-    <p><b>Date:</b> 2004/08/26 13:43:34</p>
+    <p><b>Version:</b> 1.329</p>
+    <p><b>Date:</b> 2004/12/29 04:21:37</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -205,10 +205,19 @@
     <h3><a name="method$NSMutableString-initWithCapacity:">initWithCapacity:&nbsp;</a></h3>
     - (id) <b>initWithCapacity:</b> (unsigned int)capacity;<br />
 This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
             Constructs an empty string with initial buffer
-            size of <var>capacity</var>.
+            size of <var>capacity</var>. <br /> Calls
+            <a rel="gsdoc" href="#method$NSString-init">
+              -init
+            </a>
+
+            (which does nothing but maintain MacOS-X
+            compatibility), and needs to be
+            re-implemented in subclasses in order to
+            have all other initialisers work.
           
     </p>
     <hr width="25%" align="left" />
@@ -416,10 +425,12 @@ Where an NSString instance method returns an NSString object, the class of the a
       <li><a rel="gsdoc" href="NSString.html#method$NSString-lastPathComponent">-lastPathComponent</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-length">-length</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-lineRangeForRange:">-lineRangeForRange:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-localFromOpenStepPath">-localFromOpenStepPath</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-localizedCaseInsensitiveCompare:">-localizedCaseInsensitiveCompare:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-localizedCompare:">-localizedCompare:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-lossyCString">-lossyCString</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-lowercaseString">-lowercaseString</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-openStepPathFromLocal">-openStepPathFromLocal</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-pathComponents">-pathComponents</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-pathExtension">-pathExtension</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-propertyList">-propertyList</a></li>
@@ -451,6 +462,7 @@ Where an NSString instance method returns an NSString object, the class of the a
       <li><a rel="gsdoc" href="NSString.html#method$NSString-substringFromRange:">-substringFromRange:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-substringToIndex:">-substringToIndex:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-substringWithRange:">-substringWithRange:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-unicharString">-unicharString</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-uppercaseString">-uppercaseString</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-writeToFile:atomically:">-writeToFile:atomically:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-writeToURL:atomically:">-writeToURL:atomically:</a></li>
@@ -1180,7 +1192,57 @@ Where an NSString instance method returns an NSString object, the class of the a
     - (id) <b>init</b>;<br />
     <p>
       
-            Initializes as an empty string.
+            
+    </p>
+    <p>
+
+              In MacOS-X class clusters do not have designated
+              initialisers, and there is a general rule
+              that <a rel="gsdoc" href="#method$NSString-init">-init</a>
+ is
+              treated as the designated initialiser of the
+              class cluster, but that other intitialisers may not
+              work s expected an would need to be individually
+              overridden in any subclass.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              GNUstep tries to make it easier to subclass a
+              class cluster, by making class clusters follow the
+              same convention as normal classes, so the designated
+              initialiser is the <em>richest</em>
+              initialiser. This means that all other
+              initialisers call the documented designated
+              initialiser (which calls
+              <a rel="gsdoc" href="#method$NSString-init">
+                -init
+              </a>
+
+              only for MacOS-X compatibility), and anyone writing
+              a subclass only needs to override that one initialiser
+              in order to have all the other ones work.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              For MacOS-X compatibility, you may also need to
+              override various other initialisers. Exactly
+              which ones, you will need to determine by trial on
+              a MacOS-X system... and may vary between releases of
+              MacOS-X. So to be safe, on MacOS-X you probably
+              need to re-implement <em>all</em> the class cluster
+              initialisers you might use in conjunction
+              with your subclass.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -1302,6 +1364,7 @@ Where an NSString instance method returns an NSString object, the class of the a
     <h3><a name="method$NSString-initWithCharactersNoCopy:length:freeWhenDone:">initWithCharactersNoCopy:&nbsp;length:&nbsp;freeWhenDone:&nbsp;</a></h3>
     - (id) <b>initWithCharactersNoCopy:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (unsigned int)length<b> freeWhenDone:</b> (BOOL)flag;<br />
 This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
             
@@ -1553,9 +1616,10 @@ This is a designated initialiser for the class.<br />
     - (BOOL) <b>isEqual:</b> (id)anObject;<br />
     <p>
       
-            Returns based on string comparison if
-            <var>anObject</var> is an NSString, else uses
-            <code>==</code>.
+            Returns whether the receiver and an
+            <var>anObject</var> are equals as strings. If
+            <var>anObject</var> isn&apos;t an NSString, returns
+            <code>NO</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -1609,6 +1673,17 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSString-localFromOpenStepPath">localFromOpenStepPath&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>localFromOpenStepPath</b>;<br />
+    <p>
+      
+            Converts this string, which is assumed to be a
+            path in Unix notation (&apos;/&apos; is file separator, &apos;.&apos; is
+            extension separator) to a string path expressed
+            in the convention for the host operating system.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSString-localizedCaseInsensitiveCompare:">localizedCaseInsensitiveCompare:&nbsp;</a></h3>
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>localizedCaseInsensitiveCompare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string;<br />
     <p>
@@ -1645,6 +1720,17 @@ This is a designated initialiser for the class.<br />
       
             Returns a copy of the receiver with all characters
             converted to lowercase.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSString-openStepPathFromLocal">openStepPathFromLocal&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>openStepPathFromLocal</b>;<br />
+    <p>
+      
+            Converts this string, which is assumed to be a
+            path in the convention for the host operating system
+            to a string path expressed in Unix notation (&apos;/&apos; is file
+            separator, &apos;.&apos; is extension separator).
           
     </p>
     <hr width="25%" align="left" />
@@ -2212,6 +2298,17 @@ for more information on what a property list is.    </p>
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSString-unicharString">unicharString&nbsp;</a></h3>
+    - (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*) <b>unicharString</b>;<br />
+    <p>
+      
+            Returns a pointer to a null terminated string of
+            16-bit unichar The memory pointed to is not owned by
+            the caller, so the caller must copy its contents to
+            keep it. Raises an
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSString-uppercaseString">uppercaseString&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>uppercaseString</b>;<br />
     <p>
@@ -2390,7 +2487,7 @@ for more information on what a property list is.    </p>
     </p>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-immutableProxy">-immutableProxy</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GNUstep)-immutableProxy">-immutableProxy</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSMutableString(GNUstep)-immutableProxy">immutableProxy&nbsp;</a></h3>
@@ -2435,12 +2532,12 @@ for more information on what a property list is.    </p>
     </p>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deletePrefix:">-deletePrefix:</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deleteSuffix:">-deleteSuffix:</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-replaceString:withString:">-replaceString:withString:</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-trimLeadSpaces">-trimLeadSpaces</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-trimSpaces">-trimSpaces</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-trimTailSpaces">-trimTailSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-deletePrefix:">-deletePrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-deleteSuffix:">-deleteSuffix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-replaceString:withString:">-replaceString:withString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-trimLeadSpaces">-trimLeadSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-trimSpaces">-trimSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString(GSCategories)-trimTailSpaces">-trimTailSpaces</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSMutableString(GSCategories)-deletePrefix:">deletePrefix:&nbsp;</a></h3>
@@ -2532,13 +2629,13 @@ for more information on what a property list is.    </p>
     </p>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSString.html#method$NSString+stringWithFormat:arguments:">+stringWithFormat:arguments:</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingPrefix:">-stringByDeletingPrefix:</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingSuffix:">-stringByDeletingSuffix:</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByReplacingString:withString:">-stringByReplacingString:withString:</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
-      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)+stringWithFormat:arguments:">+stringWithFormat:arguments:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByDeletingPrefix:">-stringByDeletingPrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByDeletingSuffix:">-stringByDeletingSuffix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByReplacingString:withString:">-stringByReplacingString:withString:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSString(GSCategories)+stringWithFormat:arguments:">stringWithFormat:&nbsp;arguments:&nbsp;</a></h3>

@@ -75,6 +75,10 @@
           <a href="#017000000000">Software documentation for the GSXMLDocument(XSLT)
         category</a>
         </li>
+        <li>
+          <a href="#018000000000">Software documentation for the NSString(GSXML)
+        category</a>
+        </li>
       </ol>
       <hr width="50%" align="left" />
     </div>
@@ -841,9 +845,9 @@ XML SAX Handler.    </p>
     <p>
       
             Uses the
-            <a rel="gsdoc" href="#method$GSXMLDocument-description">
+            
               -description
-            </a>
+            
 
             method to produce a string representation of the
             document and writes that to <var>filename</var>.
@@ -855,9 +859,9 @@ XML SAX Handler.    </p>
     <p>
       
             Uses the
-            <a rel="gsdoc" href="#method$GSXMLDocument-description">
+            
               -description
-            </a>
+            
 
             method to produce a string representation of the
             document and writes that to <var>url</var>.
@@ -1136,7 +1140,7 @@ XML SAX Handler.    </p>
 
               Converts a node type string to a numeric
               constant which can be compared with the result
-              of the <a rel="gsdoc" href="#method$GSXMLNode-type">-type</a>
+              of the -type
 
               method to determine what sort of node an instance
               is. Because this method is quite inefficient, you
@@ -1273,11 +1277,11 @@ Return attributes and values as a dictionary    </p>
               -content
             </a>
 
-            method, but retains the standard five entities
-            (&amp;lt;, &amp;gt;, &amp;apos;, &amp;quot;, and
-            &amp;amp;) which are normally replaced with
-            their standard equivalents (&lt;, &gt;, &apos;,
-            &quot;, and &amp;). <br />
+            method, but retains escaped character information
+            (like the standard five entities &amp;lt;, &amp;gt;,
+            &amp;apos;, &amp;quot;, and &amp;amp;) which
+            are normally replaced with their standard equivalents
+            (&lt;, &gt;, &apos;, &quot;, and &amp;).
           
     </p>
     <hr width="25%" align="left" />
@@ -1340,15 +1344,15 @@ Return attributes and values as a dictionary    </p>
     <p>
       
             Convenience method, equivalent to calling
-            <a rel="gsdoc" href="#method$GSXMLNode-type">
+            
               -type
-            </a>
+            
 
             and comparing it with the result of passing
             &quot;XML_ELEMENT_NODE&quot; to
-            <a rel="gsdoc" href="#method$GSXMLNode+typeFromDescription:">
+            
               +typeFromDescription:
-            </a>
+            
 
             (but faster).
           
@@ -1359,15 +1363,15 @@ Return attributes and values as a dictionary    </p>
     <p>
       
             Convenience method, equivalent to calling
-            <a rel="gsdoc" href="#method$GSXMLNode-type">
+            
               -type
-            </a>
+            
 
             and comparing it with the result of passing
             &quot;XML_TEXT_NODE&quot; to
-            <a rel="gsdoc" href="#method$GSXMLNode+typeFromDescription:">
+            
               +typeFromDescription:
-            </a>
+            
 
             (but faster).
           
@@ -1656,9 +1660,9 @@ Return attributes and values as a dictionary    </p>
             node types is to use this method and compare the
             return value with a value you previously obtained
             using the
-            <a rel="gsdoc" href="#method$GSXMLNode+typeFromDescription:">
+            
               +typeFromDescription:
-            </a>
+            
 
             method.
           
@@ -1759,6 +1763,7 @@ Return attributes and values as a dictionary    </p>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser+parserWithSAXHandler:withContentsOfURL:">+parserWithSAXHandler:withContentsOfURL:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser+parserWithSAXHandler:withData:">+parserWithSAXHandler:withData:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser+xmlEncodingStringForStringEncoding:">+xmlEncodingStringForStringEncoding:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-abortParsing">-abortParsing</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-columnNumber">-columnNumber</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-doValidityChecking:">-doValidityChecking:</a></li>
       <li><a rel="gsdoc" href="GSXML.html#method$GSXMLParser-document">-document</a></li>
@@ -1980,6 +1985,15 @@ Return attributes and values as a dictionary    </p>
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$GSXMLParser-abortParsing">abortParsing&nbsp;</a></h3>
+    - (void) <b>abortParsing</b>;<br />
+    <p>
+      
+            If called by a SAX callback routine, this method will
+            terminate the parsiong process.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$GSXMLParser-columnNumber">columnNumber&nbsp;</a></h3>
     - (int) <b>columnNumber</b>;<br />
     <p>
@@ -2047,9 +2061,9 @@ This is a designated initialiser for the class.<br />
 
                 to build a tree representing the parsed file. This
                 tree will then be available (via the
-                <a rel="gsdoc" href="#method$GSXMLParser-document">
+                
                   -document
-                </a>
+                
 
                 method) as a
                 <a rel="gsdoc" href="#class$GSXMLDocument">GSXMLDocument</a>
@@ -2709,12 +2723,12 @@ The source for the parsing process is not specified - so parsing must be done in
     </p>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument+xsltTransformFile:stylesheet:">+xsltTransformFile:stylesheet:</a></li>
-      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument+xsltTransformFile:stylesheet:params:">+xsltTransformFile:stylesheet:params:</a></li>
-      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument+xsltTransformXml:stylesheet:">+xsltTransformXml:stylesheet:</a></li>
-      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument+xsltTransformXml:stylesheet:params:">+xsltTransformXml:stylesheet:params:</a></li>
-      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument-xsltTransform:">-xsltTransform:</a></li>
-      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument-xsltTransform:params:">-xsltTransform:params:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)+xsltTransformFile:stylesheet:">+xsltTransformFile:stylesheet:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)+xsltTransformFile:stylesheet:params:">+xsltTransformFile:stylesheet:params:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)+xsltTransformXml:stylesheet:">+xsltTransformXml:stylesheet:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)+xsltTransformXml:stylesheet:params:">+xsltTransformXml:stylesheet:params:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)-xsltTransform:">-xsltTransform:</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$GSXMLDocument(XSLT)-xsltTransform:params:">-xsltTransform:params:</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$GSXMLDocument(XSLT)+xsltTransformFile:stylesheet:">xsltTransformFile:&nbsp;stylesheet:&nbsp;</a></h3>
@@ -2789,6 +2803,58 @@ The source for the parsing process is not specified - so parsing must be done in
             details of the supported parameters. <br /> Returns
             an autoreleased GSXMLDocument containing the transformed
             XML, or <code>nil</code> on failure.
+          
+    </p>
+    <hr width="25%" align="left" />
+
+          <h1><a name="018000000000">
+        Software documentation for the NSString(GSXML)
+        category
+      </a></h1>
+    <h2><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>(<a name="category$NSString(GSXML)">GSXML</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>GNUstepBase/GSXML.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>NotOpenStep</li>
+        <li>NotMacOS-X</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          Convenience methods for managing XML escape
+          sequences in an NSString.
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSXML.html#method$NSString(GSXML)-stringByEscapingXML">-stringByEscapingXML</a></li>
+      <li><a rel="gsdoc" href="GSXML.html#method$NSString(GSXML)-stringByUnescapingXML">-stringByUnescapingXML</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSString(GSXML)-stringByEscapingXML">stringByEscapingXML&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>stringByEscapingXML</b>;<br />
+    <p>
+      
+            Convert XML special characters in the receiver
+            (like &apos;&amp;&apos; and &apos;&quot;&apos;) to their escaped
+            equivalents, and return the escaped string.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSString(GSXML)-stringByUnescapingXML">stringByUnescapingXML&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>stringByUnescapingXML</b>;<br />
+    <p>
+      
+            Convert XML escape sequences (like &apos;&amp;&apos;amp; and
+            &apos;&amp;quot;&apos;) to their unescaped equivalents,
+            and return the unescaped string.
           
     </p>
     <hr width="25%" align="left" />

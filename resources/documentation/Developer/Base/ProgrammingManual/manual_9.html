@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on September, 7  2004 by texi2html 1.64 -->
+<!-- Created on October, 27  2004 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -29,17 +29,20 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC146"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC149"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC150"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
 <H1> A. The GNUstep Documentation System </H1>
 <!--docid::SEC145::-->
 <P>
 
-The GNUstep documentation markup language (GSdoc) is an XML language designed
+GNUstep includes its own documentation system for producing HTML, PDF, and
+other readable documents for developers and users.  (It also includes
+facilities for "Help" accessed within applications, but these are not
+covered here.)  It is based on <I>GSdoc</I>, an XML language designed
 specifically for writing documentation for the <A HREF="http://www.gnustep.org">GNUstep project</A>.  In practice, that means that it is designed for writing
 about software, and in particular, for writing about Objective-C classes.
 </P><P>
@@ -70,10 +73,10 @@ The <I>autogsdoc</I> tool is described
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC147"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC149"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC150"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
 <H2> A.1 Quick Start </H2>
@@ -149,14 +152,48 @@ the source directory.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC148"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC148"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC149"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC150"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> A.2 Comment the Interface or the Implementation? </H2>
+<H2> A.2 Cross-Referencing </H2>
 <!--docid::SEC147::-->
+<P>
+
+GSdoc provides the ability to reference entities both within the project and
+in external projects.  When writing GSdoc comments in source code, references
+are particularly easy to create.  To refer to an argument of the method or
+function you are documenting, just type it normally; it will be presented in a
+special type face in the final documentation to show it is an argument.  To
+refer to another method within the same class you are documenting, just type
+its selector with the + or - sign in front.  This will be converted into a
+hyperlink in output forms that support that.  To refer to another class, you
+just type the class's name in [Brackets].  To refer to a method in another
+class, put the method selector after the name, as in
+[Class-methodWithArg1:andArg2:] (do not include a space).  To refer to a
+protocol, use [(BracketsAndParentheses)] instead of just brackets.  To refer
+to a category, use [Class(Category)].  For methods in these two cases, put the
+method name outside the parentheses.  To refer to a function, simply type its
+name suffixed by parentheses().
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC148"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC147"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC149"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC149"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC150"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> A.3 Comment the Interface or the Implementation? </H2>
+<!--docid::SEC148::-->
 <P>
 
 Since <CODE>autogsdoc</CODE> picks up comments both from interface/header files and
@@ -167,8 +204,8 @@ source) will be able to generate the documentation.  The header file carries
 all of the specification for the class's behavior.  On the other hand, if you
 put the comments in the implementation, then people editing the source code
 will have the method descriptions handy when they need them.  If <I>autogsdoc</I>
-finds comments for the same entity in both interface and implementation, the
-version in the implementation file "wins".
+finds comments for the same entity in both interface and implementation, they
+are concatenated in the result.
 </P><P>
 
 Nonetheless, the recommendation of this author is that you put the comments
@@ -177,35 +214,28 @@ interface file declares the behavior of a class.
 </P><P>
 
 <HR SIZE="6">
-<A NAME="SEC148"></A>
+<A NAME="SEC149"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC147"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC149"> &gt; </A>]</TD>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC148"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC150"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC149"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC150"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> A.3 Comparison with OS X Header Doc and Java JavaDoc </H2>
-<!--docid::SEC148::-->
+<H2> A.4 Comparison with OS X Header Doc and Java JavaDoc </H2>
+<!--docid::SEC149::-->
 <P>
 
 The HTML output from all of these systems is roughly comparable.  In terms of
 and comments needed in the source code to produce good class documentation,
 the GSdoc / autogsdoc system aims for maximal simplicity.  In practice,
 requiring lots of special formatting makes developers less likely to document
-things.  For example, to refer to an argument of the method or function you
-are documenting, just type it normally.  To refer to another method within the
-same class you are documenting, just type its selector with the + or - sign in
-front.  No need to enclose it in special markup.  To refer to another class in
-documentation, you just type the class's name in [Brackets].  To refer to a
-method in another class, put the method selector after the name, as in [Class
--methodWithArg1:andArg2:].  To refer to a protocol, use
-[(BracketsAndParentheses)] instead of just brackets.  To refer to a function,
-simply type its name suffixed by parentheses().
+things, therefore, as described above, GSdoc does not require it, letting the
+parser do the work instead of the person.
 </P><P>
 
 In terms of non-HTML output formats and control over the HTML format, these
@@ -217,16 +247,16 @@ the use of XSLT as a presentation layer.
 <HR SIZE="6">
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC149"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_10.html#SEC150"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC164">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>September, 7  2004</I>
+by <I>Adam Fedor</I> on <I>October, 27  2004</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 

@@ -20,8 +20,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.139</p>
-    <p><b>Date:</b> 2004/06/22 22:40:36</p>
+    <p><b>Version:</b> 1.143</p>
+    <p><b>Date:</b> 2004/09/16 14:33:54</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1998 Free Software Foundation, Inc.</p>
 
         <div>
@@ -108,6 +108,7 @@
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-indexOfObject:inRange:">-indexOfObject:inRange:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-indexOfObjectIdenticalTo:">-indexOfObjectIdenticalTo:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-indexOfObjectIdenticalTo:inRange:">-indexOfObjectIdenticalTo:inRange:</a></li>
+      <li><a rel="gsdoc" href="NSArray.html#method$NSArray-init">-init</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithArray:">-initWithArray:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithArray:copyItems:">-initWithArray:copyItems:</a></li>
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-initWithContentsOfFile:">-initWithContentsOfFile:</a></li>
@@ -158,9 +159,9 @@
       
             Returns an autoreleased array based upon the
             <var>file</var>. The new array is created using
-            <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone:">
+            
               +allocWithZone:
-            </a>
+            
 
             and initialised using the
             <a rel="gsdoc" href="#method$NSArray-initWithContentsOfFile:">
@@ -178,9 +179,9 @@
       
             Returns an autoreleased array from the contenta of
             <var>aURL</var>. The new array is created using
-            <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone:">
+            
               +allocWithZone:
-            </a>
+            
 
             and initialised using the
             <a rel="gsdoc" href="#method$NSArray-initWithContentsOfURL:">
@@ -255,9 +256,9 @@
       
             Returns <code>YES</code> if <var>anObject</var>
             belongs to self. No otherwise. <br /> The
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+            
               -isEqual:
-            </a>
+            
 
             method of <var>anObject</var> is used to test for
             equality.
@@ -365,9 +366,9 @@ Subclasses <strong>should</strong> override this method.<br />
             Returns the index of the first object found in the
             receiver which is equal to <var>anObject</var>
             (using anObject&apos;s
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+            
               -isEqual:
-            </a>
+            
 
             method). Returns NSNotFound on failure.
           
@@ -380,9 +381,9 @@ Subclasses <strong>should</strong> override this method.<br />
             Returns the index of the first object found in
             <var>aRange</var> of receiver which is equal to
             <var>anObject</var> (using anObject&apos;s
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+            
               -isEqual:
-            </a>
+            
 
             method). Returns NSNotFound on failure.
           
@@ -405,6 +406,64 @@ Subclasses <strong>should</strong> override this method.<br />
             Returns the index of the specified object in the
             range of the receiver, or NSNotFound if the object is
             not present.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSArray-init">init&nbsp;</a></h3>
+    - (id) <b>init</b>;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              In MacOS-X class clusters do not have designated
+              initialisers, and there is a general rule
+              that <a rel="gsdoc" href="#method$NSArray-init">-init</a>
+ is
+              treated as the designated initialiser of the
+              class cluster, but that other intitialisers may not
+              work s expected an would need to be individually
+              overridden in any subclass.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              GNUstep tries to make it easier to subclass a
+              class cluster, by making class clusters follow the
+              same convention as normal classes, so the designated
+              initialiser is the <em>richest</em>
+              initialiser. This means that all other
+              initialisers call the documented designated
+              initialiser (which calls
+              <a rel="gsdoc" href="#method$NSArray-init">
+                -init
+              </a>
+
+              only for MacOS-X compatibility), and anyone writing
+              a subclass only needs to override that one initialiser
+              in order to have all the other ones work.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              For MacOS-X compatibility, you may also need to
+              override various other initialisers. Exactly
+              which ones, you will need to determine by trial on
+              a MacOS-X system... and may vary between releases of
+              MacOS-X. So to be safe, on MacOS-X you probably
+              need to re-implement <em>all</em> the class cluster
+              initialisers you might use in conjunction
+              with your subclass.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -549,12 +608,20 @@ Subclasses <strong>should</strong> override this method.<br />
     <h3><a name="method$NSArray-initWithObjects:count:">initWithObjects:&nbsp;count:&nbsp;</a></h3>
     - (id) <b>initWithObjects:</b> (id*)objects<b> count:</b> (unsigned)count;<br />
 This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            Initialize the array with <var>count</var>
-            <var>objects</var>. <br /> Retains each object placed
-            in the array. <br /> Like all initializers, may change
-            the value of self before returning it.
+            This should initialize the array with <var>count</var>
+            (may be zero) <var>objects</var>. <br /> Retains each
+            object placed in the array. <br /> Calls
+            <a rel="gsdoc" href="#method$NSArray-init">
+              -init
+            </a>
+
+            (which does nothing but maintain MacOS-X
+            compatibility), and needs to be
+            re-implemented in subclasses in order to
+            have all other initialisers work.
           
     </p>
     <hr width="25%" align="left" />
@@ -604,7 +671,7 @@ This is a designated initialiser for the class.<br />
       
             Makes each object in the array perform
             <var>aSelector</var>. <br /> This is done
-            sequentially from the last to the first
+            sequentially from the first to the last
             object.
           
     </p>
@@ -615,7 +682,7 @@ This is a designated initialiser for the class.<br />
       
             Makes each object in the array perform
             <var>aSelector</var> with <var>arg</var>. <br /> This
-            is done sequentially from the last to the first object.
+            is done sequentially from the first to the last object.
           
     </p>
     <hr width="25%" align="left" />
@@ -927,11 +994,20 @@ Subclasses <strong>should</strong> override this method.<br />
     <h3><a name="method$NSMutableArray-initWithCapacity:">initWithCapacity:&nbsp;</a></h3>
     - (id) <b>initWithCapacity:</b> (unsigned)numItems;<br />
 This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
             Initialise the array with the specified capacity
             ... this should ensure that the array can have
-            <var>numItems</var> added efficiently.
+            <var>numItems</var> added efficiently. <br /> Calls
+            <a rel="gsdoc" href="#method$NSArray-init">
+              -init
+            </a>
+
+            (which does nothing but maintain MacOS-X
+            compatibility), and needs to be
+            re-implemented in subclasses in order to
+            have all other initialisers work.
           
     </p>
     <hr width="25%" align="left" />
@@ -972,9 +1048,9 @@ Subclasses <strong>should</strong> override this method.<br />
       
             Removes all occurrences of <var>anObject</var>
             (found by anObjects
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+            
               -isEqual:
-            </a>
+            
 
             method) from the receiver.
           
@@ -986,9 +1062,9 @@ Subclasses <strong>should</strong> override this method.<br />
       
             Removes all occurrences of <var>anObject</var>
             (found by the
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+            
               -isEqual:
-            </a>
+            
 
             method of <var>anObject</var>) <var>aRange</var> in
             the receiver.
@@ -1047,9 +1123,9 @@ Subclasses <strong>should</strong> override this method.<br />
       
             Removes from the receiver, all the objects present
             in <var>otherArray</var>, as determined by using the
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+            
               -isEqual:
-            </a>
+            
 
             method.
           
@@ -1163,8 +1239,8 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSArray.html#method$NSArray-insertionPosition:usingFunction:context:">-insertionPosition:usingFunction:context:</a></li>
-      <li><a rel="gsdoc" href="NSArray.html#method$NSArray-insertionPosition:usingSelector:">-insertionPosition:usingSelector:</a></li>
+      <li><a rel="gsdoc" href="NSArray.html#method$NSArray(GNUstep)-insertionPosition:usingFunction:context:">-insertionPosition:usingFunction:context:</a></li>
+      <li><a rel="gsdoc" href="NSArray.html#method$NSArray(GNUstep)-insertionPosition:usingSelector:">-insertionPosition:usingSelector:</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSArray(GNUstep)-insertionPosition:usingFunction:context:">insertionPosition:&nbsp;usingFunction:&nbsp;context:&nbsp;</a></h3>

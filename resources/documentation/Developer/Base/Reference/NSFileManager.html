@@ -23,8 +23,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.101</p>
-    <p><b>Date:</b> 2004/07/10 03:19:56</p>
+    <p><b>Version:</b> 1.103</p>
+    <p><b>Date:</b> 2004/12/29 04:21:37</p>
     <p><b>Copyright:</b> (C) 1997-2002 Free Software Foundation, Inc.</p>
 
         <div>
@@ -162,8 +162,8 @@
     <hr width="25%" align="left" />
 <a name="_NSDirectoryEnumerator_ivars"/>    <br/><hr width="50%" align="left" />
     <h2>Instance Variables for NSDirectoryEnumerator Class</h2>
-    <h3><a name="ivariable$NSDirectoryEnumerator*_current_file_path">_current_file_path</a></h3>
-    @protected char* <b>_current_file_path</b>;<br />
+    <h3><a name="ivariable$NSDirectoryEnumerator*_currentFilePath">_currentFilePath</a></h3>
+    @protected NSString* <b>_currentFilePath</b>;<br />
     <p>
       
             <em>Warning</em> the underscore at the start of the
@@ -186,6 +186,18 @@
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSDirectoryEnumerator*_openStepPathFromLocalImp">_openStepPathFromLocalImp</a></h3>
+    @protected NSString*(* <b>_openStepPathFromLocalImp</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="ivariable$NSDirectoryEnumerator*_stack">_stack</a></h3>
     @protected void* <b>_stack</b>;<br />
     <p>
@@ -198,20 +210,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSDirectoryEnumerator*_stringWithFileSysImp">_stringWithFileSysImp</a></h3>
-    @protected NSString*(* <b>_stringWithFileSysImp</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSDirectoryEnumerator*_top_path">_top_path</a></h3>
-    @protected char* <b>_top_path</b>;<br />
+    <h3><a name="ivariable$NSDirectoryEnumerator*_topPath">_topPath</a></h3>
+    @protected NSString* <b>_topPath</b>;<br />
     <p>
       
             <em>Warning</em> the underscore at the start of the
@@ -284,7 +284,9 @@
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-isReadableFileAtPath:">-isReadableFileAtPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-isWritableFileAtPath:">-isWritableFileAtPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-linkPath:toPath:handler:">-linkPath:toPath:handler:</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-localFromOpenStepPath:">-localFromOpenStepPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-movePath:toPath:handler:">-movePath:toPath:handler:</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-openStepPathFromLocal:">-openStepPathFromLocal:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-pathContentOfSymbolicLinkAtPath:">-pathContentOfSymbolicLinkAtPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-removeFileAtPath:handler:">-removeFileAtPath:handler:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-stringWithFileSystemRepresentation:length:">-stringWithFileSystemRepresentation:length:</a></li>
@@ -887,6 +889,25 @@ The dictionary keys for attributes are -    </p>
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSFileManager-localFromOpenStepPath:">localFromOpenStepPath:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>localFromOpenStepPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
+    <p>
+      
+            Convert from OpenStep internal <var>path</var>
+            format (Unix-style) to a NSString in the local
+            filesystem format. Under Windoze, this attempts
+            to use local conventions to convert to a windows
+            <var>path</var>. In GNUstep, the conventional unix
+            syntax &apos;~user/...&apos; can be used to indicate a windoze
+            drive specification by using the drive letter in
+            place of the username, and the syntax &apos;~@server/...&apos;
+            can be used to indicate a file located on the named
+            windoze network server (the &apos;~@&apos; maps to the
+            leading &apos;//&apos; in a windoze UNC <var>path</var>
+            specification.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSFileManager-movePath:toPath:handler:">movePath:&nbsp;toPath:&nbsp;handler:&nbsp;</a></h3>
     - (BOOL) <b>movePath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)source<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)destination<b> handler:</b> (id)handler;<br />
     <p>
@@ -897,6 +918,21 @@ The dictionary keys for attributes are -    </p>
             <a rel="gsdoc" href="#method$NSObject-fileManager:willProcessPath:">[NSObject&nbsp;-fileManager:willProcessPath:]</a>
  and <a rel="gsdoc" href="#method$NSObject-fileManager:shouldProceedAfterError:">[NSObject&nbsp;-fileManager:shouldProceedAfterError:]</a>
  messages. Will not move to a <var>destination</var> which already exists. <br />
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSFileManager-openStepPathFromLocal:">openStepPathFromLocal:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>openStepPathFromLocal:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)localPath;<br />
+    <p>
+      
+            This method converts from a local system specific
+            filename representation to the internal OpenStep
+            representation (unix-style). This should be
+            used whenever a filename is read in from the local
+            system. <br /> In GNUstep, windoze drive specifiers
+            are encoded in the internal path using the
+            conventuional unix syntax of &apos;~user/...&apos;
+            where the drive letter is used instead of a username.
           
     </p>
     <hr width="25%" align="left" />
@@ -992,22 +1028,22 @@ The dictionary keys for attributes are -    </p>
     </p>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileCreationDate">-fileCreationDate</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileExtensionHidden">-fileExtensionHidden</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileGroupOwnerAccountID">-fileGroupOwnerAccountID</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileGroupOwnerAccountName">-fileGroupOwnerAccountName</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileHFSCreatorCode">-fileHFSCreatorCode</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileHFSTypeCode">-fileHFSTypeCode</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileIsAppendOnly">-fileIsAppendOnly</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileIsImmutable">-fileIsImmutable</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileModificationDate">-fileModificationDate</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileOwnerAccountID">-fileOwnerAccountID</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileOwnerAccountName">-fileOwnerAccountName</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-filePosixPermissions">-filePosixPermissions</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileSize">-fileSize</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileSystemFileNumber">-fileSystemFileNumber</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileSystemNumber">-fileSystemNumber</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileType">-fileType</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileCreationDate">-fileCreationDate</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileExtensionHidden">-fileExtensionHidden</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileGroupOwnerAccountID">-fileGroupOwnerAccountID</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileGroupOwnerAccountName">-fileGroupOwnerAccountName</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileHFSCreatorCode">-fileHFSCreatorCode</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileHFSTypeCode">-fileHFSTypeCode</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileIsAppendOnly">-fileIsAppendOnly</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileIsImmutable">-fileIsImmutable</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileModificationDate">-fileModificationDate</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileOwnerAccountID">-fileOwnerAccountID</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileOwnerAccountName">-fileOwnerAccountName</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-filePosixPermissions">-filePosixPermissions</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileSize">-fileSize</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileSystemFileNumber">-fileSystemFileNumber</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileSystemNumber">-fileSystemNumber</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary(NSFileAttributes)-fileType">-fileType</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSDictionary(NSFileAttributes)-fileCreationDate">fileCreationDate&nbsp;</a></h3>
@@ -1188,8 +1224,8 @@ The dictionary keys for attributes are -    </p>
     </p>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSObject-fileManager:shouldProceedAfterError:">-fileManager:shouldProceedAfterError:</a></li>
-      <li><a rel="gsdoc" href="NSFileManager.html#method$NSObject-fileManager:willProcessPath:">-fileManager:willProcessPath:</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSObject(NSFileManagerHandler)-fileManager:shouldProceedAfterError:">-fileManager:shouldProceedAfterError:</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSObject(NSFileManagerHandler)-fileManager:willProcessPath:">-fileManager:willProcessPath:</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSObject(NSFileManagerHandler)-fileManager:shouldProceedAfterError:">fileManager:&nbsp;shouldProceedAfterError:&nbsp;</a></h3>

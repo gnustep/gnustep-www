@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.49</p>
-    <p><b>Date:</b> 2004/06/22 22:40:39</p>
+    <p><b>Version:</b> 1.54</p>
+    <p><b>Date:</b> 2004/09/19 23:24:36</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1998 Free Software Foundation, Inc.</p>
 
         <div>
@@ -95,9 +95,9 @@
       
             Returns the number of times that an object that is
             equal to the specified object (as determined by the
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+            
               [-isEqual:]
-            </a>
+            
 
             method) has been added to the set and not removed
             from it.
@@ -174,6 +174,7 @@
     <h3><a name="method$NSMutableSet-initWithCapacity:">initWithCapacity:&nbsp;</a></h3>
     - (id) <b>initWithCapacity:</b> (unsigned)numItems;<br />
 This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
             Initialises a newly allocated set to contain no
@@ -181,7 +182,15 @@ This is a designated initialiser for the class.<br />
             specified number of items. <br /> Additions of
             items to a set initialised with an appropriate
             capacity will be more efficient than addition of
-            items otherwise.
+            items otherwise. <br /> Calls
+            <a rel="gsdoc" href="#method$NSSet-init">
+              -init
+            </a>
+
+            (which does nothing but maintain MacOS-X
+            compatibility), and needs to be
+            re-implemented in subclasses in order to
+            have all other initialisers work.
           
     </p>
     <hr width="25%" align="left" />
@@ -269,9 +278,13 @@ This is a designated initialiser for the class.<br />
     <p>
       
           <code>NSSet</code> maintains an unordered collection
-          of unique objects (according to [NSObject -isEqual]). When
-          a duplicate object is added to the set, it replaces its old
-          copy.
+          of unique objects (according to
+          <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+            [NSObject&nbsp;-isEqual:]
+          </a>
+
+          ). When a duplicate object is added to the set, it
+          replaces its old copy.
         
     </p>
     <b>Method summary</b>
@@ -288,6 +301,7 @@ This is a designated initialiser for the class.<br />
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-count">-count</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-description">-description</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-descriptionWithLocale:">-descriptionWithLocale:</a></li>
+      <li><a rel="gsdoc" href="NSSet.html#method$NSSet-init">-init</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-initWithArray:">-initWithArray:</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-initWithObjects:,...">-initWithObjects:,...</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-initWithObjects:count:">-initWithObjects:count:</a></li>
@@ -377,7 +391,12 @@ This is a designated initialiser for the class.<br />
     <p>
       
             Return whether set contains an object equal to this
-            one according to [NSObject -isEqual:].
+            one according to
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+              [NSObject&nbsp;-isEqual:]
+            </a>
+
+            .
           
     </p>
     <hr width="25%" align="left" />
@@ -405,6 +424,64 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSSet-init">init&nbsp;</a></h3>
+    - (id) <b>init</b>;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              In MacOS-X class clusters do not have designated
+              initialisers, and there is a general rule
+              that <a rel="gsdoc" href="#method$NSSet-init">-init</a>
+ is
+              treated as the designated initialiser of the
+              class cluster, but that other intitialisers may not
+              work s expected an would need to be individually
+              overridden in any subclass.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              GNUstep tries to make it easier to subclass a
+              class cluster, by making class clusters follow the
+              same convention as normal classes, so the designated
+              initialiser is the <em>richest</em>
+              initialiser. This means that all other
+              initialisers call the documented designated
+              initialiser (which calls
+              <a rel="gsdoc" href="#method$NSSet-init">
+                -init
+              </a>
+
+              only for MacOS-X compatibility), and anyone writing
+              a subclass only needs to override that one initialiser
+              in order to have all the other ones work.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              For MacOS-X compatibility, you may also need to
+              override various other initialisers. Exactly
+              which ones, you will need to determine by trial on
+              a MacOS-X system... and may vary between releases of
+              MacOS-X. So to be safe, on MacOS-X you probably
+              need to re-implement <em>all</em> the class cluster
+              initialisers you might use in conjunction
+              with your subclass.
+                </p>
+    <p>
+      
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSSet-initWithArray:">initWithArray:&nbsp;</a></h3>
     - (id) <b>initWithArray:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)other;<br />
     <p>
@@ -426,10 +503,19 @@ This is a designated initialiser for the class.<br />
     <h3><a name="method$NSSet-initWithObjects:count:">initWithObjects:&nbsp;count:&nbsp;</a></h3>
     - (id) <b>initWithObjects:</b> (id*)objects<b> count:</b> (unsigned)count;<br />
 This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
             Initialize to contain (unique elements of)
-            <var>objects</var>.
+            <var>objects</var>. <br /> Calls
+            <a rel="gsdoc" href="#method$NSSet-init">
+              -init
+            </a>
+
+            (which does nothing but maintain MacOS-X
+            compatibility), and needs to be
+            re-implemented in subclasses in order to
+            have all other initialisers work.
           
     </p>
     <hr width="25%" align="left" />
@@ -576,8 +662,8 @@ This is a designated initialiser for the class.<br />
     </p>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSSet.html#method$NSCountedSet-purge:">-purge:</a></li>
-      <li><a rel="gsdoc" href="NSSet.html#method$NSCountedSet-unique:">-unique:</a></li>
+      <li><a rel="gsdoc" href="NSSet.html#method$NSCountedSet(GNU_Uniquing)-purge:">-purge:</a></li>
+      <li><a rel="gsdoc" href="NSSet.html#method$NSCountedSet(GNU_Uniquing)-unique:">-unique:</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSCountedSet(GNU_Uniquing)-purge:">purge:&nbsp;</a></h3>
@@ -618,7 +704,7 @@ This is a designated initialiser for the class.<br />
               If the supplied object (or one equal to it as
               determined by the
               <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
-                [-isEqual:]
+                [NSObject&nbsp;-isEqual:]
               </a>
 
               method) is already present in the set, the count

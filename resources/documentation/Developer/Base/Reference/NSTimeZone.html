@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.64</p>
-    <p><b>Date:</b> 2004/07/01 23:24:35</p>
+    <p><b>Version:</b> 1.69</p>
+    <p><b>Date:</b> 2005/01/07 15:33:16</p>
     <p><b>Copyright:</b> (C) 1997-2002 Free Software Foundation, Inc.</p>
 
         <div>
@@ -59,16 +59,17 @@
     </p>
     <p>
 
-            The local time zone can be specified by: <br /> 1) the
-            user defaults database: NSGlobalDomain &quot;Local Time
-            Zone&quot; <br /> 2) the GNUSTEP_TZ environment variable
-            <br /> 3) the file &quot;localtime&quot; in
+            The local time zone is obtained from, in order of
+            preference: <br /> 1) the user defaults
+            database: NSGlobalDomain &quot;Local Time Zone&quot; <br />
+            2) the GNUSTEP_TZ environment variable <br /> 3) the
+            file &quot;localtime&quot; in
             System/Library/Libraries/Resources/NSTimeZone
-            <br /> 4) the TZ environment variable <br /> 5)
-            tzset and tznam on platforms which have it <br /> 6)
-            Windows registry, on Win32 systems <br /> 7) or the
-            fallback time zone (which is UTC) <br /> with the
-            ones listed first having precedence.
+            <br /> 4) the TZ environment variable <br /> 5) The
+            system zone settings (typically in /etc/localtime)
+            <br /> 6) tzset and tznam on platforms which have it
+            <br /> 7) Windows registry, on Win32 systems <br />
+            8) or the fallback time zone (which is UTC) <br />
               </p>
     <p>
       
@@ -113,21 +114,9 @@
     <p>
 
             The problems with depending on the OS for providing
-            time zone info are that some methods for the
-            NSTimeZone classes might be difficult to
-            implement, and also that time zone names may
-            vary wildly between OSes (this could be a big problem
+            time zone info are that time zone names may vary
+            wildly between OSes (this could be a big problem
             when archiving is used between different systems).
-              </p>
-    <p>
-      
-          
-    </p>
-    <p>
-
-            On platforms where the zone info files are already
-            installed elsewhere it is sufficient to use a
-            symlink provided the GMT+/- zones are added.
               </p>
     <p>
       
@@ -149,6 +138,7 @@
       <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+abbreviationDictionary">+abbreviationDictionary</a></li>
       <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+abbreviationMap">+abbreviationMap</a></li>
       <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+defaultTimeZone">+defaultTimeZone</a></li>
+      <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+knownTimeZoneNames">+knownTimeZoneNames</a></li>
       <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+localTimeZone">+localTimeZone</a></li>
       <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+resetSystemTimeZone">+resetSystemTimeZone</a></li>
       <li><a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+setDefaultTimeZone:">+setDefaultTimeZone:</a></li>
@@ -178,7 +168,12 @@
     + (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>abbreviationDictionary</b>;<br />
     <p>
       
-            DEPRECATED.
+            Returns a dictionary containing time zone
+            abbreviations and their corresponding time
+            zone names. More than one time zone may be associated
+            with a single abbreviation. In this case, the
+            dictionary contains only one (usually the most
+            common) time zone name for the abbreviation.
           
     </p>
     <hr width="25%" align="left" />
@@ -186,8 +181,9 @@
     + (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>abbreviationMap</b>;<br />
     <p>
       
-            Returns an abbreviation to time zone map which is
-            quite large.
+            Returns a dictionary that maps abbreviations to the
+            array containing all the time zone names that use the
+            abbreviation.
           
     </p>
     <hr width="25%" align="left" />
@@ -196,6 +192,14 @@
     <p>
       
             Return the default time zone for this process.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSTimeZone+knownTimeZoneNames">knownTimeZoneNames&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>knownTimeZoneNames</b>;<br />
+    <p>
+      
+            Returns an array of all known time zone names.
           
     </p>
     <hr width="25%" align="left" />

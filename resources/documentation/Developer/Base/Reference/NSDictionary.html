@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.108</p>
-    <p><b>Date:</b> 2004/07/29 15:30:47</p>
+    <p><b>Version:</b> 1.110</p>
+    <p><b>Date:</b> 2004/09/10 15:10:54</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1997 Free Software Foundation, Inc.</p>
 
         <div>
@@ -156,6 +156,7 @@ subclass.    </p>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-descriptionInStringsFileFormat">-descriptionInStringsFileFormat</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-descriptionWithLocale:">-descriptionWithLocale:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-descriptionWithLocale:indent:">-descriptionWithLocale:indent:</a></li>
+      <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-init">-init</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-initWithContentsOfFile:">-initWithContentsOfFile:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-initWithContentsOfURL:">-initWithContentsOfURL:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-initWithDictionary:">-initWithDictionary:</a></li>
@@ -348,12 +349,70 @@ subclass.    </p>
             items by four spaces, while a <var>level</var> of one
             indents them by a tab. <br /> If the keys in the
             dictionary respond to
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-compare:">
+            
               -compare:
-            </a>
+            
 
             , the items are listed by key in ascending order. If not,
             the order in which the items are listed is undefined.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary-init">init&nbsp;</a></h3>
+    - (id) <b>init</b>;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              In MacOS-X class clusters do not have designated
+              initialisers, and there is a general rule
+              that <a rel="gsdoc" href="#method$NSDictionary-init">-init</a>
+ is
+              treated as the designated initialiser of the
+              class cluster, but that other intitialisers may not
+              work s expected an would need to be individually
+              overridden in any subclass.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              GNUstep tries to make it easier to subclass a
+              class cluster, by making class clusters follow the
+              same convention as normal classes, so the designated
+              initialiser is the <em>richest</em>
+              initialiser. This means that all other
+              initialisers call the documented designated
+              initialiser (which calls
+              <a rel="gsdoc" href="#method$NSDictionary-init">
+                -init
+              </a>
+
+              only for MacOS-X compatibility), and anyone writing
+              a subclass only needs to override that one initialiser
+              in order to have all the other ones work.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              For MacOS-X compatibility, you may also need to
+              override various other initialisers. Exactly
+              which ones, you will need to determine by trial on
+              a MacOS-X system... and may vary between releases of
+              MacOS-X. So to be safe, on MacOS-X you probably
+              need to re-implement <em>all</em> the class cluster
+              initialisers you might use in conjunction
+              with your subclass.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -492,13 +551,22 @@ subclass.    </p>
     <h3><a name="method$NSDictionary-initWithObjects:forKeys:count:">initWithObjects:&nbsp;forKeys:&nbsp;count:&nbsp;</a></h3>
     - (id) <b>initWithObjects:</b> (id*)objects<b> forKeys:</b> (id*)keys<b> count:</b> (unsigned)count;<br />
 This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
             Initializes contents to the given
             <var>objects</var> and <var>keys</var>. The two
             arrays must have the same size. The n th element of
             the <var>objects</var> array is associated with the n
-            th element of the <var>keys</var> array.
+            th element of the <var>keys</var> array. <br /> Calls
+            <a rel="gsdoc" href="#method$NSDictionary-init">
+              -init
+            </a>
+
+            (which does nothing but maintain MacOS-X
+            compatibility), and needs to be
+            re-implemented in subclasses in order to
+            have all other initialisers work.
           
     </p>
     <hr width="25%" align="left" />
@@ -753,6 +821,7 @@ This is a designated initialiser for the class.<br />
     <h3><a name="method$NSMutableDictionary-initWithCapacity:">initWithCapacity:&nbsp;</a></h3>
     - (id) <b>initWithCapacity:</b> (unsigned)numItems;<br />
 This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
             Initializes an empty dictionary with memory
@@ -760,7 +829,13 @@ This is a designated initialiser for the class.<br />
             Although memory space will be grown as needed when
             entries are added, this can avoid the
             reallocate-and-copy process if the size
-            of the ultimate contents is known in advance.
+            of the ultimate contents is known in advance. <br />
+            Calls <a rel="gsdoc" href="#method$NSDictionary-init">-init</a>
+
+            (which does nothing but maintain MacOS-X
+            compatibility), and needs to be
+            re-implemented in subclasses in order to
+            have all other initialisers work.
           
     </p>
     <hr width="25%" align="left" />
