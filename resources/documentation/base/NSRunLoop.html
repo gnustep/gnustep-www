@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.110</p>
-    <p><b>Date:</b> 2003/08/20 12:13:34</p>
+    <p><b>Version:</b> 1.111</p>
+    <p><b>Date:</b> 2003/10/28 11:10:23</p>
     <p><b>Copyright:</b> (C) 1996-1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -109,7 +109,7 @@
     - (void) <b>acceptInputForMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode<b> beforeDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)limit_date;<br />
     <p>
       
-            Listen to input sources. <br /> If
+            Listen for events from input sources. <br /> If
             <var>limit_date</var> is <code>nil</code> or in the
             past, then don&apos;t wait; just poll inputs and return,
             otherwise block until input is available or until
@@ -143,8 +143,11 @@
     - (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*) <b>limitDateForMode:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)mode;<br />
     <p>
       
-            Fire appropriate timers and determine the earliest
-            time that anything watched for becomes useless.
+            Fires timers whose fire date has passed, and checks
+            timers and limit dates for input sources,
+            determining the earliest time that anything
+            watched for becomes useless. Returns that
+            date/time.
           
     </p>
     <hr width="25%" align="left" />
@@ -167,11 +170,13 @@
 
             to run the loop once. <br /> The specified
             <var>date</var> may be <code>nil</code>... in which
-            case the loop runs until the first input or timeout.
-            <br /> If the limit dates for all of mode&apos;s input
-            sources have passed, returns <code>NO</code>
-            without running the loop, otherwise returns
-            <code>YES</code>.
+            case the loop runs until the limit <var>date</var> of
+            the first input or timeout. <br /> If the specified
+            <var>date</var> is in the past, runs the loop once
+            only, to handle any events already available. <br />
+            If there are no input sources in <var>mode</var>,
+            returns <code>NO</code> without running the loop,
+            otherwise returns <code>YES</code>.
           
     </p>
     <hr width="25%" align="left" />

@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.88</p>
-    <p><b>Date:</b> 2003/07/31 23:49:31</p>
+    <p><b>Version:</b> 1.90</p>
+    <p><b>Date:</b> 2003/10/25 05:54:39</p>
     <p><b>Copyright:</b> (C) 
       1996, 1998, 1999, 2000, 2002 Free Software Foundation, Inc.
     </p>
@@ -673,7 +673,9 @@
     <p>
       
             Sets the <var>format</var> string associated with the
-            receiver. <br /> See
+            receiver. <br /> Providing a <code>nil</code>
+            argument sets the default calendar
+            <var>format</var>. <br /> See
             <a rel="gsdoc" href="#method$NSCalendarDate-descriptionWithCalendarFormat:locale:">-descriptionWithCalendarFormat:locale:</a>
  for details.
           
@@ -684,6 +686,8 @@
     <p>
       
             Sets the time zone associated with the receiver.
+            <br /> Providing a <code>nil</code> argument sets
+            the local time zone.
           
     </p>
     <hr width="25%" align="left" />
@@ -885,7 +889,16 @@
             Returns the number of <var>years</var>,
             <var>months</var>, <var>days</var>, <var>hours</var>,
             <var>minutes</var>, and <var>seconds</var> between
-            the receiver and the given <var>date</var>.
+            the receiver and the given <var>date</var>. <br /> If
+            <var>date</var> is in the future of the receiver, the
+            returned values will be negative (or zero),
+            otherwise they are all positive. <br /> If any of
+            the pointers to return value in is null, the
+            corresponding value will not be returned, and
+            other return values will be adjusted accordingly. eg.
+            If a difference of 1 hour was to be returned but
+            <var>hours</var> is null, then the value returned in
+            <var>minutes</var> will be increased by 60.
           
     </p>
     <hr width="25%" align="left" />

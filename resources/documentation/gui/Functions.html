@@ -19,19 +19,46 @@
       <h3>Contents -</h3>
       <ol>
         <li>
-          <a href="#001000000000">NSInterfaceStyle functions</a>
+          <a href="#001000000000">NSCell functions</a>
         </li>
         <li>
-          <a href="#002000000000">NSCell functions</a>
+          <a href="#002000000000">NSGraphicsContext functions</a>
         </li>
         <li>
-          <a href="#003000000000">NSGraphicsContext functions</a>
+          <a href="#003000000000">NSInterfaceStyle functions</a>
+        </li>
+        <li>
+          <a href="#004000000000">NSPasteboard functions</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
     </div>
 
-          <h1><a name="001000000000">NSInterfaceStyle functions</a></h1>
+          <h1><a name="001000000000">NSCell functions</a></h1>
+    <p>
+    </p>
+    <h3><a name="function$_sizeForBorderType">_sizeForBorderType</a></h3>
+    NSSize _sizeForBorderType(NSBorderType <b>aType</b>);<br />
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <hr width="25%" align="left" />
+
+          <h1><a name="002000000000">NSGraphicsContext functions</a></h1>
+    <p>
+    </p>
+    <h3><a name="function$GSCurrentContext">GSCurrentContext</a></h3>
+    <a rel="gsdoc" href="NSGraphicsContext.html#class$NSGraphicsContext">NSGraphicsContext</a>* GSCurrentContext();<br />
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <hr width="25%" align="left" />
+
+          <h1><a name="003000000000">NSInterfaceStyle functions</a></h1>
     <p>
     </p>
     <h3><a name="function$NSInterfaceStyleForKey">NSInterfaceStyleForKey</a></h3>
@@ -98,26 +125,109 @@
     </p>
     <hr width="25%" align="left" />
 
-          <h1><a name="002000000000">NSCell functions</a></h1>
+          <h1><a name="004000000000">NSPasteboard functions</a></h1>
     <p>
     </p>
-    <h3><a name="function$_sizeForBorderType">_sizeForBorderType</a></h3>
-    NSSize _sizeForBorderType(NSBorderType <b>aType</b>);<br />
+    <h3><a name="function$NSCreateFileContentsPboardType">NSCreateFileContentsPboardType</a></h3>
+    NSString* NSCreateFileContentsPboardType(NSString* <b>fileType</b>);<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            Returns a standardised pasteboard type for file
+            contents, formed from the supplied file
+            extension.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            Data written to a pasteboard with a file contents type
+            should be written using the
+            <a rel="gsdoc" href="NSPasteboard.html#method$NSPasteboard-writeFileContents:">[NSPasteboard&nbsp;-writeFileContents:]</a>
+ or <a rel="gsdoc" href="NSPasteboard.html#method$NSPasteboard-writeFileWrapper:">[NSPasteboard&nbsp;-writeFileWrapper:]</a>
+ method. Similarly, the data should be read using the <a rel="gsdoc" href="NSPasteboard.html#method$NSPasteboard-readFileContentsType:toFile:">[NSPasteboard&nbsp;-readFileContentsType:toFile:]</a>
+ or <a rel="gsdoc" href="NSPasteboard.html#method$NSPasteboard-readFileWrapper">[NSPasteboard&nbsp;-readFileWrapper]</a>
+ method.
+              </p>
+    <p>
+      
         
     </p>
     <hr width="25%" align="left" />
-
-          <h1><a name="003000000000">NSGraphicsContext functions</a></h1>
-    <p>
-    </p>
-    <h3><a name="function$GSCurrentContext">GSCurrentContext</a></h3>
-    <a rel="gsdoc" href="NSGraphicsContext.html#class$NSGraphicsContext">NSGraphicsContext</a>* GSCurrentContext();<br />
+    <h3><a name="function$NSCreateFilenamePboardType">NSCreateFilenamePboardType</a></h3>
+    NSString* NSCreateFilenamePboardType(NSString* <b>fileType</b>);<br />
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            Returns a standardised pasteboard type for file
+            names, formed from the supplied file extension.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            Data written to a pasteboard with a file names type
+            should be a single name written using
+            <a rel="gsdoc" href="NSPasteboard.html#method$NSPasteboard-setString:forType:">[NSPasteboard&nbsp;-setString:forType:]</a>
+ or an array of strings written using <a rel="gsdoc" href="NSPasteboard.html#method$NSPasteboard-setPropertyList:forType:">[NSPasteboard&nbsp;-setPropertyList:forType:]</a>
+. <br /> Similarly, the data should be read using the <a rel="gsdoc" href="NSPasteboard.html#method$NSPasteboard-stringForType:">[NSPasteboard&nbsp;-stringForType:]</a>
+ or <a rel="gsdoc" href="NSPasteboard.html#method$NSPasteboard-propertyListForType:">[NSPasteboard&nbsp;-propertyListForType:]</a>
+ method.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            See also the
+            <a rel="gsdoc" href="#function$NSGetFileType">
+              NSGetFileType()
+            </a>
+
+            and
+            <a rel="gsdoc" href="#function$NSGetFileTypes">
+              NSGetFileTypes()
+            </a>
+
+            functions.
+              </p>
+    <p>
+      
+        
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="function$NSGetFileType">NSGetFileType</a></h3>
+    NSString* NSGetFileType(NSString* <b>pboardType</b>);<br />
+    <p>
+      
+          Returns the file type (fileType extension)
+          corresponding to the pasteboard type given.
+          <br /> This is a counterpart to the
+          <a rel="gsdoc" href="#function$NSCreateFilenamePboardType">
+            NSCreateFilenamePboardType()
+          </a>
+
+          function.
+        
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="function$NSGetFileTypes">NSGetFileTypes</a></h3>
+    NSArray* NSGetFileTypes(NSArray* <b>pboardTypes</b>);<br />
+    <p>
+      
+          Returns the file types (filename extensions)
+          corresponding to the pasteboard types given.
         
     </p>
     <hr width="25%" align="left" />
