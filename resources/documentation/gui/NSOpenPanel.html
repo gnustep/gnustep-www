@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSOpenPanel</title>
   </head>
   <body>
@@ -30,14 +31,13 @@
       </dd>
     </dl>
     <blockquote>
-      
-      Standard open panel for opening files
-    
+      Standard panel for opening files
     </blockquote>
     <p><b>Copyright:</b> (C) 
       1996, 1998, 1999, 2000 Free Software Foundation, Inc.
     </p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -47,7 +47,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSOpenPanel class
       </a></h1>
     <h2><a name="class$NSOpenPanel">NSOpenPanel</a> : <a rel="gsdoc" href="NSSavePanel.html#class$NSSavePanel">NSSavePanel</a></h2>
@@ -73,8 +74,71 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
-        
+          
+    </p>
+    <p>
+
+            Implements a panel that allows the user to
+            select a file or files. NSOpenPanel is based on the
+            NSSavePanel implementation and shares a lot of
+            similarities with it.
+              </p>
+    <p>
+    </p>
+    <p>
+
+            There is only one open panel per application and this
+            panel is obtained by calling the
+            <a rel="gsdoc" href="#method$NSOpenPanel+openPanel">
+              +openPanel
+            </a>
+
+            class method. From here, you should set the
+            characteristics of the file selection
+            mechanism using the
+            <a rel="gsdoc" href="#method$NSOpenPanel-setCanChooseFiles:">
+              -setCanChooseFiles:
+            </a>
+
+            ,
+            <a rel="gsdoc" href="#method$NSOpenPanel-setCanChooseDirectories:">
+              -setCanChooseDirectories:
+            </a>
+
+            and
+            <a rel="gsdoc" href="#method$NSOpenPanel-setAllowsMultipleSelection:">
+              -setAllowsMultipleSelection:
+            </a>
+
+            methods. The default is <code>YES</code> except
+            for allowing multiple selection. When ready to show the
+            panel, use the
+            <a rel="gsdoc" href="#method$NSOpenPanel-runModalForTypes:">
+              -runModalForTypes:
+            </a>
+
+            , or a similar method to show the panel in a modal
+            session. Other methods allow you to set the
+            initial directory and initially selected file. The
+            method will return one of NSOKButton or
+            NSCancelButton depending on which button the
+            user pressed.
+              </p>
+    <p>
+    </p>
+    <p>
+
+            Use the
+            <a rel="gsdoc" href="#method$NSOpenPanel-filename">
+              -filename
+            </a>
+
+            or <a rel="gsdoc" href="#method$NSOpenPanel-filenames:">-filenames:</a>
+
+            method to retrieve the name of the file the user
+            selected.
+              </p>
+    <p>
     </p>
     <b>Method summary</b>
     <ul>
@@ -97,7 +161,7 @@
     + (<a rel="gsdoc" href="#class$NSOpenPanel">NSOpenPanel</a>*) <b>openPanel</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the shared NSOpenPanel instance
           
     </p>
     <hr width="25%" align="left" />
@@ -105,7 +169,7 @@
     - (NSArray*) <b>URLs</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an array of the selected files as URLs
           
     </p>
     <hr width="25%" align="left" />
@@ -113,7 +177,9 @@
     - (BOOL) <b>allowsMultipleSelection</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if the user is allowed to
+            select multiple files. The default behavior is not
+            to allow mutiple selections.
           
     </p>
     <hr width="25%" align="left" />
@@ -129,7 +195,9 @@
     - (BOOL) <b>canChooseDirectories</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if the user is allowed to
+            choose directories The default behavior is to allow
+            choosing directories.
           
     </p>
     <hr width="25%" align="left" />
@@ -137,7 +205,9 @@
     - (BOOL) <b>canChooseFiles</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if the user is allowed to
+            choose files. The default behavior it to allow
+            choosing files.
           
     </p>
     <hr width="25%" align="left" />
@@ -145,7 +215,10 @@
     - (NSArray*) <b>filenames</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an array containing the absolute paths (as
+            NSString objects) of the selected files and
+            directories. If multiple selections aren't
+            allowed, the array contains a single name.
           
     </p>
     <hr width="25%" align="left" />
@@ -153,7 +226,11 @@
     - (int) <b>runModalForDirectory:</b> (NSString*)path<b> file:</b> (NSString*)name<b> types:</b> (NSArray*)fileTypes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Displays the open panel in a modal session, with
+            the directory <var>path</var> shown and file
+            <var>name</var> (if any) selected. Files are filtered
+            for the specified types. The directory and filename can
+            be empty strings but must not be <code>nil</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -169,7 +246,8 @@
     - (int) <b>runModalForTypes:</b> (NSArray*)fileTypes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Displays the open panel in a modal session,
+            filtering for files that have the specified types
           
     </p>
     <hr width="25%" align="left" />
@@ -177,7 +255,8 @@
     - (void) <b>setAllowsMultipleSelection:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Allows the user to select multiple files if
+            <var>flag</var> is <code>YES</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -185,7 +264,8 @@
     - (void) <b>setCanChooseDirectories:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Allows the user to choose directories if
+            <var>flag</var> is <code>YES</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -193,7 +273,8 @@
     - (void) <b>setCanChooseFiles:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Allows the user to choose files if <var>flag</var>
+            is <code>YES</code>
           
     </p>
     <hr width="25%" align="left" />

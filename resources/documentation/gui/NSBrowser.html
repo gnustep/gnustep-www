@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSBrowser</title>
   </head>
   <body>
@@ -28,14 +29,20 @@
       </code></a>)</dt>
       <dd>
       </dd>
+      <dt>Fred Kiefer(<a href="mailto:FredKiefer@gmx.de"><code>
+        FredKiefer@gmx.de
+      </code></a>)</dt>
+      <dd>
+      </dd>
     </dl>
     <blockquote>
       
       Control to display and select from hierarchal lists
     
     </blockquote>
-    <p><b>Copyright:</b> (C) 1996, 1997 Free Software Foundation, Inc.</p>
-    <div>
+    <p><b>Copyright:</b> (C) 1996, 1997, 2002 Free Software Foundation, Inc.</p>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -55,7 +62,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSBrowser class
       </a></h1>
     <h2><a name="class$NSBrowser">NSBrowser</a> : <a rel="gsdoc" href="NSControl.html#class$NSControl">NSControl</a></h2>
@@ -102,6 +110,7 @@
       <li><a rel="gsdoc" href="NSBrowser.html#method$NSBrowser-doDoubleClick:">-doDoubleClick:</a></li>
       <li><a rel="gsdoc" href="NSBrowser.html#method$NSBrowser-doubleAction">-doubleAction</a></li>
       <li><a rel="gsdoc" href="NSBrowser.html#method$NSBrowser-drawTitle:inRect:ofColumn:">-drawTitle:inRect:ofColumn:</a></li>
+      <li><a rel="gsdoc" href="NSBrowser.html#method$NSBrowser-drawTitleOfColumn:inRect:">-drawTitleOfColumn:inRect:</a></li>
       <li><a rel="gsdoc" href="NSBrowser.html#method$NSBrowser-encodeWithCoder:">-encodeWithCoder:</a></li>
       <li><a rel="gsdoc" href="NSBrowser.html#method$NSBrowser-firstVisibleColumn">-firstVisibleColumn</a></li>
       <li><a rel="gsdoc" href="NSBrowser.html#method$NSBrowser-frameOfColumn:">-frameOfColumn:</a></li>
@@ -175,7 +184,10 @@
     + (Class) <b>cellClass</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the NSBrowserCell class (regardless of
+            whether a setCellClass: message has been sent to a
+            particular instance). This method is not meant
+            to be used by applications.
           
     </p>
     <hr width="25%" align="left" />
@@ -183,7 +195,8 @@
     - (BOOL) <b>acceptsArrowKeys</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if the arrow keys are
+            enabled.
           
     </p>
     <hr width="25%" align="left" />
@@ -191,7 +204,7 @@
     - (void) <b>addColumn</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Adds a column to the right of the last column.
           
     </p>
     <hr width="25%" align="left" />
@@ -199,7 +212,8 @@
     - (BOOL) <b>allowsBranchSelection</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether the user can select branch items
+            when multiple selection is enabled.
           
     </p>
     <hr width="25%" align="left" />
@@ -207,7 +221,7 @@
     - (BOOL) <b>allowsEmptySelection</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether there can be nothing selected.
           
     </p>
     <hr width="25%" align="left" />
@@ -215,7 +229,7 @@
     - (BOOL) <b>allowsMultipleSelection</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether the user can select multiple items.
           
     </p>
     <hr width="25%" align="left" />
@@ -223,7 +237,7 @@
     - (id) <b>cellPrototype</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the NSBrowser's prototype NSCell instance.
           
     </p>
     <hr width="25%" align="left" />
@@ -231,7 +245,8 @@
     - (int) <b>columnOfMatrix:</b> (<a rel="gsdoc" href="NSMatrix.html#class$NSMatrix">NSMatrix</a>*)matrix;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the column number in which
+            <var>matrix</var> is located.
           
     </p>
     <hr width="25%" align="left" />
@@ -239,7 +254,7 @@
     - (id) <b>delegate</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the NSBrowser's delegate.
           
     </p>
     <hr width="25%" align="left" />
@@ -247,7 +262,8 @@
     - (void) <b>displayAllColumns</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Updates the NSBrowser to display all loaded
+            columns.
           
     </p>
     <hr width="25%" align="left" />
@@ -255,7 +271,8 @@
     - (void) <b>displayColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Updates the NSBrowser to display the
+            <var>column</var> with the given index.
           
     </p>
     <hr width="25%" align="left" />
@@ -263,7 +280,8 @@
     - (void) <b>doClick:</b> (id)sender;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Responds to (single) mouse clicks in a column of
+            the NSBrowser.
           
     </p>
     <hr width="25%" align="left" />
@@ -271,7 +289,8 @@
     - (void) <b>doDoubleClick:</b> (id)sender;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Responds to double-clicks in a column of the
+            NSBrowser.
           
     </p>
     <hr width="25%" align="left" />
@@ -279,7 +298,7 @@
     - (SEL) <b>doubleAction</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the NSBrowser's double-click action method.
           
     </p>
     <hr width="25%" align="left" />
@@ -287,12 +306,14 @@
     - (void) <b>drawTitle:</b> (NSString*)title<b> inRect:</b> (NSRect)aRect<b> ofColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Draws the <var>title</var> for the <var>column</var>
+            at index <var>column</var> within the rectangle defined
+            by <var>aRect</var>.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBrowser-encodeWithCoder:">encodeWithCoder:</a></h3>
-    - (void) <b>encodeWithCoder:</b> (NSCoder*)aCoder;<br />
+    <h3><a name="method$NSBrowser-drawTitleOfColumn:inRect:">drawTitleOfColumn:inRect:</a></h3>
+    - (void) <b>drawTitleOfColumn:</b> (int)column<b> inRect:</b> (NSRect)aRect;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -303,7 +324,7 @@
     - (int) <b>firstVisibleColumn</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the index of the first visible column.
           
     </p>
     <hr width="25%" align="left" />
@@ -311,7 +332,8 @@
     - (NSRect) <b>frameOfColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the rectangle containing the
+            <var>column</var> at index <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -319,7 +341,8 @@
     - (NSRect) <b>frameOfInsideOfColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the rectangle containing the
+            <var>column</var> at index <var>column</var>,
           
     </p>
     <hr width="25%" align="left" />
@@ -327,15 +350,8 @@
     - (BOOL) <b>hasHorizontalScroller</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSBrowser-initWithCoder:">initWithCoder:</a></h3>
-    - (id) <b>initWithCoder:</b> (NSCoder*)aDecoder;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
+            Returns whether an NSScroller is used to scroll
+            horizontally.
           
     </p>
     <hr width="25%" align="left" />
@@ -343,7 +359,7 @@
     - (BOOL) <b>isLoaded</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether column zero is loaded.
           
     </p>
     <hr width="25%" align="left" />
@@ -351,7 +367,7 @@
     - (BOOL) <b>isTitled</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether columns display titles.
           
     </p>
     <hr width="25%" align="left" />
@@ -359,7 +375,7 @@
     - (int) <b>lastColumn</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the index of the last column loaded.
           
     </p>
     <hr width="25%" align="left" />
@@ -367,7 +383,7 @@
     - (int) <b>lastVisibleColumn</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the index of the last visible column.
           
     </p>
     <hr width="25%" align="left" />
@@ -375,7 +391,7 @@
     - (void) <b>loadColumnZero</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Loads column zero; unloads previously loaded columns.
           
     </p>
     <hr width="25%" align="left" />
@@ -383,7 +399,8 @@
     - (id) <b>loadedCellAtRow:</b> (int)row<b> column:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Loads if necessary and returns the NSCell at
+            <var>row</var> in <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -391,7 +408,8 @@
     - (Class) <b>matrixClass</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the class of NSMatrix used in the
+            NSBrowser's columns.
           
     </p>
     <hr width="25%" align="left" />
@@ -399,7 +417,8 @@
     - (<a rel="gsdoc" href="NSMatrix.html#class$NSMatrix">NSMatrix</a>*) <b>matrixInColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the matrix located in the <var>column</var>
+            identified by index <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -407,7 +426,7 @@
     - (int) <b>maxVisibleColumns</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the maximum number of visible columns.
           
     </p>
     <hr width="25%" align="left" />
@@ -415,7 +434,7 @@
     - (int) <b>minColumnWidth</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the minimum column width in pixels.
           
     </p>
     <hr width="25%" align="left" />
@@ -423,7 +442,7 @@
     - (int) <b>numberOfVisibleColumns</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the number of columns visible.
           
     </p>
     <hr width="25%" align="left" />
@@ -431,7 +450,7 @@
     - (NSString*) <b>path</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the browser's current path.
           
     </p>
     <hr width="25%" align="left" />
@@ -439,7 +458,7 @@
     - (NSString*) <b>pathSeparator</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the path separator. The default is "/".
           
     </p>
     <hr width="25%" align="left" />
@@ -447,7 +466,9 @@
     - (NSString*) <b>pathToColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string representing the path from the
+            first <var>column</var> up to, but not including, the
+            <var>column</var> at index <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -455,7 +476,8 @@
     - (void) <b>reloadColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Reloads <var>column</var> if it is loaded; sets it
+            as the last <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -463,7 +485,8 @@
     - (BOOL) <b>reusesColumns</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if NSMatrix objects aren't
+            freed when their columns are unloaded.
           
     </p>
     <hr width="25%" align="left" />
@@ -471,7 +494,8 @@
     - (void) <b>scrollColumnToVisible:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Scrolls to make the <var>column</var> at index
+            <var>column</var> visible.
           
     </p>
     <hr width="25%" align="left" />
@@ -479,7 +503,8 @@
     - (void) <b>scrollColumnsLeftBy:</b> (int)shiftAmount;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Scrolls columns left by <var>shiftAmount</var>
+            columns.
           
     </p>
     <hr width="25%" align="left" />
@@ -487,7 +512,8 @@
     - (void) <b>scrollColumnsRightBy:</b> (int)shiftAmount;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Scrolls columns right by <var>shiftAmount</var>
+            columns.
           
     </p>
     <hr width="25%" align="left" />
@@ -495,7 +521,8 @@
     - (void) <b>scrollViaScroller:</b> (<a rel="gsdoc" href="NSScroller.html#class$NSScroller">NSScroller</a>*)sender;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Scrolls columns left or right based on an
+            NSScroller.
           
     </p>
     <hr width="25%" align="left" />
@@ -503,7 +530,8 @@
     - (void) <b>selectAll:</b> (id)sender;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Selects all NSCells in the last column of the
+            NSBrowser.
           
     </p>
     <hr width="25%" align="left" />
@@ -511,7 +539,9 @@
     - (void) <b>selectRow:</b> (int)row<b> inColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Selects the cell at index <var>row</var> in the
+            <var>column</var> identified by index
+            <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -519,7 +549,8 @@
     - (id) <b>selectedCell</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the last (rightmost and lowest) selected
+            NSCell.
           
     </p>
     <hr width="25%" align="left" />
@@ -527,7 +558,8 @@
     - (id) <b>selectedCellInColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the last (lowest) NSCell that's selected in
+            <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -535,7 +567,7 @@
     - (NSArray*) <b>selectedCells</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns all cells selected in the rightmost column.
           
     </p>
     <hr width="25%" align="left" />
@@ -543,7 +575,8 @@
     - (int) <b>selectedColumn</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the index of the last column with a
+            selected item.
           
     </p>
     <hr width="25%" align="left" />
@@ -551,7 +584,9 @@
     - (int) <b>selectedRowInColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the row index of the selected cell in the
+            <var>column</var> specified by index
+            <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -559,7 +594,9 @@
     - (BOOL) <b>sendAction</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sends the action message to the target. Returns
+            <code>YES</code> upon success, <code>NO</code> if no
+            target for the message could be found.
           
     </p>
     <hr width="25%" align="left" />
@@ -567,7 +604,9 @@
     - (BOOL) <b>sendsActionOnArrowKeys</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>NO</code> if pressing an arrow key
+            only scrolls the browser, <code>YES</code> if it also
+            sends the action message specified by setAction:.
           
     </p>
     <hr width="25%" align="left" />
@@ -575,7 +614,8 @@
     - (BOOL) <b>separatesColumns</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns whether columns are separated by bezeled
+            borders.
           
     </p>
     <hr width="25%" align="left" />
@@ -583,7 +623,8 @@
     - (void) <b>setAcceptsArrowKeys:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Enables or disables the arrow keys as used for
+            navigating within and between browsers.
           
     </p>
     <hr width="25%" align="left" />
@@ -591,7 +632,8 @@
     - (void) <b>setAllowsBranchSelection:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether the user can select branch items when
+            multiple selection is enabled.
           
     </p>
     <hr width="25%" align="left" />
@@ -599,7 +641,7 @@
     - (void) <b>setAllowsEmptySelection:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether there can be nothing selected.
           
     </p>
     <hr width="25%" align="left" />
@@ -607,7 +649,7 @@
     - (void) <b>setAllowsMultipleSelection:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether the user can select multiple items.
           
     </p>
     <hr width="25%" align="left" />
@@ -615,7 +657,8 @@
     - (void) <b>setCellClass:</b> (Class)classId;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the class of NSCell used in the columns of the
+            NSBrowser.
           
     </p>
     <hr width="25%" align="left" />
@@ -623,7 +666,8 @@
     - (void) <b>setCellPrototype:</b> (<a rel="gsdoc" href="NSCell.html#class$NSCell">NSCell</a>*)aCell;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the NSCell instance copied to display items in
+            the columns of NSBrowser.
           
     </p>
     <hr width="25%" align="left" />
@@ -631,7 +675,13 @@
     - (void) <b>setDelegate:</b> (id)anObject;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the NSBrowser's delegate to <var>anObject</var>.
+            Raises NSBrowserIllegalDelegateException if the
+            delegate specified by <var>anObject</var> doesn't
+            respond to browser:willDisplayCell:atRow:column:
+            (if passive) and either of the methods
+            browser:numberOfRowsInColumn:
+            or browser:createRowsForColumn:inMatrix:.
           
     </p>
     <hr width="25%" align="left" />
@@ -639,7 +689,8 @@
     - (void) <b>setDoubleAction:</b> (SEL)aSelector;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the NSBrowser's double-click action to
+            <var>aSelector</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -647,7 +698,8 @@
     - (void) <b>setHasHorizontalScroller:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether an NSScroller is used to scroll
+            horizontally.
           
     </p>
     <hr width="25%" align="left" />
@@ -655,7 +707,7 @@
     - (void) <b>setLastColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the last <var>column</var> to <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -663,7 +715,8 @@
     - (void) <b>setMatrixClass:</b> (Class)classId;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the matrix class (NSMatrix or an NSMatrix
+            subclass) used in the NSBrowser's columns.
           
     </p>
     <hr width="25%" align="left" />
@@ -671,7 +724,7 @@
     - (void) <b>setMaxVisibleColumns:</b> (int)columnCount;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the maximum number of columns displayed.
           
     </p>
     <hr width="25%" align="left" />
@@ -679,7 +732,7 @@
     - (void) <b>setMinColumnWidth:</b> (int)columnWidth;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the minimum column width in pixels.
           
     </p>
     <hr width="25%" align="left" />
@@ -687,7 +740,8 @@
     - (BOOL) <b>setPath:</b> (NSString*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Parses <var>path</var> and selects corresponding
+            items in the NSBrowser columns.
           
     </p>
     <hr width="25%" align="left" />
@@ -695,7 +749,7 @@
     - (void) <b>setPathSeparator:</b> (NSString*)aString;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the path separator to newString.
           
     </p>
     <hr width="25%" align="left" />
@@ -703,7 +757,9 @@
     - (void) <b>setReusesColumns:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            If <var>flag</var> is <code>YES</code>, prevents
+            NSMatrix objects from being freed when their
+            columns are unloaded, so they can be reused.
           
     </p>
     <hr width="25%" align="left" />
@@ -711,7 +767,9 @@
     - (void) <b>setSendsActionOnArrowKeys:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether pressing an arrow key will cause the
+            action message to be sent (in addition to causing
+            scrolling).
           
     </p>
     <hr width="25%" align="left" />
@@ -719,7 +777,7 @@
     - (void) <b>setSeparatesColumns:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether to separate columns with bezeled borders.
           
     </p>
     <hr width="25%" align="left" />
@@ -727,7 +785,9 @@
     - (void) <b>setTakesTitleFromPreviousColumn:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether the title of a column is set to the
+            string value of the selected NSCell in the previous
+            column.
           
     </p>
     <hr width="25%" align="left" />
@@ -735,7 +795,8 @@
     - (void) <b>setTitle:</b> (NSString*)aString<b> ofColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the title of the <var>column</var> at index
+            <var>column</var> to <var>aString</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -743,7 +804,7 @@
     - (void) <b>setTitled:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether columns display titles.
           
     </p>
     <hr width="25%" align="left" />
@@ -751,7 +812,9 @@
     - (BOOL) <b>takesTitleFromPreviousColumn</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if the title of a column
+            is set to the string value of the selected NSCell in the
+            previous column.
           
     </p>
     <hr width="25%" align="left" />
@@ -759,7 +822,11 @@
     - (void) <b>tile</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Adjusts the various subviews of
+            NSBrowser-scrollers, columns, titles,
+            and so on-without redrawing. Your code shouldn't send
+            this message. It's invoked any time the appearance of
+            the NSBrowser changes.
           
     </p>
     <hr width="25%" align="left" />
@@ -767,7 +834,8 @@
     - (NSRect) <b>titleFrameOfColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the bounds of the title frame for the
+            <var>column</var> at index <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -775,7 +843,7 @@
     - (float) <b>titleHeight</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the height of column titles.
           
     </p>
     <hr width="25%" align="left" />
@@ -783,7 +851,8 @@
     - (NSString*) <b>titleOfColumn:</b> (int)column;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the title displayed for the
+            <var>column</var> at index <var>column</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -791,7 +860,8 @@
     - (void) <b>updateScroller</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Updates the horizontal scroller to reflect column
+            positions.
           
     </p>
     <hr width="25%" align="left" />
@@ -799,11 +869,13 @@
     - (void) <b>validateVisibleColumns</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Invokes delegate method browser:isColumnValid: for
+            visible columns.
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the
         NSBrowser(GNUstepExtensions)
         category
@@ -840,7 +912,8 @@
     - (BOOL) <b>acceptsAlphaNumericalKeys</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if the alphanumerical keys
+            are enabled.
           
     </p>
     <hr width="25%" align="left" />
@@ -848,7 +921,9 @@
     - (BOOL) <b>sendsActionOnAlphaNumericalKeys</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>NO</code> if pressing an arrow key
+            only scrolls the browser, <code>YES</code> if it also
+            sends the action message specified by setAction:.
           
     </p>
     <hr width="25%" align="left" />
@@ -856,7 +931,8 @@
     - (void) <b>setAcceptsAlphaNumericalKeys:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Enables or disables the arrow keys as used for
+            navigating within and between browsers.
           
     </p>
     <hr width="25%" align="left" />
@@ -864,11 +940,14 @@
     - (void) <b>setSendsActionOnAlphaNumericalKeys:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets whether pressing an arrow key will cause the
+            action message to be sent (in addition to causing
+            scrolling).
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="003000000000">
+
+          <h1><a name="003000000000">
         Software documentation for the
         NSObject(NSBrowserDelegate)
         informal protocol

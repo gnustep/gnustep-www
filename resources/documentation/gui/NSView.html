@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSView</title>
   </head>
   <body>
@@ -35,7 +36,8 @@
     
     </blockquote>
     <p><b>Copyright:</b> (C) (C) 1996 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -49,7 +51,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">NSView</a></h1>
+
+          <h1><a name="001000000000">NSView</a></h1>
     <p>
 
         NSView is an abstract class which provides facilities
@@ -89,6 +92,7 @@
     </blockquote>
     <p>
       
+          <em>Description forthcoming.</em>
         
     </p>
     <b>Method summary</b>
@@ -175,6 +179,7 @@
       <li><a rel="gsdoc" href="NSView.html#method$NSView-menuForEvent:">-menuForEvent:</a></li>
       <li><a rel="gsdoc" href="NSView.html#method$NSView-mouse:inRect:">-mouse:inRect:</a></li>
       <li><a rel="gsdoc" href="NSView.html#method$NSView-needsDisplay">-needsDisplay</a></li>
+      <li><a rel="gsdoc" href="NSView.html#method$NSView-needsPanelToBecomeKey">-needsPanelToBecomeKey</a></li>
       <li><a rel="gsdoc" href="NSView.html#method$NSView-nextKeyView">-nextKeyView</a></li>
       <li><a rel="gsdoc" href="NSView.html#method$NSView-nextValidKeyView">-nextValidKeyView</a></li>
       <li><a rel="gsdoc" href="NSView.html#method$NSView-opaqueAncestor">-opaqueAncestor</a></li>
@@ -461,7 +466,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSView-beginPrologueBBox:creationDate:createdBy:fonts:forWhom:pages:title:">beginPrologueBBox:creationDate:createdBy:fonts:forWhom:pages:title:</a></h3>
-    - (void) <b>beginPrologueBBox:</b> (NSRect)bBox<b> creationDate:</b> (NSString*)dateCreated<b> createdBy:</b> (NSString*)anApplication<b> fonts:</b> (NSString*)fontNames<b> forWhom:</b> (NSString*)user<b> pages:</b> (int)numPages<b> title:</b> (NSString*)aTitle;<br />
+    - (void) <b>beginPrologueBBox:</b> (NSRect)boundingBox<b> creationDate:</b> (NSString*)dateCreated<b> createdBy:</b> (NSString*)anApplication<b> fonts:</b> (NSString*)fontNames<b> forWhom:</b> (NSString*)user<b> pages:</b> (int)numPages<b> title:</b> (NSString*)aTitle;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -637,10 +642,14 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSView-displayRect:">displayRect:</a></h3>
-    - (void) <b>displayRect:</b> (NSRect)rect;<br />
+    - (void) <b>displayRect:</b> (NSRect)aRect;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Causes the area of the view specified by
+            <var>aRect</var> to be displayed. This is done by
+            moving up the view hierarchy until an opaque view is
+            found, then asking that view to update the
+            appropriate area.
           
     </p>
     <hr width="25%" align="left" />
@@ -944,6 +953,14 @@
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSView-needsPanelToBecomeKey">needsPanelToBecomeKey</a></h3>
+    - (BOOL) <b>needsPanelToBecomeKey</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSView-nextKeyView">nextKeyView</a></h3>
     - (<a rel="gsdoc" href="#class$NSView">NSView</a>*) <b>nextKeyView</b>;<br />
     <p>
@@ -1049,10 +1066,13 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSView-registerForDraggedTypes:">registerForDraggedTypes:</a></h3>
-    - (void) <b>registerForDraggedTypes:</b> (NSArray*)types;<br />
+    - (void) <b>registerForDraggedTypes:</b> (NSArray*)newTypes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Registers the fact that the receiver should
+            accept dragged data of any of the specified types.
+            You need to do this if you want your view to support
+            drag and drop.
           
     </p>
     <hr width="25%" align="left" />
@@ -1091,12 +1111,12 @@
     <p>
 
               Removes the receiver from its superviews list of
-              subviews, by invoking the superviews [
+              subviews, by invoking the superviews
               <a rel="gsdoc" href="#method$NSView-removeSubview:">
                 -removeSubview:
               </a>
 
-              ] method, and marks the rectangle that the reciever
+              method, and marks the rectangle that the reciever
               occupied in the superview as needing redisplay.
                 </p>
     <p>
@@ -1127,26 +1147,27 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSView-removeSubview:">removeSubview:</a></h3>
-    - (void) <b>removeSubview:</b> (<a rel="gsdoc" href="#class$NSView">NSView</a>*)aSubview;<br />
+    - (void) <b>removeSubview:</b> (<a rel="gsdoc" href="#class$NSView">NSView</a>*)aView;<br />
     <p>
       
             
     </p>
     <p>
 
-              Removes <var>aSubview</var> from the receivers
-              list of subviews and from the responder chain.
+              Removes aSubview from the receivers list of
+              subviews and from the responder chain.
                 </p>
     <p>
     </p>
     <p>
 
-              Also invokes [aView
+              Also invokes
               <a rel="gsdoc" href="#method$NSView-viewWillMoveToWindow:">
                 -viewWillMoveToWindow:
               </a>
 
-              <code>nil</code>] to handle removal of aView (and
+              on <var>aView</var> with a <code>nil</code> argument,
+              to handle removal of <var>aView</var> (and
               recursively, its children) from its window -
               performing tidyup by invalidating cursor rects
               etc.
@@ -1350,10 +1371,13 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSView-setNeedsDisplayInRect:">setNeedsDisplayInRect:</a></h3>
-    - (void) <b>setNeedsDisplayInRect:</b> (NSRect)rect;<br />
+    - (void) <b>setNeedsDisplayInRect:</b> (NSRect)invalidRect;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Inform the view system that the specified rectangle
+            is invalid and requires updating. This automatically
+            informs any superviews of any updating they need to
+            do.
           
     </p>
     <hr width="25%" align="left" />
@@ -1579,7 +1603,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSView(PrivateMethods)
         category
       </a></h1>

@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSSavePanel</title>
   </head>
   <body>
@@ -25,12 +26,11 @@
       </dd>
     </dl>
     <blockquote>
-      
-      Standard save panel for saving files
-    
+      Standard panel for saving files
     </blockquote>
     <p><b>Copyright:</b> (C) 1999, 2000 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -45,7 +45,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSSavePanel class
       </a></h1>
     <h2><a name="class$NSSavePanel">NSSavePanel</a> : <a rel="gsdoc" href="NSPanel.html#class$NSPanel">NSPanel</a></h2>
@@ -71,8 +72,54 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
-        
+          
+    </p>
+    <p>
+
+            Implements a panel that allows the user to save
+            a file.
+              </p>
+    <p>
+    </p>
+    <p>
+
+            There is only one save panel per application and this
+            panel is obtained by calling the
+            <a rel="gsdoc" href="#method$NSSavePanel+savePanel">
+              +savePanel
+            </a>
+
+            class method. From here, you should set the required
+            file extension using
+            <a rel="gsdoc" href="#method$NSSavePanel-setRequiredFileType:">
+              -setRequiredFileType:
+            </a>
+
+            When ready to show the panel, use the
+            <a rel="gsdoc" href="#method$NSSavePanel-runModal">
+              -runModal
+            </a>
+
+            , or a similar method to show the panel in a modal
+            session. Other methods allow you to set the
+            initial directory and initially choosen file. The
+            method will return one of NSOKButton or
+            NSCancelButton depending on which button the
+            user pressed.
+              </p>
+    <p>
+    </p>
+    <p>
+
+            Use the
+            <a rel="gsdoc" href="#method$NSSavePanel-filename">
+              -filename
+            </a>
+
+            method to retrieve the name of the file the user
+            choose.
+              </p>
+    <p>
     </p>
     <b>Method summary</b>
     <ul>
@@ -105,7 +152,7 @@
     + (<a rel="gsdoc" href="#class$NSSavePanel">NSSavePanel</a>*) <b>savePanel</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the shared NSSavePanel instance
           
     </p>
     <hr width="25%" align="left" />
@@ -121,7 +168,7 @@
     - (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*) <b>accessoryView</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the accesory view (if any).
           
     </p>
     <hr width="25%" align="left" />
@@ -145,7 +192,10 @@
     - (NSString*) <b>directory</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the directory choosen by the user. Do not
+            invoke directory within a modal loop because the
+            information that these methods fetch is updated
+            only upon return.
           
     </p>
     <hr width="25%" align="left" />
@@ -153,7 +203,10 @@
     - (NSString*) <b>filename</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the absolute filename choosen by the user.
+            Do not invoke filename within a modal loop because the
+            information that these methods fetch is updated
+            only upon return.
           
     </p>
     <hr width="25%" align="left" />
@@ -169,7 +222,7 @@
     - (NSString*) <b>prompt</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the prompt used in the current path field.
           
     </p>
     <hr width="25%" align="left" />
@@ -177,7 +230,8 @@
     - (NSString*) <b>requiredFileType</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the required file type. The default is no
+            required file type.
           
     </p>
     <hr width="25%" align="left" />
@@ -185,7 +239,16 @@
     - (int) <b>runModal</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Shows the save panel for the user. This method
+            invokes
+            <a rel="gsdoc" href="#method$NSSavePanel-runModalForDirectory:file:">
+              -runModalForDirectory:file:
+            </a>
+
+            with empty strings for the directory and filename.
+            Returns NSOKButton (if the user clicks the OK
+            button) or NSCancelButton (if the user clicks the
+            Cancel button).
           
     </p>
     <hr width="25%" align="left" />
@@ -193,7 +256,16 @@
     - (int) <b>runModalForDirectory:</b> (NSString*)path<b> file:</b> (NSString*)filename;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes the panel to the directory
+            specified by <var>path</var> and, optionally, the
+            file specified by <var>filename</var>, then displays
+            it and begins its modal event loop; <var>path</var> and
+            <var>filename</var> can be empty strings, but cannot
+            be <code>nil</code>. The method invokes
+            NSApplication:-runModalForWindow:
+            method with self as the argument. Returns NSOKButton
+            (if the user clicks the OK button) or NSCancelButton
+            (if the user clicks the Cancel button).
           
     </p>
     <hr width="25%" align="left" />
@@ -217,7 +289,19 @@
     - (void) <b>setAccessoryView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)aView;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets an accessory view which is shown near the bottom
+            of the panel. The panel is automatically expanded with
+            enough room to show the extra view. You can use this
+            extra view to customize various characteristics of
+            the file selection mechanism. For instance you could
+            add a popup button which allows the user to select the
+            format that the file is saved in (e.g. rtf or txt).
+            See also
+            <a rel="gsdoc" href="#method$NSSavePanel-validateVisibleColumns">
+              -validateVisibleColumns
+            </a>
+
+            .
           
     </p>
     <hr width="25%" align="left" />
@@ -225,7 +309,9 @@
     - (void) <b>setDirectory:</b> (NSString*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the current <var>path</var> name in the Save
+            panel's browser. The <var>path</var> argument must
+            be an absolute <var>path</var> name.
           
     </p>
     <hr width="25%" align="left" />
@@ -233,7 +319,9 @@
     - (void) <b>setPrompt:</b> (NSString*)prompt;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the <var>prompt</var> of the Save panel
+            field that holds the current pathname or file name.
+            By default this <var>prompt</var> is 'Name: '.
           
     </p>
     <hr width="25%" align="left" />
@@ -241,7 +329,12 @@
     - (void) <b>setRequiredFileType:</b> (NSString*)fileType;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Specifies the type, a file name extension to be
+            appended to any selected files that don't already
+            have that extension; The argument type should not
+            include the period that begins the extension.
+            Invoke this method each time the Save panel is used
+            for another file type within the application.
           
     </p>
     <hr width="25%" align="left" />
@@ -249,7 +342,11 @@
     - (void) <b>setTitle:</b> (NSString*)title;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the <var>title</var> of the NSSavePanel to
+            <var>title</var>. By default, 'Save' is the
+            <var>title</var> string. If you adapt the NSSavePanel
+            for other uses, its <var>title</var> should reflect the
+            user action that brings it to the screen.
           
     </p>
     <hr width="25%" align="left" />
@@ -257,7 +354,13 @@
     - (void) <b>setTreatsFilePackagesAsDirectories:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the NSSavePanel's behavior for displaying file
+            packages (for example, MyApp.app) to the user. If
+            <var>flag</var> is <code>YES</code>, the user is
+            shown files and subdirectories within a file package.
+            If <code>NO</code>, the NSSavePanel shows each file
+            package as a file, thereby giving no indication
+            that it is a directory.
           
     </p>
     <hr width="25%" align="left" />
@@ -265,7 +368,7 @@
     - (NSString*) <b>title</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the title of the save panel
           
     </p>
     <hr width="25%" align="left" />
@@ -273,7 +376,8 @@
     - (BOOL) <b>treatsFilePackagesAsDirectories</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if file packages are shown
+            as directories. The default is <code>NO</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -281,11 +385,24 @@
     - (void) <b>validateVisibleColumns</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Validates and possibly reloads the browser
+            columns that are visible in the Save panel by
+            causing the delegate method
+            <a rel="gsdoc" href="#method$NSSavePanel-panel:shouldShowFilename:">
+              -panel:shouldShowFilename:
+            </a>
+
+            to be invoked. One situation in which this method would
+            find use is whey you want the browser to show only
+            files with certain extensions based on the selection
+            made in an accessory-view pop-up list. When the user
+            changes the selection, you would invoke this method
+            to revalidate the visible columns.
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the
         NSObject(NSSavePanelDelegate)
         informal protocol
@@ -330,7 +447,17 @@
     - (BOOL) <b>panel:</b> (id)sender<b> isValidFilename:</b> (NSString*)filename;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            The NSSavePanel sends this message just before the end
+            of a modal session for each file name displayed or
+            selected (including file names in multiple
+            selections). The delegate determines whether
+            it wants the file identified by <var>filename</var>; it
+            returns <code>YES</code> if the file name is valid,
+            or <code>NO</code> if the NSSavePanel should stay in its
+            modal loop and wait for the user to type in or select
+            a different file name or names. If the delegate refuses a
+            file name in a multiple selection, none of the file
+            names in the selection are accepted.
           
     </p>
     <hr width="25%" align="left" />

@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSWorkspace</title>
   </head>
   <body>
@@ -28,7 +29,8 @@
       Workspace class
     </blockquote>
     <p><b>Copyright:</b> (C) 1996-1999, 2001 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -42,7 +44,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSWorkspace class
       </a></h1>
     <h2><a name="class$NSWorkspace">NSWorkspace</a> : NSObject</h2>
@@ -182,8 +185,41 @@
     - (BOOL) <b>getInfoForFile:</b> (NSString*)fullPath<b> application:</b> (NSString**)appName<b> type:</b> (NSString**)type;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            This method gets information about the file at
+            <var>fullPath</var> and returns <code>YES</code> on
+            success, <code>NO</code> if the named file could
+            not be found. <br /> On success, the name of the
+            preferred application for opening the file is
+            returned in *appName, or <code>nil</code> if there
+            is no known application to open it. <br /> The returned
+            value in *type describes the file using one of the
+            following constants.
+            
+      <dl>
+        <dt>NSPlainFileType</dt>
+        <dd>
           
+                A plain file or a directory that some application
+                claims to be able to open like a file.
+              
+        </dd>
+        <dt>NSDirectoryFileType</dt>
+        <dd>
+          An untyped directory
+        </dd>
+        <dt>NSApplicationFileType</dt>
+        <dd>
+          A GNUstep application
+        </dd>
+        <dt>NSFilesystemFileType</dt>
+        <dd>
+          A file system mount point
+        </dd>
+        <dt>NSShellCommandFileType</dt>
+        <dd>
+          Executable shell command
+        </dd>
+      </dl>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSWorkspace-hideOtherApplications">hideOtherApplications</a></h3>
@@ -195,7 +231,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSWorkspace-iconForFile:">iconForFile:</a></h3>
-    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>iconForFile:</b> (NSString*)aPath;<br />
+    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>iconForFile:</b> (NSString*)fullPath;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -392,7 +428,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSWorkspace(GNUstep)
         category
       </a></h1>
