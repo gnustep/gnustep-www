@@ -400,7 +400,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src">Tests</td>
+<td class="src">Testsuite</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="test/gnustep-tests-1.7.0.tar.gz">1.7.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
