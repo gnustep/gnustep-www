@@ -250,7 +250,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-make-1.8.0.tar.gz">1.8.0</a></td>
-<td class="unst"><a href="core/gnustep-make-1.9.0.tar.gz">1.9.0</a></td>
+<td class="unst"><a href="core/gnustep-make-1.9.1.tar.gz">1.9.1</a></td>
 <td>Makefile Package</td>
 </tr>
 
@@ -258,7 +258,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-base-1.8.0.tar.gz">1.8.0</a></td>
-<td class="unst"><a href="core/gnustep-base-1.9.0.tar.gz">1.9.0</a></td>
+<td class="unst"><a href="core/gnustep-base-1.9.1.tar.gz">1.9.1</a></td>
 <td>Foundation</td>
 </tr>
 
@@ -266,7 +266,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep GUI</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-gui-0.9.0.tar.gz">0.9.0</a></td>
-<td class="unst"><a href="core/gnustep-gui-0.9.1.tar.gz">0.9.1</a></td>
+<td class="unst"><a href="core/gnustep-gui-0.9.2.tar.gz">0.9.2</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
@@ -274,7 +274,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Backend</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-back-0.9.0.tar.gz">0.9.0</a></td>
-<td class="unst"><a href="core/gnustep-back-0.9.1.tar.gz">0.9.1</a></td>
+<td class="unst"><a href="core/gnustep-back-0.9.2.tar.gz">0.9.2</a></td>
 <td>Generic back-end</td>
 </tr>
 
@@ -319,7 +319,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">GNUstep Guile</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="libs/gnustep-guile-1.1.2.tar.gz">1.1.2</a></td>
+<td class="stab"><a href="libs/gnustep-guile-1.1.4.tar.gz">1.1.4</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Interactive development system</td>
 </tr>
@@ -395,7 +395,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">Gorm</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="dev-apps/Gorm-0.4.0.tar.gz">0.4.0
+<td class="stab"><a href="dev-apps/Gorm-0.6.0.tar.gz">0.6.0
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Graphical interface builder</td>

@@ -13,8 +13,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.305</p>
-    <p><b>Date:</b> 2003/11/10 15:34:51</p>
+    <p><b>Version:</b> 1.311</p>
+    <p><b>Date:</b> 2004/02/02 14:46:48</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -315,6 +315,11 @@
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-boolValue">-boolValue</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-substringFromRange:">-substringFromRange:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawAtPoint:withAttributes:">-drawAtPoint:withAttributes:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawInRect:withAttributes:">-drawInRect:withAttributes:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-sizeWithAttributes:">-sizeWithAttributes:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>
@@ -364,6 +369,8 @@
       <li><a rel="gsdoc" href="NSString.html#method$NSString-hasSuffix:">-hasSuffix:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-hash">-hash</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-init">-init</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithBytes:length:encoding:">-initWithBytes:length:encoding:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithBytesNoCopy:length:encoding:freeWhenDone:">-initWithBytesNoCopy:length:encoding:freeWhenDone:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithCString:">-initWithCString:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithCString:length:">-initWithCString:length:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-initWithCStringNoCopy:length:freeWhenDone:">-initWithCStringNoCopy:length:freeWhenDone:</a></li>
@@ -918,6 +925,44 @@
     <p>
       
             <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSString-initWithBytes:length:encoding:">initWithBytes:length:encoding:</a></h3>
+    - (id) <b>initWithBytes:</b> (const void*)bytes<b> length:</b> (unsigned)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
+    <p>
+      
+            Initialises the receiver with a copy of the
+            supplied <var>length</var> of <var>bytes</var>,
+            using the specified <var>encoding</var>. <br /> For
+            NSUnicodeStringEncoding and
+            NSUTF8String <var>encoding</var>, a Byte Order
+            Marker (if present at the start of the data) is
+            removed automatically. <br /> If the data can not
+            be interpreted using the <var>encoding</var>, the
+            receiver is released and <code>nil</code> is
+            returned.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSString-initWithBytesNoCopy:length:encoding:freeWhenDone:">initWithBytesNoCopy:length:encoding:freeWhenDone:</a></h3>
+    - (id) <b>initWithBytesNoCopy:</b> (const void*)bytes<b> length:</b> (unsigned)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding<b> freeWhenDone:</b> (BOOL)flag;<br />
+    <p>
+      
+            Initialises the receiver with the supplied
+            <var>length</var> of <var>bytes</var>, using the
+            specified <var>encoding</var>. <br /> For
+            NSUnicodeStringEncoding and
+            NSUTF8String <var>encoding</var>, a Byte Order
+            Marker (if present at the start of the data) is
+            removed automatically. <br /> If the data is not in
+            a format which can be used internally unmodified, it is
+            copied, otherwise it is used as is. If the data is
+            not copied the <var>flag</var> determines whether the
+            string will free it when it is no longer needed.
+            <br /> If the data can not be interpreted using the
+            <var>encoding</var>, the receiver is released and
+            <code>nil</code> is returned.
           
     </p>
     <hr width="25%" align="left" />
