@@ -49,17 +49,14 @@ SPAN.cont {border-top:thin white solid; padding-top:0.5em;
 <div class="content">
 <div id="main">
 
-<!-- The following PHP generates a 'base href="url/of/server" ' tag, -->
-<!-- declaring the base that will be prefixed to all *relative* URLS -->
-<!-- in this page. Any URLS that are not meant to be relative to the -->
-<!-- download server should be declared as *absolute*. -->
+<!-- base href trickery doesn't work, please use PHP download() function -->
 
 
 <?php
 
-echo("\n<base href=\"");
-echo($HTTP_GET_VARS["site"]);
-echo("/\">\n");
+function download($link) {
+  echo($_GET["site"].$link);
+}
 
 ?>
 
@@ -140,7 +137,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#FOREIGN.FUNCTION.INTERFACES">ffcall</a></td>
 <td class="req">Recommended</td>
 <td class="stab">1.8d</td>
-<td class="unst"><a href="libs/ffcall-1.8d.tar.gz">1.8d</a></td>
+<td class="unst"><a href="<?php download("libs/ffcall-1.8d.tar.gz")?>">1.8d</a></td>
 <td>Message forwarding</td>
 </tr>
 
@@ -211,7 +208,7 @@ the appropriate column.</p>
 <tr>
 <td class="src">libobjc</a></td>
 <td class="req">ONLY with MinGW or gcc2</td>
-<td class="stab"><a href="libs/gnustep-objc-1.3.0.tar.gz">1.3.0</a></td>
+<td class="stab"><a href="<?php download("libs/gnustep-objc-1.3.0.tar.gz")?>">1.3.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Updated libobjc for some systems.</td>
 </tr>
@@ -248,32 +245,32 @@ the appropriate column.</p>
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="core/gnustep-make-1.8.0.tar.gz">1.8.0</a></td>
-<td class="unst"><a href="core/gnustep-make-1.9.1.tar.gz">1.9.1</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-make-1.8.0.tar.gz")?>">1.8.0</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-make-1.9.1.tar.gz")?>">1.9.1</a></td>
 <td>Makefile Package</td>
 </tr>
 
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="core/gnustep-base-1.8.0.tar.gz">1.8.0</a></td>
-<td class="unst"><a href="core/gnustep-base-1.9.1.tar.gz">1.9.1</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-base-1.8.0.tar.gz")?>">1.8.0</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-base-1.9.1.tar.gz")?>">1.9.1</a></td>
 <td>Foundation</td>
 </tr>
 
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep GUI</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="core/gnustep-gui-0.9.0.tar.gz">0.9.0</a></td>
-<td class="unst"><a href="core/gnustep-gui-0.9.2.tar.gz">0.9.2</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-gui-0.9.0.tar.gz")?>">0.9.0</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-gui-0.9.2.tar.gz")?>">0.9.2</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Backend</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="core/gnustep-back-0.9.0.tar.gz">0.9.0</a></td>
-<td class="unst"><a href="core/gnustep-back-0.9.2.tar.gz">0.9.2</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-back-0.9.0.tar.gz")?>">0.9.0</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-back-0.9.2.tar.gz")?>">0.9.2</a></td>
 <td>Generic back-end</td>
 </tr>
 
@@ -318,7 +315,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">GNUstep Guile</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="libs/gnustep-guile-1.1.4.tar.gz">1.1.4</a></td>
+<td class="stab"><a href="<?php download("libs/gnustep-guile-1.1.4.tar.gz")?>">1.1.4</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Interactive development system</td>
 </tr>
@@ -352,7 +349,7 @@ packages and applications may require you to install these libraries
 <td class="src">gdl2</td>
 <td class="req">Optional</td>
 <td class="stab"><div class="cent">-</div></td>
-<td class="unst"><a href="libs/gdl2-0.9.1.tar.gz">0.9.1</a></td>
+<td class="unst"><a href="<?php download("libs/gdl2-0.9.1.tar.gz")?>">0.9.1</a></td>
 <td>Database Support Library</td>
 </tr>
 
@@ -394,7 +391,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">Gorm</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="dev-apps/Gorm-0.6.0.tar.gz">0.6.0
+<td class="stab"><a href="<?php download("dev-apps/Gorm-0.7.5.tar.gz")?>">0.7.5
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Graphical interface builder</td>
@@ -403,7 +400,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">Project Center</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="dev-apps/ProjectCenter-0.3.5.tar.gz">0.3.5
+<td class="stab"><a href="<?php download("dev-apps/ProjectCenter-0.3.5.tar.gz")?>">0.3.5
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Project developer</td>
@@ -412,7 +409,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">nib2gmodel</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="dev-apps/nib2gmodel-0.8.6.tar.gz">0.8.6</a></td>
+<td class="stab"><a href="<?php download("dev-apps/nib2gmodel-0.8.6.tar.gz")?>">0.8.6</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Converts nibs to gmodel</td>
 </tr>
@@ -420,7 +417,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">OpenStep 2GNU Converter</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="contrib/Openstep2GNUConverter-20000717.tar.gz">20000717</a></td>
+<td class="stab"><a href="<?php download("contrib/Openstep2GNUConverter-20000717.tar.gz")?>">20000717</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>PB Project to GNUstep Makefile converter</td>
 </tr>
@@ -436,7 +433,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">Testsuite</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="test/gnustep-tests-1.7.0.tar.gz">1.7.0</a></td>
+<td class="stab"><a href="<?php download("test/gnustep-tests-1.7.0.tar.gz")?>">1.7.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Regression tests</td>
 </tr>
@@ -444,7 +441,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">Examples</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="core/gnustep-examples-0.9.7.tar.gz">0.9.7</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-examples-0.9.7.tar.gz")?>">0.9.7</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>GUI examples</td>
 </tr>
@@ -452,7 +449,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">Foundation Extensions</td>
 <td class="req">Not recommended</td>
-<td class="stab"><a href="libs/extensions-0.8.6.tar.gz">0.8.6</a></td>
+<td class="stab"><a href="<?php download("libs/extensions-0.8.6.tar.gz")?>">0.8.6</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Additional base classes</td>
 </tr>
@@ -528,7 +525,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.gnustep.org/experience/apps.html">GNUstep Apps</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="usr-apps/">Various</a></td>
+<td class="stab"><a href="<?php download("usr-apps/")?>">Various</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Other User Applications</td>
 </tr>
