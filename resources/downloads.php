@@ -230,7 +230,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-make-1.8.0.tar.gz">1.8.0</a></td>
-<td class="unst"><a href="core/gnustep-make-1.7.4.tar.gz">1.7.4</a></td>
+<td class="unst"><a href="core/gnustep-make-1.9.0.tar.gz">1.9.0</a></td>
 <td>Makefile Package</td>
 </tr>
 
@@ -238,7 +238,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-base-1.8.0.tar.gz">1.8.0</a></td>
-<td class="unst"><a href="core/gnustep-base-1.7.4.tar.gz">1.7.4</a></td>
+<td class="unst"><a href="core/gnustep-base-1.9.0.tar.gz">1.9.0</a></td>
 <td>Foundation</td>
 </tr>
 
@@ -246,7 +246,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep GUI</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-gui-0.9.0.tar.gz">0.9.0</a></td>
-<td class="unst"><a href="core/gnustep-gui-0.8.9.tar.gz">0.8.9</a></td>
+<td class="unst"><a href="core/gnustep-gui-0.9.1.tar.gz">0.9.1</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
@@ -254,7 +254,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.GNUSTEP">GNUstep Backend</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="core/gnustep-back-0.9.0.tar.gz">0.9.0</a></td>
-<td class="unst"><a href="core/gnustep-back-0.8.9.tar.gz">0.8.9</a></td>
+<td class="unst"><a href="core/gnustep-back-0.9.1.tar.gz">0.9.1</a></td>
 <td>Generic back-end</td>
 </tr>
 
@@ -292,7 +292,7 @@ packages and applications may require you to install these libraries
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.EXTENSIONS">Renaissance</a></td>
 <td class="req">Optional</td>
 <td class="stab"><div class="cent">-</div></td>
-<td class="unst"><a href="http://www.gnustep.it/Renaissance/Download/Renaissance-0.6.0.tar.gz">0.6.0</a></td>
+<td class="unst"><a href="http://www.gnustep.it/Renaissance/Download/Renaissance-0.7.0.tar.gz">0.7.0</a></td>
 <td>Multi-platform UI layout</td>
 </tr>
 
