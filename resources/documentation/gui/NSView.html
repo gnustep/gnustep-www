@@ -70,8 +70,12 @@
           </p>
     <p>
 
-        Subclasses can override <code>drawRect:</code> in
-        order to implement their appearance. Other methods of
+        Subclasses can override
+        <a rel="gsdoc" href="#method$NSView-drawRect:">
+          -drawRect:
+        </a>
+
+        in order to implement their appearance. Other methods of
         NSView and NSResponder can also be overridden to handle
         user generated events.
           </p>
@@ -371,6 +375,8 @@
               a lot and have a lot of customized drawing parameters.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -378,18 +384,20 @@
               method to set these custom parameters.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSView-ancestorSharedWithView:">ancestorSharedWithView:</a></h3>
     - (<a rel="gsdoc" href="#class$NSView">NSView</a>*) <b>ancestorSharedWithView:</b> (<a rel="gsdoc" href="#class$NSView">NSView</a>*)aView;<br />
     <p>
       
-            Returns <code>self</code> if <var>aView</var> is
-            the receiver or <var>aView</var> is a subview of the
-            receiver, the ancestor view shared by
-            <var>aView</var> and the receiver, if any,
-            <var>aView</var> if it is an ancestor of the
-            receiver, otherwise returns <code>nil</code>.
+            Returns self if <var>aView</var> is the receiver or
+            <var>aView</var> is a subview of the receiver, the
+            ancestor view shared by <var>aView</var> and the
+            receiver if any, or <var>aView</var> if it is an
+            ancestor of the receiver, otherwise returns
+            <code>nil</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -835,7 +843,8 @@
     <p>
       
             Returns the subview, lowest in the receiver's
-            hierarchy, which contains <var>aPoint</var>
+            hierarchy, which contains <var>aPoint</var>, or
+            <code>nil</code> if there is no such view.
           
     </p>
     <hr width="25%" align="left" />
@@ -941,7 +950,7 @@
     <p>
       
             Returns whether or not <var>aPoint</var> lies
-            within <var>aRect</var>
+            within <var>aRect</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -965,7 +974,17 @@
     - (<a rel="gsdoc" href="#class$NSView">NSView</a>*) <b>nextKeyView</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the next view after the receiver in the key
+            view chain. <br /> Returns <code>nil</code> if there
+            is no view after the receiver. <br /> The next view is
+            set up using the
+            <a rel="gsdoc" href="#method$NSView-setNextKeyView:">
+              -setNextKeyView:
+            </a>
+
+            method. <br /> The key view chain is used to
+            determine the order in which views become first
+            responder when using keyboard navigation.
           
     </p>
     <hr width="25%" align="left" />
@@ -973,7 +992,15 @@
     - (<a rel="gsdoc" href="#class$NSView">NSView</a>*) <b>nextValidKeyView</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the first available view after the receiver
+            which is actually able to become first responder. See
+            <a rel="gsdoc" href="#method$NSView-nextKeyView">
+              -nextKeyView
+            </a>
+
+            and
+            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-acceptsFirstResponder">[NSResponder&nbsp;-acceptsFirstResponder]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -1021,7 +1048,18 @@
     - (<a rel="gsdoc" href="#class$NSView">NSView</a>*) <b>previousKeyView</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the view before the receiver in the key
+            view chain. <br /> Returns <code>nil</code> if there
+            is no view before the receiver in the chain. <br /> The
+            previous view of the receiver was set up by
+            passing it as the argument to a call of
+            <a rel="gsdoc" href="#method$NSView-setNextKeyView:">
+              -setNextKeyView:
+            </a>
+
+            on that view. <br /> The key view chain is used to
+            determine the order in which views become first
+            responder when using keyboard navigation.
           
     </p>
     <hr width="25%" align="left" />
@@ -1029,7 +1067,16 @@
     - (<a rel="gsdoc" href="#class$NSView">NSView</a>*) <b>previousValidKeyView</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the first available view before the
+            receiver which is actually able to become first
+            responder. See
+            <a rel="gsdoc" href="#method$NSView-nextKeyView">
+              -nextKeyView
+            </a>
+
+            and
+            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-acceptsFirstResponder">[NSResponder&nbsp;-acceptsFirstResponder]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -1120,6 +1167,8 @@
               occupied in the superview as needing redisplay.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1130,6 +1179,8 @@
  method instead.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSView-removeFromSuperviewWithoutNeedingDisplay">removeFromSuperviewWithoutNeedingDisplay</a></h3>
@@ -1137,12 +1188,12 @@
     <p>
       
             Removes the receiver from its superviews list of
-            subviews, by invoking the superviews [
+            subviews, by invoking the superviews
             <a rel="gsdoc" href="#method$NSView-removeSubview:">
-              -removeSubview:
+              [-removeSubview:]
             </a>
 
-            ] method.
+            method.
           
     </p>
     <hr width="25%" align="left" />
@@ -1158,6 +1209,8 @@
               subviews and from the responder chain.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1173,6 +1226,8 @@
               etc.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSView-removeToolTip:">removeToolTip:</a></h3>
@@ -1385,7 +1440,136 @@
     - (void) <b>setNextKeyView:</b> (<a rel="gsdoc" href="#class$NSView">NSView</a>*)aView;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              The effect of the
+              
+                -setNextkeyView:
+              
+
+              method is to set <var>aView</var> to be the value
+              returned by subsequent calls to the receivers
+              <a rel="gsdoc" href="#method$NSView-nextKeyView">
+                -nextKeyView
+              </a>
+
+              method. This also has the effect of setting the
+              previous key view of <var>aView</var>, so that
+              subsequent calls to its
+              <a rel="gsdoc" href="#method$NSView-previousKeyView">
+                -previousKeyView
+              </a>
+
+              method will return the receiver.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              As a special case, if you pass <code>nil</code> as
+              <var>aView</var> then the
+              <a rel="gsdoc" href="#method$NSView-previousKeyView">
+                -previousKeyView
+              </a>
+
+              of the receivers current
+              <a rel="gsdoc" href="#method$NSView-nextKeyView">
+                -nextKeyView
+              </a>
+
+              is set to <code>nil</code> as well as the receivers
+              
+                -nextKeyView:
+              
+
+              being set to <code>nil</code>. <br /> This behavior
+              provides MacOS-X compatibility.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              If you pass a non-view object other than
+              <code>nil</code>, an
+              NSInternaInconsistencyException
+              is raised.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              <strong>NB</strong> This method does
+              <em>NOT</em> cause <var>aView</var> to be retained,
+              and if <var>aView</var> is deallocated, the
+              
+                [NSView&nbsp;-dealloc]
+              
+
+              method will automatically remove it from the key
+              view chain it is in.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              For keyboard navigation, views are linked together in
+              a chain, so that the current first responder view can
+              be changed by stepping backward and forward in that
+              chain. This is the method for building and
+              modifying that chain.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The MacOS-X documentation refers to this chain as a
+              <em>loop</em>, but the actual implementation is not
+              a loop at all (except as a special case when you make
+              the chain into a loop). In fact, while each view may
+              have only zero or one <em>next</em> view, and zero
+              or one <em>previous</em> view, several views may have
+              their <em>next</em> view set to a single view
+              and/or their <em>previous</em> views set to a
+              single view. So the actual setup is a directed
+              graph rather than a loop.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              While a directed graph is a very powerful and
+              flexible way of managing the way views get
+              keyboard focus in response to tabs etc, it can
+              be confusing if misused. It is probably best
+              therefore, to set your views up as a single
+              loop within each window.
+                </p>
+    <p>
+      
+
+<pre>
+
+   [a setNextKeyView: b];
+   [b setNextKeyView: c];
+   [c setNextKeyView: d];
+   [d setNextKeyView: a];
+ 
+</pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -1409,7 +1593,19 @@
     - (void) <b>setPreviousKeyView:</b> (<a rel="gsdoc" href="#class$NSView">NSView</a>*)aView;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            GNUstep addition... a conveninece method to insert
+            a view in the key view chain before the receiver, using
+            the
+            <a rel="gsdoc" href="#method$NSView-previousKeyView">
+              -previousKeyView
+            </a>
+
+            and
+            <a rel="gsdoc" href="#method$NSView-setNextKeyView:">
+              -setNextKeyView:
+            </a>
+
+            methods.
           
     </p>
     <hr width="25%" align="left" />
@@ -1530,7 +1726,7 @@
     <p>
       
             Notifies the receiver that its superview is being
-            changed to <var>newSuperview</var>.
+            changed to <var>newSuper</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -1625,7 +1821,9 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          <em>Warning</em> this category is <em>private</em>,
+          which means that the methods are for internal use by
+          the package. You should not use them in external code.
         
     </p>
     <b>Method summary</b>
@@ -1636,35 +1834,47 @@
       <li><a rel="gsdoc" href="NSView.html#method$NSView-_rebuildCoordinates">-_rebuildCoordinates</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSView-_invalidateCoordinates">_invalidateCoordinates</a></h3>
+    <h3><a name="method$NSView(PrivateMethods)-_invalidateCoordinates">_invalidateCoordinates</a></h3>
     - (void) <b>_invalidateCoordinates</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSView-_matrixFromWindow">_matrixFromWindow</a></h3>
+    <h3><a name="method$NSView(PrivateMethods)-_matrixFromWindow">_matrixFromWindow</a></h3>
     - (<a rel="gsdoc" href="NSAffineTransform.html#class$NSAffineTransform">NSAffineTransform</a>*) <b>_matrixFromWindow</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSView-_matrixToWindow">_matrixToWindow</a></h3>
+    <h3><a name="method$NSView(PrivateMethods)-_matrixToWindow">_matrixToWindow</a></h3>
     - (<a rel="gsdoc" href="NSAffineTransform.html#class$NSAffineTransform">NSAffineTransform</a>*) <b>_matrixToWindow</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSView-_rebuildCoordinates">_rebuildCoordinates</a></h3>
+    <h3><a name="method$NSView(PrivateMethods)-_rebuildCoordinates">_rebuildCoordinates</a></h3>
     - (void) <b>_rebuildCoordinates</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />

@@ -80,6 +80,8 @@
             a file.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -108,6 +110,8 @@
             user pressed.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -120,6 +124,8 @@
             choose.
               </p>
     <p>
+      
+        
     </p>
     <b>Method summary</b>
     <ul>
@@ -245,9 +251,9 @@
               -runModalForDirectory:file:
             </a>
 
-            with empty strings for the directory and filename.
-            Returns NSOKButton (if the user clicks the OK
-            button) or NSCancelButton (if the user clicks the
+            with empty strings for the filename. Returns
+            NSOKButton (if the user clicks the OK button) or
+            NSCancelButton (if the user clicks the
             Cancel button).
           
     </p>
@@ -260,12 +266,14 @@
             specified by <var>path</var> and, optionally, the
             file specified by <var>filename</var>, then displays
             it and begins its modal event loop; <var>path</var> and
-            <var>filename</var> can be empty strings, but cannot
-            be <code>nil</code>. The method invokes
-            NSApplication:-runModalForWindow:
-            method with self as the argument. Returns NSOKButton
-            (if the user clicks the OK button) or NSCancelButton
-            (if the user clicks the Cancel button).
+            <var>filename</var> can be empty strings. The method
+            invokes [NSApplication:-runModalForWindow:] method
+            with self as the argument. Returns NSOKButton (if the
+            user clicks the OK button) or NSCancelButton (if the
+            user clicks the Cancel button). If <var>path</var> is
+            <code>nil</code> then the panel displays the last
+            selected directory or as a last resort, the
+            current working directory.
           
     </p>
     <hr width="25%" align="left" />
@@ -388,7 +396,7 @@
             Validates and possibly reloads the browser
             columns that are visible in the Save panel by
             causing the delegate method
-            <a rel="gsdoc" href="#method$NSSavePanel-panel:shouldShowFilename:">
+            <a rel="gsdoc" href="#method$NSObject-panel:shouldShowFilename:">
               -panel:shouldShowFilename:
             </a>
 
@@ -435,7 +443,7 @@
       <li><a rel="gsdoc" href="NSSavePanel.html#method$NSObject-panel:userEnteredFilename:confirmed:">-panel:userEnteredFilename:confirmed:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSObject-panel:compareFilename:with:caseSensitive:">panel:compareFilename:with:caseSensitive:</a></h3>
+    <h3><a name="method$NSObject(NSSavePanelDelegate)-panel:compareFilename:with:caseSensitive:">panel:compareFilename:with:caseSensitive:</a></h3>
     - (NSComparisonResult) <b>panel:</b> (id)sender<b> compareFilename:</b> (NSString*)filename1<b> with:</b> (NSString*)filename2<b> caseSensitive:</b> (BOOL)caseSensitive;<br />
     <p>
       
@@ -443,7 +451,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-panel:isValidFilename:">panel:isValidFilename:</a></h3>
+    <h3><a name="method$NSObject(NSSavePanelDelegate)-panel:isValidFilename:">panel:isValidFilename:</a></h3>
     - (BOOL) <b>panel:</b> (id)sender<b> isValidFilename:</b> (NSString*)filename;<br />
     <p>
       
@@ -461,7 +469,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-panel:shouldShowFilename:">panel:shouldShowFilename:</a></h3>
+    <h3><a name="method$NSObject(NSSavePanelDelegate)-panel:shouldShowFilename:">panel:shouldShowFilename:</a></h3>
     - (BOOL) <b>panel:</b> (id)sender<b> shouldShowFilename:</b> (NSString*)filename;<br />
     <p>
       
@@ -469,7 +477,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-panel:userEnteredFilename:confirmed:">panel:userEnteredFilename:confirmed:</a></h3>
+    <h3><a name="method$NSObject(NSSavePanelDelegate)-panel:userEnteredFilename:confirmed:">panel:userEnteredFilename:confirmed:</a></h3>
     - (NSString*) <b>panel:</b> (id)sender<b> userEnteredFilename:</b> (NSString*)fileName<b> confirmed:</b> (BOOL)okFlag;<br />
     <p>
       

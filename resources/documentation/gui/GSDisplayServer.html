@@ -105,6 +105,8 @@
       <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-dragTypesForWindow:">-dragTypesForWindow:</a></li>
       <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-flushwindowrect::">-flushwindowrect::</a></li>
       <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-getEventMatchingMask:beforeDate:inMode:dequeue:">-getEventMatchingMask:beforeDate:inMode:dequeue:</a></li>
+      <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-glContextClass">-glContextClass</a></li>
+      <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-glPixelFormatClass">-glPixelFormatClass</a></li>
       <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-hidecursor">-hidecursor</a></li>
       <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-imagecursor::::::">-imagecursor::::::</a></li>
       <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-initWithAttributes:">-initWithAttributes:</a></li>
@@ -202,6 +204,8 @@
               used with GSDisplayServer is.
                 </p>
     <p>
+      
+            
       <ul>
         <li>
           GSDisplayName
@@ -213,6 +217,8 @@
           GSScreenNumber
         </li>
       </ul>
+      
+            
     </p>
     <p>
 
@@ -236,6 +242,8 @@
               information.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -247,6 +255,8 @@
               events in this case).
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSDisplayServer+setCurrentServer:">setCurrentServer:</a></h3>
@@ -332,7 +342,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSDisplayServer-dragInfo">dragInfo</a></h3>
-    - (id) <b>dragInfo</b>;<br />
+    - (id&#60;NSDraggingInfo>) <b>dragInfo</b>;<br />
     <p>
       
             Returns an instance of a class which implements the
@@ -346,6 +356,22 @@
       
             Returns the drag types set for the window
             <var>win</var>.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSDisplayServer-glContextClass">glContextClass</a></h3>
+    - (id) <b>glContextClass</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSDisplayServer-glPixelFormatClass">glPixelFormatClass</a></h3>
+    - (id) <b>glPixelFormatClass</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
     </p>
     <hr width="25%" align="left" />
@@ -465,7 +491,7 @@ This is a designated initialiser for the class.<br />
       <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-postEvent:atStart:">-postEvent:atStart:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSDisplayServer-discardEventsMatchingMask:beforeEvent:">discardEventsMatchingMask:beforeEvent:</a></h3>
+    <h3><a name="method$GSDisplayServer(EventOps)-discardEventsMatchingMask:beforeEvent:">discardEventsMatchingMask:beforeEvent:</a></h3>
     - (void) <b>discardEventsMatchingMask:</b> (unsigned)mask<b> beforeEvent:</b> (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*)limit;<br />
     <p>
       
@@ -473,7 +499,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-getEventMatchingMask:beforeDate:inMode:dequeue:">getEventMatchingMask:beforeDate:inMode:dequeue:</a></h3>
+    <h3><a name="method$GSDisplayServer(EventOps)-getEventMatchingMask:beforeDate:inMode:dequeue:">getEventMatchingMask:beforeDate:inMode:dequeue:</a></h3>
     - (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*) <b>getEventMatchingMask:</b> (unsigned)mask<b> beforeDate:</b> (NSDate*)limit<b> inMode:</b> (NSString*)mode<b> dequeue:</b> (BOOL)flag;<br />
     <p>
       
@@ -481,7 +507,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-postEvent:atStart:">postEvent:atStart:</a></h3>
+    <h3><a name="method$GSDisplayServer(EventOps)-postEvent:atStart:">postEvent:atStart:</a></h3>
     - (void) <b>postEvent:</b> (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*)anEvent<b> atStart:</b> (BOOL)flag;<br />
     <p>
       
@@ -553,19 +579,23 @@ This is a designated initialiser for the class.<br />
       <li><a rel="gsdoc" href="GSDisplayServer.html#method$GSDisplayServer-windowlist">-windowlist</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$GSDisplayServer-_setWindowOwnedByServer:">_setWindowOwnedByServer:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-_setWindowOwnedByServer:">_setWindowOwnedByServer:</a></h3>
     - (void) <b>_setWindowOwnedByServer:</b> (int)win;<br />
     <p>
       
-            Tells the receiver that it owns the window described
-            by <var>win</var>. Concrete subclasses must call this
-            function when creating a window. Do not call this
-            method in any other case, particularly for a window
-            that has already been created
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code. <br /> Tells the receiver that
+            it owns the window described by <var>win</var>. Concrete
+            subclasses must call this function when creating
+            a window. Do not call this method in any other case,
+            particularly for a window that has already
+            been created
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-appOwnsMiniwindow">appOwnsMiniwindow</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-appOwnsMiniwindow">appOwnsMiniwindow</a></h3>
     - (BOOL) <b>appOwnsMiniwindow</b>;<br />
     <p>
       
@@ -578,7 +608,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-capturemouse:">capturemouse:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-capturemouse:">capturemouse:</a></h3>
     - (BOOL) <b>capturemouse:</b> (int)win;<br />
     <p>
       
@@ -587,7 +617,7 @@ This is a designated initialiser for the class.<br />
             <var>win</var>. If successful, the return value is
             <code>YES</code> and this message must be balanced
             by a
-            <a rel="gsdoc" href="#method$GSDisplayServer(WindowOps)-releasemouse">
+            <a rel="gsdoc" href="#method$GSDisplayServer-releasemouse">
               -releasemouse
             </a>
 
@@ -595,7 +625,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-docedited::">docedited::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-docedited::">docedited::</a></h3>
     - (void) <b>docedited:</b> (int)edited<b> :</b> (int)win;<br />
     <p>
       
@@ -604,7 +634,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-flushwindowrect::">flushwindowrect::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-flushwindowrect::">flushwindowrect::</a></h3>
     - (void) <b>flushwindowrect:</b> (NSRect)rect<b> :</b> (int)win;<br />
     <p>
       
@@ -612,7 +642,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-hidecursor">hidecursor</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-hidecursor">hidecursor</a></h3>
     - (void) <b>hidecursor</b>;<br />
     <p>
       
@@ -620,7 +650,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-imagecursor::::::">imagecursor::::::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-imagecursor::::::">imagecursor::::::</a></h3>
     - (void) <b>imagecursor:</b> (NSPoint)hotp<b> :</b> (int)w<b> :</b> (int)h<b> :</b> (int)colors<b> :</b> (const char*)image<b> :</b> (void**)cid;<br />
     <p>
       
@@ -630,7 +660,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-miniwindow:">miniwindow:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-miniwindow:">miniwindow:</a></h3>
     - (void) <b>miniwindow:</b> (int)win;<br />
     <p>
       
@@ -638,14 +668,14 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-mouseLocationOnScreen:window:">mouseLocationOnScreen:window:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-mouseLocationOnScreen:window:">mouseLocationOnScreen:window:</a></h3>
     - (NSPoint) <b>mouseLocationOnScreen:</b> (int)aScreen<b> window:</b> (int*)win;<br />
     <p>
       
             Returns the current mouse location on
             <var>aScreen</var>. If the pointer is not on
             <var>aScreen</var>, this method acts like
-            <a rel="gsdoc" href="#method$GSDisplayServer(WindowOps)-mouselocation">
+            <a rel="gsdoc" href="#method$GSDisplayServer-mouselocation">
               -mouselocation
             </a>
 
@@ -657,7 +687,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-mouselocation">mouselocation</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-mouselocation">mouselocation</a></h3>
     - (NSPoint) <b>mouselocation</b>;<br />
     <p>
       
@@ -667,7 +697,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-movewindow::">movewindow::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-movewindow::">movewindow::</a></h3>
     - (void) <b>movewindow:</b> (NSPoint)loc<b> :</b> (int)win;<br />
     <p>
       
@@ -676,7 +706,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-orderwindow:::">orderwindow:::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-orderwindow:::">orderwindow:::</a></h3>
     - (void) <b>orderwindow:</b> (int)op<b> :</b> (int)otherWin<b> :</b> (int)win;<br />
     <p>
       
@@ -686,7 +716,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-placewindow::">placewindow::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-placewindow::">placewindow::</a></h3>
     - (void) <b>placewindow:</b> (NSRect)frame<b> :</b> (int)win;<br />
     <p>
       
@@ -695,19 +725,19 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-releasemouse">releasemouse</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-releasemouse">releasemouse</a></h3>
     - (void) <b>releasemouse</b>;<br />
     <p>
       
             Release a previous captured mouse from
-            <a rel="gsdoc" href="#method$GSDisplayServer(WindowOps)-capturemouse:">
+            <a rel="gsdoc" href="#method$GSDisplayServer-capturemouse:">
               -capturemouse:
             </a>
 
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-setcursorcolor:::">setcursorcolor:::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-setcursorcolor:::">setcursorcolor:::</a></h3>
     - (void) <b>setcursorcolor:</b> (<a rel="gsdoc" href="NSColor.html#class$NSColor">NSColor</a>*)fg<b> :</b> (<a rel="gsdoc" href="NSColor.html#class$NSColor">NSColor</a>*)bg<b> :</b> (void*)cid;<br />
     <p>
       
@@ -720,7 +750,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-setinputfocus:">setinputfocus:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-setinputfocus:">setinputfocus:</a></h3>
     - (void) <b>setinputfocus:</b> (int)win;<br />
     <p>
       
@@ -729,7 +759,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-setinputstate::">setinputstate::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-setinputstate::">setinputstate::</a></h3>
     - (void) <b>setinputstate:</b> (int)state<b> :</b> (int)win;<br />
     <p>
       
@@ -740,7 +770,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-setmaxsize::">setmaxsize::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-setmaxsize::">setmaxsize::</a></h3>
     - (void) <b>setmaxsize:</b> (NSSize)size<b> :</b> (int)win;<br />
     <p>
       
@@ -748,7 +778,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-setminsize::">setminsize::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-setminsize::">setminsize::</a></h3>
     - (void) <b>setminsize:</b> (NSSize)size<b> :</b> (int)win;<br />
     <p>
       
@@ -756,7 +786,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-setresizeincrements::">setresizeincrements::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-setresizeincrements::">setresizeincrements::</a></h3>
     - (void) <b>setresizeincrements:</b> (NSSize)size<b> :</b> (int)win;<br />
     <p>
       
@@ -764,7 +794,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-setwindowlevel::">setwindowlevel::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-setwindowlevel::">setwindowlevel::</a></h3>
     - (void) <b>setwindowlevel:</b> (int)level<b> :</b> (int)win;<br />
     <p>
       
@@ -773,7 +803,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-showcursor">showcursor</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-showcursor">showcursor</a></h3>
     - (void) <b>showcursor</b>;<br />
     <p>
       
@@ -781,7 +811,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-standardcursor::">standardcursor::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-standardcursor::">standardcursor::</a></h3>
     - (void) <b>standardcursor:</b> (int)style<b> :</b> (void**)cid;<br />
     <p>
       
@@ -792,7 +822,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-styleoffsets:::::">styleoffsets:::::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-styleoffsets:::::">styleoffsets:::::</a></h3>
     - (void) <b>styleoffsets:</b> (float*)l<b> :</b> (float*)r<b> :</b> (float*)t<b> :</b> (float*)b<b> :</b> (int)style;<br />
     <p>
       
@@ -803,7 +833,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-stylewindow::">stylewindow::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-stylewindow::">stylewindow::</a></h3>
     - (void) <b>stylewindow:</b> (int)style<b> :</b> (int)win;<br />
     <p>
       
@@ -813,7 +843,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-termwindow:">termwindow:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-termwindow:">termwindow:</a></h3>
     - (void) <b>termwindow:</b> (int)win;<br />
     <p>
       
@@ -822,7 +852,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-titlewindow::">titlewindow::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-titlewindow::">titlewindow::</a></h3>
     - (void) <b>titlewindow:</b> (NSString*)window_title<b> :</b> (int)win;<br />
     <p>
       
@@ -830,7 +860,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-window:::">window:::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-window:::">window:::</a></h3>
     - (int) <b>window:</b> (NSRect)frame<b> :</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSBackingStoreType">NSBackingStoreType</a>)type<b> :</b> (unsigned int)style;<br />
     <p>
       
@@ -843,7 +873,7 @@ This is a designated initialiser for the class.<br />
             controls these aspects of the window. The actual
             drawable area of the window may vary depending on
             the window manager involved. Use
-            <a rel="gsdoc" href="#method$GSDisplayServer(WindowOps)-styleoffsets:::::">
+            <a rel="gsdoc" href="#method$GSDisplayServer-styleoffsets:::::">
               -styleoffsets:::::
             </a>
 
@@ -851,7 +881,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-window::::">window::::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-window::::">window::::</a></h3>
     - (int) <b>window:</b> (NSRect)frame<b> :</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSBackingStoreType">NSBackingStoreType</a>)type<b> :</b> (unsigned int)style<b> :</b> (int)screen;<br />
     <p>
       
@@ -861,7 +891,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-windowbacking::">windowbacking::</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-windowbacking::">windowbacking::</a></h3>
     - (void) <b>windowbacking:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSBackingStoreType">NSBackingStoreType</a>)type<b> :</b> (int)win;<br />
     <p>
       
@@ -870,7 +900,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-windowbounds:">windowbounds:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-windowbounds:">windowbounds:</a></h3>
     - (NSRect) <b>windowbounds:</b> (int)win;<br />
     <p>
       
@@ -878,7 +908,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-windowdepth:">windowdepth:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-windowdepth:">windowdepth:</a></h3>
     - (int) <b>windowdepth:</b> (int)win;<br />
     <p>
       
@@ -886,7 +916,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-windowdevice:">windowdevice:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-windowdevice:">windowdevice:</a></h3>
     - (void) <b>windowdevice:</b> (int)win;<br />
     <p>
       
@@ -898,7 +928,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-windowlevel:">windowlevel:</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-windowlevel:">windowlevel:</a></h3>
     - (int) <b>windowlevel:</b> (int)win;<br />
     <p>
       
@@ -906,7 +936,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$GSDisplayServer-windowlist">windowlist</a></h3>
+    <h3><a name="method$GSDisplayServer(WindowOps)-windowlist">windowlist</a></h3>
     - (NSArray*) <b>windowlist</b>;<br />
     <p>
       
