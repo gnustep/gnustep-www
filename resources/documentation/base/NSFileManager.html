@@ -30,8 +30,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.86</p>
-    <p><b>Date:</b> 2002/10/28 09:28:55</p>
+    <p><b>Version:</b> 1.88</p>
+    <p><b>Date:</b> 2003/02/11 10:26:17</p>
     <p><b>Copyright:</b> (C) 1997-2002 Free Software Foundation, Inc.</p>
 
         <div>
@@ -1039,13 +1039,83 @@ The dictionary keys for attributes are -    </p>
     - (BOOL) <b>fileManager:</b> (<a rel="gsdoc" href="#class$NSFileManager">NSFileManager</a>*)fileManager<b> shouldProceedAfterError:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)errorDictionary;<br />
     <p>
       
-            When an error occurs during a copy or move operation,
-            the file manager will send this message to the handler,
-            and will use the return value to determine whether the
-            operation should proceed. If the method returns
-            <code>YES</code> then the operation will proceed
-            after the error, if it returns <code>NO</code> then
-            it will be aborted.
+            
+    </p>
+    <p>
+
+              When an error occurs during a copy or move
+              operation, the file manager will send this
+              message to the handler, and will use the return
+              value to determine whether the operation should
+              proceed. If the method returns <code>YES</code>
+              then the operation will proceed after the error, if
+              it returns <code>NO</code> then it will be aborted.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              If the handler does not implement this method it will
+              be treated as if it returns <code>NO</code>.
+                </p>
+    <p>
+      
+            The error dictionary contains the following
+            
+      <ul>
+        <li>
+          
+                <strong>"Error"</strong> contains a
+                description of the error.
+              
+        </li>
+        <li>
+          
+                <strong>"Path"</strong> contains the path that
+                is being processed when an error occured. If an
+                error occurs during an operation involving two
+                files, like copying, and it is not clear which
+                file triggers the error it will default to the
+                source file.
+              
+        </li>
+        <li>
+          
+                <strong>"FromPath"</strong> (Optional)
+                contains the path involved in reading.
+              
+        </li>
+        <li>
+          
+                <strong>"ToPath"</strong> (Optional) contains
+                the path involved in writing.
+              
+        </li>
+      </ul>
+      
+            
+    </p>
+    <p>
+
+              Note that the <code>FromPath</code> is a GNUstep
+              extension.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Also the <code>FromPath</code> and
+              <code>ToPath</code> are filled in when
+              appropriate. So when copying a file they
+              will typically both have a value and when reading
+              only <code>FromPath</code>.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -1057,7 +1127,7 @@ The dictionary keys for attributes are -    </p>
             immediately before performing part of a
             directory move or copy operation. This provides
             the handler object with information it can use in the
-            event of an error, to decide whether p[rocessing
+            event of an error, to decide whether processing
             should proceed after the error.
           
     </p>

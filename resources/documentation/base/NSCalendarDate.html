@@ -20,8 +20,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.73</p>
-    <p><b>Date:</b> 2002/10/05 17:47:53</p>
+    <p><b>Version:</b> 1.79</p>
+    <p><b>Date:</b> 2003/01/09 16:03:50</p>
     <p><b>Copyright:</b> (C) 
       1996, 1998, 1999, 2000, 2002 Free Software Foundation, Inc.
     </p>
@@ -66,7 +66,13 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          An
+          <a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>
+
+            subclass which understands about timezones and
+            provides methods for dealing with date and time
+            information by calendar and with hours minutes
+            and seconds.
         
     </p>
     <b>Method summary</b>
@@ -109,7 +115,8 @@
     + (id) <b>calendarDate</b>;<br />
     <p>
       
-            Getting an NSCalendar Date
+            Return an NSCalendarDate for the current date and
+            time using the default timezone.
           
     </p>
     <hr width="25%" align="left" />
@@ -117,7 +124,14 @@
     + (id) <b>dateWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)description<b> calendarFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return an NSCalendarDate generated from the supplied
+            <var>description</var> using the <var>format</var>
+            specified for parsing that string. <br /> Calls
+            <a rel="gsdoc" href="#method$NSCalendarDate-initWithString:calendarFormat:">
+              -initWithString:calendarFormat:
+            </a>
+
+            to create the date.
           
     </p>
     <hr width="25%" align="left" />
@@ -125,7 +139,13 @@
     + (id) <b>dateWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)description<b> calendarFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)dictionary;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return an NSCalendarDate generated from the supplied
+            <var>description</var> using the <var>format</var>
+            specified for parsing that string and
+            interpreting it according to the
+            <var>dictionary</var> specified. <br /> Calls
+            <a rel="gsdoc" href="#method$NSCalendarDate-initWithString:calendarFormat:locale:">-initWithString:calendarFormat:locale:</a>
+ to create the date.
           
     </p>
     <hr width="25%" align="left" />
@@ -133,7 +153,10 @@
     + (id) <b>dateWithYear:</b> (int)year<b> month:</b> (unsigned int)month<b> day:</b> (unsigned int)day<b> hour:</b> (unsigned int)hour<b> minute:</b> (unsigned int)minute<b> second:</b> (unsigned int)second<b> timeZone:</b> (<a rel="gsdoc" href="NSTimeZone.html#class$NSTimeZone">NSTimeZone</a>*)aTimeZone;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates and returns an NSCalendarDate from the
+            specified values by calling
+            <a rel="gsdoc" href="#method$NSCalendarDate-initWithYear:month:day:hour:minute:second:timeZone:">-initWithYear:month:day:hour:minute:second:timeZone:</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -153,7 +176,10 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>calendarFormat</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the format string associated with the
+            receiver. <br /> See
+            <a rel="gsdoc" href="#method$NSCalendarDate-descriptionWithCalendarFormat:locale:">-descriptionWithCalendarFormat:locale:</a>
+ for details.
           
     </p>
     <hr width="25%" align="left" />
@@ -161,7 +187,9 @@
     - (int) <b>dayOfCommonEra</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the day number (ie number of days since the
+            start of) in the 'common' era of the receiving date.
+            The era starts at 1 A.D.
           
     </p>
     <hr width="25%" align="left" />
@@ -169,7 +197,7 @@
     - (int) <b>dayOfMonth</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the month (1 to 31) of the receiving date.
           
     </p>
     <hr width="25%" align="left" />
@@ -177,7 +205,33 @@
     - (int) <b>dayOfWeek</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the day of the week (0 to 6) of the receiving
+            date.
+            
+      <ul>
+        <li>
+          0 is sunday
+        </li>
+        <li>
+          1 is monday
+        </li>
+        <li>
+          2 is tuesday
+        </li>
+        <li>
+          3 is wednesday
+        </li>
+        <li>
+          4 is thursday
+        </li>
+        <li>
+          5 is friday
+        </li>
+        <li>
+          6 is saturday
+        </li>
+      </ul>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -185,7 +239,8 @@
     - (int) <b>dayOfYear</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the day of the year (1 to 366) of the
+            receiving date.
           
     </p>
     <hr width="25%" align="left" />
@@ -193,7 +248,9 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>description</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Calls
+            <a rel="gsdoc" href="#method$NSCalendarDate-descriptionWithCalendarFormat:locale:">-descriptionWithCalendarFormat:locale:</a>
+ passing the receviers calendar format and a <code>nil</code> locale.
           
     </p>
     <hr width="25%" align="left" />
@@ -201,7 +258,11 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithCalendarFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string representation of the receiver
+            using the specified <var>format</var> string. <br />
+            Calls
+            <a rel="gsdoc" href="#method$NSCalendarDate-descriptionWithCalendarFormat:locale:">-descriptionWithCalendarFormat:locale:</a>
+ with a <code>nil</code> locale.
           
     </p>
     <hr width="25%" align="left" />
@@ -209,7 +270,110 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithCalendarFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string representation of the receiver
+            using the specified <var>format</var> string and
+            <var>locale</var> dictionary. <br /> Format
+            specifiers are -
+            
+      <ul>
+        <li>
+          
+                %a abbreviated weekday name according to
+                <var>locale</var>
+              
+        </li>
+        <li>
+          
+                %A full weekday name according to <var>locale</var>
+              
+        </li>
+        <li>
+          
+                %b abbreviated month name according to
+                <var>locale</var>
+              
+        </li>
+        <li>
+          
+                %B full month name according to <var>locale</var>
+              
+        </li>
+        <li>
+          
+                %d day of month as decimal number (leading zero)
+              
+        </li>
+        <li>
+          
+                %e day of month as decimal number (leading space)
+              
+        </li>
+        <li>
+          %F milliseconds (000 to 999)
+        </li>
+        <li>
+          
+                %H hour as a decimal number using 24-hour clock
+              
+        </li>
+        <li>
+          
+                %I hour as a decimal number using 12-hour clock
+              
+        </li>
+        <li>
+          %j day of year as a decimal number
+        </li>
+        <li>
+          %m month as decimal number
+        </li>
+        <li>
+          %M minute as decimal number
+        </li>
+        <li>
+          %p 'am' or 'pm'
+        </li>
+        <li>
+          %S second as decimal number
+        </li>
+        <li>
+          
+                %U week of the current year as decimal number
+                (Sunday first day)
+              
+        </li>
+        <li>
+          
+                %W week of the current year as decimal number
+                (Monday first day)
+              
+        </li>
+        <li>
+          
+                %w day of the week as decimal number (Sunday = 0)
+              
+        </li>
+        <li>
+          
+                %y year as a decimal number without century
+              
+        </li>
+        <li>
+          
+                %Y year as a decimal number with century
+              
+        </li>
+        <li>
+          %z time zone offset (HHMM)
+        </li>
+        <li>
+          %Z time zone
+        </li>
+        <li>
+          %% literal % character
+        </li>
+      </ul>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -217,7 +381,11 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a description of the receiver using its
+            normal format but with the specified
+            <var>locale</var> dictionary. <br /> Calls
+            <a rel="gsdoc" href="#method$NSCalendarDate-descriptionWithCalendarFormat:locale:">-descriptionWithCalendarFormat:locale:</a>
+ to do this.
           
     </p>
     <hr width="25%" align="left" />
@@ -225,7 +393,8 @@
     - (int) <b>hourOfDay</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the hour of the day (0 to 23) of the
+            receiving date.
           
     </p>
     <hr width="25%" align="left" />
@@ -233,7 +402,11 @@
     - (id) <b>initWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)description;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes an NSCalendarDate using the
+            specified <var>description</var> and the default
+            calendar format and locale. <br /> Calls
+            <a rel="gsdoc" href="#method$NSCalendarDate-initWithString:calendarFormat:locale:">-initWithString:calendarFormat:locale:</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -241,7 +414,12 @@
     - (id) <b>initWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)description<b> calendarFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes an NSCalendarDate using the
+            specified <var>description</var> and
+            <var>format</var> string interpreted in the default
+            locale. <br /> Calls
+            <a rel="gsdoc" href="#method$NSCalendarDate-initWithString:calendarFormat:locale:">-initWithString:calendarFormat:locale:</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -249,7 +427,127 @@
     - (id) <b>initWithString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)description<b> calendarFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)fmt<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes an NSCalendarDate using the
+            specified <var>description</var> and format
+            string interpreted in the given <var>locale</var>.
+            <br /> Format specifiers are -
+            
+      <ul>
+        <li>
+          %% literal % character
+        </li>
+        <li>
+          
+                %a abbreviated weekday name according to
+                <var>locale</var>
+              
+        </li>
+        <li>
+          
+                %A full weekday name according to <var>locale</var>
+              
+        </li>
+        <li>
+          
+                %b abbreviated month name according to
+                <var>locale</var>
+              
+        </li>
+        <li>
+          
+                %B full month name according to <var>locale</var>
+              
+        </li>
+        <li>
+          %c same as '%X %x'
+        </li>
+        <li>
+          %d day of month as decimal number
+        </li>
+        <li>
+          
+                %e same as %d without leading zero (you get a
+                leading space instead)
+              
+        </li>
+        <li>
+          %F milliseconds as a decimal number
+        </li>
+        <li>
+          
+                %H hour as a decimal number using 24-hour clock
+              
+        </li>
+        <li>
+          
+                %I hour as a decimal number using 12-hour clock
+              
+        </li>
+        <li>
+          %j day of year as a decimal number
+        </li>
+        <li>
+          %m month as decimal number
+        </li>
+        <li>
+          %M minute as decimal number
+        </li>
+        <li>
+          %p 'am' or 'pm'
+        </li>
+        <li>
+          %S second as decimal number
+        </li>
+        <li>
+          
+                %U week of the current year as decimal number
+                (Sunday first day)
+              
+        </li>
+        <li>
+          
+                %W week of the current year as decimal number
+                (Monday first day)
+              
+        </li>
+        <li>
+          
+                %w day of the week as decimal number (Sunday = 0)
+              
+        </li>
+        <li>
+          
+                %x date with date representation for
+                <var>locale</var>
+              
+        </li>
+        <li>
+          
+                %X time with time representation for
+                <var>locale</var>
+              
+        </li>
+        <li>
+          
+                %y year as a decimal number without century
+              
+        </li>
+        <li>
+          
+                %Y year as a decimal number with century
+              
+        </li>
+        <li>
+          
+                %z time zone offset in hours and minutes from GMT
+                (HHMM)
+              
+        </li>
+        <li>
+          %Z time zone abbreviation
+        </li>
+      </ul>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -268,12 +566,12 @@
             <var>hour</var> is in the range 0 to 23, <br /> The
             <var>minute</var> is in the range 0 to 59, <br /> The
             <var>second</var> is in the range 0 to 59. <br /> If
-            <var>aTimeZone</var> is <code>nil</code>, the [
+            <var>aTimeZone</var> is <code>nil</code>, the
             <a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+localTimeZone">
-              NSTimeZone+localTimeZone
+              [NSTimeZone&nbsp;+localTimeZone]
             </a>
 
-            ] value is used.
+            value is used.
             
     </p>
     <p>
@@ -287,7 +585,9 @@
               MacOS-X).
                 </p>
     <p>
-      <br />
+      
+            The algorithm GNUstep uses to create the date is this
+            ... <br />
             
       <ul>
         <li>
@@ -333,13 +633,16 @@
               
         </li>
       </ul>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSCalendarDate-minuteOfHour">minuteOfHour</a></h3>
     - (int) <b>minuteOfHour</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the minute of the hour (0 to 59) of the
+            receiving date.
           
     </p>
     <hr width="25%" align="left" />
@@ -347,7 +650,8 @@
     - (int) <b>monthOfYear</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the month of the year (1 to 12) of the
+            receiving date.
           
     </p>
     <hr width="25%" align="left" />
@@ -355,7 +659,8 @@
     - (int) <b>secondOfMinute</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the second of the minute (0 to 59) of the
+            receiving date.
           
     </p>
     <hr width="25%" align="left" />
@@ -363,7 +668,10 @@
     - (void) <b>setCalendarFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the <var>format</var> string associated with the
+            receiver. <br /> See
+            <a rel="gsdoc" href="#method$NSCalendarDate-descriptionWithCalendarFormat:locale:">-descriptionWithCalendarFormat:locale:</a>
+ for details.
           
     </p>
     <hr width="25%" align="left" />
@@ -371,7 +679,7 @@
     - (void) <b>setTimeZone:</b> (<a rel="gsdoc" href="NSTimeZone.html#class$NSTimeZone">NSTimeZone</a>*)aTimeZone;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the time zone associated with the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -379,7 +687,7 @@
     - (<a rel="gsdoc" href="NSTimeZone.html#class$NSTimeZone">NSTimeZone</a>*) <b>timeZone</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the time zone associated with the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -387,7 +695,8 @@
     - (<a rel="gsdoc" href="NSTimeZone.html#class$NSTimeZoneDetail">NSTimeZoneDetail</a>*) <b>timeZoneDetail</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the time zone detail associated with the
+            receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -395,7 +704,8 @@
     - (int) <b>yearOfCommonEra</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the year of the 'common' era of the receiving
+            date. The era starts at 1 A.D.
           
     </p>
     <hr width="25%" align="left" />
@@ -415,14 +725,14 @@
     <blockquote>
       <b>Standards:</b>
       <ul>
-        <li>MacOS-X</li>
-        <li>OpenStep</li>
+        <li>NotOpenStep</li>
+        <li>NotMacOS-X</li>
         <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Routines for manipulating Gregorian dates
         
     </p>
     <b>Method summary</b>
@@ -432,27 +742,32 @@
       <li><a rel="gsdoc" href="NSCalendarDate.html#method$NSCalendarDate-lastDayOfGregorianMonth:year:">-lastDayOfGregorianMonth:year:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSCalendarDate-absoluteGregorianDay:month:year:">absoluteGregorianDay:month:year:</a></h3>
+    <h3><a name="method$NSCalendarDate(GregorianDate)-absoluteGregorianDay:month:year:">absoluteGregorianDay:month:year:</a></h3>
     - (int) <b>absoluteGregorianDay:</b> (int)day<b> month:</b> (int)month<b> year:</b> (int)year;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the number of days since the start of the
+            era for the specified <var>day</var>, <var>month</var>,
+            and <var>year</var>.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSCalendarDate-gregorianDateFromAbsolute:day:month:year:">gregorianDateFromAbsolute:day:month:year:</a></h3>
+    <h3><a name="method$NSCalendarDate(GregorianDate)-gregorianDateFromAbsolute:day:month:year:">gregorianDateFromAbsolute:day:month:year:</a></h3>
     - (void) <b>gregorianDateFromAbsolute:</b> (int)d<b> day:</b> (int*)day<b> month:</b> (int*)month<b> year:</b> (int*)year;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Given a <var>day</var> number since the start of the
+            era, returns the date as a <var>day</var>,
+            <var>month</var>, and <var>year</var>.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSCalendarDate-lastDayOfGregorianMonth:year:">lastDayOfGregorianMonth:year:</a></h3>
+    <h3><a name="method$NSCalendarDate(GregorianDate)-lastDayOfGregorianMonth:year:">lastDayOfGregorianMonth:year:</a></h3>
     - (int) <b>lastDayOfGregorianMonth:</b> (int)month<b> year:</b> (int)year;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the number of the last day of the
+            <var>month</var> in the specified <var>year</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -471,14 +786,15 @@
     <blockquote>
       <b>Standards:</b>
       <ul>
-        <li>MacOS-X</li>
         <li>OpenStep</li>
+        <li>NotMacOS-X</li>
         <li>GNUstep</li>
       </ul>
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          Methods present in OpenStep but later removed from
+          MacOS-X
         
     </p>
     <b>Method summary</b>
@@ -487,7 +803,7 @@
       <li><a rel="gsdoc" href="NSCalendarDate.html#method$NSCalendarDate-years:months:days:hours:minutes:seconds:sinceDate:">-years:months:days:hours:minutes:seconds:sinceDate:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSCalendarDate-dateByAddingYears:months:days:hours:minutes:seconds:">dateByAddingYears:months:days:hours:minutes:seconds:</a></h3>
+    <h3><a name="method$NSCalendarDate(OPENSTEP)-dateByAddingYears:months:days:hours:minutes:seconds:">dateByAddingYears:months:days:hours:minutes:seconds:</a></h3>
     - (<a rel="gsdoc" href="#class$NSCalendarDate">NSCalendarDate</a>*) <b>dateByAddingYears:</b> (int)years<b> months:</b> (int)months<b> days:</b> (int)days<b> hours:</b> (int)hours<b> minutes:</b> (int)minutes<b> seconds:</b> (int)seconds;<br />
     <p>
       
@@ -505,6 +821,8 @@
               be 9th November.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -513,13 +831,18 @@
               so that it preserves expected clock time.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSCalendarDate-years:months:days:hours:minutes:seconds:sinceDate:">years:months:days:hours:minutes:seconds:sinceDate:</a></h3>
+    <h3><a name="method$NSCalendarDate(OPENSTEP)-years:months:days:hours:minutes:seconds:sinceDate:">years:months:days:hours:minutes:seconds:sinceDate:</a></h3>
     - (void) <b>years:</b> (int*)years<b> months:</b> (int*)months<b> days:</b> (int*)days<b> hours:</b> (int*)hours<b> minutes:</b> (int*)minutes<b> seconds:</b> (int*)seconds<b> sinceDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)date;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the number of <var>years</var>,
+            <var>months</var>, <var>days</var>, <var>hours</var>,
+            <var>minutes</var>, and <var>seconds</var> between
+            the receiver and the given <var>date</var>.
           
     </p>
     <hr width="25%" align="left" />

@@ -1,11 +1,12 @@
 <html>
-  <head>
-    <title>NSPort class reference</title>
+
+    <head>
+    <title>NSSocketPort class reference</title>
   </head>
   <body>
     <a href="Base.html">Up</a>
     <br />
-    <h1><a name="title$NSPort">NSPort class reference</a></h1>
+    <h1><a name="title$NSPort">NSSocketPort class reference</a></h1>
     <h3>Authors</h3>
     <dl>
       <dt>Richard Frith-Macdonald(<a href="mailto:richard@brainstorm.co.uk"><code>
@@ -13,11 +14,17 @@
       </code></a>)</dt>
       <dd>
       </dd>
+      <dt>Jonathan Gapen(<a href="mailto:jagapen@wisc.edu"><code>
+        jagapen@wisc.edu
+      </code></a>)</dt>
+      <dd>
+      </dd>
     </dl>
     <p><b>Version:</b> 1.23</p>
     <p><b>Date:</b> 2002/05/08 05:43:15</p>
-    <p><b>Copyright:</b> (C) 1997, 1998 Free Software Foundation, Inc.</p>
-    <div>
+    <p><b>Copyright:</b> (C) 1997,2002 Free Software Foundation, Inc.</p>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -25,13 +32,17 @@
           <a href="#001000000000">Software documentation for the NSPort class</a>
         </li>
         <li>
-          <a href="#002000000000">Software documentation for the NSPort(GNUstep)
+          <a href="#002000000000">Software documentation for the NSSocketPort class</a>
+        </li>
+        <li>
+          <a href="#003000000000">Software documentation for the NSPort(GNUstep)
         category</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSPort class
       </a></h1>
     <h2><a name="class$NSPort">NSPort</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -194,7 +205,204 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
+        Software documentation for the NSSocketPort class
+      </a></h1>
+    <h2><a name="class$NSSocketPort">NSSocketPort</a> : <a rel="gsdoc" href="#class$NSPort">NSPort</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSPort.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <dl>
+        <dt><b>Conforms to:</b></dt>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(NSCoding)">NSCoding</a></dd>
+        <dd><a rel="gsdoc" href="NSObject.html#protocol$(NSCopying)">NSCopying</a></dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>NotOpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            <code>NSSocketPort</code> on MacOS X(tm) is a
+            concrete subclass of NSPort which implements
+            Distributed Objects communication between hosts
+            on a network. However, the GNUstep distributed objects
+            system's NSPort class uses TCP/IP for all of its
+            communication. The GNUstep
+            <code>NSSocketPort</code>, then, is useful as a
+            convenient method to create and encapsulate BSD
+            sockets:
+              </p>
+    <p>
+      
+
+<pre>
+   int fileDesc;
+   NSFileHandle *smtpHandle;
+   
+   fileDesc = [[NSSocketPort alloc] initRemoteWithTCPPort: 25
+                                       host: @"mail.example.com"];
+   smtpHandle = [[NSFileHandle alloc] initWithFileDescriptor: fileDesc];
+ </pre>
+      
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-address">-address</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-init">-init</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-initRemoteWithProtocolFamily:socketType:protocol:address:">-initRemoteWithProtocolFamily:socketType:protocol:address:</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-initRemoteWithTCPPort:host:">-initRemoteWithTCPPort:host:</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-initWithProtocolFamily:socketType:protocol:address:">-initWithProtocolFamily:socketType:protocol:address:</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-initWithProtocolFamily:socketType:protocol:socket:">-initWithProtocolFamily:socketType:protocol:socket:</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-initWithTCPPort:">-initWithTCPPort:</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-protocol">-protocol</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-protocolFamily">-protocolFamily</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-socket">-socket</a></li>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-socketType">-socketType</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSSocketPort-address">address</a></h3>
+    - (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>address</b>;<br />
+    <p>
+      
+            Return the protocol family-specific socket address
+            in an NSData object.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-init">init</a></h3>
+    - (id) <b>init</b>;<br />
+    <p>
+      
+            Initialize the receiver with a local socket to
+            accept TCP connections on a non-conflicting port
+            number chosen by the system.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-initRemoteWithProtocolFamily:socketType:protocol:address:">initRemoteWithProtocolFamily:socketType:protocol:address:</a></h3>
+    - (id) <b>initRemoteWithProtocolFamily:</b> (int)family<b> socketType:</b> (int)type<b> protocol:</b> (int)protocol<b> address:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)addrData;<br />
+    <p>
+      
+            Initialize the receiver to connect to a remote
+            socket of <em><var>type</var></em> with
+            <em><var>protocol</var></em> from the
+            <var>protocol</var> <var>family</var>
+            <em><var>family</var></em>. The
+            <em><var>addrData</var></em> should contain a copy of
+            the <var>protocol</var> family-specific address data in
+            an NSData object.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-initRemoteWithTCPPort:host:">initRemoteWithTCPPort:host:</a></h3>
+    - (id) <b>initRemoteWithTCPPort:</b> (unsigned short)portNumber<b> host:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)hostname;<br />
+    <p>
+      
+            Initialize the receiver to connect to a remote
+            TCP socket on port <em><var>portNumber</var></em> of
+            host <em><var>hostname</var></em>. The receiver delays
+            initiation of the connection until it has data
+            to send. <br /> NOTE: This method currently does not
+            support IPv6 connections.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-initWithProtocolFamily:socketType:protocol:address:">initWithProtocolFamily:socketType:protocol:address:</a></h3>
+    - (id) <b>initWithProtocolFamily:</b> (int)family<b> socketType:</b> (int)type<b> protocol:</b> (int)protocol<b> address:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)addrData;<br />
+    <p>
+      
+            Initialize the receiver as a local socket to
+            accept connections on a socket of
+            <em><var>type</var></em> with the
+            <em><var>protocol</var></em> from the
+            <var>protocol</var> <var>family</var>
+            <em><var>family</var></em>. The
+            <em><var>addrData</var></em> should contain a copy of
+            the <var>protocol</var> family-specific address data in
+            an NSData object.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-initWithProtocolFamily:socketType:protocol:socket:">initWithProtocolFamily:socketType:protocol:socket:</a></h3>
+    - (id) <b>initWithProtocolFamily:</b> (int)family<b> socketType:</b> (int)type<b> protocol:</b> (int)protocol<b> socket:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSocketNativeHandle">NSSocketNativeHandle</a>)socket;<br />
+    <p>
+      
+            Initialize the receiver with
+            <em><var>socket</var></em>, the platform-native handle
+            to a previously initialized listen-mode
+            <var>socket</var> of <var>type</var>
+            <em><var>type</var></em> with the <var>protocol</var>
+            <em><var>protocol</var></em> from the
+            <var>protocol</var> <var>family</var>
+            <em><var>family</var></em>. <br /> The receiver will
+            close the <var>socket</var> upon deallocation.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-initWithTCPPort:">initWithTCPPort:</a></h3>
+    - (id) <b>initWithTCPPort:</b> (unsigned short)portNumber;<br />
+    <p>
+      
+            Initialize the receiver as a local socket to
+            accept connections on TCP port
+            <em><var>portNumber</var></em>. If
+            <em><var>portNumber</var></em> is zero, the system
+            will chose a non-conflicting port number. <br /> NOTE:
+            This method currently does not support IPv6
+            connections.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-protocol">protocol</a></h3>
+    - (int) <b>protocol</b>;<br />
+    <p>
+      
+            Return the socket protocol.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-protocolFamily">protocolFamily</a></h3>
+    - (int) <b>protocolFamily</b>;<br />
+    <p>
+      
+            Return the socket protocol family.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-socket">socket</a></h3>
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSocketNativeHandle">NSSocketNativeHandle</a>) <b>socket</b>;<br />
+    <p>
+      
+            Return the platform-native socket handle.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSSocketPort-socketType">socketType</a></h3>
+    - (int) <b>socketType</b>;<br />
+    <p>
+      
+            Return the socket type.
+          
+    </p>
+    <hr width="25%" align="left" />
+
+          <h1><a name="003000000000">
         Software documentation for the NSPort(GNUstep)
         category
       </a></h1>
@@ -225,7 +433,7 @@
       <li><a rel="gsdoc" href="NSPort.html#method$NSPort-outPacketClass">-outPacketClass</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSPort+outPacketClass">outPacketClass</a></h3>
+    <h3><a name="method$NSPort(GNUstep)+outPacketClass">outPacketClass</a></h3>
     + (Class) <b>outPacketClass</b>;<br />
     <p>
       
@@ -233,7 +441,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSPort-close">close</a></h3>
+    <h3><a name="method$NSPort(GNUstep)-close">close</a></h3>
     - (void) <b>close</b>;<br />
     <p>
       
@@ -241,7 +449,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSPort-outPacketClass">outPacketClass</a></h3>
+    <h3><a name="method$NSPort(GNUstep)-outPacketClass">outPacketClass</a></h3>
     - (Class) <b>outPacketClass</b>;<br />
     <p>
       

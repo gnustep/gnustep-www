@@ -20,8 +20,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.98</p>
-    <p><b>Date:</b> 2002/10/30 07:45:59</p>
+    <p><b>Version:</b> 1.103</p>
+    <p><b>Date:</b> 2003/02/15 14:58:25</p>
     <p><b>Copyright:</b> (C) 1996-1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -336,7 +336,14 @@
             specified <var>target</var> in the receiver, but
             only if the value of <var>aSelector</var> and
             <var>argument</var> with which the performs were set
-            up exactly match those supplied.
+            up match those supplied. <br /> Matching of the
+            <var>argument</var> may be either by pointer equality
+            or by use of the
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+              [NSObject&nbsp;-isEqual:]
+            </a>
+
+            method.
           
     </p>
     <hr width="25%" align="left" />
@@ -361,15 +368,16 @@
     - (void) <b>performSelector:</b> (SEL)aSelector<b> target:</b> (id)target<b> argument:</b> (id)argument<b> order:</b> (unsigned int)order<b> modes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)modes;<br />
     <p>
       
-            Sets up repeated sending of <var>aSelector</var> to
+            Sets up sending of <var>aSelector</var> to
             <var>target</var> with <var>argument</var>. <br />
-            The selector is sent in each runloop iteration until
-            cancelled. <br /> The <var>target</var> and
-            <var>argument</var> objects are <em>not</em>
-            retained. <br /> The <var>order</var> value is
-            used to determine the <var>order</var> in which
-            messages are sent if multiple messages have been
-            set up.
+            The selector is sent before the next runloop iteration
+            (unless cancelled before then). <br /> The
+            <var>target</var> and <var>argument</var> objects are
+            <em>not</em> retained. <br /> The <var>order</var>
+            value is used to determine the <var>order</var> in
+            which messages are sent if multiple messages have
+            been set up. Messages with a lower <var>order</var>
+            value are sent first.
           
     </p>
     <hr width="25%" align="left" />
