@@ -74,16 +74,25 @@ function download($link) {
 system by using the procedure in the 
 <a href="http://gnustep.made-it.com/BuildGuide/index.html"><i>GNUstep Build Guide.</i></a> 
 Then consult the following tables to determine which items need installing or updating. 
-Please refer to the <i>Stable</i> or <i>Unstable</i> column, according to whether you 
-wish to build from the stable or unstable GNUstep sources. To download the 
+To download the 
 recommended version of any item of software, click on the version number in 
 the appropriate column.</p>
 
-<p>For further information on any particular item, click on the name of the item in the <i>Sources</i> column.</p>
+<p>For further information on any particular package, click on its name.</p>
 
-<h2>Pre-requisites <small>(see <a href="http://gnustep.made-it.com/BuildGuide/index.html#CHECK.YOUR.SYSTEM"><i>Check your system</i></a> in Build Guide)</small></h2>
+<ul>
+<li><a href="#pre">Pre-requisites</a></li>
+<li><a href="#core">GNUstep Core</a></li>
+<li><a href="#libs">Extra Libraries/Tools</a></li>
+<li><a href="#dev">Development Tools</a></li>
+<li><a href="#user">User Environment</a></li>
+</ul>
 
-<p>Please ensure you have at least the <i>Minimum version req'd</i> of each of the following (where needed) on you system, before you install GNUstep. If you need to obtain the software, we suggest that you download the <i>Recommended version.</i></p>
+<h2 id="pre">Pre-requisites</h2>
+
+<p>Please ensure you have at least the <i>Minimum version req'd</i> of each of the following (where needed) on you system, before you install GNUstep. If you need to obtain the software, we suggest that you download the <i>Recommended version.</i>
+<small>(see <a href="http://gnustep.made-it.com/BuildGuide/index.html#CHECK.YOUR.SYSTEM"><i>Check your system</i></a> in Build Guide)</small>
+</p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
 
@@ -222,9 +231,10 @@ the appropriate column.</p>
 </table>
 
 
-<h2>GNUstep Core <small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">Building GNUstep</a></i> in Build Guide)</small></h2>
+<h2 id="core">GNUstep Core</h2>
 
-<p>All GNUstep users should install the following items:</p>
+<p>All GNUstep users should install the following items.
+<small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">Building GNUstep</a></i> in Build Guide)</small></p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
 
@@ -282,10 +292,11 @@ the appropriate column.</p>
 
 </table>
 
-<h2>Additional Libraries/Tools <small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">Building Extensions</a></i> in Build Guide)</small></h2>
+<h2 id="libs">Extra Libraries/Tools</h2>
 
 <p>These libraries and tools offer additional capabilities. Some
 packages and applications may require you to install these libraries
+<small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">Building Extensions</a></i> in Build Guide)</small>
 </p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
@@ -369,7 +380,7 @@ packages and applications may require you to install these libraries
 
 </table>
 
-<h2>GNUstep Developer Tools</h2>
+<h2 id="dev">GNUstep Development Tools</h2>
 
 <p>If you intend to develop software for GNUstep, or to port software to GNUstep from another environment, you should install the development tools that are relevant to you from the following list:</p>
 
@@ -463,9 +474,10 @@ packages and applications may require you to install these libraries
 
 </table>
 
-<h2>GNUstep Environment <small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">GNUstep environment</a></i> in Build Guide)</small></h2>
+<h2 id="user">GNUstep User Environment</h2>
 
-<p>If you are an end-user who intends to use GNUstep to manage files, run applications etc., please install the items you require from the following list:</p>
+<p>If you intend to use GNUstep to manage files, run applications and so on, please install the items you require from the following list:<small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">GNUstep environment</a></i> in Build Guide)</small>
+</p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
 
