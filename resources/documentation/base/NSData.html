@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSData class reference</title>
   </head>
   <body>
@@ -19,12 +20,13 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.121</p>
-    <p><b>Date:</b> 2002/08/27 12:26:17</p>
+    <p><b>Version:</b> 1.131</p>
+    <p><b>Date:</b> 2002/11/10 09:29:44</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 2000, 2002 Free Software Foundation, Inc.
     </p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -46,7 +48,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSData class
       </a></h1>
     <h2><a name="class$NSData">NSData</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -128,7 +131,13 @@
     + (id) <b>dataWithBytes:</b> (const void*)bytes<b> length:</b> (unsigned int)length;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased data object containing data
+            copied from <var>bytes</var> and with the specified
+            <var>length</var>. Invokes
+            <a rel="gsdoc" href="#method$NSData-initWithBytes:length:">
+              -initWithBytes:length:
+            </a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -136,15 +145,23 @@
     + (id) <b>dataWithBytesNoCopy:</b> (void*)bytes<b> length:</b> (unsigned int)length;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased data object encapsulating
+            the data at <var>bytes</var> and with the specified
+            <var>length</var>. Invokes
+            <a rel="gsdoc" href="#method$NSData-initWithBytesNoCopy:length:freeWhenDone:">-initWithBytesNoCopy:length:freeWhenDone:</a>
+ with <code>YES</code>
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSData+dataWithBytesNoCopy:length:freeWhenDone:">dataWithBytesNoCopy:length:freeWhenDone:</a></h3>
-    + (id) <b>dataWithBytesNoCopy:</b> (void*)bytes<b> length:</b> (unsigned int)length<b> freeWhenDone:</b> (BOOL)shouldFree;<br />
+    + (id) <b>dataWithBytesNoCopy:</b> (void*)aBuffer<b> length:</b> (unsigned int)bufferSize<b> freeWhenDone:</b> (BOOL)shouldFree;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased data object encapsulating
+            the data at bytes and with the specified length.
+            Invokes
+            <a rel="gsdoc" href="#method$NSData-initWithBytesNoCopy:length:freeWhenDone:">-initWithBytesNoCopy:length:freeWhenDone:</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -152,7 +169,12 @@
     + (id) <b>dataWithContentsOfFile:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a data object encapsulating the contents of
+            the specified file. Invokes
+            <a rel="gsdoc" href="#method$NSData-initWithContentsOfFile:">
+              -initWithContentsOfFile:
+            </a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -160,7 +182,12 @@
     + (id) <b>dataWithContentsOfMappedFile:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a data object encapsulating the contents of
+            the specified file mapped directly into memory. Invokes
+            <a rel="gsdoc" href="#method$NSData-initWithContentsOfMappedFile:">
+              -initWithContentsOfMappedFile:
+            </a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -168,7 +195,9 @@
     + (id) <b>dataWithContentsOfURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)url;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Retrieves the information at the specified
+            <var>url</var> and returns an NSData instance
+            encapsulating it.
           
     </p>
     <hr width="25%" align="left" />
@@ -176,15 +205,18 @@
     + (id) <b>dataWithData:</b> (<a rel="gsdoc" href="#class$NSData">NSData</a>*)data;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased instance initialised by
+            copying the contents of <var>data</var>.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSData-bytes">bytes</a></h3>
     - (const void*) <b>bytes</b>;<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a pointer to the data encapsulated by the
+            receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -213,7 +245,7 @@
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSData-deserializeDataAt:ofObjCType:atCursor:context:">deserializeDataAt:ofObjCType:atCursor:context:</a></h3>
-    - (void) <b>deserializeDataAt:</b> (void*)data<b> ofObjCType:</b> (const char*)type<b> atCursor:</b> (unsigned int*)cursor<b> context:</b> (id)callback;<br />
+    - (void) <b>deserializeDataAt:</b> (void*)data<b> ofObjCType:</b> (const char*)type<b> atCursor:</b> (unsigned int*)cursor<b> context:</b> (id&#60;NSObjCTypeSerializationCallBack>)callback;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -256,7 +288,20 @@
     - (void) <b>getBytes:</b> (void*)buffer;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Copies the contents of the memory encapsulated by
+            the receiver into the specified <var>buffer</var>. The
+            <var>buffer</var> must be large enough to contain
+            <a rel="gsdoc" href="#method$NSData-length">
+              -length
+            </a>
+
+            bytes of data... if it isn't then a crash is likely
+            to occur. <br /> Invokes
+            <a rel="gsdoc" href="#method$NSData-getBytes:range:">
+              -getBytes:range:
+            </a>
+
+            with the range set to the whole of the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -264,7 +309,18 @@
     - (void) <b>getBytes:</b> (void*)buffer<b> length:</b> (unsigned int)length;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Copies <var>length</var> bytes of data from the
+            memory encapsulated by the receiver into the
+            specified <var>buffer</var>. The
+            <var>buffer</var> must be large enough to contain
+            <var>length</var> bytes of data... if it isn't then a
+            crash is likely to occur. <br /> Invokes
+            <a rel="gsdoc" href="#method$NSData-getBytes:range:">
+              -getBytes:range:
+            </a>
+
+            with the range set to iNSMakeRange(0,
+            <var>length</var>)
           
     </p>
     <hr width="25%" align="left" />
@@ -272,7 +328,14 @@
     - (void) <b>getBytes:</b> (void*)buffer<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Copies data from the memory encapsulated by the
+            receiver (in the range specified by
+            <var>aRange</var>) into the specified
+            <var>buffer</var>. <br /> The <var>buffer</var> must
+            be large enough to contain the data... if it isn't then
+            a crash is likely to occur. <br /> If <var>aRange</var>
+            specifies a range which does not entirely lie
+            within the receiver, an exception is raised.
           
     </p>
     <hr width="25%" align="left" />
@@ -280,7 +343,10 @@
     - (id) <b>initWithBytes:</b> (const void*)aBuffer<b> length:</b> (unsigned int)bufferSize;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Makes a copy of <var>bufferSize</var> bytes of data
+            at <var>aBuffer</var>, and passes it to
+            <a rel="gsdoc" href="#method$NSData-initWithBytesNoCopy:length:freeWhenDone:">-initWithBytesNoCopy:length:freeWhenDone:</a>
+ with a <code>YES</code> argument in order to initialise the receiver. Returns the result.
           
     </p>
     <hr width="25%" align="left" />
@@ -300,6 +366,16 @@ This is a designated initialiser for the class.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
+            Initialises the receiver. <br /> The value of
+            <var>aBuffer</var> is a pointer to something to be
+            stored. <br /> The value of <var>bufferSize</var>
+            is the number of bytes to use. <br /> The value fo
+            <var>shouldFree</var> specifies whether the receiver
+            should attempt to free the memory pointer to by
+            <var>aBuffer</var> when the receiver is deallocated
+            ... ie. it says whether the receiver <em>owns</em> the
+            memory. Supplying the wrong value here will lead to
+            memory leaks or crashes.
           
     </p>
     <hr width="25%" align="left" />
@@ -309,8 +385,8 @@ Subclasses <strong>should</strong> override this method.<br />
       
             Initialises the receiver with the contents of
             the specified file. <br /> Returns the resulting
-            object. Returns <code>nil</code> if the file does
-            not exist.
+            object. <br /> Returns <code>nil</code> if the file
+            does not exist or can not be read for some reason.
           
     </p>
     <hr width="25%" align="left" />
@@ -342,15 +418,21 @@ Subclasses <strong>should</strong> override this method.<br />
     - (BOOL) <b>isEqualToData:</b> (<a rel="gsdoc" href="#class$NSData">NSData</a>*)other;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a boolean value indicating if the receiver
+            and <var>other</var> contain identical data (using a
+            byte by byte comparison). Assumes that the
+            <var>other</var> object is an NSData instance... may
+            raise an exception if it isn't.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSData-length">length</a></h3>
     - (unsigned int) <b>length</b>;<br />
+Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the number of bytes of data encapsulated by
+            the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -358,7 +440,11 @@ Subclasses <strong>should</strong> override this method.<br />
     - (<a rel="gsdoc" href="#class$NSData">NSData</a>*) <b>subdataWithRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an NSData instance encapsulating the memory
+            from the reciever specified by the range
+            <var>aRange</var>. <br /> If <var>aRange</var>
+            specifies a range which does not entirely lie
+            within the receiver, an exception is raised.
           
     </p>
     <hr width="25%" align="left" />
@@ -366,7 +452,29 @@ Subclasses <strong>should</strong> override this method.<br />
     - (BOOL) <b>writeToFile:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> atomically:</b> (BOOL)useAuxiliaryFile;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Writes a copy of the data encapsulated by the
+              receiver to a file at <var>path</var>. If the
+              <var>useAuxiliaryFile</var> flag is
+              <code>YES</code>, this writes to a temporary file
+              and then renames that to the file at <var>path</var>,
+              thus ensuring that <var>path</var> exists and does
+              not contain partially written data at any point.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              On success returns <code>YES</code>, on failure
+              returns <code>NO</code>.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -374,11 +482,13 @@ Subclasses <strong>should</strong> override this method.<br />
     - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)anURL<b> atomically:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Writes a copy of the contents of the receiver to the
+            specified URL.
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSMutableData class
       </a></h1>
     <h2><a name="class$NSMutableData">NSMutableData</a> : <a rel="gsdoc" href="#class$NSData">NSData</a></h2>
@@ -500,7 +610,7 @@ Subclasses <strong>should</strong> override this method.<br />
               your code should not try to modify the memory beyond
               the number of bytes given by the
               <code>
-                <a rel="gsdoc" href="#method$NSMutableData-length">
+                <a rel="gsdoc" href="#method$NSData-length">
                   -length
                 </a>
 
@@ -508,6 +618,8 @@ Subclasses <strong>should</strong> override this method.<br />
               method.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -517,6 +629,8 @@ Subclasses <strong>should</strong> override this method.<br />
               cease to be valid.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -525,6 +639,8 @@ Subclasses <strong>should</strong> override this method.<br />
               NSMutableData.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSMutableData-replaceBytesInRange:withBytes:">replaceBytesInRange:withBytes:</a></h3>
@@ -572,7 +688,7 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSMutableData-serializeDataAt:ofObjCType:context:">serializeDataAt:ofObjCType:context:</a></h3>
-    - (void) <b>serializeDataAt:</b> (const void*)data<b> ofObjCType:</b> (const char*)type<b> context:</b> (id)callback;<br />
+    - (void) <b>serializeDataAt:</b> (const void*)data<b> ofObjCType:</b> (const char*)type<b> context:</b> (id&#60;NSObjCTypeSerializationCallBack>)callback;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -632,6 +748,8 @@ Subclasses <strong>should</strong> override this method.<br />
               is filled with zero bytes.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -640,9 +758,12 @@ Subclasses <strong>should</strong> override this method.<br />
               NSMutableData.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="003000000000">
+
+          <h1><a name="003000000000">
         Software documentation for the
         NSData(GNUstepExtensions) category
       </a></h1>
@@ -673,7 +794,7 @@ Subclasses <strong>should</strong> override this method.<br />
       <li><a rel="gsdoc" href="NSData.html#method$NSData-deserializeTypeTag:andCrossRef:atCursor:">-deserializeTypeTag:andCrossRef:atCursor:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSData+dataWithSharedBytes:length:">dataWithSharedBytes:length:</a></h3>
+    <h3><a name="method$NSData(GNUstepExtensions)+dataWithSharedBytes:length:">dataWithSharedBytes:length:</a></h3>
     + (id) <b>dataWithSharedBytes:</b> (const void*)bytes<b> length:</b> (unsigned int)length;<br />
     <p>
       
@@ -681,7 +802,7 @@ Subclasses <strong>should</strong> override this method.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSData+dataWithShmID:length:">dataWithShmID:length:</a></h3>
+    <h3><a name="method$NSData(GNUstepExtensions)+dataWithShmID:length:">dataWithShmID:length:</a></h3>
     + (id) <b>dataWithShmID:</b> (int)anID<b> length:</b> (unsigned int)length;<br />
     <p>
       
@@ -689,7 +810,7 @@ Subclasses <strong>should</strong> override this method.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSData-deserializeTypeTag:andCrossRef:atCursor:">deserializeTypeTag:andCrossRef:atCursor:</a></h3>
+    <h3><a name="method$NSData(GNUstepExtensions)-deserializeTypeTag:andCrossRef:atCursor:">deserializeTypeTag:andCrossRef:atCursor:</a></h3>
     - (void) <b>deserializeTypeTag:</b> (unsigned char*)tag<b> andCrossRef:</b> (unsigned int*)ref<b> atCursor:</b> (unsigned int*)cursor;<br />
     <p>
       
@@ -697,7 +818,8 @@ Subclasses <strong>should</strong> override this method.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="004000000000">
+
+          <h1><a name="004000000000">
         Software documentation for the
         NSMutableData(GNUstepExtensions)
         category
@@ -731,7 +853,7 @@ Subclasses <strong>should</strong> override this method.<br />
       <li><a rel="gsdoc" href="NSData.html#method$NSMutableData-shmID">-shmID</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSMutableData-capacity">capacity</a></h3>
+    <h3><a name="method$NSMutableData(GNUstepExtensions)-capacity">capacity</a></h3>
     - (unsigned int) <b>capacity</b>;<br />
     <p>
       
@@ -739,7 +861,7 @@ Subclasses <strong>should</strong> override this method.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableData-serializeTypeTag:">serializeTypeTag:</a></h3>
+    <h3><a name="method$NSMutableData(GNUstepExtensions)-serializeTypeTag:">serializeTypeTag:</a></h3>
     - (void) <b>serializeTypeTag:</b> (unsigned char)tag;<br />
     <p>
       
@@ -747,7 +869,7 @@ Subclasses <strong>should</strong> override this method.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableData-serializeTypeTag:andCrossRef:">serializeTypeTag:andCrossRef:</a></h3>
+    <h3><a name="method$NSMutableData(GNUstepExtensions)-serializeTypeTag:andCrossRef:">serializeTypeTag:andCrossRef:</a></h3>
     - (void) <b>serializeTypeTag:</b> (unsigned char)tag<b> andCrossRef:</b> (unsigned int)xref;<br />
     <p>
       
@@ -755,7 +877,7 @@ Subclasses <strong>should</strong> override this method.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableData-setCapacity:">setCapacity:</a></h3>
+    <h3><a name="method$NSMutableData(GNUstepExtensions)-setCapacity:">setCapacity:</a></h3>
     - (id) <b>setCapacity:</b> (unsigned int)newCapacity;<br />
     <p>
       
@@ -763,7 +885,7 @@ Subclasses <strong>should</strong> override this method.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableData-shmID">shmID</a></h3>
+    <h3><a name="method$NSMutableData(GNUstepExtensions)-shmID">shmID</a></h3>
     - (int) <b>shmID</b>;<br />
     <p>
       

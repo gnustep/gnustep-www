@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSThread class reference</title>
   </head>
   <body>
@@ -29,20 +30,27 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.53</p>
-    <p><b>Date:</b> 2002/08/30 12:30:50</p>
+    <p><b>Version:</b> 1.62</p>
+    <p><b>Date:</b> 2002/11/13 15:12:38</p>
     <p><b>Copyright:</b> (C) 1996-2000 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
         <li>
           <a href="#001000000000">Software documentation for the NSThread class</a>
         </li>
+        <li>
+          <a href="#002000000000">Software documentation for the
+        NSObject(NSMainThreadPerformAdditions)
+        category</a>
+        </li>
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSThread class
       </a></h1>
     <h2><a name="class$NSThread">NSThread</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -103,17 +111,24 @@
               current thread.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
               NB. In GNUstep the library internals use the
-              GSCurrentThread() function as a more
-              efficient mechanism for doing this job - so you
-              cannot use a category to override this method and
-              expect the library internals to use your
-              implementation.
+              <a rel="gsdoc" href="Functions.html#function$GSCurrentThread">
+                GSCurrentThread()
+              </a>
+
+              function as a more efficient mechanism for doing
+              this job - so you cannot use a category to override
+              this method and expect the library internals to use
+              your implementation.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSThread+detachNewThreadSelector:toTarget:withObject:">detachNewThreadSelector:toTarget:withObject:</a></h3>
@@ -192,6 +207,108 @@
             sure that the autorelease pool for the thread will
             continue to exist for the entire life of the
             thread!
+          
+    </p>
+    <hr width="25%" align="left" />
+
+          <h1><a name="002000000000">
+        Software documentation for the
+        NSObject(NSMainThreadPerformAdditions)
+        category
+      </a></h1>
+    <h2><a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSMainThreadPerformAdditions)">NSMainThreadPerformAdditions</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSThread.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>NotOpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSObject-performSelectorOnMainThread:withObject:waitUntilDone:">-performSelectorOnMainThread:withObject:waitUntilDone:</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSObject-performSelectorOnMainThread:withObject:waitUntilDone:modes:">-performSelectorOnMainThread:withObject:waitUntilDone:modes:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSObject(NSMainThreadPerformAdditions)-performSelectorOnMainThread:withObject:waitUntilDone:">performSelectorOnMainThread:withObject:waitUntilDone:</a></h3>
+    - (void) <b>performSelectorOnMainThread:</b> (SEL)aSelector<b> withObject:</b> (id)anObject<b> waitUntilDone:</b> (BOOL)aFlag;<br />
+    <p>
+      
+            Invokes
+            <a rel="gsdoc" href="#method$NSObject-performSelectorOnMainThread:withObject:waitUntilDone:modes:">-performSelectorOnMainThread:withObject:waitUntilDone:modes:</a>
+ using the supplied arguments and an array containing common modes. <br /> These modes consist of NSRunLoopMode, NSConnectionreplyMode, and if in an application, the NSApplication modes.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSMainThreadPerformAdditions)-performSelectorOnMainThread:withObject:waitUntilDone:modes:">performSelectorOnMainThread:withObject:waitUntilDone:modes:</a></h3>
+    - (void) <b>performSelectorOnMainThread:</b> (SEL)aSelector<b> withObject:</b> (id)anObject<b> waitUntilDone:</b> (BOOL)aFlag<b> modes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)anArray;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This method performs <var>aSelector</var> on the
+              receiver, passing <var>anObject</var> as an
+              argument, but does so in the main thread of the
+              program. The receiver and <var>anObject</var>
+              are both retained until the method is performed.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The selector is performed when the runloop of the
+              main thread next runs in one of the modes specified
+              in <var>anArray</var>. if there are no modes in
+              <var>anArray</var>, the method has no effect and
+              simply returns immediately.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The argument <var>aFlag</var> specifies whether the
+              method should wait until the selector has been
+              performed before returning. <br />
+              <strong>NB.</strong> This method does
+              <em>not</em> cause the run loop of the main thread
+              to be run... so if the run loop is not executed by
+              some code in the main thread, the thread waiting for
+              the perform to complete will block forever.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              As a special case, if <var>aFlag</var> ==
+              <code>YES</code> and the current thread is the
+              main thread, the modes array is ignord and the
+              selector is performed immediately. This behavior
+              is necessary to avoid the main thread being blocked by
+              waiting for a perform which will never happen
+              because the run loop is not executing.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />

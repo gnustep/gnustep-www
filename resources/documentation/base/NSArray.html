@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSArray class reference</title>
   </head>
   <body>
@@ -24,10 +25,11 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.112</p>
-    <p><b>Date:</b> 2002/08/27 11:09:12</p>
+    <p><b>Version:</b> 1.117</p>
+    <p><b>Date:</b> 2002/11/11 11:34:21</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1998 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -44,7 +46,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSArray class
       </a></h1>
     <h2><a name="class$NSArray">NSArray</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -147,10 +150,18 @@
     <p>
       
             Returns an autoreleased array based upon the
-            <var>file</var>. This may be in property list format
-            or in XML format (if XML is available on your system).
-            This method returns <code>nil</code> if
-            <var>file</var> does not represent an array.
+            <var>file</var>. The new array is created using
+            <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone:">
+              +allocWithZone:
+            </a>
+
+            and initialised using the
+            <a rel="gsdoc" href="#method$NSArray-initWithContentsOfFile:">
+              -initWithContentsOfFile:
+            </a>
+
+            method. See the documentation for those methods for
+            more detail.
           
     </p>
     <hr width="25%" align="left" />
@@ -163,7 +174,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3>arrayWithObjects:,...</h3>
+    <h3><a name="method$NSArray+arrayWithObjects:,...">arrayWithObjects:,...</a></h3>
     + (id) <b>arrayWithObjects:</b> (id)firstObject<b>,...</b>;<br />
     <p>
       
@@ -204,7 +215,10 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>componentsJoinedByString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)separator;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a string formed by concatenating the
+            objects in the receiver, with the specified
+            <var>separator</var> string inserted between each
+            part.
           
     </p>
     <hr width="25%" align="left" />
@@ -214,7 +228,7 @@
       
             Returns <code>YES</code> if <var>anObject</var>
             belongs to self. No otherwise. <br /> The
-            <a rel="gsdoc" href="#method$NSArray-isEqual:">
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
               -isEqual:
             </a>
 
@@ -237,7 +251,12 @@ Subclasses <strong>should</strong> override this method.<br />
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>description</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the result of invoking
+            <a rel="gsdoc" href="#method$NSArray-descriptionWithLocale:indent:">
+              -descriptionWithLocale:indent:
+            </a>
+
+            with a <code>nil</code> locale and zero indent.
           
     </p>
     <hr width="25%" align="left" />
@@ -245,7 +264,12 @@ Subclasses <strong>should</strong> override this method.<br />
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the result of invoking
+            <a rel="gsdoc" href="#method$NSArray-descriptionWithLocale:indent:">
+              -descriptionWithLocale:indent:
+            </a>
+
+            with a zero indent.
           
     </p>
     <hr width="25%" align="left" />
@@ -253,7 +277,22 @@ Subclasses <strong>should</strong> override this method.<br />
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale<b> indent:</b> (unsigned int)level;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the receiver as a text property list in the
+            traditional format. <br /> See
+            <a rel="gsdoc" href="NSString.html#method$NSString-propertyList">
+              [NSString&nbsp;-propertyList]
+            </a>
+
+            for details. <br /> If <var>locale</var> is
+            <code>nil</code>, no formatting is done, otherwise
+            entries are formatted according to the
+            <var>locale</var>, and indented according to
+            <var>level</var>. <br /> Unless <var>locale</var> is
+            <code>nil</code>, a <var>level</var> of zero indents
+            items by four spaces, while a <var>level</var> of one
+            indents them by a tab. <br /> The items in the
+            property list string appear in the same order as
+            they appear in the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -261,7 +300,14 @@ Subclasses <strong>should</strong> override this method.<br />
     - (id) <b>firstObjectCommonWithArray:</b> (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*)otherArray;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the first object found in the receiver
+            (starting at index 0) which is present in the
+            <var>otherArray</var> as determined by using the
+            <a rel="gsdoc" href="#method$NSArray-containsObject:">
+              -containsObject:
+            </a>
+
+            method.
           
     </p>
     <hr width="25%" align="left" />
@@ -292,7 +338,7 @@ Subclasses <strong>should</strong> override this method.<br />
             Returns the index of the first object found in the
             receiver which is equal to <var>anObject</var>
             (using anObject's
-            <a rel="gsdoc" href="#method$NSArray-isEqual:">
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
               -isEqual:
             </a>
 
@@ -307,7 +353,7 @@ Subclasses <strong>should</strong> override this method.<br />
             Returns the index of the first object found in
             <var>aRange</var> of receiver which is equal to
             <var>anObject</var> (using anObject's
-            <a rel="gsdoc" href="#method$NSArray-isEqual:">
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
               -isEqual:
             </a>
 
@@ -378,6 +424,8 @@ Subclasses <strong>should</strong> override this method.<br />
               array in property-list format.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -387,17 +435,33 @@ Subclasses <strong>should</strong> override this method.<br />
               recognise which it is.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
               If there is a failure to load the <var>file</var> for
-              any reason, the receiver will be released and the
-              method will return <code>nil</code>.
+              any reason, the receiver will be released, the method
+              will return <code>nil</code>, and a warning may be
+              logged.
                 </p>
     <p>
+      
+            
+    </p>
+    <p>
+
+              Works by invoking
+              <a rel="gsdoc" href="NSString.html#method$NSString-initWithContentsOfFile:">[NSString&nbsp;-initWithContentsOfFile:]</a>
+ and <a rel="gsdoc" href="NSString.html#method$NSString-propertyList">[NSString&nbsp;-propertyList]</a>
+ then checking that the result is an array.
+                </p>
+    <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
-    <h3>initWithObjects:,...</h3>
+    <h3><a name="method$NSArray-initWithObjects:,...">initWithObjects:,...</a></h3>
     - (id) <b>initWithObjects:</b> (id)firstObject<b>,...</b>;<br />
     <p>
       
@@ -506,7 +570,10 @@ Subclasses <strong>should</strong> override this method.<br />
     - (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*) <b>pathsMatchingExtensions:</b> (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*)extensions;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Assumes that the receiver is an array of paths, and
+            returns an array formed by selecting the subset of
+            those patch matching the specified array of
+            <var>extensions</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -526,7 +593,9 @@ Subclasses <strong>should</strong> override this method.<br />
     - (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>sortedArrayHint</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Subclasses may provide a hint for sorting... The
+            default GNUstep implementation just returns
+            <code>nil</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -536,7 +605,9 @@ Subclasses <strong>should</strong> override this method.<br />
       
             Returns an autoreleased array in which the objects
             are ordered according to a sort with
-            <var>comparator</var>.
+            <var>comparator</var>. This invokes
+            <a rel="gsdoc" href="#method$NSArray-sortedArrayUsingFunction:context:hint:">-sortedArrayUsingFunction:context:hint:</a>
+ with a <code>nil</code> hint.
           
     </p>
     <hr width="25%" align="left" />
@@ -544,7 +615,11 @@ Subclasses <strong>should</strong> override this method.<br />
     - (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*) <b>sortedArrayUsingFunction:</b> (int(*)(id,id,void*))comparator<b> context:</b> (void*)context<b> hint:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)hint;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an autoreleased array in which the objects
+            are ordered according to a sort with
+            <var>comparator</var>, where the
+            <var>comparator</var> function is passed two objects
+            to compare, and the copntext as the third argument.
           
     </p>
     <hr width="25%" align="left" />
@@ -562,7 +637,9 @@ Subclasses <strong>should</strong> override this method.<br />
     - (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*) <b>subarrayWithRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a subarray of the receiver containing the
+            objects found in the specified range
+            <var>aRange</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -582,6 +659,8 @@ Subclasses <strong>should</strong> override this method.<br />
               or MacOS-X style (XML in the UTF8 character set).
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -591,6 +670,8 @@ Subclasses <strong>should</strong> override this method.<br />
               which is then renamed to the actual file name.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -601,6 +682,8 @@ Subclasses <strong>should</strong> override this method.<br />
               <code>YES</code>.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -619,6 +702,8 @@ Subclasses <strong>should</strong> override this method.<br />
               containing the string descriptions.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSArray-writeToURL:atomically:">writeToURL:atomically:</a></h3>
@@ -639,9 +724,12 @@ Subclasses <strong>should</strong> override this method.<br />
               not just a local file.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSMutableArray class
       </a></h1>
     <h2><a name="class$NSMutableArray">NSMutableArray</a> : <a rel="gsdoc" href="#class$NSArray">NSArray</a></h2>
@@ -694,7 +782,13 @@ Subclasses <strong>should</strong> override this method.<br />
     + (id) <b>arrayWithCapacity:</b> (unsigned)numItems;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates an autoreleased mutable array anble to
+            store at least <var>numItems</var>. See the
+            <a rel="gsdoc" href="#method$NSMutableArray-initWithCapacity:">
+              -initWithCapacity:
+            </a>
+
+            method.
           
     </p>
     <hr width="25%" align="left" />
@@ -703,7 +797,9 @@ Subclasses <strong>should</strong> override this method.<br />
 Subclasses <strong>should</strong> override this method.<br />
     <p>
       
-            Adds an object at the end of the array.
+            Adds <var>anObject</var> at the end of the array, thus
+            increasing the size of the array. The object is
+            retained upon addition.
           
     </p>
     <hr width="25%" align="left" />
@@ -711,7 +807,8 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>addObjectsFromArray:</b> (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*)otherArray;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Adds each object from <var>otherArray</var> to the
+            receiver, in first to last order.
           
     </p>
     <hr width="25%" align="left" />
@@ -744,6 +841,7 @@ Subclasses <strong>should</strong> override this method.<br />
             Inserts an object into the receiver at the
             specified location. <br /> Raises an exception if
             given an array <var>index</var> which is too large.
+            <br /> The size of the array increases by one.
             <br /> The object is retained by the array.
           
     </p>
@@ -752,7 +850,8 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>removeAllObjects</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes all objects from the receiver, leaving an
+            empty array.
           
     </p>
     <hr width="25%" align="left" />
@@ -760,7 +859,8 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>removeLastObject</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes the last object in the array. Raises an
+            exception if the array is already empty.
           
     </p>
     <hr width="25%" align="left" />
@@ -768,7 +868,13 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>removeObject:</b> (id)anObject;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes all occurrances of <var>anObject</var>
+            (found by anObjects
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+              -isEqual:
+            </a>
+
+            method) from the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -776,7 +882,14 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>removeObject:</b> (id)anObject<b> inRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes all occurrances of <var>anObject</var>
+            (found by the
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+              -isEqual:
+            </a>
+
+            method of <var>anObject</var>) <var>aRange</var> in
+            the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -786,7 +899,8 @@ Subclasses <strong>should</strong> override this method.<br />
     <p>
       
             Removes an object from the receiver at the
-            specified location. <br /> Raises an exception if
+            specified location. <br /> The size of the array
+            decreases by one. <br /> Raises an exception if
             given an array <var>index</var> which is too large.
             <br />
           
@@ -796,7 +910,8 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>removeObjectIdenticalTo:</b> (id)anObject;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes all occurrances of <var>anObject</var>
+            (found by pointer equality) from the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -804,7 +919,9 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>removeObjectIdenticalTo:</b> (id)anObject<b> inRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes all occurrances of <var>anObject</var>
+            (found by pointer equality) from <var>aRange</var>
+            in the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -812,7 +929,13 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>removeObjectsFromIndices:</b> (unsigned*)indices<b> numIndices:</b> (unsigned)count;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Supplied with a C array of <var>indices</var>
+            containing <var>count</var> values, this method
+            removes all corresponding objects from the
+            receiver. The objects are removed in such a way
+            that the removal is <em>safe</em> irrespective of the
+            order in which they are specified in the
+            <var>indices</var> array.
           
     </p>
     <hr width="25%" align="left" />
@@ -820,7 +943,13 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>removeObjectsInArray:</b> (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*)otherArray;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes from the receiver, all the objects present
+            in <var>otherArray</var>, as determined by using the
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual:">
+              -isEqual:
+            </a>
+
+            method.
           
     </p>
     <hr width="25%" align="left" />
@@ -828,7 +957,8 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>removeObjectsInRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes all the objects in <var>aRange</var> from
+            the receiver.
           
     </p>
     <hr width="25%" align="left" />
@@ -869,7 +999,8 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>setArray:</b> (<a rel="gsdoc" href="#class$NSArray">NSArray</a>*)otherArray;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the contents of the receiver to be identical to
+            the contents of othrArray.
           
     </p>
     <hr width="25%" align="left" />
@@ -877,7 +1008,9 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>sortUsingFunction:</b> (int(*)(id,id,void*))compare<b> context:</b> (void*)context;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sorts the array according to the supplied
+            <var>compare</var> function with the
+            <var>context</var> information.
           
     </p>
     <hr width="25%" align="left" />
@@ -885,11 +1018,13 @@ Subclasses <strong>should</strong> override this method.<br />
     - (void) <b>sortUsingSelector:</b> (SEL)comparator;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sorts the array according to the supplied
+            <var>comparator</var>.
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="003000000000">
+
+          <h1><a name="003000000000">
         Software documentation for the NSArray(GNUstep)
         category
       </a></h1>
@@ -919,19 +1054,31 @@ Subclasses <strong>should</strong> override this method.<br />
       <li><a rel="gsdoc" href="NSArray.html#method$NSArray-insertionPosition:usingSelector:">-insertionPosition:usingSelector:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSArray-insertionPosition:usingFunction:context:">insertionPosition:usingFunction:context:</a></h3>
+    <h3><a name="method$NSArray(GNUstep)-insertionPosition:usingFunction:context:">insertionPosition:usingFunction:context:</a></h3>
     - (unsigned) <b>insertionPosition:</b> (id)item<b> usingFunction:</b> (NSComparisonResult(*)(id,id,void*))sorter<b> context:</b> (void*)context;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Locate the correct insertion position for
+            <var>item</var> where the receiver is a sorted array
+            witch was sorted using the <var>sorter</var>
+            function. <br /> The comparator function takes
+            two items as arguments, the first is the
+            <var>item</var> to be added, the second is the
+            <var>item</var> already in the array. The function
+            should return NSOrderedAscending if the
+            <var>item</var> to be added is 'less than' the
+            <var>item</var> in the array, NSOrderedDescending if
+            it is greater, and NSOrderedSame if it is equal.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSArray-insertionPosition:usingSelector:">insertionPosition:usingSelector:</a></h3>
+    <h3><a name="method$NSArray(GNUstep)-insertionPosition:usingSelector:">insertionPosition:usingSelector:</a></h3>
     - (unsigned) <b>insertionPosition:</b> (id)item<b> usingSelector:</b> (SEL)comp;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Locate the correct insertion position for
+            <var>item</var> where the receiver is a sorted array
+            which was sorted using the <var>comp</var> selector.
           
     </p>
     <hr width="25%" align="left" />

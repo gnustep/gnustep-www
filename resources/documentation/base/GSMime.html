@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>The MIME parsing system</title>
   </head>
   <body>
@@ -14,10 +15,11 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.35</p>
-    <p><b>Date:</b> 2002/08/20 10:22:05</p>
+    <p><b>Version:</b> 1.41</p>
+    <p><b>Date:</b> 2002/11/04 15:39:43</p>
     <p><b>Copyright:</b> (C) 2000 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -40,7 +42,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">Mime Parser</a></h1>
+
+          <h1><a name="001000000000">Mime Parser</a></h1>
     <p>
 
         The GNUstep Mime parser. This is collection Objective-C
@@ -70,7 +73,8 @@ The idea is to center round two classes -    </p>
         
       </dd>
     </dl>
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the GSMimeCodingContext
         class
       </a></h1>
@@ -91,15 +95,18 @@ The idea is to center round two classes -    </p>
     </blockquote>
     <p>
       
-          The most rudimentary context... this is used for decoding
-          plain text and binary dat (ie data which is not really
-          decoded at all) and all other decoding work is done
-          by a subclass.
+          Coding contexts are objects used by the parser to
+          store the state of decoding incoming data while it is
+          being incrementally parsed. <br /> The most rudimentary
+          context... this is used for decoding plain text and
+          binary data (ie data which is not really decoded at
+          all) and all other decoding work is done by a subclass.
         
     </p>
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeCodingContext-atEnd">-atEnd</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeCodingContext-decodeData:length:intoData:">-decodeData:length:intoData:</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeCodingContext-setAtEnd:">-setAtEnd:</a></li>
     </ul>
     <hr width="50%" align="left" />
@@ -111,6 +118,17 @@ The idea is to center round two classes -    </p>
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeCodingContext-decodeData:length:intoData:">decodeData:length:intoData:</a></h3>
+    - (BOOL) <b>decodeData:</b> (const void*)sData<b> length:</b> (unsigned)length<b> intoData:</b> (<a rel="gsdoc" href="NSData.html#class$NSMutableData">NSMutableData</a>*)dData;<br />
+    <p>
+      
+            Decode <var>length</var> bytes of data from
+            <var>sData</var> and append the results to
+            <var>dData</var>. <br /> Return <code>YES</code> on
+            succes, <code>NO</code> if there is an error.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$GSMimeCodingContext-setAtEnd:">setAtEnd:</a></h3>
     - (void) <b>setAtEnd:</b> (BOOL)flag;<br />
     <p>
@@ -119,7 +137,8 @@ The idea is to center round two classes -    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="003000000000">
+
+          <h1><a name="003000000000">
         Software documentation for the GSMimeDocument class
       </a></h1>
     <h2><a name="class$GSMimeDocument">GSMimeDocument</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -150,6 +169,8 @@ The idea is to center round two classes -    </p>
             document.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -158,6 +179,8 @@ The idea is to center round two classes -    </p>
             headers that apply to a document.
               </p>
     <p>
+      
+        
     </p>
     <b>Method summary</b>
     <ul>
@@ -189,6 +212,7 @@ The idea is to center round two classes -    </p>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-rawMimeData">-rawMimeData</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-rawMimeData:">-rawMimeData:</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-setContent:">-setContent:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-setContent:type:">-setContent:type:</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-setContent:type:name:">-setContent:type:name:</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-setContent:type:subType:name:">-setContent:type:subType:name:</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeDocument-setHeader:">-setHeader:</a></li>
@@ -292,6 +316,8 @@ The idea is to center round two classes -    </p>
               fields that are standard for all headers.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -300,6 +326,8 @@ The idea is to center round two classes -    </p>
               are added they replace originals.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -308,6 +336,8 @@ The idea is to center round two classes -    </p>
               added at the end.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeDocument-allHeaders">allHeaders</a></h3>
@@ -323,6 +353,8 @@ The idea is to center round two classes -    </p>
               the document.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -330,6 +362,8 @@ The idea is to center round two classes -    </p>
               the headers in the document.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeDocument-content">content</a></h3>
@@ -355,6 +389,8 @@ The idea is to center round two classes -    </p>
               
         </dd>
       </dl>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeDocument-contentByID:">contentByID:</a></h3>
@@ -542,6 +578,22 @@ The idea is to center round two classes -    </p>
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeDocument-setContent:type:">setContent:type:</a></h3>
+    - (void) <b>setContent:</b> (id)newContent<b> type:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)type;<br />
+    <p>
+      
+            Convenience method calling
+            <a rel="gsdoc" href="#method$GSMimeDocument-setContent:type:name:">
+              -setContent:type:name:
+            </a>
+
+            to set document content and <var>type</var> without
+            specifying a name... useful for top-level
+            documents rather than parts within a daocument
+            (parts should really be named).
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$GSMimeDocument-setContent:type:name:">setContent:type:name:</a></h3>
     - (void) <b>setContent:</b> (id)newContent<b> type:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)type<b> name:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name;<br />
     <p>
@@ -579,7 +631,8 @@ The idea is to center round two classes -    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="004000000000">
+
+          <h1><a name="004000000000">
         Software documentation for the GSMimeHeader class
       </a></h1>
     <h2><a name="class$GSMimeHeader">GSMimeHeader</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -606,6 +659,7 @@ The idea is to center round two classes -    </p>
     <ul>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader+makeQuoted:">+makeQuoted:</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader+makeToken:">+makeToken:</a></li>
+      <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-initWithName:value:">-initWithName:value:</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-initWithName:value:parameters:">-initWithName:value:parameters:</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-name">-name</a></li>
       <li><a rel="gsdoc" href="GSMime.html#method$GSMimeHeader-objectForKey:">-objectForKey:</a></li>
@@ -637,6 +691,20 @@ The idea is to center round two classes -    </p>
             Convert the supplied string to a standardized token
             by making it lowercase and removing all illegal
             characters.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$GSMimeHeader-initWithName:value:">initWithName:value:</a></h3>
+    - (id) <b>initWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)n<b> value:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)v;<br />
+    <p>
+      
+            Convenience method calling
+            <a rel="gsdoc" href="#method$GSMimeHeader-initWithName:value:parameters:">
+              -initWithName:value:parameters:
+            </a>
+
+            with the supplied argument and <code>nil</code>
+            parameters.
           
     </p>
     <hr width="25%" align="left" />
@@ -673,7 +741,8 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>objects</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a dictionary of all the additional objects
+            for the header.
           
     </p>
     <hr width="25%" align="left" />
@@ -691,7 +760,7 @@ This is a designated initialiser for the class.<br />
       
             Returns the parameters of this header... a
             dictionary whose keys are all lowercase strings,
-            and whosre value is a string which may contain mixed
+            and whose values are strings which may contain mixed
             case.
           
     </p>
@@ -722,7 +791,8 @@ This is a designated initialiser for the class.<br />
     <p>
       
             Method to store specific information for particular
-            types of header.
+            types of header. This is used for non-standard parts
+            of headers.
           
     </p>
     <hr width="25%" align="left" />
@@ -775,7 +845,8 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="005000000000">
+
+          <h1><a name="005000000000">
         Software documentation for the GSMimeParser class
       </a></h1>
     <h2><a name="class$GSMimeParser">GSMimeParser</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -805,24 +876,35 @@ This is a designated initialiser for the class.<br />
             is stored.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
             You supply the document to be parsed as one or more
-            data items passed to the <code>Parse:</code> method,
-            and (if the method always returns <code>YES</code>, you
-            give it a final <code>nil</code> argument to mark the
-            end of the document.
+            data items passed to the
+            <a rel="gsdoc" href="#method$GSMimeParser-parse:">
+              -parse:
+            </a>
+
+            method, and (if the method always returns
+            <code>YES</code>, you give it a final
+            <code>nil</code> argument to mark the end of the
+            document.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
             On completion of parsing a valid document, the
-            <code>document</code> method returns the resulting
-            parsed document.
+            [GSMimeDocument&nbsp;-mimeDocument]
+ method returns the resulting parsed document.
               </p>
     <p>
+      
+        
     </p>
     <b>Method summary</b>
     <ul>
@@ -881,6 +963,8 @@ This is a designated initialiser for the class.<br />
               <code>content-transfer-encoding</code> header -
                 </p>
     <p>
+      
+            
       <ul>
         <li>
           base64
@@ -901,6 +985,12 @@ This is a designated initialiser for the class.<br />
           chunked (for HTTP/1.1)
         </li>
       </ul>
+      
+            To add new coding schemes to the parser, you need to
+            ovrride this method to return a new coding context
+            for your scheme when the <var>info</var> argument
+            indicates that this is appropriate.
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeParser-data">data</a></h3>
@@ -931,6 +1021,8 @@ This is a designated initialiser for the class.<br />
               operation.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -944,13 +1036,20 @@ This is a designated initialiser for the class.<br />
               data object.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
               You may override this method in order to implement
-              additional coding schemes.
+              additional coding schemes, but usually it
+              should be enough for you to implement a custom
+              GSMimeCodingContext subclass fotr
+              this method to use.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeParser-expectNoHeaders">expectNoHeaders</a></h3>
@@ -1034,6 +1133,8 @@ This is a designated initialiser for the class.<br />
               of a document or due to an error.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1045,6 +1146,8 @@ This is a designated initialiser for the class.<br />
               the data is complete.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1065,6 +1168,8 @@ This is a designated initialiser for the class.<br />
               argument.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1081,6 +1186,8 @@ This is a designated initialiser for the class.<br />
               filename parameter).
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeParser-parseHeader:">parseHeader:</a></h3>
@@ -1112,6 +1219,8 @@ This is a designated initialiser for the class.<br />
               separate source).
                 </p>
     <p>
+      
+
 <pre>
 
    GSMimeParser *parser = [GSMimeParser mimeParser];
@@ -1122,6 +1231,8 @@ This is a designated initialiser for the class.<br />
    [parser parse: nil];
  
 </pre>
+      
+            
     </p>
     <p>
 
@@ -1134,6 +1245,8 @@ This is a designated initialiser for the class.<br />
               to complete the parsing of the header.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1147,6 +1260,8 @@ This is a designated initialiser for the class.<br />
               to implement custom scanning.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1157,6 +1272,8 @@ This is a designated initialiser for the class.<br />
               object values -
                 </p>
     <p>
+      
+            
       <dl>
         <dt>HttpMajorVersion</dt>
         <dd>
@@ -1181,6 +1298,8 @@ This is a designated initialiser for the class.<br />
               
         </dd>
       </dl>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeParser-scanHeaderBody:into:">scanHeaderBody:into:</a></h3>
@@ -1196,6 +1315,8 @@ This is a designated initialiser for the class.<br />
               dictionary.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1206,6 +1327,8 @@ This is a designated initialiser for the class.<br />
               header string.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1214,6 +1337,8 @@ This is a designated initialiser for the class.<br />
               <code>NO</code>.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1222,6 +1347,8 @@ This is a designated initialiser for the class.<br />
               headers.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1231,6 +1358,8 @@ This is a designated initialiser for the class.<br />
               order to permit the parser to work generally -
                 </p>
     <p>
+      
+            
       <dl>
         <dt>content-disposition</dt>
         <dd>
@@ -1245,6 +1374,8 @@ This is a designated initialiser for the class.<br />
                   
             </dd>
           </dl>
+          
+              
         </dd>
         <dt>content-type</dt>
         <dd>
@@ -1266,6 +1397,8 @@ This is a designated initialiser for the class.<br />
                   
             </dd>
           </dl>
+          
+              
         </dd>
         <dt>content-transfer-encoding</dt>
         <dd>
@@ -1279,6 +1412,8 @@ This is a designated initialiser for the class.<br />
                   
             </dd>
           </dl>
+          
+              
         </dd>
         <dt>http</dt>
         <dd>
@@ -1312,6 +1447,8 @@ This is a designated initialiser for the class.<br />
               The text message (if any)
             </dd>
           </dl>
+          
+              
         </dd>
         <dt>transfer-encoding</dt>
         <dd>
@@ -1325,8 +1462,12 @@ This is a designated initialiser for the class.<br />
                   
             </dd>
           </dl>
+          
+              
         </dd>
       </dl>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeParser-scanName:">scanName:</a></h3>
@@ -1342,6 +1483,8 @@ This is a designated initialiser for the class.<br />
           Leading whitespace is ignored.
         </li>
       </ul>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeParser-scanPastSpace:">scanPastSpace:</a></h3>
@@ -1388,6 +1531,8 @@ This is a designated initialiser for the class.<br />
               
         </li>
       </ul>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$GSMimeParser-setIsHttp">setIsHttp</a></h3>

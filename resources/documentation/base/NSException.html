@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSException class reference</title>
   </head>
   <body>
@@ -14,12 +15,13 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.40</p>
-    <p><b>Date:</b> 2002/06/09 11:47:45</p>
+    <p><b>Version:</b> 1.42</p>
+    <p><b>Date:</b> 2002/11/09 16:40:00</p>
     <p><b>Copyright:</b> (C) 
       1993, 1994, 1996, 1997, 1999 Free Software Foundation, Inc.
     </p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -33,7 +35,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSAssertionHandler
         class
       </a></h1>
@@ -72,7 +75,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3>handleFailureInFunction:file:lineNumber:description:,...</h3>
+    <h3><a name="method$NSAssertionHandler-handleFailureInFunction:file:lineNumber:description:,...">handleFailureInFunction:file:lineNumber:description:,...</a></h3>
     - (void) <b>handleFailureInFunction:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)functionName<b> file:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)fileName<b> lineNumber:</b> (int)line<b> description:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
@@ -80,7 +83,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3>handleFailureInMethod:object:file:lineNumber:description:,...</h3>
+    <h3><a name="method$NSAssertionHandler-handleFailureInMethod:object:file:lineNumber:description:,...">handleFailureInMethod:object:file:lineNumber:description:,...</a></h3>
     - (void) <b>handleFailureInMethod:</b> (SEL)aSelector<b> object:</b> (id)object<b> file:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)fileName<b> lineNumber:</b> (int)line<b> description:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
@@ -88,7 +91,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSException class
       </a></h1>
     <h2><a name="class$NSException">NSException</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -115,7 +119,60 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            The NSException class helps manage errors in a program.
+            It provides a mechanism for lower-level methods to
+            provide information about problems to higher-level
+            methods, which more often than not, have a better
+            ability to decide what to do about the problems.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            Exceptions are typically handled by enclosing a
+            sensitive section of code inside the macros
+            NS_DURING and NS_HANDLER, and then handling any
+            problems after this, up to the NS_ENDHANDLER
+            macro:
+              </p>
+    <p>
+      
+
+<pre>
+
+   NS_DURING
+    code that might cause an exception
+   NS_HANDLER
+    code that deals with the exception. If this code cannot deal with
+    it, you can re-raise the exception like this
+    [localException raise]
+    so the next higher level of code can handle it
+   NS_ENDHANDLER
+   
+</pre>
+      
+          
+    </p>
+    <p>
+
+            The local variable localException is the name of the
+            exception object you can use in the NS_HANDLER
+            section. The easiest way to cause an exeption is
+            using the
+            <a rel="gsdoc" href="#method$NSException+raise:format:">
+              +raise:format:
+            </a>
+
+            method.
+              </p>
+    <p>
+      
         
     </p>
     <b>Method summary</b>
@@ -134,15 +191,27 @@
     + (<a rel="gsdoc" href="#class$NSException">NSException</a>*) <b>exceptionWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> reason:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)reason<b> userInfo:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)userInfo;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Create an an exception object with a <var>name</var>
+            , <var>reason</var> and a dictionary <var>userInfo</var>
+            which can be used to provide additional information
+            or access to objects needed to handle the exception.
+            After the exception is created you must
+            <a rel="gsdoc" href="#method$NSException-raise">
+              -raise
+            </a>
+
+            it.
           
     </p>
     <hr width="25%" align="left" />
-    <h3>raise:format:,...</h3>
+    <h3><a name="method$NSException+raise:format:,...">raise:format:,...</a></h3>
     + (void) <b>raise:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> format:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates an exception with a <var>name</var> and a
+            reason using the <var>format</var> string and any
+            additional arguments. The exception is then
+            raised.
           
     </p>
     <hr width="25%" align="left" />
@@ -150,15 +219,22 @@
     + (void) <b>raise:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> format:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)format<b> arguments:</b> (va_list)argList;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates an exception with a <var>name</var> and a
+            reason string using the <var>format</var> string and
+            additional arguments specified as a variable
+            argument list <var>argList</var>. The exception is
+            then raised.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSException-initWithName:reason:userInfo:">initWithName:reason:userInfo:</a></h3>
     - (id) <b>initWithName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> reason:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)reason<b> userInfo:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)userInfo;<br />
+This is a designated initialiser for the class.<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes a newly allocated NSException
+            object with a <var>name</var>, <var>reason</var> and
+            a dictionary <var>userInfo</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -166,7 +242,7 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>name</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the name of the exception
           
     </p>
     <hr width="25%" align="left" />
@@ -174,7 +250,12 @@
     - (void) <b>raise</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Raises the exception. All code following the raise
+            will not be executed and program control will be
+            transfered to the closest calling method which
+            encapsulates the exception code in an
+            NS_DURING macro, or to the uncaught exception
+            handler if there is no other handling code.
           
     </p>
     <hr width="25%" align="left" />
@@ -182,7 +263,7 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>reason</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the exception reason
           
     </p>
     <hr width="25%" align="left" />
@@ -190,7 +271,7 @@
     - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>userInfo</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the exception userInfo dictionary
           
     </p>
     <hr width="25%" align="left" />

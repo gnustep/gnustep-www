@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSUserDefaults class reference</title>
   </head>
   <body>
@@ -19,10 +20,11 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.82</p>
-    <p><b>Date:</b> 2002/08/27 13:47:58</p>
+    <p><b>Version:</b> 1.96</p>
+    <p><b>Date:</b> 2002/11/14 22:51:11</p>
     <p><b>Copyright:</b> (C) 1995-2001 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -32,7 +34,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSUserDefaults class
       </a></h1>
     <h2><a name="class$NSUserDefaults">NSUserDefaults</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -69,6 +72,8 @@
             up in the same way as the standardUserDefaults.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -86,6 +91,8 @@
             order.
               </p>
     <p>
+      
+          
       <dl>
         <dt>
               <code>NSArgumentDomain</code>... volatile
@@ -133,6 +140,8 @@
             
         </dd>
       </dl>
+      
+          
     </p>
     <p>
 
@@ -147,6 +156,8 @@
             the GNUstep resources).
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -159,6 +170,8 @@
             environment variable.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -174,6 +187,8 @@
             software.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -182,6 +197,8 @@
             MacOS-X 10.1) is not.
               </p>
     <p>
+      
+        
     </p>
     <b>Method summary</b>
     <ul>
@@ -228,8 +245,12 @@
             Resets the shared user defaults object to reflect
             the current user ID. Needed by setuid processes which
             change the user they are running as. <br /> In
-            GNUstep you should call GSSetUserName() when
-            changing your effective user ID, and that class
+            GNUstep you should call
+            <a rel="gsdoc" href="Functions.html#function$GSSetUserName">
+              GSSetUserName()
+            </a>
+
+            when changing your effective user ID, and that class
             will call this function for you.
           
     </p>
@@ -476,7 +497,8 @@ This is a designated initialiser for the class.<br />
     - (void) <b>removeVolatileDomainForName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)domainName;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes the volatile domain specified by
+            <var>domainName</var> from the user defaults.
           
     </p>
     <hr width="25%" align="left" />
@@ -484,7 +506,10 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="NSArray.html#class$NSMutableArray">NSMutableArray</a>*) <b>searchList</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an array listing the domains searched in
+            order to look up a value in the defaults system. The
+            order of the names in the array is the order in which
+            the domains are searched.
           
     </p>
     <hr width="25%" align="left" />
@@ -541,14 +566,29 @@ This is a designated initialiser for the class.<br />
       
             Sets an object <var>value</var> for
             <var>defaultName</var> in the application domain.
-            <br /> Causes a NSUserDefaultsDidChangeNotification
-            to be posted if this is the first change to a
-            persistent-domain since the last
-            <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">
-              -synchronize
+            <br /> The <var>defaultName</var> must be a
+            non-empty string. <br /> The <var>value</var>
+            must be an instance of one of the
+            <a rel="gsdoc" href="NSString.html#method$NSString-propertyList">
+              [NSString&nbsp;-propertyList]
             </a>
 
-            .
+            classes. <br />
+            
+    </p>
+    <p>
+
+              Causes a NSUserDefaultsDidChangeNotification to be
+              posted if this is the first change to a
+              persistent-domain since the last
+              <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">
+                -synchronize
+              </a>
+
+              .
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -557,9 +597,12 @@ This is a designated initialiser for the class.<br />
     <p>
       
             Replaces the persistent-domain specified by
-            domainname with <var>domain</var>... a
+            <var>domainName</var> with <var>domain</var>... a
             dictionary containing keys and defaults values.
-            <br /> Causes a NSUserDefaultsDidChangeNotification
+            <br /> Raises an NSInvalidArgumentException if
+            <var>domainName</var> already exists as a
+            volatile-domain. <br /> Causes a
+            NSUserDefaultsDidChangeNotification
             to be posted if this is the first change to a
             persistent-domain since the last
             <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">
@@ -574,7 +617,11 @@ This is a designated initialiser for the class.<br />
     - (void) <b>setSearchList:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)newList;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the list of the domains searched in order to look
+            up a value in the defaults system. The order of the
+            names in the array is the order in which the domains
+            are searched. <br /> On lookup, the first match is
+            used.
           
     </p>
     <hr width="25%" align="left" />
@@ -582,7 +629,12 @@ This is a designated initialiser for the class.<br />
     - (void) <b>setVolatileDomain:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)domain<b> forName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)domainName;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the volatile-domain specified by
+            <var>domainName</var> to <var>domain</var>... a
+            dictionary containing keys and defaults values.
+            <br /> Raises an NSInvalidArgumentException if
+            <var>domainName</var> already exists as either a
+            volatile-domain or a persistent-domain.
           
     </p>
     <hr width="25%" align="left" />
@@ -634,7 +686,8 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>volatileDomainForName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)domainName;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the volatile domain specified by
+            <var>domainName</var>.
           
     </p>
     <hr width="25%" align="left" />

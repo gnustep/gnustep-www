@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSObject class reference</title>
   </head>
   <body>
@@ -14,10 +15,11 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.164</p>
-    <p><b>Date:</b> 2002/08/27 17:02:05</p>
+    <p><b>Version:</b> 1.169</p>
+    <p><b>Date:</b> 2002/11/10 09:29:45</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1998 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -40,26 +42,23 @@
           <a href="#005000000000">Software documentation for the GCFinalization protocol</a>
         </li>
         <li>
-          <a href="#006000000000">Software documentation for the
-        GNUDescriptionDestination protocol</a>
+          <a href="#006000000000">Software documentation for the NSCoding protocol</a>
         </li>
         <li>
-          <a href="#007000000000">Software documentation for the NSCoding protocol</a>
+          <a href="#007000000000">Software documentation for the NSCopying protocol</a>
         </li>
         <li>
-          <a href="#008000000000">Software documentation for the NSCopying protocol</a>
-        </li>
-        <li>
-          <a href="#009000000000">Software documentation for the NSMutableCopying
+          <a href="#008000000000">Software documentation for the NSMutableCopying
         protocol</a>
         </li>
         <li>
-          <a href="#010000000000">Software documentation for the NSObject protocol</a>
+          <a href="#009000000000">Software documentation for the NSObject protocol</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSObject class
       </a></h1>
     <h2><a name="class$NSObject">NSObject</a></h2>
@@ -98,6 +97,8 @@
             <code>NSObject</code>.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -110,6 +111,8 @@
             and objects.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -127,6 +130,8 @@
             protocol).
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -140,6 +145,8 @@
             needed.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -164,6 +171,8 @@
             class objects.
               </p>
     <p>
+      
+        
     </p>
     <b>Method summary</b>
     <ul>
@@ -228,6 +237,7 @@
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-isKindOfClass:">-isKindOfClass:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-isMemberOfClass:">-isMemberOfClass:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-isProxy">-isProxy</a></li>
+      <li><a rel="gsdoc" href="NSObject.html#method$NSObject-makeImmutableCopyOnFail:">-makeImmutableCopyOnFail:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-methodForSelector:">-methodForSelector:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-methodSignatureForSelector:">-methodSignatureForSelector:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-mutableCopy">-mutableCopy</a></li>
@@ -237,6 +247,8 @@
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-performSelector:withObject:afterDelay:">-performSelector:withObject:afterDelay:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-performSelector:withObject:afterDelay:inModes:">-performSelector:withObject:afterDelay:inModes:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-performSelector:withObject:withObject:">-performSelector:withObject:withObject:</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSObject-performSelectorOnMainThread:withObject:waitUntilDone:">-performSelectorOnMainThread:withObject:waitUntilDone:</a></li>
+      <li><a rel="gsdoc" href="NSThread.html#method$NSObject-performSelectorOnMainThread:withObject:waitUntilDone:modes:">-performSelectorOnMainThread:withObject:waitUntilDone:modes:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-read:">-read:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-release">-release</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-replacementObjectForArchiver:">-replacementObjectForArchiver:</a></li>
@@ -275,8 +287,15 @@
               +allocWithZone:
             </a>
 
-            with <code>NSDefaultMallocZone()</code> as the zone
-            argument. <br /> Returns the created instance.
+            with
+            <code>
+              <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">
+                NSDefaultMallocZone()
+              </a>
+
+            </code>
+            as the zone argument. <br /> Returns the created
+            instance.
           
     </p>
     <hr width="25%" align="left" />
@@ -307,6 +326,8 @@
               <code>autorelease</code> and autorelease pools.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -318,6 +339,8 @@
               design schemes).
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -329,6 +352,8 @@
               the <code>GSDebugAllocation...</code> functions.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSObject+class">class</a></h3>
@@ -345,7 +370,12 @@
       
             Returns a string describing the receiving class.
             The default implementation gives the name of the class
-            by calling NSStringFromClass().
+            by calling
+            <a rel="gsdoc" href="Functions.html#function$NSStringFromClass">
+              NSStringFromClass()
+            </a>
+
+            .
           
     </p>
     <hr width="25%" align="left" />
@@ -421,10 +451,15 @@
               init, that is,
                 </p>
     <p>
+      
+            
     </p>
     <p>
 <code>NSObject *object = [NSObject new];</code>    </p>
     <p>
+      
+            is exactly the same as
+            
     </p>
     <p>
 
@@ -433,6 +468,8 @@
               </code>
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -450,6 +487,8 @@
               something like:
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -459,6 +498,8 @@
               </code>
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -470,6 +511,8 @@
               subclass methods.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -480,18 +523,26 @@
               subclass defines an instance method
                 </p>
     <p>
+      
+            
     </p>
     <p>
 <code>initWithName:</code>    </p>
     <p>
+      
+            
     </p>
     <p>
 it might be handy for you to have a class method    </p>
     <p>
+      
+            
     </p>
     <p>
 <code>newWithName:</code>    </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -500,6 +551,8 @@ it might be handy for you to have a class method    </p>
               as follows:
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -509,6 +562,8 @@ it might be handy for you to have a class method    </p>
               </code>
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSObject+poseAsClass:">poseAsClass:</a></h3>
@@ -565,9 +620,9 @@ it might be handy for you to have a class method    </p>
             </a>
 
             message when the pool is destroyed. <br /> Returns
-            the receiver. <br /> In GNUstep, the [
-            <a rel="gsdoc" href="#method$NSObject+enableDoubleReleaseCheck:">NSObject+enableDoubleReleaseCheck:</a>
-] method may be used to turn on checking for ratain/release errors in this method.
+            the receiver. <br /> In GNUstep, the
+            <a rel="gsdoc" href="#method$NSObject+enableDoubleReleaseCheck:">[NSObject&nbsp;+enableDoubleReleaseCheck:]</a>
+ method may be used to turn on checking for ratain/release errors in this method.
           
     </p>
     <hr width="25%" align="left" />
@@ -625,9 +680,13 @@ it might be handy for you to have a class method    </p>
     <p>
       
             Returns the name of the class of the receiving
-            object by using the NSStringFromClass() function.
-            <br /> This is a MacOS-X addition for apple
-            scripting, which is also generally useful.
+            object by using the
+            <a rel="gsdoc" href="Functions.html#function$NSStringFromClass">
+              NSStringFromClass()
+            </a>
+
+            function. <br /> This is a MacOS-X addition for
+            apple scripting, which is also generally useful.
           
     </p>
     <hr width="25%" align="left" />
@@ -646,11 +705,15 @@ it might be handy for you to have a class method    </p>
       
             Creates and returns a copy of the reciever by
             calling
-            <a rel="gsdoc" href="#method$NSObject-copyWithZone:">
+            <a rel="gsdoc" href="#method$(NSCopying)-copyWithZone:">
               -copyWithZone:
             </a>
 
-            passing NSDefaultMallocZone()
+            passing
+            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">
+              NSDefaultMallocZone()
+            </a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -659,8 +722,11 @@ it might be handy for you to have a class method    </p>
     <p>
       
             Deallocates the receiver by calling
-            NSDeallocateObject() with self as the
-            argument. <br />
+            <a rel="gsdoc" href="Functions.html#function$NSDeallocateObject">
+              NSDeallocateObject()
+            </a>
+
+            with self as the argument. <br />
             
     </p>
     <p>
@@ -671,6 +737,8 @@ it might be handy for you to have a class method    </p>
               occupied by your object will not be released.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -684,6 +752,8 @@ it might be handy for you to have a class method    </p>
               fault.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -696,6 +766,8 @@ it might be handy for you to have a class method    </p>
               more info).
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -717,6 +789,8 @@ it might be handy for you to have a class method    </p>
               retain count of an object reaches 0.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -741,6 +815,8 @@ it might be handy for you to have a class method    </p>
               released when an instance is deallocated:
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -749,6 +825,8 @@ it might be handy for you to have a class method    </p>
               </code>
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -758,6 +836,8 @@ it might be handy for you to have a class method    </p>
               allocated in other ways, etc.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -771,6 +851,8 @@ it might be handy for you to have a class method    </p>
               superclass implementation.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSObject-description">description</a></h3>
@@ -920,11 +1002,16 @@ it might be handy for you to have a class method    </p>
       
             Creates and rturns a mutable copy of the receiver
             by calling
-            <a rel="gsdoc" href="#method$NSObject-mutableCopyWithZone:">
+            <a rel="gsdoc" href="#method$(NSMutableCopying)-mutableCopyWithZone:">
               -mutableCopyWithZone:
             </a>
 
-            passing NSDefaultMallocZone().
+            passing
+            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">
+              NSDefaultMallocZone()
+            </a>
+
+            .
           
     </p>
     <hr width="25%" align="left" />
@@ -977,14 +1064,18 @@ it might be handy for you to have a class method    </p>
             Decrements the retain count for the receiver if
             greater than zeron, otherwise calls the dealloc
             method instead. <br /> The default implementation
-            calls the NSDecrementExtraRefCountWasZero() function
-            to test the extra reference count for the receiver (and
-            decrement it if non-zero) - if the extra
-            reference count is zero then the retain count is
-            one, and the dealloc method is called. <br /> In
-            GNUstep, the [
-            <a rel="gsdoc" href="#method$NSObject+enableDoubleReleaseCheck:">NSObject+enableDoubleReleaseCheck:</a>
-] method may be used to turn on checking for ratain/release errors in this method.
+            calls the
+            <a rel="gsdoc" href="Functions.html#function$NSDecrementExtraRefCountWasZero">
+              NSDecrementExtraRefCountWasZero()
+            </a>
+
+            function to test the extra reference count for the
+            receiver (and decrement it if non-zero) - if the
+            extra reference count is zero then the retain count
+            is one, and the dealloc method is called. <br /> In
+            GNUstep, the
+            <a rel="gsdoc" href="#method$NSObject+enableDoubleReleaseCheck:">[NSObject&nbsp;+enableDoubleReleaseCheck:]</a>
+ method may be used to turn on checking for ratain/release errors in this method.
           
     </p>
     <hr width="25%" align="left" />
@@ -1042,7 +1133,11 @@ it might be handy for you to have a class method    </p>
       
             Increments the reference count and returns the
             receiver. <br /> The default implementation does
-            this by calling NSIncrementExtraRefCount()
+            this by calling
+            <a rel="gsdoc" href="Functions.html#function$NSIncrementExtraRefCount">
+              NSIncrementExtraRefCount()
+            </a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -1053,11 +1148,14 @@ it might be handy for you to have a class method    </p>
             Returns the reference count for the receiver. Each
             instance has an implicit reference count of 1, and
             has an 'extra refrence count' returned by the
-            NSExtraRefCount() function, so the value
-            returned by this method is always greater than
-            zero. <br /> By convention, objects which should (or
-            can) never be deallocated return the maximum unsigned
-            integer value.
+            <a rel="gsdoc" href="Functions.html#function$NSExtraRefCount">
+              NSExtraRefCount()
+            </a>
+
+            function, so the value returned by this method is
+            always greater than zero. <br /> By convention,
+            objects which should (or can) never be deallocated
+            return the maximum unsigned integer value.
           
     </p>
     <hr width="25%" align="left" />
@@ -1087,7 +1185,8 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSObject(GNU) category
       </a></h1>
     <h2><a rel="gsdoc" href="#class$NSObject">NSObject</a>(<a name="category$NSObject(GNU)">GNU</a>)</h2>
@@ -1122,6 +1221,7 @@ it might be handy for you to have a class method    </p>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-descriptionWithLocale:">-descriptionWithLocale:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-descriptionWithLocale:indent:">-descriptionWithLocale:indent:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-descriptionWithLocale:indent:to:">-descriptionWithLocale:indent:to:</a></li>
+      <li><a rel="gsdoc" href="NSObject.html#method$NSObject-makeImmutableCopyOnFail:">-makeImmutableCopyOnFail:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-read:">-read:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-shouldNotImplement:">-shouldNotImplement:</a></li>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-subclassResponsibility:">-subclassResponsibility:</a></li>
@@ -1129,7 +1229,7 @@ it might be handy for you to have a class method    </p>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-write:">-write:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSObject+autoreleaseClass">autoreleaseClass</a></h3>
+    <h3><a name="method$NSObject(GNU)+autoreleaseClass">autoreleaseClass</a></h3>
     + (Class) <b>autoreleaseClass</b>;<br />
     <p>
       
@@ -1137,31 +1237,7 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject+descriptionWithLocale:">descriptionWithLocale:</a></h3>
-    + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)aLocale;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSObject+descriptionWithLocale:indent:">descriptionWithLocale:indent:</a></h3>
-    + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)aLocale<b> indent:</b> (unsigned)level;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSObject+descriptionWithLocale:indent:to:">descriptionWithLocale:indent:to:</a></h3>
-    + (void) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)aLocale<b> indent:</b> (unsigned)level<b> to:</b> (id)output;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSObject+enableDoubleReleaseCheck:">enableDoubleReleaseCheck:</a></h3>
+    <h3><a name="method$NSObject(GNU)+enableDoubleReleaseCheck:">enableDoubleReleaseCheck:</a></h3>
     + (void) <b>enableDoubleReleaseCheck:</b> (BOOL)enable;<br />
     <p>
       
@@ -1173,11 +1249,11 @@ it might be handy for you to have a class method    </p>
     <p>
 
               Whenever either
-              <a rel="gsdoc" href="#method$NSObject(GNU)-autorelease">
+              <a rel="gsdoc" href="#method$NSObject-autorelease">
                 -autorelease
               </a>
 
-              or <a rel="gsdoc" href="#method$NSObject(GNU)-release">-release</a>
+              or <a rel="gsdoc" href="#method$NSObject-release">-release</a>
  is
               called, the contents of any autorelease pools
               will be checked to see if there are more outstanding
@@ -1186,6 +1262,8 @@ it might be handy for you to have a class method    </p>
               object is released too many times.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1196,20 +1274,22 @@ it might be handy for you to have a class method    </p>
               should only be enabled for debugging.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
-              Where you are having memory allocation problems, it
+              When you are having memory allocation problems, it
               may make more sense to look at the memory allocation
-              debugging functions documnented in look at the
-              memory allocation debugging functions documnented
-              in NSDebug.h, or use the NSZombie features.NSDebug.h,
-              or use the NSZombie features.
+              debugging functions documented in NSDebug.h, or
+              use the NSZombie features.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject+setAutoreleaseClass:">setAutoreleaseClass:</a></h3>
+    <h3><a name="method$NSObject(GNU)+setAutoreleaseClass:">setAutoreleaseClass:</a></h3>
     + (void) <b>setAutoreleaseClass:</b> (Class)aClass;<br />
     <p>
       
@@ -1218,7 +1298,7 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-compare:">compare:</a></h3>
+    <h3><a name="method$NSObject(GNU)-compare:">compare:</a></h3>
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (id)anObject;<br />
     <p>
       
@@ -1228,51 +1308,26 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-descriptionWithLocale:">descriptionWithLocale:</a></h3>
-    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)aLocale;<br />
+    <h3><a name="method$NSObject(GNU)-makeImmutableCopyOnFail:">makeImmutableCopyOnFail:</a></h3>
+    - (id) <b>makeImmutableCopyOnFail:</b> (BOOL)force;<br />
     <p>
       
-            The default (NSObject) implementation of this method
-            simply calls the
-            <a rel="gsdoc" href="#method$NSObject(GNU)-description">
-              -description
-            </a>
-
-            method and discards the locale information.
+            Transmutes the receiver into an immutable
+            version of the same object and returns the result.
+            <br /> If the receiver is not a mutable object or
+            cannot be simply transmuted, then this method either
+            returns the receiver unchanged or, if the
+            <var>force</var> flag is set to <code>YES</code>,
+            returns an autoreleased copy of the receiver.
+            <br /> Mutable classes should override this default
+            implementation. <br /> This method is used
+            in methods which are declared to return immutable
+            objects (eg. an NSArray), but which create and
+            build mutable ones internally.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-descriptionWithLocale:indent:">descriptionWithLocale:indent:</a></h3>
-    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)aLocale<b> indent:</b> (unsigned)level;<br />
-    <p>
-      
-            The default (NSObject) implementation of this method
-            simply calls the
-            <a rel="gsdoc" href="#method$NSObject(GNU)-descriptionWithLocale:">
-              -descriptionWithLocale:
-            </a>
-
-            method and discards the <var>level</var>
-            information.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-descriptionWithLocale:indent:to:">descriptionWithLocale:indent:to:</a></h3>
-    - (void) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)aLocale<b> indent:</b> (unsigned)level<b> to:</b> (id)output;<br />
-    <p>
-      
-            The default (NSObject) implementation of this method
-            simply calls the
-            <a rel="gsdoc" href="#method$NSObject(GNU)-descriptionWithLocale:indent:">
-              -descriptionWithLocale:indent:
-            </a>
-
-            method and appends the value returned by that method
-            to the <var>output</var> object.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-read:">read:</a></h3>
+    <h3><a name="method$NSObject(GNU)-read:">read:</a></h3>
     - (id) <b>read:</b> (TypedStream*)aStream;<br />
     <p>
       
@@ -1280,7 +1335,7 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-shouldNotImplement:">shouldNotImplement:</a></h3>
+    <h3><a name="method$NSObject(GNU)-shouldNotImplement:">shouldNotImplement:</a></h3>
     - (id) <b>shouldNotImplement:</b> (SEL)aSel;<br />
     <p>
       
@@ -1288,7 +1343,7 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-subclassResponsibility:">subclassResponsibility:</a></h3>
+    <h3><a name="method$NSObject(GNU)-subclassResponsibility:">subclassResponsibility:</a></h3>
     - (id) <b>subclassResponsibility:</b> (SEL)aSel;<br />
     <p>
       
@@ -1296,15 +1351,20 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-transmuteClassTo:">transmuteClassTo:</a></h3>
+    <h3><a name="method$NSObject(GNU)-transmuteClassTo:">transmuteClassTo:</a></h3>
     - (Class) <b>transmuteClassTo:</b> (Class)aClassObject;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Changes the class of the receiver (the 'isa'
+            pointer) to be <var>aClassObject</var>, but only
+            if the receiver is an instance of a subclass of
+            <var>aClassObject</var> which has not added extra
+            instance variables. <br /> Returns zero on
+            failure, or the old class on success.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-write:">write:</a></h3>
+    <h3><a name="method$NSObject(GNU)-write:">write:</a></h3>
     - (id) <b>write:</b> (TypedStream*)aStream;<br />
     <p>
       
@@ -1312,7 +1372,8 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="003000000000">
+
+          <h1><a name="003000000000">
         Software documentation for the NSObject(NEXTSTEP)
         category
       </a></h1>
@@ -1342,7 +1403,7 @@ it might be handy for you to have a class method    </p>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-notImplemented:">-notImplemented:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3>error:,...</h3>
+    <h3><a name="method$NSObject(NEXTSTEP)-error:,...">error:,...</a></h3>
     - (id) <b>error:</b> (const char*)aString<b>,...</b>;<br />
     <p>
       
@@ -1350,7 +1411,7 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-notImplemented:">notImplemented:</a></h3>
+    <h3><a name="method$NSObject(NEXTSTEP)-notImplemented:">notImplemented:</a></h3>
     - (id) <b>notImplemented:</b> (SEL)aSel;<br />
     <p>
       
@@ -1358,7 +1419,8 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="004000000000">
+
+          <h1><a name="004000000000">
         Software documentation for the
         NSObject(TimedPerformers) informal
         protocol
@@ -1391,7 +1453,7 @@ it might be handy for you to have a class method    </p>
       <li><a rel="gsdoc" href="NSObject.html#method$NSObject-performSelector:withObject:afterDelay:inModes:">-performSelector:withObject:afterDelay:inModes:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSObject+cancelPreviousPerformRequestsWithTarget:">cancelPreviousPerformRequestsWithTarget:</a></h3>
+    <h3><a name="method$NSObject(TimedPerformers)+cancelPreviousPerformRequestsWithTarget:">cancelPreviousPerformRequestsWithTarget:</a></h3>
     + (void) <b>cancelPreviousPerformRequestsWithTarget:</b> (id)obj;<br />
     <p>
       
@@ -1399,7 +1461,7 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject+cancelPreviousPerformRequestsWithTarget:selector:object:">cancelPreviousPerformRequestsWithTarget:selector:object:</a></h3>
+    <h3><a name="method$NSObject(TimedPerformers)+cancelPreviousPerformRequestsWithTarget:selector:object:">cancelPreviousPerformRequestsWithTarget:selector:object:</a></h3>
     + (void) <b>cancelPreviousPerformRequestsWithTarget:</b> (id)obj<b> selector:</b> (SEL)s<b> object:</b> (id)arg;<br />
     <p>
       
@@ -1407,7 +1469,7 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-performSelector:withObject:afterDelay:">performSelector:withObject:afterDelay:</a></h3>
+    <h3><a name="method$NSObject(TimedPerformers)-performSelector:withObject:afterDelay:">performSelector:withObject:afterDelay:</a></h3>
     - (void) <b>performSelector:</b> (SEL)s<b> withObject:</b> (id)arg<b> afterDelay:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)seconds;<br />
     <p>
       
@@ -1415,7 +1477,7 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-performSelector:withObject:afterDelay:inModes:">performSelector:withObject:afterDelay:inModes:</a></h3>
+    <h3><a name="method$NSObject(TimedPerformers)-performSelector:withObject:afterDelay:inModes:">performSelector:withObject:afterDelay:inModes:</a></h3>
     - (void) <b>performSelector:</b> (SEL)s<b> withObject:</b> (id)arg<b> afterDelay:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)seconds<b> inModes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)modes;<br />
     <p>
       
@@ -1423,7 +1485,8 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="005000000000">
+
+          <h1><a name="005000000000">
         Software documentation for the GCFinalization protocol
       </a></h1>
     <h2><a name="protocol$(GCFinalization)">GCFinalization</a></h2>
@@ -1459,53 +1522,8 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="006000000000">
-        Software documentation for the
-        GNUDescriptionDestination protocol
-      </a></h1>
-    <h2><a name="protocol$(GNUDescriptionDestination)">GNUDescriptionDestination</a></h2>
-    <blockquote>
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>Foundation/NSObject.h</dd>
-      </dl>
-    </blockquote>
-    <blockquote>
-      <b>Standards:</b>
-      <ul>
-        <li>NotOpenStep</li>
-        <li>NotMacOS-X</li>
-        <li>GNUstep</li>
-      </ul>
-    </blockquote>
-    <p>
-      
-          <em>Description forthcoming.</em>
-        
-    </p>
-    <b>Method summary</b>
-    <ul>
-      <li><a rel="gsdoc" href="NSObject.html#method$(GNUDescriptionDestination)-appendFormat:">-appendFormat:</a></li>
-      <li><a rel="gsdoc" href="NSObject.html#method$(GNUDescriptionDestination)-appendString:">-appendString:</a></li>
-    </ul>
-    <hr width="50%" align="left" />
-    <h3>appendFormat:,...</h3>
-    - (void) <b>appendFormat:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)str<b>,...</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$(GNUDescriptionDestination)-appendString:">appendString:</a></h3>
-    - (void) <b>appendString:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)str;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h1><a name="007000000000">
+
+          <h1><a name="006000000000">
         Software documentation for the NSCoding protocol
       </a></h1>
     <h2><a name="protocol$(NSCoding)">NSCoding</a></h2>
@@ -1553,7 +1571,8 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="008000000000">
+
+          <h1><a name="007000000000">
         Software documentation for the NSCopying protocol
       </a></h1>
     <h2><a name="protocol$(NSCopying)">NSCopying</a></h2>
@@ -1590,7 +1609,8 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="009000000000">
+
+          <h1><a name="008000000000">
         Software documentation for the NSMutableCopying
         protocol
       </a></h1>
@@ -1628,7 +1648,8 @@ it might be handy for you to have a class method    </p>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="010000000000">
+
+          <h1><a name="009000000000">
         Software documentation for the NSObject protocol
       </a></h1>
     <h2><a name="protocol$(NSObject)">NSObject</a></h2>
@@ -1682,12 +1703,11 @@ it might be handy for you to have a class method    </p>
     - (id) <b>autorelease</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-autorelease">
-              NSObject-autorelease
+              [NSObject&nbsp;-autorelease]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1695,12 +1715,11 @@ it might be handy for you to have a class method    </p>
     - (Class) <b>class</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-class">
-              NSObject-class
+              [NSObject&nbsp;-class]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1708,9 +1727,9 @@ it might be handy for you to have a class method    </p>
     - (BOOL) <b>conformsToProtocol:</b> (Protocol*)aProtocol;<br />
     <p>
       
-            See [
-            <a rel="gsdoc" href="#method$NSObject-conformsToProtocol:">NSObject-conformsToProtocol:</a>
-]
+            See
+            <a rel="gsdoc" href="#method$NSObject-conformsToProtocol:">[NSObject&nbsp;-conformsToProtocol:]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -1718,12 +1737,11 @@ it might be handy for you to have a class method    </p>
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>description</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-description">
-              NSObject-description
+              [NSObject&nbsp;-description]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1731,12 +1749,11 @@ it might be handy for you to have a class method    </p>
     - (unsigned) <b>hash</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-hash">
-              NSObject-hash
+              [NSObject&nbsp;-hash]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1744,12 +1761,11 @@ it might be handy for you to have a class method    </p>
     - (BOOL) <b>isEqual:</b> (id)anObject;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-isEqual:">
-              NSObject-isEqual:
+              [NSObject&nbsp;-isEqual:]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1757,12 +1773,11 @@ it might be handy for you to have a class method    </p>
     - (BOOL) <b>isKindOfClass:</b> (Class)aClass;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-isKindOfClass:">
-              NSObject-isKindOfClass:
+              [NSObject&nbsp;-isKindOfClass:]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1770,9 +1785,9 @@ it might be handy for you to have a class method    </p>
     - (BOOL) <b>isMemberOfClass:</b> (Class)aClass;<br />
     <p>
       
-            See [
-            <a rel="gsdoc" href="#method$NSObject-isMemberOfClass:">NSObject-isMemberOfClass:</a>
-]
+            See
+            <a rel="gsdoc" href="#method$NSObject-isMemberOfClass:">[NSObject&nbsp;-isMemberOfClass:]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -1780,12 +1795,11 @@ it might be handy for you to have a class method    </p>
     - (BOOL) <b>isProxy</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-isProxy">
-              NSObject-isProxy
+              [NSObject&nbsp;-isProxy]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1793,9 +1807,9 @@ it might be handy for you to have a class method    </p>
     - (id) <b>performSelector:</b> (SEL)aSelector;<br />
     <p>
       
-            See [
-            <a rel="gsdoc" href="#method$NSObject-performSelector:">NSObject-performSelector:</a>
-]
+            See
+            <a rel="gsdoc" href="#method$NSObject-performSelector:">[NSObject&nbsp;-performSelector:]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -1803,9 +1817,9 @@ it might be handy for you to have a class method    </p>
     - (id) <b>performSelector:</b> (SEL)aSelector<b> withObject:</b> (id)anObject;<br />
     <p>
       
-            See [
-            <a rel="gsdoc" href="#method$NSObject-performSelector:withObject:">NSObject-performSelector:withObject:</a>
-]
+            See
+            <a rel="gsdoc" href="#method$NSObject-performSelector:withObject:">[NSObject&nbsp;-performSelector:withObject:]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -1813,9 +1827,9 @@ it might be handy for you to have a class method    </p>
     - (id) <b>performSelector:</b> (SEL)aSelector<b> withObject:</b> (id)object1<b> withObject:</b> (id)object2;<br />
     <p>
       
-            See [
-            <a rel="gsdoc" href="#method$NSObject-performSelector:withObject:withObject:">NSObject-performSelector:withObject:withObject:</a>
-]
+            See
+            <a rel="gsdoc" href="#method$NSObject-performSelector:withObject:withObject:">[NSObject&nbsp;-performSelector:withObject:withObject:]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -1823,12 +1837,11 @@ it might be handy for you to have a class method    </p>
     - (oneway void) <b>release</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-release">
-              NSObject-release
+              [NSObject&nbsp;-release]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1836,9 +1849,9 @@ it might be handy for you to have a class method    </p>
     - (BOOL) <b>respondsToSelector:</b> (SEL)aSelector;<br />
     <p>
       
-            See [
-            <a rel="gsdoc" href="#method$NSObject-respondsToSelector:">NSObject-respondsToSelector:</a>
-]
+            See
+            <a rel="gsdoc" href="#method$NSObject-respondsToSelector:">[NSObject&nbsp;-respondsToSelector:]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -1846,12 +1859,11 @@ it might be handy for you to have a class method    </p>
     - (id) <b>retain</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-retain">
-              NSObject-retain
+              [NSObject&nbsp;-retain]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1859,12 +1871,11 @@ it might be handy for you to have a class method    </p>
     - (unsigned) <b>retainCount</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-retainCount">
-              NSObject-retainCount
+              [NSObject&nbsp;-retainCount]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1872,12 +1883,11 @@ it might be handy for you to have a class method    </p>
     - (id) <b>self</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-self">
-              NSObject-self
+              [NSObject&nbsp;-self]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1885,12 +1895,11 @@ it might be handy for you to have a class method    </p>
     - (Class) <b>superclass</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-superclass">
-              NSObject-superclass
+              [NSObject&nbsp;-superclass]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />
@@ -1898,12 +1907,11 @@ it might be handy for you to have a class method    </p>
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>*) <b>zone</b>;<br />
     <p>
       
-            See [
+            See
             <a rel="gsdoc" href="#method$NSObject-zone">
-              NSObject-zone
+              [NSObject&nbsp;-zone]
             </a>
 
-            ]
           
     </p>
     <hr width="25%" align="left" />

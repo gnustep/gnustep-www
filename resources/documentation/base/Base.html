@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>GNUstep Base</title>
   </head>
   <body>
@@ -11,9 +12,11 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.6 $</p>
-    <p><b>Date:</b> $Date: 2002/10/05 15:17:11 $</p>
-    <h1><a name="001000000000">Base</a></h1>
+    <p><b>Version:</b> $Revision: 1.7 $</p>
+    <p><b>Date:</b> $Date: 2002/11/20 05:14:29 $</p>
+
+    
+          <h1><a name="001000000000">Base</a></h1>
     <p>
 
 	The GNUstep base library is a free software package implementing
@@ -23,6 +26,7 @@
     <b>Title</b>
     <ul>
       <li><a rel="gsdoc" href="Functions.html#title$Functions">Functions</a></li>
+      <li><a rel="gsdoc" href="GCObject.html#title$GCObject">GCObject autogsdoc generated documentation</a></li>
       <li><a rel="gsdoc" href="GSMime.html#title$GSMime">The MIME parsing system</a></li>
       <li><a rel="gsdoc" href="GSXML.html#title$GSXML">The XML and HTML parsing system</a></li>
       <li><a rel="gsdoc" href="NSArchiver.html#title$NSArchiver">NSUnarchiver class reference</a></li>
@@ -80,9 +84,10 @@
       <li><a rel="gsdoc" href="NSUndoManager.html#title$NSUndoManager">NSUndoManager class reference</a></li>
       <li><a rel="gsdoc" href="NSUserDefaults.html#title$NSUserDefaults">NSUserDefaults class reference</a></li>
       <li><a rel="gsdoc" href="NSValue.html#title$NSValue">NSValue class reference</a></li>
-      <li><a rel="gsdoc" href="TypesAndConstants.html#title$TypesAndConstants">Constants</a></li>
+      <li><a rel="gsdoc" href="TypesAndConstants.html#title$TypesAndConstants">Types and Constants</a></li>
     </ul>
-    <h2><a name="001001000000">Compatibility</a></h2>
+
+	    <h2><a name="001001000000">Compatibility</a></h2>
     <p>
 
 	  GNUstep is generally compatible with the OpenStep specification and
@@ -101,7 +106,8 @@
 	  user default settings to control the behavior of the library
 	  at runtime.
 	    </p>
-    <h3><a name="001001001000">Conditional compilation</a></h3>
+
+	      <h3><a name="001001001000">Conditional compilation</a></h3>
     <p>
 
 	    Adding an option to a makefile to define one of the following
@@ -143,7 +149,8 @@
 	    GNUstep API in place, so that the feature set is as consistent
 	    as possible.
 	      </p>
-    <h3><a name="001001002000">User defaults</a></h3>
+
+	      <h3><a name="001001002000">User defaults</a></h3>
     <dl>
       <dt>GSLogSyslog</dt>
       <dd>
@@ -158,6 +165,8 @@
 		environments where stderr has been re-used strangely for
 		some reason.
 	              </p>
+        
+	    
       </dd>
       <dt>GSMacOSXCompatible</dt>
       <dd>
@@ -170,6 +179,8 @@
 		the default at runtime.  This default may however be overridden
 		to provide more fine grained control of system behavior.
 	              </p>
+        
+	    
       </dd>
       <dt>GSOldStyleGeometry</dt>
       <dd>
@@ -184,6 +195,8 @@
 		MacOS-X behavior.  The functions for parsing those strings
 		should cope with both cases anyway.
 	              </p>
+        
+	    
       </dd>
       <dt>GSSOCKS</dt>
       <dd>
@@ -198,6 +211,21 @@
 		This default overrides the SOCKS5_SERVER and SOCKS_SERVER
 		environment variables.
 	              </p>
+        
+	    
+      </dd>
+      <dt>Local Time Zone</dt>
+      <dd>
+        
+	      
+        <p>
+
+		Used to specify the name of the timezone to be used by the
+		<a rel="gsdoc" href="NSTimeZone.html#class$NSTimeZone">NSTimeZone</a>
+ class.
+	              </p>
+        
+	    
       </dd>
       <dt>NSWriteOldStylePropertyLists</dt>
       <dd>
@@ -209,12 +237,16 @@
 		the default MacOS-X format (XML), or in the more human
 		readable (but less powerful) original OpenStep format.
 	              </p>
+        
+	      
         <p>
 
 		Reading of property lists is supported in either format,
 		but <em>only</em> if GNUstep is built with the libxml
 		library (which is needed to handle XML parsing).
 	              </p>
+        
+	      
         <p>
 
 		NB. MacOS-X generates illegal XML for some strings - those
@@ -225,6 +257,8 @@
 		containing either a backslash or an illegal character will
 		be written differently to the same string on MacOS-X.
 	              </p>
+        
+	    
       </dd>
       <dt>NSLanguages</dt>
       <dd>
@@ -236,9 +270,12 @@
               in order or preference. If not found the default is just 
               English.
                       </p>
+        
+	    
       </dd>
     </dl>
-    <h3><a name="001001003000">Environment variables</a></h3>
+
+	      <h3><a name="001001003000">Environment variables</a></h3>
     <p>
 
 	    There are some environment variables used by GNUstep base, where
@@ -256,6 +293,8 @@
 		standard behavior is to leave a core dump if the library was
 		built for debugging, and to simply exit if it was not.
 	              </p>
+        
+	      
         <p>
 
 		The CRASH_ON_ABORT environment variable can be used to
@@ -264,6 +303,8 @@
 		exit when an exception occurs.  Any other value of the
 		variable will cause the program to generate a core dump.
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_STRING_ENCODING</dt>
       <dd>
@@ -276,6 +317,8 @@
 		may be any of the 8-bit encodings supported by your system
 		(excluding multi-byte encodings).
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_HOST_CPU</dt>
       <dd>
@@ -285,6 +328,8 @@
 
 		Used in place of GNUSTEP_TARGET_CPU if the other is missing.
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_HOST_DIR</dt>
       <dd>
@@ -294,6 +339,8 @@
 
 		Used in place of GNUSTEP_TARGET_DIR if the other is missing.
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_HOST_OS</dt>
       <dd>
@@ -303,6 +350,8 @@
 
 		Used in place of GNUSTEP_TARGET_OS if the other is missing.
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_LOCAL_ROOT</dt>
       <dd>
@@ -314,6 +363,8 @@
 		(non-system) resources.  Typically all locally produced
 		or contributed software is installed relative to this.
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_NETWORK_ROOT</dt>
       <dd>
@@ -327,6 +378,8 @@
 		directory shared by many machines.  It provides an
 		alternative to GNUSTEP_LOCAL_ROOT.
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_SYSTEM_ROOT</dt>
       <dd>
@@ -338,6 +391,8 @@
 		system libraries, tools, applications, headers, resources
 		in general are located relative to this.
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_USER_ROOT</dt>
       <dd>
@@ -349,6 +404,8 @@
 		is <strong>not</strong> used by GNUstep programs.  Instead
 		values from <code>.GNUsteprc</code> are used (see later).
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_TARGET_CPU</dt>
       <dd>
@@ -359,6 +416,8 @@
 		Overrides the default value of the machine (hardware)
 		name used on this system.
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_TARGET_DIR</dt>
       <dd>
@@ -371,6 +430,8 @@
 		This is normally equivalent to a path made up of the
 		GNUSTEP_TARGET_CPU and GNUSTEP_TARGET_OS
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_TARGET_OS</dt>
       <dd>
@@ -381,6 +442,8 @@
 		Overrides the default value of the operating system
 		name used on this system.
 	              </p>
+        
+	    
       </dd>
       <dt>GNUSTEP_TZ</dt>
       <dd>
@@ -394,6 +457,8 @@
 		mechanism is to use the 'Local Time Zone' value from the
 		user defaults system.
 	              </p>
+        
+	    
       </dd>
       <dt>HOMEDRIVE</dt>
       <dd>
@@ -403,6 +468,8 @@
 
 		Used on windoze to locate the home directory.
 	              </p>
+        
+	    
       </dd>
       <dt>HOMEPATH</dt>
       <dd>
@@ -412,6 +479,8 @@
 
 		Used on windoze to locate the home directory.
 	              </p>
+        
+	    
       </dd>
       <dt>LANGUAGES</dt>
       <dd>
@@ -426,6 +495,8 @@
 		languages listed in this variable must be separated by
 		semicolons.
                       </p>
+        
+            
       </dd>
       <dt>LOGNAME</dt>
       <dd>
@@ -438,6 +509,8 @@
 		specified, or contains an illegal value, other methods are
 		used to get the user name.
                       </p>
+        
+            
       </dd>
       <dt>LIBRARY_COMBO</dt>
       <dd>
@@ -449,14 +522,21 @@
 		of standard libraries used to build binaries.  This
 		value locates the final subdirectory used to locate binaries.
                       </p>
+        
+            
       </dd>
       <dt>NSDeallocateZombies</dt>
       <dd>
         
-	      This may be used in conjunction with NSZombieEnabled to specify
-	      whether the objects should really be deallocated.  If you set
-	      this tom YES, the zombie logging will only work until the
-	      deallocated memory is re-used.
+	      
+        <p>
+
+		This may be used in conjunction with NSZombieEnabled to specify
+		whether the objects should really be deallocated.  If you set
+		this to YES, the zombie logging will only work until the
+		deallocated memory is re-used.
+	              </p>
+        
 	    
       </dd>
       <dt>NSZombieEnabled</dt>
@@ -466,14 +546,16 @@
         <p>
 
 		If this is set to YES, then deallocation of an object causes
-	        the object to be morphes into a Zombie ... a special object
+	        the object to be morphed into a Zombie ... a special object
 		which will call the GNUstep specific GSLogZombie() function
 		to log the method call.<br />
 		You can set a breakpoint in this function and examine the
-		process memory if you are running undera debugger.<br />
+		process memory if you are running under a debugger.<br />
 		As this overrides actual object deallocation, all memory
 		allocated for objects will be leaked!
 	              </p>
+        
+	    
       </dd>
       <dt>SOCKS5_SERVER</dt>
       <dd>
@@ -488,6 +570,8 @@
 		This environment variable is used only if the GSSOCKS
 		user default is not set.
 	              </p>
+        
+	    
       </dd>
       <dt>SOCKS_SERVER</dt>
       <dd>
@@ -498,6 +582,8 @@
 		Equivalent to SOCKS5_SERVER, but used only if that is not
 		defined.
 	              </p>
+        
+	    
       </dd>
       <dt>TZ</dt>
       <dd>
@@ -510,9 +596,12 @@
 		mechanism is to use the 'Local Time Zone' value from the
 		user defaults system.
 	              </p>
+        
+	    
       </dd>
     </dl>
-    <h3><a name="001001004000">.GNUsteprc files</a></h3>
+
+	      <h3><a name="001001004000">.GNUsteprc files</a></h3>
     <p>
 
 	    The locations of the directories in which user specific files and
@@ -576,8 +665,14 @@
       </dd>
     </dl>
     <div>
-      <b>Class</b>
+
+            <b>Class</b>
       <ul>
+        <li><a rel="gsdoc" href="GCObject.html#class$GCArray">GCArray</a></li>
+        <li><a rel="gsdoc" href="GCObject.html#class$GCDictionary">GCDictionary</a></li>
+        <li><a rel="gsdoc" href="GCObject.html#class$GCMutableArray">GCMutableArray</a></li>
+        <li><a rel="gsdoc" href="GCObject.html#class$GCMutableDictionary">GCMutableDictionary</a></li>
+        <li><a rel="gsdoc" href="GCObject.html#class$GCObject">GCObject</a></li>
         <li><a rel="gsdoc" href="GSXML.html#class$GSHTMLParser">GSHTMLParser</a></li>
         <li><a rel="gsdoc" href="GSXML.html#class$GSHTMLSAXHandler">GSHTMLSAXHandler</a></li>
         <li><a rel="gsdoc" href="GSMime.html#class$GSMimeCodingContext">GSMimeCodingContext</a></li>

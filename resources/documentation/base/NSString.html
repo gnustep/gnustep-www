@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSString class reference</title>
   </head>
   <body>
@@ -14,12 +15,13 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.271</p>
-    <p><b>Date:</b> 2002/08/30 14:54:07</p>
+    <p><b>Version:</b> 1.284</p>
+    <p><b>Date:</b> 2002/11/11 10:18:48</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -43,7 +45,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSMutableString class
       </a></h1>
     <h2><a name="class$NSMutableString">NSMutableString</a> : <a rel="gsdoc" href="#class$NSString">NSString</a></h2>
@@ -78,6 +81,8 @@
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-appendFormat:">-appendFormat:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-appendString:">-appendString:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deleteCharactersInRange:">-deleteCharactersInRange:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deletePrefix:">-deletePrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deleteSuffix:">-deleteSuffix:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-immutableProxy">-immutableProxy</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-initWithCapacity:">-initWithCapacity:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-insertString:atIndex:">-insertString:atIndex:</a></li>
@@ -139,7 +144,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3>stringWithFormat:,...</h3>
+    <h3><a name="method$NSMutableString+stringWithFormat:,...">stringWithFormat:,...</a></h3>
     + (id) <b>stringWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
@@ -147,7 +152,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3>appendFormat:,...</h3>
+    <h3><a name="method$NSMutableString-appendFormat:,...">appendFormat:,...</a></h3>
     - (void) <b>appendFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
@@ -203,7 +208,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSString class
       </a></h1>
     <h2><a name="class$NSString">NSString</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -241,6 +247,8 @@
             objects of unspecified subclasses.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -249,6 +257,8 @@
             the quotes are the string, using only ASCII characters.
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -258,6 +268,8 @@
             characterAtIndex:
               </p>
     <p>
+      
+          
     </p>
     <p>
 
@@ -269,6 +281,8 @@
             initialisation methods should work.
               </p>
     <p>
+      
+        
     </p>
     <b>Method summary</b>
     <ul>
@@ -366,6 +380,8 @@
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByAppendingString:">-stringByAppendingString:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingLastPathComponent">-stringByDeletingLastPathComponent</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingPathExtension">-stringByDeletingPathExtension</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingPrefix:">-stringByDeletingPrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingSuffix:">-stringByDeletingSuffix:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByExpandingTildeInPath">-stringByExpandingTildeInPath</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByPaddingToLength:withString:startingAtIndex:">-stringByPaddingToLength:withString:startingAtIndex:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByRemovingPrefix:">-stringByRemovingPrefix:</a></li>
@@ -400,7 +416,16 @@
     + (Class) <b>constantStringClass</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the class used to store constant strings
+            (those ascii strings placed in the source code using
+            the @"this is a string" syntax). <br /> Use this method
+            to obtain the constant string class rather than using
+            the obsolete name <em>NXConstantString</em> in your
+            code... with more recent compiler versions the name of
+            this class is variable (and will automatically be
+            changed by GNUstep to avoid conflicts with the
+            default implementation in the Objective-C runtime
+            library).
           
     </p>
     <hr width="25%" align="left" />
@@ -418,6 +443,8 @@
               and cannot be changed programmatically.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -426,6 +453,8 @@
               won't work.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -435,6 +464,8 @@
               <code>NSISOLatin1StringEncoding</code> is assumed.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString+localizedNameOfStringEncoding:">localizedNameOfStringEncoding:</a></h3>
@@ -446,7 +477,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3>localizedStringWithFormat:,...</h3>
+    <h3><a name="method$NSString+localizedStringWithFormat:,...">localizedStringWithFormat:,...</a></h3>
     + (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>localizedStringWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
@@ -512,7 +543,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3>stringWithFormat:,...</h3>
+    <h3><a name="method$NSString+stringWithFormat:,...">stringWithFormat:,...</a></h3>
     + (id) <b>stringWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
@@ -556,7 +587,10 @@
     - (int) <b>_baseLength</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />
@@ -738,7 +772,11 @@
     - (void) <b>getCString:</b> (char*)buffer;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Retrieve the contents of the receiver into the
+            <var>buffer</var>. <br /> The <var>buffer</var> must
+            be large enought to contain the CString representation
+            of the characters in the receiver, plus a null
+            terminator which this method adds.
           
     </p>
     <hr width="25%" align="left" />
@@ -746,7 +784,11 @@
     - (void) <b>getCString:</b> (char*)buffer<b> maxLength:</b> (unsigned int)maxLength;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Retrieve up to <var>maxLength</var> characters
+            from the receiver into the <var>buffer</var>. <br />
+            The <var>buffer</var> must be at least
+            <var>maxLength</var> characters long, so that it has
+            room for the null terminator that this method adds.
           
     </p>
     <hr width="25%" align="left" />
@@ -809,7 +851,9 @@
           U+000D U+000A (CRLF)
         </li>
       </ul>
-      <var>aRange</var> is returned in
+      
+            The index of the first character of the line at or
+            before <var>aRange</var> is returned in
             <var>startIndex</var>. <br /> The index of the first
             character of the next line after the line
             terminator is returned in endIndex. <br /> The
@@ -905,7 +949,50 @@ This is a designated initialiser for the class.<br />
     - (id) <b>initWithContentsOfFile:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Initialises the receiver with the contents of
+              the file at <var>path</var>.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Invokes
+              <a rel="gsdoc" href="NSData.html#method$NSData-initWithContentsOfFile:">[NSData&nbsp;-initWithContentsOfFile:]</a>
+ to read the file, then examines the data to infer its encoding type, and converts the data to a string using <a rel="gsdoc" href="#method$NSString-initWithData:encoding:">-initWithData:encoding:</a>
+
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The encoding to use is determined as follows... if
+              the data begins with the 16-bit unicode Byte Order
+              Marker, then it is assumed to be unicode data in
+              the appropriate ordering and converted as such.
+              <br /> If it begins with a UTF8 representation of
+              the BOM, the UTF8 encoding is used. <br /> Otherwise,
+              the default C String encoding is used.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Releases the receiver and returns
+              <code>nil</code> if the file could not be read and
+              converted to a string.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -921,11 +1008,20 @@ This is a designated initialiser for the class.<br />
     - (id) <b>initWithData:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)data<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialises the receiver with the supplied
+            <var>data</var>, using the specified
+            <var>encoding</var>. <br /> For
+            NSUnicodeStringEncoding and
+            NSUTF8String <var>encoding</var>, a Byte Order
+            Marker (if present at the start of the
+            <var>data</var>) is removed automatically. <br /> If
+            the <var>data</var> can not be interpreted using the
+            <var>encoding</var>, the receiver is released and
+            <code>nil</code> is returned.
           
     </p>
     <hr width="25%" align="left" />
-    <h3>initWithFormat:,...</h3>
+    <h3><a name="method$NSString-initWithFormat:,...">initWithFormat:,...</a></h3>
     - (id) <b>initWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
@@ -951,7 +1047,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3>initWithFormat:locale:,...</h3>
+    <h3><a name="method$NSString-initWithFormat:locale:,...">initWithFormat:locale:,...</a></h3>
     - (id) <b>initWithFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale<b>,...</b>;<br />
     <p>
       
@@ -1117,7 +1213,346 @@ This is a designated initialiser for the class.<br />
     - (id) <b>propertyList</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Attempts to interpret the receiver as a
+              <em>property list</em> and returns the result. If
+              the receiver does not contain a string representation
+              of a <em>property list</em> then the method returns
+              <code>nil</code>.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              There are three readable <em>property list</em>
+              storage formats - The binary format used by
+              NSSerializer
+
+                does not concern us here, but there are two 'human
+                readable' formats, the <em>traditional</em>
+                OpenStep format (which is extended in GNUstep)
+                and the <em>XML</em> format.
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                The
+                <a rel="gsdoc" href="NSArray.html#method$NSArray-descriptionWithLocale:indent:">[NSArray&nbsp;-descriptionWithLocale:indent:]</a>
+ and <a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-descriptionWithLocale:indent:">[NSDictionary&nbsp;-descriptionWithLocale:indent:]</a>
+ methods both generate strings containing traditional style <em>property lists</em>, but <a rel="gsdoc" href="NSArray.html#method$NSArray-writeToFile:atomically:">[NSArray&nbsp;-writeToFile:atomically:]</a>
+ and <a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-writeToFile:atomically:">[NSDictionary&nbsp;-writeToFile:atomically:]</a>
+ generate either traditional or XML style <em>property lists</em> depending on the value of the GSMacOSXCompatible and NSWriteOldStylePropertyLists user defaults. <br /> If GSMacOSXCompatible is <code>YES</code> then XML <em>property lists</em> are written unless NSWriteOldStylePropertyLists is also <code>YES</code>. <br /> By default GNUstep writes old style data and always supports reading of either style.
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                The traditional format is more compact and more
+                easily readable by people, but (without the
+                GNUstep extensions) cannot represent date and
+                number objects (except as strings). The XML
+                format is more verbose and less readable, but
+                can be fed into modern XML tools and thus used to
+                pass data to non-OpenStep applications more
+                readily.
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                The traditional format is strictly ascii encoded,
+                with any unicode characters represented by escape
+                sequences. The XML format is encoded as UTF8
+                data.
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                Both the traditional format and the XML format
+                permit comments to be placed in
+                <em>property list</em> documents. In traditional
+                format the comment notations used in ObjectiveC
+                programming are supported, while in XML
+                format, the standard SGML comment sequences are
+                used.
+                  </p>
+    <p>
+      
+              A <em>property list</em> may only be one of the
+              following classes -
+              
+      <dl>
+        <dt>
+                  <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>
+
+                  </dt>
+        <dd>
+          
+                    An array which is either empty or contains only
+                    <em>property list</em> objects. <br /> An
+                    array is delimited by round brackets and its
+                    contents are comma <em>separated</em>
+                    (there is no comma after the last array
+                    element).
+
+<pre>
+
+       ( "one", "two", "three" )
+     
+</pre>
+          
+            In XML format, an array is an element whose name is
+            <code>array</code> and whose content is the array
+            content.
+
+<pre>
+
+       &lt;array&gt;&lt;string&gt;one&lt;/string&gt;&lt;string&gt;two&lt;/string&gt;&lt;string&gt;three&lt;/string&gt;&lt;/array&gt;
+     
+</pre>
+          
+          
+        </dd>
+        <dt>
+            <a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>
+
+            </dt>
+        <dd>
+          
+              An array is represented as a series of pairs of
+              hexadecimal characters (each pair
+              representing a byte of data) enclosed in
+              angle brackets. Spaces are ignored).
+
+<pre>
+
+       &lt; 54637374 696D67 &gt;
+     
+</pre>
+          
+            In XML format, a data object is an element whose name is
+            <code>data</code> and whose content is a stream of
+            base64 encoded bytes.
+          
+        </dd>
+        <dt>
+            <a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>
+
+            </dt>
+        <dd>
+          
+              Date objects were not traditionally allowed in
+              <em>property lists</em> but were added when the XML
+              format was intoroduced. GNUstep provides an
+              extension to the traditional
+              <em>property list</em> format to support date
+              objects, but older code will not read
+              <em>property lists</em> containing this extension.
+              <br /> This format consists of an asterisk follwed
+              by the letter 'D' then a date/time in YYYY-MM-DD
+              HH:MM:SS +/-ZZZZ format, all enclosed within
+              angle brackets.
+
+<pre>
+
+       &lt;*D2002-03-22 11:30:00 +0100&gt;
+     
+</pre>
+          
+            In XML format, a date object is an element whose name is
+            <code>date</code> and whose content is a date in the
+            above format.
+
+<pre>
+
+       &lt;date&gt;2002-03-22 11:30:00 +0100&lt;/date&gt;
+     
+</pre>
+          
+          
+        </dd>
+        <dt>
+            <a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>
+
+            </dt>
+        <dd>
+          
+              A dictionary which is either empty or contains only
+              <em>string</em> keys and <em>property list</em>
+              objects. <br /> A dictionary is delimited by
+              curly brackets and its contents are semicolon
+              <em>terminated</em> (there is a semicolon after each
+              value). Each item in the dictionary is a
+              key/value pair with an equals sign after the
+              key and before the value.
+
+<pre>
+
+       {
+         "key1" = "value1";
+       }
+     
+</pre>
+          
+            In XML format, a dictionary is an element whose name is
+            <code>dictionary</code> and whose content consists
+            of pairs of strings and other <em>property list</em>
+            objects.
+
+<pre>
+
+       &lt;dictionary&gt;
+         &lt;string&gt;key1&lt;/string&gt;
+         &lt;string&gt;value1&lt;/string&gt;
+       &lt;/dictionary&gt;
+     
+</pre>
+          
+          
+        </dd>
+        <dt>
+            <a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>
+
+            </dt>
+        <dd>
+          
+              Number objects were not traditionally allowed in
+              <em>property lists</em> but were added when the XML
+              format was intoroduced. GNUstep provides an
+              extension to the traditional
+              <em>property list</em> format to support number
+              objects, but older code will not read
+              <em>property lists</em> containing this extension.
+              <br /> Numbers are stored in a variety of formats
+              depending on their values.
+              
+          <ul>
+            <li>
+              
+                  boolean... either <code>&lt;*BY&gt;</code>
+                  for <code>YES</code> or <code>&lt;*BN&gt;</code>
+                  for <code>NO</code>. <br /> In XML format this is
+                  either <code>&lt;true /&gt;</code> or
+                  <code>&lt;false /&gt;</code>
+                
+            </li>
+            <li>
+              
+                  integer... <code>&lt;*INNN&gt;</code> where
+                  NNN is an integer. <br /> In XML format this is
+                  <code>&lt;integer&gt;NNN&lt;integer&gt;</code>
+                
+            </li>
+            <li>
+              
+                  real... <code>&lt;*RNNN&gt;</code> where NNN is
+                  a real number. <br /> In XML format this is
+                  <code>&lt;real&gt;NNN&lt;real&gt;</code>
+                
+            </li>
+          </ul>
+          
+            
+        </dd>
+        <dt>
+              <a rel="gsdoc" href="#class$NSString">NSString</a>
+
+              </dt>
+        <dd>
+          
+                A string is either stored literally (if it contains
+                no spaces or special characters), or is stored as a
+                quoted string with special characters escaped
+                where necessary. <br /> Escape conventions are
+                similar to those normally used in ObjectiveC
+                programming, using a backslash followed by
+                -
+                
+          <ul>
+            <li>
+              
+                    <strong>\</strong> a backslash character
+                  
+            </li>
+            <li>
+              
+                    <strong>"</strong> a quote character
+                  
+            </li>
+            <li>
+              
+                    <strong>b</strong> a backspace character
+                  
+            </li>
+            <li>
+              
+                    <strong>n</strong> a newline character
+                  
+            </li>
+            <li>
+              
+                    <strong>r</strong> a carriage return
+                    character
+                  
+            </li>
+            <li>
+              
+                    <strong>t</strong> a tab character
+                  
+            </li>
+            <li>
+              
+                    <strong>OOO</strong> (three octal digits)
+                    an arbitrary ascii character
+                  
+            </li>
+            <li>
+              
+                    <strong>UXXXX</strong> (where X is a
+                    hexadecimal digit) a an arbitrary
+                    unicode character
+                  
+            </li>
+          </ul>
+          
+
+<pre>
+
+       "hello world &amp; others"
+     
+</pre>
+          
+            In XML format, the string is simply stored in UTF8
+            format as the content of a <code>string</code>
+            element, and the only character escapes required
+            are those used by XML such as the '&amp;lt;' markup
+            representing a '&lt;' character.
+
+<pre>
+
+       &lt;string&gt;hello world &amp;amp; others&lt;/string&gt;"
+     
+</pre>
+          
+          
+        </dd>
+      </dl>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -1125,7 +1560,42 @@ This is a designated initialiser for the class.<br />
     - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>propertyListFromStringsFileFormat</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Reads a <em>property list</em> (see -propertyList)
+              from a simplified file format. This format is a
+              traditional style property list file
+              containing a single dictionary, but with the
+              leading '{' and trailing '}' characters omitted.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              That is to say, the file contains only semicolon
+              separated key/value pairs (and optionally
+              comments). As a convenience, it is possible to
+              omit the equals sign and the value, so an entry
+              consists of a key string followed by a
+              semicolon. In this case, the value for that
+              key is assumed to be an empty string.
+                </p>
+    <p>
+      
+
+<pre>
+  
+   // Strings file entries follow -
+   key1 = " a string value";
+   key2;	// This key has an empty string as a value.
+   "Another key" = "a longer string value for th third key";
+ 
+</pre>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -1218,6 +1688,8 @@ This is a designated initialiser for the class.<br />
           NSAnchoredSearch
         </li>
       </ul>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-smallestEncoding">smallestEncoding</a></h3>
@@ -1239,7 +1711,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3>stringByAppendingFormat:,...</h3>
+    <h3><a name="method$NSString-stringByAppendingFormat:,...">stringByAppendingFormat:,...</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByAppendingFormat:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)format<b>,...</b>;<br />
     <p>
       
@@ -1365,6 +1837,8 @@ This is a designated initialiser for the class.<br />
               prefix.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -1373,6 +1847,8 @@ This is a designated initialiser for the class.<br />
  to resolve any links, then gets rid of '/../' sequences.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-stringByTrimmingCharactersInSet:">stringByTrimmingCharactersInSet:</a></h3>
@@ -1454,7 +1930,8 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="003000000000">
+
+          <h1><a name="003000000000">
         Software documentation for the NXConstantString class
       </a></h1>
     <h2><a name="class$NXConstantString">NXConstantString</a> : <a rel="gsdoc" href="#class$NSString">NSString</a></h2>
@@ -1485,6 +1962,8 @@ This is a designated initialiser for the class.<br />
             which has three instance variables -
               </p>
     <p>
+      
+          
       <ul>
         <li>
           
@@ -1499,6 +1978,8 @@ This is a designated initialiser for the class.<br />
           the length of the string
         </li>
       </ul>
+      
+          
     </p>
     <p>
 
@@ -1513,19 +1994,25 @@ This is a designated initialiser for the class.<br />
             source code to NSConstantString).
               </p>
     <p>
+      
+          
     </p>
     <p>
 
             Since GNUstep will generally use the GNUstep
             extension to the compiler, you should never refer
             to the constnat string class by name, but should use the
-            [
-            <a rel="gsdoc" href="#method$NSString+constantStringClass">NSString+constantStringClass</a>
-] method to get the actual class being used for constant strings.
+            <a rel="gsdoc" href="#method$NSString+constantStringClass">[NSString&nbsp;+constantStringClass]</a>
+ method to get the actual class being used for constant strings.
               </p>
     <p>
+      
+          What follows is a dummy declaration of the class to keep
+          the compiler happy.
+        
     </p>
-    <h1><a name="004000000000">
+
+          <h1><a name="004000000000">
         Software documentation for the
         NSMutableString(GNUstep) category
       </a></h1>
@@ -1553,6 +2040,8 @@ This is a designated initialiser for the class.<br />
     </p>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deletePrefix:">-deletePrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-deleteSuffix:">-deleteSuffix:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-immutableProxy">-immutableProxy</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-removePrefix:">-removePrefix:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-removeSuffix:">-removeSuffix:</a></li>
@@ -1562,7 +2051,27 @@ This is a designated initialiser for the class.<br />
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString-trimTailSpaces">-trimTailSpaces</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSMutableString-immutableProxy">immutableProxy</a></h3>
+    <h3><a name="method$NSMutableString(GNUstep)-deletePrefix:">deletePrefix:</a></h3>
+    - (void) <b>deletePrefix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)prefix;<br />
+    <p>
+      
+            Removes the specified <var>prefix</var> from the
+            string. Raises an exception if the
+            <var>prefix</var> is not present.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSMutableString(GNUstep)-deleteSuffix:">deleteSuffix:</a></h3>
+    - (void) <b>deleteSuffix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)suffix;<br />
+    <p>
+      
+            Removes the specified <var>suffix</var> from the
+            string. Raises an exception if the
+            <var>suffix</var> is not present.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSMutableString(GNUstep)-immutableProxy">immutableProxy</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>immutableProxy</b>;<br />
     <p>
       
@@ -1575,27 +2084,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableString-removePrefix:">removePrefix:</a></h3>
-    - (void) <b>removePrefix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)prefix;<br />
-    <p>
-      
-            Removes the specified <var>prefix</var> from the
-            string. Raises an exception if the
-            <var>prefix</var> is not present.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableString-removeSuffix:">removeSuffix:</a></h3>
-    - (void) <b>removeSuffix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)suffix;<br />
-    <p>
-      
-            Removes the specified <var>suffix</var> from the
-            string. Raises an exception if the
-            <var>suffix</var> is not present.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableString-replaceString:withString:">replaceString:withString:</a></h3>
+    <h3><a name="method$NSMutableString(GNUstep)-replaceString:withString:">replaceString:withString:</a></h3>
     - (void) <b>replaceString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)replace<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by;<br />
     <p>
       
@@ -1608,7 +2097,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableString-trimLeadSpaces">trimLeadSpaces</a></h3>
+    <h3><a name="method$NSMutableString(GNUstep)-trimLeadSpaces">trimLeadSpaces</a></h3>
     - (void) <b>trimLeadSpaces</b>;<br />
     <p>
       
@@ -1616,7 +2105,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableString-trimSpaces">trimSpaces</a></h3>
+    <h3><a name="method$NSMutableString(GNUstep)-trimSpaces">trimSpaces</a></h3>
     - (void) <b>trimSpaces</b>;<br />
     <p>
       
@@ -1625,7 +2114,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSMutableString-trimTailSpaces">trimTailSpaces</a></h3>
+    <h3><a name="method$NSMutableString(GNUstep)-trimTailSpaces">trimTailSpaces</a></h3>
     - (void) <b>trimTailSpaces</b>;<br />
     <p>
       
@@ -1633,7 +2122,8 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="005000000000">
+
+          <h1><a name="005000000000">
         Software documentation for the NSString(GNUstep)
         category
       </a></h1>
@@ -1661,6 +2151,8 @@ This is a designated initialiser for the class.<br />
     </p>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingPrefix:">-stringByDeletingPrefix:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingSuffix:">-stringByDeletingSuffix:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByRemovingPrefix:">-stringByRemovingPrefix:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByRemovingSuffix:">-stringByRemovingSuffix:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByReplacingString:withString:">-stringByReplacingString:withString:</a></li>
@@ -1669,8 +2161,8 @@ This is a designated initialiser for the class.<br />
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSString-stringByRemovingPrefix:">stringByRemovingPrefix:</a></h3>
-    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByRemovingPrefix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)prefix;<br />
+    <h3><a name="method$NSString(GNUstep)-stringByDeletingPrefix:">stringByDeletingPrefix:</a></h3>
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByDeletingPrefix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)prefix;<br />
     <p>
       
             Returns a string formed by removing the
@@ -1680,8 +2172,8 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSString-stringByRemovingSuffix:">stringByRemovingSuffix:</a></h3>
-    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByRemovingSuffix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)suffix;<br />
+    <h3><a name="method$NSString(GNUstep)-stringByDeletingSuffix:">stringByDeletingSuffix:</a></h3>
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByDeletingSuffix:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)suffix;<br />
     <p>
       
             Returns a string formed by removing the
@@ -1691,7 +2183,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSString-stringByReplacingString:withString:">stringByReplacingString:withString:</a></h3>
+    <h3><a name="method$NSString(GNUstep)-stringByReplacingString:withString:">stringByReplacingString:withString:</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByReplacingString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)replace<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by;<br />
     <p>
       
@@ -1704,7 +2196,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSString-stringByTrimmingLeadSpaces">stringByTrimmingLeadSpaces</a></h3>
+    <h3><a name="method$NSString(GNUstep)-stringByTrimmingLeadSpaces">stringByTrimmingLeadSpaces</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByTrimmingLeadSpaces</b>;<br />
     <p>
       
@@ -1713,7 +2205,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSString-stringByTrimmingSpaces">stringByTrimmingSpaces</a></h3>
+    <h3><a name="method$NSString(GNUstep)-stringByTrimmingSpaces">stringByTrimmingSpaces</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByTrimmingSpaces</b>;<br />
     <p>
       
@@ -1722,7 +2214,7 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSString-stringByTrimmingTailSpaces">stringByTrimmingTailSpaces</a></h3>
+    <h3><a name="method$NSString(GNUstep)-stringByTrimmingTailSpaces">stringByTrimmingTailSpaces</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByTrimmingTailSpaces</b>;<br />
     <p>
       

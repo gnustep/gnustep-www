@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSFileHandle class reference</title>
   </head>
   <body>
@@ -14,10 +15,11 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.24</p>
-    <p><b>Date:</b> 2002/08/20 10:22:04</p>
+    <p><b>Version:</b> 1.25</p>
+    <p><b>Date:</b> 2002/10/27 01:38:30</p>
     <p><b>Copyright:</b> (C) 1997 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -40,7 +42,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSFileHandle class
       </a></h1>
     <h2><a name="class$NSFileHandle">NSFileHandle</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -60,7 +63,35 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            NSFileHandler is a Class that provides a
+            wrapper for accessing system files and other
+            connections. You can open connections to a
+            file using class methods such as
+            <a rel="gsdoc" href="#method$NSFileHandle+fileHandleForReadingAtPath:">
+              +fileHandleForReadingAtPath:
+            </a>
+
+            .
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            GNUstep extends the use of this Class to allow you
+            to create network connections (sockets), secure
+            connections and also allows you to use
+            compression with these files and connections
+            (as long as GNUstep Base was compiled with the zlib
+            library).
+              </p>
+    <p>
+      
         
     </p>
     <b>Method summary</b>
@@ -120,7 +151,10 @@
     + (id) <b>fileHandleForReadingAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an NSFileHandle object setup for reading
+            from the file listed at <var>path</var>. If the file
+            does not exist or cannot be opened for some other
+            reason, <code>nil</code> is returned.
           
     </p>
     <hr width="25%" align="left" />
@@ -128,7 +162,11 @@
     + (id) <b>fileHandleForUpdatingAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an NSFileHandle object setup for updating
+            (reading and writing) from the file listed at
+            <var>path</var>. If the file does not exist or cannot
+            be opened for some other reason, <code>nil</code> is
+            returned.
           
     </p>
     <hr width="25%" align="left" />
@@ -136,7 +174,10 @@
     + (id) <b>fileHandleForWritingAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an NSFileHandle object setup for writing to
+            the file listed at <var>path</var>. If the file does
+            not exist or cannot be opened for some other reason,
+            <code>nil</code> is returned.
           
     </p>
     <hr width="25%" align="left" />
@@ -144,7 +185,11 @@
     + (id) <b>fileHandleWithNullDevice</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a file handle object that is connected to
+            the null device (i.e. a device that does nothing.) It
+            is typically used in arrays and other collections of
+            file handle objects as a place holder (null) object,
+            so that all objects can respond to the same messages.
           
     </p>
     <hr width="25%" align="left" />
@@ -152,7 +197,10 @@
     + (id) <b>fileHandleWithStandardError</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an NSFileHandle object for the standard
+            error descriptor. The returned object is a shared
+            instance as there can only be one standard error
+            per process.
           
     </p>
     <hr width="25%" align="left" />
@@ -160,7 +208,10 @@
     + (id) <b>fileHandleWithStandardInput</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an NSFileHandle object for the standard
+            input descriptor. The returned object is a shared
+            instance as there can only be one standard input
+            per process.
           
     </p>
     <hr width="25%" align="left" />
@@ -168,7 +219,10 @@
     + (id) <b>fileHandleWithStandardOutput</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an NSFileHandle object for the standard
+            output descriptor. The returned object is a shared
+            instance as there can only be one standard output
+            per process.
           
     </p>
     <hr width="25%" align="left" />
@@ -292,7 +346,11 @@
       
             Set up an asynchonous read operation which will cause a
             notification to be sent when any amount of
-            data (or end of file) is read.
+            data (or end of file) is read. Note that the file
+            handle will not continuously send notifications when
+            data is available. If you want to continue to receive
+            notifications, you need to send this message
+            again after receiving a notification.
           
     </p>
     <hr width="25%" align="left" />
@@ -375,7 +433,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSPipe class
       </a></h1>
     <h2><a name="class$NSPipe">NSPipe</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -432,7 +491,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="003000000000">
+
+          <h1><a name="003000000000">
         Software documentation for the
         NSFileHandle(GNUstepExtensions)
         category
@@ -475,29 +535,29 @@
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle-writeInProgress">-writeInProgress</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSFileHandle+fileHandleAsClientAtAddress:service:protocol:">fileHandleAsClientAtAddress:service:protocol:</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientAtAddress:service:protocol:">fileHandleAsClientAtAddress:service:protocol:</a></h3>
     + (id) <b>fileHandleAsClientAtAddress:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)address<b> service:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)service<b> protocol:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)protocol;<br />
     <p>
       
             Opens an outgoing network connection by initiating an
-            asynchronous connection (see [
-            <a rel="gsdoc" href="#method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:">+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:</a>
-]) and waiting for it to succeed, fail, or time out.
+            asynchronous connection (see
+            <a rel="gsdoc" href="#method$NSFileHandle+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:">+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:</a>
+) and waiting for it to succeed, fail, or time out.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle+fileHandleAsClientInBackgroundAtAddress:service:protocol:">fileHandleAsClientInBackgroundAtAddress:service:protocol:</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientInBackgroundAtAddress:service:protocol:">fileHandleAsClientInBackgroundAtAddress:service:protocol:</a></h3>
     + (id) <b>fileHandleAsClientInBackgroundAtAddress:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)address<b> service:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)service<b> protocol:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)protocol;<br />
     <p>
       
             Opens an outgoing network connection asynchronously
-            using [
-            <a rel="gsdoc" href="#method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:">+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:</a>
-]
+            using
+            <a rel="gsdoc" href="#method$NSFileHandle+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:">[+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:]</a>
+
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:">fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:">fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:</a></h3>
     + (id) <b>fileHandleAsClientInBackgroundAtAddress:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)address<b> service:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)service<b> protocol:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)protocol<b> forModes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)modes;<br />
     <p>
       
@@ -509,6 +569,8 @@
               asynchronously.
                 </p>
     <p>
+      
+            
       <ul>
         <li>
           
@@ -546,6 +608,8 @@
               
         </li>
       </ul>
+      
+            
     </p>
     <p>
 
@@ -562,9 +626,11 @@
               through socks.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle+fileHandleAsServerAtAddress:service:protocol:">fileHandleAsServerAtAddress:service:protocol:</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)+fileHandleAsServerAtAddress:service:protocol:">fileHandleAsServerAtAddress:service:protocol:</a></h3>
     + (id) <b>fileHandleAsServerAtAddress:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)address<b> service:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)service<b> protocol:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)protocol;<br />
     <p>
       
@@ -586,19 +652,21 @@
               
         </li>
       </ul>
+      
+          
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-readDataInBackgroundAndNotifyLength:">readDataInBackgroundAndNotifyLength:</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-readDataInBackgroundAndNotifyLength:">readDataInBackgroundAndNotifyLength:</a></h3>
     - (void) <b>readDataInBackgroundAndNotifyLength:</b> (unsigned)len;<br />
     <p>
       
             Call
-            <a rel="gsdoc" href="#method$NSFileHandle(GNUstepExtensions)-readDataInBackgroundAndNotifyLength:forModes:">-readDataInBackgroundAndNotifyLength:forModes:</a>
+            <a rel="gsdoc" href="#method$NSFileHandle-readDataInBackgroundAndNotifyLength:forModes:">-readDataInBackgroundAndNotifyLength:forModes:</a>
  with <code>nil</code> modes.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-readDataInBackgroundAndNotifyLength:forModes:">readDataInBackgroundAndNotifyLength:forModes:</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-readDataInBackgroundAndNotifyLength:forModes:">readDataInBackgroundAndNotifyLength:forModes:</a></h3>
     - (void) <b>readDataInBackgroundAndNotifyLength:</b> (unsigned)len<b> forModes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)modes;<br />
     <p>
       
@@ -608,7 +676,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-readInProgress">readInProgress</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-readInProgress">readInProgress</a></h3>
     - (BOOL) <b>readInProgress</b>;<br />
     <p>
       
@@ -618,7 +686,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-socketAddress">socketAddress</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-socketAddress">socketAddress</a></h3>
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>socketAddress</b>;<br />
     <p>
       
@@ -630,7 +698,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-socketProtocol">socketProtocol</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-socketProtocol">socketProtocol</a></h3>
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>socketProtocol</b>;<br />
     <p>
       
@@ -639,7 +707,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-socketService">socketService</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-socketService">socketService</a></h3>
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>socketService</b>;<br />
     <p>
       
@@ -649,7 +717,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-useCompression">useCompression</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-useCompression">useCompression</a></h3>
     - (BOOL) <b>useCompression</b>;<br />
     <p>
       
@@ -664,6 +732,8 @@
               data.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -673,7 +743,8 @@
               being written/read.
                 </p>
     <p>
-      <code>YES</code> on success,
+      
+            Returns <code>YES</code> on success,
             <code>NO</code> on failure. <br /> Reasons for
             failure are - <br />
             
@@ -695,19 +766,21 @@
               
         </li>
       </ul>
+      
+          
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-writeInBackgroundAndNotify:">writeInBackgroundAndNotify:</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-writeInBackgroundAndNotify:">writeInBackgroundAndNotify:</a></h3>
     - (void) <b>writeInBackgroundAndNotify:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)item;<br />
     <p>
       
             Call
-            <a rel="gsdoc" href="#method$NSFileHandle(GNUstepExtensions)-writeInBackgroundAndNotify:forModes:">-writeInBackgroundAndNotify:forModes:</a>
+            <a rel="gsdoc" href="#method$NSFileHandle-writeInBackgroundAndNotify:forModes:">-writeInBackgroundAndNotify:forModes:</a>
  with <code>nil</code> modes.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-writeInBackgroundAndNotify:forModes:">writeInBackgroundAndNotify:forModes:</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-writeInBackgroundAndNotify:forModes:">writeInBackgroundAndNotify:forModes:</a></h3>
     - (void) <b>writeInBackgroundAndNotify:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)item<b> forModes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)modes;<br />
     <p>
       
@@ -716,7 +789,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-writeInProgress">writeInProgress</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepExtensions)-writeInProgress">writeInProgress</a></h3>
     - (BOOL) <b>writeInProgress</b>;<br />
     <p>
       
@@ -727,7 +800,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="004000000000">
+
+          <h1><a name="004000000000">
         Software documentation for the
         NSFileHandle(GNUstepOpenSSL)
         category
@@ -760,7 +834,7 @@
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle-sslSetCertificate:privateKey:PEMpasswd:">-sslSetCertificate:privateKey:PEMpasswd:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSFileHandle+sslClass">sslClass</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepOpenSSL)+sslClass">sslClass</a></h3>
     + (Class) <b>sslClass</b>;<br />
     <p>
       
@@ -769,7 +843,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-sslConnect">sslConnect</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepOpenSSL)-sslConnect">sslConnect</a></h3>
     - (BOOL) <b>sslConnect</b>;<br />
     <p>
       
@@ -778,7 +852,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-sslDisconnect">sslDisconnect</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepOpenSSL)-sslDisconnect">sslDisconnect</a></h3>
     - (void) <b>sslDisconnect</b>;<br />
     <p>
       
@@ -787,7 +861,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSFileHandle-sslSetCertificate:privateKey:PEMpasswd:">sslSetCertificate:privateKey:PEMpasswd:</a></h3>
+    <h3><a name="method$NSFileHandle(GNUstepOpenSSL)-sslSetCertificate:privateKey:PEMpasswd:">sslSetCertificate:privateKey:PEMpasswd:</a></h3>
     - (void) <b>sslSetCertificate:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)certFile<b> privateKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)privateKey<b> PEMpasswd:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)PEMpasswd;<br />
     <p>
       

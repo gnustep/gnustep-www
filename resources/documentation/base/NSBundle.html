@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSBundle class reference</title>
   </head>
   <body>
@@ -24,10 +25,13 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.107</p>
-    <p><b>Date:</b> 2002/05/28 05:23:36</p>
-    <p><b>Copyright:</b> (C) 1993-2002 Free Software Foundation, Inc.</p>
-    <div>
+    <p><b>Version:</b> 1.113</p>
+    <p><b>Date:</b> 2002/11/19 20:38:51</p>
+    <p><b>Copyright:</b> (C) 
+      1995, 1997, 1999, 2001, 2002 Free Software Foundation, Inc.
+    </p>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -41,7 +45,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSBundle class
       </a></h1>
     <h2><a name="class$NSBundle">NSBundle</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -61,7 +66,52 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            NSBundle provides methods for locating and
+            handling application (and tool) resources at
+            runtime. Resources includes any time of file that
+            the application might need, such as images, nib (gorm
+            or gmodel) files, localization files, and any other type
+            of file that an application might need to use to
+            function. Resources also include executable code,
+            which can be dynamically linked into the application
+            at runtime. These files and executable code are commonly
+            put together into a directory called a bundle.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            NSBundle knows how these bundles are organized and
+            can search for files inside a bundle. NSBundle also
+            handles locating the executable code, linking this
+            in and initializing any classes that are located in the
+            code. NSBundle also handles Frameworks, which are
+            basically a bundle that contains a library
+            archive. The organization of a framework is a
+            little difference, but in most respects there is no
+            difference between a bundle and a framework.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            There is one special bundle, called the mainBundle,
+            which is basically the application itself. The
+            mainBundle is always loaded (of course), but you
+            can still perform other operations on the mainBundle,
+            such as searching for files, just as with any other
+            bundle.
+              </p>
+    <p>
+      
         
     </p>
     <b>Method summary</b>
@@ -81,16 +131,25 @@
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+pathForGNUstepResource:ofType:inDirectory:">+pathForGNUstepResource:ofType:inDirectory:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+pathForResource:ofType:inDirectory:">+pathForResource:ofType:inDirectory:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+pathForResource:ofType:inDirectory:withVersion:">+pathForResource:ofType:inDirectory:withVersion:</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+pathsForResourcesOfType:inDirectory:">+pathsForResourcesOfType:inDirectory:</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+preferredLocalizationsFromArray:">+preferredLocalizationsFromArray:</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+preferredLocalizationsFromArray:forPreferences:">+preferredLocalizationsFromArray:forPreferences:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-bundlePath">-bundlePath</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-bundleVersion">-bundleVersion</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-classNamed:">-classNamed:</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-executablePath">-executablePath</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-infoDictionary">-infoDictionary</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-initWithPath:">-initWithPath:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-load">-load</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-localizations">-localizations</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-localizedInfoDictionary">-localizedInfoDictionary</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-localizedStringForKey:value:table:">-localizedStringForKey:value:table:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathForResource:ofType:">-pathForResource:ofType:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathForResource:ofType:inDirectory:">-pathForResource:ofType:inDirectory:</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathForResource:ofType:inDirectory:forLocalization:">-pathForResource:ofType:inDirectory:forLocalization:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathsForResourcesOfType:inDirectory:">-pathsForResourcesOfType:inDirectory:</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-pathsForResourcesOfType:inDirectory:forLocalization:">-pathsForResourcesOfType:inDirectory:forLocalization:</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-preferredLocalizations">-preferredLocalizations</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-principalClass">-principalClass</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-resourcePath">-resourcePath</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle-setBundleVersion:">-setBundleVersion:</a></li>
@@ -100,7 +159,8 @@
     + (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>allBundles</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return an array enumerating all the bundles in the
+            application. This does not include frameworks.
           
     </p>
     <hr width="25%" align="left" />
@@ -108,7 +168,8 @@
     + (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>allFrameworks</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return an array enumerating all the frameworks in
+            the application. This does not include normal bundles.
           
     </p>
     <hr width="25%" align="left" />
@@ -116,7 +177,34 @@
     + (<a rel="gsdoc" href="#class$NSBundle">NSBundle</a>*) <b>bundleForClass:</b> (Class)aClass;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Return the bundle to which <var>aClass</var>
+              belongs. If <var>aClass</var> was loaded from a
+              bundle, return the bundle; if it belongs to a
+              framework (either a framework linked into the
+              application, or loaded dynamically), return
+              the framework; in all other cases, return the main
+              bundle.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Please note that GNUstep supports plain shared
+              libraries, while the openstep standard, and
+              other openstep-like systems, do not; the behaviour
+              when <var>aClass</var> belongs to a plain shared
+              library is at the moment still under
+              investigation -- you should consider it
+              undefined since it might be changed. :-)
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -124,7 +212,16 @@
     + (<a rel="gsdoc" href="#class$NSBundle">NSBundle</a>*) <b>bundleWithPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return a bundle for the <var>path</var> at
+            <var>path</var>. If <var>path</var> doesn't exist or
+            is not readable, return <code>nil</code>. If you want
+            the main bundle of an application or a tool, it's
+            better if you use
+            <a rel="gsdoc" href="#method$NSBundle+mainBundle">
+              +mainBundle
+            </a>
+
+            .
           
     </p>
     <hr width="25%" align="left" />
@@ -132,7 +229,46 @@
     + (<a rel="gsdoc" href="#class$NSBundle">NSBundle</a>*) <b>mainBundle</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Return the bundle containing the resources for the
+              executable. If the executable is an
+              application, this is the main application
+              bundle (the xxx.app directory); if the executable
+              is a tool, this is a bundle 'naturally' associated
+              with the tool: if the tool executable is
+              xxx/Tools/ix86/linux-gnu/gnu-gnu-gnu/Control
+              then the tool's main bundle directory is
+              xxx/Tools/Resources/Control.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              NB: traditionally tools didn't have a main bundle --
+              this is a recent GNUstep extension, but it's quite
+              nice and it's here to stay.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The main bundle is where the application should put
+              all of its resources, such as support files (images,
+              html, rtf, txt,...), localization tables,.gorm
+              (.nib) files, etc. gnustep-make (/ProjectCenter)
+              allows you to easily specify the resource files to
+              put in the main bundle when you create an application
+              or a tool.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -140,12 +276,43 @@
     + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>pathForResource:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> ofType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)ext<b> inDirectory:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)bundlePath;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an absolute path for a resource
+            <var>name</var> with the extension <var>ext</var> in
+            the specified <var>bundlePath</var>. See also
+            <a rel="gsdoc" href="#method$NSBundle-pathForResource:ofType:inDirectory:">-pathForResource:ofType:inDirectory:</a>
+ for more information on searching a bundle.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSBundle+pathForResource:ofType:inDirectory:withVersion:">pathForResource:ofType:inDirectory:withVersion:</a></h3>
     + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>pathForResource:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> ofType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)ext<b> inDirectory:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)bundlePath<b> withVersion:</b> (int)version;<br />
+    <p>
+      
+            This method has been depreciated. Version numbers were
+            never implemented so this method behaves exactly like
+            <a rel="gsdoc" href="#method$NSBundle+pathForResource:ofType:inDirectory:">+pathForResource:ofType:inDirectory:</a>
+.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSBundle+pathsForResourcesOfType:inDirectory:">pathsForResourcesOfType:inDirectory:</a></h3>
+    + (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>pathsForResourcesOfType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)extension<b> inDirectory:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)bundlePath;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSBundle+preferredLocalizationsFromArray:">preferredLocalizationsFromArray:</a></h3>
+    + (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>preferredLocalizationsFromArray:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)localizationsArray;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSBundle+preferredLocalizationsFromArray:forPreferences:">preferredLocalizationsFromArray:forPreferences:</a></h3>
+    + (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>preferredLocalizationsFromArray:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)localizationsArray<b> forPreferences:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)preferencesArray;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -156,7 +323,7 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>bundlePath</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the path to the bundle - an absolute path.
           
     </p>
     <hr width="25%" align="left" />
@@ -164,7 +331,7 @@
     - (unsigned) <b>bundleVersion</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the bundle version.
           
     </p>
     <hr width="25%" align="left" />
@@ -172,7 +339,18 @@
     - (Class) <b>classNamed:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)className;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the class in the bundle with the given
+            name. If no class of this name exists in the bundle,
+            then Nil is returned.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSBundle-executablePath">executablePath</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>executablePath</b>;<br />
+    <p>
+      
+            Returns the path to the executable code in the
+            bundle
           
     </p>
     <hr width="25%" align="left" />
@@ -180,15 +358,24 @@
     - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>infoDictionary</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the info property list associated with the
+            bundle.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSBundle-initWithPath:">initWithPath:</a></h3>
     - (id) <b>initWithPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
+This is a designated initialiser for the class.<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Init the bundle for reading resources from
+            <var>path</var>. <var>path</var> must be an absolute
+            <var>path</var> to a directory on disk. If
+            <var>path</var> is <code>nil</code> or doesn't exist,
+            initWithPath: returns <code>nil</code>. If a
+            bundle for that <var>path</var> already existed, it
+            is returned in place of the receiver (and the receiver
+            is deallocated).
           
     </p>
     <hr width="25%" align="left" />
@@ -196,7 +383,39 @@
     - (BOOL) <b>load</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Loads any executable code contained in the bundle
+            into the application. Load will be called implicitly
+            if any information about the bundle classes is
+            requested, such as
+            <a rel="gsdoc" href="#method$NSBundle-principalClass">
+              -principalClass
+            </a>
+
+            or
+            <a rel="gsdoc" href="#method$NSBundle-classNamed:">
+              -classNamed:
+            </a>
+
+            .
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSBundle-localizations">localizations</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>localizations</b>;<br />
+    <p>
+      
+            Returns all the localizations in the bundle.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSBundle-localizedInfoDictionary">localizedInfoDictionary</a></h3>
+    - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>localizedInfoDictionary</b>;<br />
+    <p>
+      
+            Returns a localized info property list based on the
+            preferred localization or the most appropriate
+            localization if the preferred one cannot be
+            found.
           
     </p>
     <hr width="25%" align="left" />
@@ -204,7 +423,10 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>localizedStringForKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)key<b> value:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)value<b> table:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)tableName;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the <var>value</var> for the <var>key</var>
+            found in the strings file <var>tableName</var>, or
+            Localizable.strings if
+            <var>tableName</var> is <code>nil</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -212,12 +434,63 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>pathForResource:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> ofType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)ext;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an absolute path for a resource
+            <var>name</var> with the extension <var>ext</var> in
+            the receivers bundle path. See
+            <a rel="gsdoc" href="#method$NSBundle-pathForResource:ofType:inDirectory:">-pathForResource:ofType:inDirectory:</a>
+.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSBundle-pathForResource:ofType:inDirectory:">pathForResource:ofType:inDirectory:</a></h3>
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>pathForResource:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> ofType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)ext<b> inDirectory:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)bundlePath;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Returns an absolute path for a resource
+              <var>name</var> with the extension <var>ext</var>
+              in the specified <var>bundlePath</var>. Directories in
+              the bundle are searched in the following order:
+                </p>
+    <p>
+      
+
+<pre>
+
+     root path/Resources/bundlePath
+     root path/Resources/bundlePath/"language.lproj"
+     root path/bundlePath
+     root path/bundlePath/"language.lproj"
+   
+</pre>
+      
+            
+    </p>
+    <p>
+
+              where lanuage.lproj can be any localized language
+              directory inside the bundle.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              If <var>ext</var> is <code>nil</code> or empty, then
+              the first file with <var>name</var> and any extension
+              is returned.
+                </p>
+    <p>
+      
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSBundle-pathForResource:ofType:inDirectory:forLocalization:">pathForResource:ofType:inDirectory:forLocalization:</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>pathForResource:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> ofType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)ext<b> inDirectory:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)bundlePath<b> forLocalization:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)localizationName;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -228,7 +501,36 @@
     - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>pathsForResourcesOfType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)extension<b> inDirectory:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)bundlePath;<br />
     <p>
       
+            
+    </p>
+    <p>
+
+              Returns an array of paths for all resources with
+              the specified <var>extension</var> and residing in
+              the <var>bundlePath</var> directory. If
+              <var>extension</var> is <code>nil</code> or empty,
+              all bundle resources are returned.
+                </p>
+    <p>
+      
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSBundle-pathsForResourcesOfType:inDirectory:forLocalization:">pathsForResourcesOfType:inDirectory:forLocalization:</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>pathsForResourcesOfType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)extension<b> inDirectory:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)bundlePath<b> forLocalization:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)localizationName;<br />
+    <p>
+      
             <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSBundle-preferredLocalizations">preferredLocalizations</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>preferredLocalizations</b>;<br />
+    <p>
+      
+            Returns the list of localizations that the bundle
+            uses to search for information. This is based on the
+            user's preferences.
           
     </p>
     <hr width="25%" align="left" />
@@ -236,7 +538,12 @@
     - (Class) <b>principalClass</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the principal class of the bundle. This is
+            the class specified by the NSPrincipalClass key in the
+            Info-gnustep property list contained in the
+            bundle. If this key is not found, the class
+            returned is arbitrary, although it is typically
+            the first class compiled into the archive.
           
     </p>
     <hr width="25%" align="left" />
@@ -244,7 +551,8 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>resourcePath</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the absolute path to the resources
+            directory of the bundle.
           
     </p>
     <hr width="25%" align="left" />
@@ -252,11 +560,12 @@
     - (void) <b>setBundleVersion:</b> (unsigned)version;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Set the bundle <var>version</var>
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSBundle(GNUstep)
         category
       </a></h1>
@@ -292,52 +601,73 @@
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+pathForGNUstepResource:ofType:inDirectory:">+pathForGNUstepResource:ofType:inDirectory:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSBundle+_absolutePathOfExecutable:">_absolutePathOfExecutable:</a></h3>
+    <h3><a name="method$NSBundle(GNUstep)+_absolutePathOfExecutable:">_absolutePathOfExecutable:</a></h3>
     + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>_absolutePathOfExecutable:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBundle+_gnustep_target_cpu">_gnustep_target_cpu</a></h3>
+    <h3><a name="method$NSBundle(GNUstep)+_gnustep_target_cpu">_gnustep_target_cpu</a></h3>
     + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>_gnustep_target_cpu</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBundle+_gnustep_target_dir">_gnustep_target_dir</a></h3>
+    <h3><a name="method$NSBundle(GNUstep)+_gnustep_target_dir">_gnustep_target_dir</a></h3>
     + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>_gnustep_target_dir</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBundle+_gnustep_target_os">_gnustep_target_os</a></h3>
+    <h3><a name="method$NSBundle(GNUstep)+_gnustep_target_os">_gnustep_target_os</a></h3>
     + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>_gnustep_target_os</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBundle+_library_combo">_library_combo</a></h3>
+    <h3><a name="method$NSBundle(GNUstep)+_library_combo">_library_combo</a></h3>
     + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>_library_combo</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBundle+bundleForLibrary:">bundleForLibrary:</a></h3>
+    <h3><a name="method$NSBundle(GNUstep)+bundleForLibrary:">bundleForLibrary:</a></h3>
     + (<a rel="gsdoc" href="#class$NSBundle">NSBundle</a>*) <b>bundleForLibrary:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)libraryName;<br />
     <p>
       
-            Return a bundle which accesses the first existing
-            directory from the list
+            This method is an experimental GNUstep extension, and
+            might change. At the moment, search on the standard
+            GNUstep directories (starting from
+            GNUSTEP_USER_ROOT, and going on to
+            GNUSTEP_SYSTEM_ROOT) for a directory
+            Libraries/Resources/'libraryName'/.
+            <br /> Return a bundle which accesses the first
+            existing directory from the list
             GNUSTEP_USER_ROOT/Libraries/Resources/libraryName/
             GNUSTEP_NETWORK_ROOT/Libraries/Resources/libraryName/
             GNUSTEP_LOCAL_ROOT/Libraries/Resources/libraryName/
@@ -345,7 +675,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBundle+gnustepBundle">gnustepBundle</a></h3>
+    <h3><a name="method$NSBundle(GNUstep)+gnustepBundle">gnustepBundle</a></h3>
     + (<a rel="gsdoc" href="#class$NSBundle">NSBundle</a>*) <b>gnustepBundle</b>;<br />
     <p>
       
@@ -353,7 +683,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSBundle+pathForGNUstepResource:ofType:inDirectory:">pathForGNUstepResource:ofType:inDirectory:</a></h3>
+    <h3><a name="method$NSBundle(GNUstep)+pathForGNUstepResource:ofType:inDirectory:">pathForGNUstepResource:ofType:inDirectory:</a></h3>
     + (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>pathForGNUstepResource:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> ofType:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)ext<b> inDirectory:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)bundlePath;<br />
     <p>
       

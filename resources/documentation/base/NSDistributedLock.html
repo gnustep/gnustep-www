@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSDistributedLock class reference</title>
   </head>
   <body>
@@ -14,10 +15,11 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.12</p>
-    <p><b>Date:</b> 2001/12/18 16:54:14</p>
+    <p><b>Version:</b> 1.14</p>
+    <p><b>Date:</b> 2002/10/02 12:23:36</p>
     <p><b>Copyright:</b> (C) 1997 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -27,7 +29,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSDistributedLock class
       </a></h1>
     <h2><a name="class$NSDistributedLock">NSDistributedLock</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -64,7 +67,12 @@
     + (<a rel="gsdoc" href="#class$NSDistributedLock">NSDistributedLock</a>*) <b>lockWithPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aPath;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return a distributed lock for <var>aPath</var>. See
+            <a rel="gsdoc" href="#method$NSDistributedLock-initWithPath:">
+              -initWithPath:
+            </a>
+
+            for details.
           
     </p>
     <hr width="25%" align="left" />
@@ -72,7 +80,9 @@
     - (void) <b>breakLock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Forces release of the lock whether the receiver owns
+            it or not. <br /> Raises an NSGenericException if unable
+            to remove the lock.
           
     </p>
     <hr width="25%" align="left" />
@@ -80,7 +90,14 @@
     - (<a rel="gsdoc" href="#class$NSDistributedLock">NSDistributedLock</a>*) <b>initWithPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aPath;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initialises the reciever with the specified
+            filesystem path. <br /> The location in the
+            filesystem must be accessible for this to be
+            usable. That is, the processes using the lock must
+            be able to access, create, and destroy files at the
+            path. <br /> The directory in which the last path
+            component resides must already exist... create it
+            using NSFileManager if you need to.
           
     </p>
     <hr width="25%" align="left" />
@@ -88,7 +105,9 @@
     - (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*) <b>lockDate</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the date at which the lock was aquired by
+            any NSDistributedLock using the same path. If nothing
+            has the lock, this returns <code>nil</code>.
           
     </p>
     <hr width="25%" align="left" />
@@ -96,7 +115,10 @@
     - (BOOL) <b>tryLock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Attempt to aquire the lock and return
+            <code>YES</code> on success, <code>NO</code> on
+            failure. <br /> May raise an NSGenericException if
+            a problem occurs.
           
     </p>
     <hr width="25%" align="left" />
@@ -104,7 +126,10 @@
     - (void) <b>unlock</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Releases the lock. Raises an NSGenericException if
+            unable to release the lock (for instance if the
+            receiver does not own it or another process has
+            broken it).
           
     </p>
     <hr width="25%" align="left" />

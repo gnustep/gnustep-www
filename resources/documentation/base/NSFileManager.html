@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSFileManager class reference</title>
   </head>
   <body>
@@ -23,11 +24,17 @@
       </code></a>)</dt>
       <dd>
       </dd>
+      <dt>Richard frith-Macdonald(<a href="mailto:rfm@gnu.org"><code>
+        rfm@gnu.org
+      </code></a>)</dt>
+      <dd>
+      </dd>
     </dl>
-    <p><b>Version:</b> 1.76</p>
-    <p><b>Date:</b> 2002/08/22 07:22:36</p>
-    <p><b>Copyright:</b> (C) 1997-1999 Free Software Foundation, Inc.</p>
-    <div>
+    <p><b>Version:</b> 1.86</p>
+    <p><b>Date:</b> 2002/10/28 09:28:55</p>
+    <p><b>Copyright:</b> (C) 1997-2002 Free Software Foundation, Inc.</p>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -51,7 +58,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSDirectoryEnumerator
         class
       </a></h1>
@@ -72,7 +80,11 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          NSDirectoryEnumerator implementation
+          <br /> The Objective-C interface hides a traditional C
+          implementation. This was the only way I could
+          get near the speed of standard unix tools for big
+          directories.
         
     </p>
     <b>Method summary</b>
@@ -87,7 +99,11 @@
     - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>directoryAttributes</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a dictionary containing the attributes of
+            the directory at which enumeration started. <br /> The
+            contents of this dictionary are as produced by
+            <a rel="gsdoc" href="#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -95,7 +111,11 @@
     - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>fileAttributes</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a dictionary containing the attributes of
+            the file currently being enumerated. <br /> The
+            contents of this dictionary are as produced by
+            <a rel="gsdoc" href="#method$NSFileManager-fileAttributesAtPath:traverseLink:">[NSFileManager&nbsp;-fileAttributesAtPath:traverseLink:]</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -111,11 +131,15 @@
     - (void) <b>skipDescendents</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Informs the receiver that any descendents of the
+            current directory should be skipped rather than
+            enumerated. Use this to avaoid enumerating the
+            contents of directories you are not interested in.
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSFileManager class
       </a></h1>
     <h2><a name="class$NSFileManager">NSFileManager</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -135,7 +159,8 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          This is the main class for management of the local
+          filesystem.
         
     </p>
     <b>Method summary</b>
@@ -143,6 +168,7 @@
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager+defaultManager">+defaultManager</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-changeCurrentDirectoryPath:">-changeCurrentDirectoryPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-changeFileAttributes:atPath:">-changeFileAttributes:atPath:</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-componentsToDisplayForPath:">-componentsToDisplayForPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-contentsAtPath:">-contentsAtPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-contentsEqualAtPath:andPath:">-contentsEqualAtPath:andPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-copyPath:toPath:handler:">-copyPath:toPath:handler:</a></li>
@@ -151,6 +177,7 @@
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-createSymbolicLinkAtPath:pathContent:">-createSymbolicLinkAtPath:pathContent:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-currentDirectoryPath">-currentDirectoryPath</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-directoryContentsAtPath:">-directoryContentsAtPath:</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-displayNameAtPath:">-displayNameAtPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-enumeratorAtPath:">-enumeratorAtPath:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileAttributesAtPath:traverseLink:">-fileAttributesAtPath:traverseLink:</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileExistsAtPath:">-fileExistsAtPath:</a></li>
@@ -173,7 +200,8 @@
     + (<a rel="gsdoc" href="#class$NSFileManager">NSFileManager</a>*) <b>defaultManager</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a shared default file manager which may be
+            used throughout an application.
           
     </p>
     <hr width="25%" align="left" />
@@ -181,7 +209,13 @@
     - (BOOL) <b>changeCurrentDirectoryPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Changes the current directory used for all
+            subsequent operations. <br /> All non-absolute
+            paths are interpreted relative to this directory.
+            <br /> The current directory is set on a per-task
+            basis, so the current directory for other file
+            manager instances will also be changed by this
+            method.
           
     </p>
     <hr width="25%" align="left" />
@@ -189,7 +223,32 @@
     - (BOOL) <b>changeFileAttributes:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)attributes<b> atPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Change the <var>attributes</var> of the file at
+            <var>path</var> to those specified. <br /> Returns
+            <code>YES</code> if all requested changes were made
+            (or if the dictionary was <code>nil</code> or empty, so
+            no changes were requested), <code>NO</code> otherwise.
+            <br /> On failure, some fo the requested changes may
+            have taken place. <br />
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSFileManager-componentsToDisplayForPath:">componentsToDisplayForPath:</a></h3>
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>componentsToDisplayForPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
+    <p>
+      
+            Returns an array of <var>path</var> components
+            suitably modified for display to the end user.
+            This modification may render the returned strings
+            unusable for <var>path</var> manipulation, so you
+            should work with two arrays... one returned by this
+            method (for display tio the user), and a parallel
+            one returned by
+            <a rel="gsdoc" href="NSString.html#method$NSString-pathComponents">
+              [NSString&nbsp;-pathComponents]
+            </a>
+
+            (for <var>path</var> manipulation).
           
     </p>
     <hr width="25%" align="left" />
@@ -197,7 +256,10 @@
     - (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*) <b>contentsAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Reads the file at <var>path</var> an returns its
+            contents as an NSData object. <br /> If an error
+            occurs or if <var>path</var> specifies a directory
+            etc then <code>nil</code> is returned.
           
     </p>
     <hr width="25%" align="left" />
@@ -205,7 +267,15 @@
     - (BOOL) <b>contentsEqualAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path1<b> andPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path2;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if the contents of the
+            file or directory at <var>path1</var> are the same as
+            those at <var>path2</var>. <br /> If <var>path1</var>
+            and <var>path2</var> are files, this is a simple
+            comparison. If they are directories, the
+            contents of the files in those subdirectories are
+            compared recursively. <br /> Symbolic links are
+            not followed. <br /> A comparison checks first file
+            identity, then size, then content.
           
     </p>
     <hr width="25%" align="left" />
@@ -213,7 +283,12 @@
     - (BOOL) <b>copyPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)source<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)destination<b> handler:</b> (id)handler;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Copies the file or directory at <var>source</var> to
+            <var>destination</var>, using a <var>handler</var>
+            object which should respond to
+            <a rel="gsdoc" href="#method$NSObject-fileManager:willProcessPath:">[NSObject&nbsp;-fileManager:willProcessPath:]</a>
+ and <a rel="gsdoc" href="#method$NSObject-fileManager:shouldProceedAfterError:">[NSObject&nbsp;-fileManager:shouldProceedAfterError:]</a>
+ messages.
           
     </p>
     <hr width="25%" align="left" />
@@ -221,7 +296,11 @@
     - (BOOL) <b>createDirectoryAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> attributes:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)attributes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates a new directory, and sets its
+            <var>attributes</var> as specified. <br /> Creates
+            other directories in the <var>path</var> as
+            necessary. <br /> Returns <code>YES</code> on
+            success, <code>NO</code> on failure.
           
     </p>
     <hr width="25%" align="left" />
@@ -229,7 +308,11 @@
     - (BOOL) <b>createFileAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> contents:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)contents<b> attributes:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)attributes;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates a new file, and sets its
+            <var>attributes</var> as specified. <br />
+            Initialises the file content with the specified
+            data. <br /> Returns <code>YES</code> on success,
+            <code>NO</code> on failure.
           
     </p>
     <hr width="25%" align="left" />
@@ -237,7 +320,9 @@
     - (BOOL) <b>createSymbolicLinkAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> pathContent:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)otherPath;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates a symbolic link at <var>path</var> which
+            links to the location specified by
+            <var>otherPath</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -245,7 +330,8 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>currentDirectoryPath</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the current working directory used by all
+            instance of the file manager in the current task.
           
     </p>
     <hr width="25%" align="left" />
@@ -253,7 +339,30 @@
     - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>directoryContentsAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an array of the contents of the specified
+            directory. <br /> The listing does
+            <strong>not</strong> recursively list
+            subdirectories. <br /> The special files
+            '.' and '..' are not listed. <br /> Indicates an error
+            by returning <code>nil</code> (eg. if <var>path</var> is
+            not a directory or it can't be read for some reason).
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSFileManager-displayNameAtPath:">displayNameAtPath:</a></h3>
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>displayNameAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
+    <p>
+      
+            Returns the name of the file or directory at
+            <var>path</var>. Converts it into a format for
+            display to an end user. This may render it unusable
+            as part of a file/path name. <br /> For instance, if a
+            user has elected not to see file extensions, this
+            method may return filenames with the extension
+            removed. <br /> The default operation is to return
+            the result of calling
+            <a rel="gsdoc" href="NSString.html#method$NSString-lastPathComponent">[NSString&nbsp;-lastPathComponent]</a>
+ on the <var>path</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -261,7 +370,10 @@
     - (<a rel="gsdoc" href="#class$NSDirectoryEnumerator">NSDirectoryEnumerator</a>*) <b>enumeratorAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an enumerator which can be used to return
+            each item with the directory at <var>path</var> in
+            turn. <br /> The enumeration is recursive...
+            following all nested subdirectories.
           
     </p>
     <hr width="25%" align="left" />
@@ -269,7 +381,224 @@
     - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>fileAttributesAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> traverseLink:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            If a file (or directory etc) exists at the specified
+            <var>path</var>, and can be queriesd for its
+            attributes, this method returns a dictionary
+            containing the various attributes of that file.
+            Otherwise <code>nil</code> is returned. <br /> If
+            the <var>flag</var> is <code>NO</code> and the file is
+            a symbolic link, the attributes of the link itsself
+            (rather than the file it points to) are returned.
+            <br />
+            
+    </p>
+    <p>
+The dictionary keys for attributes are -    </p>
+    <p>
+      
+            
+      <dl>
+        <dt>NSFileAppendOnly</dt>
+        <dd>
+          NSNumber... boolean
+        </dd>
+        <dt>NSFileCreationDate</dt>
+        <dd>
+          
+                NSDate when the file was created (if supported)
+              
+        </dd>
+        <dt>NSFileDeviceIdentifier</dt>
+        <dd>
+          
+                NSNumber (identifies the device on which the
+                file is stored)
+              
+        </dd>
+        <dt>NSFileExtensionHidden</dt>
+        <dd>
+          NSNumber... boolean
+        </dd>
+        <dt>NSFileGroupOwnerAccountName</dt>
+        <dd>
+          NSString name of the file group
+        </dd>
+        <dt>NSFileGroupOwnerAccountID</dt>
+        <dd>
+          NSNumber ID of the file group
+        </dd>
+        <dt>NSFileHFSCreatorCode</dt>
+        <dd>
+          NSNumber not used
+        </dd>
+        <dt>NSFileHFSTypeCode</dt>
+        <dd>
+          NSNumber not used
+        </dd>
+        <dt>NSFileImmutable</dt>
+        <dd>
+          NSNumber... boolean
+        </dd>
+        <dt>NSFileModificationDate</dt>
+        <dd>
+          
+                NSDate when the file was last modified
+              
+        </dd>
+        <dt>NSFileOwnerAccountName</dt>
+        <dd>
+          NSString name of the file owner
+        </dd>
+        <dt>NSFileOwnerAccountID</dt>
+        <dd>
+          NSNumber ID of the file owner
+        </dd>
+        <dt>NSFilePosixPermissions</dt>
+        <dd>
+          
+                NSNumber posix access permissions mask
+              
+        </dd>
+        <dt>NSFileReferenceCount</dt>
+        <dd>
+          NSNumber number of links to this file
+        </dd>
+        <dt>NSFileSize</dt>
+        <dd>
+          NSNumber size of the file in bytes
+        </dd>
+        <dt>NSFileSystemFileNumber</dt>
+        <dd>
+          
+                NSNumber the identifier for the file on the
+                filesystem
+              
+        </dd>
+        <dt>NSFileSystemNumber</dt>
+        <dd>
+          
+                NSNumber the filesystem on which the file is
+                stored
+              
+        </dd>
+        <dt>NSFileType</dt>
+        <dd>
+          NSString the type of file
+        </dd>
+      </dl>
+      
+            
+    </p>
+    <p>
+
+              The NSDictionary class also has a set of accessor
+              methods which enable you to get at file attribute
+              information more efficiently than using the
+              keys above to extract it. You should generally use
+              the accessor methods where they are available.
+                </p>
+    <p>
+      
+            
+      <ul>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileCreationDate">[NSDictionary&nbsp;-fileCreationDate]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileExtensionHidden">[NSDictionary&nbsp;-fileExtensionHidden]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileHFSCreatorCode">[NSDictionary&nbsp;-fileHFSCreatorCode]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileHFSTypeCode">[NSDictionary&nbsp;-fileHFSTypeCode]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileIsAppendOnly">[NSDictionary&nbsp;-fileIsAppendOnly]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileIsImmutable">[NSDictionary&nbsp;-fileIsImmutable]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileSize">[NSDictionary&nbsp;-fileSize]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileType">[NSDictionary&nbsp;-fileType]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileOwnerAccountName">[NSDictionary&nbsp;-fileOwnerAccountName]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileOwnerAccountID">[NSDictionary&nbsp;-fileOwnerAccountID]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileGroupOwnerAccountName">[NSDictionary&nbsp;-fileGroupOwnerAccountName]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileGroupOwnerAccountID">[NSDictionary&nbsp;-fileGroupOwnerAccountID]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileModificationDate">[NSDictionary&nbsp;-fileModificationDate]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-filePosixPermissions">[NSDictionary&nbsp;-filePosixPermissions]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileSystemNumber">[NSDictionary&nbsp;-fileSystemNumber]</a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSDictionary-fileSystemFileNumber">[NSDictionary&nbsp;-fileSystemFileNumber]</a>
+
+              
+        </li>
+      </ul>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -277,7 +606,8 @@
     - (BOOL) <b>fileExistsAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if a file (or directory
+            etc) exists at the specified <var>path</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -285,7 +615,11 @@
     - (BOOL) <b>fileExistsAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> isDirectory:</b> (BOOL*)isDirectory;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if a file (or directory
+            etc) exists at the specified <var>path</var>. <br />
+            If the <var>isDirectory</var> argument is not a nul
+            pointer, stores a flag in the location it points
+            to, to indicate whether the file is a directory or not.
           
     </p>
     <hr width="25%" align="left" />
@@ -293,7 +627,48 @@
     - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>fileSystemAttributesAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns a dictionary containing the filesystem
+            attributes for the specified <var>path</var> (or
+            <code>nil</code> if the <var>path</var> is not
+            valid). <br />
+            
+      <dl>
+        <dt>NSFileSystemSize</dt>
+        <dd>
+          
+                NSNumber the size of the filesystem in bytes
+              
+        </dd>
+        <dt>NSFileSystemFreeSize</dt>
+        <dd>
+          
+                NSNumber the amount of unused space on the
+                filesystem in bytes
+              
+        </dd>
+        <dt>NSFileSystemNodes</dt>
+        <dd>
+          
+                NSNumber the number of nodes in use to store
+                files
+              
+        </dd>
+        <dt>NSFileSystemFreeNodes</dt>
+        <dd>
+          
+                NSNumber the number of nodes available to
+                create files
+              
+        </dd>
+        <dt>NSFileSystemNumber</dt>
+        <dd>
+          
+                NSNumber the identifying number for the
+                filesystem
+              
+        </dd>
+      </dl>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -319,7 +694,9 @@
     - (BOOL) <b>isDeletableFileAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if a file (or directory
+            etc) exists at the specified <var>path</var> and is
+            deletable.
           
     </p>
     <hr width="25%" align="left" />
@@ -327,7 +704,10 @@
     - (BOOL) <b>isExecutableFileAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if a file (or directory
+            etc) exists at the specified <var>path</var> and is
+            executable (if a directory is executable, you
+            can access its contents).
           
     </p>
     <hr width="25%" align="left" />
@@ -335,7 +715,9 @@
     - (BOOL) <b>isReadableFileAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if a file (or directory
+            etc) exists at the specified <var>path</var> and is
+            readable.
           
     </p>
     <hr width="25%" align="left" />
@@ -343,7 +725,9 @@
     - (BOOL) <b>isWritableFileAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if a file (or directory
+            etc) exists at the specified <var>path</var> and is
+            writable.
           
     </p>
     <hr width="25%" align="left" />
@@ -351,7 +735,12 @@
     - (BOOL) <b>linkPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)source<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)destination<b> handler:</b> (id)handler;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Links the file or directory at <var>source</var> to
+            <var>destination</var>, using a <var>handler</var>
+            object which should respond to
+            <a rel="gsdoc" href="#method$NSObject-fileManager:willProcessPath:">[NSObject&nbsp;-fileManager:willProcessPath:]</a>
+ and <a rel="gsdoc" href="#method$NSObject-fileManager:shouldProceedAfterError:">[NSObject&nbsp;-fileManager:shouldProceedAfterError:]</a>
+ messages.
           
     </p>
     <hr width="25%" align="left" />
@@ -359,7 +748,12 @@
     - (BOOL) <b>movePath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)source<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)destination<b> handler:</b> (id)handler;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Moves the file or directory at <var>source</var> to
+            <var>destination</var>, using a <var>handler</var>
+            object which should respond to
+            <a rel="gsdoc" href="#method$NSObject-fileManager:willProcessPath:">[NSObject&nbsp;-fileManager:willProcessPath:]</a>
+ and <a rel="gsdoc" href="#method$NSObject-fileManager:shouldProceedAfterError:">[NSObject&nbsp;-fileManager:shouldProceedAfterError:]</a>
+ messages.
           
     </p>
     <hr width="25%" align="left" />
@@ -367,7 +761,8 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>pathContentOfSymbolicLinkAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the name of the file or directory that the
+            symbolic link at <var>path</var> points to.
           
     </p>
     <hr width="25%" align="left" />
@@ -375,7 +770,12 @@
     - (BOOL) <b>removeFileAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> handler:</b> (id)handler;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes the file or directory at <var>path</var>,
+            using a <var>handler</var> object which should
+            respond to
+            <a rel="gsdoc" href="#method$NSObject-fileManager:willProcessPath:">[NSObject&nbsp;-fileManager:willProcessPath:]</a>
+ and <a rel="gsdoc" href="#method$NSObject-fileManager:shouldProceedAfterError:">[NSObject&nbsp;-fileManager:shouldProceedAfterError:]</a>
+ messages.
           
     </p>
     <hr width="25%" align="left" />
@@ -398,11 +798,15 @@
     - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>subpathsAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an array containing the (relative) paths of
+            all the items in the directory at <var>path</var>.
+            <br /> The listing follows all subdirectories, so it
+            can produce a very large array... use with care.
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="003000000000">
+
+          <h1><a name="003000000000">
         Software documentation for the
         NSDictionary(NSFileAttributes)
         category
@@ -429,9 +833,17 @@
     </p>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileCreationDate">-fileCreationDate</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileExtensionHidden">-fileExtensionHidden</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileGroupOwnerAccountID">-fileGroupOwnerAccountID</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileGroupOwnerAccountName">-fileGroupOwnerAccountName</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileGroupOwnerAccountNumber">-fileGroupOwnerAccountNumber</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileHFSCreatorCode">-fileHFSCreatorCode</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileHFSTypeCode">-fileHFSTypeCode</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileIsAppendOnly">-fileIsAppendOnly</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileIsImmutable">-fileIsImmutable</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileModificationDate">-fileModificationDate</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileOwnerAccountID">-fileOwnerAccountID</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileOwnerAccountName">-fileOwnerAccountName</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileOwnerAccountNumber">-fileOwnerAccountNumber</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-filePosixPermissions">-filePosixPermissions</a></li>
@@ -441,87 +853,156 @@
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileType">-fileType</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSDictionary-fileGroupOwnerAccountName">fileGroupOwnerAccountName</a></h3>
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileCreationDate">fileCreationDate</a></h3>
+    - (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*) <b>fileCreationDate</b>;<br />
+    <p>
+      
+            Return the file creation date attribute (or
+            <code>nil</code> if not found).
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileExtensionHidden">fileExtensionHidden</a></h3>
+    - (BOOL) <b>fileExtensionHidden</b>;<br />
+    <p>
+      
+            Return the file extension hidden attribute (or
+            <code>NO</code> if not found).
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileGroupOwnerAccountID">fileGroupOwnerAccountID</a></h3>
+    - (unsigned long) <b>fileGroupOwnerAccountID</b>;<br />
+    <p>
+      
+            Return the numeric value of the
+            NSFileGroupOwnerAccountID
+            attribute in the dictionary, or NSNotFound if the
+            attribute is not present.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileGroupOwnerAccountName">fileGroupOwnerAccountName</a></h3>
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>fileGroupOwnerAccountName</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the file group owner account name attribute
+            or <code>nil</code> if not present.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSDictionary-fileGroupOwnerAccountNumber">fileGroupOwnerAccountNumber</a></h3>
-    - (unsigned long) <b>fileGroupOwnerAccountNumber</b>;<br />
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileHFSCreatorCode">fileHFSCreatorCode</a></h3>
+    - (int) <b>fileHFSCreatorCode</b>;<br />
     <p>
       
             <em>Description forthcoming.</em>
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSDictionary-fileModificationDate">fileModificationDate</a></h3>
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileHFSTypeCode">fileHFSTypeCode</a></h3>
+    - (int) <b>fileHFSTypeCode</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileIsAppendOnly">fileIsAppendOnly</a></h3>
+    - (BOOL) <b>fileIsAppendOnly</b>;<br />
+    <p>
+      
+            Return the file append only attribute (or
+            <code>NO</code> if not found).
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileIsImmutable">fileIsImmutable</a></h3>
+    - (BOOL) <b>fileIsImmutable</b>;<br />
+    <p>
+      
+            Return the file immutable attribute (or
+            <code>NO</code> if not found).
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileModificationDate">fileModificationDate</a></h3>
     - (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*) <b>fileModificationDate</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the file modification date attribute (or
+            <code>nil</code> if not found)
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSDictionary-fileOwnerAccountName">fileOwnerAccountName</a></h3>
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileOwnerAccountID">fileOwnerAccountID</a></h3>
+    - (unsigned long) <b>fileOwnerAccountID</b>;<br />
+    <p>
+      
+            Return the numeric value of the NSFileOwnerAccountID
+            attribute in the dictionary, or NSNotFound if the
+            attribute is not present.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileOwnerAccountName">fileOwnerAccountName</a></h3>
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>fileOwnerAccountName</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the file owner account name attribute or
+            <code>nil</code> if not present.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSDictionary-fileOwnerAccountNumber">fileOwnerAccountNumber</a></h3>
-    - (unsigned long) <b>fileOwnerAccountNumber</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSDictionary-filePosixPermissions">filePosixPermissions</a></h3>
+    <h3><a name="method$NSDictionary(NSFileAttributes)-filePosixPermissions">filePosixPermissions</a></h3>
     - (unsigned long) <b>filePosixPermissions</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the file posix permissions attribute (or
+            NSNotFound if the attribute is not present in
+            the dictionary).
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSDictionary-fileSize">fileSize</a></h3>
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileSize">fileSize</a></h3>
     - (unsigned long long) <b>fileSize</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the size of the file, or NSNotFound if the
+            file size attribute is not found in the dictionary.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSDictionary-fileSystemFileNumber">fileSystemFileNumber</a></h3>
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileSystemFileNumber">fileSystemFileNumber</a></h3>
     - (unsigned long) <b>fileSystemFileNumber</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the file system file identification number
+            attribute or NSNotFound if the attribute is not
+            present in the dictionary).
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSDictionary-fileSystemNumber">fileSystemNumber</a></h3>
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileSystemNumber">fileSystemNumber</a></h3>
     - (unsigned long) <b>fileSystemNumber</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the file system number attribute (or
+            NSNotFound if the attribute is not present in
+            the dictionary).
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSDictionary-fileType">fileType</a></h3>
+    <h3><a name="method$NSDictionary(NSFileAttributes)-fileType">fileType</a></h3>
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>fileType</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the file type attribute or <code>nil</code>
+            if not present.
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="004000000000">
+
+          <h1><a name="004000000000">
         Software documentation for the
         NSObject(NSFileManagerHandler)
         informal protocol
@@ -543,7 +1024,9 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          An informal protocol to which handler objects should
+          conform if they wish to deal with copy and move
+          operations performed by NSFileManager.
         
     </p>
     <b>Method summary</b>
@@ -552,19 +1035,30 @@
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSObject-fileManager:willProcessPath:">-fileManager:willProcessPath:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSObject-fileManager:shouldProceedAfterError:">fileManager:shouldProceedAfterError:</a></h3>
+    <h3><a name="method$NSObject(NSFileManagerHandler)-fileManager:shouldProceedAfterError:">fileManager:shouldProceedAfterError:</a></h3>
     - (BOOL) <b>fileManager:</b> (<a rel="gsdoc" href="#class$NSFileManager">NSFileManager</a>*)fileManager<b> shouldProceedAfterError:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)errorDictionary;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            When an error occurs during a copy or move operation,
+            the file manager will send this message to the handler,
+            and will use the return value to determine whether the
+            operation should proceed. If the method returns
+            <code>YES</code> then the operation will proceed
+            after the error, if it returns <code>NO</code> then
+            it will be aborted.
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject-fileManager:willProcessPath:">fileManager:willProcessPath:</a></h3>
+    <h3><a name="method$NSObject(NSFileManagerHandler)-fileManager:willProcessPath:">fileManager:willProcessPath:</a></h3>
     - (void) <b>fileManager:</b> (<a rel="gsdoc" href="#class$NSFileManager">NSFileManager</a>*)fileManager<b> willProcessPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            The file manager sends this method to the handler
+            immediately before performing part of a
+            directory move or copy operation. This provides
+            the handler object with information it can use in the
+            event of an error, to decide whether p[rocessing
+            should proceed after the error.
           
     </p>
     <hr width="25%" align="left" />

@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSCalendarDate class reference</title>
   </head>
   <body>
@@ -13,11 +14,19 @@
       </code></a>)</dt>
       <dd>
       </dd>
+      <dt>Richard Frith-Macdonald(<a href="mailto:rfm@gnu.org"><code>
+        rfm@gnu.org
+      </code></a>)</dt>
+      <dd>
+      </dd>
     </dl>
-    <p><b>Version:</b> 1.64</p>
-    <p><b>Date:</b> 2002/08/27 14:32:27</p>
-    <p><b>Copyright:</b> (C) 1996, 1998 Free Software Foundation, Inc.</p>
-    <div>
+    <p><b>Version:</b> 1.73</p>
+    <p><b>Date:</b> 2002/10/05 17:47:53</p>
+    <p><b>Copyright:</b> (C) 
+      1996, 1998, 1999, 2000, 2002 Free Software Foundation, Inc.
+    </p>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -36,7 +45,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSCalendarDate class
       </a></h1>
     <h2><a name="class$NSCalendarDate">NSCalendarDate</a> : <a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a></h2>
@@ -131,7 +141,11 @@
     - (<a rel="gsdoc" href="#class$NSCalendarDate">NSCalendarDate</a>*) <b>addYear:</b> (int)year<b> month:</b> (int)month<b> day:</b> (int)day<b> hour:</b> (int)hour<b> minute:</b> (int)minute<b> second:</b> (int)second;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            This method exists solely for conformance to the
+            OpenStep spec. Its use is deprecated... it simply
+            calls
+            <a rel="gsdoc" href="#method$NSCalendarDate-dateByAddingYears:months:days:hours:minutes:seconds:">-dateByAddingYears:months:days:hours:minutes:seconds:</a>
+
           
     </p>
     <hr width="25%" align="left" />
@@ -243,8 +257,82 @@
     - (id) <b>initWithYear:</b> (int)year<b> month:</b> (unsigned int)month<b> day:</b> (unsigned int)day<b> hour:</b> (unsigned int)hour<b> minute:</b> (unsigned int)minute<b> second:</b> (unsigned int)second<b> timeZone:</b> (<a rel="gsdoc" href="NSTimeZone.html#class$NSTimeZone">NSTimeZone</a>*)aTimeZone;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an NSCalendarDate instance with the given
+            <var>year</var>, <var>month</var>, <var>day</var>,
+            <var>hour</var>, <var>minute</var>, and
+            <var>second</var>, using <var>aTimeZone</var>. <br />
+            The <var>year</var> includes the century (ie you can't
+            just say '02' when you mean '2002'). <br /> The
+            <var>month</var> is in the range 1 to 12, <br /> The
+            <var>day</var> is in the range 1 to 31, <br /> The
+            <var>hour</var> is in the range 0 to 23, <br /> The
+            <var>minute</var> is in the range 0 to 59, <br /> The
+            <var>second</var> is in the range 0 to 59. <br /> If
+            <var>aTimeZone</var> is <code>nil</code>, the [
+            <a rel="gsdoc" href="NSTimeZone.html#method$NSTimeZone+localTimeZone">
+              NSTimeZone+localTimeZone
+            </a>
+
+            ] value is used.
+            
+    </p>
+    <p>
+
+              GNUstep checks the validity of the method
+              arguments, and unless the base library was
+              built with 'warn=no' it generates a warning for bad
+              values. It tries to use those bad values to
+              generate a date anyway though, rather than
+              failing (this also appears to be the behavior of
+              MacOS-X).
+                </p>
+    <p>
+      <br />
+            
+      <ul>
+        <li>
           
+                Convert the broken out date values into a time
+                interval since the reference date, as if those
+                values represent a GMT date/time.
+              
+        </li>
+        <li>
+          
+                Ask the time zone for the offset from GMT at the
+                resulting date, and apply that offset to the
+                time interval... so get the value for the
+                specified timezone.
+              
+        </li>
+        <li>
+          
+                Ask the time zone for the offset from GMT at the
+                new date... in case the new date is in a different
+                daylight savings time band from the original
+                date. If this offset differs from the previous
+                one, apply the difference so that the result is
+                corrected for daylight savings. This is the
+                final result used.
+              
+        </li>
+        <li>
+          
+                After establishing the time interval we will use
+                and completing initialisation, we ask the time zone
+                for the offset from GMT again. If it is not the
+                same as the last time, then the time specified by
+                the broken out date does not really exist... since
+                it's in the period lost by the transition to
+                daylight savings. The resulting date is
+                therefore not the date that was actually
+                asked for, but is the best approximation we can
+                do. If the base library was not built with
+                'warn=no' then a warning message is logged
+                for this condition.
+              
+        </li>
+      </ul>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSCalendarDate-minuteOfHour">minuteOfHour</a></h3>
@@ -311,7 +399,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the
         NSCalendarDate(GregorianDate)
         category
@@ -367,7 +456,8 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="003000000000">
+
+          <h1><a name="003000000000">
         Software documentation for the
         NSCalendarDate(OPENSTEP) category
       </a></h1>
@@ -401,8 +491,28 @@
     - (<a rel="gsdoc" href="#class$NSCalendarDate">NSCalendarDate</a>*) <b>dateByAddingYears:</b> (int)years<b> months:</b> (int)months<b> days:</b> (int)days<b> hours:</b> (int)hours<b> minutes:</b> (int)minutes<b> seconds:</b> (int)seconds;<br />
     <p>
       
-            <em>Description forthcoming.</em>
-          
+            
+    </p>
+    <p>
+
+              Returns a calendar date formed by adding the
+              specified offsets to the receiver. The offsets
+              are added in order, <var>years</var>, then
+              <var>months</var>, then <var>days</var>, then
+              <var>hours</var> then <var>minutes</var> then
+              <var>seconds</var>, so if you add 1 month and forty
+              <var>days</var> to 20th September, the result will
+              be 9th November.
+                </p>
+    <p>
+    </p>
+    <p>
+
+              This method understands leap <var>years</var> and
+              tries to adjust for daylight savings time changes
+              so that it preserves expected clock time.
+                </p>
+    <p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSCalendarDate-years:months:days:hours:minutes:seconds:sinceDate:">years:months:days:hours:minutes:seconds:sinceDate:</a></h3>

@@ -1,5 +1,6 @@
 <html>
-  <head>
+
+    <head>
     <title>NSDictionary class reference</title>
   </head>
   <body>
@@ -19,10 +20,11 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.88</p>
-    <p><b>Date:</b> 2002/08/20 10:22:04</p>
+    <p><b>Version:</b> 1.93</p>
+    <p><b>Date:</b> 2002/11/11 11:34:21</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1997 Free Software Foundation, Inc.</p>
-    <div>
+
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -36,7 +38,8 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-    <h1><a name="001000000000">
+
+          <h1><a name="001000000000">
         Software documentation for the NSDictionary class
       </a></h1>
     <h2><a name="class$NSDictionary">NSDictionary</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -84,9 +87,17 @@
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-descriptionInStringsFileFormat">-descriptionInStringsFileFormat</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-descriptionWithLocale:">-descriptionWithLocale:</a></li>
       <li><a rel="gsdoc" href="NSDictionary.html#method$NSDictionary-descriptionWithLocale:indent:">-descriptionWithLocale:indent:</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileCreationDate">-fileCreationDate</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileExtensionHidden">-fileExtensionHidden</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileGroupOwnerAccountID">-fileGroupOwnerAccountID</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileGroupOwnerAccountName">-fileGroupOwnerAccountName</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileGroupOwnerAccountNumber">-fileGroupOwnerAccountNumber</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileHFSCreatorCode">-fileHFSCreatorCode</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileHFSTypeCode">-fileHFSTypeCode</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileIsAppendOnly">-fileIsAppendOnly</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileIsImmutable">-fileIsImmutable</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileModificationDate">-fileModificationDate</a></li>
+      <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileOwnerAccountID">-fileOwnerAccountID</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileOwnerAccountName">-fileOwnerAccountName</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-fileOwnerAccountNumber">-fileOwnerAccountNumber</a></li>
       <li><a rel="gsdoc" href="NSFileManager.html#method$NSDictionary-filePosixPermissions">-filePosixPermissions</a></li>
@@ -169,7 +180,7 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3>dictionaryWithObjectsAndKeys:,...</h3>
+    <h3><a name="method$NSDictionary+dictionaryWithObjectsAndKeys:,...">dictionaryWithObjectsAndKeys:,...</a></h3>
     + (id) <b>dictionaryWithObjectsAndKeys:</b> (id)firstObject<b>,...</b>;<br />
     <p>
       
@@ -219,7 +230,12 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>description</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the result of invoking
+            <a rel="gsdoc" href="#method$NSDictionary-descriptionWithLocale:indent:">
+              -descriptionWithLocale:indent:
+            </a>
+
+            with a <code>nil</code> locale and zero indent.
           
     </p>
     <hr width="25%" align="left" />
@@ -227,7 +243,10 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionInStringsFileFormat</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the receiver as a text property list
+            strings file format. <br /> See
+            <a rel="gsdoc" href="NSString.html#method$NSString-propertyListFromStringsFileFormat">[NSString&nbsp;-propertyListFromStringsFileFormat]</a>
+ for details. <br /> The order of the items is undefined.
           
     </p>
     <hr width="25%" align="left" />
@@ -235,7 +254,12 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="#class$NSDictionary">NSDictionary</a>*)locale;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the result of invoking
+            <a rel="gsdoc" href="#method$NSDictionary-descriptionWithLocale:indent:">
+              -descriptionWithLocale:indent:
+            </a>
+
+            with a zero indent.
           
     </p>
     <hr width="25%" align="left" />
@@ -243,7 +267,27 @@
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="#class$NSDictionary">NSDictionary</a>*)locale<b> indent:</b> (unsigned int)level;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the receiver as a text property list in the
+            traditional format. <br /> See
+            <a rel="gsdoc" href="NSString.html#method$NSString-propertyList">
+              [NSString&nbsp;-propertyList]
+            </a>
+
+            for details. <br /> If <var>locale</var> is
+            <code>nil</code>, no formatting is done, otherwise
+            entries are formatted according to the
+            <var>locale</var>, and indented according to
+            <var>level</var>. <br /> Unless <var>locale</var> is
+            <code>nil</code>, a <var>level</var> of zero indents
+            items by four spaces, while a <var>level</var> of one
+            indents them by a tab. <br /> If the keys in the
+            dictionary respond to
+            <a rel="gsdoc" href="NSObject.html#method$NSObject-compare:">
+              -compare:
+            </a>
+
+            , the items are listed by key in ascending order. If not,
+            the order in which the items are listed is undefined.
           
     </p>
     <hr width="25%" align="left" />
@@ -260,6 +304,8 @@
               in property-list format.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -269,6 +315,8 @@
               recognise which it is.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -277,6 +325,19 @@
               return <code>nil</code>.
                 </p>
     <p>
+      
+            
+    </p>
+    <p>
+
+              Works by invoking
+              <a rel="gsdoc" href="NSString.html#method$NSString-initWithContentsOfFile:">[NSString&nbsp;-initWithContentsOfFile:]</a>
+ and <a rel="gsdoc" href="NSString.html#method$NSString-propertyList">[NSString&nbsp;-propertyList]</a>
+ then checking that the result is a dictionary.
+                </p>
+    <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDictionary-initWithDictionary:">initWithDictionary:</a></h3>
@@ -316,10 +377,11 @@
 This is a designated initialiser for the class.<br />
     <p>
       
+            <em>Description forthcoming.</em>
           
     </p>
     <hr width="25%" align="left" />
-    <h3>initWithObjectsAndKeys:,...</h3>
+    <h3><a name="method$NSDictionary-initWithObjectsAndKeys:,...">initWithObjectsAndKeys:,...</a></h3>
     - (id) <b>initWithObjectsAndKeys:</b> (id)firstObject<b>,...</b>;<br />
     <p>
       
@@ -409,6 +471,8 @@ This is a designated initialiser for the class.<br />
               or MacOS-X style (XML in the UTF8 character set).
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -418,6 +482,8 @@ This is a designated initialiser for the class.<br />
               which is then renamed to the actual file name.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -428,6 +494,8 @@ This is a designated initialiser for the class.<br />
               <code>YES</code>.
                 </p>
     <p>
+      
+            
     </p>
     <p>
 
@@ -446,6 +514,8 @@ This is a designated initialiser for the class.<br />
               dictionary containing the string descriptions.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSDictionary-writeToURL:atomically:">writeToURL:atomically:</a></h3>
@@ -467,9 +537,12 @@ This is a designated initialiser for the class.<br />
               not just a local file.
                 </p>
     <p>
+      
+          
     </p>
     <hr width="25%" align="left" />
-    <h1><a name="002000000000">
+
+          <h1><a name="002000000000">
         Software documentation for the NSMutableDictionary
         class
       </a></h1>
