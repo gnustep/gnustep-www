@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from coding-standards.texi on 26 January 2004 -->
+
+<TITLE>Coding Standards for GNUstep Libraries - Memory Management</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="coding-standards_1.html">first</A>, <A HREF="coding-standards_3.html">previous</A>, <A HREF="coding-standards_5.html">next</A>, <A HREF="coding-standards_8.html">last</A> section, <A HREF="coding-standards_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H2><A NAME="SEC4" HREF="coding-standards_toc.html#TOC4">Memory Management</A></H2>
+
+<P>
+In anticipation of the day when we can make the use of a Garbage Collector
+possible for all GNUstep apps (it's almost-usable/usable-with-care for
+non-gui apps now), the normal use of retain/release/autorelease is
+deprecated.
+
+
+<P>
+You should always use the macros RETAIN(), RELEASE() and AUTORELEASE()
+(defined in NSObject.h) instead.
+
+
+<P>
+There are also some extra macros that may be of use -
+
+<UL>
+<LI>
+
+ASSIGN(object,value) to assign an object variable, preforming the appropriate retain/release as necessary.
+<LI>
+
+ASSIGNCOPY(object,value) to copy the value and assign it to the object.
+<LI>
+
+DESTROY(object) to release an object variable and set it to nil.
+<LI>
+
+TEST_RETAIN(object) to retain an object if it is non-nil
+<LI>
+
+TEST_RELEASE(object) to release an object if it is non-nil
+<LI>
+
+TEST_AUTORELEASE(object) to autorelease an object if it is non-nil
+<LI>
+
+CREATE_AUTORELEASE_POOL(name) to create an autorelease pool with the
+specified name.
+<LI>IF_NO_GC(X) compile the code 'X' only if GarbageCollection is not
+
+in use.
+</UL>
+
+<P><HR><P>
+Go to the <A HREF="coding-standards_1.html">first</A>, <A HREF="coding-standards_3.html">previous</A>, <A HREF="coding-standards_5.html">next</A>, <A HREF="coding-standards_8.html">last</A> section, <A HREF="coding-standards_toc.html">table of contents</A>.
+</BODY>
+</HTML>

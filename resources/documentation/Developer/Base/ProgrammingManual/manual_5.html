@@ -1,0 +1,1297 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from manual.texi on 26 January 2004 -->
+
+<TITLE>Objective-C, Programming Manual - Working with Objects</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_4.html">previous</A>, <A HREF="manual_6.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC51" HREF="manual_toc.html#TOC51">Working with Objects</A></H1>
+<P>
+<A NAME="IDX28"></A>
+<A NAME="IDX29"></A>
+
+
+
+
+<H2><A NAME="SEC52" HREF="manual_toc.html#TOC52">Selectors</A></H2>
+<P>
+<A NAME="IDX30"></A>
+
+
+<P>
+A principal OO addition to Objective-C is the syntax to send
+messages to objects:
+
+
+
+<PRE>
+[myArray removeObjectIdenticalTo: anObject];
+</PRE>
+
+<P>
+The example sends the message named <CODE>removeObjectIdenticalTo:</CODE> to
+<CODE>myArray</CODE> with the argument <CODE>anObject</CODE>.
+
+
+<P>
+Instead of using this syntax to send a message, the <B>selector</B> of a
+message may be used.  The <B>selector</B> is a way of referring to an
+abstract message, it is a representation of the message name without
+the argument or the receiver.
+
+
+<P>
+Objective-C introduces a new data type: <CODE>SEL</CODE> for variables that
+hold selectors.  A <CODE>SEL</CODE> variable is implemented as a pointer to
+a structure containing the name (and often incidental information
+about the return type and argument types) of the selector.
+
+
+<P>
+You can obtain a selector in a variety of ways -
+
+
+
+<UL>
+<LI>
+
+At compile time, you can use the <CODE>@selector()</CODE> directive -
+
+<PRE>
+  SEL	mySelector = @selector(removeObjectIdenticalTo:);
+</PRE>
+
+<LI>
+
+At runtime, you can use the <CODE>NSSelectorFromString()</CODE> function -
+
+<PRE>
+  SEL	mySelector = NSSelectorFromString(@"removeObjectIdenticalTo:");
+</PRE>
+
+<LI>
+
+In a method, you can refer to the variable <CODE>_cmd</CODE> which contains
+the selector for the current method -
+
+<PRE>
+- (void) removeObjectIdenticalTo: (id)anObject
+{
+  SEL	mySelector = _cmd;
+
+  // Method implementation here ...
+}
+</PRE>
+
+</UL>
+
+<P>
+Sending messages to objects, and invoking methods that are named
+by the message <B>selector</B> can be achieved using 
+<CODE>performSelector:</CODE> and related methods:
+
+
+
+<PRE>
+[receiver performSelector: mySelector];
+[receiver performSelector: mySelector withObject: arg1];
+[receiver performSelector: mySelector withObject: arg1 
+  withObject: arg2];
+</PRE>
+
+
+<UL>
+
+<LI>
+
+<CODE>receiver</CODE>
+- the object receiving the message.
+
+<LI>
+
+<CODE>mySelector</CODE>
+- the <B>selector</B> of the method to be performed.
+
+<LI>
+
+<CODE>arg1</CODE> <CODE>arg2</CODE>
+- arguments sent with message.
+
+</UL>
+
+
+<UL>
+
+<LI>
+
+messaging instructions are converted into runtime calls, explanation
+
+<LI>
+
+what are selectors, efficiency reasons.  
+
+<LI>
+
+using selectors in practice &#60;Use NSStringFromSelector etc, only quote
+the existence of low level runtime calls&#62;
+ 
+<LI>
+
+methods and selectors
+ 
+<LI>
+
+method return and argument types 
+
+<LI>
+
+varying the message at run-time
+
+</UL>
+
+<P>
+The GNU Objective-C runtime library provides a function <CODE>sel_eq()</CODE>
+which may be used to test for selector equality.  This is necessary
+because, while the compiler tries to ensure that compile-time generated
+references to selectors for a particular message point to the same
+structure, selectors produced at runtime, or in different compilation
+units, will be different and a simple pointer equality test will not do.
+
+
+
+
+<H3><A NAME="SEC53" HREF="manual_toc.html#TOC53">Target-Action concept</A></H3>
+
+<P>
+The Target-Action paradigm is used a great deal in the GNUstep GUI,
+but infrequently in other code,  it is most applicable when building
+a network of related objects that can interact relatively simply.
+
+
+<P>
+The idea is that an object may have a <B>target</B> ... an instance
+variable of type <CODE>id</CODE> which refers to a target object, and
+an <B>action</B> ... an instance variable of type <CODE>SEL</CODE>.
+
+
+<P>
+When the object is told to perform its action, it asks the <B>target</B>
+to perform the <B>action</B>, passing itsself as the argument.
+
+
+<P>
+Neither object needs to know anything about the other object at compile
+time, so such objects can be connected together in a running program
+to build new behaviors into applications.
+
+
+<P>
+The code to implement this paradigm is simple -
+
+<PRE>
+- (id) performAction
+{
+  if (action == 0)
+    {
+      return nil;	// No action set ... do nothing
+    }
+  if (target == nil)
+    {
+      return nil;	// No target set ... do nothing
+    }
+  if ([target respondsToSelector: action] == NO)
+    {
+      return nil;	// Target cannot deal with action ... do nothing
+    }
+  return [target performSelector: action withObject: self];
+}
+</PRE>
+
+<P>
+As an example, consider a character attempting to make use of an object
+they have found while they are standing in front of a door -
+
+
+
+<PRE>
+  [obj setAction: @selector(openWith:)];
+  [obj setTarget: theDoor];
+  if ([obj performAction] == nil)
+    {
+      // Door didn't open.
+    }
+  else
+   {
+    // Door opened.
+   }
+</PRE>
+
+<P>
+The door object will be sent the <CODE>openWith:</CODE> message with the new
+object as its argument.  If <B>obj</B> happens to be a key, the door may
+decide to open.  It may also open in response to an object that happens
+to be a battering ram.  The same fragment of code would handle both cases.
+
+
+
+
+<H3><A NAME="SEC54" HREF="manual_toc.html#TOC54">Avoiding Messaging Errors with <CODE>respondsToSelector:</CODE></A></H3>
+
+<P>
+Using <B>typed</B> objects as shown below, the compiler would forewarn
+you if the <CODE>anObject</CODE> was unable to respond to the <CODE>alert:</CODE>
+message, as it knows what type of object <CODE>anObject</CODE> is:
+
+
+
+<PRE>
+AnObject	*anObject;		// an instance of AnObject class
+
+anObject = [[AnObject alloc] init];	// build and initialize the object
+[anObject alert: additionalObject];	// send it a message.
+</PRE>
+
+<P>
+However at times the compiler will not forewarn you that a message
+will attempt to invoke a method that is not in the <B>receiver's</B>
+repertoire. For instance, consider the code below where <CODE>anObject</CODE>
+is not known to implement the <CODE>alert:</CODE> message:
+
+
+
+<PRE>
+  id		anObject;		// arbitrary object;
+
+  anObject = [[AnObject alloc] init];	// build and initialize object
+  [anObject alert: additionalObject];	// send it a message.
+</PRE>
+
+<P>
+In this case, the compiler will not issue a warning, because it only knows
+that <CODE>anObject</CODE> is of type <CODE>id</CODE> ... so it doesn't know what
+methods the object implements.
+
+
+<P>
+At runtime, the Objective-C runtime library will fail to find a
+<B>method implementation</B> for the <CODE>alert:</CODE> message in the
+<CODE>AnObject</CODE> class, so it will send a <CODE>forwardInvocation:</CODE>
+message to <CODE>anObject</CODE> instead.
+The default implementation of the <CODE>forwardInvocation:</CODE> in the
+<CODE>NSObject</CODE> class will then raise a runtime exception which,
+if uncaught, will cause the program to crash.
+
+
+<P>
+In order to avoid this sort of problem, your code can use the
+<CODE>respondsToSelector:</CODE> method to see if an object can handle
+a particular message -
+
+
+
+<PRE>
+  id		anObject;
+
+  anObject = [[AnObject alloc] init];
+  if ([anObject respondsToSelector: @selector(alert:)] == YES)
+    {
+      [anObject alert: additionalObject];	// send it a message.
+    }
+  else
+    {
+      // Do something else if the object can't be alerted
+    }
+</PRE>
+
+<P>
+<B>Note. Protocols may be used to handle unrecogized message
+checking at compile time.</B>
+
+
+
+
+<H2><A NAME="SEC55" HREF="manual_toc.html#TOC55">Initializing and Allocating Objects</A></H2>
+
+<P>
+The NSObject class defines two <B>allocation</B> methods namely
+<CODE>alloc</CODE> and <CODE>allocWithZone:</CODE>.
+
+
+
+<PRE>
++ (id) alloc;
++ (id) allocWithZone: (NSZone*)zone;
+</PRE>
+
+<P>
+Both methods will allocate memory to hold an object, and
+initialise the objects' <CODE>isa</CODE> pointer,
+which as previously discussed defines the class to which
+the object belongs.
+The same initialization procedure sets all remaining instance
+variables to 0.
+
+
+<P>
+In practice further initialization procedures are implemented by
+instance methods beginning with the familiar <CODE>init...</CODE> syntax,
+and an object is not considered <B>initialised</B> until one of these
+methods has been executed (the exception being in the case of
+copied objects).
+
+
+<P>
+<B>Note. Classes must provide <CODE>init</CODE> methods to initialize
+their declared instance variables.</B> 
+
+
+
+
+<H3><A NAME="SEC56" HREF="manual_toc.html#TOC56"><CODE>init</CODE> and Returned Objects</A></H3>
+<P>
+After initializing the instance variables of the receiver,
+an <CODE>init...</CODE> method returns a <B>usable</B> object,
+which might not be the receiver, however.
+
+
+<P>
+Here is an scenario where the returned object is not the receiver:
+the class <CODE>NSConnection</CODE> only permits one connection to exist
+between any two ports, so if you call <CODE>initWithReceivePort:sendPort:</CODE>
+when a connection for the ports exists, the method will deallocate
+the newly allocated instance, and return the current conflicting object,
+rather than the receiver.
+
+
+<P>
+The <CODE>init...</CODE> method may also return <CODE>nil</CODE> at times when
+it is passed an argument that does not compute; for example the
+argument to the <CODE>NSString</CODE> method <CODE>initWithContentsOfFile:</CODE>
+may be an erroneous file name.
+
+
+
+<UL>
+
+<LI>
+
+allocating vs initializing objects
+
+
+
+<H3><A NAME="SEC57" HREF="manual_toc.html#TOC57">Allocating Memory</A></H3>
+
+<P>
+Typically memory is allocated in zones, and most memory is
+allocated from the default area
+(which is returned by the <CODE>NSDefaultMallocZone()</CODE>) function.
+When it is necessary to group objects in the same area of memory -
+perhaps for performance reasons, you may create a zone from where you
+would allocate those objects. This will minimise the paging required by
+your application when accessing those objects frequently. 
+
+
+<P>
+Low level memory allocation is performed by:
+
+<UL>
+<LI>
+
+<CODE>NSAllocateObject()</CODE> 
+
+<LI>
+
+<CODE>NSDeallocateObject()</CODE>
+</UL>
+
+<P>
+These are rarely used but are available when you require more
+advanced control or performance. These functions are called by
+<CODE>[NSObject +allocWithZone:]</CODE> and <CODE>[NSObject -dealloc]</CODE>.
+If you call <CODE>NSAllocateObject()</CODE> directly to create an instance
+of a class, you may break some functionality of that class,
+such as caching of frequently used objects.
+
+
+<P>
+Objects are destroyed using <CODE>dealloc</CODE>, and are created using:
+
+
+
+<UL>
+<LI>
+
+<CODE>+alloc</CODE>
+
+<LI>
+
+<CODE>-copy</CODE>
+
+<LI>
+
+<CODE>-mutableCopy</CODE> 
+
+</UL>
+
+<P>
+The allocation methods are covers for the following more versatile methods:
+
+<UL>
+<LI>
+
+<CODE>+allocWithZone:</CODE>
+
+<LI>
+
+<CODE>-copyWithZone:</CODE>
+
+<LI>
+
+<CODE>-mutableCopyWithZone:</CODE>
+</UL>
+
+<P>
+These methods may specify zones from which the memory is allocated,
+rather than use the default zone. NSObject also provides <CODE>+new</CODE>,
+which is simply a cover for the combination of <CODE>+alloc</CODE> and <CODE>-init</CODE>. 
+
+
+<P>
+The <CODE>-dealloc</CODE> method returns the memory occupied by the object
+to the zone from which it was originally allocated; it can use the <CODE>-zone</CODE> method to determine which zone this is. 
+
+
+<P>
+Explicit memory allocation and deallocation is efficient -
+but when you pass objects around inside a program (and especially
+from/to libraries etc.,) it quickly becomes difficult and/or
+inefficient to keep track of who owns an object, and who should be
+responsible for calling its <B>deallocation</B> method. 
+
+
+<P>
+The OpenStep specification remedies this problem by providing a
+reference counting mechanism along with a set of conventions that
+make memory management easy.
+
+
+<P>
+Additionally, the GNU Objective-C compiler and the GNUstep system
+provide a memory sweeping <B>garbage collection</B> mechanism using
+the Boehm conservative garbage collection library. 
+
+
+
+
+<H3><A NAME="SEC58" HREF="manual_toc.html#TOC58">Memory Deallocation</A></H3>
+
+<P>
+The <CODE>dealloc</CODE> method is defined in the NSObject class and
+releases memory allocated to the receiver.
+The <CODE>NSObject</CODE> implementation of the method <B>deallocates</B>
+only instance variables. Additional allocated, unshared memory
+used by the object is deallocated separately.
+Other entities that depend solely on the deallocated receiver,
+including complete objects, must also be deallocated separately. 
+
+
+<P>
+In this instance subclasses of <CODE>NSObject</CODE> override 
+the <CODE>dealloc</CODE> method. Every class that has its objects allocate
+additional memory must have its own <CODE>dealloc</CODE> method.
+Each version of dealloc ends with a message to super to
+perform an inherited version of the method, as illustrated in
+the following example:
+
+
+
+<PRE>
+- (void) dealloc
+{
+  RELEASE(anObject);
+  NSZoneFree(myZone, myMemory);
+  [super dealloc];
+}
+</PRE>
+
+<P>
+(See Section Memory Deallocation.)
+
+
+<LI>
+
+The <CODE>+alloc</CODE> method is not guaranteed to return an object
+created using <CODE>NSAllocateObject()</CODE>.  It may actually return
+any object, though convention dictates that the return value is
+an object with its <CODE>isa</CODE> instance variable set to point to
+a class which is a subclass of that to which the <CODE>alloc</CODE>
+message was sent, and which can respond to the initialisation
+methods of that class.<BR>
+For instance, the method may return a <B>placeholder</B> object that
+will be replaced by another object depending on the initialisation
+method that is sent to it.<BR>
+NB. exception ... it is permitted to return nil on allocation failure.
+
+<LI>
+
+When an object is initialised, the return value of the initialiser
+is the new value of the object (or <B>nil</B>) ... the initialiser is
+permitted to replace one object with another.
+This behavior enables a class to 
+share objects (and do other tricky things) -
+
+
+<PRE>
+@implementation Crown
+- (id) initWithLevel: (CharacterLevel)level
+{
+  if (level &#62; wizardLevel &#38;&#38; [crownOfTheEmperor isOwned] == NO)
+    {
+      RELEASE(self);
+      [crownOfTheEmperor setOwned: YES];
+      self = RETAIN(crownOfTheEmperor);
+    }
+  else
+    {
+      self = [super init];
+      if (self != nil)
+        {
+          // Perform standard initialisation here.
+        }
+    }
+  return self;
+}
+@end
+</PRE>
+
+In the above example, the <CODE>initWithLevel:</CODE> method is used to
+create a crown discovered in a random treasure store.  If certain
+conditions are met, the system returns a special object ... only
+one of which may exist and be owned by a character.
+
+In this case, the initialiser for a crown expects a character level
+as an argument, and the old crown object is released and replaced
+by a special one.
+
+<LI>
+
+In the preceding example, the standard route through the initialiser
+was to call the initialiser of the superclass, and assign the result
+to <CODE>self</CODE> before initialising instance variables and returning
+<CODE>self</CODE>.
+
+This is necessary because, unlike in C++ or Java, the Objective-C
+language does not enforce initialisation ... so it's up to you as
+the programmer to ensure that superclasses are permitted to
+perform their object initialisation code before the subclass
+performs its initialisation (actually, this gives you the flexibility
+to change how things are initialised ... but you should obey the
+conventions unless you are sure you know what you are doing).
+
+An initialiser of any class intended for re-use/subclassing should
+therefore <B>not</B> replace <CODE>self</CODE> with an object of a class that
+is not a subclass of the original (though it is legal to return <B>nil</B>,
+and you should therefore check for that in your code).
+
+This rule is essential because, if the initialiser of the original
+subclass receives another object from the superclass initialiser, the
+new object needs to have enough memory allocated, and the same
+initial instance variable layout, as the original object, or assigning
+values into it may overwrite memory that's not part of the initialised
+object ... causing a crash or other runtime problems.
+
+So, to correct our example, we should only return the special object if
+it is a subclass of the original object  ...
+
+
+<PRE>
+  if (level &#62; wizardLevel &#38;&#38; [crownOfTheEmperor isOwned] == NO
+    &#38;&#38; [crownOfTheEmperor isKindOfClass: [self class]] == YES)
+    {
+      RELEASE(self);
+      [crownOfTheEmperor setOwned: YES];
+      self = RETAIN(crownOfTheEmperor);
+    }
+</PRE>
+
+The <CODE>isKindOfClass:</CODE> method is used to test that the object we
+are intending to return is legitimate ... a subclass of whatever
+class the original item (<CODE>self</CODE>) allocated was.
+
+<LI>
+
+All classes should have a single <B>designated initialiser</B>.  This is
+the initialisation method that any direct subclass should call in order
+to ensure that initialisation is done correctly.  The other initialisers
+for the class (if any) should call the designated initialier, and the
+designated initialiser should <B>not</B> call any other initialisers that
+could be overridden by subclasses.
+
+Since the <CODE>init</CODE> method is defined in the root class
+(<CODE>NSObject</CODE>), it's quite likely that any class could be initialised
+by calling this method.  If <CODE>init</CODE> is not the designated initialiser
+for your class, you should therefore write an implementation of
+<CODE>init</CODE> which <B>does</B> call the designated initialiser ...
+
+
+<PRE>
+- (id) init
+{
+  self = [self initWithLevel: noviceLevel];
+  return self;
+}
+</PRE>
+
+<LI>
+
+Often, convenience methods are provided to avoid the necessity
+of allocating and initialising objects as two separate operations.
+The most basic of these is the <CODE>+new</CODE> method provided by the
+<CODE>NSObject</CODE> class.  This is simply an <CODE>alloc</CODE> followed
+by an <CODE>init</CODE>.
+
+More sophisticated methods combine allocation, initialisation, and
+autoreleasing of objects.  These methods return objects which have
+been added to the current autorelease pool (see later in this chapter
+for details).  By convention, these methods have names beginning with
+something like the name of the class ...
+
+
+<PRE>
++ (Crown*) crown
+{
+  return AUTORELEASE([[self alloc] init]);
+}
++ (Crown*) crownWithLevel: (CharacterLevel)level
+{
+  return AUTORELEASE([[self alloc] initWithLevel: level]);
+}
+</PRE>
+
+<LI>
+
+You handle deallocation of your objects by writing a <CODE>dealloc</CODE>
+method.  The last thing that this method needs to do is call the
+<CODE>dealloc</CODE> method of the superclass ... since it is normally
+the deallocation method of the root class that actually frees the
+memory used by the object.
+
+The <CODE>dealloc</CODE> method is analogous to the destructor in a C++
+class but, as with initialisation, the Objective-C language does
+not call this method for you, and you must explicitly call it
+(or refrain from calling it perhaps if you are caching the object
+for latert re-use).  Often, if you have not allocated memory or
+olther objects as instance variables in your object, you don't
+have to write a <CODE>dealloc</CODE> method, as the method in the superclass
+will do.
+
+
+<PRE>
+@implementation	Crown
+- (void) dealloc
+{
+  if (self == crownOfTheEmperor)
+    {
+      /*
+       * The crown of the emperor can not be destroyed ... but it
+       * can be made available for someone else to find.
+       */
+      [crownOfTheEmperor setOwned: NO];
+    }
+  else
+    {
+      // Release instance variables here.
+      [super dealloc];
+    }
+}
+@end
+</PRE>
+
+</UL>
+
+
+
+<H2><A NAME="SEC59" HREF="manual_toc.html#TOC59">Protocols</A></H2>
+
+<P>
+We use tweo types of protocol in Objective-C ... <B>informal</B> protocols,
+where we document methods to which objects will respond, and specify
+how they should behave, and <B>formal</B> protocols, where we provide a
+list of methods that an object will support in a format where the
+compiler can check things, and the runtime can also check that an
+object conforms to the protocol.  Informal protocols are merely convention,
+but are useful where we want to say that some system will work as long
+as it (or its delegate) implements some subset of a group of methods.  Formal protocols are more use when we want the compiler or runtime to
+check that an object implements all of a group of methods itsself.
+
+
+
+<UL>
+
+<LI>
+
+The formal protocol provides a mechanism similar to the Java <B>interface</B>,
+in that it specifies an API to which instances of a class must conform.
+The Objective-C language provides mechanisms for checking that a class
+conforms to one or more protocols at compile time, while the runtime
+can chjeck that an object conforms to a protocol at runtime.  Protocols
+form an inheritance hierarchy much like that of classes.
+
+A particularly important use of protocols is in defining the methods
+that an object in a remote process can respond to ... by setting the
+protocol used by a local proxy object, you can avoid having to send
+messages to the remote process to check what methods are available -
+you can simply check the local protocol object.
+
+
+<UL>
+
+<LI>
+
+Syntax
+
+A protocol is declared as a series of method declarations, just like
+a class interface.  The difference is that a protocol declaration
+begins with <CODE>@protocol</CODE> rather than <CODE>@class</CODE>, and has
+an optional <B>super</B> protocol specified in angle brackets.
+
+Another difference is that within a protocol declaration, certain
+additional type qualifiers used for Distributed Objects are valid -
+
+
+<PRE>
+@protocol GameServer
+- (oneway void) handleClient: (id)client event: 
+    (in bycopy NSData*) event;
+- (BOOL) registerClient: (id)client byName: 
+    (in bycopy NSString*) name;
+@end
+
+@protocol MasterServer &#60;GameServer&#62;
+- (oneway void) systemShutdownBy: (id)client;
+@end
+</PRE>
+
+<LI>
+
+Protocol Objects
+ 
+<LI>
+
+Conforming to a Protocol
+
+An object is said to <B>conform</B> to a protocol if it implements all
+the methods listed in that protocol.  The <CODE>NSObject</CODE> class provides
+a method for runtime testing to see if an object conforms to a protocol -
+
+
+<PRE>
+if ([anObject conformsToProtocol: aProtocol] == YES)
+  {
+    // We can go ahead and use the object.
+  }
+else
+  {
+    NSLog(@"Object of class %@ ignored ... does not conform to 
+      protocol", NSStringFromClass([anObject class]));
+  }
+</PRE>
+
+<LI>
+
+Type checking
+
+<LI>
+
+Protocols within Protocols 
+
+<LI>
+
+Referring to Other Protocols
+
+</UL>
+
+<LI>
+
+Informal Protocols 
+
+
+<UL>
+
+<LI>
+
+What are they, syntax
+
+<LI>
+
+Example: delegates
+
+</UL>
+
+</UL>
+
+
+
+<H2><A NAME="SEC60" HREF="manual_toc.html#TOC60">Memory Management</A></H2>
+
+<P>
+There are three forms of memory management available in Objective-C
+
+<UL>
+<LI>Explicit<BR>
+
+You allocate objects using <CODE>alloc</CODE>, <CODE>copy</CODE> etc, and deallocate
+them when you have finished with them (using <CODE>dealloc</CODE>).
+This gives you complete control over memory management, and is highly
+efficient, but error prone.
+
+<LI>Retain count<BR>
+
+You use the OpenStep retain/release mechanism, allong with autorelease
+pools which provide a degree of automated memory management.  This gives
+a good degree of control over memory management, but requires some care
+in following simple rules.  It's pretty efficient.
+
+<LI>Garbage collection<BR>
+
+You build the GNUstep base library with garbage collection, and link
+with the Boehm GC library ... then never bother about
+releasing/deallocating memory.  This requires a slightly different
+approach to programming ... you need to take care about what happens
+when objects are deallocated ... but don't need to worry about
+deallocating them.
+</UL>
+
+<P>
+The recommended approach is to use some standard macros defined in
+<CODE>NSObject.h</CODE> which encapsulate the retain/release/autorelease
+mechanism, but which permit efficient use of the garbage collection
+system if you build your software with that.
+
+
+
+<UL>
+
+<LI>
+
+The standard OpenStep system of memory management employs retain counts.
+When an object is created, it has a retain count of 1.  When an object
+is retained, the retain count is incremented.  When it is released the
+retain count is decremented, and when the retain count goes to zero the
+object gets deallocated.
+
+
+<PRE>
+  Coin	*c = [[Coin alloc] initWithValue: 10];
+
+  // Put coin in pouch,
+  RETAIN(c);	// Calls 'retain' method (retain count now 2)
+  // Remove coin from pouch
+  RELEASE(c);	// Calls 'release' method (retain count now 1)
+  // Drop in bottomless well
+  RELEASE(c);	// Calls 'release' ... (retain count 0) then 'dealloc'
+
+</PRE>
+
+<LI>
+
+A simple retain/release mechanism is not very interesting ... so it's
+spiced up with autorelease pools.  You can use the <CODE>AUTORELEASE</CODE>
+macro to call the <CODE>autorelease</CODE> method, which adds an object to
+the current autorelease pool.  An autorelease pool simply maintains
+a reference to each object added to it, and for each addition, the
+autorelease pool will call the <CODE>release</CODE> method of the object
+when the pool is released.  So doing an <CODE>AUTORELEASE</CODE> is just
+the same as doing a <CODE>RELEASE</CODE>, but deferred until the current
+autorelease pool is deallocated.
+
+<LI>
+
+The General Convention About the Owner
+
+<LI>
+
+Special cases: copy, mutableCopy, new
+
+<LI>
+
+Full example for instance variable
+
+<LI>
+
+Using ASSIGN to keep instance variables
+
+<LI>
+
+Avoiding Retain Cycles
+
+<LI>
+
+Special examples: delegate, target
+
+</UL>
+
+
+
+<H2><A NAME="SEC61" HREF="manual_toc.html#TOC61">How Messaging Works</A></H2>
+<P>
+Objective-C messaging requires three types of information:
+
+
+
+<UL>
+<LI>
+
+The message <B>receiver</B> - this contains <CODE>isa</CODE>, an instance
+variable of type <CODE>Class</CODE>, which points to a structure containing
+links into the class hierarchy, information specifying instance variable
+layout for the object, and a dispatch table specifying what code should
+be executed for each supported message.
+
+<LI>
+
+The message <B>selector</B> - this identifies the message, and is used to
+locate the excecutable code of the corresponding <B>method</B> by performing
+a lookup in the dispatch table of the receiving objects class.
+
+<LI>
+
+The message <B>arguments</B> - these are simply passed to the method on
+the stack.
+</UL>
+
+<P>
+When you send a message like <CODE>obj = [array objectAtIndex: i];</CODE>, the
+compiler actually does several things for you -
+
+
+
+<UL>
+<LI>
+
+It generates code to place the <B>receiver</B> (<CODE>array</CODE>) on the stack.
+
+<LI>
+
+It builds a <B>selector</B> for the message named <CODE>objectAtIndex:</CODE>
+and generates code to put it on the stack.
+
+<LI>
+
+It generates code to put the argument (<CODE>i</CODE>) on the stack.
+
+<LI>
+
+It generates code to ask the Objective-C runtime library to look up
+the <B>selector</B> in the <B>receiver</B>, return the <B>method implementation</B>
+for that <B>selector</B> (this is just a C function), and call that
+<B>method implementation</B>.
+
+</UL>
+
+<P>
+When a method is executed, it therefore has the message arguments
+available to it on the stack, but also has two additional values -
+the <B>receiver</B> and the <B>selector</B>.  These additional hidden
+arguments are referred to in the source code by the names <CODE>self</CODE>
+and <CODE>_cmd</CODE>.
+
+
+<P>
+The process of looking up the <B>method implementation</B> in the <B>receiver</B>
+at runtime is known as dynamic binding.  This is part of what makes the
+language powerful and flexible, but it is inevitably (despite clever
+caching strategies used in the runtime library) a little slower than a
+simple function call in C.
+
+
+
+
+<H2><A NAME="SEC62" HREF="manual_toc.html#TOC62">Hacking for Efficiency</A></H2>
+
+
+<UL>
+
+<LI>
+
+Getting a Method Address (discussion about reasons why doing it, and
+where it makes sense to do it)
+
+<LI>
+
+Getting an Object Data Structure (short discussion about why doing it)
+
+</UL>
+
+
+
+<H2><A NAME="SEC63" HREF="manual_toc.html#TOC63">NSString</A></H2>
+
+<P>
+The NSString class defines objects holding raw <B>Unicode</B> character streams
+or <B>strings</B>. Unicode is a 16bit worldwide standard used to define character
+sets for all spoken languages.
+In GNUstep parlance the Unicode character is of type <B>unichar</B>.
+
+
+
+
+<H3><A NAME="SEC64" HREF="manual_toc.html#TOC64">Creating NSString Static Instances</A></H3>
+
+<P>
+A <B>static</B> instance is allocated at compile time. The creation of a static
+instance of NSString is achieved using the <CODE>@"..."</CODE>
+construct and a pointer:
+
+
+
+<PRE>
+NSString *wasp = @"Brainstorm";
+</PRE>
+
+<P>
+<CODE>wasp</CODE> is a variable that refers to an NSString object representing
+the ASCII string "Brainstorm".
+
+
+
+
+<H3><A NAME="SEC65" HREF="manual_toc.html#TOC65">NSString - +stringWithFormat:</A></H3>
+
+<P>
+The class method <CODE>stringWithFormat:</CODE> may also be used to create
+instances of NSString, and broadly echoes the <CODE>printf</CODE> function
+in the C programming language. <CODE>stringWithFormat:</CODE> accepts a list
+of arguments whose processed result is placed in an <CODE>NSString</CODE>
+that becomes a return value as illustrated below: 
+
+<PRE>
+int		qos = 5;
+NSString	*gprschannel;
+
+gprschannel = [NSString stringWithFormat: @"The GPRS channel is %d", 
+                qos];
+
+</PRE>
+
+<P>
+The example will produce an <CODE>NSString</CODE> called <CODE>gprschannel</CODE>
+holding the string "The gprschannel is 5". 
+
+
+<P>
+<CODE>stringWithFormat:</CODE> recognises the <CODE>%@</CODE> conversion specification
+that is used to specify an additional <CODE>NSString</CODE>: 
+
+<PRE>
+NSString *one;
+NSString *two;
+
+one = @"Brainstorm";
+two = [NSString stringWithFormat: @"Our trading name is %@", one];
+</PRE>
+
+<P>
+The example assigns the variable <CODE>two</CODE> the string
+"Our trading name is Brainstorm."
+The %@ specification can be used to output an object's description -
+as returned by the NSObject's -description), which is useful
+when debugging, as in: 
+
+<PRE>
+NSObject *obj = [anObject aMethod];
+
+NSLog (@"The method returned: %@", obj);
+</PRE>
+
+
+
+<H3><A NAME="SEC66" HREF="manual_toc.html#TOC66">C String Conversion</A></H3>
+<P>
+When a program needs to call a C library function it is useful to
+create an <CODE>NSString</CODE> from a standard ASCII C string (not fixed at
+compile time): 
+
+<PRE>
+char *function (void);
+</PRE>
+
+<P>
+To create an <CODE>NSString</CODE> using the contents of the returned C string
+(from the above example), use the <CODE>NSString</CODE> class method
+<CODE>stringWithCString:</CODE>: 
+
+
+
+<PRE>
+char *result;
+NSString *string;
+
+result = function ();
+string = [NSString stringWithCString: result];
+</PRE>
+
+<P>
+To convert an <CODE>NSString</CODE> to a standard C ASCII string,
+use the <CODE>cString</CODE> method of the <CODE>NSString</CODE> class: 
+
+<PRE>
+char		*result;
+NSString	*string;
+
+string = @"Hi!";
+result = [string cString];
+</PRE>
+
+
+
+<H3><A NAME="SEC67" HREF="manual_toc.html#TOC67">NSMutableString</A></H3>
+<P>
+<CODE>NSString</CODE>s are immutable objects; meaning that once they are created,
+they cannot be modified. This results in optimised NSString code. To modify
+a string, use the subclass of <CODE>NSString</CODE>, called <CODE>NSMutableString</CODE>.
+Use a <CODE>NSMutableString</CODE> wherever a <CODE>NSString</CODE> could be used. 
+
+
+<P>
+An <CODE>NSMutableString</CODE> responds to methods that modify the string directly -
+which is not possible with a generic <CODE>NSString</CODE>. 
+To create a <CODE>NSMutableString</CODE>use <CODE>stringWithFormat:</CODE>: 
+
+<PRE>
+NSString *name = @"Brainstorm";
+NSMutableString *str;
+str = [NSMutableString stringWithFormat: @"Hi!, %@", name];
+</PRE>
+
+<P>
+While <CODE>NSString</CODE>'s implementation of <CODE>stringWithFormat:</CODE> returns
+a <CODE>NSString</CODE>, <CODE>NSMutableString</CODE>'s implementation returns an
+<CODE>NSMutableString</CODE>. 
+
+
+<P>
+<B>Note. Static strings created with the @"..." construct are
+always immutable.</B>
+
+
+<P>
+NSMutableStrings are rarely used because to modify a string,
+you normally create a new string derived from an existing one. 
+
+
+<P>
+A useful method of the NSMutableString class is <CODE>appendString:</CODE>,
+which takes an <CODE>NSString</CODE> argument, and appends it to the receiver: 
+
+
+
+<PRE>
+NSString	*name = @"Brainstorm";
+NSString	*greeting = @"Hello";
+NSMutableString	*s;
+
+s = AUTORELEASE ([NSMutableString new]);
+[s appendString: greeting];
+[s appendString: @", "];
+[s appendString: name];
+</PRE>
+
+<P>
+This code produces the same result as:
+
+<PRE>
+NSString *name = @"Brainstorm";
+NSString *greeting = @"Hello";
+NSMutableString *s;
+
+s = [NSMutableString stringWithFormat: @"%@, %@", greeting, name];
+</PRE>
+
+
+
+<H3><A NAME="SEC68" HREF="manual_toc.html#TOC68">Reading and Saving Strings</A></H3>
+<P>
+The the GNUstep base library has numerous string manipulation features,
+and among their most notable are those relating to writing/reading
+strings to/from files. To write the contents of a string to a file,
+use the <CODE>writeToFile:atomically:</CODE> method: 
+
+
+
+<PRE>
+#include &#60;Foundation/Foundation.h&#62;
+
+int
+main (void)
+{
+  CREATE_AUTORELEASE_POOL(pool);
+  NSString *name = @"This string was created by GNUstep";
+
+  if ([name writeToFile: @"/home/nico/testing" atomically: YES])
+    {
+      NSLog (@"Success");
+    }
+  else 
+    {
+      NSLog (@"Failure");
+    }
+  RELEASE(pool);
+  return 0;
+}
+</PRE>
+
+<P>
+<CODE>writeToFile:atomically:</CODE> returns YES for success, and NO for failure.
+If the atomically flag is YES, then the library first writes the string
+into a file with a temporary name, and, when the writing has been
+successfully done, renames the file to the specified filename.
+This prevents erasing the previous version of filename unless
+writing has been successful. This is a useful feature, which should be enabled.
+
+
+<P>
+To read the contents of a file into a string, use
+<CODE>stringWithContentsOfFile:</CODE>, as shown in the following
+example that reads <CODE>@"/home/Brainstorm/test"</CODE>: 
+
+
+
+<PRE>
+#include &#60;Foundation/Foundation.h&#62;
+
+int
+main (void)
+{
+  CREATE_AUTORELEASE_POOL(pool);
+  NSString *string;
+  NSString *filename = @"/home/nico/test";
+
+  string = [NSString stringWithContentsOfFile: filename];
+  if (string == nil)
+    {
+      NSLog (@"Problem reading file %@", filename);
+      /*
+       * &#60;missing code: do something to manage the error...&#62;
+       * &#60;exit perhaps ?&#62;
+       */
+    }
+
+  /*
+   * &#60;missing code: do something with string...&#62;
+   */
+
+  RELEASE(pool);
+  return 0;
+}
+
+</PRE>
+
+<P><HR><P>
+Go to the <A HREF="manual_1.html">first</A>, <A HREF="manual_4.html">previous</A>, <A HREF="manual_6.html">next</A>, <A HREF="manual_13.html">last</A> section, <A HREF="manual_toc.html">table of contents</A>.
+</BODY>
+</HTML>
