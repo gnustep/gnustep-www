@@ -295,6 +295,8 @@
         <li><a rel="gsdoc" href="Functions.html#macro$CREATE_AUTORELEASE_POOL">CREATE_AUTORELEASE_POOL</a></li>
         <li><a rel="gsdoc" href="Functions.html#macro$DESTROY">DESTROY</a></li>
         <li><a rel="gsdoc" href="Functions.html#macro$GSLocalizedString">GSLocalizedString</a></li>
+        <li><a rel="gsdoc" href="Functions.html#macro$GSOnceFLog">GSOnceFLog</a></li>
+        <li><a rel="gsdoc" href="Functions.html#macro$GSOnceMLog">GSOnceMLog</a></li>
         <li><a rel="gsdoc" href="Functions.html#macro$GS_INITIALIZED_LOCK">GS_INITIALIZED_LOCK</a></li>
         <li><a rel="gsdoc" href="Functions.html#macro$NSAssert">NSAssert</a></li>
         <li><a rel="gsdoc" href="Functions.html#macro$NSAssert1">NSAssert1</a></li>
@@ -708,6 +710,41 @@ is exactly the same as    </p>
           <h1><a name="004000000000">NSDebug macros</a></h1>
     <p>
     </p>
+    <h3><a name="macro$GSOnceFLog">GSOnceFLog</a></h3>
+     GSOnceFLog(<b>format</b>, <b>args</b><b>,...</b>)<br />
+    <p>
+      
+          Macro to log a message only the first time it is
+          encountered. <br /> Not entirely thread safe...
+          but that&apos;s not really important, it just means that it&apos;s
+          possible for the message to be logged more than once
+          if two threads call it simultaneously when it has not
+          already been called. <br /> Use this from inside a
+          function. Pass an NSString as a <var>format</var>,
+          followed by zero or more arguments for the
+          <var>format</var> string. Example: GSOnceMLog(@&quot;This
+          function is deprecated, use another&quot;);
+        
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="macro$GSOnceMLog">GSOnceMLog</a></h3>
+     GSOnceMLog(<b>format</b>, <b>args</b><b>,...</b>)<br />
+    <p>
+      
+          Macro to log a message only the first time it is
+          encountered. <br /> Not entirely thread safe...
+          but that&apos;s not really important, it just means that it&apos;s
+          possible for the message to be logged more than once
+          if two threads call it simultaneously when it has not
+          already been called. <br /> Use this from inside a
+          method. Pass an NSString as a <var>format</var>
+          followed by zero or more arguments for the
+          <var>format</var> string. <br /> Example:
+          GSOnceMLog(@&quot;This method is deprecated, use
+          another&quot;);
+        
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="macro$NSDebugFLLog">NSDebugFLLog</a></h3>
      NSDebugFLLog(<b>level</b>, <b>format</b>, <b>args</b><b>,...</b>)<br />
     <p>
@@ -817,9 +854,9 @@ is exactly the same as    </p>
             NSUserDefaults also adds debug levels from
             the array given by the GNU-Debug key... but these
             values will not take effect until the
-            <a rel="gsdoc" href="NSUserDefaults.html#method$NSUserDefaults+standardUserDefaults">
+            
               +standardUserDefaults
-            </a>
+            
 
             method is called... so they are useless for
             debugging NSUserDefaults itsself or for debugging
@@ -868,9 +905,9 @@ is exactly the same as    </p>
 
             You can also change the active debug levels under your
             programs control - NSProcessInfo has a
-            <a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-debugSet">
+            
               [-debugSet]
-            </a>
+            
 
             method that returns the mutable set that contains
             the active debug levels - your program can modify this
@@ -1121,7 +1158,7 @@ is exactly the same as    </p>
     <p>
       
           Used in an ObjC method body. <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var>
@@ -1133,7 +1170,7 @@ is exactly the same as    </p>
     <p>
       
           Used in an ObjC method body. <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1146,7 +1183,7 @@ is exactly the same as    </p>
     <p>
       
           Used in an ObjC method body. <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1159,7 +1196,7 @@ is exactly the same as    </p>
     <p>
       
           Used in an ObjC method body. <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1172,7 +1209,7 @@ is exactly the same as    </p>
     <p>
       
           Used in an ObjC method body. <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1186,7 +1223,7 @@ is exactly the same as    </p>
     <p>
       
           Used in an ObjC method body. <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1201,7 +1238,7 @@ is exactly the same as    </p>
       
           Used in plain C code (not in an ObjC method body).
           <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var>
@@ -1214,7 +1251,7 @@ is exactly the same as    </p>
       
           Used in plain C code (not in an ObjC method body).
           <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1228,7 +1265,7 @@ is exactly the same as    </p>
       
           Used in plain C code (not in an ObjC method body).
           <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1242,7 +1279,7 @@ is exactly the same as    </p>
       
           Used in plain C code (not in an ObjC method body).
           <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1256,7 +1293,7 @@ is exactly the same as    </p>
       
           Used in plain C code (not in an ObjC method body).
           <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1271,7 +1308,7 @@ is exactly the same as    </p>
       
           Used in plain C code (not in an ObjC method body).
           <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception using <var>desc</var> and
@@ -1286,7 +1323,7 @@ is exactly the same as    </p>
       
           Used in plain C code (not in an ObjC method body).
           <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception saying that an invalid parameter
@@ -1299,7 +1336,7 @@ is exactly the same as    </p>
     <p>
       
           Used in an ObjC method body. <br /> See
-          <a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a>
+          NSAssertionHandler
 
             for details. <br /> When <var>condition</var> is false,
             raise an exception saying that an invalid parameter
@@ -1353,9 +1390,9 @@ is exactly the same as    </p>
           <var>CLASSNAME</var> must be either NSLock,
           NSRecursiveLock or one of thier subclasses.
           See
-          <a rel="gsdoc" href="NSLock.html#method$NSLock+newLockAt:">
-            [NSLock&nbsp;+newLockAt:]
-          </a>
+          
+            [NSLock+newLockAt:]
+          
 
           for details. This macro is intended for code that cannot
           insure that a lock can be initialized in thread safe
@@ -1405,9 +1442,9 @@ is exactly the same as    </p>
     <p>
       
           Basic autorelease operation... calls
-          <a rel="gsdoc" href="NSObject.html#method$NSObject-autorelease">
-            [NSObject&nbsp;-autorelease]
-          </a>
+          
+            [NSObject-autorelease]
+          
 
         
     </p>
@@ -1456,9 +1493,9 @@ is exactly the same as    </p>
     <p>
       
           Basic release operation... calls
-          <a rel="gsdoc" href="NSObject.html#method$NSObject-release">
-            [NSObject&nbsp;-release]
-          </a>
+          
+            [NSObject-release]
+          
 
         
     </p>
@@ -1468,9 +1505,9 @@ is exactly the same as    </p>
     <p>
       
           Basic retain operation... calls
-          <a rel="gsdoc" href="NSObject.html#method$NSObject-retain">
-            [NSObject&nbsp;-retain]
-          </a>
+          
+            [NSObject-retain]
+          
 
         
     </p>
@@ -1507,7 +1544,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$GSBreakTime">GSBreakTime</a></h3>
-    void GSBreakTime(<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a> <b>when</b>, int* <b>year</b>, int* <b>month</b>, int* <b>day</b>, int* <b>hour</b>, int* <b>minute</b>, int* <b>second</b>, int* <b>mil</b>);<br />
+    void GSBreakTime(NSTimeInterval <b>when</b>, int* <b>year</b>, int* <b>month</b>, int* <b>day</b>, int* <b>hour</b>, int* <b>minute</b>, int* <b>second</b>, int* <b>mil</b>);<br />
     <p>
       
           Convert a time interval since the reference date into
@@ -1517,7 +1554,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$GSTime">GSTime</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a> GSTime(int <b>day</b>, int <b>month</b>, int <b>year</b>, int <b>hour</b>, int <b>minute</b>, int <b>second</b>, int <b>mil</b>);<br />
+    NSTimeInterval GSTime(int <b>day</b>, int <b>month</b>, int <b>year</b>, int <b>hour</b>, int <b>minute</b>, int <b>second</b>, int <b>mil</b>);<br />
     <p>
       
           Convert a broken out time specification into a time
@@ -1718,15 +1755,15 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$GSDebugAllocationListRecordedObjects">GSDebugAllocationListRecordedObjects</a></h3>
-    <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* GSDebugAllocationListRecordedObjects(Class <b>c</b>);<br />
+    NSArray* GSDebugAllocationListRecordedObjects(Class <b>c</b>);<br />
     <p>
       
           Returns an array containing all the allocated objects
           of a certain class which have been recorded. Presumably,
           you will immediately call
-          <a rel="gsdoc" href="NSObject.html#method$NSObject-description">
-            [NSObject&nbsp;-description]
-          </a>
+          
+            [NSObject-description]
+          
 
           on them to find out the objects you are leaking. Warning -
           the objects are put in an array, so until the array is
@@ -1736,7 +1773,7 @@ is exactly the same as    </p>
           recorded... to start the recording, you need to
           invoke
           <a rel="gsdoc" href="#function$GSDebugAllocationActiveRecordingObjects">GSDebugAllocationActiveRecordingObjects()</a>
-. Presumably, you will immediately call <a rel="gsdoc" href="NSObject.html#method$NSObject-description">[NSObject&nbsp;-description]</a>
+. Presumably, you will immediately call [NSObject-description]
  on them to find out the objects you are leaking. The objects are returned in an array, so until the array is autoreleased, the objects are not released.
         
     </p>
@@ -1829,7 +1866,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$GSDebugFunctionMsg">GSDebugFunctionMsg</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* GSDebugFunctionMsg(const char* <b>func</b>, const char* <b>file</b>, int <b>line</b>, <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>fmt</b>);<br />
+    NSString* GSDebugFunctionMsg(const char* <b>func</b>, const char* <b>file</b>, int <b>line</b>, NSString* <b>fmt</b>);<br />
     <p>
       
           Used to produce a format string for logging a message
@@ -1838,7 +1875,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$GSDebugMethodMsg">GSDebugMethodMsg</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* GSDebugMethodMsg(id <b>obj</b>, SEL <b>sel</b>, const char* <b>file</b>, int <b>line</b>, <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>fmt</b>);<br />
+    NSString* GSDebugMethodMsg(id <b>obj</b>, SEL <b>sel</b>, const char* <b>file</b>, int <b>line</b>, NSString* <b>fmt</b>);<br />
     <p>
       
           Used to produce a format string for logging a message
@@ -1885,7 +1922,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$NSDecimalAdd">NSDecimalAdd</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSCalculationError">NSCalculationError</a> NSDecimalAdd(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>left</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>right</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRoundingMode">NSRoundingMode</a> <b>mode</b>);<br />
+    NSCalculationError NSDecimalAdd(NSDecimal* <b>result</b>, const NSDecimal* <b>left</b>, const NSDecimal* <b>right</b>, NSRoundingMode <b>mode</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1893,7 +1930,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalCompact">NSDecimalCompact</a></h3>
-    void NSDecimalCompact(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>number</b>);<br />
+    void NSDecimalCompact(NSDecimal* <b>number</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1901,7 +1938,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalCompare">NSDecimalCompare</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a> NSDecimalCompare(const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>leftOperand</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>rightOperand</b>);<br />
+    NSComparisonResult NSDecimalCompare(const NSDecimal* <b>leftOperand</b>, const NSDecimal* <b>rightOperand</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1909,7 +1946,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalCopy">NSDecimalCopy</a></h3>
-    void NSDecimalCopy(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>destination</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>source</b>);<br />
+    void NSDecimalCopy(NSDecimal* <b>destination</b>, const NSDecimal* <b>source</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1917,7 +1954,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalDivide">NSDecimalDivide</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSCalculationError">NSCalculationError</a> NSDecimalDivide(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>l</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>rr</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRoundingMode">NSRoundingMode</a> <b>mode</b>);<br />
+    NSCalculationError NSDecimalDivide(NSDecimal* <b>result</b>, const NSDecimal* <b>l</b>, const NSDecimal* <b>rr</b>, NSRoundingMode <b>mode</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1925,7 +1962,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalDouble">NSDecimalDouble</a></h3>
-    double NSDecimalDouble(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>number</b>);<br />
+    double NSDecimalDouble(NSDecimal* <b>number</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1933,7 +1970,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalFromComponents">NSDecimalFromComponents</a></h3>
-    void NSDecimalFromComponents(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>, unsigned long long int <b>mantissa</b>, short int <b>exponent</b>, BOOL <b>negative</b>);<br />
+    void NSDecimalFromComponents(NSDecimal* <b>result</b>, unsigned long long int <b>mantissa</b>, short int <b>exponent</b>, BOOL <b>negative</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1941,7 +1978,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalFromString">NSDecimalFromString</a></h3>
-    void NSDecimalFromString(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>, <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>numberValue</b>, <a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>* <b>locale</b>);<br />
+    void NSDecimalFromString(NSDecimal* <b>result</b>, NSString* <b>numberValue</b>, NSDictionary* <b>locale</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1949,7 +1986,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalIsNotANumber">NSDecimalIsNotANumber</a></h3>
-    BOOL NSDecimalIsNotANumber(const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>decimal</b>);<br />
+    BOOL NSDecimalIsNotANumber(const NSDecimal* <b>decimal</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1957,7 +1994,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalMax">NSDecimalMax</a></h3>
-    void NSDecimalMax(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>);<br />
+    void NSDecimalMax(NSDecimal* <b>result</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1965,7 +2002,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalMin">NSDecimalMin</a></h3>
-    void NSDecimalMin(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>);<br />
+    void NSDecimalMin(NSDecimal* <b>result</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1973,7 +2010,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalMultiply">NSDecimalMultiply</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSCalculationError">NSCalculationError</a> NSDecimalMultiply(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>l</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>r</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRoundingMode">NSRoundingMode</a> <b>mode</b>);<br />
+    NSCalculationError NSDecimalMultiply(NSDecimal* <b>result</b>, const NSDecimal* <b>l</b>, const NSDecimal* <b>r</b>, NSRoundingMode <b>mode</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1981,7 +2018,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalMultiplyByPowerOf10">NSDecimalMultiplyByPowerOf10</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSCalculationError">NSCalculationError</a> NSDecimalMultiplyByPowerOf10(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>n</b>, short int <b>power</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRoundingMode">NSRoundingMode</a> <b>mode</b>);<br />
+    NSCalculationError NSDecimalMultiplyByPowerOf10(NSDecimal* <b>result</b>, const NSDecimal* <b>n</b>, short int <b>power</b>, NSRoundingMode <b>mode</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1989,7 +2026,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalNormalize">NSDecimalNormalize</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSCalculationError">NSCalculationError</a> NSDecimalNormalize(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>n1</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>n2</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRoundingMode">NSRoundingMode</a> <b>mode</b>);<br />
+    NSCalculationError NSDecimalNormalize(NSDecimal* <b>n1</b>, NSDecimal* <b>n2</b>, NSRoundingMode <b>mode</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -1997,7 +2034,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalPower">NSDecimalPower</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSCalculationError">NSCalculationError</a> NSDecimalPower(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>n</b>, unsigned int <b>power</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRoundingMode">NSRoundingMode</a> <b>mode</b>);<br />
+    NSCalculationError NSDecimalPower(NSDecimal* <b>result</b>, const NSDecimal* <b>n</b>, unsigned int <b>power</b>, NSRoundingMode <b>mode</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2005,7 +2042,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalRound">NSDecimalRound</a></h3>
-    void NSDecimalRound(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>number</b>, int <b>scale</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRoundingMode">NSRoundingMode</a> <b>mode</b>);<br />
+    void NSDecimalRound(NSDecimal* <b>result</b>, const NSDecimal* <b>number</b>, int <b>scale</b>, NSRoundingMode <b>mode</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2013,7 +2050,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalString">NSDecimalString</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSDecimalString(const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>decimal</b>, <a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>* <b>locale</b>);<br />
+    NSString* NSDecimalString(const NSDecimal* <b>decimal</b>, NSDictionary* <b>locale</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2021,7 +2058,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecimalSubtract">NSDecimalSubtract</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSCalculationError">NSCalculationError</a> NSDecimalSubtract(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>result</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>left</b>, const <a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>right</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRoundingMode">NSRoundingMode</a> <b>mode</b>);<br />
+    NSCalculationError NSDecimalSubtract(NSDecimal* <b>result</b>, const NSDecimal* <b>left</b>, const NSDecimal* <b>right</b>, NSRoundingMode <b>mode</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2033,7 +2070,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$NSUncaughtExceptionHandler">NSUncaughtExceptionHandler</a></h3>
-    void NSUncaughtExceptionHandler(<a rel="gsdoc" href="NSException.html#class$NSException">NSException</a>* <b>exception</b>);<br />
+    void NSUncaughtExceptionHandler(NSException* <b>exception</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2041,7 +2078,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$_NSAddHandler">_NSAddHandler</a></h3>
-    void _NSAddHandler(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHandler">NSHandler</a>* <b>handler</b>);<br />
+    void _NSAddHandler(NSHandler* <b>handler</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2049,7 +2086,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$_NSRemoveHandler">_NSRemoveHandler</a></h3>
-    void _NSRemoveHandler(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHandler">NSHandler</a>* <b>handler</b>);<br />
+    void _NSRemoveHandler(NSHandler* <b>handler</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2061,7 +2098,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$NSContainsRect">NSContainsRect</a></h3>
-    BOOL NSContainsRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>bRect</b>);<br />
+    BOOL NSContainsRect(NSRect <b>aRect</b>, NSRect <b>bRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2069,7 +2106,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDivideRect">NSDivideRect</a></h3>
-    void NSDivideRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a>* <b>slice</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a>* <b>remainder</b>, float <b>amount</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRectEdge">NSRectEdge</a> <b>edge</b>);<br />
+    void NSDivideRect(NSRect <b>aRect</b>, NSRect* <b>slice</b>, NSRect* <b>remainder</b>, float <b>amount</b>, NSRectEdge <b>edge</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2077,7 +2114,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSEqualPoints">NSEqualPoints</a></h3>
-    BOOL NSEqualPoints(<a rel="gsdoc" href="TypesAndConstants.html#type$NSPoint">NSPoint</a> <b>aPoint</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSPoint">NSPoint</a> <b>bPoint</b>);<br />
+    BOOL NSEqualPoints(NSPoint <b>aPoint</b>, NSPoint <b>bPoint</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2085,7 +2122,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSEqualRects">NSEqualRects</a></h3>
-    BOOL NSEqualRects(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>bRect</b>);<br />
+    BOOL NSEqualRects(NSRect <b>aRect</b>, NSRect <b>bRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2093,7 +2130,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSEqualSizes">NSEqualSizes</a></h3>
-    BOOL NSEqualSizes(<a rel="gsdoc" href="TypesAndConstants.html#type$NSSize">NSSize</a> <b>aSize</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSSize">NSSize</a> <b>bSize</b>);<br />
+    BOOL NSEqualSizes(NSSize <b>aSize</b>, NSSize <b>bSize</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2101,7 +2138,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSHeight">NSHeight</a></h3>
-    float NSHeight(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    float NSHeight(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2109,7 +2146,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSInsetRect">NSInsetRect</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> NSInsetRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>, float <b>dX</b>, float <b>dY</b>);<br />
+    NSRect NSInsetRect(NSRect <b>aRect</b>, float <b>dX</b>, float <b>dY</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2117,7 +2154,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSIntegralRect">NSIntegralRect</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> NSIntegralRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    NSRect NSIntegralRect(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2125,7 +2162,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSIntersectionRect">NSIntersectionRect</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> NSIntersectionRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>bRect</b>);<br />
+    NSRect NSIntersectionRect(NSRect <b>aRect</b>, NSRect <b>bRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2133,7 +2170,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSIntersectsRect">NSIntersectsRect</a></h3>
-    BOOL NSIntersectsRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>bRect</b>);<br />
+    BOOL NSIntersectsRect(NSRect <b>aRect</b>, NSRect <b>bRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2141,7 +2178,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSIsEmptyRect">NSIsEmptyRect</a></h3>
-    BOOL NSIsEmptyRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    BOOL NSIsEmptyRect(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2149,7 +2186,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMakePoint">NSMakePoint</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSPoint">NSPoint</a> NSMakePoint(float <b>x</b>, float <b>y</b>);<br />
+    NSPoint NSMakePoint(float <b>x</b>, float <b>y</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2157,7 +2194,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMakeRect">NSMakeRect</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> NSMakeRect(float <b>x</b>, float <b>y</b>, float <b>w</b>, float <b>h</b>);<br />
+    NSRect NSMakeRect(float <b>x</b>, float <b>y</b>, float <b>w</b>, float <b>h</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2165,7 +2202,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMakeSize">NSMakeSize</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSSize">NSSize</a> NSMakeSize(float <b>w</b>, float <b>h</b>);<br />
+    NSSize NSMakeSize(float <b>w</b>, float <b>h</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2173,7 +2210,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMaxX">NSMaxX</a></h3>
-    float NSMaxX(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    float NSMaxX(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2181,7 +2218,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMaxY">NSMaxY</a></h3>
-    float NSMaxY(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    float NSMaxY(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2189,7 +2226,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMidX">NSMidX</a></h3>
-    float NSMidX(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    float NSMidX(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2197,7 +2234,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMidY">NSMidY</a></h3>
-    float NSMidY(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    float NSMidY(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2205,7 +2242,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMinX">NSMinX</a></h3>
-    float NSMinX(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    float NSMinX(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2213,7 +2250,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMinY">NSMinY</a></h3>
-    float NSMinY(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    float NSMinY(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2221,7 +2258,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMouseInRect">NSMouseInRect</a></h3>
-    BOOL NSMouseInRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSPoint">NSPoint</a> <b>aPoint</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>, BOOL <b>flipped</b>);<br />
+    BOOL NSMouseInRect(NSPoint <b>aPoint</b>, NSRect <b>aRect</b>, BOOL <b>flipped</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2229,7 +2266,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSOffsetRect">NSOffsetRect</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> NSOffsetRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>, float <b>dx</b>, float <b>dy</b>);<br />
+    NSRect NSOffsetRect(NSRect <b>aRect</b>, float <b>dx</b>, float <b>dy</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2237,7 +2274,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSPointFromString">NSPointFromString</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSPoint">NSPoint</a> NSPointFromString(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>string</b>);<br />
+    NSPoint NSPointFromString(NSString* <b>string</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2245,7 +2282,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSPointInRect">NSPointInRect</a></h3>
-    BOOL NSPointInRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSPoint">NSPoint</a> <b>aPoint</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    BOOL NSPointInRect(NSPoint <b>aPoint</b>, NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2253,7 +2290,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSRectFromString">NSRectFromString</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> NSRectFromString(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>string</b>);<br />
+    NSRect NSRectFromString(NSString* <b>string</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2261,7 +2298,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSSizeFromString">NSSizeFromString</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSSize">NSSize</a> NSSizeFromString(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>string</b>);<br />
+    NSSize NSSizeFromString(NSString* <b>string</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2269,7 +2306,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStringFromPoint">NSStringFromPoint</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSStringFromPoint(<a rel="gsdoc" href="TypesAndConstants.html#type$NSPoint">NSPoint</a> <b>aPoint</b>);<br />
+    NSString* NSStringFromPoint(NSPoint <b>aPoint</b>);<br />
     <p>
       
           Get a String Representation...
@@ -2277,7 +2314,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStringFromRect">NSStringFromRect</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSStringFromRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    NSString* NSStringFromRect(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2285,7 +2322,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStringFromSize">NSStringFromSize</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSStringFromSize(<a rel="gsdoc" href="TypesAndConstants.html#type$NSSize">NSSize</a> <b>aSize</b>);<br />
+    NSString* NSStringFromSize(NSSize <b>aSize</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2293,7 +2330,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSUnionRect">NSUnionRect</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> NSUnionRect(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>bRect</b>);<br />
+    NSRect NSUnionRect(NSRect <b>aRect</b>, NSRect <b>bRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2301,7 +2338,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSWidth">NSWidth</a></h3>
-    float NSWidth(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRect">NSRect</a> <b>aRect</b>);<br />
+    float NSWidth(NSRect <b>aRect</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2313,7 +2350,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$NSAllHashTableObjects">NSAllHashTableObjects</a></h3>
-    <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* NSAllHashTableObjects(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>);<br />
+    NSArray* NSAllHashTableObjects(NSHashTable* <b>table</b>);<br />
     <p>
       
           Returns an array of all the objects in the
@@ -2323,7 +2360,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCompareHashTables">NSCompareHashTables</a></h3>
-    BOOL NSCompareHashTables(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table1</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table2</b>);<br />
+    BOOL NSCompareHashTables(NSHashTable* <b>table1</b>, NSHashTable* <b>table2</b>);<br />
     <p>
       
           Compares the two hash tables for equality. If the
@@ -2337,7 +2374,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCopyHashTableWithZone">NSCopyHashTableWithZone</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* NSCopyHashTableWithZone(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    NSHashTable* NSCopyHashTableWithZone(NSHashTable* <b>table</b>, NSZone* <b>zone</b>);<br />
     <p>
       
           Copy the supplied map <var>table</var> creating the new
@@ -2346,7 +2383,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCountHashTable">NSCountHashTable</a></h3>
-    unsigned int NSCountHashTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>);<br />
+    unsigned int NSCountHashTable(NSHashTable* <b>table</b>);<br />
     <p>
       
           Returns the number of objects in the <var>table</var>
@@ -2355,7 +2392,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCreateHashTable">NSCreateHashTable</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* NSCreateHashTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTableCallBacks">NSHashTableCallBacks</a> <b>callBacks</b>, unsigned int <b>capacity</b>);<br />
+    NSHashTable* NSCreateHashTable(NSHashTableCallBacks <b>callBacks</b>, unsigned int <b>capacity</b>);<br />
     <p>
       
           Create a new hash table by calling
@@ -2375,7 +2412,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCreateHashTableWithZone">NSCreateHashTableWithZone</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* NSCreateHashTableWithZone(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTableCallBacks">NSHashTableCallBacks</a> <b>callBacks</b>, unsigned int <b>capacity</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    NSHashTable* NSCreateHashTableWithZone(NSHashTableCallBacks <b>callBacks</b>, unsigned int <b>capacity</b>, NSZone* <b>zone</b>);<br />
     <p>
       
           Create a new hash table using the supplied callbacks
@@ -2388,7 +2425,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSEndHashTableEnumeration">NSEndHashTableEnumeration</a></h3>
-    void NSEndHashTableEnumeration(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashEnumerator">NSHashEnumerator</a>* <b>enumerator</b>);<br />
+    void NSEndHashTableEnumeration(NSHashEnumerator* <b>enumerator</b>);<br />
     <p>
       
           Function to be called when finished with the
@@ -2398,7 +2435,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSEnumerateHashTable">NSEnumerateHashTable</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSHashEnumerator">NSHashEnumerator</a> NSEnumerateHashTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>);<br />
+    NSHashEnumerator NSEnumerateHashTable(NSHashTable* <b>table</b>);<br />
     <p>
       
           Return an enumerator for stepping through a map
@@ -2412,7 +2449,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSFreeHashTable">NSFreeHashTable</a></h3>
-    void NSFreeHashTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>);<br />
+    void NSFreeHashTable(NSHashTable* <b>table</b>);<br />
     <p>
       
           Releases all the keys and values of <var>table</var>
@@ -2423,7 +2460,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSHashGet">NSHashGet</a></h3>
-    void* NSHashGet(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>, const void* <b>element</b>);<br />
+    void* NSHashGet(NSHashTable* <b>table</b>, const void* <b>element</b>);<br />
     <p>
       
           Returns the value for the specified
@@ -2434,7 +2471,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSHashInsert">NSHashInsert</a></h3>
-    void NSHashInsert(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>, const void* <b>element</b>);<br />
+    void NSHashInsert(NSHashTable* <b>table</b>, const void* <b>element</b>);<br />
     <p>
       
           Adds the <var>element</var> to <var>table</var>. <br />
@@ -2446,7 +2483,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSHashInsertIfAbsent">NSHashInsertIfAbsent</a></h3>
-    void* NSHashInsertIfAbsent(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>, const void* <b>element</b>);<br />
+    void* NSHashInsertIfAbsent(NSHashTable* <b>table</b>, const void* <b>element</b>);<br />
     <p>
       
           Adds the <var>element</var> to <var>table</var> and
@@ -2459,7 +2496,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSHashInsertKnownAbsent">NSHashInsertKnownAbsent</a></h3>
-    void NSHashInsertKnownAbsent(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>, const void* <b>element</b>);<br />
+    void NSHashInsertKnownAbsent(NSHashTable* <b>table</b>, const void* <b>element</b>);<br />
     <p>
       
           Adds the <var>element</var> to <var>table</var> and
@@ -2471,7 +2508,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSHashRemove">NSHashRemove</a></h3>
-    void NSHashRemove(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>, const void* <b>element</b>);<br />
+    void NSHashRemove(NSHashTable* <b>table</b>, const void* <b>element</b>);<br />
     <p>
       
           Remove the specified <var>element</var> from the
@@ -2480,7 +2517,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSNextHashEnumeratorItem">NSNextHashEnumeratorItem</a></h3>
-    void* NSNextHashEnumeratorItem(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashEnumerator">NSHashEnumerator</a>* <b>enumerator</b>);<br />
+    void* NSNextHashEnumeratorItem(NSHashEnumerator* <b>enumerator</b>);<br />
     <p>
       
           Step through the hash table... return the next item or
@@ -2489,7 +2526,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSResetHashTable">NSResetHashTable</a></h3>
-    void NSResetHashTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>);<br />
+    void NSResetHashTable(NSHashTable* <b>table</b>);<br />
     <p>
       
           Empty the hash <var>table</var> (releasing all
@@ -2498,7 +2535,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStringFromHashTable">NSStringFromHashTable</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSStringFromHashTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSHashTable">NSHashTable</a>* <b>table</b>);<br />
+    NSString* NSStringFromHashTable(NSHashTable* <b>table</b>);<br />
     <p>
       
           Returns a string describing the <var>table</var>
@@ -2514,7 +2551,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$NSAllMapTableKeys">NSAllMapTableKeys</a></h3>
-    <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* NSAllMapTableKeys(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>);<br />
+    NSArray* NSAllMapTableKeys(NSMapTable* <b>table</b>);<br />
     <p>
       
           Returns an array of all the keys in the
@@ -2524,7 +2561,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSAllMapTableValues">NSAllMapTableValues</a></h3>
-    <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* NSAllMapTableValues(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>);<br />
+    NSArray* NSAllMapTableValues(NSMapTable* <b>table</b>);<br />
     <p>
       
           Returns an array of all the values in the
@@ -2534,7 +2571,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCompareMapTables">NSCompareMapTables</a></h3>
-    BOOL NSCompareMapTables(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table1</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table2</b>);<br />
+    BOOL NSCompareMapTables(NSMapTable* <b>table1</b>, NSMapTable* <b>table2</b>);<br />
     <p>
       
           Compares the two map tables for equality. If the
@@ -2549,7 +2586,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCopyMapTableWithZone">NSCopyMapTableWithZone</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* NSCopyMapTableWithZone(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    NSMapTable* NSCopyMapTableWithZone(NSMapTable* <b>table</b>, NSZone* <b>zone</b>);<br />
     <p>
       
           Copy the supplied map <var>table</var>. <br /> Returns a
@@ -2566,7 +2603,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCountMapTable">NSCountMapTable</a></h3>
-    unsigned int NSCountMapTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>);<br />
+    unsigned int NSCountMapTable(NSMapTable* <b>table</b>);<br />
     <p>
       
           Returns the number of key/value pairs in the
@@ -2575,7 +2612,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCreateMapTable">NSCreateMapTable</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* NSCreateMapTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTableKeyCallBacks">NSMapTableKeyCallBacks</a> <b>keyCallBacks</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTableValueCallBacks">NSMapTableValueCallBacks</a> <b>valueCallBacks</b>, unsigned int <b>capacity</b>);<br />
+    NSMapTable* NSCreateMapTable(NSMapTableKeyCallBacks <b>keyCallBacks</b>, NSMapTableValueCallBacks <b>valueCallBacks</b>, unsigned int <b>capacity</b>);<br />
     <p>
       
           Create a new map table by calling
@@ -2596,7 +2633,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCreateMapTableWithZone">NSCreateMapTableWithZone</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* NSCreateMapTableWithZone(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTableKeyCallBacks">NSMapTableKeyCallBacks</a> <b>keyCallBacks</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTableValueCallBacks">NSMapTableValueCallBacks</a> <b>valueCallBacks</b>, unsigned int <b>capacity</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    NSMapTable* NSCreateMapTableWithZone(NSMapTableKeyCallBacks <b>keyCallBacks</b>, NSMapTableValueCallBacks <b>valueCallBacks</b>, unsigned int <b>capacity</b>, NSZone* <b>zone</b>);<br />
     <p>
       
           Create a new map table using the supplied callbacks
@@ -2616,7 +2653,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSEndMapTableEnumeration">NSEndMapTableEnumeration</a></h3>
-    void NSEndMapTableEnumeration(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapEnumerator">NSMapEnumerator</a>* <b>enumerator</b>);<br />
+    void NSEndMapTableEnumeration(NSMapEnumerator* <b>enumerator</b>);<br />
     <p>
       
           Function to be called when finished with the
@@ -2626,7 +2663,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSEnumerateMapTable">NSEnumerateMapTable</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSMapEnumerator">NSMapEnumerator</a> NSEnumerateMapTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>);<br />
+    NSMapEnumerator NSEnumerateMapTable(NSMapTable* <b>table</b>);<br />
     <p>
       
           Return an enumerator for stepping through a map
@@ -2640,7 +2677,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSFreeMapTable">NSFreeMapTable</a></h3>
-    void NSFreeMapTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>);<br />
+    void NSFreeMapTable(NSMapTable* <b>table</b>);<br />
     <p>
       
           Destroy the map <var>table</var> and relase its
@@ -2653,7 +2690,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMapGet">NSMapGet</a></h3>
-    void* NSMapGet(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>, const void* <b>key</b>);<br />
+    void* NSMapGet(NSMapTable* <b>table</b>, const void* <b>key</b>);<br />
     <p>
       
           Returns the value for the specified <var>key</var>,
@@ -2663,7 +2700,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMapInsert">NSMapInsert</a></h3>
-    void NSMapInsert(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>, const void* <b>key</b>, const void* <b>value</b>);<br />
+    void NSMapInsert(NSMapTable* <b>table</b>, const void* <b>key</b>, const void* <b>value</b>);<br />
     <p>
       
           Adds the <var>key</var> and <var>value</var> to
@@ -2678,7 +2715,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMapInsertIfAbsent">NSMapInsertIfAbsent</a></h3>
-    void* NSMapInsertIfAbsent(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>, const void* <b>key</b>, const void* <b>value</b>);<br />
+    void* NSMapInsertIfAbsent(NSMapTable* <b>table</b>, const void* <b>key</b>, const void* <b>value</b>);<br />
     <p>
       
           Adds the <var>key</var> and <var>value</var> to
@@ -2693,7 +2730,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMapInsertKnownAbsent">NSMapInsertKnownAbsent</a></h3>
-    void NSMapInsertKnownAbsent(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>, const void* <b>key</b>, const void* <b>value</b>);<br />
+    void NSMapInsertKnownAbsent(NSMapTable* <b>table</b>, const void* <b>key</b>, const void* <b>value</b>);<br />
     <p>
       
           Adds the <var>key</var> and <var>value</var> to
@@ -2707,7 +2744,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMapMember">NSMapMember</a></h3>
-    BOOL NSMapMember(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>, const void* <b>key</b>, void** <b>originalKey</b>, void** <b>value</b>);<br />
+    BOOL NSMapMember(NSMapTable* <b>table</b>, const void* <b>key</b>, void** <b>originalKey</b>, void** <b>value</b>);<br />
     <p>
       
           Returns a flag to say whether the <var>table</var>
@@ -2721,7 +2758,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMapRemove">NSMapRemove</a></h3>
-    void NSMapRemove(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>, const void* <b>key</b>);<br />
+    void NSMapRemove(NSMapTable* <b>table</b>, const void* <b>key</b>);<br />
     <p>
       
           Remove the specified <var>key</var> from the
@@ -2731,7 +2768,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSNextMapEnumeratorPair">NSNextMapEnumeratorPair</a></h3>
-    BOOL NSNextMapEnumeratorPair(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapEnumerator">NSMapEnumerator</a>* <b>enumerator</b>, void** <b>key</b>, void** <b>value</b>);<br />
+    BOOL NSNextMapEnumeratorPair(NSMapEnumerator* <b>enumerator</b>, void** <b>key</b>, void** <b>value</b>);<br />
     <p>
       
           Step through the map table... return the next key-value
@@ -2756,7 +2793,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSResetMapTable">NSResetMapTable</a></h3>
-    void NSResetMapTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>);<br />
+    void NSResetMapTable(NSMapTable* <b>table</b>);<br />
     <p>
       
           Empty the map <var>table</var> (releasing every key and
@@ -2765,7 +2802,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStringFromMapTable">NSStringFromMapTable</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSStringFromMapTable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSMapTable">NSMapTable</a>* <b>table</b>);<br />
+    NSString* NSStringFromMapTable(NSMapTable* <b>table</b>);<br />
     <p>
       
           Returns a string describing the <var>table</var>
@@ -2809,7 +2846,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$GSLogLock">GSLogLock</a></h3>
-    <a rel="gsdoc" href="NSLock.html#class$NSRecursiveLock">NSRecursiveLock</a>* GSLogLock();<br />
+    NSRecursiveLock* GSLogLock();<br />
     <p>
       
           Returns the lock used to protect the GNUstep
@@ -2819,20 +2856,20 @@ is exactly the same as    </p>
 
           implementation. Use this to protect changes
           to
-          <a rel="gsdoc" href="TypesAndConstants.html#variable$_NSLogDescriptor">
+          
             _NSLogDescriptor
-          </a>
+          
 
           and
-          <a rel="gsdoc" href="TypesAndConstants.html#variable$_NSLog_printf_handler">
+          
             _NSLog_printf_handler
-          </a>
+          
 
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSClassFromString">NSClassFromString</a></h3>
-    Class NSClassFromString(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>aClassName</b>);<br />
+    Class NSClassFromString(NSString* <b>aClassName</b>);<br />
     <p>
       
           Returns the class whose name is supplied in the
@@ -2858,7 +2895,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSLog">NSLog</a></h3>
-    void NSLog(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>format</b><b>,...</b>);<br />
+    void NSLog(NSString* <b>format</b><b>,...</b>);<br />
     <p>
       
           
@@ -2917,7 +2954,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSLog_printf_handler">NSLog_printf_handler</a></h3>
-    void NSLog_printf_handler(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>message</b>);<br />
+    void NSLog_printf_handler(NSString* <b>message</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -2925,7 +2962,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSLogv">NSLogv</a></h3>
-    void NSLogv(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>format</b>, va_list <b>args</b>);<br />
+    void NSLogv(NSString* <b>format</b>, va_list <b>args</b>);<br />
     <p>
       
           The core logging function...
@@ -2951,9 +2988,9 @@ is exactly the same as    </p>
             logging is thread-safe. However, the actual
             creation of the message written is only as safe as
             the
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-description">
-              [NSObject&nbsp;-description]
-            </a>
+            
+              [NSObject-description]
+            
 
             methods of the arguments you supply.
               </p>
@@ -2964,9 +3001,9 @@ is exactly the same as    </p>
     <p>
 
             The function to write the data is pointed to by
-            <a rel="gsdoc" href="TypesAndConstants.html#variable$_NSLog_printf_handler">
+            
               _NSLog_printf_handler
-            </a>
+            
 
               </p>
     <p>
@@ -2975,7 +3012,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSSelectorFromString">NSSelectorFromString</a></h3>
-    SEL NSSelectorFromString(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>aSelectorName</b>);<br />
+    SEL NSSelectorFromString(NSString* <b>aSelectorName</b>);<br />
     <p>
       
           Returns a selector for the method whose name is
@@ -2985,11 +3022,11 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStringFromClass">NSStringFromClass</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSStringFromClass(Class <b>aClass</b>);<br />
+    NSString* NSStringFromClass(Class <b>aClass</b>);<br />
     <p>
       
           Returns an
-          <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>
+          NSString
 
             object containing the class name for
             <var>aClass</var>. If <var>aClass</var> is 0, returns
@@ -2998,7 +3035,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStringFromSelector">NSStringFromSelector</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSStringFromSelector(SEL <b>aSelector</b>);<br />
+    NSString* NSStringFromSelector(SEL <b>aSelector</b>);<br />
     <p>
       
           Returns a string object containing the method name
@@ -3012,7 +3049,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$NSAllocateObject">NSAllocateObject</a></h3>
-    <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>* NSAllocateObject(Class <b>aClass</b>, unsigned int <b>extraBytes</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    NSObject* NSAllocateObject(Class <b>aClass</b>, unsigned int <b>extraBytes</b>, NSZone* <b>zone</b>);<br />
     <p>
       
           Used to allocate memory to hold an object, and
@@ -3021,16 +3058,16 @@ is exactly the same as    </p>
           <var>extraBytes</var> larger than the space actually
           needed to hold the instance variables of the object.
           <br /> This function is used by the
-          <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone:">
-            [NSObject&nbsp;+allocWithZone:]
-          </a>
+          
+            [NSObject+allocWithZone:]
+          
 
           mnethod.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCopyObject">NSCopyObject</a></h3>
-    <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>* NSCopyObject(<a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>* <b>anObject</b>, unsigned int <b>extraBytes</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    NSObject* NSCopyObject(NSObject* <b>anObject</b>, unsigned int <b>extraBytes</b>, NSZone* <b>zone</b>);<br />
     <p>
       
           Used to copy <var>anObject</var>. This makes a bitwise
@@ -3040,23 +3077,23 @@ is exactly the same as    </p>
           actually store the instance variables of the copied
           object. <br /> This is used by the NSObject
           implementation of the
-          <a rel="gsdoc" href="NSObject.html#method$(NSCopying)-copyWithZone:">
+          
             [&lt;NSCopying&gt;-copyWithZone:]
-          </a>
+          
 
           method.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDeallocateObject">NSDeallocateObject</a></h3>
-    void NSDeallocateObject(<a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>* <b>anObject</b>);<br />
+    void NSDeallocateObject(NSObject* <b>anObject</b>);<br />
     <p>
       
           Used to release the memory used by an object. <br />
           This function is used by the
-          <a rel="gsdoc" href="NSObject.html#method$NSObject-dealloc">
-            [NSObject&nbsp;-dealloc]
-          </a>
+          
+            [NSObject-dealloc]
+          
 
           mnethod.
         
@@ -3072,9 +3109,9 @@ is exactly the same as    </p>
           the count was zero (and hence whether the extra refrence
           count was decremented). <br /> This function is used by
           the
-          <a rel="gsdoc" href="NSObject.html#method$NSObject-release">
-            [NSObject&nbsp;-release]
-          </a>
+          
+            [NSObject-release]
+          
 
           method.
         
@@ -3099,16 +3136,16 @@ is exactly the same as    </p>
           <var>anObject</var>. <br /> The GNUstep version raises
           an exception if the reference count would be incremented
           to too large a value. <br /> This is used by the
-          <a rel="gsdoc" href="NSObject.html#method$NSObject-retain">
-            [NSObject&nbsp;-retain]
-          </a>
+          
+            [NSObject-retain]
+          
 
           method.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSShouldRetainWithZone">NSShouldRetainWithZone</a></h3>
-    BOOL NSShouldRetainWithZone(<a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>* <b>anObject</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>requestedZone</b>);<br />
+    BOOL NSShouldRetainWithZone(NSObject* <b>anObject</b>, NSZone* <b>requestedZone</b>);<br />
     <p>
       
           Returns a flag to indicate whether
@@ -3126,7 +3163,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$GSDefaultsRootForUser">GSDefaultsRootForUser</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* GSDefaultsRootForUser(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>userName</b>);<br />
+    NSString* GSDefaultsRootForUser(NSString* <b>userName</b>);<br />
     <p>
       
           Return the path of the defaults directory for name.
@@ -3137,7 +3174,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$GSSetUserName">GSSetUserName</a></h3>
-    void GSSetUserName(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>name</b>);<br />
+    void GSSetUserName(NSString* <b>name</b>);<br />
     <p>
       
           This extension permits a change of username from that
@@ -3153,14 +3190,14 @@ is exactly the same as    </p>
           process. This method is supplied to enable setuid
           programs to run properly as the user indicated by
           their effective user Id. <br /> This function calls
-          <a rel="gsdoc" href="NSUserDefaults.html#method$NSUserDefaults+resetStandardUserDefaults">[NSUserDefaults&nbsp;+resetStandardUserDefaults]</a>
+          [NSUserDefaults+resetStandardUserDefaults]
  as well as changing the value returned by <a rel="gsdoc" href="#function$NSUserName">NSUserName()</a>
  and modifying the user root directory for the process.
         
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$GSStandardPathPrefixes">GSStandardPathPrefixes</a></h3>
-    <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* GSStandardPathPrefixes();<br />
+    NSArray* GSStandardPathPrefixes();<br />
     <p>
       
           Returns an array of strings which contain paths that
@@ -3176,7 +3213,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$GSSystemRootDirectory">GSSystemRootDirectory</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* GSSystemRootDirectory();<br />
+    NSString* GSSystemRootDirectory();<br />
     <p>
       
           Returns a string containing the path to the GNUstep
@@ -3188,7 +3225,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSFullUserName">NSFullUserName</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSFullUserName();<br />
+    NSString* NSFullUserName();<br />
     <p>
       
           Returns the full username of the current user. If
@@ -3198,7 +3235,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSHomeDirectory">NSHomeDirectory</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSHomeDirectory();<br />
+    NSString* NSHomeDirectory();<br />
     <p>
       
           Return the caller&apos;s home directory as an NSString
@@ -3212,7 +3249,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSHomeDirectoryForUser">NSHomeDirectoryForUser</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSHomeDirectoryForUser(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>loginName</b>);<br />
+    NSString* NSHomeDirectoryForUser(NSString* <b>loginName</b>);<br />
     <p>
       
           Returns loginName&apos;s home directory as an NSString
@@ -3221,7 +3258,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSOpenStepRootDirectory">NSOpenStepRootDirectory</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSOpenStepRootDirectory();<br />
+    NSString* NSOpenStepRootDirectory();<br />
     <p>
       
           Returns the root directory for the OpenStep (GNUstep)
@@ -3231,7 +3268,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSSearchPathForDirectoriesInDomains">NSSearchPathForDirectoriesInDomains</a></h3>
-    <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* NSSearchPathForDirectoriesInDomains(<a rel="gsdoc" href="TypesAndConstants.html#type$NSSearchPathDirectory">NSSearchPathDirectory</a> <b>directoryKey</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSSearchPathDomainMask">NSSearchPathDomainMask</a> <b>domainMask</b>, BOOL <b>expandTilde</b>);<br />
+    NSArray* NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory <b>directoryKey</b>, NSSearchPathDomainMask <b>domainMask</b>, BOOL <b>expandTilde</b>);<br />
     <p>
       
           Returns an array of search paths to look at for
@@ -3240,7 +3277,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStandardApplicationPaths">NSStandardApplicationPaths</a></h3>
-    <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* NSStandardApplicationPaths();<br />
+    NSArray* NSStandardApplicationPaths();<br />
     <p>
       
           Returns the standard paths in which applications are
@@ -3251,7 +3288,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStandardLibraryPaths">NSStandardLibraryPaths</a></h3>
-    <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* NSStandardLibraryPaths();<br />
+    NSArray* NSStandardLibraryPaths();<br />
     <p>
       
           Returns the standard paths in which libraries are
@@ -3262,7 +3299,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSTemporaryDirectory">NSTemporaryDirectory</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSTemporaryDirectory();<br />
+    NSString* NSTemporaryDirectory();<br />
     <p>
       
           Returns the name of a directory in which temporary
@@ -3274,7 +3311,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSUserName">NSUserName</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSUserName();<br />
+    NSString* NSUserName();<br />
     <p>
       
           Return the caller&apos;s login name as an NSString object.
@@ -3290,7 +3327,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$GSDebugSet">GSDebugSet</a></h3>
-    BOOL GSDebugSet(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>level</b>);<br />
+    BOOL GSDebugSet(NSString* <b>level</b>);<br />
     <p>
       
           Function for rapid testing to see if a debug
@@ -3307,7 +3344,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$NSEqualRanges">NSEqualRanges</a></h3>
-    BOOL NSEqualRanges(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> <b>range1</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> <b>range2</b>);<br />
+    BOOL NSEqualRanges(NSRange <b>range1</b>, NSRange <b>range2</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3315,7 +3352,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSIntersectionRange">NSIntersectionRange</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> NSIntersectionRange(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> <b>aRange</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> <b>bRange</b>);<br />
+    NSRange NSIntersectionRange(NSRange <b>aRange</b>, NSRange <b>bRange</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3323,7 +3360,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSLocationInRange">NSLocationInRange</a></h3>
-    BOOL NSLocationInRange(unsigned int <b>location</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> <b>range</b>);<br />
+    BOOL NSLocationInRange(unsigned int <b>location</b>, NSRange <b>range</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3331,7 +3368,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMakeRange">NSMakeRange</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> NSMakeRange(unsigned int <b>location</b>, unsigned int <b>length</b>);<br />
+    NSRange NSMakeRange(unsigned int <b>location</b>, unsigned int <b>length</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3339,7 +3376,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSMaxRange">NSMaxRange</a></h3>
-    unsigned int NSMaxRange(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> <b>range</b>);<br />
+    unsigned int NSMaxRange(NSRange <b>range</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3347,7 +3384,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSRangeFromString">NSRangeFromString</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> NSRangeFromString(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>aString</b>);<br />
+    NSRange NSRangeFromString(NSString* <b>aString</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3355,7 +3392,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSStringFromRange">NSStringFromRange</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSStringFromRange(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> <b>range</b>);<br />
+    NSString* NSStringFromRange(NSRange <b>range</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3363,7 +3400,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSUnionRange">NSUnionRange</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> NSUnionRange(<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> <b>aRange</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a> <b>bRange</b>);<br />
+    NSRange NSUnionRange(NSRange <b>aRange</b>, NSRange <b>bRange</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3412,9 +3449,9 @@ is exactly the same as    </p>
       
           This function <em>uniques</em> the supplied argument,
           returning the result. It works by using the
-          <a rel="gsdoc" href="NSSet.html#method$NSCountedSet-unique:">
+          
             [-unique:]
-          </a>
+          
 
           method of a global NSCountedSet object. It handles
           locking as necessary. If uniquing is turned off, it
@@ -3443,7 +3480,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$GSCurrentThread">GSCurrentThread</a></h3>
-    <a rel="gsdoc" href="NSThread.html#class$NSThread">NSThread</a>* GSCurrentThread();<br />
+    NSThread* GSCurrentThread();<br />
     <p>
       
           
@@ -3473,7 +3510,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$GSCurrentThreadDictionary">GSCurrentThreadDictionary</a></h3>
-    <a rel="gsdoc" href="NSDictionary.html#class$NSMutableDictionary">NSMutableDictionary</a>* GSCurrentThreadDictionary();<br />
+    NSMutableDictionary* GSCurrentThreadDictionary();<br />
     <p>
       
           Fast access function for thread dictionary of current
@@ -3553,7 +3590,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$GSNumberInfoFromObject">GSNumberInfoFromObject</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$GSNumberInfo">GSNumberInfo</a>* GSNumberInfoFromObject(<a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>* <b>o</b>);<br />
+    GSNumberInfo* GSNumberInfoFromObject(NSNumber* <b>o</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3573,7 +3610,7 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="function$GSAtomicMallocZone">GSAtomicMallocZone</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* GSAtomicMallocZone();<br />
+    NSZone* GSAtomicMallocZone();<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3609,7 +3646,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSCreateZone">NSCreateZone</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* NSCreateZone(size_t <b>start</b>, size_t <b>gran</b>, BOOL <b>canFree</b>);<br />
+    NSZone* NSCreateZone(size_t <b>start</b>, size_t <b>gran</b>, BOOL <b>canFree</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3631,7 +3668,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDefaultMallocZone">NSDefaultMallocZone</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* NSDefaultMallocZone();<br />
+    NSZone* NSDefaultMallocZone();<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3665,7 +3702,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSRecycleZone">NSRecycleZone</a></h3>
-    void NSRecycleZone(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    void NSRecycleZone(NSZone* <b>zone</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3691,7 +3728,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSSetZoneName">NSSetZoneName</a></h3>
-    void NSSetZoneName(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>, <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>name</b>);<br />
+    void NSSetZoneName(NSZone* <b>zone</b>, NSString* <b>name</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3699,7 +3736,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSZoneCalloc">NSZoneCalloc</a></h3>
-    void* NSZoneCalloc(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>, size_t <b>elems</b>, size_t <b>bytes</b>);<br />
+    void* NSZoneCalloc(NSZone* <b>zone</b>, size_t <b>elems</b>, size_t <b>bytes</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3707,7 +3744,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSZoneCheck">NSZoneCheck</a></h3>
-    BOOL NSZoneCheck(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    BOOL NSZoneCheck(NSZone* <b>zone</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3715,7 +3752,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSZoneFree">NSZoneFree</a></h3>
-    void NSZoneFree(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>, void* <b>ptr</b>);<br />
+    void NSZoneFree(NSZone* <b>zone</b>, void* <b>ptr</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3723,7 +3760,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSZoneFromPointer">NSZoneFromPointer</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* NSZoneFromPointer(void* <b>ptr</b>);<br />
+    NSZone* NSZoneFromPointer(void* <b>ptr</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3731,7 +3768,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSZoneMalloc">NSZoneMalloc</a></h3>
-    void* NSZoneMalloc(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>, size_t <b>size</b>);<br />
+    void* NSZoneMalloc(NSZone* <b>zone</b>, size_t <b>size</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3739,7 +3776,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSZoneMallocAtomic">NSZoneMallocAtomic</a></h3>
-    void* NSZoneMallocAtomic(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>, size_t <b>size</b>);<br />
+    void* NSZoneMallocAtomic(NSZone* <b>zone</b>, size_t <b>size</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3747,7 +3784,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSZoneName">NSZoneName</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSZoneName(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    NSString* NSZoneName(NSZone* <b>zone</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3755,7 +3792,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSZoneRealloc">NSZoneRealloc</a></h3>
-    void* NSZoneRealloc(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>, void* <b>ptr</b>, size_t <b>size</b>);<br />
+    void* NSZoneRealloc(NSZone* <b>zone</b>, void* <b>ptr</b>, size_t <b>size</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>
@@ -3763,7 +3800,7 @@ is exactly the same as    </p>
     </p>
     <hr width="25%" align="left" />
     <h3><a name="function$NSZoneStats">NSZoneStats</a></h3>
-    struct NSZoneStats NSZoneStats(<a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    struct NSZoneStats NSZoneStats(NSZone* <b>zone</b>);<br />
     <p>
       
           <em>Description forthcoming.</em>

@@ -1,0 +1,92 @@
+<html>
+
+    <head>
+    <title>GNUstep Base Release Notes</title>
+  </head>
+  <body>
+    <font face="palatino linotype">
+    <h1><a name="title$ReleaseNotes">GNUstep Base Release Notes</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt><a href="http://www.gnustep.org/developers/whoiswho.html">Adam Fedor</a> (<a href="mailto:fedor@gnu.org"><code>fedor@gnu.org</code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Version:</b> $Revision: 1.1 $</p>
+    <p><b>Date:</b> $Date: 2004/06/12 04:11:56 $</p>
+
+    
+          <h1><a name="001000000000">Base Release Notes</a></h1>
+    <p>
+
+        The release notes include descriptions of API changes, behavior
+	changes and other information that might help developers and users
+	migrate to using a newer version of the library.
+          </p>
+
+	    <h2><a name="001001000000">Version 1.9.2</a></h2>
+    <p>
+
+	    </p>
+    <dl>
+      <dt>GSMime parsing ignores extraneous data</dt>
+      <dd>
+        
+	    When extraneous data is encountered in the input, it is ignored
+	    (and a warning logged) rather than adding it to the
+	    message body.  Not sure this is right though, perhaps we should
+	    raise an exception or extend the api to return the extra
+	    data.  Anyway, it&apos;s better than the previous behavior of
+	    adding the bad data to the parsed body.
+	    
+      </dd>
+      <dt>New log functions GSOnceFlag and GSOnceMLog</dt>
+      <dd>
+        
+	    Log messages the first time the code is executed. Typical
+	    usage is to log warnings about deprecated features.
+	    
+      </dd>
+      <dt>NSError</dt>
+      <dd>
+        
+	      New MacOSX compatibility class
+	    
+      </dd>
+      <dt>GSObjCRuntime</dt>
+      <dd>
+        
+	      Multiple new runtime functions that work with both GNU
+	      and Apple runtimes. These functions allow you to look
+	      at method lists, add and remove methods (for instance,
+	      if you want to make sure your method in a category 
+	      overrides another method in a category).
+	    
+      </dd>
+      <dt>NSProtocolChecker rewritten</dt>
+      <dd>
+        
+	      Was previously almost non-functional.
+	    
+      </dd>
+      <dt>autogsdoc</dt>
+      <dd>
+        
+	      Support added for building frames structured documentation.
+	      Add the flag <code>-MakeFrames YES</code> to the autogsdoc
+	      command line.
+	    
+      </dd>
+      <dt>Binary incompatibilities</dt>
+      <dd>
+        
+	      NSUnarchiver, GSIMapTable have new ivars added to
+	      them. Tools and applications that use these classes may
+	      need to be recompiled after the new library is installed.
+	    
+      </dd>
+    </dl>
+    <br />
+    </font>
+</body>
+</html>
