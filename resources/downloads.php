@@ -32,7 +32,7 @@ DIV.cent  {text-align:center}
 
 P.cont    {margin-top:3em}
 
-SPAN.cont {border-top:thin white solid; padding-top:0.5em;
+SPAN.cont {border-top:thin white solid; padding-top:0.5em;
            font-size:0.83em}
 
 </STYLE>
@@ -45,7 +45,7 @@ SPAN.cont {border-top:thin white solid; padding-top:0.5em;
 <?php
 
 echo("\n<base href=\"");
-echo($_GET['site']);
+echo($HTTP_GET_VARS["site"]);
 echo("/\">\n");
 
 ?>
@@ -483,11 +483,11 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.org/experience/apps.html">GNUMail</a></td>
+<td class="src"><a href="http://www.stupid-design.com/martin/GNUstep/GNUMail.app/GNUMail.app-Installation.html">GNUMail</a></td>
 <td class="req">Optional</td>
 <td class="stab"><a href="usr-apps/GNUMail-1.0.3.tar.gz">1.0.3</a></td>
 <td class="unst"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.0pre1.tar.gz?rid=75">1.1.0pre1</a></td>
-<td>Mail Application</td>
+<td>GNU Mail - see also <a href="http://www.collaboration-world.com/gnumail">description</a></td>
 </tr>
 
 <tr>
