@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on August, 30  2002 by texi2html 1.64 -->
+<!-- Created on October, 5  2002 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -35,6 +35,7 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="machines_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
+@i \input texinfo   
 <A NAME="Machine Specific"></A>
 <H1> 1. Machines </H1>
 <!--docid::SEC1::-->
@@ -49,7 +50,7 @@ more popular operating systems. Some machines marked with
 <BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC2">1.1 Darwin 5.x/PowerPC (<EM>Unstable!</EM>)</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC3">1.2 Debian/DEC-Alpha</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC4">1.3 FreeBSD 3.x</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC4">1.3 FreeBSD 4.x</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC5">1.4 FreeBSD 3.x</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC6">1.5 FreeBSD 2.x (<EM>Unstable!</EM>)</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="machines_1.html#SEC7">1.6 GNU-Linux/Intel (RedHat 5.x, 6.x, and 7.0)</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
@@ -79,6 +80,28 @@ complex and tends provoke a lot of errors in some compilers. Even versions
 newer than the listed compiler may not work, so don't just get the latest
 version of a compiler expecting it to be better than previous versions.
 </P><P>
+
+Compiler notes: If a recommended compiler is not listed, take note of the
+following information before choosing the compiler you use.
+<DL COMPACT>
+<DT><SAMP>`egcs or gcc &#60; 2.95'</SAMP>
+<DD>Probably will work, but few people use these now.
+<DT><SAMP>`gcc 2.95.x'</SAMP>
+<DD>Probably the oldest compiler that GNUstep is regularly tested with.
+<DT><SAMP>`gcc 2.96'</SAMP>
+<DD>Not an official gcc release. Some versions (Redhat, Mandrake) have problems
+that prevent GNUstep from being compiled correctly and cause
+mysterious errors.
+<DT><SAMP>`gcc 3.0.x'</SAMP>
+<DD>A fairly good compiler. Recommended.
+<DT><SAMP>`gcc 3.1'</SAMP>
+<DD>Several bugs where introduced in the version. It's probably better to
+avoid this one, although it might work fine.
+<DT><SAMP>`gcc 3.2'</SAMP>
+<DD>Pretty good, although at the time of this writing it hasn't been
+fully tested on many platforms. Recommended.
+</DL>
+<P>
 
 If you have compiled GNUstep on a specific machine, please send information
 about what you needed and any special instructions needed to the
@@ -210,7 +233,7 @@ make install-lib
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="machines_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> 1.3 FreeBSD 3.x </H2>
+<H2> 1.3 FreeBSD 4.x </H2>
 <!--docid::SEC4::-->
 <P>
 
@@ -228,6 +251,12 @@ executing GNUstep.sh. Try turing on SH_WORD_SPLIT (e.g. 'zsh
 --sh-word-split', 'zsh -o shwordsplit', 'zsh -y' or by setting 'setopt
 SH_WORD_SPLIT' in one of zsh's startup files.)
 <P>
+
+For gcc 3.0.4, make WANT_THREADS_SUPPORT=YES
+</P><P>
+
+For libxml2 2.4.24, make WITHOUT_PYTHON=YES
+</P><P>
 
 </DL>
 <P>
@@ -418,8 +447,7 @@ On RedHat 7.0, configure like this
 
 <DL COMPACT>
 <DT><SAMP>`Recommended compiler'</SAMP>
-<DD>egcs-1.1.2 (default compiler), or
-gcc-2.95. gcc-3.x works, but gdb can't debug GNUstep executables.
+<DD>The default compiler. gcc-3.x works, but you need a new gdb also to debug.
 <P>
 
 <DT><SAMP>`Extra libs needed'</SAMP>
@@ -427,21 +455,14 @@ gcc-2.95. gcc-3.x works, but gdb can't debug GNUstep executables.
 <P>
 
 <DT><SAMP>`Special Instructions'</SAMP>
-<DD>You need to compile without optimization or the compiler will not be
-able to compile several files (CFLAGS="" ./configure). Compiling with
-CFLAGS="-O" also works. The gcc-2.95 compiler fixes this problem.  There
-may be a problem with the X server that causes programs to crash with a
-X_QueryColors error. If so, get a newer X server at
-<A HREF="ftp://ftp.linuxppc.org/linuxppc/contrib/linuxppc-1999/software/XFree86-FBDev-3.3.3.1-49b.ppc.rpm">ftp://ftp.linuxppc.org/linuxppc/contrib/linuxppc-1999/software/XFree86-FBDev-3.3.3.1-49b.ppc.rpm</A> (or better).
-<P>
+<DD><P>
 
 </DL>
 <P>
 
-Invocations (and DO) do not work well. The major problem is sending data
-with data sizes less than 4 bytes (chars, shorts, etc).  To fix this, we
-recommend using the ffcall libraries (Read the instructions on this in the
-configuration section).
+ffcall or libffi is required for 
+invocations (and DO) to work well. The major problem is sending data
+with data sizes less than 4 bytes (chars, shorts, etc). 
 </P><P>
 
 <A NAME="Irix 6.5/MIPS"></A>
@@ -618,7 +639,8 @@ and glibc library (which has the threads library) and install both.
 <P>
 
 <DT><SAMP>`Special Instructions'</SAMP>
-<DD>Can only compile with static libraries. Gives a lot of warnings
+<DD>Can only compile with static libraries. Gives a lot of warnings.
+Try reading the README.NetBSD which might work the same on OpenBSD.
 </DL>
 <P>
 
@@ -681,9 +703,6 @@ ADDTIONAL_TOOL_LIBS in the GNUmakefile(.preamble).
 <H2> 1.14 Slackware/Intel </H2>
 <!--docid::SEC15::-->
 <P>
-
-GNUstep has been tested on version 8.0 of Suse
-</P><P>
 
 <DL COMPACT>
 <DT><SAMP>`Recommended compiler'</SAMP>
@@ -1114,14 +1133,7 @@ directory in CPPFLAGS when configuring:
 
 Make sure you have good shared libraries for everthing. Sometimes a bad
 shared library (like libtiff) will cause odd and untraceable problems.
-See the README.MinGW for information on good libraries.
-</P><P>
-
-Make sure files and compilation
-done in Unix mode (no ^M in files, <VAR>export CYGWIN=binmode</VAR> usually
-works if cygwin is not buggy).  Gdomap services not set up
-correctly. Must add services lines to <TT>`C:\WINDOWS\services'</TT> (on
-Windows 98) or xxx (on Windows NT).  Native GUI backend is alpha version.
+See <TT>`README.Cygwin'</TT> for information on compiling.
 </P><P>
 
 <A NAME="Windows with MinGW"></A>
@@ -1171,7 +1183,7 @@ Native GUI backend is alpha version.
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>August, 30  2002</I>
+by <I>Adam Fedor</I> on <I>October, 5  2002</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 
