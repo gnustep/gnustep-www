@@ -54,8 +54,11 @@ SPAN.cont {border-top:thin white solid; padding-top:0.5em;
 
 <?php
 
+// This will need fixing if some PHP 5 options aren't set to make HTTP_GET_VARS
+$site = $HTTP_GET_VARS["site"];
+
 function download($link) {
-  echo($_GET["site"].$link);
+  echo($site.$link);
 }
 
 ?>
