@@ -189,6 +189,14 @@ echo("/\">\n");
 <td>Window manager &amp; desktop</td>
 </tr>
 
+<tr>
+<td class="src">libobjc</a></td>
+<td class="req">ONLY with MinGW or gcc2</td>
+<td class="stab"><a href="libs/gnustep-objc-1.3.0.tar.gz">1.3.0</a></td>
+<td class="unst"><div class="cent">-</div></td>
+<td>Updated libobjc for some systems.</td>
+</tr>
+
 </tbody>
 
 </table>
