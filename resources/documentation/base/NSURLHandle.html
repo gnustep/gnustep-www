@@ -13,8 +13,8 @@
 <dt><a href ="http://www.brainstorm.co.uk">Mark Allison</a>
 <dd>
 </dl>
-<p>Version: $Revision: 1.2 $</p>
-<p>Date: $Date: 2001/09/24 03:23:06 $</p>
+<p>Version: $Revision: 1.3 $</p>
+<p>Date: $Date: 2002/01/08 15:21:48 $</p>
 <h2><a name ="cont-0">NSURLHandle</a></h2>
 <h2><a name ="NSURLHandle">NSURLHandle</a></h2>
 <p><b>Declared in: </b> Foundation/NSURLHandle.h</p>
@@ -256,15 +256,38 @@ Your subclass <em>must </em> override this abstract method.<br>
 - (BOOL) <b>writeData:</b> (NSData*)data;<br>
 Your subclass <em>must </em> override this abstract method.<br>
 
-	    Writes resource data to the handle.  Returns YES on success,
-	    NO on failure.
+	    <p>
+
+	      Writes resource data to the handle.  Returns YES on success,
+	      NO on failure.
+	    </p>
+
+	    <p>
+
+	      The GNUstep implementation sets the specified data as
+	      information to be POSTed to the URL next time it is loaded.
+	    </p>
+
           
  <hr>
 <h3><a name ="method-18">writeProperty:forKey:</a></h3>
 - (BOOL) <b>writeProperty:</b> (id)propertyValue <b>forKey:</b> (NSString*)key;<br>
 Your subclass <em>must </em> override this abstract method.<br>
 
-	    Attempts to set property for handle.
+	    <p>
+
+	      Sets a property for handle.
+	      Returns YES on success, NO on failure.
+	    </p>
+
+	    <p>
+
+	      The GNUstep implementation sets the property as a header
+	      to be sent the next time the URL is loaded, and recognizes
+	      some special property keys which control the behavior of
+	      the next load.
+	    </p>
+
           
  <hr>
 <h2><a name ="NSURLHandleClient">NSURLHandleClient Protocol </a></h2>
@@ -543,6 +566,10 @@ Your subclass <em>must </em> override this abstract method.<br>
 	    The property is set as a header in the next request, unless it is
 	    one of the following -
 	    <ul>
+<li >
+		GSHTTPPropertyBodyKey - set an NSData item to be sent to
+		the server as the body of the request.
+	      
 <li >
 		GSHTTPPropertyMethodKey - override the default method of
 		the request (eg. "PUT").

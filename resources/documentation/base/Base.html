@@ -8,8 +8,8 @@
 <dt><a href ="http://www.gnustep.org/developers/whoiswho.html">Richard Frith-Macdonald</a>
 <dd>
 </dl>
-<p>Version: $Revision: 1.2 $</p>
-<p>Date: $Date: 2001/09/24 03:23:06 $</p>
+<p>Version: $Revision: 1.3 $</p>
+<p>Date: $Date: 2002/01/08 15:21:48 $</p>
 <h2><a name ="cont-0">Base</a></h2>
 <p>
 
@@ -61,15 +61,32 @@
 	    
 </dl>
 <h4><a name ="cont-3">User defaults</a></h4>
-<p>
-
-	    Setting the user default <code>GSMacOSXCompatible</code> to
-	    <code>YES</code> will cause MacOS compatible behavior to be
-	    the default at runtime.  This default may however be overridden
-	    to provide more fine grained control of system behavior.
-	  </p>
 <dl>
-<dt>GSMacOSXCompatibleGeometry
+<dt>GSLogSyslog
+<dd>
+	      <p>
+
+		Setting the user default <code>GSLogSyslog</code> to
+		<code>YES</code> will cause log/debug output to be sent to
+		the syslog facility (on systems which support it), rather
+		than to the standard error stream.  This is useful in
+		environments where stderr has been re-used strangely for
+		some reason.
+	      </p>
+
+	    
+<dt>GSMacOSXCompatible
+<dd>
+	      <p>
+
+		Setting the user default <code>GSMacOSXCompatible</code> to
+		<code>YES</code> will cause MacOS compatible behavior to be
+		the default at runtime.  This default may however be overridden
+		to provide more fine grained control of system behavior.
+	      </p>
+
+	    
+<dt>GSOldStyleGeometry
 <dd>
 	      <p>
 
@@ -82,7 +99,7 @@
 	      </p>
 
 	    
-<dt>GSMacOSXCompatiblePropertyLists
+<dt>NSWriteOldStylePropertyLists
 <dd>
 	      <p>
 
@@ -110,27 +127,14 @@
 	      </p>
 
 	    
-<dt>NSWriteOldStylePropertyLists
+<dt>NSLanguages
 <dd>
-	      <p>
+              <p>
 
-		Specifies whether text property-list output should be in
-		the default MacOS-X format (XML), or in the more human
-		readable (but less powerful) original OpenStep format.
-	      </p>
-
-	      <p>
-
-		If, GSMacOSXCompatible is YES, this default is treated
-		as being NO if it is not set, otherwise, this default
-		is treated as YES.
-	      </p>
-
-	      <p>
-
-		This default is <em>NOT</em> used if
-		GSMacOSXCompatiblePropertyLists is specified.
-	      </p>
+              An array of strings that lists the users prefered languages,
+              in order or preference. If not found the default is just 
+              English.
+              </p>
 
 	    
 </dl>

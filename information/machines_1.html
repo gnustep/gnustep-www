@@ -1,6 +1,6 @@
 <HTML>
 <HEAD>
-<!-- Created by texi2html 1.56k from machines.texi on 19 September 2001 -->
+<!-- Created by texi2html 1.56k from machines.texi on 29 December 2001 -->
 
 <TITLE>Untitled Document - Machines</TITLE>
 </HEAD>
@@ -42,7 +42,7 @@ configuring, <SAMP>`CFLAGS="" ./configure'</SAMP>. Or when building,
 
 
 
-<H2><A NAME="SEC2" HREF="machines_toc.html#TOC2">Darwin 1.0/PowerPC (<EM>Unstable!</EM>)</A></H2>
+<H2><A NAME="SEC2" HREF="machines_toc.html#TOC2">Darwin 1.x/PowerPC (<EM>Unstable!</EM>)</A></H2>
 
 <DL COMPACT>
 
@@ -59,10 +59,12 @@ Don't use gnustep-objc or ffcall.
 </DL>
 
 <P>
-GNUstep has not been ported to Darwin. Expect some minor irritations and
-possibly one or two major ones if your trying to do this. Darwin doesn't
-have a GCC ObjC Compiler, so you need to use the ObjC runtime that comes with
-Darwin. To do this configure (gnustep-make) like this:
+GNUstep is being ported to Darwin. The current Darwin compiler doesn't
+handle __builtin functions, so these are diabled, which may cause
+problems with invocations and DO. Other than that it mostly
+compiles. Expect some other irritations that haven't been found yet.
+You need to use the ObjC runtime that comes with Darwin. To do this
+configure (gnustep-make) like this:
 
 
 
@@ -441,7 +443,8 @@ when configuring (Read the instructions on this in the configuration section).
 If you are using threads, make sure the Objective-C runtime (libobjc that comes
 with gcc) is compiled with threads enabled (This is true by default) AND that
 it is compiled with the _REENTRANT flag defined (This does not seem to be
-true by default). Or use the gnustep-objc package.
+true by default). Or use the gnustep-objc package. Also make sure THREADS is
+set to 'posix' not 'solaris'.
 
 
 
