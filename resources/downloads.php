@@ -329,6 +329,13 @@ packages and applications may require you to install these libraries
 <td>Database Library</td>
 </tr>
 
+<tr>
+<td class="src"><a href="http://www.stupid-design.com/martin/GNUstep/GNUMail.app/GNUMail.app-Installation.html">Pantomime</a></td>
+<td class="req">Optional</td>
+<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0pre2.tar.gz?rid=77">1.1.0pre2</a></td>
+<td class="unst">-</td>
+<td>GNUMail framework - see also <a href="http://www.collaboration-world.com/pantomime">description</a></td>
+</tr>
 </tbody>
 
 </table>
@@ -487,8 +494,8 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.stupid-design.com/martin/GNUstep/GNUMail.app/GNUMail.app-Installation.html">GNUMail</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.0pre1.tar.gz?rid=75">1.1.0pre1</a></td>
-<td class="unst"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail_v1.1.0pre2.dmg?rid=79">1.1.0pre2</a></td>
+<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.0pre2.tar.gz?rid=75">1.1.0pre2</a></td>
+<td class="unst">-</td>
 <td>GNU Mail - see also <a href="http://www.collaboration-world.com/gnumail">description</a></td>
 </tr>
 
