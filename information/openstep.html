@@ -1,0 +1,158 @@
+<HTML>
+<HEAD>
+<TITLE>GNUstep: GNU & OpenStep</TITLE>
+</HEAD>
+<BODY BGCOLOR="#6C6C80" TEXT="#FFFFFF" LINK="#DDDDFF" VLINK="#9999FF" ALINK="#3333FF">
+
+<font face="helvetica,arial,sans-serif" size=3>
+
+<nobr><img src="images/logo.gif"><img src="images/openstep.gif" alt="GNU & OpenStep"></nobr>
+<p>
+
+<H2>The OpenStep Story</H2>
+
+<P><A HREF="http://www.next.com/">NeXT Computer Inc,</A> and <A
+HREF="http://www.sun.com/">Sun Microsystems Inc.</A> teamed up in late
+1993 to push a free object layer API based on the NeXTSTEP object
+system. This
+agreement evolved into the 
+OpenStep specification which
+was published by NeXT in a first draft back in summer 1994.
+</P>
+
+<P><I>The informations on this page are partially out of date and will
+be updated soon.</I></P>
+
+
+<H2>GNUstep Hype and History</H2>
+
+<P>Early on many developers (educational and business) realized that
+the NeXTSTEP environment provided a great tool and reduced the amount
+of time necessary for writing applications.  Still the portability
+issue was hard to solve since these application were tied to machines
+running NeXTSTEP.</P>
+
+<P>It was the team around Paul Kunz at SLAC who decided to port their
+application differently than others did.  Instead of rewriting
+HippoDraw from scratch on the new system and only "reusing" the
+overall app design and ideas, they rewrote the objects their
+application depended upon...the NeXTSTEP object layer.</P>
+
+<P>As a result they created the first version of 
+libobjcX which enabled them to port
+HippoDraw to UNIX systems running X-Window without changing a single
+line of their applications source.</P>
+
+<P>After the OpenStep initiative became public, The next logical step
+was to make a new "objcX" which would adhere to the new APIs.</P>
+
+<H2>GNUstep Implementation</H2>
+
+<P>The first thing that needed to be done was implement the
+FoundationKit as specified in OpenStep.  The 
+libobjects library was around
+even before the GNUstep idea was born, but it needed to be extended
+and repackaged to fulfill the FoundationKit's job.  This has resulted
+in libobjects being renamed to the GNUstep Base Library; its new name
+signifies its important role as the underlying support for all of
+GNUstep.</P>
+
+<P>The ApplicationKit is closely tied to the Display Postscript System
+because all of the graphics drawing is to be implemented in the Postscript
+language.  The GNUstep developers realized implementing a Display
+Postscript System would be an incredible task so they decided take an
+approach which would allow the ApplicationKit to be implemented before
+the Display Postscript System was completed.</P>
+
+<P>The design involved splitting up the ApplicationKit implementation
+into two parts; a front-end and a back-end.  The front-end would be
+independent of the graphics display system, so it would only implement
+behavior without performing any display operations.  The back-end
+would be specific to a graphics display system and it would only need
+to perform the display operations for that graphics display system.
+The front-end is called the GNUstep GUI Library, and at least one
+back-end would be implemented for the combination of the X Window
+System and the Display Postscript System which is called the GNUstep
+X/DPS GUI Backend.</P>
+
+<P>The GNUstep developers have a free software version of the Display
+Postscript System which is called the Display Ghostscript System and
+is partially based upon the ghostscript program.  On systems which
+have the native Adobe Display Postscript System then it will be used.</P>
+
+You can get more detailed and technical information about the GNUstep
+implementation at the <A HREF="../developers/developer.html">
+Developer Suite page</A>.
+
+<H2>Beyond OpenStep</H2>
+
+<P>While implementing a free software version of the OpenStep
+specification is a great idea; GNUstep is growing beyond this initial
+task to become a powerful development environment and a sophisticated
+user environment.  
+<P>The GNUstep Database Library and The GNUstep 3D Kit are examples of
+two auxiliary projects that take OpenStep as the base API for extending
+into other areas; the former into database programming and the latter
+into 3D graphics.</P>
+
+<H3>More and more</H3>
+
+<P>A number of people and institutions are helping in this project. </P>
+
+<P>But there are even more efforts which might be of interest to
+everybody who likes the GNUstep idea. A bunch of them is listed on our
+<A HREF="../resources/resources.html">Resources page</A>.</P>
+
+<H2>OpenStep compliance</H2>
+
+<P>The motivation behind GNUstep <I>is</I> to make porting our
+applications easier, to leverage the benefits of the Objective-C
+language, and to push the idea of OpenStep as a common object oriented
+API; especially on systems which are not covered by commercial
+implementations of this standard.</P>
+
+<P>We are <I>not</I> claiming to be OpenStep compliant at this time or
+in the near future!  Having Display PostScript on every target system
+will remain a big issue; and we must pass NeXT's compliance test to
+truly be considered a OpenStep compliant system.</P>
+
+
+<H2>Our Time frame</H2>
+
+<P>Most GNU projects have no real time frame since all development is
+done for free. The current team is very interested in pushing the
+project ahead but "time" and "space" will remain limited.  So if
+things are moving too slow for you...
+join and help us!</A></P>
+
+<!-- Webmaster Footer -->
+<CENTER>
+<TABLE CELLSPACING=0 CELLPADDING=0 BGCOLOR="#444450" border=0>
+<TR><td rowspan=2 colspan=2 width=18><img src="../images/topleft.gif"
+width=18 height=18></td><td height=3 bgcolor="#ffffff"><img
+src="../images/spacer.gif" width=1 height=3></td><td rowspan=2 colspan=2
+width=18><img src="../images/topright.gif" width=18
+height=18></td></TR><TR><td><img src="../images/spacer.gif" width=1
+height=15></td></TR><TR valign="_top"><TD width=3 bgcolor="#ffffff"><img
+src="../images/spacer.gif" width=3 height=1></td><TD width=15><img
+src="../images/spacer.gif" width=15 height=1></TD>
+<TD><font face="helvetica,arial,sans-serif" size=2>
+
+Contact Webmaster: <a
+href="mailto:webmasters@gnustep.org">webmasters@gnustep.org</A>
+
+</font></TD>
+<TD width=15><img src="../images/spacer.gif" width=15 height=1></TD><TD
+width=3 bgcolor="#ffffff"><img src="../images/spacer.gif" width=3
+height=1></td></TR><TR><td rowspan=2 colspan=2 width=18><img
+src="../images/baseleft.gif" width=18 height=18></td><td><img
+src="../images/spacer.gif" width=1 height=15></td><td rowspan=2 colspan=2
+width=18><img src="../images/baseright.gif" width=18
+height=18></td></TR><TR><td height=3 bgcolor="#ffffff"><img
+src="../images/spacer.gif" width=1 height=3></td></TR>
+</TABLE>
+</CENTER>
+<!-- End of Footer -->
+</FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,229 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from gnustep-gui.texi on 3 July 2001 -->
+
+<TITLE>User's Guide to the GNUstep GUI Library - Special Setup Instructions.</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="gnustep-gui_1.html">first</A>, <A HREF="gnustep-gui_5.html">previous</A>, <A HREF="gnustep-gui_7.html">next</A>, <A HREF="gnustep-gui_8.html">last</A> section, <A HREF="gnustep-gui_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC42" HREF="gnustep-gui_toc.html#TOC42">Special Setup Instructions.</A></H1>
+
+
+
+<H2><A NAME="SEC43" HREF="gnustep-gui_toc.html#TOC43">Keyboard Modifiers</A></H2>
+
+<P>
+This section applies only to the xgps and the xdps backend. 
+
+
+
+
+<H3><A NAME="SEC44" HREF="gnustep-gui_toc.html#TOC44">Default Settings</A></H3>
+<P>
+The OPENstep specification requires 3 main different keyboard 
+modifiers: <KBD>CONTROL</KBD>, <KBD>COMMAND</KBD> and <KBD>ALTERNATE</KBD>.  
+
+<UL>
+<LI><KBD>COMMAND</KBD> is used to enter key equivalents (keyboard shortcuts
+
+for menus or buttons); for example, usually 'Quit' on the main 
+menu of an application is bound to 'q', so you may usually quit 
+a GNUstep application by pressing <KBD>Command - q</KBD>. 
+<LI><KBD>CONTROL</KBD> and <KBD>ALTERNATE</KBD> are two additional modifiers.
+
+A typical use of <KBD>ALTERNATE</KBD> is to scroll by pages rather than 
+by lines; you have to press <KBD>ALTERNATE</KBD> while acting on a scrollbar 
+with the mouse. 
+</UL>
+
+<P>
+By default, GNUstep uses <CODE>Control_L</CODE> (left Ctrl) 
+and <CODE>Control_R</CODE> (right Ctrl) 
+as <KBD>CONTROL</KBD>, <CODE>Alt_L</CODE> (left alt) as <KBD>COMMAND</KBD>, 
+and <CODE>Alt_R</CODE> (right alt, sometimes called AltGr) as <KBD>ALTERNATE</KBD>.  
+
+
+<P>
+If this layout does not work for you, because your keyboard 
+misses some of these keys, or they have different X names 
+or they conflict heavily with your window manager shortcuts 
+(or for any other reason), read on.  
+
+
+
+
+<H3><A NAME="SEC45" HREF="gnustep-gui_toc.html#TOC45">Changing the Default Settings</A></H3>
+<P>
+Under GNUstep, you may change the default as you wish: 
+you may choose which keys of your keyboard you want 
+to use for <KBD>CONTROL</KBD>, <KBD>COMMAND</KBD> and <KBD>ALTERNATE</KBD> 
+(You may even use different keys for different GNUstep applications, 
+without conflict).  These settings are internal to GNUstep, 
+and will not influence the behaviour of other X apps.  
+
+
+<P>
+You may choose up to 2 keys per modifier.  
+
+
+<P>
+Note that, if your keyboard is properly set up for X, 
+you should <EM>not</EM> need to remap your X keyboard 
+to use GNUstep.  By changing the defaults, you should be able 
+to use GNUstep whatever the X keyboard mapping might be.
+
+
+<P>
+What you have to do, is simply to instruct GNUstep to use 
+different keys for <KBD>CONTROL</KBD>, <KBD>COMMAND</KBD> and <KBD>ALTERNATE</KBD>. 
+
+
+<P>
+The keys to use are determined at the application startup, 
+by reading the user defaults database.  
+
+
+<P>
+To set the keys which will act as <KBD>CONTROL</KBD> you have to set 
+<CODE>GSFirstControlKey</CODE> and <CODE>GSSecondControlKey</CODE>; and 
+similarly for the other keys: 
+<DL COMPACT>
+
+<DT><CODE>CONTROL</CODE>
+<DD>
+<CODE>GSFirstControlKey</CODE>
+<CODE>GSSecondControlKey</CODE>
+<DT><CODE>COMMAND</CODE>
+<DD>
+<CODE>GSFirstCommandKey</CODE>
+<CODE>GSSecondCommandKey</CODE>
+<DT><CODE>ALTERNATE</CODE>
+<DD>
+<CODE>GSFirstAlternateKey</CODE>
+<CODE>GSSecondAlternateKey</CODE>
+</DL>
+
+<P>
+Valid values are all the standard strings for X keys.  
+To disable completely a key, use <CODE>NoSymbol</CODE> as preference.
+
+
+<P>
+Each value which you do not explicity set is substituted with 
+its default value.  The default values are: 
+<DL COMPACT>
+
+<DT><CODE>GSFirstControlKey</CODE>
+<DD>
+<CODE>Control_L</CODE>
+<DT><CODE>GSSecondControlKey</CODE>
+<DD>
+<CODE>Control_R</CODE>
+<DT><CODE>GSFirstCommandKey</CODE>
+<DD>
+<CODE>Alt_L</CODE>
+<DT><CODE>GSSecondCommandKey</CODE>
+<DD>
+<CODE>NoSymbol</CODE>
+<DT><CODE>GSFirstAlternateKey</CODE>
+<DD>
+<CODE>Alt_R</CODE>
+<DT><CODE>GSSecondAlternateKey</CODE>
+<DD>
+<CODE>NoSymbol</CODE>
+</DL>
+
+<P>
+What could go wrong is for example that you don't have 
+an <CODE>Alt_L</CODE> key.  With the default settings, 
+you will not be able to enter the <KBD>COMMAND</KBD> key 
+(which is quite an important key).  
+What you can do in this case is to use <CODE>Control_R</CODE> as <KBD>COMMAND</KBD>, 
+giving the following commands (from the command line): 
+
+
+
+<PRE>
+defaults write NSGlobalDomain GSFirstCommandKey Control_R
+defaults write NSGlobalDomain GSSecondControlKey NoSymbol
+</PRE>
+
+<P>
+These commands write in the GNUstep user database; 
+the information will be used every time you start a GNUstep application. 
+
+
+<P>
+The first line sets <CODE>GSFirstCommandKey</CODE> to <CODE>Control_R</CODE>, 
+which makes <CODE>Control_R</CODE> to be read as <KBD>COMMAND</KBD>.  
+
+
+<P>
+The second line disables the second control key, 
+which would otherwise be bound to <CODE>Control_R</CODE> by default. 
+If you omit it, <CODE>Control_R</CODE> will be used at the same time 
+as <KBD>COMMAND</KBD> and as <KBD>CONTROL</KBD>, which is not very useful. 
+
+
+<P>
+To delete these preferences and restore the defaults, use 
+
+<PRE>
+defaults delete NSGlobalDomain GSFirstCommandKey
+defaults delete NSGlobalDomain GSSecondControlKey
+</PRE>
+
+<P>
+To get a list of currently set defaults, you may use 
+
+<PRE>
+defaults read
+</PRE>
+
+<P>
+The list might be very long; you may want to extract only 
+setting for the <CODE>GSFirstCommandKey</CODE>, for example: 
+
+<PRE>
+defaults read | grep GSFirstCommandKey
+</PRE>
+
+<P>
+A thing which could go wrong if you are trying to use 
+a setting different from the default, and you do not know much 
+about X, is that you can't find out the name of one of your key.  
+In this case, you may try having a look at the output of programs 
+like <CODE>xmodmap</CODE> or <CODE>xkeycaps</CODE>; even if you do not 
+understand it completely, the output can inspire the right guessing.
+
+
+<P>
+A problem you are likely to encounter is that of conflicts 
+with the window manager keyboard shortcuts.  
+Good window managers let you change the keyboard shortcuts, 
+so you may move the wm shortcuts that you do not use to keys 
+which do not conflict (at least not too much) with GNUstep.  
+
+
+
+
+<H2><A NAME="SEC46" HREF="gnustep-gui_toc.html#TOC46">Window Manager Recommended Configuration</A></H2>
+
+<P>
+If you are using GNUstep GUI library with the Window Maker window
+manager it is recommended that you set the Window Maker option "Input
+Focus Mouse" (under "Window Focus Preferences") to "Click Window To
+Focus".
+
+
+<P>
+If you are using another window manager, look for a similar option.
+
+
+<P><HR><P>
+Go to the <A HREF="gnustep-gui_1.html">first</A>, <A HREF="gnustep-gui_5.html">previous</A>, <A HREF="gnustep-gui_7.html">next</A>, <A HREF="gnustep-gui_8.html">last</A> section, <A HREF="gnustep-gui_toc.html">table of contents</A>.
+</BODY>
+</HTML>

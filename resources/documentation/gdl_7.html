@@ -1,0 +1,274 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from gdl.texi on 6 November 2000 -->
+
+<TITLE>GNUstep Database Library Manual - The Complete Example Model</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="gdl_1.html">first</A>, <A HREF="gdl_6.html">previous</A>, <A HREF="gdl_8.html">next</A>, <A HREF="gdl_10.html">last</A> section, <A HREF="gdl_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC53" HREF="gdl_toc.html#TOC53">The Complete Example Model</A></H1>
+
+
+<PRE>
+{
+  EOModelVersion = 1;
+  adaptorName = Sybase;
+  adaptorClassName = SybaseAdaptor;
+  connectionDictionary = {
+    databaseName = test;
+    userName = sa;
+    password = "";
+  };
+  entities = (
+    {
+      attributes = (
+        {
+          columnName = first_name;
+          externalType = varchar;
+          name = firstName;
+          valueClassName = NSString;
+        },
+        {
+          columnName = last_name;
+          externalType = varchar;
+          name = lastName;
+          valueClassName = NSString;
+        },
+        {
+          columnName = person_id;
+          externalType = int;
+          name = personId;
+          valueClassName = NSNumber;
+          valueType = i;
+        },
+        {
+          columnName = dept_id;
+          externalType = int;
+          name = deptId;
+          valueClassName = NSNumber;
+          valueType = i;
+        },
+        {
+          columnName = boss_id;
+          externalType = int;
+          name = bossId;
+          valueClassName = NSNumber;
+          valueType = i;
+        }
+      );
+      attributesUsedForLocking = (personId, firstName, lastName);
+      classProperties = (personId, firstName, lastName);
+      externalName = PERSON;
+      name = Person;
+      primaryKeyAttributes = (personId);
+      relationships = (
+        {
+          destination = Department;
+          isToMany = N;
+          joins = (
+            {
+              destinationAttribute = deptId;
+              joinOperator = EOJoinEqualTo;
+              joinSemantic = EOInnerJoin;
+              sourceAttribute = deptId;
+            }
+          );
+          name = toDepartment;
+        },
+        {
+          destination = Person;
+          isToMany = N;
+          joins = (
+            {
+              destinationAttribute = personId;
+              joinOperator = EOJoinEqualTo;
+              joinSemantic = EOInnerJoin;
+              sourceAttribute = bossId;
+            }
+          );
+          name = toBoss;
+        },
+        {
+          destination = PersonProject;
+          isToMany = Y;
+          joins = (
+            {
+              destinationAttribute = personId;
+              joinOperator = EOJoinEqualTo;
+              joinSemantic = EOInnerJoin;
+              sourceAttribute = personId;
+            }
+          );
+          name = toPersonProject;
+        },
+        {
+          definition = toDepartment.toFacility;
+          name = toFacility;
+        }
+      );
+    },
+    {
+      attributes = (
+        {
+          columnName = name;
+          externalType = varchar;
+          name = name;
+          valueClassName = NSString;
+        },
+        {
+          columnName = dept_id;
+          externalType = int;
+          name = deptId;
+          valueClassName = NSNumber;
+          valueType = i;
+        },
+        {
+          columnName = facility_id;
+          externalType = int;
+          name = facilityId;
+          valueClassName = NSNumber;
+          valueType = i;
+        }
+      );
+      attributesUsedForLocking = (deptId, name, facility_id);
+      classProperties = (name, deptId);
+      externalName = DEPARTMENT;
+      name = Department;
+      primaryKeyAttributes = (deptId);
+      relationships = (
+        {
+          destination = Facility;
+          isToMany = N;
+          joins = (
+            {
+              destinationAttribute = facilityId;
+              joinOperator = EOJoinEqualTo;
+              joinSemantic = EOInnerJoin;
+              sourceAttribute = facilityId;
+            }
+          );
+          name = toFacility;
+        }
+      );
+    },
+    {
+      attributes = (
+        {
+          columnName = name;
+          externalType = varchar;
+          name = name;
+          valueClassName = NSString;
+        },
+        {
+          columnName = facility_id;
+          externalType = int;
+          name = facilityId;
+          valueClassName = NSNumber;
+          valueType = i;
+        }
+      );
+      attributesUsedForLocking = (facilityId);
+      classProperties = (name, facilityId);
+      externalName = FACILITY;
+      primaryKeyAttributes = (facilityId);
+      name = Facility;
+    },
+    {
+      attributes = (
+        {
+          columnName = person_id;
+          externalType = int;
+          name = personId;
+          valueClassName = NSNumber;
+          valueType = i;
+        },
+        {
+          columnName = project_id;
+          externalType = int;
+          name = projectId;
+          valueClassName = NSNumber;
+          valueType = i;
+        }
+      );
+      attributesUsedForLocking = (personId, projectId);
+      classProperties = (personId, projectId);
+      externalName = PERSON_PROJECT;
+      name = PersonProject;
+      primaryKeyAttributes = (personId, projectId);
+      relationships = (
+        {
+          destination = Person;
+          isToMany = Y;
+          joins = (
+            {
+              destinationAttribute = personId;
+              joinOperator = EOJoinEqualTo;
+              joinSemantic = EOInnerJoin;
+              sourceAttribute = personId;
+            }
+          );
+          name = toPerson;
+        },
+        {
+          destination = Project;
+          isToMany = Y;
+          joins = (
+            {
+              destinationAttribute = projectId;
+              joinOperator = EOJoinEqualTo;
+              joinSemantic = EOInnerJoin;
+              sourceAttribute = projectId;
+            }
+          );
+          name = toProject;
+        }
+      );
+    },
+    {
+      attributes = (
+        {
+          columnName = name;
+          externalType = varchar;
+          name = name;
+          valueClassName = NSString;
+        },
+        {
+          columnName = project_id;
+          externalType = int;
+          name = projectId;
+          valueClassName = NSNumber;
+          valueType = i;
+        }
+      );
+      attributesUsedForLocking = (name, projectId);
+      classProperties = (name, projectId);
+      externalName = PROJECT;
+      name = Project;
+      primaryKeyAttributes = (name, projectId);
+      relationships = (
+        {
+          destination = PersonProject;
+          isToMany = Y;
+          joins = (
+            {
+              destinationAttribute = projectId;
+              joinOperator = EOJoinEqualTo;
+              joinSemantic = EOInnerJoin;
+              sourceAttribute = projectId;
+            }
+          );
+          name = toPersonProject;
+        }
+      );
+    }
+  );
+}
+</PRE>
+
+<P><HR><P>
+Go to the <A HREF="gdl_1.html">first</A>, <A HREF="gdl_6.html">previous</A>, <A HREF="gdl_8.html">next</A>, <A HREF="gdl_10.html">last</A> section, <A HREF="gdl_toc.html">table of contents</A>.
+</BODY>
+</HTML>

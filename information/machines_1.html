@@ -1,0 +1,717 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from machines.texi on 16 June 2001 -->
+
+<TITLE>Untitled Document - Machines</TITLE>
+</HEAD>
+<BODY>
+Go to the first, previous, next, last section, <A HREF="machines_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC1" HREF="machines_toc.html#TOC1">Machines</A></H1>
+
+<P>
+Below is a list of machines that people have attempted to compile
+GNUstep on. GNUstep compiles with little or no trouble on many of the
+more popular operating systems. Some machines marked with
+<EM>Unstable</EM> may have some trouble or may not work at all.
+
+
+<P>
+A recommended compiler is listed for each machine, if known. You should try
+to use the recommended compiler for compiling GNUstep, as GNUstep is quite
+complex and tends provoke a lot of errors in some compilers. Even versions
+newer than the listed compiler may not work, so don't just get the latest
+version of a compiler expecting it to be better than previous versions.
+
+
+<P>
+If you have compiled GNUstep on a specific machine, please send information
+about what you needed and any special instructions needed to the
+GNUstep maintainer <A HREF="mailto:gnustep-maintainers@gnu.org">gnustep-maintainers@gnu.org</A>.
+
+
+<P>
+If your having mysterious trouble with a machine, try compiling GNUstep
+without optimization. Particularly in the newer GCC compilers,
+optimization can break some code. The easiest way to do this is when
+configuring, <SAMP>`CFLAGS="" ./configure'</SAMP>. Or when building, 
+<SAMP>`make OPTFLAG=""'</SAMP>.
+
+
+
+
+<H2><A NAME="SEC2" HREF="machines_toc.html#TOC2">Darwin 1.0/PowerPC (<EM>Unstable!</EM>)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Don't use gnustep-objc or ffcall.
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+</DL>
+
+<P>
+GNUstep has not been ported to Darwin. Expect some minor irritations and
+possibly one or two major ones if your trying to do this. Darwin doesn't
+have a GCC ObjC Compiler, so you need to use the ObjC runtime that comes with
+Darwin. To do this configure (gnustep-make) like this:
+
+
+
+<PRE>
+./configure --with-library-combo=nx-gnu-gnu
+</PRE>
+
+
+
+<H2><A NAME="SEC3" HREF="machines_toc.html#TOC3">Debian/DEC-Alpha</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+Unknown
+</DL>
+
+
+
+<H2><A NAME="SEC4" HREF="machines_toc.html#TOC4">FreeBSD 3.x</A></H2>
+
+<P>
+Compiles "out of the box" on FreeBSD 3.4.
+
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+gcc 2.95.2
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+You need to use gmake not make to compile the GNUstep packages. A special
+port of gdb can be used with the Objective-C patches from
+<A HREF="ftp://ftp.pcnet.com/users/eischen/FreeBSD/gdb-4.17-port.tar.gz">ftp://ftp.pcnet.com/users/eischen/FreeBSD/gdb-4.17-port.tar.gz</A>
+
+The best compiler for GNUstep is the latest release of the GNU Compiler
+Collection (GCC).  You can find it at <A HREF="http://egcs.cygnus.com/">http://egcs.cygnus.com/</A>.
+
+If you want to use the native POSIX threads support from <TT>`libc_r'</TT> pass
+<CODE>--enable-threads=posix</CODE> to configure.  This is the recommended option as 
+this is the FreeBSD threads package that gives the best results --with others
+you may be unable to run some examples like <TT>`diningPhilosophers'</TT>.
+
+The whole compilation process can fail if you have another threads library
+installed so watch out for installed packages like <TT>`pth'</TT> and such.
+Besides the support for libc_r, GNUstep will also look for <TT>`pth'</TT> and
+<TT>`pcthreads'</TT>, so if you have installed them and they aren't detected
+prepare to write a nice bug report.
+
+This can be done more much easily by using the port version.  Just <CODE>cd</CODE>
+to <TT>`/usr/ports/lang/egcs'</TT> and do a <CODE>"make WANT_THREADS=yes install"</CODE>.
+Easy.
+
+If configure cannot find tiff.h or the tiff library and you have it installed
+in a non-standard place (even <TT>`/usr/local'</TT>), you may need to pass these
+flags to configure: <CODE>CFLAGS="-I/usr/local/include"</CODE> and
+<CODE>LDFLAGS="-L/usr/local/lib"</CODE>.
+
+</DL>
+
+
+
+<H2><A NAME="SEC5" HREF="machines_toc.html#TOC5">FreeBSD 2.x (<EM>Unstable!</EM>)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+gcc 2.8.x
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+Only static libraries work on this system.
+Use /stand/sysinstall to install these packages if you have not
+already done so:
+
+
+<PRE>
+gmake           (GNU make)
+gcc 2.8.x
+</PRE>
+
+Seems to compile ok, but some tests crash. Possibly due to a
+performace 'hack' in base. Might be a good idea to upgrade to FreeBSD 3.x.
+You need to use gmake not make to compile the GNUstep packages.
+
+</DL>
+
+
+
+<H2><A NAME="SEC6" HREF="machines_toc.html#TOC6">GNU-Linux/Intel (RedHat 5.x, 6.x, and 7.0)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+With 5.x, the egcs compiler that comes with RedHat. Later versions may
+have gcc installed, although 7.0 comes with a snapshot of gcc (called
+2.96) which is unsuitable for compiling Objective-C code. For 7.0 you
+should install the egcs compatibility packages (or an official gcc release).
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+Make sure you have a decent version of the compiler. Try <SAMP>`cc -v'</SAMP>
+or <SAMP>`gcc -v'</SAMP> to get the version of the compiler. 
+With 5.x, make sure you set CC=egcs before configuring, as
+in:
+
+
+<PRE>
+export CC=egcs 
+configure ....
+</PRE>
+
+Since RedHat 5.x also comes standard with an old version of gcc.
+
+On RedHat 7.0, configure like this
+
+<PRE>
+CC=egcs LDFLAGS="-u shmctl@GLIBC_2.2 -L/lib -lc -u getpwuid_r@GLIBC_2.1.2
+-L/lib -lc -u getpwnam_r@GLIBC_2.1.2 -L/lib -lc" ./configure
+</PRE>
+
+</DL>
+
+
+
+<H2><A NAME="SEC7" HREF="machines_toc.html#TOC7">GNU-Linux/PowerPC (LinuxPPC 5.x)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+egcs-1.1.2 (default compiler), or
+gcc-2.95 
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+None.
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+You need to compile without optimization or the compiler will not be
+able to compile several files (CFLAGS="" ./configure). Compiling with
+CFLAGS="-O" also works. The gcc-2.95 compiler fixes this problem.  There
+may be a problem with the X server that causes programs to crash with a
+X_QueryColors error. If so, get a newer X server at
+<A HREF="ftp://ftp.linuxppc.org/linuxppc/contrib/linuxppc-1999/software/XFree86-FBDev-3.3.3.1-49b.ppc.rpm">ftp://ftp.linuxppc.org/linuxppc/contrib/linuxppc-1999/software/XFree86-FBDev-3.3.3.1-49b.ppc.rpm</A>.
+
+</DL>
+
+<P>
+Invocations (and DO) do not work well. The major problem is sending data
+with data sizes less than 4 bytes (chars, shorts, etc).  To fix this, we
+recommend using the ffcall libraries (Read the instructions on this in the
+configuration section).
+
+
+
+
+<H2><A NAME="SEC8" HREF="machines_toc.html#TOC8">Irix 6.4/MIPS (<EM>Unstable!</EM>)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+Not ported at all to this machine. Might be better now, but no current
+testing.  Some files don't compile - get internal compiler
+errors using gcc 2.8.1.
+
+</DL>
+
+
+
+<H2><A NAME="SEC9" HREF="machines_toc.html#TOC9">MkLinux/PowerPC (MkLinux DR 3)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+egcs-2.90.25 980302 (egcs-1.0.2 prerelease) which comes standard with
+DR 3.
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+None.
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+Comes with a good version of gcc.
+Seems to compile and install ok, althouth DR3 has an old version of
+glibc, which requires some workarounds which should be taken care of in
+the configuration. Not completely tested, so some aspects, particular
+object invocations and DO may not work properly.
+
+If you want threads, you'll probably have to get the latest gcc compiler
+and glibc library (which has the threads library) and install both.
+</DL>
+
+
+
+<H2><A NAME="SEC10" HREF="machines_toc.html#TOC10">NetBSD</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+libiconv
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+See the README.NetBSD file located in the gnustep-make package.
+
+</DL>
+
+
+
+<H2><A NAME="SEC11" HREF="machines_toc.html#TOC11">Netwinder (<EM>Unstable!</EM>)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Build #12 of the system.
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+See <A HREF="http://www.netwinder.org/~patrix">http://www.netwinder.org/~patrix</A>
+</DL>
+
+
+
+<H2><A NAME="SEC12" HREF="machines_toc.html#TOC12">OpenBSD 2.x  (<EM>Unstable!</EM>)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+Can only compile with static libraries. Gives a lot of warnings
+</DL>
+
+
+
+<H2><A NAME="SEC13" HREF="machines_toc.html#TOC13">OSF Alpha  (<EM>Unstable!</EM>)</A></H2>
+
+<P>
+Information is for Version 3.2C
+
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+egcs-1.1.1/1.1.2, gcc-2.95
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+Can only compile with static libraries. Compiler may fail when
+linking executables (e.g. gdnc). Standard ranlib and ar programs are
+to feable to create libraries. Should use GNU binutils versions. Linker
+sometimes fails to find symbols, in which case you may need to link with 
+a library twice. For instance, add an extra -lgnustep-xgps in
+ADDTIONAL_TOOL_LIBS in the GNUmakefile(.preamble).
+
+</DL>
+
+
+
+<H2><A NAME="SEC14" HREF="machines_toc.html#TOC14">Solaris 2.5.1/Sparc</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+tiff, Don't use the one in /usr/openwin
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+See the Solaris 2.6 section for more instructions.
+</DL>
+
+
+
+<H2><A NAME="SEC15" HREF="machines_toc.html#TOC15">Solaris 2.[67]/Sparc</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+gcc 2.95.3. Version 2.95.2 has several bugs that GNUstep tickles.
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+tiff, Don't use the one in /usr/openwin
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+There is no need to patch the compiler for the builtin_apply problem unless
+you are not using the ffcall libraries.
+There is a patch to fix this in the contrib directory
+on the ftp sites (This is also true for all versions of gcc/egcs up
+through 2.95.2 (possibly fixed in later versions)).
+
+To avoid using the tiff library in /usr/openwin, configure like this:
+
+<PRE>
+LIBS=-L/usr/local/lib ./configure
+</PRE>
+
+if, for instance, you have put a newer tiff library in /usr/local/lib
+</DL>
+
+<P>
+Even with the above patch, invocations (and DO) still don't
+work well. The major problem is sending messages with more than four arguments.
+We recommend using the ffcall libraries
+when configuring (Read the instructions on this in the configuration section).
+
+
+<P>
+If you are using threads, make sure the Objective-C runtime (libobjc that comes
+with gcc) is compiled with threads enabled (This is true by default) AND that
+it is compiled with the _REENTRANT flag defined (This does not seem to be
+true by default). Or use the gnustep-objc package.
+
+
+
+
+<H2><A NAME="SEC16" HREF="machines_toc.html#TOC16">Solaris 2.7/Intel</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+egcs 1.1.2
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+Make sure there are no -g compiler flags (specify <SAMP>`CFLAGS=
+./configure'</SAMP>, when configuring) or remove it from <SAMP>`OPTFLAG'</SAMP>
+make/config.make. You will probable get a lot of text relocation
+warnings, which probably can be ignored. See the other Solaris
+instructions above for more information.
+
+</DL>
+
+
+
+<H2><A NAME="SEC17" HREF="machines_toc.html#TOC17">Suse 6.x/Intel</A></H2>
+
+<P>
+GNUstep has been tested on version 6.2-6.4 of Suse
+
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Standard
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+None
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+It seems that there is a problem with the default kernel build
+distributed with Suse  which means that the socket binding used by
+gdnc doesn't work.  If you recompile the kernel then it starts working.
+
+</DL>
+
+
+
+<H2><A NAME="SEC18" HREF="machines_toc.html#TOC18">Suse 7.x/Intel</A></H2>
+
+<P>
+GNUstep has been tested on version 7.0 of Suse
+
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Standard
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+None
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+See the instructions for Suse 6.x
+
+</DL>
+
+
+
+<H2><A NAME="SEC19" HREF="machines_toc.html#TOC19">Unixware-2.1.3/Intel</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+Unknown
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Unknown
+
+</DL>
+
+<P>
+Special Instructions for GNUstep installation on Unixware 2.1 systems
+
+
+<DL COMPACT>
+
+<DT>1
+<DD>
+Tune the kernel to increase the argument space so that we can pass long
+command-line argument strings to processes (which the makefiles do)
+(/etc/conf/bin/idtune ARG_MAX 102400)
+
+<DT>2
+<DD>
+Install raft of the latest GNU software
+
+
+<PRE>
+gzip            (you need this to unpack other stuff)
+make            (to build everything)
+m4              (for autoconf etc)
+autoconf        (if you need to change anything)
+bison
+flex
+binutils        (required by gcc if you want to debug)
+gcc-2.8.1
+                (configure --with-gnu-as --with-gnu-ld --with-stabs)
+                NB. gcc-2.8.1 needs a fix to __do_global_dtors_aux()
+                in crtstuff.c on Unixware 2.1.3
+                (and possibly other unixware versions)
+                The fix is already in recent versions of egcs.
+
+</PRE>
+
+
+<PRE>
+==================================
+static void
+__do_global_dtors_aux ()
+{
+  static func_ptr *p = __DTOR_LIST__ + 1;
+  static int completed = 0;
+
+  if (completed)
+    return;
+
+  while (*p)
+    {
+      p++;
+      (*(p-1)) ();
+    }
+
+#ifdef EH_FRAME_SECTION_ASM_OP
+  __deregister_frame_info (__EH_FRAME_BEGIN__);
+#endif
+  completed = 1;
+}
+======================================
+</PRE>
+
+<DT>3
+<DD>
+Having got gcc working - it's probably a good idea to rebuild 
+all your GNU software using it!
+
+<DT>4
+<DD>
+Build gstep as normal.
+
+<DT>5
+<DD>
+The SIOCGIFCONF ioctl sometimes doesn't work on unixware after applying
+some of the OS patches.
+
+So I have added a '-a' flag to gdomap to give it the name of a file
+containing IP address and netmask information for the network interfaces
+on the system.
+
+You need to set up a file (I suggest '/etc/gdomap_addresses') containing
+the information for your machine and modify your system startup files in
+/etc/rc?.d to run gdomap, telling it to use that file.
+
+eg. If your machine has an IP address of '193.111.111.2' and is on a
+class-C network, your /etc/gdomap_addresses file would contain the line
+
+
+<PRE>
+193.111.111.2 255.255.255.0
+</PRE>
+
+and your startup file would contain the lines
+
+
+<PRE>
+. /usr/local/GNUstep/Makefiles/GNUstep.sh
+gdomap -a /etc/gdomap_addresses
+</PRE>
+
+</DL>
+
+<P>
+If you don't set gdomap up correctly, Distributed Objects will not
+work.
+
+
+
+
+<H2><A NAME="SEC20" HREF="machines_toc.html#TOC20">Windows with CYGWIN (<EM>Unstable!</EM>)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+gcc 2.95.3 (Cygwin release 1.1.8)
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Objective-C library DLL (<A HREF="ftp://ftp.gnustep.org/pub/gnustep/libs">ftp://ftp.gnustep.org/pub/gnustep/libs</A>)
+for shared libs. It's a good idea to remove the libobjc.a that comes with gcc
+(gcc -v for location) so that it isn't accidentally found.
+For ffcall, you should get version 1.8b or above (the earlier ones don't
+compile). There are still some problems with structure passing, but that is
+generally not supportred on any architecture.
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+On later versions of Cygwin you may be required to include the win32api
+directory in CPPFLAGS when configuring:
+
+
+<PRE>
+CPPFLAGS=-I/usr/include/win32api ./configure
+</PRE>
+
+</DL>
+
+<P>
+For shared libs, make sure to specify <VAR>shared=yes</VAR> explicitly when 
+building:
+
+
+
+<PRE>
+make shared=yes
+</PRE>
+
+<P>
+For static libs, use <VAR>shared=no</VAR>, Make sure files and compilation
+done in Unix mode (no ^M in files, <VAR>export CYGWIN=binmode</VAR> usually
+works if cygwin is not buggy).  Gdomap services not set up
+correctly. Must add services lines to <TT>`C:\WINDOWS\services'</TT> (on
+Windows 98) or xxx (on Windows NT).  Base library only. No native GUI
+backend.
+
+
+
+
+<H2><A NAME="SEC21" HREF="machines_toc.html#TOC21">Windows with MinGW (<EM>Unstable!</EM>)</A></H2>
+
+<DL COMPACT>
+
+<DT><SAMP>`Recommended compiler'</SAMP>
+<DD>
+gcc 2.95.2 (MingW release 1999-11-07)
+
+<DT><SAMP>`Extra libs needed'</SAMP>
+<DD>
+Objective-C library DLL (<A HREF="ftp://ftp.gnustep.org/pub/gnustep/libs">ftp://ftp.gnustep.org/pub/gnustep/libs</A>)
+for shared libs. ffcall is not ported to Mingw32 so don't try to use it.
+
+<DT><SAMP>`Special Instructions'</SAMP>
+<DD>
+See the <TT>`README.MinGW'</TT> file located in the gnustep-make Documentation
+directory for instructions.
+Base library only. No native GUI backend.
+</DL>
+
+<P><HR><P>
+Go to the first, previous, next, last section, <A HREF="machines_toc.html">table of contents</A>.
+</BODY>
+</HTML>

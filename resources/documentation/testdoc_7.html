@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from testdoc.texi on 6 November 2000 -->
+
+<TITLE>GNUstep project test suite - Debugging tests</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="testdoc_1.html">first</A>, <A HREF="testdoc_6.html">previous</A>, <A HREF="testdoc_8.html">next</A>, <A HREF="testdoc_8.html">last</A> section, <A HREF="testdoc_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC14" HREF="testdoc_toc.html#TOC14">Debugging tests</A></H1>
+<P>
+<A NAME="IDX23"></A>
+<A NAME="IDX24"></A>
+
+
+
+
+<H3><A NAME="SEC15" HREF="testdoc_toc.html#TOC15">debug logs</A></H3>
+<P>
+<A NAME="IDX25"></A>
+
+
+<P>
+If your testcases are behaving oddly, (but not crashing) then you want to
+turn on verbose output and/or debug output.
+
+
+<P>
+You can use the <SAMP>`--verbose'</SAMP> flag to make output more detailed, so you can
+easily tell at which testcase things start to go wrong.
+
+
+<P>
+You can use the <SAMP>`--debug'</SAMP> flag to get extra debug output written to a
+<SAMP>`.dbg'</SAMP> file.  The information written to this file is that provided
+using the <SAMP>`greg-dlog'</SAMP> procedure (which merely prints all its arguments
+to the <SAMP>`.dbg'</SAMP> file when debugging is enabled.
+
+
+<P>
+For this to be useful, you simply add <SAMP>`greg-dlog'</SAMP> instructions to
+display pertinent information around the piece of code that is not behaving
+as expected.
+
+
+
+
+<H3><A NAME="SEC16" HREF="testdoc_toc.html#TOC16">crashes</A></H3>
+<P>
+<A NAME="IDX26"></A>
+
+
+<P>
+Debugging of crashes is the area where the advantages of the Gstep-Guile/Greg
+test framework over Deja-Gnu/TcL really have an impact (apart from the obvious
+advantages of Guile over TcL).
+
+
+<P>
+Since <SAMP>`Greg'</SAMP> is primarily designed for embedded testing of libraries,
+it is very easy to debug testcases.  The code being tested and the code
+performing the testing are in the same address space and it's therefore
+very easy to run the tests under gdb.
+
+
+<P>
+For debugging Objective-C code, you should really make sure you have gdb
+version 4.17 with the Objective-C patch -
+<A HREF="ftp://alpha.gnu.org/gnu/gnustep/contrib/gdb-4.17-objc-unoff-980505.patch.gz">ftp://alpha.gnu.org/gnu/gnustep/contrib/gdb-4.17-objc-unoff-980505.patch.gz</A>
+
+
+<P>
+If you are writing a testcase that is crashing, or you are running the test
+suite and something is crashing, you want to use gdb -
+
+
+<P>
+Type <SAMP>`gdb guile-base'</SAMP> to start the debugger.<BR>
+Type <SAMP>`run'</SAMP> to start the guile command-line interpreter.<BR>
+Type <SAMP>`(use-modules (ice-9 greg))'</SAMP> to load <SAMP>`Greg'</SAMP>.<BR>
+Type <SAMP>`(set! greg-tools (list "foo"))'</SAMP> where <SAMP>`foo'</SAMP> is the
+name of the class you are testing.<BR>
+Type <SAMP>`(greg-test-run)'</SAMP> to run the tests.
+
+
+<P>
+Then wait for the crash and start debugging :-)
+
+
+<P><HR><P>
+Go to the <A HREF="testdoc_1.html">first</A>, <A HREF="testdoc_6.html">previous</A>, <A HREF="testdoc_8.html">next</A>, <A HREF="testdoc_8.html">last</A> section, <A HREF="testdoc_toc.html">table of contents</A>.
+</BODY>
+</HTML>

@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from gdl.texi on 6 November 2000 -->
+
+<TITLE>GNUstep Database Library Manual - The Adaptor Level</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="gdl_1.html">first</A>, <A HREF="gdl_2.html">previous</A>, <A HREF="gdl_4.html">next</A>, <A HREF="gdl_10.html">last</A> section, <A HREF="gdl_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC36" HREF="gdl_toc.html#TOC36">The Adaptor Level</A></H1>
+
+<P>
+<A NAME="IDX46"></A>
+
+
+<P>
+The Adaptor Level is the lowest level in GDL and only it deals with the details of accessing each specific database server. The Database Level which is above it uses its methods to perform all of its database operations.
+
+
+<P>
+The Adaptor Level is composed from four classes:
+
+
+<DL COMPACT>
+
+<DT><CODE>EOAdaptor</CODE>
+<DD>
+<A NAME="IDX47"></A>
+ 
+
+It represents a database from the database server and it keeps the model and the connection dictionary. All the server specific formatting of SQL expressions is performed here.
+
+An adaptor instance keeps a list of adaptor contexts which are used to represent several database transaction scopes on the database.
+
+<A NAME="IDX48"></A>
+<DT><CODE>EOAdaptorContext</CODE>
+<DD>
+Instances of this class represent a unique transaction scope within database server. However if the database server allows nested transactions other transactions can be nested inside the original one.
+
+An adaptor context has a list of adaptor channels that represent distinct operation channels within the same transaction. Concrete adaptors may not support more than one channel per context.
+
+<A NAME="IDX49"></A>
+<DT><CODE>EOAdaptorChannel</CODE>
+<DD>
+This is the class that actually keeps a connection with the database server. It executes all the select, insert, update and delete operations within database. The <CODE>EOAdaptorChannel</CODE> maps the records from the database into dictionary rows that are further passed to the Database Level.
+
+<A NAME="IDX50"></A>
+<DT><CODE>EOSQLExpression</CODE>
+<DD>
+This class is used to generate the SQL operations. It knows how to generate the four basic SQL operations: select, insert, update and delete. You normally do not use directly this class, it is used internally by the adaptor classes.
+
+</DL>
+
+<P><HR><P>
+Go to the <A HREF="gdl_1.html">first</A>, <A HREF="gdl_2.html">previous</A>, <A HREF="gdl_4.html">next</A>, <A HREF="gdl_10.html">last</A> section, <A HREF="gdl_toc.html">table of contents</A>.
+</BODY>
+</HTML>

@@ -1,0 +1,128 @@
+Anonymous Read-Only Access
+==========================
+
+You can access the GNUstep CVS repository using the anonymous account;
+this account only has read-only access, so attempts to commit changes
+to the repository will return an error.  However, you are free to make
+changes to your local source so long as you abide by the free software
+licenses.
+
+Anonymous Setup
+===============
+
+First thing you want to do is set your CVSROOT environment variable; it
+is
+a good idea to add these commands to your shell login script (like
+.bash_profile for the BASH shell) so that you don't have to type them
+every time you login.
+
+   CVSROOT=":pserver:anoncvs@cvs.gnustep.org:/cvsroot/gnustep"
+   export CVSROOT 
+
+Login
+=====
+
+Once your CVSROOT is set then you need to login with this command.
+
+   cvs login
+
+It will ask you for your password; 
+For a password, just press the Enter key.
+
+Checkout
+========
+
+Once you login then you can perform any number of CVS command to
+checkout,
+update and commit source code.
+
+   cvs checkout
+
+is used to checkout source code to your local drive so that you can
+start
+modifying them.  Use "cvs update" if you already have a package checked
+out (for instance, if you got a snapshot from the ftp site).
+For GNUstep, these source code packages are currently
+in the repository:
+
+# GNUstep core
+   core                 All GNUstep Core Packages
+   make                 GNUstep Makefile Package
+   base                 GNUstep Base Library
+   gui                  GNUstep GUI Library
+   xdps                 GNUstep X/DPS GUI Backend
+   xgps                 GNUstep X11 GUI Backend
+
+   examples		Example Applications
+
+# Other gnustep libs
+   guile		Guile interface
+   extensions           Foundation Extensions Library
+
+# GNUstep Database Library
+   db                   GNUstep Database Library
+
+# GNUstep Testing Framework
+   test                 GNUstep Test Framework
+
+# GNUstep Developer Applications
+   Gorm                 GNUstep Interface Modeller
+
+So to checkout the core libraries, the checkout command will be:
+
+   cvs -z3 checkout core
+
+There are many other options that checkout offers that deal with
+previous sources, tags, and branches.  You will learn these as you
+become more familiar with CVS over time; or if you already know that
+go ahead and use them!
+
+Update
+======
+
+If you have checked out source code into a directory on your machine
+then
+a few days later you hear that a developer has committed changes to the
+repository, you can easily retrieve those changes with the update
+command.
+Go to the top-level directory of the source code and type:
+
+   cvs -z3 update
+
+This will go through all the files in your local source code and
+download
+the changes from the repository.  If you have changed a file and the
+other
+developer has changed the same file, CVS will merge those chanes
+together
+so that you don't lose your changes!  Sometimes there are conflicts
+because the code you changed overlaps the code the other developer
+changed, but CVS warns you when this happens and sticks markers in the
+source code so that you can review your code alongside the other
+developer's code and manually merge the changes yourself.
+
+Sometime CVS requires you to run update; this occurs when you make a
+change to a file that another developer has committed changes to.  CVS
+does not merge these files together at the server, because it is
+possible
+that a conflict as described above can occur.  So when you perform a
+commit, CVS will tell you that you must update the file first.
+
+General
+=======
+
+There are numerous other commands that CVS recognizes.  The diff command
+
+is useful to see the changes that have been made to your local source;
+it
+can give you changes for everything or just a single file.  The log and
+status commands are useful for viewing the revision history of files.
+The
+history command can give you information about repository activity.  The
+
+rtag command is used for tagging sources with a descriptive tag, and the
+
+export command will checkout source code meant for public distribution.
+You are encouraged to review the documentation to learn about all of the
+
+capabilities, and don't be afraid to ask questions.

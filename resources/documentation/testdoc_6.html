@@ -1,0 +1,481 @@
+<HTML>
+<HEAD>
+<!-- Created by texi2html 1.56k from testdoc.texi on 6 November 2000 -->
+
+<TITLE>GNUstep project test suite - Writing tests</TITLE>
+</HEAD>
+<BODY>
+Go to the <A HREF="testdoc_1.html">first</A>, <A HREF="testdoc_5.html">previous</A>, <A HREF="testdoc_7.html">next</A>, <A HREF="testdoc_8.html">last</A> section, <A HREF="testdoc_toc.html">table of contents</A>.
+<P><HR><P>
+
+
+<H1><A NAME="SEC9" HREF="testdoc_toc.html#TOC9">Writing tests</A></H1>
+<P>
+<A NAME="IDX8"></A>
+<A NAME="IDX9"></A>
+
+
+<P>
+Before starting on writing test cases you need some familiarity with
+the GNUstep base library, Guile, Gstep-Guile and Greg.  I recommend
+that you get the documentation for all these packages together on your
+machine and set bookmarks in your favorite web browser to point to it
+(and to this documentation of course).
+
+
+<P>
+The test suite for the gstep-base library consists of the basic framework
+plus directories containing tests for individual classes.
+
+
+<P>
+Mostly you should be able to pick up how to use this stuff simply by
+looking at the existing tests - pay special attention to what the
+initialisation file (<SAMP>`begin.grg'</SAMP>) is doing.
+
+
+<P>
+One thing to note, if you are not familiar with Guile, is the scope of
+variables - if you want to pass information from one testcase to another
+you need to declare the variables outside the testcases (using the
+<SAMP>`define'</SAMP> primitive) - 
+
+
+
+<PRE>
+
+(define arith-ok #f)	; For passing info between testcases
+
+;
+; A testcase to check an instance of numeric addition
+;
+(greg-testcase "One plus One is two" #t
+(lambda ()
+  (if (eq? (+ 1 1 ) 2)
+    (begin (set! arith-ok #t) #t)
+    #f)
+))
+
+;
+; A testcase to check arithmetic - only supported if we have addition.
+;
+(greg-testcase "X multiplied by 2 is X plus X" #t
+(lambda ()
+  (if arith-ok
+    (eq? (+ 1 1) (* 1 2))
+    (throw 'unsupported))
+))
+
+</PRE>
+
+<P>
+Similarly, if you wish to restrict the scope of a variable to a group
+of testcases, wrap the whole lot in a <SAMP>`begin'</SAMP> -
+
+
+
+<PRE>
+
+(begin
+  (define arith-ok #f)	; For passing info between testcases
+
+;
+; A testcase to check an instance of numeric addition
+;
+  (greg-testcase "One plus One is two" #t
+  (lambda ()
+    (if (eq? (+ 1 1 ) 2)
+      (begin (set! arith-ok #t) #t)
+      #f)
+  ))
+
+;
+; A testcase to check arithmetic - only supported if we have addition.
+;
+  (greg-testcase "X multiplied by 2 is X plus X" #t
+  (lambda ()
+    (if arith-ok
+      (eq? (+ 1 1) (* 1 2))
+      (throw 'unsupported))
+  ))
+)
+
+; The 'arith-ok' variable is no longer in scope.
+
+</PRE>
+
+<P>
+<A NAME="IDX10"></A>
+
+
+<H3><A NAME="SEC10" HREF="testdoc_toc.html#TOC10">initialisation</A></H3>
+
+<P>
+The initialisation file <SAMP>`begin.grg'</SAMP> is run before any of the tests are
+started.
+This file performs basic startup tasks including -
+
+
+
+<UL>
+<LI>
+
+<A NAME="IDX11"></A>
+ 
+Defining the default order in which tests are executed. When you add tests
+for a new class, you must modify this file so that it knows about the new
+class and when it should be tested.
+
+<LI>
+
+Initialising some useful variables.  Handles for memory allocation zones etc.
+
+<LI>
+
+Defining procedures to make testing easier.
+
+<LI>
+
+Loading the <SAMP>`Protocols.scm'</SAMP> file (which defines procedures for
+checking that objects conform to specific protocols).
+</UL>
+
+<P>
+Tests for an individual class are placed in a directory whose name is the
+name of the class.  Since the test scripts within a directory are normally
+executed in alphabetical order, you may want to add a <SAMP>`begin.grg'</SAMP>
+to override that default sequence of execution of scripts.
+If this has been done, you must modify the <SAMP>`begin.grg'</SAMP> file whenever
+you add a new script to the dictionary, so you may prefer to select your
+script names so that the default alphabetical ordering causes them to
+run in the correct sequence.<BR>
+By convention we use  -
+<A NAME="IDX12"></A>
+<SAMP>`basic.scm'</SAMP> for a script calling helper procedures
+to test that the class exists and conforms to the protocols it should.<BR>
+<SAMP>`testXX.scm'</SAMP> where <SAMP>`XX'</SAMP> is a number from <SAMP>`00'</SAMP> to <SAMP>`99'</SAMP>
+for the other test scripts - so that they will be run in the order
+indicated by the numeric parts of their names.
+
+
+<P>
+A script file will contain one or more testcases - each of which
+constitutes a test of a single well defined feature of the <SAMP>`tool'</SAMP>
+that the script is meant to test.  A testcase is always written
+using the <SAMP>`greg-testcase'</SAMP> procedure.
+
+
+<P>
+<A NAME="IDX13"></A>
+
+
+<H3><A NAME="SEC11" HREF="testdoc_toc.html#TOC11">helper procedures</A></H3>
+
+<P>
+The testing framework defines various helper procedures (in <SAMP>`begin.grg'</SAMP>
+and <SAMP>`Protocols.scm'</SAMP>) that you should probably use as the basis for a new
+testsuite for a class.
+
+
+<P>
+You should start any testsuite for a class with <SAMP>`test-alloc'</SAMP> to check
+that basic operations work.  Next you should define a few variables for
+test objects, assign instances of the class to them (inside a testcase),
+and pass them to the <SAMP>`test-NSObject'</SAMP> procedure to check that they
+conform to the NSObject protocol. Then, before writing your own specific
+tests, you might use other procedures to check conformance to other
+protocols.
+
+
+<P>
+The helper procedures defined in <SAMP>`begin.grg'</SAMP> are -
+
+
+
+<UL>
+<LI>test-alloc<BR>
+
+<A NAME="IDX14"></A>
+ 
+The <SAMP>`test-alloc'</SAMP> procedure takes the name of a class and checks that
+instances of the class can be correctly created using all the standard
+allocation and initialisation operations.<BR>
+This procedure returns <SAMP>`#t'</SAMP> if all it's tests pass, <SAMP>`#f'</SAMP> otherwise.
+</UL>
+
+
+<UL>
+<LI>test-exception<BR>
+
+<A NAME="IDX15"></A>
+ 
+The <SAMP>`test-exception'</SAMP> procedure allows you to easily test that
+erroneous code fragments raise exceptions the way they should.  This
+procedure takes three arguments -
+
+<UL>
+<LI>assertion<BR>
+
+This is a brief text description of what the code fragment is doing
+and will be used in the output describing the test case.<BR>
+eg.<BR>
+"attempting to access beyond the end of an array"
+<LI>exception<BR>
+
+This is the variable containing the OpenStep exception name constant.
+<LI>thunk<BR>
+
+This is the code fragment (usually a lambda expression) that should
+be executed to demonstrate the exception.
+</UL>
+
+This procedure returns <SAMP>`#t'</SAMP> if the test passes, <SAMP>`#f'</SAMP> otherwise.
+
+
+<PRE>
+
+; Test NSString range checking exception.
+(test-exception
+  "NSString extracting substring with range beyond end of string"
+  NSRangeException
+  (lambda ()
+    (define r (NSMakeRange 6 4))
+    (define s ([] "NSString" stringWithCString: "Hello"))
+    ([] s substringWithRange: r)	; Should raise exception here.
+    #f					; Shouldn't get to this line.
+  )
+)
+
+</PRE>
+
+<A NAME="IDX16"></A>
+<LI>test-alloc<BR>
+
+The <SAMP>`test-alloc'</SAMP> procedure takes a class name (string) as an argument
+and checks basic common stuff to do with creating objects of the class.
+It checks that the class exists and that the standard allocation and
+and initialisation methods work to create objects of that class.
+
+
+<PRE>
+
+; Test to see if NSString handles basic object creation tasks.
+(test-alloc "NSString")
+
+</PRE>
+
+</UL>
+
+<P>
+<A NAME="IDX17"></A>
+
+
+<H3><A NAME="SEC12" HREF="testdoc_toc.html#TOC12">protocol checkers</A></H3>
+
+
+<UL>
+<LI>test-NSCoding<BR>
+
+<A NAME="IDX18"></A>
+ 
+This procedure tests the NSCoding protocol by archiving and unarchiving
+objects and then using the [-isEqual:] method to check that the unarchived
+versions of the objects are equal to the originals.<BR>
+The only parameter used by this procedure is a list of objects to be tested.
+
+
+<PRE>
+
+; Test to see if NSString conforms to the NSCoding protocol properly
+(define myString ([] "NSString" stringWithCString: "Hello world.\n"))
+(test-NSCoding (list myString))
+
+</PRE>
+
+<A NAME="IDX19"></A>
+<LI>test-NSCopying<BR>
+
+This procedure tests the NSCopying protocol.  It takes five arguments,
+the name of an immutable class, the name of the corresponding mutable
+class, a list of objects to be copied, a flag to specify if a copy of the
+immutable object should be a simple retain (irrespective of zone) and a
+a flag to specify whether the copy of the immutable object should be a
+true copy (irrespective of zone).  If both flags are false, the retain
+behavior required by the test is assumed to be that returned by the
+OpenStep NSShouldRetainWithZone() function.
+
+The procedure makes test copies using the default memory allocation zone
+and a test zone.  It checks that the copy operation works to produce an
+object that [-isEqual:] to the original.
+
+If an object to be copied is immutable, the procedure checks to
+see that where the object should simply be retained rather than copied it is.
+
+
+<PRE>
+
+; Test to see if NSString conforms to the NSCopying protocol properly
+(define testString ([] "NSString" stringWithCString: "Hello"))
+(test-NSCopying "NSString" "NSMutableString" (list testString) #f #f)
+
+</PRE>
+
+<A NAME="IDX20"></A>
+<LI>test-NSMutableCopying<BR>
+
+This procedure tests the NSMutableCopying protocol.  It takes three arguments,
+the name of an immutable classe, the name of the corresponding mutable
+class, and a list of objects to be copied.
+
+The procedure makes test copies using the default memory allocation zone
+and a test zone.  It checks that the copy operation works to produce an
+object that [-isEqual:] to the original.
+
+It also checks that the copy is a true copy, not just the original retained.
+
+
+<PRE>
+
+; Test to see if NSString conforms to the NSMutableCopying protocol properly
+(define testString ([] "NSMutableString" stringWithCString: "Hello"))
+(test-NSMutableCopying "NSString" "NSMutableString" (list testString))
+
+</PRE>
+
+<A NAME="IDX21"></A>
+<LI>test-NSObject<BR>
+
+This procedure tests the NSObject protocol.  It takes two arguments,
+the name of the class of the objects to check, and a list of objects to
+be tested for conformance to the protocol.  All the objects to be tested
+must belong to the same class (or be instances of it's subclasses).
+Almost all the methods in the NSObject protocol are tested
+
+
+<PRE>
+
+; Test to see if NSString conforms to the NSObject protocol properly
+(define myString ([] "NSString" stringWithCString: "Hello\n"))
+(test-NSObject "NSString" (list myString))
+
+</PRE>
+
+</UL>
+
+
+
+<H3><A NAME="SEC13" HREF="testdoc_toc.html#TOC13">greg-testcase</A></H3>
+<P>
+<A NAME="IDX22"></A>
+
+
+<P>
+The <SAMP>`greg-testcase'</SAMP> procedure takes three arguments -
+
+
+
+<UL>
+<LI>The assertion<BR>
+
+This is a string describing the test to be performed.  It should take the
+form of an assertion that is expected to hold true.
+
+<LI>The expected outcome<BR>
+
+This is a boolean value - <SAMP>`#t'</SAMP> if the test is expected to return
+<SAMP>`#t'</SAMP> (ie. the assertion is expected to be proved correct), and
+<SAMP>`#f'</SAMP> if the test is expected to return <SAMP>`#f'</SAMP> (ie. the assertion
+is expected to be proved to be incorrect).
+
+<LI>The test itself<BR>
+
+This is a <SAMP>`thunk'</SAMP> (a Guile procedure that takes no arguments) and is
+normally a <SAMP>`lambda expression'</SAMP>.  The return value of this procedure
+should be <SAMP>`#t'</SAMP> if the assertion is proved correct, <SAMP>`#f'</SAMP> if it
+is proved incorrect.
+</UL>
+
+<P>
+The Guile programming language permits the <SAMP>`thunk'</SAMP> to return in four
+ways -
+
+
+
+<UL>
+<LI>Return the boolean value - <SAMP>`#t'</SAMP><BR>
+
+In which case, the test has succeeded, the assertion has proved correct,
+and Greg will record either an expected success (PASS) or an unexpected
+success (UPASS) depending on the expected outcome passed to
+<SAMP>`greg-testcase'</SAMP>.
+
+<LI>Return the boolean value - <SAMP>`#f'</SAMP><BR>
+
+In which case, the test has failed, the assertion has proved incorrect,
+and Greg will record either an expected failure (XFAIL) or an unexpected
+failure (FAIL) depending on the expected outcome passed to
+<SAMP>`greg-testcase'</SAMP>.
+
+<LI>Return a non-boolean value<BR>
+
+In which case, the test is unresolved (UNRESOLVED).
+
+<LI>Throw an exception<BR>
+
+In which case Greg's behaviour depends on the exception thrown -
+
+<UL>
+<LI>'pass<BR>
+
+Greg acts as if the test had returned the boolean <SAMP>`#t'</SAMP>
+<LI>'fail<BR>
+
+Greg acts as if the test had returned the boolean <SAMP>`#f'</SAMP>
+<LI>'unsupported<BR>
+
+Greg reports this case as unsupported (UNSUPPORTED)
+<LI>'untested<BR>
+
+Greg reports this case as untested (UNTESTED)
+<LI>any other exception<BR>
+
+Greg reports this case as unresolved (UNRESOLVED)
+</UL>
+
+</UL>
+
+<P>
+As there are no other ways in which the <SAMP>`thunk'</SAMP> may be exited, it is
+impossible for a testcase to produce a result that doesn't fit into the
+framework (unless your testcase manages either to crash Guile or enter an
+infinite loop - in which case you won't get <EM>any</EM> output).
+
+
+<P>
+The value returned by the <SAMP>`greg-testcase'</SAMP> procedure is a boolean -
+<SAMP>`#t'</SAMP> if the test resulted in an expected pass, <SAMP>`#f'</SAMP> otherwise.<BR>
+You can use this return value to make the execution of subsequent testcases
+dependent on the success of an earlier testcase.
+
+
+
+<PRE>
+
+;
+; A testcase to check an instance of numeric addition
+;
+(greg-testcase "One plus One is two" #t
+(lambda ()
+  (eq? (+ 1 1 ) 2)
+))
+
+;
+;  The above testcase will generate output -
+;  'PASS: One plus One is two'
+;
+</PRE>
+
+<P><HR><P>
+Go to the <A HREF="testdoc_1.html">first</A>, <A HREF="testdoc_5.html">previous</A>, <A HREF="testdoc_7.html">next</A>, <A HREF="testdoc_8.html">last</A> section, <A HREF="testdoc_toc.html">table of contents</A>.
+</BODY>
+</HTML>
