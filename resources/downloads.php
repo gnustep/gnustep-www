@@ -140,8 +140,8 @@ the appropriate column.</p>
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#FOREIGN.FUNCTION.INTERFACES">ffcall</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
-<td class="unst">-</td>
+<td class="stab">1.8</td>
+<td class="unst"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
 <td>Message forwarding</td>
 </tr>
 
@@ -250,7 +250,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-make-1.10.0.tar.gz")?>">1.10.0</a></td>
-<td class="unst"><a href="<?php download("core/gnustep-make-1.9.2.tar.gz")?>">1.9.1</a></td>
+<td class="unst">-</td>
 <td>Makefile Package</td>
 </tr>
 
@@ -258,7 +258,7 @@ the appropriate column.</p>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-base-1.10.0.tar.gz")?>">1.10.0</a></td>
-<td class="unst"><a href="<?php download("core/gnustep-base-1.9.2.tar.gz")?>">1.9.1</a></td>
+<td class="unst">-</td>
 <td>Foundation</td>
 </tr>
 
