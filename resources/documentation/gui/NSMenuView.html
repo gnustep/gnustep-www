@@ -44,6 +44,7 @@
       <dl>
         <dt><b>Conforms to:</b></dt>
         <dd>NSCoding</dd>
+        <dd><a rel="gsdoc" href="NSMenu.html#protocol$(NSMenuView)">NSMenuView</a></dd>
       </dl>
     </blockquote>
     <blockquote>
@@ -56,7 +57,43 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          The NSMenu class uses an object implementing the
+          NSMenuView protocol to do the actual drawing.
+          <br /> <br /> Normally there is no good reason to
+          write your own class implementing this protocol.
+          However if you want to customize your menus you
+          should implement this protocol to ensure that it works
+          nicely together with sub/super menus not using your
+          custom menu representation. <br /> <br />
+          <strong>How menus are drawn</strong> <br /> <br />
+          This class implements several menu look and feels at the
+          same time. The looks and feels implemented are:
+          
+      <ul>
+        <li>
+          
+              Ordinary vertically stacked menus with the NeXT
+              submenu positioning behavour.
+            
+        </li>
+        <li>
+          
+              Vertically stacked menus with the WindowMaker
+              submenu placement. This behaviour is selected by
+              choosing the
+              <strong>GSWindowMakerInterfaceStyle</strong>.
+            
+        </li>
+        <li>
+          
+              PopupButtons are actually menus. This class
+              implements also the behaviour for the
+              NSPopButtons. See for the the class
+              NSPopButton.
+            
+        </li>
+      </ul>
+      
         
     </p>
     <b>Method summary</b>
@@ -88,7 +125,6 @@
       <li><a rel="gsdoc" href="NSMenuView.html#method$NSMenuView-needsSizing">-needsSizing</a></li>
       <li><a rel="gsdoc" href="NSMenuView.html#method$NSMenuView-performActionWithHighlightingForItemAtIndex:">-performActionWithHighlightingForItemAtIndex:</a></li>
       <li><a rel="gsdoc" href="NSMenuView.html#method$NSMenuView-rectOfItemAtIndex:">-rectOfItemAtIndex:</a></li>
-      <li><a rel="gsdoc" href="NSMenuView.html#method$NSMenuView-resizeWindowWithMaxHeight:">-resizeWindowWithMaxHeight:</a></li>
       <li><a rel="gsdoc" href="NSMenuView.html#method$NSMenuView-setFont:">-setFont:</a></li>
       <li><a rel="gsdoc" href="NSMenuView.html#method$NSMenuView-setHighlightedItemIndex:">-setHighlightedItemIndex:</a></li>
       <li><a rel="gsdoc" href="NSMenuView.html#method$NSMenuView-setHorizontal:">-setHorizontal:</a></li>
@@ -109,7 +145,7 @@
     + (float) <b>menuBarHeight</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the height of the menu bar.
           
     </p>
     <hr width="25%" align="left" />
@@ -117,7 +153,9 @@
     - (void) <b>attachSubmenuForItemAtIndex:</b> (int)index;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Attach submenu if the item at <var>index</var> is a
+            submenu. It will figure out if the new submenu
+            should be transient or not.
           
     </p>
     <hr width="25%" align="left" />
@@ -125,7 +163,7 @@
     - (<a rel="gsdoc" href="NSMenu.html#class$NSMenu">NSMenu</a>*) <b>attachedMenu</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns visible attached submenu.
           
     </p>
     <hr width="25%" align="left" />
@@ -133,7 +171,8 @@
     - (<a rel="gsdoc" href="#class$NSMenuView">NSMenuView</a>*) <b>attachedMenuView</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns menu view associated with visible attached
+            submenu.
           
     </p>
     <hr width="25%" align="left" />
@@ -141,7 +180,8 @@
     - (void) <b>detachSubmenu</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Detaches currently visible submenu window from
+            main menu.
           
     </p>
     <hr width="25%" align="left" />
@@ -149,7 +189,8 @@
     - (<a rel="gsdoc" href="NSFont.html#class$NSFont">NSFont</a>*) <b>font</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the default font used to draw the menu
+            text.
           
     </p>
     <hr width="25%" align="left" />
@@ -157,7 +198,8 @@
     - (int) <b>highlightedItemIndex</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the index of the highlighted item. Returns
+            -1 if there is no highlighted item.
           
     </p>
     <hr width="25%" align="left" />
@@ -165,7 +207,9 @@
     - (float) <b>horizontalEdgePadding</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns horizontal space used for padding between
+            menu item elements (state image, title image, title,
+            key equivalent, submenu arrow image).
           
     </p>
     <hr width="25%" align="left" />
@@ -173,7 +217,8 @@
     - (float) <b>imageAndTitleOffset</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the starting horizontal position for
+            drawing the image and title.
           
     </p>
     <hr width="25%" align="left" />
@@ -181,7 +226,8 @@
     - (float) <b>imageAndTitleWidth</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the width of the image and title section.
+            Tis section contains image and text of menu item.
           
     </p>
     <hr width="25%" align="left" />
@@ -189,7 +235,9 @@
     - (int) <b>indexOfItemAtPoint:</b> (NSPoint)point;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the index of the item below
+            <var>point</var>. Returns -1 if mouse is not above a
+            menu item.
           
     </p>
     <hr width="25%" align="left" />
@@ -197,7 +245,8 @@
     - (id) <b>initAsTearOff</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates new instance and sets menu to torn off
+            state with NSMenu&apos;s setTornOff:.
           
     </p>
     <hr width="25%" align="left" />
@@ -205,7 +254,9 @@
     - (NSRect) <b>innerRect</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns bounds rectangle of the menu view. It is
+            smaller by 1 pixel in width than menu window (dark
+            gray border at left).
           
     </p>
     <hr width="25%" align="left" />
@@ -213,7 +264,9 @@
     - (BOOL) <b>isAttached</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code>, if this object is an
+            visivle attached submenu&apos;s view. Returns
+            <code>NO</code> otherwise.
           
     </p>
     <hr width="25%" align="left" />
@@ -221,7 +274,9 @@
     - (BOOL) <b>isHorizontal</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if menu items are
+            displayed horizontally, <code>NO</code> if
+            vertically.
           
     </p>
     <hr width="25%" align="left" />
@@ -229,7 +284,9 @@
     - (BOOL) <b>isTornOff</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code>, if this object is
+            associated with torn off menu (menu with a close
+            button on title bar).
           
     </p>
     <hr width="25%" align="left" />
@@ -237,7 +294,13 @@
     - (void) <b>itemAdded:</b> (NSNotification*)notification;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Creates new item cell for the newly created menu
+            item, marks cell and menu view as needing to be
+            resized. This method is invoked when
+            NSMenuDidAddItemNotification
+            received. The <var>notification</var> parameter
+            contains index of changed menu item and can be
+            accessed with NSMenuItemIndex key.
           
     </p>
     <hr width="25%" align="left" />
@@ -245,7 +308,12 @@
     - (void) <b>itemChanged:</b> (NSNotification*)notification;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Marks menu item cell associated with the menu item
+            and menu view as needing to be resized. This method is
+            invoked when NSMenuDidChangeItemNotification
+            received. The <var>notification</var> parameter
+            contains index of changed menu item and can be
+            accessed with NSMenuItemIndex key.
           
     </p>
     <hr width="25%" align="left" />
@@ -253,7 +321,14 @@
     - (void) <b>itemRemoved:</b> (NSNotification*)notification;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Removes cell associated with removed menu item,
+            removes highlighting if removed menu item was
+            highlighted, marks cell and menu view as
+            needing to be resized. This method is invoked when
+            NSMenuDidRemoveItemNotification
+            received. The <var>notification</var> parameter
+            contains index of changed menu item and can be
+            accessed with NSMenuItemIndex key.
           
     </p>
     <hr width="25%" align="left" />
@@ -261,7 +336,9 @@
     - (float) <b>keyEquivalentOffset</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the starting position for drawing the key
+            equivalent. Key equivalent can be submenu arrow
+            if menu item has submenu.
           
     </p>
     <hr width="25%" align="left" />
@@ -269,7 +346,9 @@
     - (float) <b>keyEquivalentWidth</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the width of key equivalent text. Key
+            equivalent can be submenu arrow if menu item has
+            submenu
           
     </p>
     <hr width="25%" align="left" />
@@ -288,7 +367,7 @@
     - (<a rel="gsdoc" href="NSMenu.html#class$NSMenu">NSMenu</a>*) <b>menu</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the NSMenu associated with this menu view.
           
     </p>
     <hr width="25%" align="left" />
@@ -296,7 +375,8 @@
     - (<a rel="gsdoc" href="NSMenuItemCell.html#class$NSMenuItemCell">NSMenuItemCell</a>*) <b>menuItemCellForItemAtIndex:</b> (int)index;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns cell associated with item at
+            <var>index</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -304,7 +384,8 @@
     - (BOOL) <b>needsSizing</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return <code>YES</code> if menu view contents
+            changed and needs to be resized.
           
     </p>
     <hr width="25%" align="left" />
@@ -320,15 +401,9 @@
     - (NSRect) <b>rectOfItemAtIndex:</b> (int)index;<br />
     <p>
       
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMenuView-resizeWindowWithMaxHeight:">resizeWindowWithMaxHeight:</a></h3>
-    - (void) <b>resizeWindowWithMaxHeight:</b> (float)maxHeight;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
+            Returns frame rectangle of menu item cell. It is
+            smaller by 1 pixel in width than menu window (dark
+            gray border).
           
     </p>
     <hr width="25%" align="left" />
@@ -336,7 +411,8 @@
     - (void) <b>setFont:</b> (<a rel="gsdoc" href="NSFont.html#class$NSFont">NSFont</a>*)font;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the default <var>font</var> to use when drawing
+            the menu text.
           
     </p>
     <hr width="25%" align="left" />
@@ -344,7 +420,8 @@
     - (void) <b>setHighlightedItemIndex:</b> (int)index;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Highlights item with at <var>index</var>. If
+            <var>index</var> is -1 all highlighing is removed.
           
     </p>
     <hr width="25%" align="left" />
@@ -352,7 +429,10 @@
     - (void) <b>setHorizontal:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets menu orientation. If <code>YES</code> menu items
+            are displayed from left to right, if <code>NO</code>
+            from top to bottom (vertically). By default, menu
+            items are displayed vertically.
           
     </p>
     <hr width="25%" align="left" />
@@ -360,7 +440,8 @@
     - (void) <b>setHorizontalEdgePadding:</b> (float)pad;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets amount of pixels added between menu item elements
+            to <var>pad</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -368,7 +449,12 @@
     - (void) <b>setMenu:</b> (<a rel="gsdoc" href="NSMenu.html#class$NSMenu">NSMenu</a>*)menu;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the <var>menu</var> to be displayed in to
+            <var>menu</var>. Also this method adds this
+            <var>menu</var> view to the menu&apos;s list of observers,
+            mark view to force recalculation of layout with
+            setNeedsSizing:YES, and updates itself
+            with update method.
           
     </p>
     <hr width="25%" align="left" />
@@ -376,7 +462,9 @@
     - (void) <b>setMenuItemCell:</b> (<a rel="gsdoc" href="NSMenuItemCell.html#class$NSMenuItemCell">NSMenuItemCell</a>*)cell<b> forItemAtIndex:</b> (int)index;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Replaces item <var>cell</var> at <var>index</var>
+            with <var>cell</var>. Highlighting of item is
+            preserved.
           
     </p>
     <hr width="25%" align="left" />
@@ -384,7 +472,8 @@
     - (void) <b>setNeedsDisplayForItemAtIndex:</b> (int)index;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Calls setNeedsDisplayInRect: for rectangle occupied
+            by item at <var>index</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -392,7 +481,11 @@
     - (void) <b>setNeedsSizing:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the <var>flag</var> whether layout needs to be
+            resized. Set it to <code>YES</code> if menu
+            contents changed and layout needs to be
+            recalculated. This method is used internally.
+            Yout should not invoke it directly from applications.
           
     </p>
     <hr width="25%" align="left" />
@@ -400,7 +493,15 @@
     - (void) <b>setWindowFrameForAttachingToRect:</b> (NSRect)screenRect<b> onScreen:</b> (<a rel="gsdoc" href="NSScreen.html#class$NSScreen">NSScreen</a>*)screen<b> preferredEdge:</b> (NSRectEdge)edge<b> popUpSelectedItem:</b> (int)selectedItemIndex;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Resize menu view frame to be appropriate in size to
+            attach to <var>screenRect</var> at preferredEdge.
+            For popup&apos;s menu, if <var>selectedItemIndex</var> is
+            other than -1, position view so selected item covers
+            the NSPopUpButton. <br />
+            <strong>
+              NOTE: preffered <var>edge</var> positioning doesn&apos;t
+              implemented yet!
+            </strong>
           
     </p>
     <hr width="25%" align="left" />
@@ -416,7 +517,8 @@
     - (float) <b>stateImageOffset</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the starting horizontal position for
+            drawing the state image.
           
     </p>
     <hr width="25%" align="left" />
@@ -424,7 +526,7 @@
     - (float) <b>stateImageWidth</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the width of the state image.
           
     </p>
     <hr width="25%" align="left" />
@@ -432,7 +534,69 @@
     - (BOOL) <b>trackWithEvent:</b> (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*)event;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            This method is responsible for tracking the mouse
+            while this menu is on the screen and the user is busy
+            navigating the menu or one of it submenus.
+            Responsible does not mean that this method does
+            it all. For submenus for example it will call,
+            indirectly, itself for submenu under
+            consideration. It will return
+            <code>YES</code> if user released mouse, not above a
+            submenu item. <code>NO</code> in all other
+            circumstances. Implementation detail:
+            
+      <ul>
+        <li>
+          
+                It use periodic events to update the highlight state
+                and attach / detach submenus.
+              
+        </li>
+        <li>
+          
+                The flag justAttachedNewSubmenu is set to
+                <code>YES</code> when a new submenu is attached.
+                The effect is that the highlighting / attaching /
+                detaching is supressed for this menu. This is
+                done so the user is given a change to move the
+                mouse pointer into the newly attached submenu.
+                Otherwise it would immediately be removed as
+                the mouse pointer move over another item. The logic
+                for resetting the flag is rather adhoc.
+              
+        </li>
+        <li>
+          
+                the flag subMenusNeedRemoving means that we will
+                remove all the submenus after we are done. This
+                flag is used to clean up the submenus when the
+                user has opened a submenu by clicking and wants to
+                close it again by clicking on the hihglighted
+                item.
+              
+        </li>
+        <li>
+          
+                When the user released the mouse this method will
+                cleanup all the transient menus. Not only its
+                own, but also its attached menu and all its
+                transient super menus.
+              
+        </li>
+        <li>
+          
+                The clean up is done BEFORE the action is executed.
+                This is needed otherwise `hiding&apos; the application
+                leaves a dangling menu. If this is not
+                acceptable, there should be another
+                mechanism of handling the hiding. BTW besides
+                the `hiding&apos; the application, model panels are also
+                a problem when the menu is not cleared before
+                executing the action.
+              
+        </li>
+      </ul>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -440,7 +604,11 @@
     - (void) <b>update</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Adds title view for application menu and submenus,
+            removes title view if menu is owned by
+            NSPopUpButton, adds close button to title
+            view for torn off menus and removes it for other type
+            of menu.
           
     </p>
     <hr width="25%" align="left" />

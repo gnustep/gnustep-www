@@ -81,7 +81,9 @@
     - (BOOL) <b>containsPoint:</b> (NSPoint)aPoint;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if <var>aPoint</var> is
+            inside the region. Subclasses define regions by
+            overriding this method.
           
     </p>
     <hr width="25%" align="left" />
@@ -97,7 +99,8 @@
     - (id) <b>initWithContainerSize:</b> (NSSize)aSize;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Initializes a new instance and sets the
+            container size to <var>aSize</var>.
           
     </p>
     <hr width="25%" align="left" />
@@ -105,15 +108,14 @@
     - (BOOL) <b>isSimpleRectangularTextContainer</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
-          
+            
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSTextContainer-layoutManager">layoutManager</a></h3>
     - (GSLayoutManager*) <b>layoutManager</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the layout manager of this text container.
           
     </p>
     <hr width="25%" align="left" />
@@ -129,7 +131,55 @@
     - (NSRect) <b>lineFragmentRectForProposedRect:</b> (NSRect)proposed<b> sweepDirection:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSLineSweepDirection">NSLineSweepDirection</a>)sweep<b> movementDirection:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSLineMovementDirection">NSLineMovementDirection</a>)move<b> remainingRect:</b> (NSRect*)remain;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            This is the main method used by the text system for
+            querying the region and flowing text in it. It
+            takes a <var>proposed</var> line fragment rectangle
+            and, if possible, splits it into a valid line fragment
+            rectangle, and a remaining rectangle that can be
+            used in subsequent calls to this method. sweepDir is
+            the direction that text moves inside the lines, and
+            moveDir is the direction lines <var>move</var> in,
+            or NSLineDoesntMove if the line may not <var>move</var>.
+            The line <var>sweep</var> and line movement may not
+            both be in the same dimension, ie. both be vertical,
+            or both be horizontal. The method returns the first
+            (according to the <var>sweep</var> direction)
+            valid line fragment rectangle in the
+            <var>proposed</var> rectangle. This line fragment
+            rectangle is a sub-rectangle of the
+            <var>proposed</var> rectangle in the <var>sweep</var>
+            direction, and has the same size in the other
+            direction. (Ie. if the <var>sweep</var>
+            direction is left, the line fragment rectangle
+            must have the same height as the <var>proposed</var>
+            rectangle.) If there is no valid line fragment
+            rectangle in the <var>proposed</var> rectangle,
+            the <var>proposed</var> rectangle may be moved in the
+            line movement direction until there is one. If no
+            valid line fragment rectangle can be returned, the
+            method returns NSZeroRect. The remaining rectangle
+            should be set to the potentially valid part of the
+            <var>proposed</var> rectangle, after moving in the
+            line movement direction, that remains after the first
+            line fragment rectangle. The <var>proposed</var>
+            rectangle may be any rectangle; in particular, it
+            may extend outside the container size. The remaining
+            rectangle does not have to be or contain a valid
+            line fragment rectangle. Subclasses define regions by
+            overriding this method. Note: The
+            TextContainerExample in the text
+            system example collection (TODO: link) contains an
+            example implementation of an NSTextContainer
+            subclass that defiens a non-trivial region, as
+            well as an interactive demonstration of this method.
+            It can also be used as a simple test of custom
+            subclasses. Note: Although a correct
+            NSTextContainer implementation must handle
+            all line <var>sweep</var> and movement directions, the
+            current standard typesetter will only call this
+            method with <var>sweep</var> right, and no movement
+            or movement down. Relying on this makes writing a
+            subclass easier, but it is <em>not</em> safe.
           
     </p>
     <hr width="25%" align="left" />
@@ -137,17 +187,14 @@
     - (void) <b>replaceLayoutManager:</b> (GSLayoutManager*)aLayoutManager;<br />
     <p>
       
-            Replaces the layout manager while maintaining the
-            text object framework intact.
-          
+            
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSTextContainer-setContainerSize:">setContainerSize:</a></h3>
     - (void) <b>setContainerSize:</b> (NSSize)aSize;<br />
     <p>
       
-            <em>Description forthcoming.</em>
-          
+            
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSTextContainer-setHeightTracksTextView:">setHeightTracksTextView:</a></h3>
@@ -162,7 +209,9 @@
     - (void) <b>setLayoutManager:</b> (GSLayoutManager*)aLayoutManager;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            This method should not be called directly. It is
+            called by the layout manager when the layout manager
+            of a text container changes.
           
     </p>
     <hr width="25%" align="left" />
@@ -170,15 +219,18 @@
     - (void) <b>setLineFragmentPadding:</b> (float)aFloat;<br />
     <p>
       
-            <em>Description forthcoming.</em>
-          
+            
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSTextContainer-setTextView:">setTextView:</a></h3>
     - (void) <b>setTextView:</b> (<a rel="gsdoc" href="NSTextView.html#class$NSTextView">NSTextView</a>*)aTextView;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Sets the NSTextView for this text container. Note that
+            a text view should be attached to a text container only
+            if the text container is attached to a layout manager
+            that can handle text views (eg. NSLayoutManager). The
+            text view is retained by the text container.
           
     </p>
     <hr width="25%" align="left" />
@@ -186,15 +238,15 @@
     - (void) <b>setWidthTracksTextView:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
-          
+            
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSTextContainer-textView">textView</a></h3>
     - (<a rel="gsdoc" href="NSTextView.html#class$NSTextView">NSTextView</a>*) <b>textView</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the NSTextView attached to this text
+            container, or <code>nil</code> if there is none.
           
     </p>
     <hr width="25%" align="left" />

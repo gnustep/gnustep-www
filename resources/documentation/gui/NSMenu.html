@@ -57,6 +57,9 @@
           <a href="#004000000000">Software documentation for the NSMenuValidation
         protocol</a>
         </li>
+        <li>
+          <a href="#005000000000">Software documentation for the NSMenuView protocol</a>
+        </li>
       </ol>
       <hr width="50%" align="left" />
     </div>
@@ -88,7 +91,293 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            Menus provide the user with a list of actions and/or
+            submenus. Submenus themselves are full fledged
+            menus and so a heirarchical structure of appears.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            Every application has one special menu, the so called
+            Application menu. This menu is always visible
+            on the screen when the application is active. This menu
+            normally contains items like, <em>info</em>,
+            <em>services</em>, <em>print</em>, <em>hide</em> and
+            <em>quit</em>.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            After the <em>info</em> item normally some submenus
+            follow containing the application specific actions.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            On GNUstep the content of the menu is stacked vertically
+            as oppossed to the Windows and Mac world, where they are
+            stacked horizontally. Also because the menus are
+            not part of any normal window they can be dragged
+            around opened and closed independend of the
+            application windows.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            This can lead to a few menus being open
+            simultanuously. The collection of open
+            menus is remembered, when the program is started
+            again, all the torn off menus aka detached menus,
+            are displayed at their last known position.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The menu behaviour is richer than in most other
+            environments and bear some explanation. This
+            explanation is aimed at users of Menus but more
+            so at the developer of custom menus.
+              </p>
+    <p>
+      
+          
+      <dl>
+        <dt>Application menu</dt>
+        <dd>
+          
+              There alwasy at least one menu present and visible
+              while the application is active. This is the
+              application menu. This window can never be
+              closed.
+            
+        </dd>
+        <dt>Attached menu</dt>
+        <dd>
+          
+              Normally when you click in a menu on a submenu
+              item, the submenu is shown directly next to the
+              menu you click in. The submenu is now called an
+              <em>attached</em> menu. It is attached to the menu
+              that was clicked in.
+            
+        </dd>
+        <dt>Detached menu</dt>
+        <dd>
+          
+              A menu is detached when it is not attached to its
+              parent menu. A menu can become detached when the
+              user drags a submenu away from its parents. A
+              detached window contains in its title a close
+              button.
+            
+        </dd>
+        <dt>Transient menu</dt>
+        <dd>
+          
+              A transient menu is a menu that dissappears as soon as
+              the user stops interacting with the menus. Typically
+              a transient menu is created when a right mouse click
+              appears in an application window. The right mouse
+              click will bring up the Application menu at the
+              place the user clicks. While keeping the mouse
+              button down the user can select items by moving
+              around. When releasing the button, all transient
+              menus will be removed from the screen and the
+              action will be executed.
+              
+          <p>
+
+                It is important to note that it is impossible to
+                click in transient menus.
+                        </p>
+          
+            
+        </dd>
+        <dt>Attached transient menu</dt>
+        <dd>
+          
+              This is a menu that is attached and transient at the
+              same time.
+            
+        </dd>
+      </dl>
+      
+          A single NSMenu instance can be displayed zero or one times
+          when the user is not interaction with the menus. When
+          the user is interaction with the menus it can occur that
+          the same NSMenu is displayed in two locations at the same
+          time. This is only possible when one of the displayed
+          instances is a transient menu. To understand how
+          the diffent kind of menus are created lets look at some
+          user actions:
+          
+      <ul>
+        <li>
+          
+              The user clicks on an item which is not a submenu.
+              <br /> The item is highlighted until the action
+              corresponding with the item is completed.
+              More precisely, the application highlights the menu
+              item, performs the action, and unhighlights the
+              item.
+            
+        </li>
+        <li>
+          
+              The user clicks on a submenu item which is not
+              highlighted already <br /> If the submenu is
+              not a detached menu, the submenu will become an
+              attached menu to the menu that is clicked in.
+              The item that is clicked in will become highlighted
+              and stays highlighted.
+              
+          <p>
+
+                If the submenu is a detached menu, the transient
+                version of the submenu will be shown
+                        </p>
+          
+            
+        </li>
+        <li>
+          
+              The user clicks on a submenu item which is
+              highlighted <br /> This means that the
+              submenu is an attached submenu for this menu.
+              After clicking the submenu item will no be no
+              longer highlighted and the submenu will be removed
+              from the screen.
+            
+        </li>
+        <li>
+          
+              The user drags over a menu item <br /> The item will
+              be highlighted, if the item is a submenu item, the
+              submenu will be shown as an attached submenu.
+              This can be transient, or non transient.
+            
+        </li>
+      </ul>
+      
+          <br /> <strong>Customizing the look of Menus</strong>
+          <br /> There are basically three ways of customizing
+          the look of NSMenu
+          
+      <ol>
+        <li>
+          
+              Using custom NSMenuItemCell&apos;s. This you should do
+              when you want to influence the look of the items
+              displayed in the menu.
+            
+        </li>
+        <li>
+          
+              Using custom NSMenuView. This is the class to
+              modify if you want to change the way the menu is
+              layout on the screen. So if you want to stack the
+              menu items horizontally, you should change this
+              class. This should be rarely needed.
+            
+        </li>
+        <li>
+          
+              Reimplement NSMenu. This you should not do.
+              But, if you implement everything yourself you can
+              achieve anything.
+            
+        </li>
+      </ol>
+      
+          <br />
+          <strong>
+            Information for implementing custom NSMenuView
+            class
+          </strong>
+          <br /> When implementing a custom NSMenuView class it
+          is important to keep the following information in mind.
+          
+      <ul>
+        <li>
+          
+              The menus (or the menu items) form a tree. Navigating
+              through this tree is done with the methods
+              <a rel="gsdoc" href="#method$NSMenu-supermenu">
+                [NSMenu&nbsp;-supermenu]
+              </a>
+
+              , which returns the parent menu of the receiver, and
+              with
+              <a rel="gsdoc" href="#method$NSMenu-itemAtIndex:">
+                [NSMenu&nbsp;-itemAtIndex:]
+              </a>
+
+              which returns a NSMenuItem on which we can call
+              
+                [NSMenuItem&nbsp;-submenu]
+              
+
+              for a child menu.
+            
+        </li>
+        <li>
+          
+              The menus as displayed on the screen do NOT form a
+              tree. This because detached and transient menus
+              lead to duplicate menus on the screen.
+            
+        </li>
+      </ul>
+      
+          The displayed menus on the screen have the following
+          structure:
+          
+      <ol>
+        <li>
+          
+              The ordered graph of displayed menus (note, NOT the
+              set of NSMenus) form a collection of line graphs.
+            
+        </li>
+        <li>
+          
+              The attached menus are precisely the non root
+              vertices in this graph.
+            
+        </li>
+        <li>
+          
+              An attached menu of a transient menu is itself a
+              transient menu.
+            
+        </li>
+        <li>
+          
+              The collection of transient menus form connect
+              subgraph of the menu graph.
+            
+        </li>
+      </ol>
+      
         
     </p>
     <b>Method summary</b>
@@ -97,7 +386,6 @@
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu+popUpContextMenu:withEvent:forView:">+popUpContextMenu:withEvent:forView:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu+setMenuZone:">+setMenuZone:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-_ownedByPopUp">-_ownedByPopUp</a></li>
-      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-_rightMouseDisplay:">-_rightMouseDisplay:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-_setOwnedByPopUp:">-_setOwnedByPopUp:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-addItem:">-addItem:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-addItemWithTitle:action:keyEquivalent:">-addItemWithTitle:action:keyEquivalent:</a></li>
@@ -118,9 +406,9 @@
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-insertItem:atIndex:">-insertItem:atIndex:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-insertItemWithTitle:action:keyEquivalent:atIndex:">-insertItemWithTitle:action:keyEquivalent:atIndex:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-isAttached">-isAttached</a></li>
-      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-isFollowTransient">-isFollowTransient</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-isPartlyOffScreen">-isPartlyOffScreen</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-isTornOff">-isTornOff</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-isTransient">-isTransient</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-itemArray">-itemArray</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-itemAtIndex:">-itemAtIndex:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-itemChanged:">-itemChanged:</a></li>
@@ -129,7 +417,6 @@
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-locationForSubmenu:">-locationForSubmenu:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-menuChangedMessagesEnabled">-menuChangedMessagesEnabled</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-menuRepresentation">-menuRepresentation</a></li>
-      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-nestedCheckOffScreen">-nestedCheckOffScreen</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-nestedSetFrameOrigin:">-nestedSetFrameOrigin:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-numberOfItems">-numberOfItems</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-performActionForItemAtIndex:">-performActionForItemAtIndex:</a></li>
@@ -143,6 +430,7 @@
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-setSubmenu:forItem:">-setSubmenu:forItem:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-setSupermenu:">-setSupermenu:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-setTitle:">-setTitle:</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-setTornOff:">-setTornOff:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-shiftOnScreen">-shiftOnScreen</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-sizeToFit">-sizeToFit</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-submenuAction:">-submenuAction:</a></li>
@@ -196,7 +484,23 @@
     - (<a rel="gsdoc" href="#class$NSMenu">NSMenu</a>*) <b>attachedMenu</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the menu that is attached to this menu.
+            
+    </p>
+    <p>
+
+              If two instances of this menu are visible, return the
+              attached window of the transient version of this
+              menu.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+If no menu is attached return <code>nil</code>.    </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -266,6 +570,7 @@
     <hr width="25%" align="left" />
     <h3><a name="method$NSMenu-initWithTitle:">initWithTitle:</a></h3>
     - (id) <b>initWithTitle:</b> (NSString*)aTitle;<br />
+This is a designated initialiser for the class.<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -292,7 +597,40 @@
     - (BOOL) <b>isAttached</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns if this menu is attached to its supermenu,
+            return <code>nil</code> if it does not have a parent
+            menu.
+            
+    </p>
+    <p>
+
+              If two instances of this menu are visible, return the
+              outcome of the check for the transient version of
+              the menu.
+                </p>
+    <p>
+      
+            Look for the semantics in the header. Note that this
+            implementation works because there are...
+            cases:
+            
+      <ol>
+        <li>
+          
+                This menu is transient, its supermenu is also
+                transient. In this case we just do the check
+                between the transient windows and everything is
+                fine
+              
+        </li>
+        <li>
+          
+                The menu is transient, its supermenu is not
+                transient. This can go WRONG
+              
+        </li>
+      </ol>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -300,7 +638,9 @@
     - (BOOL) <b>isTornOff</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            If there are two instances of this menu visible, return
+            <code>NO</code>. Otherwise, return <code>YES</code>
+            if we are a detached menu and visible.
           
     </p>
     <hr width="25%" align="left" />
@@ -308,7 +648,8 @@
     - (NSArray*) <b>itemArray</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns an array containing all menu items in this
+            menu.
           
     </p>
     <hr width="25%" align="left" />
@@ -348,7 +689,11 @@
     - (NSPoint) <b>locationForSubmenu:</b> (<a rel="gsdoc" href="#class$NSMenu">NSMenu</a>*)aSubmenu;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the position where submenu will be
+            displayed when it will be displayed as an
+            attached menu of this menu. The result is
+            undefined when <var>aSubmenu</var> is not
+            actually a submenu of this menu.
           
     </p>
     <hr width="25%" align="left" />
@@ -364,7 +709,10 @@
     - (id) <b>menuRepresentation</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Return the NSView that is used for drawing the menu.
+            It is the view set with
+            <a rel="gsdoc" href="#method$NSMenu-setMenuRepresentation:">[NSMenu&nbsp;-setMenuRepresentation:]</a>
+ and therefore it should be safe to assume it is an NSView implementing the NSMenuView protocol.
           
     </p>
     <hr width="25%" align="left" />
@@ -428,7 +776,26 @@
     - (void) <b>setMenuRepresentation:</b> (id)menuRep;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Set the View that should be used to display the menu.
+            
+    </p>
+    <p>
+
+              The default is NSMenuView, but a user can supply its
+              own NSView object as long as it
+                </p>
+    <p>
+      
+            
+      <ul>
+        <li>
+          Inherits from NSView
+        </li>
+        <li>
+          Implements NSMenuView protocol
+        </li>
+      </ul>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -444,7 +811,10 @@
     - (void) <b>setSupermenu:</b> (<a rel="gsdoc" href="#class$NSMenu">NSMenu</a>*)supermenu;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Set the <var>supermenu</var> of this menu. TODO: add
+            explanation if this will change remove this
+            menu from the old <var>supermenu</var> or if it does
+            not.
           
     </p>
     <hr width="25%" align="left" />
@@ -452,7 +822,7 @@
     - (void) <b>setTitle:</b> (NSString*)aTitle;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Change the title of the menu.
           
     </p>
     <hr width="25%" align="left" />
@@ -476,7 +846,8 @@
     - (<a rel="gsdoc" href="#class$NSMenu">NSMenu</a>*) <b>supermenu</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the supermenu of this menu. Return
+            <code>nil</code> if this is the application menu.
           
     </p>
     <hr width="25%" align="left" />
@@ -484,7 +855,7 @@
     - (NSString*) <b>title</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the current title.
           
     </p>
     <hr width="25%" align="left" />
@@ -518,40 +889,31 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          This interface exist contains methods that are meant for
+          the NSMenuView. If you write your own implementation of
+          the NSMenuView interface you can use these methods to
+          popup other menus or close them.
         
     </p>
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-_ownedByPopUp">-_ownedByPopUp</a></li>
-      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-_rightMouseDisplay:">-_rightMouseDisplay:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-_setOwnedByPopUp:">-_setOwnedByPopUp:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-close">-close</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-closeTransient">-closeTransient</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-display">-display</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-displayTransient">-displayTransient</a></li>
-      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-isFollowTransient">-isFollowTransient</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-isPartlyOffScreen">-isPartlyOffScreen</a></li>
-      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-nestedCheckOffScreen">-nestedCheckOffScreen</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-isTransient">-isTransient</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-nestedSetFrameOrigin:">-nestedSetFrameOrigin:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-setGeometry">-setGeometry</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-setTornOff:">-setTornOff:</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-shiftOnScreen">-shiftOnScreen</a></li>
       <li><a rel="gsdoc" href="NSMenu.html#method$NSMenu-window">-window</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSMenu(GNUstepExtra)-_ownedByPopUp">_ownedByPopUp</a></h3>
     - (BOOL) <b>_ownedByPopUp</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMenu(GNUstepExtra)-_rightMouseDisplay:">_rightMouseDisplay:</a></h3>
-    - (void) <b>_rightMouseDisplay:</b> (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*)theEvent;<br />
     <p>
       
             <em>Warning</em> the underscore at the start of the
@@ -576,7 +938,9 @@
     - (void) <b>close</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Remove the window from the screen. This method
+            can/should be used by the menurepresentation to
+            remove a submenu from the screen.
           
     </p>
     <hr width="25%" align="left" />
@@ -584,7 +948,10 @@
     - (void) <b>closeTransient</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Remove the transient version of the window from the
+            screen. This method is used by NSMenuView
+            implementations that need to open/close
+            transient menus.
           
     </p>
     <hr width="25%" align="left" />
@@ -592,7 +959,9 @@
     - (void) <b>display</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Show menu on the screen. This method can/should be
+            used by the menurepresentation to display a submenu on
+            the screen.
           
     </p>
     <hr width="25%" align="left" />
@@ -600,15 +969,7 @@
     - (void) <b>displayTransient</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMenu(GNUstepExtra)-isFollowTransient">isFollowTransient</a></h3>
-    - (BOOL) <b>isFollowTransient</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
+            Display the transient version of the menu.
           
     </p>
     <hr width="25%" align="left" />
@@ -620,11 +981,12 @@
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSMenu(GNUstepExtra)-nestedCheckOffScreen">nestedCheckOffScreen</a></h3>
-    - (void) <b>nestedCheckOffScreen</b>;<br />
+    <h3><a name="method$NSMenu(GNUstepExtra)-isTransient">isTransient</a></h3>
+    - (BOOL) <b>isTransient</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if there is a transient
+            version of this menu displayed on the screen.
           
     </p>
     <hr width="25%" align="left" />
@@ -643,7 +1005,25 @@
     - (void) <b>setGeometry</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Positions the menu according to the standard user
+            defaults. If the position is not found in the
+            defaults revert to positioning the window in the
+            upper left corner.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSMenu(GNUstepExtra)-setTornOff:">setTornOff:</a></h3>
+    - (void) <b>setTornOff:</b> (BOOL)flag;<br />
+    <p>
+      
+            When the <var>flag</var> is <code>YES</code> this
+            method will detach the receiver from its parent and
+            update the menurepresentation so it will display a
+            close button if appropriate. If the <var>flag</var>
+            is <code>NO</code> this method will update the
+            menurepresentation so it will be able to
+            remove the close button if needed. Note that it will
+            not reattach to its parent menu.
           
     </p>
     <hr width="25%" align="left" />
@@ -659,7 +1039,11 @@
     - (<a rel="gsdoc" href="NSWindow.html#class$NSWindow">NSWindow</a>*) <b>window</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            Returns the window in which this menu is displayed.
+            If there is a transient version it will return the
+            window in which the transient version is displayed.
+            If the Menu is not displayed at all the result is
+            meaningless.
           
     </p>
     <hr width="25%" align="left" />
@@ -766,6 +1150,313 @@
                 </p>
     <p>
       
+          
+    </p>
+    <hr width="25%" align="left" />
+
+          <h1><a name="005000000000">
+        Software documentation for the NSMenuView protocol
+      </a></h1>
+    <h2><a name="protocol$(NSMenuView)">NSMenuView</a></h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>AppKit/NSMenu.h</dd>
+      </dl>
+    </blockquote>
+    <blockquote>
+      <b>Standards:</b>
+      <ul>
+        <li>MacOS-X</li>
+        <li>OpenStep</li>
+        <li>GNUstep</li>
+      </ul>
+    </blockquote>
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-detachSubmenu">-detachSubmenu</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-highlightedItemIndex">-highlightedItemIndex</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-imageAndTitleOffset">-imageAndTitleOffset</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-imageAndTitleWidth">-imageAndTitleWidth</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-keyEquivalentOffset">-keyEquivalentOffset</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-keyEquivalentWidth">-keyEquivalentWidth</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-locationForSubmenu:">-locationForSubmenu:</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-performActionWithHighlightingForItemAtIndex:">-performActionWithHighlightingForItemAtIndex:</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-setHighlightedItemIndex:">-setHighlightedItemIndex:</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-setMenu:">-setMenu:</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-sizeToFit">-sizeToFit</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-stateImageWidth">-stateImageWidth</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-trackWithEvent:">-trackWithEvent:</a></li>
+      <li><a rel="gsdoc" href="NSMenu.html#method$(NSMenuView)-update">-update</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$(NSMenuView)-detachSubmenu">detachSubmenu</a></h3>
+    - (void) <b>detachSubmenu</b>;<br />
+    <p>
+      
+            This should ensure that if there is an attached
+            submenu this submenu will be detached. Detaching
+            means that this particular menu representation should
+            be removed from the screen. It should implement a deep
+            detach, that is, all attached submenus of this menu
+            should also be detached.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-highlightedItemIndex">highlightedItemIndex</a></h3>
+    - (int) <b>highlightedItemIndex</b>;<br />
+    <p>
+      
+            Returns the currently highlighted item. Returns -1
+            if no item is highlighted.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-imageAndTitleOffset">imageAndTitleOffset</a></h3>
+    - (float) <b>imageAndTitleOffset</b>;<br />
+    <p>
+      
+            Method used by NSMenuItemCell to draw itself
+            correctly and nicely lined up with the other menu
+            items
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-imageAndTitleWidth">imageAndTitleWidth</a></h3>
+    - (float) <b>imageAndTitleWidth</b>;<br />
+    <p>
+      
+            Methos used by NSMenuItemCell to draw itself
+            correctly and nicely lined up with the other menu
+            items.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-keyEquivalentOffset">keyEquivalentOffset</a></h3>
+    - (float) <b>keyEquivalentOffset</b>;<br />
+    <p>
+      
+            Methos used by NSMenuItemCell to draw itself
+            correctly and nicely lined up with the other menu
+            items.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-keyEquivalentWidth">keyEquivalentWidth</a></h3>
+    - (float) <b>keyEquivalentWidth</b>;<br />
+    <p>
+      
+            Used by NSItemCell to...
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-locationForSubmenu:">locationForSubmenu:</a></h3>
+    - (NSPoint) <b>locationForSubmenu:</b> (<a rel="gsdoc" href="#class$NSMenu">NSMenu</a>*)aSubmenu;<br />
+    <p>
+      
+            Used by the NSMenu to determine where to position a
+            submenu.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-performActionWithHighlightingForItemAtIndex:">performActionWithHighlightingForItemAtIndex:</a></h3>
+    - (void) <b>performActionWithHighlightingForItemAtIndex:</b> (int)index;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-setHighlightedItemIndex:">setHighlightedItemIndex:</a></h3>
+    - (void) <b>setHighlightedItemIndex:</b> (int)index;<br />
+    <p>
+      
+            Set the currently highlighted item. This is used by the
+            NSMenu class to restore the selected item when it is
+            temporary set to another item. This happens when
+            both the regular version and the transient version are
+            on the screen. A value of -1 means that no item will be
+            highlighted.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-setMenu:">setMenu:</a></h3>
+    - (void) <b>setMenu:</b> (<a rel="gsdoc" href="#class$NSMenu">NSMenu</a>*)menu;<br />
+    <p>
+      
+            Set the <var>menu</var> that this view object will be
+            drawing. This method will NOT retain the
+            <var>menu</var>. In normal usage an instance of
+            NSMenu will use this method to supply the NSMenuView
+            with reference to itself. The NSMenu will retain the
+            NSMenuView.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-sizeToFit">sizeToFit</a></h3>
+    - (void) <b>sizeToFit</b>;<br />
+    <p>
+      
+            Hm, why is this method needed? Shouldn&apos;t this be done
+            by the update method?
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-stateImageWidth">stateImageWidth</a></h3>
+    - (float) <b>stateImageWidth</b>;<br />
+    <p>
+      
+            Method used by NSMenuItemCell to draw itself
+            correctly and nicely lined up with the other menu
+            items.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-trackWithEvent:">trackWithEvent:</a></h3>
+    - (BOOL) <b>trackWithEvent:</b> (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*)event;<br />
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This is method is responsible for handling all
+              events while the user is interacting with this
+              menu. It should pass on this call to another
+              menurepresentation when the user moves
+              the mouse cursor over either a submenu or over the
+              supermenu.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The method returns when the interaction from the user
+              with the menu system is over.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The method returns <code>NO</code> when the user
+              releases the mouse button above a submenu item
+              and <code>YES</code> in all other cases.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This return value can be used to determine if
+              submenus should be removed from the screen or
+              that they are supposed to stay.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The implementation should roughly follow the
+              following logic:
+                </p>
+    <p>
+      
+
+<pre>
+{
+  while (have not released mouse button)
+   {
+     if (mouse hovers over submenu, or supermenu)
+       {
+          if ([(menurepresentation under mouse)
+                       trackWithEvent: the event])
+             {
+                [self detachSubmenu];
+                return YES;
+             }
+          return NO;
+       }
+       //highlight item under  mouse
+
+       if (highlighting submenu item)
+         {
+           [self attachSubmenuAtIndex:..];
+         }
+       else
+         {
+           [self detachSubmenu];
+         }
+       get next event.
+   }
+
+ execute the menu action if applicable;
+
+ return YES | NO depending on the situation;
+}
+</pre>
+      
+            Note that actual implementations tend to be more
+            complicated because because of all kind of
+            useability issues. Useabilities issues to look
+            out for are:
+            
+      <ul>
+        <li>
+          
+                Menus that are only partly on the screen. Those
+                need to be moved while navigation the menu.
+              
+        </li>
+        <li>
+          
+                Submenus that are hard to reach. If the
+                natural route to the content of a submenu
+                travels through other menu items you do not
+                want to remove the submenu immediately.
+              
+        </li>
+        <li>
+          
+                Transient menus require slightly different
+                behaviour from the normal menus. For example,
+                when selecting a action from a transient menu that
+                brings up a modal panel you would expect the
+                transient menu to dissappear. However in the
+                normal menu system you want it to stay, so you
+                still have feedback on which menu action
+                triggered the modal panel.
+              
+        </li>
+      </ul>
+      
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$(NSMenuView)-update">update</a></h3>
+    - (void) <b>update</b>;<br />
+    <p>
+      
+            This will relayout the NSMenuView. It should be called
+            when the menu changes. Changes include becoming
+            detached, adding or removing submenu items
+            etcetera. However, normally it does not need to
+            be called directly because Because the NSMenuView is
+            supposed to listen to the NSMenu notifications for
+            the item added, removed and change notifications. It
+            should be called explicitly when other changes
+            occur, such as becoming detached or changing the
+            title.
           
     </p>
     <hr width="25%" align="left" />

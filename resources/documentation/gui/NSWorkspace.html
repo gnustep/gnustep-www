@@ -65,12 +65,215 @@
     </blockquote>
     <p>
       
-          <em>Description forthcoming.</em>
+          
+    </p>
+    <p>
+
+            The NSWorkspace class gathers together a large number
+            of capabilities needed for workspace management.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The make_services tool examines all applications
+            (anything with a.app,.debug, or.profile suffix)
+            in the system, local, and user Apps directories, and
+            caches information about the services each app
+            provides (extracted from the Info-gnustep.plist
+            file in each application).
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            In addition to the cache of services information, it
+            builds a cache of information about all known
+            applications (including information about file
+            types they handle).
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            NSWorkspace reads the cache and uses it to
+            determine which application to use to open a
+            document and which icon to use to represent that
+            document.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The NSWorkspace API has been extended to provide
+            methods for finding/setting the preferred
+            icon/application for a particular file
+            type. NSWorkspace will use the &apos;best&apos;
+            icon/application available.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            To determine the executable to launch, if there was an
+            Info-gnustep.plist/Info.plist
+            in the app wrapper and it had an NSExecutable field - it
+            uses that name. Otherwise, it tries to use the name of
+            the app - eg. foo.app/foo <br /> The executable is
+            launched by NSTask, which handles the addition of
+            machine/os/library path components as
+            necessary.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            To determine the icon for a file, it uses the value from
+            the cache of icons for the file extension, or use an
+            &apos;unknown&apos; icon.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            To determine the icon for a folder, if the folder has a
+            &apos;.app&apos;, &apos;.debug&apos; or &apos;.profile&apos; extension - the
+            Info-gnustep.plist file is examined for
+            an &apos;NSIcon&apos; value and NSWorkspace tries to use that. If
+            there is no value specified - it tries
+            foo.app/foo.tiff&apos; or &apos;foo.app/.dir.tiff&apos;
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            If the folder was not an application wrapper, it just
+            tries the.dir.tiff file.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            If no icon was available, it uses a default folder icon
+            or a special icon for the root directory.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The information about what file types an app can handle
+            needs to be stored in Info-gnustep.plist in an array
+            keyed on the name <em>NSTypes</em>, within which each
+            value is a dictionary. <br />
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            In the NSTypes fields, NSWorkspace uses NSIcon (the icon
+            to use for the type) NSUnixExtensions (a list of file
+            extensions corresponding to the type) and NSRole
+            (what the app can do with documents of this type
+            <em>Editor</em>, <em>Viewer</em>, or <em>None</em>).
+            In the AppList cache, make_services generates a
+            dictionary, keyed by file extension, whose
+            values are the dictionaries containing the NSTypes
+            dictionaries of each of the apps that handle
+            the extension. The NSWorkspace class makes use of this
+            cache at runtime.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            If the Info-gnustep.plist of an application says that it
+            can open files with a particular extension, then when
+            NSWorkspace is asked to open such a file it
+            will attempt to send an
+            <a rel="gsdoc" href="NSApplication.html#method$(GSAppDelegateProtocol)-application:openFile:">
+              -application:openFile:
+            </a>
+
+            message to the application (which must be handled
+            by the applications delegate). If the application is not
+            running, NSWorkspace will instead attempt to
+            launch the application passing the filename to open
+            after a &apos;-GSFilePath&apos; flag in the command line
+            arguments. For a GNUstep application, the
+            application will recognize this and invoke the
+            <a rel="gsdoc" href="NSApplication.html#method$(GSAppDelegateProtocol)-application:openFile:">
+              -application:openFile:
+            </a>
+
+            method passing it the file name.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            This command line argument mechanism provides a way
+            for non-gnustep applications to be used to open files
+            simply by provideing a wrapper for them containing
+            the appropriate Info-gnustep.plist. <br /> For instance
+            - you could set up xv.app to contain a shellscript &apos;xv&apos;
+            that would start the real xv binary passing it a file
+            to open if the &apos;-GSFilePath&apos; argument was given. The
+            Info-gnustep.plist file could look like
+            this:
+              </p>
+    <p>
+      
+
+<pre>
+ 
+ {
+   NSExecutable = &quot;xv&quot;;
+   NSIcon = &quot;xv.tiff&quot;;
+   NSTypes = (
+     {
+       NSIcon = &quot;tiff.tiff&quot;;
+       NSUnixExtensions = ( tiff, tif );
+     },
+     {
+       NSIcon = &quot;xbm.tiff&quot;;
+       NSUnixExtensions = ( xbm );
+     }
+   );
+ }
+ </pre>
+      
         
     </p>
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace+sharedWorkspace">+sharedWorkspace</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-activeApplication">-activeApplication</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-appIconForApp:">-appIconForApp:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-bundleForApp:">-bundleForApp:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-checkForRemovableMedia">-checkForRemovableMedia</a></li>
@@ -90,6 +293,7 @@
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-isFilePackageAtPath:">-isFilePackageAtPath:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-launchApplication:">-launchApplication:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-launchApplication:showIcon:autolaunch:">-launchApplication:showIcon:autolaunch:</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-launchedApplications">-launchedApplications</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-locateApplicationBinary:">-locateApplicationBinary:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-mountNewRemovableMedia">-mountNewRemovableMedia</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-mountedLocalVolumePaths">-mountedLocalVolumePaths</a></li>
@@ -115,6 +319,14 @@
     <hr width="50%" align="left" />
     <h3><a name="method$NSWorkspace+sharedWorkspace">sharedWorkspace</a></h3>
     + (<a rel="gsdoc" href="#class$NSWorkspace">NSWorkspace</a>*) <b>sharedWorkspace</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWorkspace-activeApplication">activeApplication</a></h3>
+    - (NSDictionary*) <b>activeApplication</b>;<br />
     <p>
       
             <em>Description forthcoming.</em>
@@ -280,6 +492,14 @@
       
             Launches the specified application (unless it is
             alreeady running)
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSWorkspace-launchedApplications">launchedApplications</a></h3>
+    - (NSArray*) <b>launchedApplications</b>;<br />
+    <p>
+      
+            <em>Description forthcoming.</em>
           
     </p>
     <hr width="25%" align="left" />
@@ -494,7 +714,7 @@
     - (NSString*) <b>getBestAppInRole:</b> (NSString*)role<b> forExtension:</b> (NSString*)ext;<br />
     <p>
       
-            Returns the 'best' application to open a file with
+            Returns the &apos;best&apos; application to open a file with
             the specified extension using the given <var>role</var>
             . If the <var>role</var> is <code>nil</code> then apps
             which can edit are preferred but viewers are also

@@ -64,7 +64,7 @@
 
         In order to display itself, a view must be placed in a
         window (represented by an NSWindow object). Within the
-        window is a hierarchy of NSViews, headed by the window's
+        window is a hierarchy of NSViews, headed by the window&apos;s
         content view. Every other view in a window is a
         descendant of this view.
           </p>
@@ -263,7 +263,27 @@
     + (<a rel="gsdoc" href="NSMenu.html#class$NSMenu">NSMenu</a>*) <b>defaultMenu</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Returns the default menu to be used for instances
+              of the current class; if no menu has been set through
+              setMenu: this default menu will be used.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              NSView&apos;s implementation returns <code>nil</code>
+              . You should override this method if you want all
+              instances of your custom view to use the same
+              menu.
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -437,16 +457,16 @@
             printer (i.e. not an EPS file). Most of the
             information for writing the header comes from
             the NSPrintOperation and NSPrintInfo objects associated
-            with the current print operation. There isn't normally
+            with the current print operation. There isn&apos;t normally
             anything that the program needs to override at the
             beginning of a document, although if there is
             additional setup that needs to be done, you can
-            override the NSView's methods endHeaderComments,
+            override the NSView&apos;s methods endHeaderComments,
             endPrologue, beginSetup, and/or endSetup. This
             method calls the above methods in the listed order
             before or after writing the required information.
             For an EPS operation, the beginSetup and endSetup
-            methods aren't used.
+            methods aren&apos;t used.
           
     </p>
     <hr width="25%" align="left" />
@@ -699,16 +719,16 @@
     <p>
       
             This method is invoked to handle drawing inside the
-            view. The default NSView's implementation does
+            view. The default NSView&apos;s implementation does
             nothing; subclasses might override it to draw
-            something inside the view. Since NSView's
+            something inside the view. Since NSView&apos;s
             implementation is guaranteed to be empty,
-            you should not call super's implementation when you
+            you should not call super&apos;s implementation when you
             override it in subclasses. drawRect: is invoked
             when the focus has already been locked on the view;
             you can use arbitrary postscript functions in drawRect:
             to draw inside your view; the coordinate system in which
-            you draw is the view's own coordinate system (this
+            you draw is the view&apos;s own coordinate system (this
             means for example that you should refer to the
             rectangle covered by the view using its bounds,
             and not its frame). The argument of drawRect: is the
@@ -821,7 +841,7 @@
     - (int) <b>gState</b>;<br />
     <p>
       
-            Returns an identifier that represents the view's
+            Returns an identifier that represents the view&apos;s
             gstate object, which is used to encapsulate drawing
             information about the view. Most of the time a
             gstate object is created from scratch when the view
@@ -843,7 +863,7 @@
     - (<a rel="gsdoc" href="#class$NSView">NSView</a>*) <b>hitTest:</b> (NSPoint)aPoint;<br />
     <p>
       
-            Returns the subview, lowest in the receiver's
+            Returns the subview, lowest in the receiver&apos;s
             hierarchy, which contains <var>aPoint</var>, or
             <code>nil</code> if there is no such view.
           
@@ -950,7 +970,46 @@
     - (<a rel="gsdoc" href="NSMenu.html#class$NSMenu">NSMenu</a>*) <b>menuForEvent:</b> (<a rel="gsdoc" href="NSEvent.html#class$NSEvent">NSEvent</a>*)theEvent;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            
+    </p>
+    <p>
+
+              Returns the menu that it appropriates for the
+              given event. NSView&apos;s implementation returns the
+              default menu of the view.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This methods is intended to be overriden so that it
+              can return a context-sensitive for appropriate
+              mouse&apos;s events. ((although it seems it can be
+              used for any kind of event)
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              This method is used by NSView&apos;s rightMouseDown:
+              method, and the returned NSMenu is displayed as a
+              context menu
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              see [NSResponder -menu], [NSResponder -setMenu:],
+              [NSView +defaultMenu] and [NSView -menu].
+                </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -1259,7 +1318,7 @@
     - (void) <b>renewGState</b>;<br />
     <p>
       
-            Invalidates the view's gstate object so it will
+            Invalidates the view&apos;s gstate object so it will
             be set up again using setUpGState the next time the view
             is focused.
           
@@ -1430,7 +1489,17 @@
     - (void) <b>setNeedsDisplay:</b> (BOOL)flag;<br />
     <p>
       
-            <em>Description forthcoming.</em>
+            As an exception to the general rules for threads and
+            
+              -gui
+            
+
+            , this method is thread-safe and may be called from any
+            thread. Display will always be done in the main
+            thread. (Note that other methods are in general not
+            thread-safe; if you want to access other
+            properties of views from multiple threads, you
+            need to provide the synchronization.)
           
     </p>
     <hr width="25%" align="left" />
@@ -1441,7 +1510,15 @@
             Inform the view system that the specified rectangle
             is invalid and requires updating. This automatically
             informs any superviews of any updating they need to
-            do.
+            do. As an exception to the general rules for threads
+            and -gui
+, this
+            method is thread-safe and may be called from any
+            thread. Display will always be done in the main
+            thread. (Note that other methods are in general not
+            thread-safe; if you want to access other
+            properties of views from multiple threads, you
+            need to provide the synchronization.)
           
     </p>
     <hr width="25%" align="left" />
