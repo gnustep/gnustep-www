@@ -395,7 +395,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">Gorm</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("dev-apps/Gorm-0.7.5.tar.gz")?>">0.7.5
+<td class="stab"><a href="<?php download("dev-apps/Gorm-0.7.6.tar.gz")?>">0.7.6
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Graphical interface builder</td>
