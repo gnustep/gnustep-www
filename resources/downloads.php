@@ -145,7 +145,7 @@ echo("/\">\n");
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#BUILDING.EXTENSIONS">guile</a></td>
 <td class="req">For guile scripting</td>
 <td class="stab">1.4</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/guile/guile-1.6.4.tar.gz">1.6.4</a></td>
+<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/guile/guile-1.6.0.tar.gz">1.6</a></td>
 <td><i>Scheme</i> language interpreter</td>
 </tr>
 
@@ -340,7 +340,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.stupid-design.com/martin/GNUstep/GNUMail.app/GNUMail.app-Installation.html">Pantomime</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.1.tar.gz?rid=83">1.1.1</a></td>
+<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0.tar.gz?rid=77">1.1.0</a></td>
 <td class="unst">-</td>
 <td>GNUMail framework - see also <a href="http://www.collaboration-world.com/pantomime">description</a></td>
 </tr>
@@ -470,7 +470,7 @@ packages and applications may require you to install these libraries
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#GNUSTEP.WORKSPACE">GWorkspace</a></td>
 <td class="req">Recommended</td>
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.4.1.tar.gz">0.4.1</a></td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.6.2.tar.gz">0.6.2</a></td>
+<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.5.2.tar.gz">0.5.2</a></td>
 <td>File manager for GNUstep</td>
 </tr>
 
@@ -501,7 +501,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.stupid-design.com/martin/GNUstep/GNUMail.app/GNUMail.app-Installation.html">GNUMail</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.1.tar.gz?rid=84">1.1.1</a></td>
+<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.0pre2.tar.gz?rid=75">1.1.0pre2</a></td>
 <td class="unst">-</td>
 <td>GNU Mail - see also <a href="http://www.collaboration-world.com/gnumail">description</a></td>
 </tr>
