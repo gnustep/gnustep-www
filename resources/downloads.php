@@ -295,7 +295,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://documents.made-it.com/GNUstep/buildguide.html#AEN882">GNUstep Guile</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="libs/gnustep-guile-1.3.0.tar.gz">1.3.0</a></td>
+<td class="stab"><a href="libs/gnustep-guile-1.1.1.tar.gz">1.1.1</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Interactive development system</td>
 </tr>
@@ -383,7 +383,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">nib2gmodel</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="dev-apps/nib2gmodel-0.8.0.tar.gz">0.8.0</a></td>
+<td class="stab"><a href="dev-apps/nib2gmodel-0.8.6.tar.gz">0.8.6</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Converts nibs to gmodel</td>
 </tr>
