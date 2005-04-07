@@ -261,7 +261,7 @@ or download and install the four core packages separately.
 <tr>
 <td class="src">GNUstep Startup</td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-startup-0.10.0.tar.gz")?>">0.10.0</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-startup-0.10.1.tar.gz")?>">0.10.1</a></td>
 <td class="unst">-</td>
 <td>Easy Install Core Packages</td>
 </tr>
