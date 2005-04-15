@@ -70,13 +70,12 @@ function download($link) {
 
 <h1>GNUstep Downloads</h1>
 
-<p>We recommend that you check the software versions currently installed on your 
-system by using the procedure in the 
-<a href="http://gnustep.made-it.com/BuildGuide/index.html"><i>GNUstep Build Guide.</i></a> 
-Then consult the following tables to determine which items need installing or updating. 
-To download the 
-recommended version of any item of software, click on the version number in 
-the appropriate column.</p>
+<p>We recommend that you check the software versions currently
+installed on your system. The <a href="#core">GNUstep Startup</a>
+package will do this for you automatically.  Then consult the
+following tables to determine which items need installing or updating.
+To download the recommended version of any item of software, click on
+the version number in the appropriate column.</p>
 
 <p>For further information on any particular package, click on its name.</p>
 
@@ -90,9 +89,10 @@ the appropriate column.</p>
 
 <h2 id="pre">Pre-requisites</h2>
 
-<p>Please ensure you have at least the <i>Minimum version req'd</i> of each of the following (where needed) on you system, before you install GNUstep. If you need to obtain the software, we suggest that you download the <i>Recommended version.</i>
-<small>(see <a href="http://gnustep.made-it.com/BuildGuide/index.html#CHECK.YOUR.SYSTEM"><i>Check your system</i></a> in Build Guide)</small>
-</p>
+<p>Please ensure you have at least the <i>Minimum version req'd</i> of
+each of the following (where needed) on you system, before you install
+GNUstep. If you need to obtain the software, we suggest that you
+download the <i>Recommended version.</p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
 
@@ -115,34 +115,34 @@ the appropriate column.</p>
 <tbody>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#MAKE">make</a></td>
+<td class="src">make</td>
 <td class="req">Required</td>
 <td class="stab">3.75</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/gnu/make/make-3.79.1.tar.gz">3.79.1</a></td>
+<td class="unst"><a href="ftp://ftp.gnu.org/gnu/make/"><i>current</i></a></td>
 <td>GNU make</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BINUTILS">binutils</a></td>
+<td class="src">binutils</td>
 <td class="req">Depends on OS</td>
 <td class="stab">2.9.6</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/gnu/binutils/binutils-2.13.tar.gz">2.13</a></td>
+<td class="unst"><a href="ftp://ftp.gnu.org/gnu/binutils/"><i>current</i></a></td>
 <td>GNU binutils</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GICONV">iconv</a></td>
+<td class="src">iconv</td>
 <td class="req">If no glibc</td>
 <td class="stab">1.7</td>
-<td class="unst"><a href="ftp://ftp.ilog.fr/pub/Users/haible/gnu/libiconv-1.7.tar.gz">1.7</a></td>
+<td class="unst"><a href="ftp://ftp.ilog.fr/pub/Users/haible/gnu"><i>current</i></a></td>
 <td>Convert file encoding</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#THE.OBJECTIVE-C.COMPILER">gcc</a></td>
+<td class="src">gcc</td>
 <td class="req">Required</td>
 <td class="stab"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-2.95.3.tar.gz">2.95.3</a></td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-3.3.1.tar.gz">3.3.1</a></td>
+<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gcc"><i>current</i></a></td>
 <td>GNU C &amp; Objective-C Compiler</td>
 </tr>
 
@@ -163,55 +163,55 @@ the appropriate column.</p>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUMP">gmp</a></td>
+<td class="src">gmp</td>
 <td class="req">Optional</td>
 <td class="stab">3.1.1</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gmp/gmp-4.1.tar.gz">4.1</a></td>
+<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gmp"><i>current</i></a></td>
 <td>Arbitrary precision arithmetic</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">guile</a></td>
+<td class="src">guile</td>
 <td class="req">For guile scripting</td>
 <td class="stab">1.4</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/guile/guile-1.6.0.tar.gz">1.6</a></td>
+<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/guile"><i>current</i></a></td>
 <td><i>Scheme</i> language interpreter</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#SSL">openssl</a></td>
+<td class="src">openssl</td>
 <td class="req">Recommended</td>
 <td class="stab">0.9.6b</td>
-<td class="unst"><a href="http://www.openssl.org/source/openssl-0.9.6j.tar.gz">0.9.6j</a></td>
+<td class="unst"><a href="http://www.openssl.org/source"><i>current</i></a></td>
 <td>SSL and TSL support</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#TIFF">libtiff</a></td>
+<td class="src">libtiff</td>
 <td class="req">Required</td>
 <td class="stab">3.4036</td>
-<td class="unst"><a href="ftp://ftp.remotesensing.org/pub/libtiff/tiff-v3.5.7.tar.gz">3.5.7</a></td>
+<td class="unst"><a href="ftp://ftp.remotesensing.org/pub/libtiff"><i>current</i></a></td>
 <td>TIFF image support</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#XML">libxml</a></td>
+<td class="src">libxml</td>
 <td class="req">Required</td>
 <td class="stab">2.3.0</td>
-<td class="unst"><a href="ftp://ftp.gnome.org/pub/GNOME/sources/libxml2/2.4/libxml2-2.4.24.tar.bz2">2.4.24</a></td>
+<td class="unst"><a href="ftp://ftp.gnome.org/pub/GNOME/sources/libxml2"><i>current</i></a></td>
 <td>For XML property lists and docs</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#SOUND">audiofile</a></td>
+<td class="src">audiofile</td>
 <td class="req">Recommended</td>
 <td class="stab">0.2.3</td>
-<td class="unst"><a href="ftp://oss.sgi.com/projects/audiofile/download/audiofile-0.2.3.tar.gz">0.2.3</a></td>
+<td class="unst"><a href="ftp://oss.sgi.com/projects/audiofile/download"><i>current</i></a></td>
 <td>Program interface to digital audio formats</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#WINDOWMANAGER">WindowMaker</a></td>
+<td class="src">WindowMaker</td>
 <td class="req">Recommended</td>
 <td class="stab"><a href="http://windowmaker.org/pub/source/release/WindowMaker-0.80.2.tar.bz2">0.80.2</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -219,8 +219,8 @@ the appropriate column.</p>
 </tr>
 
 <tr>
-<td class="src">libobjc</a></td>
-<td class="req">ONLY with MinGW or gcc2</td>
+<td class="src">libobjc</td>
+<td class="req">ONLY MinGW/Cygwin or gcc2</td>
 <td class="stab"><a href="<?php download("libs/gnustep-objc-1.3.0.tar.gz")?>">1.3.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Updated libobjc for some systems.</td>
