@@ -356,7 +356,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">StepTalk</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://steptalk.agentfarms.net/download.html">0.8.1</a></td>
+<td class="stab"><a href="<?php download("libs/StepTalk-0.8.2.tar.gz")?>">0.8.2</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Scripting language support</td>
 </tr>
