@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on March, 31  2005 by texi2html 1.64 -->
+<!-- Created on June, 17  2005 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -58,7 +58,8 @@ variable declarations should be separated from code by a blank line and
 function/method implementations should be separated by a blank line.
 </P><P>
 
-Tabstops should be 8 spaces.
+Tabs should ideally not be used (use spaces instead), if used they
+must be for tab-stops at the standard intervals of 8 spaces.
 </P><P>
 
 All binary operators should be surrounded by white space with the
@@ -94,7 +95,7 @@ correct GNU style is
 </pre></td></tr></table></P><P>
 
 For function implementations, the function names must begin on column zero
-(types on the preceeding line).  For function predeclaration, the types and
+(types on the preceding line).  For function predeclaration, the types and
 the name should appear on the same line if possible.
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>static int myFunction(int a, int b);
 
@@ -160,10 +161,15 @@ The way to do this is indent so the colons line up.
                         and: secondArg
                        also: thirdArg];
 </pre></td></tr></table>That's the style used mostly in the GNUstep code - and therefore the one I
-try to keep to.
-</P><P>
+try to keep to, however, the standard two space indentation is also acceptable
+(and sometimes necessary to prevent the text exceeding the 80 character line
+length limit).
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  [receiver doSomethingWith: firstArg
+    and: secondArg
+    also: thirdArg];
+</pre></td></tr></table></P><P>
 
-Finally, my own preference (not part of the standard in any way) is to
+My own preference (not part of the standard in any way) is to
 generally use curly brackets for control constructs, event where only one line
 of code is involved
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  if (a)
@@ -172,7 +178,16 @@ of code is involved
     }
 </pre></td></tr></table></P><P>
 
-<A NAME="Memory Management"></A>
+Where using conditional compilation you should comment the #else and #endif
+with the condition expression used in the #if line, to make it easy to find
+the matching lines.
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#if condition
+// some code here
+#else /* not condition */
+#endif /* condition */
+
+
+</pre></td></tr></table><A NAME="Memory Management"></A>
 <HR SIZE="6">
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_2.html#SEC2"> &lt;&lt; </A>]</TD>
@@ -185,7 +200,7 @@ of code is involved
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>March, 31  2005</I>
+by <I>Adam Fedor</I> on <I>June, 17  2005</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 

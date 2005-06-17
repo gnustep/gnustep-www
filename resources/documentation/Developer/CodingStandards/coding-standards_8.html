@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on March, 31  2005 by texi2html 1.64 -->
+<!-- Created on June, 17  2005 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -11,10 +11,10 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
  
 -->
 <HEAD>
-<TITLE>Coding Standards for GNUstep Libraries: Documentation</TITLE>
+<TITLE>Coding Standards for GNUstep Libraries: Object Persistence</TITLE>
 
-<META NAME="description" CONTENT="Coding Standards for GNUstep Libraries: Documentation">
-<META NAME="keywords" CONTENT="Coding Standards for GNUstep Libraries: Documentation">
+<META NAME="description" CONTENT="Coding Standards for GNUstep Libraries: Object Persistence">
+<META NAME="keywords" CONTENT="Coding Standards for GNUstep Libraries: Object Persistence">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 <META NAME="Generator" CONTENT="texi2html 1.64">
@@ -35,24 +35,21 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> 1.7 Documentation </H2>
+<H2> 1.7 Object Persistence </H2>
 <!--docid::SEC8::-->
 <P>
 
-Document every method you change or add!  This makes it easier to fix our
-lack of documentation and keep up to date with changes. Make sure you
-do not copy either the OpenStep or Cocoa documentation. Some methods
-are so simple you might have to intentionally reword the documentation
-so it is different.
+The standard method of saving and restoring object information in GNUstep
+is through the use of the -encodeWithCoder: and -initWithCoder: methods.
+Any object which requires persistence implements these methods. They are
+used, for instance by Gorm, to save GUI interface elements. It is important
+that all changes to these methods be backward compatible with previously
+stored archives (for instance, those created by Gorm). The easiest way to do
+this is to use class version numbers to indicate which archive configuration
+should be read.
 </P><P>
 
-Currently there is a differance of opinion on whether to document in
-the header or in the source file, although we generally lean towards
-the header currently. Make sure you are consistant with the current
-method of documentation in the source file you are changing.
-</P><P>
-
-<A NAME="Before You Commit"></A>
+<A NAME="Documentation"></A>
 <HR SIZE="6">
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_7.html#SEC7"> &lt;&lt; </A>]</TD>
@@ -65,7 +62,7 @@ method of documentation in the source file you are changing.
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>March, 31  2005</I>
+by <I>Adam Fedor</I> on <I>June, 17  2005</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 
