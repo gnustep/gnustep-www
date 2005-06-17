@@ -12,10 +12,10 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 -->
 <HEAD>
-<TITLE>Objective-C GNUstep Base Programming Manual: 6.2.3 Last Resorts: GSPrintf and fprintf</TITLE>
+<TITLE>Objective-C GNUstep Base Programming Manual: Exception Handling</TITLE>
 
-<META NAME="description" CONTENT="Objective-C GNUstep Base Programming Manual: 6.2.3 Last Resorts: GSPrintf and fprintf">
-<META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: 6.2.3 Last Resorts: GSPrintf and fprintf">
+<META NAME="description" CONTENT="Objective-C GNUstep Base Programming Manual: Exception Handling">
+<META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Exception Handling">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 <META NAME="Generator" CONTENT="texi2html 1.66">
@@ -24,6 +24,600 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 
 <BODY LANG="en" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
+<A NAME="SEC80"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC79"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 6. Exception Handling, Logging, and Assertions </H1>
+<!--docid::SEC80::-->
+<P>
+
+No matter how well a program is designed, if it has to interact with a user or
+other aspect of the outside world in any way, the code is bound to
+occasionally meet with cases that are either invalid or just plain unexpected.
+A very simple example is when a program asks the user to enter a filename, and
+the user enters the name of a file that does not exist, or does not enter a
+name at all.  Perhaps a valid filename <I>is</I> entered, but, due to a previous
+disk write error the contents are garbled.  Any number of things can go wrong.
+In addition, programmer error inevitably occurs and needs to be taken account
+of.  Internal functions may be called with invalid arguments, either due to
+unexpected paths being taken through the code, or silly things like typos
+using the wrong variable for something.  When these problems happen (and they
+<I>will</I> happen), it is better to handle them gracefully than for the program
+to crash, or worse, to continue processing but in an erroneous way.
+</P>
+<P>
+
+To allow for this, many computer languages provide two types of facilities.
+The first is referred to as <I>exception handling</I> or sometimes <I>error
+trapping</I>.  The second is referred to as <I>assertion checking</I>.  Exceptions
+allow the program to catch errors when they occur and react to them
+explicitly.  Assertions allow a programmer to establish that certain
+conditions hold before attempting to execute a particular operation.  GNUstep
+provides both of these facilities, and we will cover each in turn.  The
+assertion facility is tied in with the GNUstep <I>logging</I> facilities, so we
+describe those as well.
+</P>
+<P>
+
+To use any of the facilities described in this chapter requires that you
+include <CODE>Foundation/NSException.h</CODE>.
+</P>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC81"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC82"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 6.1 Exceptions </H2>
+<!--docid::SEC81::-->
+<P>
+
+GNUstep exception handling provides for two things:
+</P>
+<P>
+
+<OL>
+<LI>
+When an error condition is detected during execution, control is passed to a
+special error-handling routine, which is given information on the error that
+occurred.
+<LI>
+This routine may itself, if it chooses, pass this information up the function
+call stack to the next higher level of control.  Often higher level code is
+more aware of the context in which the error is occurring, and can therefore
+make a better decision as to how to react.
+</OL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC82"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC83"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.1 Catching and Handling Exceptions </H3>
+<!--docid::SEC82::-->
+<P>
+
+GNUstep exception handling is implemented through the macros <CODE>NS_DURING</CODE>,
+<CODE>NS_HANDLER</CODE>, and <CODE>NS_ENDHANDLER</CODE> in conjunction with the
+<CODE>NSException</CODE> class.  The following illustrates the pattern:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NS_DURING
+  {
+    // do something risky ...
+  }
+NS_HANDLER
+  {
+    // a problem occurred; inform user or take another tack ...
+  }
+NS_ENDHANDLER
+  // back to normal code...
+</pre></td></tr></table><P>
+
+For instance:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (DataTree *) readDataFile: (String *)filename
+{
+  ParseTree *parse = nil;
+  NS_DURING
+    {
+      FileHandle *handle = [self getFileHandle: filename];
+      parse = [parser parseFile: handle];
+    }
+  NS_HANDLER
+    {
+      if ([[localException name] isEqualToString: MyFileNotFoundException])
+        {
+          NS_VALUERETURN([self readDataFile: fallbackFilename]);
+        }
+      else if ([[localException name] isEqualToString: NSParseErrorException])
+        {
+          NS_VALUERETURN([self readDataFileInOldFormat: filename]);
+        }
+      else
+        {
+          [localException raise];
+        }
+    }
+  NS_ENDHANDLER
+  return [[DataTree alloc] initFromParseTree: parse];
+}
+</pre></td></tr></table><P>
+
+Here, a file is parsed, with the possibility of at least two different errors:
+not finding the file and the file being misformatted.  If a problem does
+occur, the code in the <CODE>NS_HANDLER</CODE> block is jumped to.  Information on
+the error is passed to this code in the <CODE>localException</CODE> variable, which
+is an instance of <CODE>NSException</CODE>.  The handler code examines the name of
+the exception to determine if it can implement a work-around.  In the first
+two cases, an alternative approach is available, and so the
+<CODE>NS_VALUERETURN</CODE> macro is used to return an alternative value to the
+<CODE>readDataFile:</CODE> caller.  Note that it is <I>not</I> allowed to simply write
+&quot;<CODE>return x;</CODE>&quot; inside an exception handler, owing to the nature of the
+behind-the-scenes C constructs implementing the mechanism (the <CODE>setjmp()</CODE>
+and <CODE>longjmp()</CODE> functions).  If you are in a void function not returning
+a value, you may use simply &quot;<CODE>NS_VOIDRETURN</CODE>&quot; instead.  Finally, notice
+that in the third case above the handler does not recognize the exception
+type, so it passes it one level up to the caller by calling <CODE>-raise</CODE> on
+the exception object.
+</P>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC83"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC82"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC84"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.2 Passing Exceptions Up the Call Stack </H3>
+<!--docid::SEC83::-->
+<P>
+
+If the caller of <CODE>-readDataFile:</CODE> has enclosed the call inside its own
+<CODE>NS_DURING</CODE> <small>...</small> <CODE>NS_HANDLER</CODE> <small>...</small> <CODE>NS_ENDHANDLER</CODE> block,
+it will be able to catch this exception and react to it in the same way as we
+saw here.  Being at a higher level of execution, it may be able to take
+actions more appropriate than the <CODE>-readDataFile:</CODE> method could have.
+</P>
+<P>
+
+If, on the other hand, the caller had <I>not</I> enclosed the call, it would not
+get a chance to react, but the exception would be passed up to the caller of
+<I>this</I> code.  This is repeated until the top control level is reached, and
+then as a last resort <CODE>NSUncaughtExceptionHandler</CODE> is called.  This is a
+built-in function that will print an error message to the console and exit
+the program immediately.  If you don't want this to happen it is possible to
+override this function by calling
+<CODE>NSSetUncaughtExceptionHandler(fn_ptr)</CODE>.  Here, <CODE>fn_ptr</CODE> should be
+the name of a function with this signature (defined in <CODE>NSException.h</CODE>):
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>void NSUncaughtExceptionHandler(NSException *exception);
+</pre></td></tr></table><P>
+
+One possibility would be to use this to save files or any other unsaved state
+before an application exits because of an unexpected error.
+</P>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC84"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC83"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC85"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.3 Where do Exceptions Originate? </H3>
+<!--docid::SEC84::-->
+<P>
+
+You may be wondering at this point where exceptions come from in the first
+place.  There are two main possibilities.  The first is from the Base library;
+many of its classes raise exceptions when they run into error conditions.  The
+second is that application code itself raises them, as described in the next
+section.  Exceptions do <I>not</I> arise automatically from C-style error
+conditions generated by C libraries.  Thus, if you for example call the
+<CODE>strtod()</CODE> function to convert a C string to a double value, you still
+need to check <CODE>errno</CODE> yourself in standard C fashion.
+</P>
+<P>
+
+Another case that exceptions are <I>not</I> raised in is in the course of
+messaging.  If a message is sent to <CODE>nil</CODE>, it is silently ignored
+without error.  If a message is sent to an object that does not implement it,
+the <CODE>forwardInvocation</CODE> method is called instead, as discussed in
+<A HREF="manual_5.html#SEC72">5. Advanced Messaging</A>.
+</P>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC85"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC84"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC86"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.4 Creating Exceptions </H3>
+<!--docid::SEC85::-->
+<P>
+
+If you want to explicitly create an exception for passing a particular error
+condition upwards to calling code, you may simply create an
+<CODE>NSException</CODE> object and <CODE>raise</CODE> it:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSException myException = [[NSException alloc]
+                              initWithName: @&quot;My Exception&quot;
+                                    reason: @&quot;[Description of the cause...]&quot;
+                                  userInfo: nil];
+[myException raise];
+ // code in block after here is unreachable..
+</pre></td></tr></table><P>
+
+The <CODE>userInfo</CODE> argument here is a <CODE>NSDictionary</CODE> of key-value pairs
+containing application-specific additional information about the error.  You
+may use this to pass arbitrary arguments within your application.  (Because
+this is a convenience for developers, it should have been called
+<CODE>developerInfo</CODE>..)
+</P>
+<P>
+
+Alternatively, you can create the exception and raise it in one call with
+<CODE>+raise</CODE>:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>[NSException raise: @&quot;My Exception&quot;
+            format: @&quot;Parse error occurred at line %d.&quot;,lineNumber];
+</pre></td></tr></table><P>
+
+Here, the <CODE>format</CODE> argument takes a printf-like format analogous to
+<CODE>[NSString -stringWithFormat:]</CODE> discussed <A HREF="manual_2.html#SEC12">Strings in GNUstep</A>.  In general, you should not use arbitrary names for
+exceptions as shown here but constants that will be recognized throughout your
+application.  In fact, GNUstep defines some standard constants for this
+purpose in <CODE>NSException.h</CODE>:
+</P>
+<P>
+
+</P>
+<DL COMPACT>
+<DT><CODE>NSCharacterConversionException</CODE>
+<DD>An exception when character set conversion fails.
+<DT><CODE>NSGenericException</CODE>
+<DD>A generic exception for general purpose usage.
+<DT><CODE>NSInternalInconsistencyException</CODE>
+<DD>An exception for cases where unexpected state is detected within an object.
+<DT><CODE>NSInvalidArgumentException</CODE>
+<DD>An exception used when an invalid argument is passed to a method or function.
+<DT><CODE>NSMallocException</CODE>
+<DD>An exception used when the system fails to allocate required memory.
+<DT><CODE>NSParseErrorException</CODE>
+<DD>An exception used when some form of parsing fails.
+<DT><CODE>NSRangeException</CODE>
+<DD>An exception used when an out-of-range value is encountered.
+</DL>
+<P>
+
+Also, some Foundation classes define their own more specialized exceptions:
+</P>
+<P>
+
+</P>
+<DL COMPACT>
+<DT><CODE>NSFileHandleOperationException (NSFileHandle.h)</CODE>
+<DD>An exception used when a file error occurs.
+<DT><CODE>NSInvalidArchiveOperationException (NSKeyedArchiver.h)</CODE>
+<DD>An archiving error has occurred.
+<DT><CODE>NSInvalidUnarchiveOperationException (NSKeyedUnarchiver.h)</CODE>
+<DD>An unarchiving error has occurred.
+<DT><CODE>NSPortTimeoutException (NSPort.h)</CODE>
+<DD>Exception raised if a timeout occurs during a port send or receive operation.
+<DT><CODE>NSUnknownKeyException (NSKeyValueCoding.h)</CODE>
+<DD> An exception for an unknown key.
+</DL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC86"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC85"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC81"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.1.5 When to Use Exceptions </H3>
+<!--docid::SEC86::-->
+<P>
+
+As might be evident from the <CODE>-readDataFile:</CODE> example above, if a
+certain exception can be anticipated, it can also be checked for, so you
+don't necessarily need the exception mechanism.  You may want to use
+exceptions anyway if it simplifies the code paths.  It is also good practice
+to catch exceptions when it can be seen that an unexpected problem might
+arise, as any time file, network, or database operations are undertaken, for
+instance.
+</P>
+<P>
+
+Another important case where exceptions are useful is when you need to pass
+detailed information up to the calling method so that it can react
+appropriately.  Without the ability to raise an exception, you are limited to
+the standard C mechanism of returning a value that will hopefully be
+recognized as invalid, and perhaps using an <CODE>errno</CODE>-like strategy where
+the caller knows to examine the value of a certain global variable.  This is
+inelegant, difficult to enforce, and leads to the need, with void methods, to
+document that &quot;the caller should check <CODE>errno</CODE> to see if any problems
+arose&quot;.
+</P>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC87"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC86"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC88"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 6.2 Logging </H2>
+<!--docid::SEC87::-->
+<P>
+
+GNUstep provides several distinct logging facilities best suited for different
+purposes.
+</P>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC88"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC89"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.2.1 NSLog </H3>
+<!--docid::SEC88::-->
+<P>
+
+The simplest of these is the <CODE>NSLog(NSString *format, ...)</CODE>  function.
+For example:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSLog(@&quot;Error occurred reading file at line %d.&quot;, lineNumber);
+</pre></td></tr></table><P>
+
+This would produce, on the console (stderr) of the application calling it,
+something like:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>2004-05-08 22:46:14.294 SomeApp[15495] Error occurred reading file at line 20.
+</pre></td></tr></table><P>
+
+The behavior of this function may be controlled in two ways.  First, the user
+default <CODE>GSLogSyslog</CODE> can be set to &quot;<CODE>YES</CODE>&quot;, which will send
+these messages to the syslog on systems that support that (Unix variants).
+Second, the function GNUstep uses to write the log messages can be
+overridden, or the file descriptor the existing function writes to can be
+overridden:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  // these changes must be enclosed within a lock for thread safety
+NSLock *logLock = GSLogLock();
+[logLock lock];
+
+  // to change the file descriptor:
+_NSLogDescriptor = &lt;fileDescriptor&gt;;
+  // to change the function itself:
+_NSLog_printf_handler = &lt;functionName&gt;;
+
+[logLock unlock];
+</pre></td></tr></table><P>
+
+Due to locking mechanisms used by the logging facility, you should protect
+these changes using the lock provided by <CODE>GSLogLock()</CODE> (see <A HREF="manual_8.html#SEC117">Threads and Run Control</A> on locking).
+</P>
+<P>
+
+The <CODE>NSLog</CODE> function was defined in OpenStep and is also available in Mac
+OS X Cocoa, although the overrides described above may not be.  The next set of
+logging facilities to be described are only available under GNUstep.
+</P>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC89"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC88"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC90"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC87"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 6.2.2 NSDebugLog, NSWarnLog </H3>
+<!--docid::SEC89::-->
+<P>
+
+The facilities provided by the <CODE>NSDebugLog</CODE> and <CODE>NSWarnLog</CODE> families
+of functions support source code method name and line-number reporting and
+allow compile- and run-time control over logging level.
+</P>
+<P>
+
+The <CODE>NSDebugLog</CODE> functions are enabled at compile time by default.  To
+turn them off, set <CODE>'diagnose = no'</CODE> in your makefile, or undefine
+<CODE>GSDIAGNOSE</CODE> in your code before including <CODE>NSDebug.h</CODE>.  To turn
+them off at runtime, call <CODE>[[NSProcessInfo processInfo]
+setDebugLoggingEnabled: NO]</CODE>.  (An <CODE>NSProcessInfo</CODE> instance is
+automatically instantiated in a running GNUstep application and may be
+obtained by invoking <CODE>[NSProcessInfo processInfo]</CODE>.)
+</P>
+<P>
+
+At runtime, whether or not logging is enabled, a debug log method is called
+like this:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSDebugLLog(@&quot;ParseError&quot;, @&quot;Error parsing file at line %d.&quot;, lineNumber);
+</pre></td></tr></table><P>
+
+Here, the first argument to <CODE>NSDebugLog</CODE>, &quot;<CODE>ParseError</CODE>&quot;, is a
+string <I>key</I> that specifies the category of message.  The message will only
+actually be logged (through a call to <CODE>NSLog()</CODE>) if this key is in the
+set of active debug categories maintained by the <CODE>NSProcessInfo</CODE> object
+for the application.  Normally, this list is empty.  There are
+three ways for string keys to make it onto this list:
+</P>
+<P>
+
+<UL>
+<LI>
+Provide one or more startup arguments of the form <CODE>--GNU-Debug=&lt;key&gt;</CODE> to
+the program.  These are processed by GNUstep and removed from the argument
+list before any user code sees them.
+<LI>
+Call <CODE>[NSProcessInfo debugSet]</CODE> at runtime, which returns an
+<CODE>NSMutableSet</CODE>.  You can add (or remove) strings to this set directly.
+<LI>
+The <CODE>GNU-Debug</CODE> user default nay contain a comma-separated list of keys.
+However, note that <CODE>[NSUserDefaults standardUserDefaults]</CODE> must first be
+called before this will take effect (to read in the defaults initially).
+</UL>
+<P>
+
+While any string can be used as a debug key, conventionally three types of
+keys are commonly used.  The first type expresses a &quot;level of importance&quot;
+for the message, for example, &quot;Debug&quot;, &quot;Info&quot;, &quot;Warn&quot;, or &quot;Error&quot;.
+The second type of key that is used is class name.  The GNUstep Base classes
+used this approach.  For example if you want to activate debug messages for
+the <CODE>NSBundle</CODE>&quot; class, simply add '<CODE>NSBundle</CODE>' to the list of keys.
+The third category of key is the default key, '<CODE>dflt</CODE>'.  This key can be
+used whenever the specificity of the other key types is not required.  Note
+that it still needs to be turned on like any other logging key before
+messasges will actually be logged.
+</P>
+<P>
+
+There is a family of <CODE>NSDebugLog</CODE> functions with slightly differing
+behaviors:
+</P>
+<P>
+
+</P>
+<DL COMPACT>
+<DT><CODE>NSDebugLLog(key, format, args,...)</CODE>
+<DD>Basic debug log function already discussed.
+<DT><CODE>NSDebugLog(format, args,...)</CODE>
+<DD>Equivalent to <CODE>NSDebugLLog</CODE> with key &quot;dflt&quot; (for default).
+<DT><CODE>NSDebugMLLog(level, format, args,...)</CODE>
+<DD>Equivalent to <CODE>NSDebugLLog</CODE> but includes information on which method the
+logging call was made from in the message.
+<DT><CODE>NSDebugMLog(format, args,...)</CODE>
+<DD>Same, but use 'dflt' log key.
+<DT><CODE>NSDebugFLLog(level, format, args,...)</CODE>
+<DD>As <CODE>NSDebugMLLog</CODE> but includes information on a function rather than a
+method.
+<DT><CODE>NSDebugFLog(format, args,...)</CODE>
+<DD>As previous but using 'dflt' log key.
+</DL>
+<P>
+
+The implementations of the <CODE>NSDebugLog</CODE> functions are optimized so that
+they consume little time when logging is turned off.  In particular, if debug
+logging is deactivated at compile time, there is NO performance cost, and if
+it is completely deactivated at runtime, each call entails only a boolean
+test.  Thus, they can be left in production code.
+</P>
+<P>
+
+There is also a family of <CODE>NSWarn</CODE> functions.  They are similar to the
+<CODE>NSDebug</CODE> functions except that they do not take a key.  Instead, warning
+messages are shown by default unless they are disabled at compile time by
+setting <CODE>'warn = no'</CODE> or undefining <CODE>GSWARN</CODE>, or at runtime by
+<I>adding</I> &quot;<CODE>NoWarn</CODE>&quot; to <CODE>[NSProcessInfo debugSet]</CODE>.
+(Command-line argument <CODE>--GNU-Debug=NoWarn</CODE> and adding &quot;NoWarn&quot; to the
+<CODE>GNU-Debug</CODE> user default will also work.)  <CODE>NSWarnLog()</CODE>,
+<CODE>NSWarnLLog()</CODE>, <CODE>NSWarnMLLog</CODE>, <CODE>NSWarnMLog</CODE>,
+<CODE>NSWarnFLLog</CODE>, and <CODE>NSWarnFLog</CODE> are all similar to their
+<CODE>NSDebugLog</CODE> counterparts.
+</P>
+<P>
+
+<HR SIZE="6">
 <A NAME="SEC90"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC89"> &lt; </A>]</TD>
@@ -36,13 +630,34 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H1> C. Differences and Similarities Between Objective-C, Java, and C++ </H1>
-<!--docid::SEC151::-->
+<H3> 6.2.3 Last Resorts: GSPrintf and fprintf </H3>
+<!--docid::SEC90::-->
 <P>
 
-This appendix explains the differences/similarities between Objective-C and
-Java. It does not cover the Java Interface to GNUstep (JIGS; see <A HREF="manual_12.html#SEC161">D. Programming GNUstep in Java and Guile</A>), but is included to help people who want to learn Objective-C and know
-Java already.
+Both the <CODE>NSDebugLog</CODE> and the simpler <CODE>NSLog</CODE> facilities utilize a
+fair amount of machinery - they provide locking and timestamping for example.
+Sometimes this is not appropriate, or might be too heavyweight in a case where
+you are logging an error which might involve the application being in some
+semi-undefined state with corrupted memory or worse.  You can use the
+<CODE>GSPrintf()</CODE> function, which simply converts a format string to UTF-8 and
+writes it to a given file:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>GSPrintf(stderr, &quot;Error at line %d.&quot;, n);
+</pre></td></tr></table><P>
+
+If even this might be too much (it uses the <CODE>NSString</CODE> and <CODE>NSData</CODE>
+classes), you can always use the C function <CODE>fprintf()</CODE>:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>fprintf(stderr, &quot;Error at line %d.&quot;, n);
+</pre></td></tr></table><P>
+
+Except under extreme circumstances, the preferred logging approach is either
+<CODE>NSDebugLog</CODE>/<CODE>NSWarnLog</CODE>, due the the compile- and run-time
+configurability they offer, or <CODE>NSLog</CODE>.
 </P>
 <P>
 
@@ -59,68 +674,18 @@ Java already.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> C.1 General </H2>
-<!--docid::SEC152::-->
+<H3> 6.2.4 Profiling Facilities </H3>
+<!--docid::SEC91::-->
 <P>
 
-<UL>
-
-<LI>
-C programmers may learn Objective-C in hours (though real expertise
-obviously takes much longer).
-<P>
-
+GNUstep supports optional programmatic access to object allocation
+statistics.  To initiate collection of statistics, call the function
+<CODE>GSDebugAllocationActive(BOOL active)</CODE> with an argument of
+&quot;<CODE>YES</CODE>&quot;.  To turn it off, call it with &quot;<CODE>NO</CODE>&quot;.  The overhead
+of statistics collection is only incurred when it is active.  To access the
+statistics, use the set of <CODE>GSDebugAllocation...()</CODE> functions defined in
+<CODE>NSDebug.h</CODE>.
 </P>
-<LI>
-Java has global market acceptance.
-<P>
-
-</P>
-<LI>
-Objective-C is a compiled OO programming language.
-<P>
-
-</P>
-<LI>
-Java is both compiled and interpreted and therefore does not offer
-the same run-time performance as Objective-C.
-<P>
-
-</P>
-<LI>
-Objective-C features efficient, transparent Distributed Objects.
-<P>
-
-</P>
-<LI>
-Java features a less efficient and less transparent Remote Machine
-Interface.
-<P>
-
-</P>
-<LI>
-Objective-C has basic CORBA compatibility through official C bindings,
-and full compatibility through unofficial Objective-C bindings.
-<P>
-
-</P>
-<LI>
-Java has CORBA compatibility through official Java bindings.
-<P>
-
-</P>
-<LI>
-Objective-C is portable across heterogeneous networks by virtue of a
-near omnipresent compiler (gcc).
-<P>
-
-</P>
-<LI>
-Java is portable across heterogeneous networks by using client-side JVMs
-that are software processors or runtime environments.
-<P>
-
-</UL>
 <P>
 
 <HR SIZE="6">
@@ -136,64 +701,25 @@ that are software processors or runtime environments.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> C.2 Language </H2>
-<!--docid::SEC153::-->
+<H2> 6.3 Assertions </H2>
+<!--docid::SEC92::-->
 <P>
 
-<UL>
-
-<LI>
-Objective-C is a superset of the C programming language, and may
-be used to develop non-OO and OO programs. Objective-C provides
-access to scalar types, structures and to unions, whereas Java
-only addresses a small number of scalar types and everything else
-is an object.  Objective-C provides zero-cost access to existing
-software libraries written in C, Java requires interfaces to be
-written and incurs runtime overheads.
-<P>
-
+Assertions provide a way for the developer to state that certain conditions
+must hold at a certain point in source code execution.  If the conditions do
+not hold, an exception is automatically raised (and succeeding code in the
+block is not executed).  This avoids an operation from taking place with
+illegal inputs that may lead to worse problems later.
 </P>
-<LI>
-Objective-C is dynamically typed but also provides static typing.
-Java is statically typed, but provides type-casting mechanisms to
-work around some of the limitations of static typing.
 <P>
 
+The use of assertions is generally accepted to be an efficient means of
+improving code quality, for, like unit testing, they can help rapidly uncover
+a developer's implicit or mistaken assumptions about program behavior.
+However this is only true to the extent that you carefully design the nature
+and placement of your assertions.  There is an excellent discussion of this
+issue bundled in the documentation with Sun's Java distribution.
 </P>
-<LI>
-Java tools support a convention of a universal and distributed
-name-space for classes, where classes may be downloaded from
-remote systems to clients. Objective-C has no such conventions
-or tool support in place. 
-<P>
-
-</P>
-<LI>
-Using Java, class definitions may not be extended or divided through
-the addition of logical groupings.  Objective-C provides categories
-as a solution to this problem.
-<P>
-
-</P>
-<LI>
-Objective-C provides delegation (the benefits of multiple inheritance
-without the drawbacks) at minimal programming cost.  Java requires
-purpose written methods for any delegation implemented.
-<P>
-
-</P>
-<LI>
-Java provides garbage collection for memory management.  Objective-C
-provides manual memory management, reference counting, and garbage
-collection as options.
-<P>
-
-</P>
-<LI>
-Java provides interfaces, Objective-C provides protocols.
-<P>
-
-</UL>
 <P>
 
 <HR SIZE="6">
@@ -209,25 +735,62 @@ Java provides interfaces, Objective-C provides protocols.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> C.3 Source Differences </H2>
-<!--docid::SEC154::-->
+<H3> 6.3.1 Assertions and their Handling </H3>
+<!--docid::SEC93::-->
 <P>
 
-<UL>
-<LI>
-Objective-C is based on C, and the OO extensions are comparable with
-those of Smalltalk. The Java syntax is based on the C++ programming
-language. 
-<P>
-
+Assertions allow the developer to establish that certain conditions hold
+before undertaking an operation.  In GNUstep, the standard means to make an
+assertion is to use one of a collection of <CODE>NSAssert</CODE> macros.  The
+general form of these macros is:
 </P>
-<LI>
-The object (and runtime) models are comparable, with Java's
-implementation having a subset of the functionality of that
-of Objective-C.
 <P>
 
-</UL>
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSAssert(&lt;boolean test&gt;, &lt;formatString&gt;, &lt;argumentsToFormat&gt;);
+</pre></td></tr></table><P>
+
+For instance:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>NSAssert1(x == 10, &quot;X should have been 10, but it was %d.&quot;, x);
+</pre></td></tr></table><P>
+
+If the test '<CODE>x == 10</CODE>' evaluates to <CODE>true</CODE>, <CODE>NSLog()</CODE> is
+called with information on the method and line number of the failure, together
+with the format string and argument.  The resulting console message will look
+like this:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>Foo.m:126  Assertion failed in Foo(instance), method Bar.  X should have been
+10, but it was 5.
+</pre></td></tr></table><P>
+
+After this is logged, an exception is raised of type
+'<CODE>NSInternalInconsistencyException</CODE>', with this string as its
+description.
+</P>
+<P>
+
+In order to provide the method and line number information, the
+<CODE>NSAssert()</CODE> routine must be implemented as a macro, and therefore to
+handle different numbers of arguments to the format string, there are 5
+assertion macros for methods: <CODE>NSAssert(condition, description)</CODE>,
+<CODE>NSAssert1(condition, format, arg1)</CODE>, <CODE>NSAssert2(condition, format,
+arg1, arg2)</CODE>, ..., <CODE>NSAssert5(...)</CODE>.
+</P>
+<P>
+
+If you need to make an assertion inside a regular C function (not an
+Objective-C method), use the equivalent macros <CODE>NSCAssert()</CODE>, etc..
+</P>
+<P>
+
+<I><B>Note</B></I>, you can completely disable assertions (saving the time for the
+boolean test and avoiding the exception if fails) by putting <CODE>#define
+NS_BLOCK_ASSERTIONS</CODE> before you include <CODE>NSException.h</CODE>.
+</P>
 <P>
 
 <HR SIZE="6">
@@ -243,24 +806,24 @@ of Objective-C.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> C.4 Compiler Differences </H2>
-<!--docid::SEC155::-->
- 
-<UL>
-
-<LI>
-Objective-C compilation is specific to the target system/environment,
-and because it is an authentic compiled language it runs at higher
-speeds than Java.
+<H3> 6.3.2 Custom Assertion Handling </H3>
+<!--docid::SEC94::-->
 <P>
 
+The aforementioned behavior of logging an assertion failure and raising an
+exception can be overridden if desired.  You need to create a subclass of
+<CODE>NSAssertionHandler</CODE> and register an instance in each thread in which
+you wish the handler to be used.  This is done by calling:
 </P>
-<LI>
-Java is compiled into a byte stream or Java tokens that are interpreted
-by the target system, though fully compiled Java is possible.
 <P>
 
-</UL>
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>[[[NSThread currentThread] threadDictionary]
+    setObject:myAssertionHandlerInstance forKey:@&quot;NSAssertionHandler&quot;];
+</pre></td></tr></table><P>
+
+See <A HREF="manual_8.html#SEC117">Threads and Run Control</A> for more information on what
+this is doing.
+</P>
 <P>
 
 <HR SIZE="6">
@@ -276,224 +839,46 @@ by the target system, though fully compiled Java is possible.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<H2> C.5 Developer's Workbench </H2>
-<!--docid::SEC156::-->
+<H2> 6.4 Comparison with Java </H2>
+<!--docid::SEC95::-->
 <P>
 
-<UL>
-
-<LI>
-Objective-C is supported by tools such as GNUstep that provides
-GUI development, compilation, testing features,
-debugging capabilities, project management and database access.
-It also has numerous tools for developing projects of different
-types including documentation.
-<P>
-
+GNUstep's exception handling facilities are, modulo syntax, equivalent to
+those in Java in all but three respects:
 </P>
-<LI>
-Java is supported by numerous integrated development environments
-(IDEs) that often have their origins in C++ tools.
-Java has a documentation tool that parses source code and creates
-documentation based on program comments. There are similar features
-for Objective-C.
-<P>
-
-</P>
-<LI>
-Java is more widely used.
-<P>
-
-</P>
-<LI>
-Objective-C may leverage investment already made in C based tools.
-<P>
-
-</UL>
-<P>
-
-<HR SIZE="6">
-<A NAME="SEC96"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC97"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> C.6 Longevity </H2>
-<!--docid::SEC157::-->
-<P>
-
-<UL>
-
-<LI>
-Objective-C has been used for over ten years, and is considered to be
-in a stable and proven state, with minor enhancements from time to time.
-<P>
-
-</P>
-<LI>
-Java is evolving constantly.
-<P>
-
-</UL>
-<P>
-
-<HR SIZE="6">
-<A NAME="SEC97"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> C.7 Databases </H2>
-<!--docid::SEC158::-->
 <P>
 
 <UL>
 <LI>
-Apple's EOF tools enable Objective-C developers to build object
-models from existing relational database tables. Changes in the
-database are automatically recognised, and there is no requirement
-for SQL development.
-<P>
-
-</P>
+There is no provision for a &quot;finally&quot; block executed after either the main
+code or the exception handler code.
 <LI>
-Java uses JDBC that requires SQL development; database changes
-affect the Java code. This is considered inferior to EOF. Enterprise
-JavaBeans with container managed persistence provides a limited database
-capability, however this comes with much additional baggage.  Other
-object-relational tools and APIs are being developed for Java (ca. 2004), but
-it is unclear which of these, if any, will become a standard.
-<P>
-
+You cannot declare the exception types that could be raised by a method in its
+signature.  In Java this is possible and the compiler uses this to enforce
+that a caller should catch exceptions if they might be generated by a method.
+<LI>
+Correspondingly, there is no support in the <A HREF="manual_9.html#SEC145">documentation system</A>
+for documenting exceptions potentially raised by a method.  (This will
+hopefully be rectified soon.)
 </UL>
 <P>
 
-<HR SIZE="6">
-<A NAME="SEC98"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC97"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC99"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> C.8 Memory </H2>
-<!--docid::SEC159::-->
-<P>
-
-<UL>
-
-<LI>
-For object allocation Java has a fixed heap whose maximum size
-is set when the JVM starts and cannot be resized unless the
-JVM is restarted. This is considered to be a disadvantage in
-certain scenarios: for example, data read from databases may
-cause the JVM to run out of memory and to crash.
-<P>
-
+The logging facilities provided by <CODE>NSDebugLog</CODE> and company are similar
+to but a bit more flexible than those provided in the Java/JDK 1.4 logging APIs,
+which were based on the IBM/Apache Log4J project.
 </P>
-<LI>
-Objective-C's heap is managed by the OS and the runtime system.
-This can typically grow to consume all system memory (unless
-per-process limits have been registered with the OS).
 <P>
 
-</UL>
-<P>
-
-<HR SIZE="6">
-<A NAME="SEC99"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC100"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> C.9 Class Libraries </H2>
-<!--docid::SEC160::-->
-<UL>
-
-<LI>
-Objective-C: Consistent APIs are defined by the OpenStep specification.
-This is implemented by GNUstep and Mac OS X Cocoa.  Third-party APIs are
-available (called Frameworks).
-<P>
-
+The assertion facilities are similar to but a bit more flexible than those in
+Java/JDK 1.4 since you can override the assertion handler.
 </P>
-<LI>
-Java: APIs are defined and implemented by the Sun Java Development
-Kit distributions.  Other providers of Java implementations (IBM, BEA, etc.)
-implement these as well.
 <P>
 
-</P>
-<LI>
-The Java APIs are complex owing to the presence of multiple layers of
-evolution while maintaining backwards compatibility.  Collections, IO, and
-Windowing are all examples of replicated functionality, in which the copies
-are incompletely separated, requiring knowledge of both to use.
-<P>
-
-</P>
-<LI>
-The OpenStep API is the result of continuing evolution but backward
-compatibility was maintained by the presence of separate library versions.
-Therefore the API is clean and nonredundant.  Style is consistent.
-<P>
-
-</P>
-<LI>
-The OpenStep non-graphical API consists of about 70 classes and about 150
-functions.
-<P>
-
-</P>
-<LI>
-The equivalent part of the Java non-graphical API consists of about 230
-classes.
-<P>
-
-</P>
-<LI>
-The OpenStep graphical API consists of about 120 classes and 30 functions.
-<P>
-
-</P>
-<LI>
-The equivalent part of the Java graphical API consists of about 450 classes.
-<P>
-
-</UL>
-<P>
-
-<A NAME="Java and Guile"></A>
+<A NAME="Distributed Objects"></A>
 <HR SIZE="6">
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
