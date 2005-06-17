@@ -1,14 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html40/loose.dtd">
 <HTML>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on March, 31  2005 by texi2html 1.64 -->
-<!-- 
+<!-- Created on May, 10 2005 by texi2html 1.66 -->
+<!--
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
-Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
- 
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
 -->
 <HEAD>
 <TITLE>Objective-C GNUstep Base Programming Manual: Advanced Messaging</TITLE>
@@ -17,17 +18,17 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Advanced Messaging">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.64">
+<META NAME="Generator" CONTENT="texi2html 1.66">
 
 </HEAD>
 
-<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<BODY LANG="en" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
 <A NAME="SEC72"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC71"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC73"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -47,7 +48,8 @@ object.  A second important capability, which forwarding relies on, is the
 ability to represent method implementations directly in code.  This supports
 various reflective operations as well as optimization where messages are sent
 many times.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC73"></A>
@@ -72,6 +74,7 @@ Sending an Objective-C message requires three types of information:
 The message <B>receiver</B> - the object which is to perform the request.
 <P>
 
+</P>
 <LI>
 The message <B>selector</B> - this identifies the message, and is used to
 locate the excecutable code of the corresponding <B>method</B> by searching the
@@ -79,6 +82,7 @@ structure of the class, and if necessary its superclasses, for an
 implementation.
 <P>
 
+</P>
 <LI>
 The message <B>arguments</B> - once the implementation has been found, these are
 simply passed to the method on the stack as in an ordinary function call.
@@ -86,19 +90,21 @@ simply passed to the method on the stack as in an ordinary function call.
 <P>
 
 In the message '<CODE>[taskArray insertObject: anObj atIndex: i]</CODE>', the
-receiver is "<CODE>taskArray</CODE>", the selector is
-"<CODE>insertObject:atIndex:</CODE>", and the arguments are "<CODE>anObj</CODE>" and
-"<CODE>i</CODE>".  Notice that the selector includes the argument titles and both
+receiver is &quot;<CODE>taskArray</CODE>&quot;, the selector is
+&quot;<CODE>insertObject:atIndex:</CODE>&quot;, and the arguments are &quot;<CODE>anObj</CODE>&quot; and
+&quot;<CODE>i</CODE>&quot;.  Notice that the selector includes the argument titles and both
 colons, but not the argument names.  In other words, this method might have
 been declared as '<CODE>- (void) insertObject: (id)anObject atIndex:
-(unsigned)index;</CODE>', but the "<CODE>anObject</CODE>" and "<CODE>index</CODE>" are just
+(unsigned)index;</CODE>', but the &quot;<CODE>anObject</CODE>&quot; and &quot;<CODE>index</CODE>&quot; are just
 used for tracking the arguments within the method implementation code and not
 for looking up the method itself.
-</P><P>
+</P>
+<P>
 
 The following sequence of events would occur on sending this message at
 runtime:
-</P><P>
+</P>
+<P>
 
 <OL>
 <LI>
@@ -106,6 +112,7 @@ The internal <CODE>isa</CODE> pointer of the <B>receiver</B> (<CODE>taskArray</C
 to look up its class.
 <P>
 
+</P>
 <LI>
 The class representation is searched for a method implementation matching the
 <B>selector</B> (<CODE>insertObject:atIndex:</CODE>).  If it is not found, the class's
@@ -113,6 +120,7 @@ superclass is searched, and recursively its superclass, until an
 implementation is found.
 <P>
 
+</P>
 <LI>
 The implementation is called, as if it were a C function, using the
 <B>arguments</B> given (<CODE>anObj</CODE> and <CODE>i</CODE>), and the result is returned to
@@ -124,7 +132,8 @@ In fact, when the method implementation is actually called, it additionally
 receives two <I>implicit</I> arguments: the <B>receiver</B> and the <B>selector</B>.
 These additional hidden arguments may be referred to in the source code by the
 names <CODE>self</CODE> and <CODE>_cmd</CODE>.
-</P><P>
+</P>
+<P>
 
 The process of looking up the method implementation in the receiver at runtime
 is known as dynamic binding.  This is part of what makes the language powerful
@@ -133,16 +142,17 @@ the runtime library) a little slower than a simple function call in C.  There
 are, however, ways of short-circuiting the process in cases where performance
 is at a premium.  Before discussing this, we must first cover the concepts of
 selectors and implementations in greater detail.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC74"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC73"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC75"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC78"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC78"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -153,37 +163,41 @@ selectors and implementations in greater detail.
 <P>
 
 So far we have been using the following syntax to send messages to objects:
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>[myArray removeObjectIdenticalTo: anObject];
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 The example sends the message named <CODE>removeObjectIdenticalTo:</CODE> to
 <CODE>myArray</CODE> with the argument <CODE>anObject</CODE>.
-</P><P>
+</P>
+<P>
 
 An alternative method of writing this is the following:
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>SEL removalSelector = @selector(removeObjectIdenticalTo:);
 [myArray performSelector: removalSelector withObject: anObject];
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 Here, the first line obtains the desired method selector in the form of a
 compiled representation (not the full ASCII name), and the second line sends
 the message as before, but now in an explicit form.  Since the message that is
 sent is now effectively a variable set at runtime, this makes it possible to
 support more flexible runtime functioning.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC75"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC74"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC76"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC78"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC74"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC78"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -196,14 +210,16 @@ support more flexible runtime functioning.
 One conventional way of using selectors is called the <I>target-action</I>
 paradigm, and provides a means for, among other things, binding elements of a
 graphical user interface together at runtime.
-</P><P>
+</P>
+<P>
 
 The idea is that a given object may serve as a flexible signal sender if it
 is given a receiver (the <I>target</I>) and a selector (the <I>action</I>) at
 runtime.  When the object is told to send the signal, it sends the selector
 to the receiver.  In some variations, the object passes itself as an
 argument.
-</P><P>
+</P>
+<P>
 
 The code to implement this paradigm is simple -
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (id) performAction
@@ -218,21 +234,23 @@ The code to implement this paradigm is simple -
     }
   return [target performSelector: action withObject: self];
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 As an example, consider a graphical button widget that you wish to execute
 some method in your application when pressed.
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  [button setTarget: bigMachine]
   [button setAction: @selector(startUp:)];
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 Here, <CODE>button</CODE> stores the given target and action in instance variables,
 then when it is pressed, it internally calls a method like
-<CODE>performAction</CODE> shown above, and sends the message "<CODE>[bigMachine
-startUp: button]</CODE>".
-</P><P>
+<CODE>performAction</CODE> shown above, and sends the message &quot;<CODE>[bigMachine
+startUp: button]</CODE>&quot;.
+</P>
+<P>
 
 If you are used to programming with events and listeners in Java, the
 target-action paradigm provides a lighter-weight alternative for the most
@@ -243,16 +261,17 @@ you need to send the event to multiple objects, however, you would need to
 write a special method to multiplex the event out.  This would be
 approximately comparable effort to what is always required in Java, and is
 only needed in the minority of cases.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC76"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC75"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC77"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC77"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC74"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC78"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -264,7 +283,8 @@ only needed in the minority of cases.
 
 In addition to using the compile-time <CODE>@selector</CODE> operator, there are a
 couple of other ways of obtaining selectors.
-</P><P>
+</P>
+<P>
 
 <UL>
 <LI>
@@ -277,16 +297,18 @@ the variable <CODE>_cmd</CODE>:
 }
 </pre></td></tr></table><P>
 
+</P>
 <LI>
 At any point, you can use the <CODE>NSSelectorFromString()</CODE> function -
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  SEL  mySelector = NSSelectorFromString(@"removeObjectIdenticalTo:");
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  SEL  mySelector = NSSelectorFromString(@&quot;removeObjectIdenticalTo:&quot;);
 </pre></td></tr></table><P>
 
 In reality, you would never use <CODE>NSSelectorFromString</CODE> for a constant
 string as shown; <CODE>@selector</CODE> would do and is more efficient, since is a
 compile-time operator.  Its chief utility lies in the case where the selector
 name is in a variable value (for whatever reason).
-</P><P>
+</P>
+<P>
 
 </UL>
 <P>
@@ -298,16 +320,17 @@ compiler tries to ensure that compile-time generated references to selectors
 for a particular message point to the same structure, selectors produced at
 runtime, or in different compilation units, will be different and a simple
 pointer equality test will not do.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC77"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC76"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC78"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC78"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC74"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC78"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -320,41 +343,46 @@ pointer equality test will not do.
 Using <B>typed</B> objects as shown below, the compiler would forewarn
 you if the <CODE>anObject</CODE> was unable to respond to the <CODE>alert:</CODE>
 message, as it knows what type of object <CODE>anObject</CODE> is:
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>SomeClass	*anObject;		// an instance of the 'SomeClass' class
 
 anObject = [[SomeClass alloc] init];	// build and initialize the object
 [anObject alert: additionalObject];	// compiler warns if 'alert:' not
                                         // defined in SomeClass or a superclass
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 However at times the compiler will not forewarn you that a message will
 attempt to invoke a method that is not in the <B>receiver's</B> repertoire. For
 instance, consider the code below where <CODE>anObject</CODE> is not known to
 implement the <CODE>alert:</CODE> message:
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  id		anObject;		// arbitrary object;
 
   anObject = [[SomeClass alloc] init];	// build and initialize object
   [anObject alert: additionalObject];	// compiler cannot check whether
                                         // 'alert' is defined
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 In this case, the compiler will not issue a warning, because it only knows
 that <CODE>anObject</CODE> is of type <CODE>id</CODE> <small>...</small> so it doesn't know what
 methods the object implements.
-</P><P>
+</P>
+<P>
 
 At runtime, if the Objective-C runtime library fails to find a <B>method
 implementation</B> for the <CODE>alert:</CODE> message in the <CODE>SomeClass</CODE> class
 or one of its superclasses, an exception is generated.  This can be avoided
 in one of two ways.
-</P><P>
+</P>
+<P>
 
 The first way is to check in advance whether the method is implemented:
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>if ([anObject respondsToSelector: @selector(alert:)] == YES)
   {
@@ -364,18 +392,19 @@ else
   {
     // Do something else if the object can't be alerted
   }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 The second way is for the object the message was sent to to <I>forward</I> it
 somewhere else.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC78"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC77"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC79"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC79"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -395,7 +424,8 @@ different message name and structure.)  The object is then able to use the
 information provided to handle the message in some way, a common mechanism
 being to forward the message to another object known as a <B>delegate</B>, so
 that the other object can deal with it.
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (void) forwardInvocation: (NSInvocation*)invocation
 {
@@ -404,7 +434,7 @@ that the other object can deal with it.
   else
     return [self doesNotRecognizeSelector: [invocation selector]];
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 <UL>
 <LI>
@@ -413,17 +443,20 @@ containing all the information about the original message sent, including its
 <B>selector</B> and its arguments.
 <P>
 
+</P>
 <LI>
 <B><CODE>forwardee</CODE></B> is an instance variable containing the <CODE>id</CODE> of an
 object which has been determined to be likely to implement methods that this
 object does not.
 <P>
 
+</P>
 <LI>
 The <B><CODE>NSInvocation</CODE></B> class has a convenience method that will pass the
 message on to a target object given as argument.
 <P>
 
+</P>
 <LI>
 The <B><CODE>doesNotRecognizeSelector</CODE></B> method is a fallback which is
 implemented in <CODE>NSObject</CODE>.  Unless it has been overidden, its behavior
@@ -439,7 +472,8 @@ not show up in tests like <CODE>respondsToSelector</CODE> and
 <CODE>isKindOfClass:</CODE>. This is because these methods search the inheritance
 path, but ignore the forwarding path.  (It is possible to override them
 though.)
-</P><P>
+</P>
+<P>
 
 Another pattern you may come across is <I>surrogate object</I>: surrogates
 forward messages to other objects that can be assumed to be more complex. The
@@ -449,7 +483,8 @@ if it does not, then it will attempt to create it. A <B>proxy</B> object is a
 common example of a surrogate object.  A proxy object is useful in a remote
 invocation context, as well as certain scenarios where you want one object to
 fulfill functions of another.
-</P><P>
+</P>
+<P>
 
 <HR SIZE="6">
 <A NAME="SEC79"></A>
@@ -471,7 +506,7 @@ fulfill functions of another.
 Recall that when a message is sent, the runtime system searches for a method
 implementation associated with the recipient object for the specified
 selector.  (Behind the scenes this is carried out by a function
-"<CODE>objc_msgSend()</CODE>".)  This may necessitate searches across multiple
+&quot;<CODE>objc_msgSend()</CODE>&quot;.)  This may necessitate searches across multiple
 superclass objects traversing upwards in the inheritance hierarchy, and takes
 time.  Once the runtime finds an implementation for a class, it will cache the
 information, saving time on future calls.  However, even just checking and
@@ -479,14 +514,15 @@ accessing the cache has a cost associated with it.  In performance-critical
 situations, you can avoid this by holding on to an implementation yourself.
 In essence, implementations are function pointers, and the compiler provides a
 datatype for storing them when found at runtime:
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>SEL  getObjSelector = @selector(getObjectAtIndex:);
   // get the 'getObjectAtIndex' implementation for NSArray 'taskArray'
 IMP  getObjImp = [taskArray methodForSelector: getObjSelector];
   // call the implementation as a function
 id obj = (getObjImp)( taskArray, getObjSelector, i );
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 Here, we ask the runtime system to find the '<CODE>taskArray</CODE>' object's
 implementation of '<CODE>getObjectAtIndex</CODE>'.  The runtime system will use the
@@ -498,17 +534,19 @@ implicit arguments, <CODE>self</CODE> and <CODE>_cmd</CODE>, that every method
 implementation receives.  The actual type definition for <CODE>IMP</CODE> allows
 for a variable number of additional arguments, which are the explicit
 arguments to the method call:
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>typedef id (*IMP)(id, SEL, ...);
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 The return type of <CODE>IMP</CODE> is <CODE>id</CODE>.  However, not all methods return
 <CODE>id</CODE>; for these others you can still get the implementation, but you
 cannot use an <CODE>IMP</CODE> variable and instead must cast it yourself.  For
 example, here is such a cast for a method taking a double and returning
 '<CODE>double</CODE>':
-</P><P>
+</P>
+<P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>double (*squareFunc)( id, SEL, double );
 double result;
@@ -517,19 +555,21 @@ squareFunc = (double (*)( id, SEL, double ))
      [mathObj methodForSelector: @selector(squareOf:)];
 
 result = squareFunc(mathObj, @selector(squareOf:), 4);
-</pre></td></tr></table></P><P>
+</pre></td></tr></table><P>
 
 You need to declare such a function pointer type for any method that returns
 something besides <CODE>id</CODE> or <CODE>int</CODE>.  It is not necessary to declare the
 argument list (<CODE>double</CODE>) as we did above; the first line could have been
-"<CODE>double (*squareFunc)( id, SEL, <B>...</B> )</CODE>" instead.
-</P><P>
+&quot;<CODE>double (*squareFunc)( id, SEL, <B>...</B> )</CODE>&quot; instead.
+</P>
+<P>
 
 An excellent exposition of the amount of time saved in using
 <CODE>methodForSelector</CODE> and other details of the innards of Objective-C and
 the Foundation may be found here:
 <A HREF="http://www.mulle-kybernetik.com/artikel/Optimization/opti-3.html">http://www.mulle-kybernetik.com/artikel/Optimization/opti-3.html</A>.
-</P><P>
+</P>
+<P>
 
 You should realize that it is only worth it to acquire the <CODE>IMP</CODE> if you
 are going to call it a large number of times, and if the code in the method
@@ -542,7 +582,8 @@ loaded, so that the implementation of a method changes.  Similarly, a class
 could be loaded that poses as another, or one that was posing stops doing so.
 In general, <CODE>IMPs</CODE> should be acquired just before they are to be used,
 then dropped afterwards.
-</P><P>
+</P>
+<P>
 
 <A NAME="Exception Handling"></A>
 <HR SIZE="6">
@@ -554,12 +595,12 @@ then dropped afterwards.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<BR>  
+<BR>
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>March, 31  2005</I>
-using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
-"><I>texi2html</I></A>
+by <I>Richard Frith-Macdonald</I> on <I>May, 10 2005</I>
+using <A HREF="http://texi2html.cvshome.org"><I>texi2html</I></A>
+</FONT>
 
 </BODY>
 </HTML>
