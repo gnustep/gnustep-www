@@ -1,15 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-                      "http://www.w3.org/TR/html40/loose.dtd">
 <HTML>
-<!-- Created on June, 17 2005 by texi2html 1.66 -->
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on July, 21  2005 by texi2html 1.64 -->
+<!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
-
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
 -->
 <HEAD>
 <TITLE>Objective-C GNUstep Base Programming Manual: Objects</TITLE>
@@ -18,17 +17,17 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Objects">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.66">
+<META NAME="Generator" CONTENT="texi2html 1.64">
 
 </HEAD>
 
-<BODY LANG="en" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
 <A NAME="SEC38"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC37"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC12"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -44,8 +43,7 @@ Objective-C and GNUstep provide a rich object allocation and memory management
 framework.  Objective-C affords independent memory allocation and
 initialization steps for objects, and GNUstep supports three alternative
 schemes for memory management.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC39"></A>
@@ -54,7 +52,7 @@ schemes for memory management.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC40"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -70,11 +68,10 @@ class provides an '<CODE>+alloc</CODE>' method for creating blank new instances.
 However, initialization is carried out by an instance method, not a class
 method.  By convention, the default initialization method is '<CODE>-init</CODE>'.
 The general procedure for obtaining a newly initialized object is thus:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>id newObj = [[SomeClass alloc] init];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Here, the call to <CODE>alloc</CODE> returns an uninitialized instance, on which
 <CODE>init</CODE> is then invoked.  (Actually, <CODE>alloc</CODE> <I>does</I> set all
@@ -82,11 +79,10 @@ instance variable memory to 0, and it initializes the special <CODE>isa</CODE>
 variable mentioned earlier which points to the object's class, allowing it to
 respond to messages.)  The <CODE>alloc</CODE> and <CODE>init</CODE> calls may be collapsed
 for convenience into a single call:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>id newObj = [SomeClass new];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 The default implementation of <CODE>new</CODE> simply calls <CODE>alloc</CODE> and
 <CODE>init</CODE> as above, however other actions are possible.  For example,
@@ -97,8 +93,7 @@ can deallocate the receiving object and return another one in its place.
 However this practice is not recommended; the <CODE>new</CODE> method should be
 used for this instead since it avoids unnecessary memory allocation for
 instances that are not used.)
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC40"></A>
@@ -107,7 +102,7 @@ instances that are not used.)
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC41"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -120,21 +115,19 @@ instances that are not used.)
 In many cases you want to initialize an object with some specific information.
 For example a <CODE>Point</CODE> object might need to be given an <I>x, y</I> position.
 In this case the class may define additional initializers, such as:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>id pt = [[Point alloc] initWithX: 1.5 Y: 2.0];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
-Again, a <CODE>new</CODE> method may be defined, though sometimes the word &quot;new&quot;
+Again, a <CODE>new</CODE> method may be defined, though sometimes the word "new"
 is not used in the name:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>id pt = [Point newWithX: 1.5 Y: 2.0];
   // alternative
 id pt = [Point pointAtX: 1.5 Y: 2.0];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 In general the convention in Objective-C is to name initializers in a way that
 is intuitive for their classes.  Initialization is covered in more detail in
@@ -143,17 +136,16 @@ is intuitive for their classes.  Initialization is covered in more detail in
 is available or it is passed an invalid argument; for example the argument to
 the <CODE>NSString</CODE> method <CODE>initWithContentsOfFile:</CODE> may be an erroneous
 file name.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC41"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC40"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC42"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC42"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -176,8 +168,7 @@ them out at the same time, perhaps to make way for a separate portion of the
 application that operated mostly independently.  (Think of a word processor
 that keeps structures for postscript generation for printing separate from
 those for managing widgets in the onscreen editor.)
-</P>
-<P>
+</P><P>
 
 With the growth of computer RAM and the increasing sophistication of memory
 management by operating systems, it is not as important these days to control
@@ -188,8 +179,7 @@ allocation.  If you know you are going to be allocating large numbers of
 objects of a certain size, it may pay to create a zone that allocates memory
 in multiples of this size.  The GNUstep/Objective-C mechanisms supporting
 memory allocation are therefore described here.
-</P>
-<P>
+</P><P>
 
 The fundamental structure describing a region of memory in GNUstep is called a
 <I>Zone</I>, and it is represented by the <CODE>NSZone</CODE> struct.  All
@@ -197,12 +187,11 @@ The fundamental structure describing a region of memory in GNUstep is called a
 an <CODE>NSZone</CODE> argument specifying the Zone to get the memory from.  For
 example, in addition to the fundamental <CODE>alloc</CODE> method described above,
 there is the <CODE>allocWithZone:</CODE> method:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>+ (id) alloc;
 + (id) allocWithZone: (NSZone*)zone;
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Both methods will allocate memory to hold an object, however the first one
 automatically takes the memory from a default Zone (which is returned by the
@@ -211,8 +200,7 @@ in the same area of memory, or allocate in chunks - perhaps for performance
 reasons, you may create a Zone from where you would allocate those objects by
 using the <CODE>NSCreateZone</CODE> function.  This will minimise the paging
 required by your application when accessing those objects frequently.
-</P>
-<P>
+</P><P>
 
 Low level memory allocation is performed by the <CODE>NSAllocateObject()</CODE>
 function.  This is rarely used but available when you require more advanced
@@ -220,16 +208,14 @@ control or performance. This function is called by <CODE>[NSObject
 +allocWithZone:]</CODE>.  However, if you call <CODE>NSAllocateObject()</CODE> directly to
 create an instance of a class you did not write, you may break some
 functionality of that class, such as caching of frequently used objects.
-</P>
-<P>
+</P><P>
 
 Other <CODE>NSObject</CODE> methods besides <CODE>alloc</CODE> that may optionally take
 Zones include <CODE>-copy</CODE> and <CODE>-mutableCopy</CODE>.  For 95% of cases you
 will probably not need to worry about Zones at all; unless performance is
 critical, you can just use the methods without zone arguments, that take the
 default zone.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC42"></A>
@@ -238,7 +224,7 @@ default zone.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -259,14 +245,12 @@ used by the object must be deallocated separately.  Other entities that depend
 solely on the deallocated receiver, including complete objects, must also be
 deallocated separately.  Usually this is done by subclasses overriding
 <CODE>-dealloc</CODE> (see <A HREF="manual_4.html#SEC51">Instance Deallocation</A>).
-</P>
-<P>
+</P><P>
 
 As with <CODE>alloc</CODE>, the underlying implementation utilizes a function
 (<CODE>NSDeallocateObject()</CODE>) that can be used by your code if you know what
 you are doing.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC43"></A>
@@ -288,8 +272,7 @@ you are doing.
 In an object-oriented environment, ensuring that all memory is freed when it
 is no longer needed can be a challenge.  To assist in this regard, there are
 three alternative forms of memory management available in Objective-C:
-</P>
-<P>
+</P><P>
 
 <UL>
 <LI>Explicit<BR>
@@ -299,7 +282,6 @@ This gives you complete control over memory management, and is highly
 efficient, but error prone.
 <P>
 
-</P>
 <LI>Retain count<BR>
 You use the OpenStep retain/release mechanism, along with autorelease
 pools which provide a degree of automated memory management.  This gives
@@ -307,7 +289,6 @@ a good degree of control over memory management, but requires some care
 in following simple rules.  It's pretty efficient.
 <P>
 
-</P>
 <LI>Garbage collection<BR>
 You build the GNUstep base library with garbage collection, and link
 with the Boehm GC library <small>...</small> then never bother about
@@ -323,8 +304,7 @@ The recommended approach is to use some standard macros defined in
 but which permit efficient use of the garbage collection system if you build
 your software with that.  We will justify this recommendation after describing
 the three alternatives in greater detail.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC44"></A>
@@ -350,23 +330,21 @@ As in standard C when using <CODE>malloc</CODE>, or in C++ when using <CODE>new<
 needed.  You must make sure to no longer reference deallocated objects;
 although messaging them will not cause a segmentation fault as in C/C++, it
 will still lead to your program behaving in unintended ways.
-</P>
-<P>
+</P><P>
 
 This approach is generally <I>not</I> recommended since the Retain/Release style
 of memory management is significantly less leak-prone while still being quite
 efficient.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC45"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC44"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC46"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -381,8 +359,7 @@ When an object is created, it has a retain count of 1.  When an object
 is retained, the retain count is incremented.  When it is released the
 retain count is decremented, and when the retain count goes to zero the
 object gets deallocated.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  Coin	*c = [[Coin alloc] initWithValue: 10];
 
@@ -392,24 +369,22 @@ object gets deallocated.
   [c release];	// Calls 'release' method (retain count now 1)
     // Drop in bottomless well
   [c release];	// Calls 'release' ... (retain count 0) then 'dealloc'
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 One way of thinking about the initial retain count of 1 on the object is that
 a call to <CODE>alloc</CODE> (or <CODE>copy</CODE>) implicitly calls <CODE>retain</CODE> as
 well.  There are a couple of default conventions about how <CODE>retain</CODE> and
 <CODE>release</CODE> are to be used in practice.
-</P>
-<P>
+</P><P>
 
 <UL>
 <LI>
-<I>If a block of code causes an object to be allocated, it &quot;owns&quot; this
+<I>If a block of code causes an object to be allocated, it "owns" this
 object and is responsible for releasing it.  If a block of code merely
 receives a created object from elsewhere, it is <B>not</B> responsible for
 releasing it.</I>
 <P>
 
-</P>
 <LI>
 <I>More generally, the total number of <CODE>retain</CODE>s in a block should be
 matched by an equal number of <CODE>release</CODE>s.</I>
@@ -419,18 +394,16 @@ matched by an equal number of <CODE>release</CODE>s.</I>
 <P>
 
 Thus, a typical usage pattern is:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *msg = [[NSString alloc] initWithString: @&quot;Test message.&quot;];
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *msg = [[NSString alloc] initWithString: @"Test message."];
   NSLog(msg);
     // we created msg with alloc -- release it
   [msg release];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Retain and release must also be used for instance variables that are objects:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (void)setFoo:(FooClass *newFoo)
 {
@@ -442,12 +415,11 @@ Retain and release must also be used for instance variables that are objects:
     // be destroyed if retain count has reached 0
   foo = newFoo;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Because of this retain/release management, it is safest to use accessor
 methods to set variables even within a class:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (void)resetFoo
 {
@@ -457,35 +429,32 @@ methods to set variables even within a class:
     // undo the retain done by alloc
   [foo release];
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <B>Exceptions</B>
-</P>
-<P>
+</P><P>
 
 In practice, the extra method call overhead should be avoided in performance
 critical areas and the instance variable should be set directly.  However in
 all other cases it has proven less error-prone in practice to consistently use
 the accessor.
-</P>
-<P>
+</P><P>
 
 There are certain situations in which the rule of having retains and releases
 be equal in a block should be violated.  For example, the standard
 implementation of a container class <CODE>retain</CODE>s each object that is added
 to it, and <CODE>release</CODE>s it when it is removed, in a separate method.  In
 general you need to be careful in these cases that retains and releases match.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC46"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC47"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -509,24 +478,22 @@ object.  At some point later on, the pool will send the object a second
 <CODE>release</CODE> message, but by this time the object will presumably either
 have been retained by some other code, or is no longer needed and can thus be
 deallocated.  For example:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (NSString *) getStatus
 {
   NSString *status =
-    [[NSString alloc] initWithFormat: &quot;Count is %d&quot;, [self getCount]];
+    [[NSString alloc] initWithFormat: "Count is %d", [self getCount]];
    // set to be released sometime in the future
   [status autorelease];
   return status;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Any block of code that calls <CODE>-getStatus</CODE> can also forego retaining the
 return value if it just needs to use it locally.  If the return value is to be
 stored and used later on however, it should be retained:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  ...
   NSString *status = [foo getStatus];
@@ -534,7 +501,7 @@ stored and used later on however, it should be retained:
   NSLog(status);
   return;
     // status will be released automatically later
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  ...
   currentStatus = [foo getStatus];
@@ -542,76 +509,69 @@ stored and used later on however, it should be retained:
     // to be destroyed when the autorelease pool cleans up, so we
     // retain it ourselves
   [currentStatus retain];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <B>Convenience Constructors</B>
-</P>
-<P>
+</P><P>
 
 A special case of object transfer occurs when a <I>convenience</I> constructor is
 called (instead of <CODE>alloc</CODE> followed by <CODE>init</CODE>) to create an object.
 (Convenience constructors are class methods that create a new instance and do
-not start with &quot;new&quot;.)  In this case, since the convenience method is the
+not start with "new".)  In this case, since the convenience method is the
 one calling <CODE>alloc</CODE>, it is responsible for releasing it, and it does so
 by calling <CODE>autorelease</CODE> before returning.  Thus, if you receive an
 object created by any convenience method, it is autoreleased, so you don't
 need to release it if you are just using it temporarily, and you DO need to
 retain it if you want to hold onto it for a while.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (NSString *) getStatus
 {
     NSString *status =
-        [NSString stringWithFormat: &quot;Count is %d&quot;, [self getCount]];
+        [NSString stringWithFormat: "Count is %d", [self getCount]];
     // 'status' has been autoreleased already
     return status;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <B>Pool Management</B>
-</P>
-<P>
+</P><P>
 
 An autorelease pool is created automatically if you are using the GNUstep
 GUI classes, however if you are just using the GNUstep Base classes for a
 nongraphical application, you must create and release autorelease pools
 yourself:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Once a pool has been created, any autorelease calls will automatically find
 it.  To close out a pool, releasing all of its objects, simply release the
 pool itself:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  [pool release];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 To achieve finer control over autorelease behavior you may also create
 additional pools and release them in a nested manner.  Calls to
 <CODE>autorelease</CODE> will always use the most recently created pool.
-</P>
-<P>
+</P><P>
 
 Finally, note that <CODE>autorelease</CODE> calls are significantly slower than
 plain <CODE>release</CODE>.  Therefore you should only use them when they are
 necessary.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC47"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC46"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC48"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC48"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -630,17 +590,16 @@ objects and multiple retain links.  The only way to avoid such cycles is to be
 careful with your designs.  If you notice a situation where a retain cycle
 could arise, remove at least one of the links in the chain, but not in such a
 way that references to deallocated objects might be mistakenly used.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC48"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC47"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -651,10 +610,8 @@ way that references to deallocated objects might be mistakenly used.
 <P>
 
 The following summarizes the retain/release-related methods:
-</P>
-<P>
+</P><P>
 
-</P>
 <TABLE>
 <TR><TD>Method </TD><TD> Description</TD>
 </TR>
@@ -692,8 +649,7 @@ name of the class (initial letter converted to lowercase).
 <P>
 
 The following are the main conventions you need to remember:
-</P>
-<P>
+</P><P>
 
 <UL>
 <LI>
@@ -703,7 +659,6 @@ future point.  It is best to balance retains and releases within each
 individual block of code.
 <P>
 
-</P>
 <LI>
 If you receive an autoreleased object, it will normally remain valid for the
 rest of the current method call and can even be returned as the result of the
@@ -711,7 +666,6 @@ method.  If you need to store it away for future use (e.g. as an instance
 variable), you must retain it.
 <P>
 
-</P>
 <LI>
 The retain counts mentioned are guidelines only ... more sophisticated classes
 often perform caching and other tricks, so that <CODE>+alloc</CODE> methods may
@@ -728,7 +682,7 @@ ownership rules (how you should use the returned values) remain the same.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC48"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC50"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC50"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -750,16 +704,14 @@ are automatically deallocated.  The situation is largely similar to
 programming in Java, except that garbage collection will only be triggered
 during memory allocation requests and will be less efficient since pointers
 in C are not always explicitly marked.
-</P>
-<P>
+</P><P>
 
 Whether in Java or Objective-C, life is still not completely worry-free under
-garbage collection however.  You still must &quot;help the garbage collector
-along&quot; by explicitly dropping references to objects when they become
+garbage collection however.  You still must "help the garbage collector
+along" by explicitly dropping references to objects when they become
 unneeded.  Failing to do this is easier than you might think, and leads to
 memory leaks.
-</P>
-<P>
+</P><P>
 
 When GNUstep was compiled with garbage collection, the macro flag
 <CODE>GS_WITH_GC</CODE> will be defined, which you can use in programs to determine
@@ -768,10 +720,8 @@ doing this manually, however, you may use special macros in place of the
 <CODE>retain</CODE> and <CODE>release</CODE> method calls.  These macros call the methods
 in question when garbage collection is <I>not</I> available, but do nothing when
 it is.
-</P>
-<P>
+</P><P>
 
-</P>
 <TABLE>
 <TR><TD>Macro </TD><TD> Functionality</TD>
 
@@ -801,10 +751,9 @@ it is.
 </TR></TABLE>
 <P>
 
-In the latter three &quot;convenience&quot; macros, appropriate <CODE>nil</CODE> checks are
+In the latter three "convenience" macros, appropriate <CODE>nil</CODE> checks are
 made so that no retain/release messages are sent to <CODE>nil</CODE>.
-</P>
-<P>
+</P><P>
 
 Some authorities recommend that you always use the RETAIN/RELEASE macros in
 place of the actual method calls, in order to allow running in a non-garbage
@@ -814,8 +763,7 @@ know you are always going to be running in a non-garbage collecting
 environment, there is no harm in using the method calls, and if you know you
 will always have garbage collection available you can save development effort
 by avoiding any use of retain/release or RETAIN/RELEASE.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC50"></A>
@@ -839,8 +787,7 @@ quality (some bugs exist).  In the OS X world, Apple's Cocoa does <I>not</I>
 employ garbage collection, and it is not clear whether there are plans to
 implement it.  Therefore the majority of GNUstep programmers use the
 RETAIN/RELEASE approach to memory management.
-</P>
-<P>
+</P><P>
 
 <A NAME="Classes"></A>
 <HR SIZE="6">
@@ -852,12 +799,12 @@ RETAIN/RELEASE approach to memory management.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<BR>
+<BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Richard Frith-Macdonald</I> on <I>June, 17 2005</I>
-using <A HREF="http://texi2html.cvshome.org"><I>texi2html</I></A>
-</FONT>
+by <I>Adam Fedor</I> on <I>July, 21  2005</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
 
 </BODY>
 </HTML>

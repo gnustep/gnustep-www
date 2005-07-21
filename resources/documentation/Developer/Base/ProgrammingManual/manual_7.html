@@ -1,15 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-                      "http://www.w3.org/TR/html40/loose.dtd">
 <HTML>
-<!-- Created on June, 17 2005 by texi2html 1.66 -->
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on July, 21  2005 by texi2html 1.64 -->
+<!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
-
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
 -->
 <HEAD>
 <TITLE>Objective-C GNUstep Base Programming Manual: Distributed Objects</TITLE>
@@ -18,17 +17,17 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Distributed Objects">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.66">
+<META NAME="Generator" CONTENT="texi2html 1.64">
 
 </HEAD>
 
-<BODY LANG="en" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
 <A NAME="SEC96"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC97"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -44,15 +43,13 @@ Until now we have been concentrating on using the Objective-C language
 to create programs that execute in a single process. But what if you
 want your program to interact with objects in other processes, perhaps
 running on different machines?
-</P>
-<P>
+</P><P>
 
 As a simple example, we may have a client process that needs to access a
 telephone directory stored on a remote server. The client process could
 send a message to the server that contained a person's name, and the
 server could respond by returning that person's number.
-</P>
-<P>
+</P><P>
 
 The GNUstep base library provides a powerful set of classes that make
 this type of remote messaging not only possible, but easy to program. So
@@ -60,8 +57,7 @@ what do these classes do and how can we use them? To answer that we must
 first look at the way code interacts with objects in a single process,
 and then look at how we can achieve the same interaction with objects
 that exist in different processes.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC97"></A>
@@ -83,41 +79,37 @@ that exist in different processes.
 To continue with the example above, if the telephone directory existed
 in the same process as the code that was accessing it, then a simple
 message would return the wanted telephone number.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *wantedNumber = [telephoneDirectory teleNumber: personName];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Now object and method names just hold pointers to memory addresses. The
 code executed at run time in response to the <CODE>teleNumber</CODE> message
 is located at an address held by the name of the responding method (a
 variable), while data in the telephone directory is located at an
 address held by the <CODE>telephoneDirectory</CODE> variable.
-</P>
-<P>
+</P><P>
 
 In a single process these addresses can be accessed by the client code
 at run time, but if the telephone directory is located on a remote
 server, then the address of the remote object is not known in the client
 process (the <CODE>telephoneDirectory</CODE> object and its responding method
 are said to exist in a separate 'address space').
-</P>
-<P>
+</P><P>
 
 The Objective-C run-time library was not designed for this inter-process
 communication or 'remote messaging'.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC98"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC97"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC99"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -130,55 +122,49 @@ communication or 'remote messaging'.
 GNUstep overcomes these limitations by providing you with classes that
 form what is known as a 'distributed objects' architecture that
 extends the capabilities of the run-time system.
-</P>
-<P>
+</P><P>
 
 With the addition of a few lines of code in the client and server
 programs, these extensions allow you to send a message to a remote
 process by constructing a simple Objective-C statement. In the telephone
 directory example, the statement to retrieve the telephone number would
 now look something like this:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *wantedNumber = [proxyForDirectory teleNumber: personName];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Compare this to the original statement:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *wantedNumber = [telephoneDirectory teleNumber: personName];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Notice that the only difference between the two statements is the name
 of the object receiving the message, i.e. <CODE>proxyForDirectory</CODE>
 rather than <CODE>telephoneDirectory</CODE>. GNUstep makes it as simple as
 this to communicate with an object in another process.
-</P>
-<P>
+</P><P>
 
 The variable <CODE>proxyForDirectory</CODE> is known as a 'proxy' for the
 remote <CODE>telephoneDirectory</CODE> object. A proxy is simply a substitute
 for the remote object, with an address in the 'address space' of the
 local client process, that receives messages and forwards them on to the
 remote server process in a suitably coded form.
-</P>
-<P>
+</P><P>
 
 Let us now take a look at the additional lines of code required to make
 this 'remote messaging' possible.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC99"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC100"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -194,8 +180,7 @@ this <CODE>NSConnection</CODE> must be registered with the network by name. Maki
 an object available to client processes in this way is known as 'vending' the
 object. The registered name for the <CODE>NSConnection</CODE> is used by the client
 when obtaining a proxy for the responding server object over the network.
-</P>
-<P>
+</P><P>
 
 The only other code you need to consider is the code that listens for incoming
 messages. This 'runloop', as it is known, is started by sending a <CODE>run</CODE>
@@ -203,21 +188,18 @@ message to an instance of the <CODE>NSRunLoop</CODE> class.  Since an
 <CODE>NSRunLoop</CODE> object is created automatically for each process, there is no
 need to create one yourself. Simply get the default runloop, which is returned
 by the <CODE>+currentRunLoop</CODE> class method.
-</P>
-<P>
+</P><P>
 
 When the runloop detects an incoming message, the message is passed to the
 root object of the <CODE>NSConnection</CODE>, which performs a method in response to
 the message and returns a variable of the appropriate type. The
 <CODE>NSConnection</CODE> manages all inter-process communication, decoding incoming
 messages and encoding any returned values.
-</P>
-<P>
+</P><P>
 
 The code to vend the <CODE>telephoneDirectory</CODE> object and start the
 runloop would look something like this:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>/*
  * The main() function: Set up the program 
@@ -247,10 +229,10 @@ int main(void)
    * Try to register a name for the NSConnection,
    * and report an error if this is not possible.
    */
-  if ([connXion registerName: @&quot;DirectoryServer&quot;] == NO) 
+  if ([connXion registerName: @"DirectoryServer"] == NO) 
   {
-    NSLog(@&quot;Unable to register as 'DirectoryServer'&quot;);
-    NSLog(@&quot;Perhaps another copy of this program is running?&quot;);
+    NSLog(@"Unable to register as 'DirectoryServer'");
+    NSLog(@"Perhaps another copy of this program is running?");
     exit(1);
   }
   
@@ -261,21 +243,20 @@ int main(void)
   RELEASE(pool);
   return 0;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 These additional lines of code turn a program into a distributed objects
 server, ready to respond to incoming client messages.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC100"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC99"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC101"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC101"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -288,8 +269,7 @@ server, ready to respond to incoming client messages.
 At the client, all you need do is obtain a proxy for the responding
 server object, using the name that was registered for the <CODE>NSConnection</CODE>
 at the server.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  /* Create an instance of the NSAutoreleasePool class */
   CREATE_AUTORELEASE_POOL(pool);
@@ -304,45 +284,42 @@ at the server.
   
   /* Release the pool */
   RELEASE(pool);
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 The code that obtains the proxy automatically creates an NSConnection
 object for managing the inter-process communication, so there is no need
 to create one yourself. If the <I>hostName</I> in this statement is 'nil',
 then only the local host will be searched to find the
-<I>registeredServerName</I>. If <I>hostName</I> is &quot;*&quot;, then all hosts on the
+<I>registeredServerName</I>. If <I>hostName</I> is "*", then all hosts on the
 local network will be searched.
-</P>
-<P>
+</P><P>
 
 In the telephone directory example, the code to obtain the proxy from
 any host on the network would be:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  id proxyForDirectory = [NSConnection
                             rootProxyForConnectionWithRegisteredName: 
-                              @&quot;DirectoryServer&quot; 
-			    host: &quot;*&quot;]; 
-</pre></td></tr></table><P>
+                              @"DirectoryServer" 
+			    host: "*"]; 
+</pre></td></tr></table></P><P>
 
 With this additional line of code in the client program, you can now
 construct a simple Objective-C statement to communicate with the remote
 object.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *wantedNumber = [proxyForDirectory teleNumber: personName];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <HR SIZE="6">
 <A NAME="SEC101"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC100"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC102"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC102"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -357,22 +334,19 @@ object to avoid run-time errors, it only needs to know the messages to
 which the remote object responds. This can be determined by the client
 at run-time, by asking the server if it responds to a particular message
 before the message is sent.
-</P>
-<P>
+</P><P>
 
 If the methods implemented at the server are stated in a formal
 protocol, then the client can ask the server if it conforms to the
 protocol, reducing the network traffic required for the individual
 message/response requests.
-</P>
-<P>
+</P><P>
 
 A further advantage is gained at compile time, when the compiler will
 issue a warning if the server fails to implement any method declared in
 the protocol, or if the client contains any message to which the server
 cannot respond.
-</P>
-<P>
+</P><P>
 
 The protocol is saved to a header file and then included in both client
 and server programs with the usual compiler <CODE>#include</CODE>
@@ -380,45 +354,42 @@ directive. Only the server program needs to implement the methods
 declared in the protocol. To enable compiler checking in the client
 program, extend the type declaration for the proxy to this protocol, and
 cast the returned proxy object to the same extended type.
-</P>
-<P>
+</P><P>
 
 In the telephone directory example, if the declared protocol was
 <CODE>TelephoneDirectory</CODE>, declared in header file
 <CODE>protocolHeader.h</CODE>, then the client code would now look like this:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  #include &quot;protocolHeader.h&quot;;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>  #include "protocolHeader.h";
   
   /* Extend the type declaration */
-  id&lt;TelephoneDirectory&gt; proxyForDirectory;
+  id&#60;TelephoneDirectory&#62; proxyForDirectory;
 
   /* Cast the returned proxy object to the extended type */  
-  proxyForDirectory = (id&lt;TelephoneDirectory&gt;) [NSConnection
+  proxyForDirectory = (id&#60;TelephoneDirectory&#62;) [NSConnection
                        rootProxyForConnectionWithRegisteredName: 
-                       @&quot;DirectoryServer&quot; 
-		       host: &quot;*&quot;]; 
+                       @"DirectoryServer" 
+		       host: "*"]; 
 </pre></td></tr></table>Since class names and protocol names do not share the same 'address
 space' in a process, the declared protocol and the class of the
 responding server object can share the same name, making code easier to
 understand.
-<P>
+</P><P>
 
 For example, <CODE>proxyForDirectory</CODE> at the client could be a proxy for
 an instance of the <CODE>TelephoneDirectory</CODE> class at the server, and
 this class could implement the <CODE>TelephoneDirectory</CODE> protocol.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC102"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC101"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC103"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC103"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -430,23 +401,21 @@ this class could implement the <CODE>TelephoneDirectory</CODE> protocol.
 
 Here we provide the rest of the code needed for client and server to actually
 run the above example.
-</P>
-<P>
+</P><P>
 
 <B>Code At Server</B>
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &lt;Foundation/Foundation.h&gt;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
 
 /* Include the TelephoneDirectory protocol header file */
-#include &quot;TelephoneDirectory.h&quot;
+#include "TelephoneDirectory.h"
 
 /*
  * Declare the TelephoneDirectory class that 
  * implements the 'teleNumber' instance method.
  */
-@interface TelephoneDirectory : NSObject &lt;TelephoneDirectory&gt;
+@interface TelephoneDirectory : NSObject &#60;TelephoneDirectory&#62;
 @end
 
 /*
@@ -456,24 +425,23 @@ run the above example.
 @implementation TelephoneDirectory : NSObject
 - (char *) teleNumber: (char *) personName
 {
-  if (strcmp(personName, &quot;Jack&quot;) == 0) return &quot; 0123 456&quot;;
-  else if (strcmp(personName, &quot;Jill&quot;) == 0) return &quot; 0456 789&quot;;
-  else return &quot; Number not found&quot;;
+  if (strcmp(personName, "Jack") == 0) return " 0123 456";
+  else if (strcmp(personName, "Jill") == 0) return " 0456 789";
+  else return " Number not found";
 }
 @end
 
  /* main() function: Set up the program  as a 'Distibuted Objects Server'. */
  /*   [use code from server example above ...] */
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <B>Code at Client</B>
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &lt;Foundation/Foundation.h&gt;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
 
 /* Include the TelephoneDirectory protocol header file */
-#include &quot;TelephoneDirectory.h&quot;
+#include "TelephoneDirectory.h"
 
 /*
  * The main() function: Get the telephone number for 
@@ -483,32 +451,32 @@ int main(int argc, char *argv[])
 {
   char *personName = argv[1];
   char *returnedNumber;
-  id&lt;TelephoneDirectory&gt; proxyForDirectory;
+  id&#60;TelephoneDirectory&#62; proxyForDirectory;
   CREATE_AUTORELEASE_POOL(pool);
 
   /* Acquire the remote reference. */
-  proxyForDirectory = (id&lt;TelephoneDirectory&gt;) [NSConnection 
+  proxyForDirectory = (id&#60;TelephoneDirectory&#62;) [NSConnection 
                        rootProxyForConnectionWithRegisteredName: 
-                       @&quot;DirectoryServer&quot; 
-		       host: @&quot;*&quot;];	       
+                       @"DirectoryServer" 
+		       host: @"*"];	       
 
   if(proxyForDirectory == nil) 
-    printf(&quot;\n** WARNING: NO CONNECTION TO SERVER **\n&quot;);
-  else printf(&quot;\n** Connected to server **\n&quot;);
+    printf("\n** WARNING: NO CONNECTION TO SERVER **\n");
+  else printf("\n** Connected to server **\n");
   
   if(argc == 2) // Command line name entered
   {
     returnedNumber = (char *)[proxyForDirectory teleNumber: personName];
-    printf(&quot;\n%s%s%s%s%s\n&quot;, &quot;** (In client) The telephone number for &quot;,
-           personName, &quot; is:&quot;,
-           returnedNumber, &quot;  **&quot;);
+    printf("\n%s%s%s%s%s\n", "** (In client) The telephone number for ",
+           personName, " is:",
+           returnedNumber, "  **");
   }
-  else printf(&quot;\n** No name entered **\n&quot;);
-  printf(&quot;\n%s\n\n&quot;, &quot;** End of client program **&quot;);
+  else printf("\n** No name entered **\n");
+  printf("\n%s\n\n", "** End of client program **");
   RELEASE(pool);
   return 0;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 To get this running, all you need do is create two directories, one for the
 client and one for the server. Each directory will hold a makefile, the client
@@ -516,18 +484,17 @@ or server source code, and a copy of the protocol header file. When the files
 compile, first run the server and then the client.  You can try this on the
 same machine, or on two different machines (with GNUstep installed) on the
 same LAN. What happens when you run the client without the server? How would
-you display a &quot;No Server Connection&quot; warning at the client?
-</P>
-<P>
+you display a "No Server Connection" warning at the client?
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC103"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC102"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC104"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC104"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -543,18 +510,17 @@ automatically be started on each machine, if it isn't running already, that
 handles this, allowing the server to register and the client to send a query
 behind the scenes.  This <I>GNUstep Distributed Objects Name Server</I> runs as
 '<CODE>gdomap</CODE>' and binds to port 538.  See the manual page or the HTML
-&quot;GNUstep Base Tools&quot; <A HREF="../../Tools/Reference/index.html">documentation</A> for further information.
-</P>
-<P>
+"GNUstep Base Tools" <A HREF="../../Tools/Reference/index.html">documentation</A> for further information.
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC104"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC103"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -568,17 +534,16 @@ One difference you may have noticed in the example we just looked at from
 other remote method invocation interfaces such as CORBA and Java RMI was that
 there are <I>no stub classes</I>.  The source of this great boon is described at
 the end of this chapter: <A HREF="manual_7.html#SEC96">Language Support for Distributed Objects</A>.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC105"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC104"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC106"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -590,16 +555,14 @@ the end of this chapter: <A HREF="manual_7.html#SEC96">Language Support for Dist
 
 Now we will look at an example called GameServer that uses distributed objects
 in a client/server game.
-</P>
-<P>
+</P><P>
 
 Actually the game itself is not implemented, just its distributed support
 structure, and while the code to vend an object and connect to a remote
 process is similar to that already shown, the code does show a number of
 additional techniques that can be used in other client/server programs.  Here
 are the requirements we will implement:
-</P>
-<P>
+</P><P>
 
 <UL>
 <LI>
@@ -610,14 +573,12 @@ hours; but if the client won the last game, then they can re-play the game at
 any time (a reward for winning).<BR>
 <P>
 
-</P>
 <LI>
 The server also makes sure the client is not already connected and playing the
 game (i.e. they cannot play two games at the same time - that would be
 cheating).<BR>
 <P>
 
-</P>
 <LI>
 In addition to a proxy for the server being obtained at the client, a proxy
 for the client is received at the server. This allows two-way messaging, where
@@ -636,17 +597,16 @@ comments. Can you work out what is happening at the server and client? If you
 have any difficulties then refer to the relevant sections in this manual, or
 to class documentation <A HREF="../Reference/index.html">here</A> or at the Apple
 web site.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC106"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC107"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -660,8 +620,7 @@ We have chosen <CODE>GameClient</CODE> as the name of both the protocol
 adopted at the client and the class of the responding client object. The
 header file declaring this protocol will simply declare the methods that
 the class must implement.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>@protocol GameClient
 - (void) clientMessage: (bycopy NSString *)theMessage;
@@ -671,20 +630,19 @@ the class must implement.
 // reflect the nature of the game.
 
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 The protocol will be saved as <CODE>GameClient.h</CODE>.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC107"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC106"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC108"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC108"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -698,8 +656,7 @@ We have chosen <CODE>GameServer</CODE> as the name of both the protocol
 adopted at the server and the class of the responding server object. The
 header file declaring this protocol will simply declare the methods that
 the class must implement.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>@protocol GameServer
 - (BOOL) mayJoin: (id)client asPlayer: (bycopy NSString*)name;
@@ -710,20 +667,19 @@ the class must implement.
 // reflect the nature of the game.
 
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 The protocol will be saved as <CODE>GameServer.h</CODE>.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC108"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC107"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC109"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC109"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -735,23 +691,21 @@ The protocol will be saved as <CODE>GameServer.h</CODE>.
 
 The client code contains the <CODE>main</CODE> function and the
 <CODE>GameClient</CODE> class declaration and implementation.
-</P>
-<P>
+</P><P>
 
 The <CODE>main()</CODE> function attempts to connect to the server, while the
 <CODE>GameClient</CODE> class adopts the <CODE>GameClient</CODE> protocol.
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &lt;Foundation/Foundation.h&gt;
-#include &quot;GameServer.h&quot;
-#include &quot;GameClient.h&quot;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
+#include "GameServer.h"
+#include "GameClient.h"
 
 /* 
  * GameClient class declaration: 
  * Adopt the GameClient protocol.
  */
-@interface GameClient : NSObject &lt;GameClient&gt;
+@interface GameClient : NSObject &#60;GameClient&#62;
 @end
 
 /* 
@@ -785,7 +739,7 @@ The <CODE>main()</CODE> function attempts to connect to the server, while the
 int main(int argc, char **argv)
 {
   CREATE_AUTORELEASE_POOL(pool);
-  id&lt;GameServer&gt; server;
+  id&#60;GameServer&#62; server;
   int result;
   NSString *name;
   id client;
@@ -808,12 +762,12 @@ int main(int argc, char **argv)
    * registered under the name 'JoinGame'. Since the host 
    * is '*', we can connect to any server on the local network.
    */
-  server = (id&lt;GameServer&gt;)[NSConnection 
+  server = (id&#60;GameServer&#62;)[NSConnection 
                             rootProxyForConnectionWithRegisteredName: 
-                            @&quot;JoinGame&quot; host: @&quot;*&quot;];
+                            @"JoinGame" host: @"*"];
   if(server == nil) 
     {
-      printf(&quot;\n** No Connection to GameServer **\n&quot;);
+      printf("\n** No Connection to GameServer **\n");
       result = 1;
     }
     
@@ -838,11 +792,10 @@ int main(int argc, char **argv)
   RELEASE(pool);
   return result;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 To summarise the code at the client:
-</P>
-<P>
+</P><P>
 
 <UL>
 <LI>
@@ -850,7 +803,6 @@ We obtained a proxy for the server and can now communicate with the server
 using the methods declared in the <CODE>GameServer</CODE> protocol.<BR>
 <P>
 
-</P>
 <LI>
 We passed a <CODE>GameClient</CODE> object and our user-name to the server (the
 <CODE>GameClient</CODE> object is received as a proxy at the server).  The server
@@ -858,7 +810,6 @@ can now communicate with the client using the methods declared in the
 <CODE>GameClient</CODE> protocol.<BR>
 <P>
 
-</P>
 <LI>
 When the game is in progress, the server can alter the state of the client
 object to reflect the success of the player.
@@ -870,9 +821,9 @@ object to reflect the success of the player.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC108"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -884,27 +835,25 @@ object to reflect the success of the player.
 
 The server code contains the <CODE>main</CODE> function and the 
 <CODE>GameServer</CODE> class declaration and implementation. 
-</P>
-<P>
+</P><P>
 
 The <CODE>main()</CODE> function vends the server's root object and starts the
 runloop, while the <CODE>GameServer</CODE> class adopts the <CODE>GameServer</CODE>
 protocol. The class also implements methods that initialise and
 deallocate the root object's instance variables (dictionaries that hold
 player information).
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &lt;Foundation/Foundation.h&gt;
-#include &quot;GameServer.h&quot;
-#include &quot;GameClient.h&quot;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
+#include "GameServer.h"
+#include "GameClient.h"
 
 /* 
  * GameServer class declaration:
  * Adopt the GameServer protocol and declare  
  * GameServer instance variables.
  */
-@interface GameServer : NSObject &lt;GameServer&gt;
+@interface GameServer : NSObject &#60;GameServer&#62;
 {
   NSMutableDictionary *delayUntil; // Delays to re-joining GameServer.
   NSMutableDictionary *currentPlayers; // Proxies to each client.
@@ -972,7 +921,7 @@ player information).
 
   if (name == nil)
     {
-      NSLog(@&quot;Attempt to join nil user&quot;);
+      NSLog(@"Attempt to join nil user");
       return NO;
     }
     
@@ -980,7 +929,7 @@ player information).
   if ([currentPlayers objectForKey: name] != nil)
     {
       /* Inform the client that they cannot join. */
-      aMessage = @&quot;\nSorry, but you are already playing GameServer!\n&quot;;
+      aMessage = @"\nSorry, but you are already playing GameServer!\n";
       [client clientMessage: aMessage];
       return NO;
     }
@@ -993,24 +942,24 @@ player information).
    * no restriction or if the time delay has passed; 
    * otherwise no, they cannot join.
    */
-  if (delay == nil || [delay timeIntervalSinceNow] &lt;= 0.0)
+  if (delay == nil || [delay timeIntervalSinceNow] &#60;= 0.0)
     {
       /* Remove the old restriction on re-joining the game. */
       [delayUntil removeObjectForKey: name];
       
       /* Add the player to the list of current players. */
       [currentPlayers setObject: client forKey: name];
-      [hasWon setObject: @&quot;NO&quot; forKey: name]; // They've not won yet.
+      [hasWon setObject: @"NO" forKey: name]; // They've not won yet.
       
       /* Inform the client that they have joined the game. */
-      aMessage = @&quot;\nWelcome to GameServer\n&quot;;
+      aMessage = @"\nWelcome to GameServer\n";
       [client clientMessage: aMessage];
       return YES;
     }
   else  
     {
       /* Inform the client that they cannot re-join. */
-      aMessage = @&quot;\nSorry, you cannot re-join GameServer yet.\n&quot;;
+      aMessage = @"\nSorry, you cannot re-join GameServer yet.\n";
       [client clientMessage: aMessage];
       return NO; 
     }
@@ -1029,13 +978,13 @@ player information).
   
   client = [currentPlayers objectForKey: name];
   
-  aMessage = @&quot;\nDo you want to win this game? (Y/N &lt;RET&gt;) ... &quot;;
+  aMessage = @"\nDo you want to win this game? (Y/N <RET>) ... ";
   [client clientMessage: aMessage];
   
   reply = [client clientReply];
   if(reply == 'y' || reply == 'Y')
-    [hasWon setObject: @&quot;YES&quot; forKey: name]; // They win.
-  else [hasWon setObject: @&quot;NO&quot; forKey: name]; // They loose.
+    [hasWon setObject: @"YES" forKey: name]; // They win.
+  else [hasWon setObject: @"NO" forKey: name]; // They loose.
   return 0;
 }
 
@@ -1054,7 +1003,7 @@ player information).
   
   if (name == nil)
     {
-      NSLog(@&quot;Attempt to end nil user&quot;);
+      NSLog(@"Attempt to end nil user");
       return NO;
     }
     
@@ -1063,7 +1012,7 @@ player information).
   client = [currentPlayers objectForKey: name];
   yesOrNo = [hasWon objectForKey: name];
   
-  if ([yesOrNo isEqualToString: @&quot;YES&quot;]) // Has player won?
+  if ([yesOrNo isEqualToString: @"YES"]) // Has player won?
     {
       /* 
        * Player wins, no time delay to re-joining the game.
@@ -1071,7 +1020,7 @@ player information).
        * a message to the client. 
        */
       [delayUntil removeObjectForKey: name];
-      aMessage = @&quot;\nWell played: you can re-join GameServer at any time.\n&quot;;
+      aMessage = @"\nWell played: you can re-join GameServer at any time.\n";
       [client clientMessage: aMessage];
       
     }
@@ -1082,7 +1031,7 @@ player information).
        * and send a message to the client.
        */
       [delayUntil setObject: delay forKey: name];
-      aMessage = @&quot;\nYou lost, but you can re-join GameServer in 2 hours.\n&quot;;
+      aMessage = @"\nYou lost, but you can re-join GameServer in 2 hours.\n";
       [client clientMessage: aMessage];
     }
 
@@ -1107,16 +1056,15 @@ int main(int argc, char** argv)
   server = AUTORELEASE([GameServer new]);
   connXion = [NSConnection defaultConnection];
   [connXion setRootObject: server];
-  [connXion registerName: @&quot;JoinGame&quot;];
+  [connXion registerName: @"JoinGame"];
   [[NSRunLoop currentRunLoop] run];
   RELEASE(pool);
   return 0;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 To summarise the code at the server:
-</P>
-<P>
+</P><P>
 
 <UL>
 <LI>
@@ -1124,22 +1072,19 @@ We vend the server's root object and start a runloop, allowing clients to
 connect with the server.<BR>
 <P>
 
-</P>
 <LI>
 When we receive a proxy for a client object, we communicate with that client
 using methods declared in the <CODE>ClientServer</CODE> protocol.<BR>
 <P>
 
-</P>
 <LI>
 We create three dictionary objects, each referenced by player
 name. <CODE>currentUsers</CODE> holds proxies for each of the current players;
 <CODE>delayUntil</CODE> holds times when each player can re-join the game; and
-<CODE>hasWon</CODE> holds a string for each player, which is set to &quot;YES&quot; if the
+<CODE>hasWon</CODE> holds a string for each player, which is set to "YES" if the
 player wins.<BR>
 <P>
 
-</P>
 <LI>
 When the game is in progress, the server can alter the state of each client
 object to reflect the success of each player.
@@ -1151,23 +1096,21 @@ you are reading the on-screen version, then you can copy and paste the
 code to suitably named files, create makefiles, and then make and run
 each program. What message is displayed if you immediately try to
 re-join a game after losing? And after winning?
-</P>
-<P>
+</P><P>
 
 <I>Exercise: Modify the server code so that the server records the
 number of wins for each player, and displays this information at both
 the start and end of each game.</I>
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC110"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC109"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC111"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1182,17 +1125,16 @@ protocol to control the way that message arguments are passed between
 remote processes, while at run time, the run-time system transparently
 uses what is known as 'forward invocation' to forward messages to a
 remote process.  (See <A HREF="manual_5.html#SEC72">Forwarding</A>.)
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC111"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC112"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1208,20 +1150,17 @@ variable. When an argument is passed by reference (as a pointer), the
 receiving method has access to the original variable and can alter that
 variable's data. In this case the argument is effectively passed 'in' to
 the method, and then passed 'out' of the method (on method return).
-</P>
-<P>
+</P><P>
 
 When an argument is passed by reference to a remote object, the network
 must handle this two-way traffic, whether or not the remote object
 modifies the received argument.
-</P>
-<P>
+</P><P>
 
 Type qualifiers can be used in a protocol to control the way these
 messages are handled, and to indicate whether or not the sending process
 will wait for the remote process to return.
-</P>
-<P>
+</P><P>
 
 <UL>
 <LI>The <B>oneway</B> qualifier is used in conjunction with a
@@ -1232,10 +1171,8 @@ method would look something like this:<BR><BR>
 <P>
 
 <CODE>- (<B>oneway</B> void)noWaitForReply;</CODE><BR><BR>
-</P>
-<P>
+</P><P>
 
-</P>
 <LI>The <B>in, out </B> and <B>inout</B> qualifiers can be used with pointer
 arguments to control the direction in which an argument is passed. The
 protocol declaration for the receiving methods would look something like 
@@ -1260,15 +1197,14 @@ this:<BR>
  * remote process. (Send and return the argument's value.)
  */
 <CODE>- changeValue: (<B>inout</B> int *)number;</CODE>
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Passing of arguments by reference is very restricted in Objective-C.
 it applies only to pointers to C data types, not to objects, and except
 for the special case of a pointer to a nul terminated C string (<B>char*</B>)
 the pointer is assumed to refer to a single data item of the specified
 type.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>/*
  * A method passing an unsigned short integer by reference.
@@ -1287,9 +1223,8 @@ type.
  */
 <CODE>- updateBuffer: (<B>inout</B> char *)str;</CODE>
 
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
-</P>
 <LI>The <B>bycopy</B> and <B>byref</B> qualifiers can be used in a protocol
 when the argument or return type is an object.<BR><BR>
 <P>
@@ -1299,8 +1234,7 @@ process as a proxy. When an object is passed by copy, then a copy of
 the object will be received in the remote process, allowing the remote 
 process to directly interact with the copy. Protocol declarations would 
 look something like this:<BR>
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>/* 
  * Copy of object will be received in the remote process.
@@ -1311,43 +1245,39 @@ look something like this:<BR>
  * Copy of object will be returned by the remote process.
  */
 - (<B>bycopy</B> id)returnNames;
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 By default, large objects are normally sent <B>byref</B>, while small
 objects like <CODE>NSStrings</CODE> are normally sent <B>bycopy</B>, but you
 cannot rely on these defaults being adopted and should explicitly state
 the qualifier in the protocol.<BR><BR>
-</P>
-<P>
+</P><P>
 
 The <B>bycopy</B> qualifier can also be used in conjunction with the
 <B>out</B> qualifier, to indicate that an object will be passed <B>out</B> of
 the remote process by copy rather than by proxy (no need to send the
 object).<BR>
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>/*
  * The object will not be received in the remote process, but the object
  * will be returned <B>bycopy</B>.
  */
 - sortAndReturn: (<B>bycopy out</B> id *)listOfNames;
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 You should be aware that some classes ignore the <B>bycopy</B> qualifier
 and the object will be sent by reference. The <B>bycopy</B> qualifier will
 also be ignored if the remote process does not have the class of the
 object in its address space, since an object's instance variables are
 accessed through the object's methods.<BR><BR>
-</P>
-<P>
+</P><P>
 
 When a copy of an object is sent to a remote process, only the object's
 instance variables are sent and received (an object's methods exist in
 the address space of the object's class, not in the address space of the
 individual object).
-</P>
-<P>
+</P><P>
 
 </UL>
 <P>
@@ -1357,9 +1287,9 @@ individual object).
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC111"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1371,12 +1301,11 @@ individual object).
 
 If you have used other remote invocation mechanisms such as CORBA or Java
 RMI, you may have noticed a big difference from these in the GNUstep
-Distributed Object paradigm -- there are no &quot;stub&quot; classes, either on the
+Distributed Object paradigm -- there are no "stub" classes, either on the
 client or the server.  This tremendously simplifies the use of remote
 invocation and is possible due to the Objective-C message-forwarding facility
 (<A HREF="manual_5.html#SEC72">Forwarding</A>).
-</P>
-<P>
+</P><P>
 
 In GNUstep, there are proxies on the client and server side that handle
 network communications and serialization/deserialization of arguments and
@@ -1385,8 +1314,7 @@ client and server protocol method calls themselves, they are intercepted
 through the use of the <CODE>forwardInvocation:</CODE> method, where they can be
 passed on to the registered client and server objects through the ordinary
 Objective-C message sending mechanism.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC113"></A>
@@ -1408,8 +1336,7 @@ Objective-C message sending mechanism.
 When dealing with distributed objects your code must be able to handle
 the following situations: failure to vend the server object, exceptions
 raised at run-time, and failure of the network connection.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC114"></A>
@@ -1436,7 +1363,7 @@ name for the server.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC114"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC116"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC116"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -1456,7 +1383,6 @@ the network. The best way to handle the exception is to close the
 connection to the remote process.<BR><BR>
 <P>
 
-</P>
 <LI>An exception is raised in the remote process while the remote
 process is executing a method.<BR><BR>
 In most cases you can deal directly with these exceptions in the process
@@ -1494,8 +1420,7 @@ observer can then handle the failure gracefully, by releasing any
 references to the failed connection and releasing proxies that used the
 connection. Registering an object to receive this notification is
 described in more detail in the <CODE>NSConnection</CODE> class documentation.
-</P>
-<P>
+</P><P>
 
 <A NAME="Base Library"></A>
 <HR SIZE="6">
@@ -1507,12 +1432,12 @@ described in more detail in the <CODE>NSConnection</CODE> class documentation.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<BR>
+<BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Richard Frith-Macdonald</I> on <I>June, 17 2005</I>
-using <A HREF="http://texi2html.cvshome.org"><I>texi2html</I></A>
-</FONT>
+by <I>Adam Fedor</I> on <I>July, 21  2005</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
 
 </BODY>
 </HTML>

@@ -1,15 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-                      "http://www.w3.org/TR/html40/loose.dtd">
 <HTML>
-<!-- Created on June, 17 2005 by texi2html 1.66 -->
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on July, 21  2005 by texi2html 1.64 -->
+<!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
-
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
 -->
 <HEAD>
 <TITLE>Objective-C GNUstep Base Programming Manual: Classes</TITLE>
@@ -18,17 +17,17 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Classes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.66">
+<META NAME="Generator" CONTENT="texi2html 1.64">
 
 </HEAD>
 
-<BODY LANG="en" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
 <A NAME="SEC51"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC50"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC52"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -51,8 +50,7 @@ operational code that implements those methods.  Typically the interface and
 implementation are held in separate files, using the <CODE>.h</CODE> and <CODE>.m</CODE>
 extensions, respectively. They may, however, be merged into one file, and a
 single file may implement many classes.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC52"></A>
@@ -61,7 +59,7 @@ single file may implement many classes.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC53"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -72,23 +70,21 @@ single file may implement many classes.
 <P>
 
 The interface is included in the source using <CODE>#include</CODE>:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &quot;SomeClass.h&quot;
-</pre></td></tr></table><P>
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include "SomeClass.h"
+</pre></td></tr></table></P><P>
 
 To ensure that a Header file is included only once, it is usual to
 protect it with pre-compiler defines:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>#ifndef _MY_CLASS_H_INCLUDED
 #define _MY_CLASS_H_INCLUDED
 
 /* HEADER FILE */
 #endif
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 This is the standard C technique to protect header files from being included
 more than once.  A cleaner alternative, introduced in Objective-C, is to use
@@ -96,8 +92,7 @@ the <CODE>#import</CODE> directive instead of <CODE>#include</CODE>.  The compil
 automatically include <CODE>#import</CODE>ed files no more than once, even if
 multiple <CODE>import</CODE> statements are encountered.  Thus, you can do away
 with the messy preprocessor conditionals in the header file.
-</P>
-<P>
+</P><P>
 
 You should be careful, however, to only use <CODE>#import</CODE> for Objective-C
 interface headers, and continue using <CODE>#include</CODE> for standard C files.
@@ -105,8 +100,7 @@ It is possible, though not likely, that regular C headers may rely on being
 included multiple times in some cases.  Also, you may need to include the
 compiler directive <CODE>-Wno-import</CODE> to gcc to avoid a didactic warning to
 this effect.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC53"></A>
@@ -115,7 +109,7 @@ this effect.
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC54"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC52"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -134,20 +128,17 @@ programmers of what variables are inherited when they create subclasses.
 Finally, the interface file may inform other software entities
 of the messages that can be sent to the class object and to the
 instances of the class. 
-</P>
-<P>
+</P><P>
 
 Interface files use the <CODE>.h</CODE> extension as for ordinary C header files.
-(If you use emacs, put a line &quot;<CODE>// -*-ObjC-*-</CODE>&quot; at the top of your file
+(If you use emacs, put a line "<CODE>// -*-ObjC-*-</CODE>" at the top of your file
 to use the correct mode.)
-</P>
-<P>
+</P><P>
 
 Here is an example of a class interface declaration:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import &lt;Foundation/NSObject.h&gt;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import &#60;Foundation/NSObject.h&#62;
 
 @interface Point : NSObject
 {
@@ -175,7 +166,7 @@ Here is an example of a class interface declaration:
 - (void) setX: (float)newX;
 - (void) setY: (float)newY;
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <UL>
 <LI>
@@ -183,13 +174,11 @@ The interface file should import the interface of the superclass of the class
 it is defining.
 <P>
 
-</P>
 <LI>
 The interface is enclosed between the compiler directives
 <CODE>@interface</CODE> and <CODE>@end</CODE>.
 <P>
 
-</P>
 <LI>
 <CODE>@interface Point : Object</CODE> names the class
 and links it to the superclass.  If no superclass is named, and the
@@ -197,7 +186,6 @@ directive is without a colon, the compiler assumes that a root class
 is being created.  You more than likely don't want to do this.
 <P>
 
-</P>
 <LI>
 Braces enclose declared instance variables; each class's instance will
 have all these instance variables including instance variables
@@ -205,7 +193,6 @@ inherited from the superclass, and from the superclass of the
 superclass, extending to the root class.
 <P>
 
-</P>
 <LI>
 Instance variables may be declared as <CODE>private</CODE>, <CODE>protected</CODE>, or
 <CODE>public</CODE>.  An instance's <I>private</I> variables may only be accessed by
@@ -216,34 +203,29 @@ usage in C++ and Java.  If you do not mark your instance variable declaration
 explicitly, it is made <CODE>protected</CODE> by default.
 <P>
 
-</P>
 <LI>
-Method declarations that begin with a &quot;+&quot; sign are class methods, and are
+Method declarations that begin with a "+" sign are class methods, and are
 defined for the class object.  Thus, you can call them without creating an
 instance, and their implementations do not have access to any instance
 variables.  A class object inherits class methods from superclasses.
 <P>
 
-</P>
 <LI>
-Method declarations that begin with a &quot;-&quot; sign are instance methods,
+Method declarations that begin with a "-" sign are instance methods,
 and are defined for class instances.  Class instances inherit instance
 methods from superclasses.
 <P>
 
-</P>
 <LI>
 A method may share the name of an instance variable. 
 <P>
 
-</P>
 <LI>
 A method return type is declared using the C syntax for type casts:
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (float) x;
 </pre></td></tr></table>which is a method returning a float.
 <P>
 
-</P>
 <LI>
 Argument types can be declared in the same way as method return types:
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (void) setX: (float)newX;
@@ -257,7 +239,7 @@ For example, '<CODE>-name</CODE>' implicitly means a method returning <CODE>id</
 (i.e. an object). It is usually better to avoid this and use
 explicit typing as in
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (NSString*) name;
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 </UL>
 <P>
@@ -267,9 +249,9 @@ explicit typing as in
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC53"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC55"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC55"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC52"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -287,12 +269,10 @@ the source module may utilize the classes in those interfaces so as to:
 Make instances of them.
 <P>
 
-</P>
 <LI>
 Send messages to invoke methods declared for them.
 <P>
 
-</P>
 <LI>
 Refer to instance variables in them.
 <P>
@@ -305,10 +285,9 @@ superclass using either <CODE>#import</CODE> or <CODE>#include</CODE> -- as was 
 the previous simplified interface file example.  As a result the vast majority
 of class files begin with a standard form that includes their superclasses,
 and thus places them in the class hierarchy:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import &quot;SomeSuperclass.h&quot;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "SomeSuperclass.h"
 
 @interface SomeClass : SomeSuperclass
 {
@@ -316,7 +295,7 @@ and thus places them in the class hierarchy:
 }
   // method declarations ...
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <HR SIZE="6">
 <A NAME="SEC55"></A>
@@ -325,7 +304,7 @@ and thus places them in the class hierarchy:
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC52"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -339,25 +318,21 @@ It is possible for a source module to refer to classes without including their
 interface files. This is useful when you just need to tell the compiler that a
 certain word is a class name, but you want to avoid the overhead of including
 the whole interface file for that class.
-</P>
-<P>
+</P><P>
 
 For example, to inform the compiler that <CODE>Border</CODE> and <CODE>Square</CODE> are
 classes without including their full interface file, the following syntax is
 used:
-</P>
-<P>
+</P><P>
 
 <CODE>@class Border, Square;</CODE>
-</P>
-<P>
+</P><P>
 
 Class names may also appear in interface files at times when
 instance variables, return values and arguments are statically typed:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import &quot;Foundation/NSObject.h&quot;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "Foundation/NSObject.h"
 
 @class Point
 
@@ -376,7 +351,7 @@ instance variables, return values and arguments are statically typed:
 - (void) setLowerLeft: (Point *)newLowerLeft;
 - (void) setSideLength: (float)newSideLength;
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Here, we see the <CODE>Point</CODE> class we declared earlier being used as a
 component in <CODE>Square</CODE>'s definition.  Because this class is only referred
@@ -384,16 +359,14 @@ to here to declare variables and method signatures, it suffices to reference
 it only using the <CODE>@class</CODE> directive.  On the other hand, the
 implementation file may need to send messages to <CODE>Point</CODE> instances and
 would be better of importing the interface in this case.
-</P>
-<P>
+</P><P>
 
 The compiler will produce a warning if you don't include it, and no type
 checking can be performed (to see if class instances respond to the messages
 you send to them), but compilation will succeed.  It is best to take advantage
 of type-checking when you can, however, and include interfaces that messages
 are to be sent to.
-</P>
-<P>
+</P><P>
 
 There is one situation where you <I>must</I> include the interface however.  If
 you are implementing a new class, you always need to include the interface of
@@ -401,17 +374,16 @@ the superclass; <CODE>@class</CODE> cannot be used in this case because the
 compiler needs to know the details of the superclass and its instance
 variables etc., so as to create a fully working new class.  If you try using
 <CODE>@class</CODE> in this situation, compilation will abort.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC56"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC55"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC57"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -428,22 +400,20 @@ using the class need only be concerned with the interface and its
 declared methods, superclasses, and instance variables.
 The implementation of classes is transparent to the programmer
 who may use them without detailed knowledge of their structures. 
-</P>
-<P>
+</P><P>
 
 Implementation files use the <CODE>.m</CODE> extension, to distinguish them from
 ordinary C files.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC57"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC58"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -455,10 +425,9 @@ ordinary C files.
 
 An implementation file contents are encapsulated between
 <CODE>@implementation</CODE> and <CODE>@end</CODE> directives:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import &quot;Point.h&quot;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "Point.h"
 @implementation Point
 // method implementations
 + (id)new
@@ -479,16 +448,15 @@ An implementation file contents are encapsulated between
 }
 
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 The implementation file uses <CODE>#import</CODE> to include a named interface file
 holding all declarations.  Then it places method implementations for the class
 between <CODE>@implementation</CODE> and <CODE>@end</CODE> directives.  Each method
 declared in the interface must be implemented.  Instance variables may be
-referred to in instance methods (the ones with a &quot;-&quot; in front of them) but
-not class methods (the ones with a &quot;+&quot;).
-</P>
-<P>
+referred to in instance methods (the ones with a "-" in front of them) but
+not class methods (the ones with a "+").
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (float) x
 {
@@ -499,16 +467,16 @@ not class methods (the ones with a &quot;+&quot;).
 {
   x = newX;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <HR SIZE="6">
 <A NAME="SEC58"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC57"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC59"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC59"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -522,8 +490,7 @@ To assist in writing instance methods, Objective-C provides the two reserved
 words <B><CODE>self</CODE></B> and <B><CODE>super</CODE></B>.  <CODE>Self</CODE> is used to refer to
 the current instance, and is useful for, among other things, invoking other
 methods on the instance:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- (Foo *) foo
 {
@@ -531,22 +498,21 @@ methods on the instance:
     [self initializeFoo];
   return foo;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <CODE>Super</CODE> is used to refer to method implementations in the superclass of
 the instance.  It is useful when overriding methods and when writing
 initializers, as discussed in the next section.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC59"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC58"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC60"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC60"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -564,11 +530,10 @@ constructors are special methods that are neither class nor instance methods.
 In particular, since initializer methods are inherited instance methods, they
 may still be called even if you have not implemented them in your class.  For
 example, it is always valid to invoke
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>SomeComplexClass *c = [[SomeComplexClass alloc] init];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Even if you have not implemented <CODE>init</CODE> in <CODE>SomeComplexClass</CODE>, the
 superclass's implementation will be invoked, or, ultimately,
@@ -577,22 +542,20 @@ result in some of <CODE>SomeComplexClass</CODE>'s internal state being left
 uninitialized.  For this reason, you should always either provide an
 <CODE>init</CODE> implementation, or document whether it should be used.  We will
 return to this concern below.
-</P>
-<P>
+</P><P>
 
 Typically, a class will also provide one or more <CODE>initWith...</CODE> methods
 for initialization with arguments, and it may optionally also provide
 <CODE>+new</CODE> methods and convenience class methods that act like constructors.
 The general approach
 to implementing these is illustrated here for the <CODE>Point</CODE> class.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>+ new
 {
   Point *point;
 
-  // note &quot;self&quot; refers to the &quot;Point&quot; _class_ object!
+  // note "self" refers to the "Point" _class_ object!
   point = [[self allocWithZone: NSDefaultMallocZone()] init];
   return point;
 }
@@ -609,7 +572,7 @@ to implementing these is illustrated here for the <CODE>Point</CODE> class.
 {
   Point *point;
 
-  // note &quot;self&quot; refers to the &quot;Point&quot; _class_ object!
+  // note "self" refers to the "Point" _class_ object!
   point = [self new];
   return AUTORELEASE(point);
 }
@@ -627,7 +590,7 @@ to implementing these is illustrated here for the <CODE>Point</CODE> class.
   return [self initWithX: 0.0 Y: 0.0];
 }
 
-// this is the &quot;designated&quot; initializer
+// this is the "designated" initializer
 - initWithX: (float)x0 Y: (float)y0
 {
   self = [super init];
@@ -638,12 +601,12 @@ to implementing these is illustrated here for the <CODE>Point</CODE> class.
     }
   return self;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Notice that, first, the convenience constructors (<CODE>new</CODE> and
 <CODE>newWithX:Y:</CODE>) execute <CODE>[self allocWithZone:]</CODE> to begin with.  The
-&quot;<CODE>self</CODE>&quot; here refers to the <I>class</I> object, since it is used inside a
-<I>class</I> method.  Thus the effect is the same as if &quot;<CODE>[Point alloc]</CODE>&quot;
+"<CODE>self</CODE>" here refers to the <I>class</I> object, since it is used inside a
+<I>class</I> method.  Thus the effect is the same as if "<CODE>[Point alloc]</CODE>"
 had been executed in external code.  Second, notice that the other
 convenience constructors (<CODE>point</CODE> and <CODE>pointWithX:Y:</CODE>)
 autorelease the new instance before returning it.
@@ -657,35 +620,31 @@ instance <CODE>init</CODE> methods as shown.  Fourth, note that the use of
 <CODE>[self alloc]</CODE> is generally unnecessary, but provides a slight
 efficiency gain since <CODE>+alloc</CODE> is implemented by calling
 <CODE>+allocWithZone:</CODE> on the default zone.
-</P>
-<P>
+</P><P>
 
 <B>Designated Initializer</B>
-</P>
-<P>
+</P><P>
 
 Finally, notice that the <CODE>initWithX:Y:</CODE> method is marked as the
-&quot;designated&quot; initializer.  This concept is important to ensure proper
+"designated" initializer.  This concept is important to ensure proper
 initialization for classes within a hierarchy.  The designated initializer
 should be the one with the most control over the nature of the new instance,
-and should be the one that all other initializers &quot;ground out&quot; in.  In
+and should be the one that all other initializers "ground out" in.  In
 other words, all other initializers should be chained so that they either
 call the designated initializer, or they call another initializer that
 (eventually) calls it.
-</P>
-<P>
+</P><P>
 
 The importance of having a designated initializer is this: when a subclass is
 created, it need only override the designated initializer to ensure that all
 of its instances are properly initialized.  If this is not done, external
 code could invoke an initializer that initializes only the superclass's
 instance variables, and not the subclass's.  To avoid this, each class
-designates a &quot;ground out&quot; initializer to which other initializers
+designates a "ground out" initializer to which other initializers
 ultimately delegate.  Then the subclass overrides this initializer, and in
 its own designated initializer, makes a call to it, to ensure that the
 superclass is initialized properly.  Thus:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>@implementation SuperClass
 - initWithA: (int)a
@@ -719,38 +678,36 @@ superclass is initialized properly.  Thus:
   return self;
 }
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Note, as shown above, unlike in some other object-oriented languages,
 '<CODE>self</CODE>' is a variable that can be redefined.  For example, we could have
 written the <CODE>new</CODE> constructor above like this:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>{
   self = [[self alloc] init];
-    // note &quot;self&quot; now refers to the new instance!
+    // note "self" now refers to the new instance!
   [self setX: 1.0];
   return self;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Another point to note is that Objective-C does not enforce calling superclass
 initializers before carrying out subclass initialization.  Although above the
 first call in the designated initializer was always <CODE>[super ...]</CODE>, this
 was not required, and if you need to set something up before <CODE>super</CODE>
 acts, you are free to do so.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC60"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC59"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC61"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC61"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -764,8 +721,7 @@ As mentioned before, it is possible for an initialization process to, if
 desired, return not a new object but an existing object.  This may be done in
 one of two ways.  If you are doing it from a convenience class method like
 <CODE>new</CODE>, then use something like the following:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>+ new
 {
@@ -773,18 +729,16 @@ one of two ways.  If you are doing it from a convenience class method like
     singleton = [[self alloc] init];
   return singleton;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Note this example presupposes the existence of a class variable,
 '<CODE>singleton</CODE>'.  Class variables as such don't exist in Objective-C but
 can be simulated, as discussed below.
-</P>
-<P>
+</P><P>
 
 If you want to possibly return an existing instance from an init instance
 method like <CODE>init</CODE>, the procedure is slightly more complicated:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- init
 {
@@ -799,13 +753,12 @@ method like <CODE>init</CODE>, the procedure is slightly more complicated:
     }
   return self;
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Here, we explicitly <B>deallocate</B> the current instance and replace it with
 the desired existing instance.  Because this might happen, you should always
 be careful to use the returned value from an <CODE>init</CODE> method:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>id anObject = [SomeClass alloc];
   // this is bad:
@@ -813,7 +766,7 @@ be careful to use the returned value from an <CODE>init</CODE> method:
   // anObject might have been deallocated!
   // do this instead:
 anObject = [anObject init];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 One scenario where this actually occurs in the GNUstep libraries is with the
 class <CODE>NSConnection</CODE>.  It only permits one connection to exist
@@ -821,24 +774,22 @@ between any two ports, so if you call <CODE>initWithReceivePort:sendPort:</CODE>
 when a connection for the ports exists, the method will deallocate
 the newly allocated instance, and return the current conflicting object,
 rather than the receiver.
-</P>
-<P>
+</P><P>
 
-In general, it is better to catch this type of requirement in a &quot;<CODE>new</CODE>&quot;
-class method rather than an instance &quot;<CODE>init</CODE>&quot; method so as to avoid
+In general, it is better to catch this type of requirement in a "<CODE>new</CODE>"
+class method rather than an instance "<CODE>init</CODE>" method so as to avoid
 the unnecessary allocation of instances that will not be used, however this
 is not always possible given other design constraints.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC61"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC60"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC56"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -854,8 +805,7 @@ collection is not being used, this is done through explicit calls to the
 <CODE>dealloc</CODE> method.  When GC <I>is</I> being used, <CODE>dealloc</CODE> is still
 called implicitly, and should be implemented.  However the tasks of the
 <CODE>dealloc</CODE> method are fewer in this case.
-</P>
-<P>
+</P><P>
 
 When garbage collection is <I>not</I> active, the <CODE>dealloc</CODE> method must
 release all other objects that this instance has retained.  Usually these are
@@ -865,15 +815,13 @@ well.  In addition, if the instance has acquired any external resources, such
 as a network connection or open file descriptor, these should be relinquished
 as well.  Likewise, any memory that has been directly allocated through use
 of <CODE>malloc</CODE> or other functions should be released.
-</P>
-<P>
+</P><P>
 
 When garbage collection <I>is</I> active, the <CODE>dealloc</CODE> method is still
 responsible to relinquish external resources, but other GNUstep objects need
 not be released, since they will be garbage collected once this instance has
 been.
-</P>
-<P>
+</P><P>
 
 If you cannot be sure whether your class will be running in a
 garbage-collecting environment, it never hurts to execute all of the releases
@@ -882,12 +830,10 @@ though it will result in pointless calls to the retain/release methods that
 are stubbed out under garbage collection.  If this could cause a performance
 hit in your application, you should use the RETAIN/RELEASE macros instead of
 the function calls.
-</P>
-<P>
+</P><P>
 
 Here is an example of a <CODE>dealloc</CODE> implementation:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>- dealloc
 {
@@ -895,7 +841,7 @@ Here is an example of a <CODE>dealloc</CODE> implementation:
   NSZoneFree(NULL, myMemory);
   [super dealloc];
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Here, we use the <CODE>RELEASE</CODE> macro to release an instance variable, and the
 <CODE>NSZoneFree</CODE> function to free memory that was earlier allocated with
@@ -903,24 +849,22 @@ Here, we use the <CODE>RELEASE</CODE> macro to release an instance variable, and
 discussion of GNUstep's raw memory allocation functions.)  The <CODE>NULL</CODE>
 used indicates that the memory was from the default zone, and is equivalent
 to saying '<CODE>NSDefaultMallocZone()</CODE>' instead.
-</P>
-<P>
+</P><P>
 
 Finally, notice we end with a call to <CODE>[super dealloc]</CODE>.  This should
 always be done in <CODE>dealloc</CODE> implementations, and you should never
 concern yourself with deallocating structures that are associated with a
 superclass, since it will take care of this itself.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC62"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC61"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC63"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -933,8 +877,7 @@ superclass, since it will take care of this itself.
 Protocols in Objective-C provide a level of flexibility beyond class
 structure in determining what messages objects respond to.  They are similar
 to interfaces in Java but more flexible.
-</P>
-<P>
+</P><P>
 
 There are two types of protocol in Objective-C: <B>informal</B> protocols, where
 we document methods to which objects will respond, and specify how they should
@@ -948,8 +891,7 @@ or runtime to check that an object implements all of a group of methods
 itself.  Formal protocols form an inheritance hierarchy like classes, and a
 given class may conform to more than one protocol.  Thus, formal protocols are
 identical in many respects to Java <I>interfaces</I>.
-</P>
-<P>
+</P><P>
 
 As in Java, a particularly important use of protocols is in defining the
 methods that an object in a remote process can respond to <small>...</small> by setting
@@ -957,22 +899,20 @@ the protocol used by a local proxy object, you can avoid having to send
 messages to the remote process to check what methods are available - you can
 simply check the local protocol object.  This will be covered later in
 <A HREF="manual_7.html#SEC96">7. Distributed Objects</A>.
-</P>
-<P>
+</P><P>
 
 Informal protocols are closely associated with <I>Categories</I>, another
 Objective-C language facility, and will be discussed in the next section.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC63"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC64"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -986,8 +926,7 @@ A formal protocol is declared as a series of method declarations, just like a
 class interface.  The difference is that a protocol declaration begins with
 <CODE>@protocol</CODE> rather than <CODE>@interface</CODE>, and has an optional
 <B>super</B> protocol specified in angle brackets.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>@protocol List
 - (void) add:        (id) item;
@@ -996,22 +935,22 @@ class interface.  The difference is that a protocol declaration begins with
 - (void) clear;
 @end
 
-@protocol LinkedList &lt;List&gt;
+@protocol LinkedList &#60;List&#62;
 - (void) addFirst:   (id)item;
 - (void) addLast:    (id)item;
 - getFirst;
 - getLast;
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <HR SIZE="6">
 <A NAME="SEC64"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC63"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC65"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC65"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1023,10 +962,9 @@ class interface.  The difference is that a protocol declaration begins with
 
 If you want your class to conform to a protocol, you declare it in your
 interface, and implement the methods in your declaration:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>@interface BiQueue &lt;LinkedList&gt;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>@interface BiQueue &#60;LinkedList&#62;
 {
   // instance variables ...
 }
@@ -1050,29 +988,27 @@ interface, and implement the methods in your declaration:
   // ...
 }
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 To declare conformance to multiple protocols, do something like this:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>@interface ContainerWindow &lt; List, Window &gt;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>@interface ContainerWindow &#60; List, Window &#62;
   ...
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 The implementation must include all methods in both protocols.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC65"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC64"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC62"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1085,8 +1021,7 @@ The implementation must include all methods in both protocols.
 To use a formal protocol, simply send objects the messages in the protocol.
 If you want type-checking, you must either use the type of a class
 implementing the protocol, or use a special syntax:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>...
 BiQueue queue = [[BiQueue alloc] init];
@@ -1095,21 +1030,19 @@ BiQueue queue = [[BiQueue alloc] init];
 
   // alternatively, we may stipulate only that an object conforms to the
   // protocol in the following way:
-id&lt;LinkedList&gt; todoList = [system getTodoList];
+id&#60;LinkedList&#62; todoList = [system getTodoList];
 task = [todoList getFirst];
 ...
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 In the last part of this example, we declare that <CODE>todoList</CODE> is an
 object that conforms to the <CODE>LinkedList</CODE> protocol, but do not specify
 what class it may be an instance of.
-</P>
-<P>
+</P><P>
 
 If you are not sure the returned object does indeed conform to the protocol
 you are interested in, you can check it:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>if ([anObject conformsToProtocol: aProtocol] == YES)
   {
@@ -1117,27 +1050,26 @@ you are interested in, you can check it:
   }
 else
   {
-    NSLog(@&quot;Object of class %@ ignored ... does not conform to 
-      protocol&quot;, NSStringFromClass([anObject class]));
+    NSLog(@"Object of class %@ ignored ... does not conform to 
+      protocol", NSStringFromClass([anObject class]));
   }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Finally, you can specify an object conforming to <I>multiple</I> protocols in
 the same way you declare it in an interface:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>id &lt;LinkedList, Window&gt;   windowContainerOfUnknownClass;
-</pre></td></tr></table><P>
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id &#60;LinkedList, Window&#62;   windowContainerOfUnknownClass;
+</pre></td></tr></table></P><P>
 
 <HR SIZE="6">
 <A NAME="SEC66"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC65"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC67"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1156,29 +1088,26 @@ variables to a class using a category.  Categories do not have an obvious
 parallel in other major object-oriented languages (with the exception of
 Ruby), but it is well worth taking the trouble to understand them and the
 benefits they can provide.
-</P>
-<P>
+</P><P>
 
 A category is declared in connection with the class it is going to modify.
-(You can think of it as a new &quot;category&quot; of instances of this class.)
-</P>
-<P>
+(You can think of it as a new "category" of instances of this class.)
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import &quot;Point.h&quot;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "Point.h"
 
 @interface Point (Transformable)
 - translateByX: (float)tx Y: (float)ty;
 - rotateByAngle: (float)radians;
 - scaleByAmountX: (float)xscale Y: (float)yscale;
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 You then provide an implementation file more or less analogously to that for
 a class, where you implement just the new methods:
-</P>
-<P>
+</P><P>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import &quot;PointTransformable.h&quot;
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>#import "PointTransformable.h"
 
 @implementation Point (Transformable)
 - (void) translateByX: (float)tx Y: (float)ty
@@ -1198,12 +1127,11 @@ a class, where you implement just the new methods:
   // ...
 }
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Notice that you have access to instance variables of the class you are
 creating a category of; this includes private and protected variables.
-</P>
-<P>
+</P><P>
 
 One of the primary uses of categories is illustrated by this example.  Suppose
 you are working with a third party drawing package that uses some geometrical
@@ -1216,17 +1144,16 @@ whether created by you or the package itself, have the additional methods.
 The presence of these methods does not affect the existing operation of this
 or any third party package, but allows you to conveniently implement the
 enhanced functionality you need.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC67"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC68"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1241,25 +1168,23 @@ you do so, you cannot access an existing implementation in the class itself,
 however you can still call <CODE>[super someMethod]</CODE> to access an
 implementation inherited from a superclass.  You obviously need to be careful
 not to break existing functionality.
-</P>
-<P>
+</P><P>
 
 You can add multiple categories to a class by declaring them and implementing
 them separately.  Instances of the class will then implement <I>all</I> of the
 categories declared.  The order in which the category implementations are
 searched for methods is not defined, therefore you cannot override a method
 implemented in one category with an implementation in another.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC68"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC67"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC69"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC69"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1278,17 +1203,16 @@ grouping subject-oriented methods; incremental compilation for large classes;
 helping to logically divide the class when being created by a number of
 developers; and, permitting configuration-specific classes targeting
 particular applications.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC69"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC68"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC66"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC70"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1306,15 +1230,14 @@ a high-level object, such as <CODE>NSObject</CODE>, then each class that actuall
 wishes to implement something in the protocol lists the methods it chooses to
 implement in its interface and provides implementations in its
 implementation.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC70"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC69"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC71"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC71"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_5.html#SEC72"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -1328,25 +1251,22 @@ implementation.
 
 Unlike most object-oriented languages Objective-C does not provide for method
 scoping.  Instead, all methods are effectively public.  Often, however, it is
-useful to have internal &quot;utility&quot; methods that help a class do its job but
+useful to have internal "utility" methods that help a class do its job but
 are hidden from external use.  Rather than cluttering up the class's API with
-a bunch of methods marked &quot;do not use&quot;, one wants to make these methods
+a bunch of methods marked "do not use", one wants to make these methods
 visible only to subclasses, or only to the class itself.  Categories can help
 in this regard.
-</P>
-<P>
+</P><P>
 
 <B>Using Categories</B>
-</P>
-<P>
+</P><P>
 
 One common approach is to define a category within a class's
 <I>implementation</I> file:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>
-#import &quot;Point.h&quot;
+#import "Point.h"
 
 @interface Point (Private)
 -(BOOL) isPositiveQuadrant;
@@ -1359,55 +1279,50 @@ One common approach is to define a category within a class's
 @implementation Point (Private)
 -(BOOL) isPositiveQuadrant
 {
-  return (x &gt; 0) &amp;&amp; (y &gt; 0) ? YES : NO;
+  return (x &#62; 0) &#38;&#38; (y &#62; 0) ? YES : NO;
 }
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 All of this code would appear in the file <CODE>Point.m</CODE>.  What this does is
 add a category to Point defining the private methods.  Since external code
-only &quot;knows about&quot; <CODE>Point</CODE> through its interface file, these additional
+only "knows about" <CODE>Point</CODE> through its interface file, these additional
 methods are effectively invisible.  However, you should be aware that external
 code is not prevented from actually calling the private methods, if it happens
 to know about them.  However the compiler will produce a warning if you try
 to do this with a typed variable:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>Point *p = [[Point alloc] init];
   // works, but produces a compile warning
 BOOL b = [p isPositiveQuadrant];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 The bright side of this is it allows you to simulate <I>protected</I> methods as
 well.  For this, the writer of a subclass must be informed in some way about
 the protected methods, and they will need to put up with the compiler
 warnings.  Alternatively, you could declare the Protected category in a
-separate interface file (e.g., &quot;<CODE>PointProtected.h</CODE>&quot;), and provide this
+separate interface file (e.g., "<CODE>PointProtected.h</CODE>"), and provide this
 interface file with the understanding that it should only be imported and used
 by a subclass's interface file.
-</P>
-<P>
+</P><P>
 
 <B>Using Convention</B>
-</P>
-<P>
+</P><P>
 
 Another approach to providing <I>protected</I> methods that the class or subclass
 can use is to prefix these methods with an underscore ('_').  These methods
 will still be visible publicly, but programmers will know, by convention, not
 to use them externally, and the <A HREF="manual_9.html#SEC145">GNUstep documentation system</A> will
 automatically mark these in API documentation as off-limits.
-</P>
-<P>
+</P><P>
 
 An alternative approach to providing <I>private</I> methods is to simply declare
 them as functions within the implementation file itself.  The catch to this is
 that these functions will <I>not</I> have access to the class's instance
 variables.  You will need to pass these in manually whenever you invoke them
 from an ordinary method.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC71"></A>
@@ -1431,13 +1346,11 @@ class as a whole rather than an instance, these are often useful.  It is
 possible to simulate them to a limited extent by declaring static variables in
 the implementation file for the class (inside the <CODE>@implementation</CODE>
 block).  The variables will not be available to subclasses, unless they
-explicitly declare them &quot;<CODE>extern</CODE>&quot; and are compiled at the same time.
-</P>
-<P>
+explicitly declare them "<CODE>extern</CODE>" and are compiled at the same time.
+</P><P>
 
 ...
-</P>
-<P>
+</P><P>
 
 <A NAME="Advanced Messaging"></A>
 <HR SIZE="6">
@@ -1449,12 +1362,12 @@ explicitly declare them &quot;<CODE>extern</CODE>&quot; and are compiled at the 
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<BR>
+<BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Richard Frith-Macdonald</I> on <I>June, 17 2005</I>
-using <A HREF="http://texi2html.cvshome.org"><I>texi2html</I></A>
-</FONT>
+by <I>Adam Fedor</I> on <I>July, 21  2005</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
 
 </BODY>
 </HTML>

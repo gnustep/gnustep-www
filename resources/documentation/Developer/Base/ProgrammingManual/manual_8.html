@@ -1,15 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-                      "http://www.w3.org/TR/html40/loose.dtd">
 <HTML>
-<!-- Created on June, 17 2005 by texi2html 1.66 -->
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on July, 21  2005 by texi2html 1.64 -->
+<!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
-
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
 -->
 <HEAD>
 <TITLE>Objective-C GNUstep Base Programming Manual: Base Library</TITLE>
@@ -18,17 +17,17 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Base Library">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.66">
+<META NAME="Generator" CONTENT="texi2html 1.64">
 
 </HEAD>
 
-<BODY LANG="en" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
 
 <A NAME="SEC117"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC116"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC118"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -43,26 +42,23 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 The GNUstep Base library is an implementation of the OpenStep <I>Foundation</I>,
 a nongraphical API supporting for data management, network and file
 interaction, date and time handling, and more.  Much of the API consists of
-classes with defined methods, but unlike many &quot;class libraries&quot; it also
+classes with defined methods, but unlike many "class libraries" it also
 includes functions and macros when these are more appropriate to the
 functionality.
-</P>
-<P>
+</P><P>
 
 Note that many other APIs developed subsequently to OpenStep are also called
-&quot;Foundation&quot; -- the Java standard classes and the Microsoft Windows C++
+"Foundation" -- the Java standard classes and the Microsoft Windows C++
 class library are two prominent examples.  In OpenStep, however, the term only
 applies to a non-graphical library; the graphical component is referred to as
-the <I>Application Kit</I>, or &quot;AppKit&quot; for short.
-</P>
-<P>
+the <I>Application Kit</I>, or "AppKit" for short.
+</P><P>
 
 Although the OpenStep API underwent several refactorings subsequent to its
 first release as part of NeXTstep, deprecated and superseded classes and
 functions have not been retained.  Therefore the library still boasts a
 minimal footprint for its functionality.
-</P>
-<P>
+</P><P>
 
 In some cases, GNUstep has supplemented the OpenStep API, not to provide
 alternative means of achieving the same goals, but to add new functionality,
@@ -71,17 +67,15 @@ specification was finalized, but has not, for whatever reason, been added by
 Apple to the Cocoa APIs.  These additions are called, appropriately enough,
 the <I>Base Additions</I> library, and include classes, functions, and macros.
 XML parsing facilities, for example, are provided as part of this library.
-</P>
-<P>
+</P><P>
 
 In addition, methods are sometimes added to Foundation classes.  These are
 specially marked in the documentation and can even be excluded at compile time
 (a warning will be generated if you try to use them) if you are writing code
 intended to be ported to OpenStep or Cocoa compliant systems.  In addition,
-Cocoa has made additions to OpenStep and these are marked as &quot;MacOS-X&quot;.  For
+Cocoa has made additions to OpenStep and these are marked as "MacOS-X".  For
 information on how to set compile flags, see <A HREF="manual_13.html#SEC162">E. GNUstep Compliance to Standards</A>.
-</P>
-<P>
+</P><P>
 
 In deciding whether to use a given API, you need to weigh the likelihood you
 will need to port the application to a platform where it will not be
@@ -92,8 +86,7 @@ available.  However in other cases it can be better to use whichever APIs are
 best suited initially so that early development and debugging will be as
 efficient as possible -- as long as major redesign would not be required to
 later avoid these APIs.
-</P>
-<P>
+</P><P>
 
 Below, the Base and Base Additions APIs are covered in overview fashion,
 organized according to functionality.  For detailed documentation on
@@ -102,15 +95,14 @@ for <A HREF="../Reference/index.html">Base</A> and
 <A HREF="../../BaseAdditions/Reference/index.html">Base Additions</A>.  It may be
 helpful, when reading this chapter, to keep a copy of this open in another
 browser window for reference.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC118"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -134,15 +126,13 @@ protocol.  <CODE>NSObject</CODE> does not implement this protocol.  If you want
 objects of your class to support copying, you must implement this method
 yourself.  If it is not implemented, the <CODE>-copy</CODE> method will raise an
 exception if you call it.
-</P>
-<P>
+</P><P>
 
 There is a related method <CODE>-(id) mutableCopy</CODE> (and an
 <CODE><I>NSMutableCopying</I></CODE> informal protocol with a
 <CODE>mutableCopyWithZone</CODE> method) which will be explained in the following
 section.
-</P>
-<P>
+</P><P>
 
 GNUstep, largely via the <CODE>NSObject</CODE> class, provides a basic framework for
 comparing objects for equality and ordering, used for sorting, indexing, and
@@ -150,19 +140,17 @@ other programming tasks.  These operations are also used in several crucial
 places elsewhere within the base library itself.  For example, containers such
 as lists, sets, and hash maps are discussed in the next section utilize these
 methods.
-</P>
-<P>
+</P><P>
 
 The <CODE>- (BOOL) isEqual</CODE> method in <CODE>NSObject</CODE> is useful when you want to
 compare objects with one another:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>if ([anObject isEqual: anotherObject])
   {
     // do something ...
   }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 The default implementation returns <CODE>YES</CODE> only if the two objects being
 compared are the exact same object (which is the same as the result that would
@@ -170,8 +158,7 @@ be returned using '<CODE>==</CODE>' to perform the comparison).  Sometimes it is
 useful to have two objects to be equal if their internal state is the same, as
 reflected in instance variables, for example.  In this case, you can override
 <CODE>isEqual</CODE> in your class to perform such a comparison.
-</P>
-<P>
+</P><P>
 
 The <CODE>-(unsigned int)hash</CODE> method is useful for indexing objects, and
 should return the same value for two objects of the same class that
@@ -179,8 +166,7 @@ should return the same value for two objects of the same class that
 <CODE>isEqual</CODE> method -- if you want this to depend on internal state rather
 than the identity of the object itself, override it.  The default <CODE>hash</CODE>
 value is based on the memory address occupied by the object.
-</P>
-<P>
+</P><P>
 
 The <CODE>-(NSComparisonResult) compare: (id)object</CODE> method is used in Cocoa
 for comparing objects.  It should return <CODE>NSOrderedAscending</CODE> if the
@@ -188,28 +174,25 @@ receiver is less than the argument, <CODE>NSOrderedDescending</CODE> if it is
 greater, otherwise <CODE>NSOrderedSame</CODE>.  Note that this is not meaningful
 for many types of objects, and is actually deprecated in GNUstep for this
 reason.
-</P>
-<P>
+</P><P>
 
 The <CODE>-(NSString *) description</CODE> method in <CODE>NSObject</CODE> returns a
 short description of the object, often used for debugging.  The default
 implementation lists the object's class and memory location.  If you want
 other information you can override it.
-</P>
-<P>
+</P><P>
 
 The methods discussed in this section are all very similar to counterparts in
 Java: the <CODE>equals</CODE> and <CODE>hashCode</CODE> methods, and the
 <CODE><I>Comparable</I></CODE> interface.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC119"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC118"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC120"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC120"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -230,8 +213,7 @@ form a set (and must be unique), however there are no restrictions on the
 collection of values.  The <CODE>-hash</CODE> and <CODE>-isEqual</CODE> <CODE>NSObject</CODE>
 methods discussed above are used by collection instances to organize their
 members.  All collections <CODE>retain</CODE> their members (see <A HREF="manual_3.html#SEC38">3. Working with Objects</A>).
-</P>
-<P>
+</P><P>
 
 Unlike container APIs in some other languages, notably Java, instances of
 these GNUstep classes are all <I>immutable</I> -- once created, you cannot add or
@@ -244,36 +226,31 @@ returns an immutable version.  You should generally use immutable variants of
 objects when you don't need to modify them, because their implementations are
 more efficient.  Often it is worthwhile to convert a mutable object that has
 just been built into an immutable one if it is going to be heavily accessed.
-</P>
-<P>
+</P><P>
 
 Also unlike container objects in Java, GNUstep containers possess utility
 methods.  For example, Arrays can sort their members, or send a message to
 each member individually (like the <CODE>map</CODE> function in Lisp).  Sets can
 determine whether they are equal to or subsets of other sets.  Dictionaries
 can save to and restore themselves from specially formatted files.
-</P>
-<P>
+</P><P>
 
 In addition to the three container types already mentioned, there is a
 fourth, <CODE>NSCountedSet</CODE>.  This is an unordered collection whose elements
 need not be unique, however the number of times a given unique element has
 been added is tracked.  This behavior is also known as <I>bag</I> semantics.
-</P>
-<P>
+</P><P>
 
 All collection classes support returning an <CODE>NSEnumerator</CODE> object which
 will enumerate over the elements of the collection.  Note that if a mutable
 collection is modified while an enumerator is being used, the results are not
 defined.
-</P>
-<P>
+</P><P>
 
 Collections do not allow <CODE>nil</CODE> values or keys, but you can explicitly
 represent a nil object using the special <CODE>NSNull</CODE> class.  You simply use
 the singleton returned from <CODE>[NSNull null]</CODE>.
-</P>
-<P>
+</P><P>
 
 The four container types just described handle objects, but not primitives
 such as <CODE>float</CODE> or <CODE>int</CODE>.  For this, you must use an
@@ -285,17 +262,16 @@ To create an <CODE>NSHashTable</CODE>, use the function <CODE>NSCreateHashtable<
 <CODE>NSHashInsert</CODE> and <CODE>NSHashGet</CODE> are the major functions, but there
 are many others.  There is a mostly parallel but more sophisticated set of
 functions dealing with <CODE>NSMapTables</CODE>.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC120"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC121"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -310,17 +286,16 @@ The data containers discussed in the previous section, with the exception of
 types such as <CODE>int</CODE>s or <CODE>float</CODE>s.  The <CODE>NS...Table</CODE> structures
 are not always appropriate for a given task.  For this case, GNUstep offers
 two alternatives.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC121"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC120"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC122"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC120"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -336,17 +311,16 @@ memory, a 4-dimensional array of <CODE>double</CODE> for example (stored as a li
 sequence).  Optionally, objects of these classes can take care of the memory
 management for the buffer, growing it as needed and freeing it when they are
 released.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC122"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC121"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC123"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC123"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC120"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -363,50 +337,46 @@ needed.  Once initialized, an <CODE>NSValue</CODE> is immutable, and there is no
 primitive value, and you should be careful this does not get freed until after
 the <CODE>NSValue</CODE> is no longer used.  You can specify to the <CODE>NSValue</CODE>
 what type the primitive is so this information can be accessed later:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>int n = 10;
-NSValue *theValue = [NSValue value: &amp;n withObjCType: @encode(int)];
+NSValue *theValue = [NSValue value: &#38;n withObjCType: @encode(int)];
   // ...
 int *m = (int *) [theValue pointerValue];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Here, <CODE>@encode</CODE> is a compile-time operator that converts the data type
 into a string (char *) code used at runtime to refer to the type.  Object ids
 can also be stored within <CODE>NSValue</CODE>s if desired.  Note that in the above
 case, the <CODE>NSValue</CODE> will be pointing to invalid data once the local
 variable <CODE><I>n</I></CODE> goes out of scope.
-</P>
-<P>
+</P><P>
 
 If you want to wrap <CODE>int</CODE> or other numeric values, you should use
 <CODE>NSNumber</CODE> (a subclass of <CODE>NSValue</CODE>) instead.  This maintains its
 own copy of the data and provides convenience methods for accessing the value
 as a primitive.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>int n = 10;
 NSNumber *theNumber = [NSNumber numberWithInt: n];
   // ...
 int m = [theNumber intValue];
 float f = [theNumber floatValue];  // this is also valid
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Notice that <CODE><I>n</I></CODE>'s value is used in the initialization, not a pointer
 to it.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC123"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC122"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC124"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC124"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC120"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -424,8 +394,7 @@ terms of rounding choices and exception handling may be customized using the
 <CODE>NSDecimalNumber</CODE> class may be accessed through functions, mostly named
 <CODE>NSDecimalXXX</CODE>.  Both the class and the functions use a structure also
 called <CODE>NSDecimal</CODE>:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>typedef struct {
   signed char	exponent;   // Signed exponent - -128 to 127
@@ -434,21 +403,20 @@ called <CODE>NSDecimal</CODE>:
   unsigned char	length;	    // digits in mantissa.
   unsigned char  cMantissa[2*NSDecimalMaxDigit];
 }
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Instances can be initialized using the <CODE>NSDecimalFromString(NSString *)</CODE>
 function.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC124"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC123"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC120"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -464,15 +432,14 @@ represents a floating point 2-d cartesian location.  <CODE>NSSize</CODE> represe
 a 2-d floating point extent (width and height).  <CODE>NSRect</CODE> contains a
 lower-left point and an extent.  A number of utility functions are defined
 for handling rectangles and points.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC125"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC124"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC126"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC126"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -490,17 +457,16 @@ methods just relating to times and time differences in the abstract, but not
 calendar dates or time zones.  These features are added in the
 <CODE>NSCalendarDate</CODE> subclass.  The <CODE>NSTimeZone</CODE> class handles time
 zone information.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC126"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC125"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC127"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC130"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC130"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -513,17 +479,16 @@ zone information.
 Basic string handling in the GNUstep Base library was covered in
 <A HREF="manual_2.html#SEC12">Strings in GNUstep</A>.  Here, we introduce a number of
 additional string and text processing facilities provided by GNUstep.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC127"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC126"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC128"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC130"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC126"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC130"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -537,24 +502,22 @@ The <CODE>NSScanner</CODE> class can be thought of as providing a combination of
 capabilities of the C <CODE>sscanf()</CODE> function and the Java
 <CODE>StringTokenizer</CODE> class.  It supports parsing of NSStrings and extraction
 of numeric values or substrings separated by delimiters.
-</P>
-<P>
+</P><P>
 
 <CODE>NSScanner</CODE> works with objects of a class <CODE>NSCharacterSet</CODE> and its
 subclasses <CODE>NSMutableCharacterSet</CODE>, <CODE>NSBitmapCharSet</CODE>, and
 <CODE>NSMutableBitmapCharSet</CODE>, which provide various means of representing
 sets of unicode characters.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC128"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC127"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC129"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC129"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC126"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC130"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -572,17 +535,16 @@ characteristics during rendering) as well as programmer-defined application
 specific attributes.  The classes <CODE>NSAttributedString</CODE> and
 <CODE>NSMutableAttributedString</CODE> represent attributed strings.  They are not
 subclasses of <CODE>NSString</CODE>, though they bundle an instance of one.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC129"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC128"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC130"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC130"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC126"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC130"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -600,15 +562,14 @@ attributed string or a regular string for an object value.  Specific classes
 include <CODE>NSDateFormatter</CODE> for <CODE>NSDate</CODE> objects,
 <CODE>NSNumberFormatter</CODE> for <CODE>NSNumber</CODE> objects.  Instances of these
 classes can be customized for specific display needs.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC130"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC129"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC131"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC131"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -628,16 +589,14 @@ addition to simply listing directories, you may obtain an
 <CODE>NSDirectoryEnumerator</CODE> instance from it, a subclass of
 <CODE>NSEnumerator</CODE> which provides a full listing of all the files beneath a
 directory and its subdirectories.
-</P>
-<P>
+</P><P>
 
 If you need to work with path names but don't need the full
 <CODE>NSFileManager</CODE> capabilities, <CODE>NSString</CODE> provides a number of
 path-related methods, such as <CODE>-stringByAppendingPathComponent:</CODE> and
 <CODE>-lastPathComponent</CODE>.  You should use these instead of working directly
 with path strings to support cross-platform portability.
-</P>
-<P>
+</P><P>
 
 <CODE>NSFileHandle</CODE> is a general purpose I/O class which supports reading and
 writing to both files and network connections, including ordinary and
@@ -649,23 +608,21 @@ like <CODE>+fileHandleForReadingAtPath:(NSString *)path</CODE> and
 <CODE>NSFileHandle</CODE> (which are a GNUstep extension not included in Cocoa) will
 be covered in a later section.  Note this class also supports gzip
 compression for reading and writing.
-</P>
-<P>
+</P><P>
 
 Finally, GNUstep also provides some miscellaneous filesystem-related utility
 functions, including <CODE>NSTemporaryDirectory()</CODE> and
 <CODE>NSHomeDirectoryForUser()</CODE>.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC131"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC130"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC132"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC134"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC134"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -681,8 +638,7 @@ list serialization</I>, and is only usually used for <CODE>NSDictionary</CODE> a
 <CODE>NSArray</CODE> container objects, and <CODE>NSNumber</CODE>, <CODE>NSData</CODE>,
 <CODE>NSString</CODE>, and <CODE>NSDate</CODE> member objects.  It utilizes primarily
 text-based formats.
-</P>
-<P>
+</P><P>
 
 Saving to and loading back from a serialized property list representation will
 preserve values but not necessarily the classes of the objects.  This makes
@@ -694,17 +650,16 @@ only persist each individual object one time no matter how often it is
 referred to.  Object class identities are preserved, so that the behavior of a
 reloaded object graph is guaranteed to be the same as the saved one.  On the
 other hand, the classes for these objects must be available at load time.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC132"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC131"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC133"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC134"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC131"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC134"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -715,7 +670,7 @@ other hand, the classes for these objects must be available at load time.
 <P>
 
 Serialized property list representations (sometimes referred to as
-&quot;<I>plists</I>&quot;) are typically saved and restored using methods in collection
+"<I>plists</I>") are typically saved and restored using methods in collection
 classes.  For example the <CODE>NSDictionary</CODE> class has
 <CODE>-writeToFile:atomically:</CODE> to save, <CODE>+dictionaryWithContentsOfFile</CODE>
 to restore, and <CODE>NSArray</CODE> has similar methods.  Alternatively, if you
@@ -724,24 +679,22 @@ the <CODE>NSPropertyListSerialization</CODE> class.  (There are also
 <CODE>NSSerializer</CODE> and <CODE>NSDeserializer</CODE> classes, but these are
 deprecated in Mac OS X and are not really needed in GNUstep either, so should
 not be used.)
-</P>
-<P>
+</P><P>
 
 Serialized property lists can actually be written in one of three different
 formats -- plain text, XML, and binary.  Interconversion amongst these is
 possible using the <CODE>pldes</CODE> and <CODE>plser</CODE> command-line tools (see the
 <A HREF="../../Tools/Reference/index.html">tools reference</A>).
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC133"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC132"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC134"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC134"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC131"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC134"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -757,10 +710,8 @@ like serialization in Java, is used both for saving/restoring objects on disk
 and for interprocess communications with <A HREF="manual_7.html#SEC96">Distributed Objects</A>.  For an object to be archivable, it must adopt the <CODE>NSCoding</CODE>
 protocol.  The coding process itself is managed by instances of the
 <CODE>NSCoder</CODE> class and its subclasses:
-</P>
-<P>
+</P><P>
 
-</P>
 <DL COMPACT>
 <DT><CODE>NSCoder</CODE>
 <DD>Base class, defines most of the interface used by the others.
@@ -777,10 +728,8 @@ class changes.
 
 The basic approach to accessing or creating an archive is to use one of the
 convenience methods in an <CODE>NSCoder</CODE> subclass:
-</P>
-<P>
+</P><P>
 
-</P>
 <DL COMPACT>
 <DT><CODE>+ (BOOL) archiveRootObject: (id)object toFile: (NSString *)file</CODE>
 <DD>Save object and graph below it to file.  '<CODE>YES</CODE>' returned on success.
@@ -800,15 +749,12 @@ Both <CODE>NSArchiver</CODE> and <CODE>NSKeyedArchiver</CODE> support.
 To obtain more specialized behavior, instantiate one of the classes above and
 customize it (through various method calls) before instigating the primary
 archiving or unarchiving operation.
-</P>
-<P>
+</P><P>
 
 From the perspective of the objects being archived, the <CODE>NSCoding</CODE>
 protocol declares two methods that must be implemented:
-</P>
-<P>
+</P><P>
 
-</P>
 <DL COMPACT>
 <DT><CODE>-(void) encodeWithCoder: (NSCoder *)encoder</CODE>
 <DD>This message is sent by an <CODE>NSCoder</CODE> subclass or instance to request the
@@ -824,8 +770,7 @@ exception should be raised if there is a problem restoring state.
 <P>
 
 Here is an example <CODE>NSCoding</CODE> implementation:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>@interface City : PoliticalUnit
 {
@@ -849,17 +794,17 @@ State      *state;
 
   if (![coder allowsKeyedCoding])
     {
-      [coder encodeValueOfObjCType: @encode(float) at: &amp;latitude];
-      [coder encodeValueOfObjCType: @encode(float) at: &amp;longitude];
+      [coder encodeValueOfObjCType: @encode(float) at: &#38;latitude];
+      [coder encodeValueOfObjCType: @encode(float) at: &#38;longitude];
       [coder encodeObject: censusData];
       [coder encodeConditionalObject: state];
     }
     else
     {
-      [coder encodeFloat: latitude forKey: @&quot;City.latitude&quot;];
-      [coder encodeFloat: longitude forKey: @&quot;City.longitude&quot;];
-      [coder encodeObject: censusData forKey: @&quot;City.censusData&quot;];
-      [coder encodeConditionalObject: state forKey: @&quot;City.state&quot;];
+      [coder encodeFloat: latitude forKey: @"City.latitude"];
+      [coder encodeFloat: longitude forKey: @"City.longitude"];
+      [coder encodeObject: censusData forKey: @"City.censusData"];
+      [coder encodeConditionalObject: state forKey: @"City.state"];
     }
   return;
 }
@@ -871,18 +816,18 @@ State      *state;
   if (![coder allowsKeyedCoding])
     {
       // Must decode keys in same order as encodeWithCoder:
-      [coder decodeValueOfObjCType: @encode(float) at: &amp;latitude];
-      [coder decodeValueOfObjCType: @encode(float) at: &amp;longitude];
+      [coder decodeValueOfObjCType: @encode(float) at: &#38;latitude];
+      [coder decodeValueOfObjCType: @encode(float) at: &#38;longitude];
       censusData = [[coder decodeObject] retain];
       state = [[coder decodeObject] retain];
     }
     else
     {
       // Can decode keys in any order
-      censusData = [[coder decodeObjectForKey: @&quot;City.censusData&quot;] retain];
-      state = [[coder decodeObjectForKey: @&quot;City.state&quot;] retain];
-      latitude = [coder decodeFloatForKey: @&quot;City.latitude&quot;];
-      longitude = [coder decodeFloatForKey: @&quot;City.longitude&quot;];
+      censusData = [[coder decodeObjectForKey: @"City.censusData"] retain];
+      state = [[coder decodeObjectForKey: @"City.state"] retain];
+      latitude = [coder decodeFloatForKey: @"City.latitude"];
+      longitude = [coder decodeFloatForKey: @"City.longitude"];
     }
   return self;
 }
@@ -890,15 +835,14 @@ State      *state;
   // ...
 
 @end
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 The primary wrinkle to notice here is the check to <CODE>[coder
 allowsKeyedCoding]</CODE>.  The object encodes and decodes its instance variables
 using keys if this returns '<CODE>YES</CODE>'.  Keys must be unique within a single
 inheritance hierarchy -- that is, a class may not use keys the same as its
 superclass or any of its ancestors or sibling classes.
-</P>
-<P>
+</P><P>
 
 Keyed archiving provides robustness against class changes and is therefore to
 be preferred in most cases.  For example, if instance variables are added at
@@ -907,8 +851,7 @@ versions of the class from restoring data from a later one (they will just
 ignore the new values), nor does it prevent a later version from initializing
 from an earlier archive (it will not find values for the added instance
 variables, but can set these to defaults).
-</P>
-<P>
+</P><P>
 
 Finally, notice the use of <CODE>encodeConditionalObject</CODE> above for
 <CODE>state</CODE>, in contrast to <CODE>encodeObject</CODE> for census data.  The reason
@@ -919,21 +862,19 @@ census data, which is an integral part of its structure, whereas the
 states.  Thus, the <CODE>encodeConditionalObject</CODE> method is called, which
 only stores the <CODE>State</CODE> if it is already being stored unconditionally
 elsewhere during the current encoding operation.
-</P>
-<P>
+</P><P>
 
 Note that within a given archive, an object will be written only once.
 Subsequent requests to write the same object are detected and a reference is
 written rather than the full object.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC134"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC133"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC135"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC135"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -947,8 +888,7 @@ written rather than the full object.
 
 The GNUstep Base library provides a number of utility classes that don't fall
 under any other function category.
-</P>
-<P>
+</P><P>
 
 The <CODE>NSUserDefaults</CODE> class provides access to a number of system- and
 user-dependent settings that should affect tool and application behavior.  You
@@ -958,15 +898,13 @@ string keys.  The standard keys used are documented
 <A HREF="../../../User/Gui/DefaultsSummary.html">here</A>.  Users can adjust
 settings for particular keys using the
 <I><CODE><A HREF="../../Tools/Reference/defaults.html">defaults</A></CODE></I> command.
-</P>
-<P>
+</P><P>
 
 The <CODE>NSProcessInfo</CODE> class provides access to certain information about
 the system environment such as the operating system and host name.  It also
 provides support for process logging (see <A HREF="manual_6.html#SEC80">Logging</A>).  You obtain an instance through sending <CODE>[NSProcessInfo
 processInfo]</CODE>.
-</P>
-<P>
+</P><P>
 
 The <CODE>NSUndoManager</CODE> class provides a general mechanism for supporting
 <I>undo</I> of user operations in applications.  Essentially, it allows you to
@@ -977,22 +915,20 @@ parameters such as the size of the undo stack.  Each application entity with
 its own editing history (e.g., a document) should have its own undo manager
 instance.  Obtain an instance through a simple <CODE>[[NSUndoManager alloc]
 init]</CODE> message.
-</P>
-<P>
+</P><P>
 
 The <CODE>NSProtocolChecker</CODE> and <CODE>NSProxy</CODE> classes provide message
 filtering and forwarding capabilities.  If you wish to ensure at runtime that
 a given object will only be sent messages in a certain protocol, you create
 an <CODE>NSProtocolChecker</CODE> instance with the protocol and the object as
 arguments:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>id versatileObject = [[ClassWithManyMethods alloc] init];
 id narrowObject = [NSProtocolChecker protocolCheckerWithTarget: versatileObject
                                      protocol: @protocol(SomeSpecificProtocol)];
 return narrowObject;
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 This is often used in conjunction with distributed objects to expose only a
 subset of an objects methods to remote processes.  The <CODE>NSProxy</CODE> class
@@ -1002,25 +938,23 @@ create a subclass overriding <CODE>-(void) forwardInvocation:</CODE> and <CODE>-
 (NSMethodSignature) methodForSelector:</CODE>.  By appropriate implementations
 here, you can make an <CODE>NSProxy</CODE> subclass instance act like an instance
 of any class of your choosing.
-</P>
-<P>
+</P><P>
 
 The <CODE>NSBundle</CODE> class provides support for run-time dynamic loading of
-libraries and application resources, usually termed &quot;Bundles&quot;.  A bundle
+libraries and application resources, usually termed "Bundles".  A bundle
 consists of a top-level directory containing subdirectories that may include
-images, text files, and executable binaries or shared libraries.  The &quot;.app&quot;
+images, text files, and executable binaries or shared libraries.  The ".app"
 directory holding a NeXTstep/OpenStep/GNUstep/Cocoa application is actually a
-bundle, as are the &quot;Frameworks&quot; containing shared libraries together with
+bundle, as are the "Frameworks" containing shared libraries together with
 other resources.  Bundles and frameworks are covered in <A HREF="manual_10.html#SEC150">B. Application Resources: Bundles and Frameworks</A>.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC135"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC134"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC136"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -1043,8 +977,7 @@ an <CODE>NSNotificationQueue</CODE>.  This returns immediately when a notificati
 is added to it, and it will periodically post the oldest notification on its
 list to the notification center.  In a multithreaded process, notifications
 are always sent on the thread that they are posted from.
-</P>
-<P>
+</P><P>
 
 An <CODE>NSNotification</CODE> consists of a string name, an object, and optionally
 a dictionary which may contain arbitrary associations.  Objects register with
@@ -1053,33 +986,30 @@ name, a particular object, or both.  When an object registers, it specifies a
 message selector on itself taking an <CODE>NSNotification</CODE> as its sole
 argument.  A message will be sent using this selector whenever the
 notification center receives a matching notification in a post.
-</P>
-<P>
+</P><P>
 
 Obtain a notification center instance using <CODE>NSNotificationCenter
 +defaultCenter</CODE>.  An <CODE>NSDistributedNotificationCenter</CODE> may be used for
 interprocess communication on the same machine.  Interprocess notification will
 be slower than within-process notification, and makes use of the
 <A HREF="../../Tools/Reference/gdnc.html">gdnc</A> command-line tool.
-</P>
-<P>
+</P><P>
 
 Notifications are similar in some ways to <I>events</I> in other frameworks,
 although they are not used for user interface component connections as in Java
 (message forwarding and the target-action paradigm are used instead).  In
 addition, the GNUstep GUI (AppKit) library defines an <CODE>NSEvent</CODE> type for
 representing mouse and keyboard actions.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC136"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC135"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC137"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC139"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1092,17 +1022,16 @@ representing mouse and keyboard actions.
 GNUstep provides some general network-related functionality, as well as
 classes supporting <A HREF="manual_7.html#SEC96">distributed objects</A> and related
 forms of inter-process communication.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC137"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC136"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC138"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC136"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC139"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1113,10 +1042,8 @@ forms of inter-process communication.
 <P>
 
 GNUstep provides the following classes handling basic network communications:
-</P>
-<P>
+</P><P>
 
-</P>
 <DL COMPACT>
 <DT><CODE>NSHost</CODE>
 <DD>Holds and manages information on host names and IP addresses.  Use the
@@ -1148,9 +1075,9 @@ process.  Obtain an instance through <CODE>NSURL -URLHandleUsingCache:</CODE>.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC137"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC139"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC136"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC139"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1165,10 +1092,8 @@ most cases, you only need to know about the <CODE>NSConnection</CODE> class, but
 you require additional control over distributed objects, or if you wish to
 use alternative forms of communications such as simple messaging, you may use
 the classes listed here.
-</P>
-<P>
+</P><P>
 
-</P>
 <DL COMPACT>
 <DT><CODE>NSConnection</CODE>
 <DD>This is the primary class used for registering and acquiring references to
@@ -1204,9 +1129,9 @@ objects.
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC138"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC140"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC144"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1221,17 +1146,16 @@ start up a separate process, referred to as a <I>task</I>, much like a <I>fork</
 in Unix, or it may spawn multiple <I>threads</I> within a single process.
 Threads share data, tasks do not.  Before discussing tasks and threads, we
 first describe the <I>run loop</I> in GNUstep programs.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC140"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC139"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC141"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC139"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC144"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1249,31 +1173,28 @@ loop per thread in an application, which may always be obtained through the
 <CODE>+currentRunLoop</CODE> method, however unless you are using the AppKit and the
 [NSApplication] class, the run loop will not be started unless you explicitly
 send it a <CODE>-run</CODE> message.
-</P>
-<P>
+</P><P>
 
 At any given point, a run loop operates in a single <I>mode</I>, usually
 <CODE>NSDefaultRunLoopMode</CODE>.  Other modes are used for special purposes and
 you usually need not worry about them.
-</P>
-<P>
+</P><P>
 
 An <CODE>NSTimer</CODE> provides a way to send a message at some time in the future,
 possibly repeating every time a fixed interval has passed.  To use a timer,
 you can either create one that will automatically be added to the run loop in
 the current thread (using the <CODE>-addTimer:forMode:</CODE> method), or you can
 create it without adding it then add it to a run loop of your choosing later.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC141"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC140"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC142"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC142"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC139"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC144"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1286,8 +1207,7 @@ create it without adding it then add it to a run loop of your choosing later.
 You can run another program as a subprocess using an <CODE>NSTask</CODE> instance,
 and communicate with it using <CODE>NSPipe</CODE> instances.  The following code
 illustrates.
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>NSTask *task = [[NSTask alloc] init];
 NSPipe *pipe = [NSPipe pipe];
@@ -1296,31 +1216,30 @@ NSData *inData = nil;
 
 [task setStandardOutput: pipe]; 
 [task setLaunchPath: [NSHomeDirectory()
-                         stringByAppendingPathComponent:@&quot;bin/someBinary&quot;]];
+                         stringByAppendingPathComponent:@"bin/someBinary"]];
 [task launch];
 
-while ((inData = [readHandle availableData]) &amp;&amp; [inData length])
+while ((inData = [readHandle availableData]) &#38;&#38; [inData length])
   {
     [self processData:inData];
   }
 [task release];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 Here, we just assume the task has exited when it has finished sending output.
 If this might not be the case, you can register an observer for
 <A HREF="manual_8.html#SEC117">Notifications</A> named
 <CODE>NSTaskDidTerminateNotification</CODE>.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC142"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC141"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC143"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC143"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC139"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC144"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1333,20 +1252,18 @@ If this might not be the case, you can register an observer for
 <I>Threads</I> provide a way for applications to execute multiple tasks in
 parallel.  Unlike separate processes, all threads of a program share the same
 memory space, and therefore may access the same objects and variables.
-</P>
-<P>
+</P><P>
 
 GNUstep supports multithreaded applications in a convenient manner through the
 <CODE>NSThread</CODE> and <CODE>NSLock</CODE> classes and subclasses.  <CODE>NSThread
 +detachNewThreadSelector:toTarget:withObject:</CODE> allows you to initiate a new
 thread and cause a message to be sent to an object on that thread.  The thread
-can either run in a &quot;one-shot&quot; manner or it can sit in loop mode (starting
+can either run in a "one-shot" manner or it can sit in loop mode (starting
 up its own instance of the <CODE>NSRunLoop</CODE> class) and communicate with other
 threads using part of the <A HREF="manual_7.html#SEC96">distributed objects</A>
 framework.  Each thread has a dictionary (accessed through
 <CODE>-threadDictionary</CODE> that allows for storage of thread-local variables.
-</P>
-<P>
+</P><P>
 
 Because threads share data, there is the danger that examinations of and
 modifications to data performed concurrently by more than one thread will
@@ -1356,8 +1273,7 @@ deallocated.)  GNUstep provides the <CODE><I>NSLocking</I></CODE> protocol and t
 <CODE>NSLock</CODE> class and subclasses to deal with this.  <CODE><I>NSLocking</I></CODE>
 provides two methods: <CODE>-lock</CODE> and <CODE>-unlock</CODE>.  When an operation
 needs to be performed without interference, enclose it inside of lock-unlock:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>NSArray *myArray;
 NSLock *myLock = [[NSLock alloc] init];
@@ -1369,7 +1285,7 @@ if (myArray == nil)
     [myArray addObject: someObject];
   }
 [myLock unlock];
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 This code protects '<CODE>myArray</CODE>' from accidentally being initialized twice
 if two separate threads happen to detect it is <CODE>nil</CODE> around the same
@@ -1377,48 +1293,42 @@ time.  When the <CODE>lock</CODE> method is called, the thread doing so is said 
 <I>acquire</I> the lock.  No other thread may subsequently acquire the lock
 until this one has subsequently <I>relinquished</I> the lock, by calling
 <CODE>unlock</CODE>.
-</P>
-<P>
+</P><P>
 
 Note that the lock object should be initialized <I>before</I> any thread might
 possibly need it.  Thus, you should either do it before any additional threads
 are created in the application, or you should enclose the lock creation inside
 of another, existing, lock.
-</P>
-<P>
+</P><P>
 
 The <CODE>-lock</CODE> method in the <CODE><I>NSLocking</I></CODE> protocol blocks
 indefinitely until the lock is acquired.  If you would prefer to just check
 whether the lock can be acquired without committing to this, you can use
 <CODE>NSLock -tryLock</CODE> or <CODE>NSLock -lockBeforeDate:</CODE>, which return
 <CODE>YES</CODE> if they succeed in acquiring the lock.
-</P>
-<P>
+</P><P>
 
 <CODE>NSRecursiveLock</CODE> is an <CODE>NSLock</CODE> subclass that may be locked
 multiple times by the same thread.  (The <CODE>NSLock</CODE> implementation will
 not allow this, causing the thread to deadlock (freeze) when it attempts to
 acquire the lock a second time.)  Each <CODE>lock</CODE> message must be balanced
 by a corresponding <CODE>unlock</CODE> before the lock is relinquished.
-</P>
-<P>
+</P><P>
 
 <CODE>NSConditionLock</CODE> stores an <CODE>int</CODE> together with its lock status.
 The <CODE>-lockWhenCondition:(int)value</CODE> and related methods request the lock
 only if the condition is equal to that passed in.  The condition may be
 changed using the <CODE>unlockWithCondition:(int)value</CODE> method.  This
 mechanism is useful for, e.g., a producer-consumer situation, where the
-producer can &quot;tell&quot; the consumer that data is available by setting the
+producer can "tell" the consumer that data is available by setting the
 condition appropriately when it releases the lock it acquired for adding data.
-</P>
-<P>
+</P><P>
 
 Finally, the <CODE>NSDistributedLock</CODE> class does not adopt the
 <CODE><I>NSLocking</I></CODE> protocol but supports locking across processes, including
 processes on different machines, as long as they can access a common
 filesystem.
-</P>
-<P>
+</P><P>
 
 If you are writing a class library and do not know whether it will be used in
 a multithreaded environment or not, and would like to avoid locking overhead
@@ -1426,17 +1336,16 @@ if not, use the <CODE>NSThread +isMultiThreaded</CODE> method.  You can also
 register to receive <CODE>NSWillBecomeMultiThreadedNotification</CODE>s.  You can
 also use the <CODE>GSLazyLock</CODE> and <CODE>GSLazyRecursiveLock</CODE> classes (see
 next section) which handle this automatically.
-</P>
-<P>
+</P><P>
 
 <HR SIZE="6">
 <A NAME="SEC143"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC142"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC144"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC139"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC144"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
@@ -1451,8 +1360,7 @@ This can help avoid creating threads repeatedly for the same operation, for
 example.  While you can go through the full process of registering a server
 object by name as described in <A HREF="manual_7.html#SEC96">distributed objects</A>, a lighter weight approach is to create <CODE>NSConnection</CODE>s
 manually:
-</P>
-<P>
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>  // code in Master...
 - startSlave
@@ -1494,14 +1402,14 @@ manually:
   [[NSRunLoop currentRunLoop] run];
 }
 
-</pre></td></tr></table><P>
+</pre></td></tr></table></P><P>
 
 <HR SIZE="6">
 <A NAME="SEC144"></A>
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
 <TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC143"> &lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> Up </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
@@ -1519,14 +1427,11 @@ consists of a number of classes, all beginning with '<CODE>GC</CODE>' or
 to be of general utility by the GNUstep developers.  The library is designed
 so that it can be built and installed on a system, such as OS X, where GNUstep
 is not available but an alternate Foundation implementation is.
-</P>
-<P>
+</P><P>
 
 It contains the following five categories of classes:
-</P>
-<P>
+</P><P>
 
-</P>
 <DL COMPACT>
 <DT><CODE>GCxxx</CODE>
 <DD>These are classes that are substituted (behind the scenes) for certain
@@ -1534,7 +1439,6 @@ Foundation classes if the Base library is compiled with garbage collection
 enabled.  (See <A HREF="manual_3.html#SEC38">Memory Management</A>.)
 <P>
 
-</P>
 <DT><CODE>GSXMLxxx</CODE>
 <DD>Classes for parsing XML using DOM- or SAX-like APIs, for processing XPath
 expressions, and for performing XSLT transforms.  These are implemented over
@@ -1542,19 +1446,16 @@ the <A HREF="http://xmlsoft.org">libxml2</A> C library, and using them should fo
 the most part protect you from the frequent API changes in that library.
 <P>
 
-</P>
 <DT><CODE>GSHtmlXxx</CODE>
 <DD>Classes for parsing HTML documents (not necessarily XHTML).
 <P>
 
-</P>
 <DT><CODE>GSMimeXxx</CODE>
 <DD>Classes for handling MIME messages or HTML POST documents.
 <P>
 
-</P>
 <DT><CODE>GSLazyXxx</CODE>
-<DD>Classes implementing &quot;lazy&quot; locking that do not actually attempt any locking
+<DD>Classes implementing "lazy" locking that do not actually attempt any locking
 unless running in a multithreaded application.  See <A HREF="manual_8.html#SEC117">Threads and Run Control</A>.
 </DL>
 <P>
@@ -1562,25 +1463,24 @@ unless running in a multithreaded application.  See <A HREF="manual_8.html#SEC11
 All of these classes have excellent API reference documentation and you
 should look <A HREF="../../BaseAdditions/Reference/index.html">there</A> for
 further information.
-</P>
-<P>
+</P><P>
 
 <A NAME="GSDoc"></A>
 <HR SIZE="6">
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC119"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_9.html#SEC145"> &gt;&gt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_14.html#SEC165">Index</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
 </TR></TABLE>
-<BR>
+<BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Richard Frith-Macdonald</I> on <I>June, 17 2005</I>
-using <A HREF="http://texi2html.cvshome.org"><I>texi2html</I></A>
-</FONT>
+by <I>Adam Fedor</I> on <I>July, 21  2005</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
 
 </BODY>
 </HTML>

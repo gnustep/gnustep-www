@@ -12,8 +12,9 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.12 $</p>
-    <p><b>Date:</b> $Date: 2005/06/17 14:25:48 $</p>
+    <p><b>Version:</b> $Revision: 1.13 $</p>
+    <p><b>Date:</b> $Date: 2005/07/21 18:48:58 $</p>
+    <p><b>Copyright:</b> (C) 2005 Free Software Foundation, Inc.</p>
 
     
           <h1><a name="001000000000">Base Release Notes</a></h1>
@@ -24,13 +25,109 @@
 	migrate to using a newer version of the library.
           </p>
 
-	    <h2><a name="001001000000">Version 1.10.3</a></h2>
+	    <h2><a name="001001000000">Version 1.11.0</a></h2>
+    <p>
+
+	    The interface version of the base library has changed in
+	    this release.  Applications, libraries and tools that
+	    wish to use this new version must be recompiled
+	    (otherwise, they&apos;ll use the older version of the library).
+	    </p>
+    <dl>
+      <dt>Window&apos;s changes</dt>
+      <dd>
+        
+	    A lot of the behavior of path handling in the base
+	    library has changed with respect to Window&apos;s machines.
+	    Windows native paths are used throughout.
+	    The fileSystemRepresentation methods now use utf-16
+	    as the external c-string representation on windows.
+	    The local to openstep and openstep to local methods
+	    are now deprecated and do nothing. Other changes to
+	    classes and class variables have also occurred (detailed
+	    below).
+	    
+      </dd>
+      <dt>Path/Startup configuration</dt>
+      <dd>
+        
+	    At the startup of any application or tool, GNUstep used to
+	    look at various environment variables in order to find
+	    the location of various data directories and other
+	    things. GNUstep still does this, but the environment
+	    variables are no longer required to find these
+	    files. In addition the configuration files used to
+	    override certain path behavior has been changed and
+	    expanded. See the base library documentation on GNUstep
+	    Configuration Files for more information.
+	    
+      </dd>
+      <dt>NSCharacterSets</dt>
+      <dd>
+        
+	    Character sets are included in the library itself instead
+	    of being loaded from a data file. Also, the
+	    NSBitmapCharSet API has been removed.
+	    
+      </dd>
+      <dt>NSPathUtilities</dt>
+      <dd>
+        
+	    Depreciated functions GSSystemRootDirectory and
+	    GSStandardPathPrefixes. In addition, beware of using the
+	    function NSOpenStepRoot, which may not necessarily return
+	    the information you need (see the documentation for this
+	    function for more info). Enumeration values for
+	    NSSearchPathDirectory have changed.
+	    
+      </dd>
+      <dt>NSRunLoop</dt>
+      <dd>
+        
+	    NSRunLoop and related classes now use native win32 event
+	    handling on Window&apos;s machines. See also GSFileHandle,
+	    NSSocketPort and NSMessagePort.
+	    
+      </dd>
+      <dt>GSFileHandle</dt>
+      <dd>
+        
+	    This GNUstep specific class has a new ivar on Windows.
+	    
+      </dd>
+      <dt>NSSocketPort, NSMessagePort</dt>
+      <dd>
+        
+	    This class has a new ivar on Windows.
+	    
+      </dd>
+      <dt>NSPortNameServer</dt>
+      <dd>
+        
+	    A one-time warning is printed concerning a future change in
+	    which nsconnections will only work between processes owned
+	    by the same account on
+	    the same machine, for MacOSX compatibility and
+	    security. If inter-host/user communication is desired,
+	    the developer will need to set this explicitly.
+	    
+      </dd>
+      <dt>Keyed Encoding</dt>
+      <dd>
+        
+	    Work was done in many classes to support keyed
+	    encoding. It may not be fully implemented in every class, however.
+	    
+      </dd>
+    </dl>
+
+	    <h2><a name="001002000000">Version 1.10.3</a></h2>
     <p>
 
 	This release includes a few minor bug fixes.
 	    </p>
 
-	    <h2><a name="001002000000">Version 1.10.2</a></h2>
+	    <h2><a name="001003000000">Version 1.10.2</a></h2>
     <p>
 
 	This release is most likely the last release in this series,
@@ -93,12 +190,12 @@
       </dd>
     </dl>
 
-	    <h2><a name="001003000000">Version 1.10.1</a></h2>
+	    <h2><a name="001004000000">Version 1.10.1</a></h2>
     <p>
 
 	    </p>
     <dl>
-      <dt>Runtime version disconvery of library</dt>
+      <dt>Runtime version discovery of library</dt>
       <dd>
         
 	    A developer can discover the version of the base library that 
@@ -134,7 +231,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001004000000">Version 1.10.0</a></h2>
+	    <h2><a name="001005000000">Version 1.10.0</a></h2>
     <p>
 
 	    </p>
@@ -184,7 +281,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001005000000">Version 1.9.2</a></h2>
+	    <h2><a name="001006000000">Version 1.9.2</a></h2>
     <p>
 
 	    </p>
