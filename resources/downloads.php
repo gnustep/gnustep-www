@@ -221,7 +221,7 @@ download the <i>Recommended version.</p>
 <tr>
 <td class="src">libobjc</td>
 <td class="req">ONLY MinGW/Cygwin or gcc2</td>
-<td class="stab"><a href="<?php download("libs/gnustep-objc-1.3.0.tar.gz")?>">1.3.0</a></td>
+<td class="stab"><a href="<?php download("libs/gnustep-objc-1.4.0.tar.gz")?>">1.4.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Updated libobjc for some systems.</td>
 </tr>
