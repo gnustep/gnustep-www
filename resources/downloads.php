@@ -92,7 +92,7 @@ the version number in the appropriate column.</p>
 <p>Please ensure you have at least the <i>Minimum version req'd</i> of
 each of the following (where needed) on you system, before you install
 GNUstep. If you need to obtain the software, we suggest that you
-download the <i>Recommended version.</p>
+download the <i>Recommended version</i>.</p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
 
