@@ -356,7 +356,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">StepTalk</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/StepTalk-0.8.2.tar.gz")?>">0.8.2</a></td>
+<td class="stab"><a href="<?php download("libs/StepTalk-0.10.0.tar.gz")?>">0.10.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Scripting language support</td>
 </tr>
@@ -593,41 +593,15 @@ packages and applications may require you to install these libraries
 
 
 <div class="sidebar">
-	
-	<b>General</b><br />
 	  <a href="../">Home page</a><br />
 	  <a href="../information/aboutGNUstep.html">Introduction</a><br />
-	  <a href="../experience/documentation.html">Getting Started</a><br />
-	  <a href="../resources/sources.html">Download</a><br />
 	  <a href="../experience/apps.html">Applications</a><br />
-	  <a href="../resources/documentation/User/GNUstep/userfaq_toc.html">User FAQ</a><br />
-	  <a href="../resources/documentation/User/GNUstep/machines_toc.html">Supported Platforms</a><br />
+	  <a href="../resources/sources.html">Downloads</a><br />
+	  <a href="../experience/documentation.html">User Guides</a><br />
+      <a href="../developers/">Developers</a><br />
 	  <a href="../information/donate.html">Donations</a><br />
-	  <br />
-          <a href="../developers/bugs.html">Report Bugs</a><br /> 
-	<br />
-	<b>Developers</b><br />
-	  <a href="../resources/docs-web.html">Documentation</a><br />
-	  <a href="../experience/DeveloperTools.html">Developer Tools</a><br />
-	  <a href="http://wiki.gnustep.org/">Wiki Docs</a><br />
-	  <a href="../resources/documentation/User/GNUstep/faq_toc.html">Developer FAQ</a><br />
-	  <a href="../developers/map.html">Libraries</a><br />
-	  <a href="../developers/whoiswho.html">Who's Who</a>?<br />
-	  <a href="../information/mission.html">Mission</a><br />
+	  <a href="../information/gethelp.html">Get Help</a><br />
 	 <br />
-	<b>External</b><br />
-	  <a href="http://savannah.gnu.org/projects/gnustep/">Project Page</a><br />
-	  <a href="../resources/resources.html">Related Links</a><br />
-	  <a href="../information/gethelp.html">Mailing Lists</a><br />
-	
-	<br />
-
-        <b><a href="../resources/sites.html">Related Sites...</a></b><br />
-	
-	<br />
-
-	<b><a href="../resources/mirrors.html">Mirrors...</a></b><br />
-	<br />
 	Site by <a href="mailto:webmasters@gnustep.org">webmasters@gnustep.org</a>
   
 </div>
