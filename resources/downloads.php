@@ -441,7 +441,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.gnustep.org/experience/Gorm.html">Gorm</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("dev-apps/Gorm-0.9.0.tar.gz")?>">0.9.0
+<td class="stab"><a href="<?php download("dev-apps/Gorm-0.11.0.tar.gz")?>">0.11.0
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Graphical interface builder</td>
