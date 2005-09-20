@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.65</p>
-    <p><b>Date:</b> 2005/06/29 14:40:11</p>
+    <p><b>Version:</b> 1.66</p>
+    <p><b>Date:</b> 2005/09/17 21:41:11</p>
     <p><b>Copyright:</b> (C) 1998,2003 Free Software Foundation, Inc.</p>
 
         <div>
@@ -152,12 +152,14 @@
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-invokeWithTarget:">-invokeWithTarget:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-methodSignature">-methodSignature</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-retainArguments">-retainArguments</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-retainArgumentsIncludingTarget:">-retainArgumentsIncludingTarget:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-selector">-selector</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setArgument:atIndex:">-setArgument:atIndex:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setReturnValue:">-setReturnValue:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setSelector:">-setSelector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-setTarget:">-setTarget:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-target">-target</a></li>
+      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-targetRetained">-targetRetained</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSInvocation+invocationWithMethodSignature:">invocationWithMethodSignature:&nbsp;</a></h3>
@@ -262,6 +264,20 @@
           
     </p>
     <hr width="25%" align="left" />
+    <h3><a name="method$NSInvocation-retainArgumentsIncludingTarget:">retainArgumentsIncludingTarget:&nbsp;</a></h3>
+    - (void) <b>retainArgumentsIncludingTarget:</b> (BOOL)retainTargetFlag;<br />
+    <b>Availability:</b> Not in OpenStep/MacOS-X, Base 1.12.1<br />
+    <p>
+      
+            Similar to -[NSInvocation retainArguments], but
+            allows the sender to explicitly control whether the
+            target is retained as well. Retaining the target is
+            sometimes not desirable (such as in
+            NSUndoManager), as retain loops could
+            result.
+          
+    </p>
+    <hr width="25%" align="left" />
     <h3><a name="method$NSInvocation-selector">selector&nbsp;</a></h3>
     - (SEL) <b>selector</b>;<br />
     <b>Availability:</b> Not in OpenStep/MacOS-X<br />
@@ -352,6 +368,16 @@
     <p>
       
             Returns the target object of the invocation.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSInvocation-targetRetained">targetRetained&nbsp;</a></h3>
+    - (BOOL) <b>targetRetained</b>;<br />
+    <b>Availability:</b> Not in OpenStep/MacOS-X, Base 1.12.1<br />
+    <p>
+      
+            Returns <code>YES</code> if target has been
+            retained yet, <code>NO</code> otherwise.
           
     </p>
     <hr width="25%" align="left" />
@@ -467,6 +493,18 @@
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_target">_target</a></h3>
     @protected id <b>_target</b>;<br />
+    <p>
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_targetRetained">_targetRetained</a></h3>
+    @protected BOOL <b>_targetRetained</b>;<br />
     <p>
       
             <em>Warning</em> the underscore at the start of the
