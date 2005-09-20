@@ -277,7 +277,7 @@ or download and install the four core packages separately.
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-make-1.11.0.tar.gz")?>">1.11.0</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-make-1.11.1.tar.gz")?>">1.11.1</a></td>
 <td class="unst">-</td>
 <td>Makefile Package</td>
 </tr>
@@ -285,7 +285,7 @@ or download and install the four core packages separately.
 <tr>
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-base-1.11.0.tar.gz")?>">1.11.0</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-base-1.11.1.tar.gz")?>">1.11.1</a></td>
 <td class="unst">-</td>
 <td>Foundation</td>
 </tr>
