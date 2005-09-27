@@ -203,10 +203,10 @@ download the <i>Recommended version</i>.</p>
 </tr>
 
 <tr>
-<td class="src">audiofile</td>
+<td class="src"><a href="http://68k.org/~michael/audiofile/">audiofile</a></td>
 <td class="req">Recommended</td>
 <td class="stab">0.2.3</td>
-<td class="unst"><a href="ftp://oss.sgi.com/projects/audiofile/download"><i>current</i></a></td>
+<td class="unst"><a href="http://www.68k.org/~michael/audiofile/audiofile-0.2.6.tar.gz"><i>current</i></a></td>
 <td>Program interface to digital audio formats</td>
 </tr>
 
