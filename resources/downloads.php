@@ -55,7 +55,11 @@ SPAN.cont {border-top:thin white solid; padding-top:0.5em;
 <?php
 
 // This will need fixing if some PHP 5 options aren't set to make HTTP_GET_VARS
-$site = $HTTP_GET_VARS["site"];
+if (isset($HTTP_GET_VARS["site"])) {
+  $site = $HTTP_GET_VARS["site"];
+} else {
+  $site = "http://ftpmain.gnustep.org/pub/gnustep/"
+}
 
 function download($link) {
   global $site; // Why do I have to even declare this? Stupid language.
@@ -213,7 +217,7 @@ download the <i>Recommended version</i>.</p>
 <tr>
 <td class="src">WindowMaker</td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="http://windowmaker.org/pub/source/release/WindowMaker-0.80.2.tar.bz2">0.80.2</a></td>
+<td class="stab"><a href="http://windowmaker.org/pub/source/release/WindowMaker-0.92.0.tar.bz2">0.92.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Window manager &amp; desktop</td>
 </tr>
@@ -395,7 +399,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.stupid-design.com/martin/GNUstep/GNUMail.app/GNUMail.app-Installation.html">Pantomime</a></td>
+<td class="src">Pantomime</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0.tar.gz?rid=77">1.1.0</a></td>
 <td class="unst">-</td>
@@ -566,7 +570,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.stupid-design.com/martin/GNUstep/GNUMail.app/GNUMail.app-Installation.html">GNUMail</a></td>
+<td class="src">GNUMail</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.0pre2.tar.gz?rid=75">1.1.0pre2</a></td>
 <td class="unst">-</td>
