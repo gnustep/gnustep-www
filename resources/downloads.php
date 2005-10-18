@@ -58,7 +58,7 @@ SPAN.cont {border-top:thin white solid; padding-top:0.5em;
 if (isset($HTTP_GET_VARS["site"])) {
   $site = $HTTP_GET_VARS["site"];
 } else {
-  $site = "http://ftpmain.gnustep.org/pub/gnustep/"
+  $site = "http://ftpmain.gnustep.org/pub/gnustep/";
 }
 
 function download($link) {
