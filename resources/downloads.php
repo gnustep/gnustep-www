@@ -477,14 +477,6 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"><a href="http://karl.nfox.com/Downloads/nfmake/">nfmake</a></td>
-<td class="req">Optional</td>
-<td class="stab"><a href="http://karl.nfox.com/Downloads/nfmake/nfmake.tar.gz">nfmake</a></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Compiles apps from PB Project on GNUstep</td>
-</tr>
-
-<tr>
 <td class="src">Testsuite</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("test/gnustep-tests-1.7.0.tar.gz")?>">1.7.0</a></td>
@@ -498,14 +490,6 @@ packages and applications may require you to install these libraries
 <td class="stab"><a href="<?php download("core/gnustep-examples-1.0.0.tar.gz")?>">1.0.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>GUI examples</td>
-</tr>
-
-<tr>
-<td class="src">Foundation Extensions</td>
-<td class="req">Not recommended</td>
-<td class="stab"><a href="<?php download("libs/extensions-0.8.6.tar.gz")?>">0.8.6</a></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Additional base classes</td>
 </tr>
 
 </tbody>
