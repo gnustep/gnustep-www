@@ -138,8 +138,6 @@
         <li><a rel="gsdoc" href="Functions.html#function$GSSetDebugAllocationFunctions">GSSetDebugAllocationFunctions</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSSetUserName">GSSetUserName</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSSmallHash">GSSmallHash</a></li>
-        <li><a rel="gsdoc" href="Functions.html#function$GSStandardPathPrefixes">GSStandardPathPrefixes</a></li>
-        <li><a rel="gsdoc" href="Functions.html#function$GSSystemRootDirectory">GSSystemRootDirectory</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSTime">GSTime</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSUPurge">GSUPurge</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSUSet">GSUSet</a></li>
@@ -3302,7 +3300,7 @@ is exactly the same as    </p>
 
             In GNUstep, the GSLogThread user default may be set to
             <code>YES</code> in order to instruct this function
-            to include the internal ID of the mcurrent thread after
+            to include the internal ID of the current thread after
             the process ID. This can help you to track the behavior
             of a multi-threaded program.
               </p>
@@ -3523,34 +3521,6 @@ is exactly the same as    </p>
         
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="function$GSStandardPathPrefixes">GSStandardPathPrefixes</a></h3>
-    <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* GSStandardPathPrefixes();<br />
-    <p>
-      
-          Returns an array of strings which contain paths that
-          should be in the standard search order for resources,
-          etc. If the environment variable GNUSTEP_PATHPREFIX_LIST
-          is set. It returns the list of paths set in that variable.
-          Otherwise, it returns the user, local, network,
-          and system paths, in that order. This function is
-          guarenteed to return a non-nil answer (unless
-          something is seriously wrong, in which case the
-          application will probably crash anyway)
-        
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="function$GSSystemRootDirectory">GSSystemRootDirectory</a></h3>
-    <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* GSSystemRootDirectory();<br />
-    <p>
-      
-          Returns a string containing the path to the GNUstep
-          system installation directory. This function is
-          guarenteed to return a non-nil answer (unless
-          something is seriously wrong, in which case the
-          application will probably crash anyway)
-        
-    </p>
-    <hr width="25%" align="left" />
     <h3><a name="function$NSFullUserName">NSFullUserName</a></h3>
     <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* NSFullUserName();<br />
     <p>
@@ -3648,7 +3618,7 @@ is exactly the same as    </p>
           Return the caller&apos;s login name as an NSString object.
           <br /> Under unix-like systems, the name associated
           with the current effective user ID is used. <br /> Under
-          ms-windows, the &apos;LOGNAME&apos; environemnt is used, or
+          ms-windows, the &apos;LOGNAME&apos; environment is used, or
           if that fails, the
           
             GetUserName()
