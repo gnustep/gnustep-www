@@ -12,8 +12,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.17 $</p>
-    <p><b>Date:</b> $Date: 2005/09/20 14:42:59 $</p>
+    <p><b>Version:</b> $Revision: 1.18 $</p>
+    <p><b>Date:</b> $Date: 2005/10/27 17:24:56 $</p>
     <p><b>Copyright:</b> (C) 2005 Free Software Foundation, Inc.</p>
 
     
@@ -171,7 +171,10 @@
 		the syslog facility (on systems which support it), rather
 		than to the standard error stream.  This is useful in
 		environments where stderr has been re-used strangely for
-		some reason.
+		some reason.<br />
+		On mswindows, where syslog does not exist, this flag instead
+		controls whether log/debug output is sent to the windows
+		event log.
 	              </p>
         
 	    
@@ -358,6 +361,29 @@
         
 	    
       </dd>
+      <dt>GNUSTEP_PATH_HANDLING</dt>
+      <dd>
+        
+	      
+        <p>
+
+	        May be set to <code>unix</code> to enforce unix style path
+		handling, or <code>windows</code> to enforce mswindows style
+		path handling, or anu other value (including unset) for the
+		default behavior where both styles of paths should be
+		managed in the best way possible.
+	              </p>
+        
+	      
+        <p>
+
+	        The option to enforce either upre unix or pure windows style
+		path handling (and hence this environment variable) may be
+		removed in a later release.
+	              </p>
+        
+	    
+      </dd>
       <dt>GNUSTEP_HOST_CPU</dt>
       <dd>
         
@@ -440,7 +466,7 @@
 
 		This environment variable, commonly set by the make system,
 		is <strong>not</strong> used by GNUstep programs.  Instead
-		values from <code>.GNUsteprc</code> are used (see later).
+		values from the GNUstep configuration file are used (see later).
 	              </p>
         
 	    
@@ -646,12 +672,15 @@
 	    can be used to set the base location of all the standard
 	    paths that GNUstep programs use or know about. The
 	    location of this file depends on how the Base library was
-	    configured and what operating system it was configured
+	    configured and/or what operating system it was configured
 	    on. On a GNU/Linux system, the default would be
-	    /etc/GNUstep/GNUstep.conf, for instance. This file is not
-	    required. If it does not appear, then default values will
-	    be used for the standard path locations.  System paths are
-	    defined by the following:
+	    /etc/GNUstep/GNUstep.conf, for instance.<br />
+	    The location of this file can be overridden using the
+	    GNUSTEP_CONFIG_FILE environment variable.<br />
+	    The configuration file is not actually required to exist.
+	    If it does not exist, then default values will be used
+	    for the standard path locations.<br />
+	    System paths are defined by the following:
 	      </p>
     <dl>
       <dt>GNUSTEP_SYSTEM_ROOT</dt>
@@ -664,7 +693,8 @@
       </dd>
       <dt>GNUSTEP_LOCAL_ROOT</dt>
       <dd>
-        path for non-system resources for the specific machine.
+        path for non-system resources for the specific
+	      machine.
       </dd>
     </dl>
     <p>
@@ -672,19 +702,33 @@
 	    Paths for each user are defined by the following:
 	      </p>
     <dl>
-      <dt>USER_GNUSTEP_DIR</dt>
+      <dt>GNUSTEP_USER_DIR</dt>
       <dd>
-        Path under user&apos;s home directory for user specific GNUstep resources (eg. &apos;GNUstep&apos;)
+        Path for user specific GNUstep resources (eg. &apos;GNUstep&apos;).
+	    Relative to the user&apos;s home directory.
       </dd>
-      <dt>USER_GNUSTEP_RC</dt>
+      <dt>GNUSTEP_USER_CONFIG_FILE</dt>
       <dd>
         Name of user configuration file (eg. &apos;.GNUsteprc&apos;)
+	    relative to the user&apos;s home directory.
       </dd>
-      <dt>USER_GNUSTEP_DEFAULTS</dt>
+      <dt>GNUSTEP_USER_DEFAULTS_DIR</dt>
       <dd>
-        Name of directory in USER_GNUSTEP_DIR for user defaults files.
+        Name of directory for user defaults files.
+	    Relative to the user&apos;s home directory.<br />
+	    On mswindows this may be set to be &apos;:REGISTRY:&apos; to have defaults
+	    stored in the windows registry rather than in the standard file
+	    format.
       </dd>
     </dl>
+    <p>
+
+	    The user&apos;s home directory is taken to be the standard
+	    home directory for that user on the system<br />
+	    On unix, that is the user&apos;s home directory from the password file,
+	    while on windows  it&apos;s the value given by the
+	    Win32GetUserProfileDirectory() function.
+	      </p>
     <p>
 
 	    Support is provided to locate OS/PLATFORM directories. A conf file
@@ -713,100 +757,109 @@
       </dd>
       <dt>PLATFORM_LIBS</dt>
       <dd>
-        Place for application shared libraries (eg. &apos;/usr/lib&apos;)
+        Place for application shared libraries
+	      (eg. &apos;/usr/lib&apos;)
       </dd>
       <dt>PLATFORM_RESOURCES</dt>
       <dd>
-        Place for shared application resources (eg. &apos;/usr/share&apos;)
+        Place for shared application resources
+	      (eg. &apos;/usr/share&apos;)
       </dd>
       <dt>PLATFORM_ADMIN</dt>
       <dd>
-        Place for non-critical administrative tools (eg. &apos;/usr/sbin&apos;)
+        Place for non-critical administrative tools
+	      (eg. &apos;/usr/sbin&apos;)
       </dd>
       <dt>PLATFORM_LOCAL_APPS</dt>
       <dd>
-        Place for machine local applications (eg. &apos;/usr/local/bin&apos;)
+        Place for machine local applications
+	      (eg. &apos;/usr/local/bin&apos;)
       </dd>
       <dt>PLATFORM_LOCAL_LIBS</dt>
       <dd>
-        Place for machine local shared libraries (eg. &apos;/usr/local/lib/&apos;)
+        Place for machine local shared libraries
+	      (eg. &apos;/usr/local/lib/&apos;)
       </dd>
       <dt>PLATFORM_LOCAL_RESOURCES</dt>
       <dd>
-        Place for machine local resources. (eg. &apos;/usr/local/share&apos;)
+        Place for machine local resources.
+	      (eg. &apos;/usr/local/share&apos;)
       </dd>
     </dl>
     <p>
 
-	      These add to the path for NSSystemDomainMask, or
-	      NSLocalDomainMask as appropriate.
-	        </p>
+	    These add to the path for NSSystemDomainMask, or
+	    NSLocalDomainMask as appropriate.
+	      </p>
 
-	      <h3><a name="001001005000">.GNUsteprc files</a></h3>
+	      <h3><a name="001001005000">Relocatable packages</a></h3>
+    <p>
+
+	    The configuration files system has two features which make
+	    it possible to build standalone packages containing the
+	    entire GNUstep system in a form which can be moved anywhere
+	    and just run.
+	      </p>
+    <p>
+
+	    Firstly, wariables in the configuration file which define
+	    paths, are expected to by full path specifications, except
+	    for the special case in which they begin with dot-slash (./).
+	    In this case the dot-slash is replaced by the path to the
+	    directory containing the configuration file (or specified to
+	    contain the configuration file if no configuration file exists).
+	      </p>
+    <p>
+
+	    Secondly, If the value specified by GNUSTEP_CONFIG_FILE (or
+	    built into the base library) itself begins with a dot and
+	    slash (./) then the path used for that file is made relative
+	    to the base library.<br />
+	    ie the dot-slash is replaced by the path to the directory
+	    containing the gnustep-base library.
+	      </p>
+    <p>
+
+	    So you can bundle the whole lot together in one directory,
+	    and configure various relative paths in that directory, then
+	    move the directory around wherever you like.
+	      </p>
+
+	      <h3><a name="001001006000">.GNUstep.conf files</a></h3>
+    <p>
+
+	    The user specific configuration file is read after the system
+	    configuration file and may generally override values from the
+	    main file.  To prevent the use specific file from being read,
+	    the system manager may define GNUSTEP_USER_CONFIG_FILE in the
+	    main file to be an empty string.<br />
+	    In any case, the user specific file is <em>not</em> read if a
+	    program is running setuid.
+	      </p>
     <p>
 
 	    The locations of the directories in which user specific files and
-	    the user defaults database are stored are defined in the
-	    <code>.GNUsteprc</code> files.<br />
+	    the user defaults database are stored may be defined in the
+	    file given by GNUSTEP_USER_CONFIG_FILE (by default,
+	    <code>.GNUstep.conf</code>).<br />
 	    If no location is given for user specific files, they are stored
-	    in the GNUstep subdirectory of the users home directory.<br />
+	    in the locaton given by GNUSTEP_USER_DIR (by default, the
+	    <code>GNUstep</code> subdirectory of the users home
+	    directory).<br />
 	    If a separate location is not given for the defaults database, it
-	    is stored in the same directory as other user specific files.<br />
+	    is stored in the subdirectory of the users home directory given by
+	    GNUSTEP_USER_DEFAULTS_DIR (by default, the
+	    <code>GNUstep/Defaults</code> subdirectory).<br />
 	      </p>
     <p>
 
-	    The presence of a <code>.GNUsteprc</code> file in a users home
-	    directory premits the user to customize file locations using
-	    two commands -
+	    The presence of a <code>.GNUstep.conf</code> file in a users home
+	    directory permits the user to customize file locations using all
+	    the same commands as the system directory, though any attempt
+	    to redefine GNUSTEP_USER_CONFIG_FILE is of course ignored.<br />
+	    Attempts to redefine the users home directory at this level
+	    are also ignored.
 	      </p>
-    <dl>
-      <dt>GNUSTEP_DEFAULTS_ROOT=...</dt>
-      <dd>
-        
-	      The text after the &apos;=&apos; is taken to be the path to the users
-	      defaults files.  If it begins with a &apos;~&apos; character, the users home
-	      directory is prepended to it.
-	    
-      </dd>
-      <dt>GNUSTEP_USER_ROOT=...</dt>
-      <dd>
-        
-	      The text after the &apos;=&apos; is taken to be the path to the users
-	      files.  If it begins with a &apos;~&apos; character, the users home
-	      directory is prepended to it.
-	    
-      </dd>
-    </dl>
-    <p>
-
-	    The presence of a <code>.GNUsteprc</code> file in the
-	    GNUstep system directory may provide default paths for all
-	    users and may even override user specific files.  This
-	    file has been deprecated in favor of the GNUstep
-	    Configuration File described above. The content of this
-	    file is as for the user specific file, but permits two
-	    additional commands:
-	      </p>
-    <dl>
-      <dt>FORCE_DEFAULTS_ROOT</dt>
-      <dd>
-        
-	      If this line is present, and the file specifies a
-	      GNUSTEP_DEFAULTS_ROOT, then the value given in the system-wide
-	      file is used irrespective of the user specific file.
-	      Otherwise, the value in the user specific file takes precedence.
-	    
-      </dd>
-      <dt>FORCE_USER_ROOT</dt>
-      <dd>
-        
-	      If this line is present, and the file specifies a
-	      GNUSTEP_USER_ROOT, then the value given in the system-wide
-	      file is used irrespective of the user specific file.
-	      Otherwise, the value in the user specific file takes precedence.
-	    
-      </dd>
-    </dl>
     <div>
 
       
