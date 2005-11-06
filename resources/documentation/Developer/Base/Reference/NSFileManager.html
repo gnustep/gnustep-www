@@ -23,8 +23,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.120</p>
-    <p><b>Date:</b> 2005/10/23 14:53:03</p>
+    <p><b>Version:</b> 1.122</p>
+    <p><b>Date:</b> 2005/11/05 16:20:18</p>
     <p><b>Copyright:</b> (C) 1997,1999-2005 Free Software Foundation, Inc.</p>
 
         <div>
@@ -951,14 +951,17 @@ The dictionary keys for attributes are -  </p>
     
             Convert from OpenStep internal string format to a
             string in the local filesystem format, suitable for
-            passing to system functions. <br /> This
+            passing to system functions. <br /> Converts the
+            standard <var>path</var> separator (&apos;/&apos;) and
+            <var>path</var> extension (&apos;.&apos;) characters to the
+            local representation if necessary. <br /> This
             representation may vary between filesystems.
-            <br /> On windows, the filesystem representation is
-            16-bit unicode and is expected to be used in
-            conjunction with the variants of system calls
-            which work with unicode strings. <br /> Raises an
-            exception if the character conversion is not
-            possible.
+            <br /> On mingw32 systems, the filesystem
+            representation is 16-bit unicode and is
+            expected to be used in conjunction with the
+            variants of system calls which work with unicode
+            strings. <br /> Raises an exception if the
+            character conversion is not possible.
           
   </p>
   <hr width="25%" align="left" />
@@ -1099,13 +1102,22 @@ The dictionary keys for attributes are -  </p>
   <b>Availability:</b> MacOS-X 10.0.0<br />
   <p>
     
-            This method converts from a local filesystem specific
-            name to an NSString object. Use it to convert a
-            filename returned by a systemcall into a value for
-            internal use. <br /> The value of <var>len</var>
-            is the number of bytes of data pointed to by
-            <var>string</var>. <br /> On windows, the filesystem
-            representation is utf-16.
+            Convert to OpenStep internal <var>string</var>
+            format from a <var>string</var> in the local
+            filesystem format, as returned by system
+            functions. <br /> This representation may vary
+            between filesystems. <br /> The GNUstep version of
+            this method currently does not bother to change any
+            path separator and extension characters to the
+            standard values (&apos;/&apos; and &apos;.&apos; respectively) as the
+            path handling methods of
+            <a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>
+
+              should be able to handle native format strings.
+              <br /> On mingw32 systems, the filesystem
+              representation is 16-bit unicode and is
+              expected to have come from the variant of a
+              system call which works with unicode strings.
           
   </p>
   <hr width="25%" align="left" />

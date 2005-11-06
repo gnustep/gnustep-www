@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.350</p>
-    <p><b>Date:</b> 2005/10/23 14:53:03</p>
+    <p><b>Version:</b> 1.352</p>
+    <p><b>Date:</b> 2005/11/05 16:20:18</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -357,6 +357,7 @@ Where an NSString instance method returns an NSString object, the class of the a
       <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawInRect:withAttributes:">-drawInRect:withAttributes:</a></li>
       <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-sizeWithAttributes:">-sizeWithAttributes:</a></li>
       <li><a rel="gsdoc" href="/home/brains99/GNUstep/Local/Library/Documentation/Libraries/CoreComponents/SMSUtils.html#method$NSString(ReducingSpaces)-stringByReducingSpaces">-stringByReducingSpaces</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/GNUstep/Local/Library/Documentation/Performance/GSCache.html#method$NSString(SizeInBytes)-sizeInBytes:">-sizeInBytes:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>
@@ -1097,11 +1098,13 @@ Where an NSString instance method returns an NSString object, the class of the a
             in the character encoding appropriate for the local host
             file system. This string will be automatically freed
             soon after it is returned, so copy it if you need it
-            for long. <br /> NB. On ms-windows the filesystem
+            for long. <br /> NB. On mingw32 systems the filesystem
             representation of a path is a 16-bit unicode
-            character string, so you should only path the
+            character string, so you should only pass the
             value returned by this method to functions expecting
-            wide characters.
+            wide characters. <br /> This method uses
+            <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileSystemRepresentationWithPath:">[NSFileManager&nbsp;-fileSystemRepresentationWithPath:]</a>
+ to perform the conversion.
           
     </p>
     <hr width="25%" align="left" />
@@ -1212,13 +1215,17 @@ Where an NSString instance method returns an NSString object, the class of the a
             Converts the receiver to a C string path using the
             character encoding appropriate to the local file
             system. This string will be stored into
-            <var>buffer</var> if it is shorter than
-            <var>size</var>, otherwise <code>NO</code> is
-            returned. <br /> NB. On ms-windows the filesystem
-            representation of a path is a 16-bit unicode
-            character string, so the <var>buffer</var> you
-            pass to this method must be twice as long as the
-            number of characters you expect to receive.
+            <var>buffer</var> if it is shorter (number of
+            characters) than <var>size</var>, otherwise
+            <code>NO</code> is returned. <br /> NB. On mingw32
+            systems the filesystem representation of a path is
+            a 16-bit unicode character string, so the
+            <var>buffer</var> you pass to this method must be
+            twice as many bytes as the <var>size</var> (number of
+            characters) you expect to receive. <br /> This
+            method uses
+            <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileSystemRepresentationWithPath:">[NSFileManager&nbsp;-fileSystemRepresentationWithPath:]</a>
+ to perform the conversion.
           
     </p>
     <hr width="25%" align="left" />
