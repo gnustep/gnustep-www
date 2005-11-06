@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.124</p>
-    <p><b>Date:</b> 2005/10/11 19:09:25</p>
+    <p><b>Version:</b> 1.125</p>
+    <p><b>Date:</b> 2005/10/30 10:42:42</p>
     <p><b>Copyright:</b> (C) 1996-1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -523,8 +523,8 @@
     <b>Availability:</b> OpenStep<br />
     <p>
       
-          Interface that add method to set target for win32
-          messages. <br />
+          Obsolete interface that add method to set target for
+          win32 messages. <br />
         
     </p>
     <b>Method summary</b>
@@ -538,11 +538,7 @@
     <b>Availability:</b> OpenStep<br />
     <p>
       
-            Adds a <var>target</var> to the loop in the specified
-            <var>mode</var> for the win32 messages. <br /> Only a
-            target+selector is added in one
-            <var>mode</var>. Successive calls overwrite the
-            previous. <br />
+            Deprecated... will be removed
           
     </p>
     <hr width="25%" align="left" />
@@ -551,8 +547,7 @@
     <b>Availability:</b> OpenStep<br />
     <p>
       
-            Delete the target of the loop in the specified
-            <var>mode</var> for the win32 messages. <br />
+            Deprecated... will be removed
           
     </p>
     <hr width="25%" align="left" />
@@ -589,15 +584,17 @@
     <p>
       
             Callback message sent to object when the event it
-            it waiting for occurs. The &apos;data&apos; and &apos;type&apos; valueds are
+            it waiting for occurs. The &apos;data&apos; and &apos;type&apos; values are
             those passed in the original
             <a rel="gsdoc" href="#method$NSRunLoop-addEvent:type:watcher:forMode:">
               -addEvent:type:watcher:forMode:
             </a>
 
-            method. The &apos;extra&apos; value may be additional
+            method. <br /> The &apos;extra&apos; value may be additional
             <var>data</var> returned depending on the
-            <var>type</var> of event.
+            <var>type</var> of event. In the case of ET_WINMSG
+            &apos;extra&apos; is a pointer to a windows <code>MSG</code>
+            structure containing the received event.
           
     </p>
     <hr width="25%" align="left" />

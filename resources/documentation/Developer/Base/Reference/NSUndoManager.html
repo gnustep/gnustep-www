@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.28</p>
-    <p><b>Date:</b> 2005/09/17 21:41:11</p>
+    <p><b>Version:</b> 1.29</p>
+    <p><b>Date:</b> 2005/11/06 13:53:40</p>
     <p><b>Copyright:</b> (C) 1998 Free Software Foundation, Inc.</p>
 
         <div>
@@ -94,7 +94,7 @@
               [-undo]
             </a>
 
-            invovation. This method posts an
+            invocation. This method posts an
             NSUndoManagerCheckpointNotification
             unless an undo is currently in progress. It posts an
             NSUndoManagerDidOpenUndoGroupNotification
@@ -210,11 +210,11 @@
  with the target of the undo action and then invoke the targets method to undo the action on the return value of <a rel="gsdoc" href="#method$NSUndoManager-prepareWithInvocationTarget:">-prepareWithInvocationTarget:</a>
  which actually is the undo manager. The runtime will then fallback to <a rel="gsdoc" href="#method$NSUndoManager-forwardInvocation:">-forwardInvocation:</a>
  to do the actual registration of the invocation. The invocation will added to the current grouping. <br /> If the registrations have been disabled through <a rel="gsdoc" href="#method$NSUndoManager-disableUndoRegistration">-disableUndoRegistration</a>
-, this method does nothing. <br /> Unless the reciever implicitly groups operations by event, the this method must have been preceeded with a <a rel="gsdoc" href="#method$NSUndoManager-beginUndoGrouping">[-beginUndoGrouping]</a>
+, this method does nothing. <br /> Unless the receiver implicitly groups operations by event, the this method must have been preceded with a <a rel="gsdoc" href="#method$NSUndoManager-beginUndoGrouping">[-beginUndoGrouping]</a>
  message. Otherwise it will raise an NSInternalInconsistencyException. <br /> Unless this method is invoked as part of a <a rel="gsdoc" href="#method$NSUndoManager-undo">[-undo]</a>
  or <a rel="gsdoc" href="#method$NSUndoManager-undoNestedGroup">[-undoNestedGroup]</a>
- processing, the redo stack is cleared. <br /> If the reciever <a rel="gsdoc" href="#method$NSUndoManager-groupsByEvent">[-groupsByEvent]</a>
- and this is the first call to this method since the last run loop processing, this method sets up the reciever to process the <a rel="gsdoc" href="#method$NSUndoManager-endUndoGrouping">[-endUndoGrouping]</a>
+ processing, the redo stack is cleared. <br /> If the receiver <a rel="gsdoc" href="#method$NSUndoManager-groupsByEvent">[-groupsByEvent]</a>
+ and this is the first call to this method since the last run loop processing, this method sets up the receiver to process the <a rel="gsdoc" href="#method$NSUndoManager-endUndoGrouping">[-endUndoGrouping]</a>
  at the end of the event loop.
           
     </p>
@@ -288,8 +288,8 @@
     <b>Availability:</b> OpenStep<br />
     <p>
       
-            Returns the maximium number of undo groupings the
-            reciever will maintain. The default value is 0
+            Returns the maximum number of undo groupings the
+            receiver will maintain. The default value is 0
             meaning the number is only limited by memory
             availability.
           
@@ -320,7 +320,7 @@
             This method posts an
             NSUndoManagerCheckpointNotification
             notification to allow the client to process
-            any pending changes before proceding. If there are
+            any pending changes before proceeding. If there are
             groupings on the redo stack, the top object is
             popped off the stack and invoked within a nested
             <a rel="gsdoc" href="#method$NSUndoManager-beginUndoGrouping">
@@ -328,7 +328,7 @@
             </a>
 
             /[-endUndoGrouping]. During this
-            pocessing, the operations registered for undo
+            processing, the operations registered for undo
             are recorded on the undo stack again. <br />
           
     </p>
@@ -338,7 +338,7 @@
     <b>Availability:</b> OpenStep<br />
     <p>
       
-            If the receiver can preform a redo, this method returns
+            If the receiver can perform a redo, this method returns
             the action name previously associated with the top
             grouping with
             <a rel="gsdoc" href="#method$NSUndoManager-setActionName:">
@@ -347,8 +347,8 @@
 
             . This name should identify the action to be redone. If
             there are no items on the redo stack this method
-            returns <code>nil</code>. If no action name hs been
-            set, this method returns an empty string.
+            returns <code>nil</code>. If no action name has
+            been set, this method returns an empty string.
           
     </p>
     <hr width="25%" align="left" />
@@ -409,9 +409,9 @@
               -disableUndoRegistration
             </a>
 
-            , this method does nothing. <br /> Unless the reciever
+            , this method does nothing. <br /> Unless the receiver
             implicitly groups operations by event, the this
-            method must have been preceeded with a
+            method must have been preceded with a
             <a rel="gsdoc" href="#method$NSUndoManager-beginUndoGrouping">
               [-beginUndoGrouping]
             </a>
@@ -429,14 +429,14 @@
             </a>
 
             processing, the redo stack is cleared. <br />
-            If the reciever
+            If the receiver
             <a rel="gsdoc" href="#method$NSUndoManager-groupsByEvent">
               [-groupsByEvent]
             </a>
 
             and this is the first call to this method since the
             last run loop processing, this method sets up the
-            reciever to process the
+            receiver to process the
             <a rel="gsdoc" href="#method$NSUndoManager-endUndoGrouping">
               [-endUndoGrouping]
             </a>
@@ -465,7 +465,7 @@
               [-removeAllActionsWithTarget:]
             </a>
 
-            is more apropriate.
+            is more appropriate.
           
     </p>
     <hr width="25%" align="left" />
@@ -478,13 +478,13 @@
             <var>target</var>. This method is is useful when a
             client of the undo manager will be unable to service
             any undo or redo events. Clients should call this
-            method in thier dealloc method, unless they are the
+            method in their dealloc method, unless they are the
             sole client of the undo manager in which case
             <a rel="gsdoc" href="#method$NSUndoManager-removeAllActions">
               [-removeAllActions]
             </a>
 
-            is more apropriate.
+            is more appropriate.
           
     </p>
     <hr width="25%" align="left" />
@@ -547,7 +547,7 @@
             </a>
 
             at the end of the current event loop. The grouping is
-            tunred on by default.
+            turned on by default.
           
     </p>
     <hr width="25%" align="left" />
@@ -570,7 +570,7 @@
     <b>Availability:</b> OpenStep<br />
     <p>
       
-            Sets the modes in which the reciever registers the
+            Sets the modes in which the receiver registers the
             calls with the current run loop to invoke
             <a rel="gsdoc" href="#method$NSUndoManager-endUndoGrouping">
               [-endUndoGrouping]
@@ -582,7 +582,7 @@
             </a>
 
             . This method first cancels any pending registrations in
-            the old modes and registers the invokation in the new
+            the old modes and registers the invocation in the new
             modes.
           
     </p>
@@ -597,7 +597,7 @@
               -undoNestedGroup
             </a>
 
-            . If current group of the reciever is the top group this
+            . If current group of the receiver is the top group this
             method first calls
             <a rel="gsdoc" href="#method$NSUndoManager-endUndoGrouping">
               -endUndoGrouping
@@ -614,7 +614,7 @@
     <b>Availability:</b> OpenStep<br />
     <p>
       
-            If the receiver can preform an undo, this method returns
+            If the receiver can perform an undo, this method returns
             the action name previously associated with the top
             grouping with
             <a rel="gsdoc" href="#method$NSUndoManager-setActionName:">
@@ -623,8 +623,8 @@
 
             . This name should identify the action to be undone. If
             there are no items on the undo stack this method
-            returns <code>nil</code>. If no action name hs been
-            set, this method returns an empty string.
+            returns <code>nil</code>. If no action name has
+            been set, this method returns an empty string.
           
     </p>
     <hr width="25%" align="left" />
@@ -670,11 +670,11 @@
             the undo stack and invoking them. This method posts an
             NSUndoManagerCheckpointNotification
             notification to allow the client to process
-            any pending changes before procedding. If there are
+            any pending changes before proceeding. If there are
             groupings on the undo stack, the top object is
             popped off the stack and invoked within a nested
             beginUndoGrouping/endUndoGrouping.
-            During this pocessing, the undo operations
+            During this processing, the undo operations
             registered for undo are recorded on the redo
             stack. <br />
           

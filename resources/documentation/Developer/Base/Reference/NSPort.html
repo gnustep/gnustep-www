@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.32</p>
-    <p><b>Date:</b> 2005/10/11 19:09:25</p>
+    <p><b>Version:</b> 1.33</p>
+    <p><b>Date:</b> 2005/11/01 20:37:34</p>
     <p><b>Copyright:</b> (C) 1997,2002 Free Software Foundation, Inc.</p>
 
         <div>
@@ -33,6 +33,11 @@
         </li>
         <li>
           <a href="#003000000000">Software documentation for the NSSocketPort class</a>
+        </li>
+        <li>
+          <a href="#004000000000">Software documentation for the
+        NSObject(NSPortDelegateMethods)
+        category</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
@@ -61,142 +66,26 @@
           <a rel="gsdoc" href="#class$NSPort">NSPort</a>
 
             implementation for network object
-            communications based on Unix domain sockets.
-            Can be used for interthread/interprocess communications
-            on the same host, but not between different hosts.
+            communications which can be used for
+            interthread/interprocess
+            communications on the same host, but not
+            between different hosts.
         
     </p>
     <hr width="50%" align="left" />
     <a href="#_NSMessagePort_ivars">Instance Variables</a>
     <br/><br/>
-    <b>Method summary</b>
-    <ul>
-      <li><a rel="gsdoc" href="NSPort.html#method$NSMessagePort+_portWithName:listener:">+_portWithName:listener:</a></li>
-      <li><a rel="gsdoc" href="NSPort.html#method$NSMessagePort-_listener">-_listener</a></li>
-      <li><a rel="gsdoc" href="NSPort.html#method$NSMessagePort-_name">-_name</a></li>
-      <li><a rel="gsdoc" href="NSPort.html#method$NSMessagePort-addHandle:forSend:">-addHandle:forSend:</a></li>
-      <li><a rel="gsdoc" href="NSPort.html#method$NSMessagePort-handlePortMessage:">-handlePortMessage:</a></li>
-      <li><a rel="gsdoc" href="NSPort.html#method$NSMessagePort-removeHandle:">-removeHandle:</a></li>
-    </ul>
-    <hr width="50%" align="left" />
-    <h3><a name="method$NSMessagePort+_portWithName:listener:">_portWithName:&nbsp;listener:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSMessagePort">NSMessagePort</a>*) <b>_portWithName:</b> (const unsigned char*)socketName<b> listener:</b> (BOOL)shouldListen;<br />
-    <b>Availability:</b> MacOS-X 10.0.0<br />
-This is a designated initialiser for the class.<br />
-    <p>
-      
-            This is the preferred initialisation method for
-            <code>NSMessagePort</code>. <var>socketName</var> is
-            the name of the socket in the port directory <br />
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMessagePort-_listener">_listener&nbsp;</a></h3>
-    - (int) <b>_listener</b>;<br />
-    <b>Availability:</b> MacOS-X 10.0.0<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMessagePort-_name">_name&nbsp;</a></h3>
-    - (const unsigned char*) <b>_name</b>;<br />
-    <b>Availability:</b> MacOS-X 10.0.0<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMessagePort-addHandle:forSend:">addHandle:&nbsp;forSend:&nbsp;</a></h3>
-    - (void) <b>addHandle:</b> (GSMessageHandle*)handle<b> forSend:</b> (BOOL)send;<br />
-    <b>Availability:</b> MacOS-X 10.0.0<br />
-    <p>
-      
-            Setup method: add new <var>send</var> or receive
-            connection <var>handle</var>.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMessagePort-handlePortMessage:">handlePortMessage:&nbsp;</a></h3>
-    - (void) <b>handlePortMessage:</b> (<a rel="gsdoc" href="NSPortMessage.html#class$NSPortMessage">NSPortMessage</a>*)m;<br />
-    <b>Availability:</b> MacOS-X 10.0.0<br />
-    <p>
-      
-            Delegates processing of a message.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSMessagePort-removeHandle:">removeHandle:&nbsp;</a></h3>
-    - (void) <b>removeHandle:</b> (GSMessageHandle*)handle;<br />
-    <b>Availability:</b> MacOS-X 10.0.0<br />
-    <p>
-      
-            This is called when a socket connection is broken. We
-            remove the connection <var>handle</var> from this
-            port and, if this was the last <var>handle</var> to a
-            remote port, we invalidate the port.
-          
-    </p>
-    <hr width="25%" align="left" />
 <a name="_NSMessagePort_ivars"/>    <br/><hr width="50%" align="left" />
     <h2>Instance Variables for NSMessagePort Class</h2>
-    <h3><a name="ivariable$NSMessagePort*eventListener">eventListener</a></h3>
-    @protected WSAEVENT <b>eventListener</b>;<br />
+    <h3><a name="ivariable$NSMessagePort*_internal">_internal</a></h3>
+    @protected void* <b>_internal</b>;<br />
     <p>
       
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSMessagePort*events">events</a></h3>
-    @protected NSMapTable* <b>events</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSMessagePort*handles">handles</a></h3>
-    @protected NSMapTable* <b>handles</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSMessagePort*listener">listener</a></h3>
-    @protected int <b>listener</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSMessagePort*myLock">myLock</a></h3>
-    @protected NSRecursiveLock* <b>myLock</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSMessagePort*name">name</a></h3>
-    @protected NSData* <b>name</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
           
     </p>
     <hr width="25%" align="left" />
@@ -496,14 +385,11 @@ This is a designated initialiser for the class.<br />
     <ul>
       <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort+existingPortWithNumber:onHost:">+existingPortWithNumber:onHost:</a></li>
       <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort+portWithNumber:onHost:forceAddress:listener:">+portWithNumber:onHost:forceAddress:listener:</a></li>
-      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-addHandle:forSend:">-addHandle:forSend:</a></li>
       <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-address">-address</a></li>
       <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-getFds:count:">-getFds:count:</a></li>
-      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-handleForPort:beforeDate:">-handleForPort:beforeDate:</a></li>
       <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-handlePortMessage:">-handlePortMessage:</a></li>
       <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-host">-host</a></li>
       <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-portNumber">-portNumber</a></li>
-      <li><a rel="gsdoc" href="NSPort.html#method$NSSocketPort-removeHandle:">-removeHandle:</a></li>
     </ul>
     <hr width="50%" align="left" />
     <h3><a name="method$NSSocketPort+existingPortWithNumber:onHost:">existingPortWithNumber:&nbsp;onHost:&nbsp;</a></h3>
@@ -538,16 +424,6 @@ This is a designated initialiser for the class.<br />
           
     </p>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSSocketPort-addHandle:forSend:">addHandle:&nbsp;forSend:&nbsp;</a></h3>
-    - (void) <b>addHandle:</b> (GSTcpHandle*)handle<b> forSend:</b> (BOOL)send;<br />
-    <b>Availability:</b> MacOS-X 10.0.0<br />
-    <p>
-      
-            Setup method: add new <var>send</var> or receive
-            connection <var>handle</var>.
-          
-    </p>
-    <hr width="25%" align="left" />
     <h3><a name="method$NSSocketPort-address">address&nbsp;</a></h3>
     - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>address</b>;<br />
     <b>Availability:</b> MacOS-X 10.0.0<br />
@@ -564,15 +440,6 @@ This is a designated initialiser for the class.<br />
       
             This is a callback method used by the NSRunLoop class
             to determine which descriptors to watch for the port.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSSocketPort-handleForPort:beforeDate:">handleForPort:&nbsp;beforeDate:&nbsp;</a></h3>
-    - (GSTcpHandle*) <b>handleForPort:</b> (<a rel="gsdoc" href="#class$NSSocketPort">NSSocketPort</a>*)recvPort<b> beforeDate:</b> (<a rel="gsdoc" href="NSDate.html#class$NSDate">NSDate</a>*)when;<br />
-    <b>Availability:</b> MacOS-X 10.0.0<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
           
     </p>
     <hr width="25%" align="left" />
@@ -601,19 +468,6 @@ This is a designated initialiser for the class.<br />
     <p>
       
             Returns port number of underlying socket.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSSocketPort-removeHandle:">removeHandle:&nbsp;</a></h3>
-    - (void) <b>removeHandle:</b> (GSTcpHandle*)handle;<br />
-    <b>Availability:</b> MacOS-X 10.0.0<br />
-    <p>
-      
-            This is called when a TCP/IP socket connection is
-            broken. We remove the connection <var>handle</var>
-            from this port and, if this was the last
-            <var>handle</var> to a remote port, we invalidate the
-            port.
           
     </p>
     <hr width="25%" align="left" />
@@ -684,6 +538,40 @@ This is a designated initialiser for the class.<br />
     </p>
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
+
+          <h1><a name="004000000000">
+        Software documentation for the
+        NSObject(NSPortDelegateMethods)
+        category
+      </a></h1>
+    <h2><a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSPortDelegateMethods)">NSPortDelegateMethods</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSPort.h</dd>
+      </dl>
+    </blockquote>
+    <b>Availability:</b> OpenStep<br />
+    <p>
+      
+          <em>Description forthcoming.</em>
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPort.html#method$NSObject(NSPortDelegateMethods)-handlePortMessage:">-handlePortMessage:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSObject(NSPortDelegateMethods)-handlePortMessage:">handlePortMessage:&nbsp;</a></h3>
+    - (void) <b>handlePortMessage:</b> (<a rel="gsdoc" href="NSPortMessage.html#class$NSPortMessage">NSPortMessage</a>*)aMessage;<br />
+    <b>Availability:</b> OpenStep<br />
+    <p>
+      
+            Subclasses of NSPort send this message to their
+            delegate on receipt of a port message.
+          
+    </p>
+    <hr width="25%" align="left" />
     <br />
     <a href="Base.html">Up</a>
     </font>
