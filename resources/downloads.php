@@ -199,6 +199,22 @@ download the <i>Recommended version</i>.</p>
 </tr>
 
 <tr>
+<td class="src">libpng</td>
+<td class="req">Recommended</td>
+<td class="stab">-</td>
+<td class="unst">-</td>
+<td>PNG image support</td>
+</tr>
+
+<tr>
+<td class="src">libjpg</td>
+<td class="req">Recommended</td>
+<td class="stab">-</td>
+<td class="unst">-</td>
+<td>JPEG image support</td>
+</tr>
+
+<tr>
 <td class="src">libxml</td>
 <td class="req">Required</td>
 <td class="stab">2.3.0</td>
