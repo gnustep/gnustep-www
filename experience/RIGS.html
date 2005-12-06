@@ -82,6 +82,37 @@ require '<i>rigs</i>'
 require '<i>Foundation</i>'
 require '<i>AppKit</i>'
 
+<font color="red"><i># Application delegate</i></font>
+<b>class</b> <font color="green"><b>NSWindowTest</b></font>
+
+    <b>def</b> <font color="blue"><b>initialize </b></font>
+	<font color="#000080"><b>@window</b></font> = <font color="green"><b>NSWindow</b></font>.alloc
+    <b>end</b>
+
+    <b>def</b> <font color="blue"><b>applicationWillFinishLaunching</b></font> (notification)
+	rect = <font color="green"><b>NSRect</b></font>.new(0, 0, 400, 200)
+	styleMask = NSTitledWindowMask | NSClosableWindowMask |
+	    NSMiniaturizableWindowMask | NSResizableWindowMask
+
+	<font color="#000080"><b>@window</b></font>.initWithContentRect_styleMask_backing_defer \
+	    (rect, styleMask, NSBackingStoreRetained, false)
+	<font color="#000080"><b>@window</b></font>.setTitle("GNUstep GUI working from Ruby")
+    <b>end</b>
+  
+    <b>def</b> <font color="blue"><b>applicationDidFinishLaunching</b></font> (notification)
+	<font color="#000080"><b>@window</b></font>.center()
+	<font color="#000080"><b>@window</b></font>.makeKeyAndOrderFront(self)
+    <b>end</b>
+
+    <b>def</b> <font color="blue"><b>applicationShouldTerminateAfterLastWindowClosed</b></font> (application)
+	true
+    <b>end</b>
+    
+<b>end</b>
+
+  
+<font color="red"><i># main</i></font>
+application = <font color="green"><b>NSApplication</b></font>.sharedApplication
 <font color=
 "red"><i># Application delegate</i></font><b>class</b><font color=
 "green"><b>NSWindowTest</b></font><b>def</b><font color=
