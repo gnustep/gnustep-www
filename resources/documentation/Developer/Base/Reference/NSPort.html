@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.33</p>
-    <p><b>Date:</b> 2005/11/01 20:37:34</p>
+    <p><b>Version:</b> 1.38</p>
+    <p><b>Date:</b> 2005/11/22 06:30:51</p>
     <p><b>Copyright:</b> (C) 1997,2002 Free Software Foundation, Inc.</p>
 
         <div>
@@ -168,7 +168,18 @@
     <p>
       
             Basic constructor returns object capable of send and
-            receive.
+            receive. <br /> By default, the port returned is
+            an instance of
+            <a rel="gsdoc" href="#class$NSMessagePort">NSMessagePort</a>
+
+              capable only of host-local communication.
+              However, the <code>NSPortIsMessagePort</code>
+              user default may be set to <code>NO</code> to change
+              the behavior so that the returned value is an
+              instance of the
+              <a rel="gsdoc" href="#class$NSSocketPort">NSSocketPort</a>
+
+                class.
           
     </p>
     <hr width="25%" align="left" />
@@ -208,7 +219,12 @@
     <p>
       
             Basic initializer sets up object capable of send and
-            receive.
+            receive. See
+            <a rel="gsdoc" href="#method$NSPort+port">
+              +port
+            </a>
+
+            for more details.
           
     </p>
     <hr width="25%" align="left" />
@@ -565,6 +581,7 @@
     <h3><a name="method$NSObject(NSPortDelegateMethods)-handlePortMessage:">handlePortMessage:&nbsp;</a></h3>
     - (void) <b>handlePortMessage:</b> (<a rel="gsdoc" href="NSPortMessage.html#class$NSPortMessage">NSPortMessage</a>*)aMessage;<br />
     <b>Availability:</b> OpenStep<br />
+An empty method provided for subclasses to override.<br />
     <p>
       
             Subclasses of NSPort send this message to their

@@ -12,8 +12,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.20 $</p>
-    <p><b>Date:</b> $Date: 2005/11/06 13:56:27 $</p>
+    <p><b>Version:</b> $Revision: 1.21 $</p>
+    <p><b>Date:</b> $Date: 2005/12/16 17:36:52 $</p>
     <p><b>Copyright:</b> (C) 2005 Free Software Foundation, Inc.</p>
 
     
@@ -369,7 +369,7 @@
 
 	        May be set to <code>unix</code> to enforce unix style path
 		handling, or <code>windows</code> to enforce mswindows style
-		path handling, or anu other value (including unset) for the
+		path handling, or any other value (including unset) for the
 		default behavior where both styles of paths should be
 		managed in the best way possible.
 	              </p>
@@ -377,7 +377,7 @@
 	      
         <p>
 
-	        The option to enforce either upre unix or pure windows style
+	        The option to enforce either pure unix or pure windows style
 		path handling (and hence this environment variable) may be
 		removed in a later release.
 	              </p>
@@ -413,60 +413,6 @@
         <p>
 
 		Used in place of GNUSTEP_TARGET_OS if the other is missing.
-	              </p>
-        
-	    
-      </dd>
-      <dt>GNUSTEP_LOCAL_ROOT</dt>
-      <dd>
-        
-	      
-        <p>
-
-		Used to specify the GNUstep root directory for local
-		(non-system) resources.  Typically all locally produced
-		or contributed software is installed relative to this.
-	              </p>
-        
-	    
-      </dd>
-      <dt>GNUSTEP_NETWORK_ROOT</dt>
-      <dd>
-        
-	      
-        <p>
-
-		Used to specify the GNUstep root directory for local
-		(non-system) resources that are intended to be shared
-		across a local network.  Typically this is an NFS exported
-		directory shared by many machines.  It provides an
-		alternative to GNUSTEP_LOCAL_ROOT.
-	              </p>
-        
-	    
-      </dd>
-      <dt>GNUSTEP_SYSTEM_ROOT</dt>
-      <dd>
-        
-	      
-        <p>
-
-		Used to specify the GNUstep system root directory ... all
-		system libraries, tools, applications, headers, resources
-		in general are located relative to this.
-	              </p>
-        
-	    
-      </dd>
-      <dt>GNUSTEP_USER_ROOT</dt>
-      <dd>
-        
-	      
-        <p>
-
-		This environment variable, commonly set by the make system,
-		is <strong>not</strong> used by GNUstep programs.  Instead
-		values from the GNUstep configuration file are used (see later).
 	              </p>
         
 	    
@@ -522,6 +468,20 @@
 		user defaults system.
 	              </p>
         
+	    
+      </dd>
+      <dt>GNUSTEP_CONFIG_FILE</dt>
+      <dd>
+        
+	      This has no effect unless the base library has been
+	      configured/built with the
+	      <code>--enable-environment-config-file</code> option.<br />
+	      If it is operational, the environment variable overrides the
+	      normal path to the gnustep config file used to determine the
+	      locations of paths for the gnustep system (see later).<br />
+	      This is provided to support the odd situation where you may
+	      want to simultaneously run applications using different sets
+	      of resources but linked to a lingle copy of the base library.
 	    
       </dd>
       <dt>HOMEDRIVE</dt>
@@ -675,29 +635,48 @@
 	    configured and/or what operating system it was configured
 	    on. On a GNU/Linux system, the default would be
 	    /etc/GNUstep/GNUstep.conf, for instance.<br />
-	    The location of this file can be overridden using the
-	    GNUSTEP_CONFIG_FILE environment variable (unless the base libarary
-	    had this feature specifically turned off using the
-	    <code>--disable-environment-config-file</code> option when the
-	    <code>configure</code> script was run prior to building it.<br />
-	    The configuration file is not actually required to exist.
-	    If it does not exist, then default values will be used
-	    for the standard path locations.<br />
+	    The location of this file can be specified when the base library
+	    is configured ... using the <code>--with-config-file=</code>
+	    option of the <code>configure</code> script.<br />
+	    The configuration file is not actually required to exist, and
+	    if it does not exist, then default values will be used.
+	    for the standard path locations (these default values may
+	    be specified using the <code>--with-default-config=</code>
+	    option of the <code>configure</code> script.<br />
+	    If you want to <em>force</em> the internal defaults to be used,
+	    you can use <code>--with-config-file=</code> to specify a path
+	    with a trailing &apos;/&apos; (ie with no filename) as the base library
+	    will refrain from trying to load configuration from a file
+	    of no name.<br />
 	    System paths are defined by the following:
 	      </p>
     <dl>
       <dt>GNUSTEP_SYSTEM_ROOT</dt>
       <dd>
-        path in the file hierarchy for system/os things.
+        
+		Used to specify the GNUstep system root directory ... all
+		system libraries, tools, applications, headers, resources
+		in general are located relative to this.
+	      
       </dd>
       <dt>GNUSTEP_NETWORK_ROOT</dt>
       <dd>
-        path to network mounted resources.
+        
+		Used to specify the GNUstep root directory for local
+		(non-system) resources that are intended to be shared
+		across a local network.  Typically this is an NFS exported
+		directory shared by many machines.  It provides an
+		alternative to GNUSTEP_LOCAL_ROOT but is usually defined
+		to the same value.
+	      
       </dd>
       <dt>GNUSTEP_LOCAL_ROOT</dt>
       <dd>
-        path for non-system resources for the specific
-	      machine.
+        
+		Used to specify the GNUstep root directory for local
+		(non-system) resources.  Typically all locally produced
+		or contributed software is installed relative to this.
+	      
       </dd>
     </dl>
     <p>
@@ -709,11 +688,15 @@
       <dd>
         Path for user specific GNUstep resources (eg. &apos;GNUstep&apos;).
 	    Relative to the user&apos;s home directory.
+	    
       </dd>
       <dt>GNUSTEP_USER_CONFIG_FILE</dt>
       <dd>
-        Name of user configuration file (eg. &apos;.GNUsteprc&apos;)
-	    relative to the user&apos;s home directory.
+        Name of user configuration file (eg. &apos;.GNUstep.conf&apos;)
+	    relative to the user&apos;s home directory.<br />
+	    Can be specified as an empty string to ensure
+	    that no user specific config file is loaded.
+	    
       </dd>
       <dt>GNUSTEP_USER_DEFAULTS_DIR</dt>
       <dd>
@@ -722,6 +705,7 @@
 	    On mswindows this may be set to be &apos;:REGISTRY:&apos; to have defaults
 	    stored in the windows registry rather than in the standard file
 	    format.
+	    
       </dd>
     </dl>
     <p>
@@ -730,60 +714,59 @@
 	    home directory for that user on the system<br />
 	    On unix, that is the user&apos;s home directory from the password file,
 	    while on windows  it&apos;s the value given by the
-	    Win32GetUserProfileDirectory() function.
+	    HOMEDRIVE and HOMEPATH environment variables (or the USERPROFILE
+	    environment variable if the others can&apos;t be used).
 	      </p>
     <p>
 
 	    Support is provided to locate OS/PLATFORM directories. A conf file
-	    may provide the definitions below:
+	    may provide the definitions below (with examples typical for
+	    when GNUstep is installed according to the Linux
+	    Filesystem Hierarchy standard):
 	      </p>
     <dl>
-      <dt>SYS_PREFS</dt>
-      <dd>
-        Place for system/os preferences (eg. &apos;/etc&apos;)
-      </dd>
-      <dt>SYS_APPS</dt>
+      <dt>GNUSTEP_SYS_APPS</dt>
       <dd>
         Place for system/os applications (eg. &apos;/bin&apos;)
       </dd>
-      <dt>SYS_LIBS</dt>
+      <dt>GNUSTEP_SYS_LIBS</dt>
       <dd>
         Place for system/os shared libraries (eg. &apos;/lib&apos;)
       </dd>
-      <dt>SYS_ADMIN</dt>
+      <dt>GNUSTEP_SYS_ADMIN</dt>
       <dd>
         Place for system administration tools (eg. &apos;/sbin&apos;)
       </dd>
-      <dt>PLATFORM_APPS</dt>
+      <dt>GNUSTEP_PLATFORM_APPS</dt>
       <dd>
         Place for non-gnustep applications (eg. &apos;/usr/bin&apos;)
       </dd>
-      <dt>PLATFORM_LIBS</dt>
+      <dt>GNUSTEP_PLATFORM_LIBS</dt>
       <dd>
         Place for application shared libraries
 	      (eg. &apos;/usr/lib&apos;)
       </dd>
-      <dt>PLATFORM_RESOURCES</dt>
+      <dt>GNUSTEP_PLATFORM_RESOURCES</dt>
       <dd>
         Place for shared application resources
 	      (eg. &apos;/usr/share&apos;)
       </dd>
-      <dt>PLATFORM_ADMIN</dt>
+      <dt>GNUSTEP_PLATFORM_ADMIN</dt>
       <dd>
         Place for non-critical administrative tools
 	      (eg. &apos;/usr/sbin&apos;)
       </dd>
-      <dt>PLATFORM_LOCAL_APPS</dt>
+      <dt>GNUSTEP_PLATFORM_LOCAL_APPS</dt>
       <dd>
         Place for machine local applications
 	      (eg. &apos;/usr/local/bin&apos;)
       </dd>
-      <dt>PLATFORM_LOCAL_LIBS</dt>
+      <dt>GNUSTEP_PLATFORM_LOCAL_LIBS</dt>
       <dd>
         Place for machine local shared libraries
 	      (eg. &apos;/usr/local/lib/&apos;)
       </dd>
-      <dt>PLATFORM_LOCAL_RESOURCES</dt>
+      <dt>GNUSTEP_PLATFORM_LOCAL_RESOURCES</dt>
       <dd>
         Place for machine local resources.
 	      (eg. &apos;/usr/local/share&apos;)
@@ -793,6 +776,33 @@
 
 	    These add to the path for NSSystemDomainMask, or
 	    NSLocalDomainMask as appropriate.
+	      </p>
+    <p>
+
+	    The exact format of the configuration file is expected to 
+	    be that of a basic unix &quot;conf&quot; style file, with one
+	    <em>key = value</em> per line (the format a unix shell
+	    can &apos;source&apos; in order to define shell variables).<br />
+	    This configuration file uses the escape sequence and
+	    quoting conventions of the standard bourne shell.<br />
+	    The only Keys permitted are those listed in the
+	    documentation, and all consist of uppercase letters, digits,
+	    and underscores, and must not begin with a digit.<br />
+	    A value may be any quoted string (or an unquoted string
+	    containing no white space).<br />
+	    Lines beginning with a hash &apos;#&apos; are deemed comment lines
+	    and ignored.<br />
+	    The backslash character may be used as an escape character
+	    anywhere in the file  except within a singly quoted string
+	    (where it is taken literally).<br />
+	    A backslash followed immediately by a newline (except in a
+	    singly quoted string) is removed completely along with the
+	    newline ... it thus serves to join lines so that they are
+	    treated as a single line.<br />
+	    NB. Since ms-windows uses backslash characters in paths,
+	    it is a good idea to specify path values in the config file
+	    as singly quoted strings to avoid having to double all
+	    occurrences of the backslash.
 	      </p>
 
 	      <h3><a name="001001005000">Relocatable packages</a></h3>
@@ -827,6 +837,23 @@
 	    and configure various relative paths in that directory, then
 	    move the directory around wherever you like.
 	      </p>
+    <p>
+
+	    If you wish to <em>lock down</em> a production system for
+	    distribution as a relocatable package, so it can be installed
+	    anywhere, but users can&apos;t accidentally change the config file
+	    and mess up paths, you can specify the config file name as
+	    a path with a trailing slash so that the base library will
+	    <em>not</em> read it, and will use the builtin default values.<br />
+	    To do this, you would configure using the options
+	    <code>--with-config-file=./</code> and
+	    <code>--with-default-file=myConfig</code> where <em>myConfig</em>
+	    is a file containing the paths you want to use relative to the
+	    location the base library gets installed in.<br />
+	    The paths from that file will be built in to the base library
+	    as defaults, and library will use them rather than attempting
+	    to read a config file at runtime.
+	      </p>
 
 	      <h3><a name="001001006000">.GNUstep.conf files</a></h3>
     <p>
@@ -841,27 +868,27 @@
 	      </p>
     <p>
 
-	    The locations of the directories in which user specific files and
-	    the user defaults database are stored may be defined in the
-	    file given by GNUSTEP_USER_CONFIG_FILE (by default,
-	    <code>.GNUstep.conf</code>).<br />
-	    If no location is given for user specific files, they are stored
-	    in the locaton given by GNUSTEP_USER_DIR (by default, the
-	    <code>GNUstep</code> subdirectory of the users home
-	    directory).<br />
-	    If a separate location is not given for the defaults database, it
-	    is stored in the subdirectory of the users home directory given by
-	    GNUSTEP_USER_DEFAULTS_DIR (by default, the
-	    <code>GNUstep/Defaults</code> subdirectory).<br />
-	      </p>
-    <p>
-
-	    The presence of a <code>.GNUstep.conf</code> file in a users home
+	    Unless disabled (as specified above) the presence of a
+	    <code>.GNUstep.conf</code> file in a users home
 	    directory permits the user to customize file locations using all
 	    the same commands as the system directory, though any attempt
 	    to redefine GNUSTEP_USER_CONFIG_FILE is of course ignored.<br />
 	    Attempts to redefine the users home directory at this level
 	    are also ignored.
+	      </p>
+    <p>
+
+	    User specific files are stored in the locaton given by
+	    GNUSTEP_USER_DIR (by default, the
+	    <code>GNUstep</code> subdirectory of the users home
+	    directory).<br />
+	    The defaults database for a user is stored in the
+	    subdirectory of the users home directory given by
+	    GNUSTEP_USER_DEFAULTS_DIR (by default, the
+	    <code>GNUstep/Defaults</code> subdirectory).
+	    On mswindows this may be set to be &apos;:REGISTRY:&apos; to have defaults
+	    stored in the windows registry rather than in the standard file
+	    format.
 	      </p>
     <div>
 
@@ -977,7 +1004,6 @@
         <li><a rel="gsdoc" href="NSConnection.html#category$NSObject(NSConnectionDelegate)">(NSConnectionDelegate)</a></li>
         <li><a rel="gsdoc" href="NSFileManager.html#category$NSObject(NSFileManagerHandler)">(NSFileManagerHandler)</a></li>
         <li><a rel="gsdoc" href="NSKeyValueCoding.html#category$NSObject(NSKeyValueCoding)">(NSKeyValueCoding)</a></li>
-        <li><a rel="gsdoc" href="NSConnection.html#category$NSObject(NSPortCoder)">(NSPortCoder)</a></li>
         <li><a rel="gsdoc" href="NSRunLoop.html#category$NSObject(OptionalPortRunLoop)">(OptionalPortRunLoop)</a></li>
         <li><a rel="gsdoc" href="NSObject.html#category$NSObject(TimedPerformers)">(TimedPerformers)</a></li>
       </ul>

@@ -163,8 +163,9 @@
         and where those tags may be placed.  The reader is encouraged to
         consult the DTD directly on any points that the present document leaves
         unclear.  The DTD is stored under
-        <code>$GNUSTEP_ROOT/System/Library/DTDs</code> in a standard GNUstep
-        installation.
+        <code>GNUSTEP_SYSTEM_ROOT/System/Library/DTDs</code> in a standard
+	GNUstep installation. .. where GNUSTEP_SYSTEM_ROOT is defined in
+	the GNUstep configuration file (GNUstep.conf).
           </p>
     <p>
 
@@ -1062,9 +1063,13 @@
             <code>init</code> attribute (also taking
             &quot;<code>yes</code>&quot; / &quot;<code>no</code>&quot;) specifies whether this is
             the designated constructor.  An optional <code>override</code>
-            attribute specifies whether this method should be overridden
-            (if &quot;yes&quot; enter &quot;<code>subclass</code>&quot;, if &quot;no&quot; enter
-            &quot;<code>never</code>&quot;).
+            attribute specifies whether this method should be overridden.
+            If it <em>must</em> be overridden enter &quot;<code>subclass</code>&quot;,
+	    if it must <em>not</em> be overridden enter <code>never</code>&quot;,
+	    if it is an empty/dummy implementation which is intended to be
+	    overridden enter <code>dummy</code>, otherwise (for most methods
+	    which may be but are not particularly designed to be overridden)
+	    leave this attribute unset.
             
         <p>
 

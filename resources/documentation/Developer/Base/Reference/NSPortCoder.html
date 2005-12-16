@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.51</p>
-    <p><b>Date:</b> 2005/10/07 09:57:51</p>
+    <p><b>Version:</b> 1.52</p>
+    <p><b>Date:</b> 2005/11/28 15:41:33</p>
     <p><b>Copyright:</b> (C) 1997,2000 Free Software Foundation, Inc.</p>
 
         <div>
@@ -26,7 +26,11 @@
           <a href="#001000000000">Software documentation for the NSPortCoder class</a>
         </li>
         <li>
-          <a href="#002000000000">Software documentation for the NSPortCoder(Private)
+          <a href="#002000000000">Software documentation for the NSObject(NSPortCoder)
+        category</a>
+        </li>
+        <li>
+          <a href="#003000000000">Software documentation for the NSPortCoder(Private)
         category</a>
         </li>
       </ol>
@@ -165,6 +169,81 @@
     <hr width="25%" align="left" />
 
           <h1><a name="002000000000">
+        Software documentation for the NSObject(NSPortCoder)
+        category
+      </a></h1>
+    <h2><a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSPortCoder)">NSPortCoder</a>)</h2>
+    <blockquote>
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>Foundation/NSPortCoder.h</dd>
+      </dl>
+    </blockquote>
+    <b>Availability:</b> OpenStep<br />
+    <p>
+      
+          This informal protocol allows an object to control the
+          details of how an object is sent over the wire in
+          distributed objects Port communications.
+        
+    </p>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSObject(NSPortCoder)-classForPortCoder">-classForPortCoder</a></li>
+      <li><a rel="gsdoc" href="NSPortCoder.html#method$NSObject(NSPortCoder)-replacementObjectForPortCoder:">-replacementObjectForPortCoder:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+    <h3><a name="method$NSObject(NSPortCoder)-classForPortCoder">classForPortCoder&nbsp;</a></h3>
+    - (Class) <b>classForPortCoder</b>;<br />
+    <b>Availability:</b> OpenStep<br />
+    <p>
+      
+            Must return the class that will be created on the
+            remote side of the connection. If the class to be
+            created is not the same as that of the object
+            returned by replacementObjectForPortCoder: then
+            the class must be capable of recognising the object it
+            actually gets in its initWithCoder: method. The
+            default operation is to return NSDistantObject
+            unless the object is being sent bycopy, in which
+            case the objects actual class is returned. To force
+            bycopy operation the object should return its own
+            class. <br /> Override to substitute class when an
+            instance is being serialized by an
+            <a rel="gsdoc" href="#class$NSPortCoder">NSPortCoder</a>
+
+              . Default implementation returns
+              <a rel="gsdoc" href="NSObject.html#method$NSObject-classForCoder">
+                -classForCoder
+              </a>
+
+              .
+          
+    </p>
+    <hr width="25%" align="left" />
+    <h3><a name="method$NSObject(NSPortCoder)-replacementObjectForPortCoder:">replacementObjectForPortCoder:&nbsp;</a></h3>
+    - (id) <b>replacementObjectForPortCoder:</b> (<a rel="gsdoc" href="#class$NSPortCoder">NSPortCoder</a>*)aCoder;<br />
+    <b>Availability:</b> OpenStep<br />
+    <p>
+      
+            This message is sent to an object about to be encoded
+            for sending over the wire. The default action is to
+            return an NSDistantObject which is a local proxy for
+            the object unless the object is being sent bycopy, in
+            which case the actual object is returned. To force
+            bycopy, an object should return itself. <br />
+            Returns the actual object to be encoded for sending
+            over the network on a Distributed Objects connection.
+            <br /> The default implementation returns self if
+            the receiver is being sent <em>bycopy</em> and returns
+            a proxy otherwise. <br /> Subclasses may override this
+            method to change this behavior, eg. to ensure that
+            they are always copied.
+          
+    </p>
+    <hr width="25%" align="left" />
+
+          <h1><a name="003000000000">
         Software documentation for the NSPortCoder(Private)
         category
       </a></h1>

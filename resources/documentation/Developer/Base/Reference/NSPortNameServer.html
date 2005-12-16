@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.58</p>
-    <p><b>Date:</b> 2005/10/11 19:09:25</p>
+    <p><b>Version:</b> 1.62</p>
+    <p><b>Date:</b> 2005/11/28 15:41:33</p>
     <p><b>Copyright:</b> (C) 1998,1999,2003 Free Software Foundation, Inc.</p>
 
         <div>
@@ -125,16 +125,29 @@
     <b>Availability:</b> OpenStep<br />
     <p>
       
-            Returns the default port name server for the
-            process. <br /> The MacOS-X documentation says
-            that this is a nameserver dealing with NSMessagePort
-            objects, but that is incompatible with
-            OpenStep/OPENSTEP/NeXTstep
-            behavior, so GNUstep returns a name server which
-            deals with NSSocketPort objects capable of being used
-            for inter-host communications... unless it is running
-            in compatibility mode. <br /> This may change in future
-            releases.
+            
+    </p>
+    <p>
+
+              Returns the default port name server for the
+              process. <br /> This is a nameserver for
+              host-local connections private to the current
+              user. If you with to create public connections or
+              connections to other hosts, you must use
+              <a rel="gsdoc" href="#method$NSSocketPortNameServer+sharedInstance">[NSSocketPortNameServer&nbsp;+sharedInstance]</a>
+ instead.
+                </p>
+    <p>
+      
+            This default behavior may be altered by setting the
+            <code>NSPortIsMessagePort</code> user default to
+            <code>NO</code>, in which case an
+            <a rel="gsdoc" href="#class$NSSocketPortNameServer">NSSocketPortNameServer</a>
+
+              will be used as the default system name server and
+              you will have to use
+              <a rel="gsdoc" href="#method$NSMessagePortNameServer+sharedInstance">[NSMessagePortNameServer&nbsp;+sharedInstance]</a>
+ for host-local, private connections.
           
     </p>
     <hr width="25%" align="left" />
@@ -152,9 +165,9 @@
             not guarantee that a port does with that
             <var>name</var> does not exist. <br /> This is a
             convenience method calling
-            
+            <a rel="gsdoc" href="#method$NSPortNameServer-portForName:onHost:">
               -portForName:onHost:
-            
+            </a>
 
             with a <code>nil</code> host argument.
           
@@ -232,12 +245,8 @@ Subclasses <strong>should</strong> override this method.<br />
           <a rel="gsdoc" href="NSConnection.html#class$NSConnection">NSConnection</a>
 
             ) between hosts. <br /> Use the
-            
-              +sharedInstance
-            
-
-            method to get a nameserver, rather than allocating
-            and initialising one.
+            <a rel="gsdoc" href="#method$NSSocketPortNameServer+sharedInstance">[NSSocketPortNameServer&nbsp;+sharedInstance]</a>
+ method to get a nameserver, rather than allocating and initialising one.
         
     </p>
     <hr width="50%" align="left" />

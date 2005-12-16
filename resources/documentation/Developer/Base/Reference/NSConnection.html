@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.147</p>
-    <p><b>Date:</b> 2005/11/06 13:53:39</p>
+    <p><b>Version:</b> 1.152</p>
+    <p><b>Date:</b> 2005/11/28 15:41:32</p>
     <p><b>Copyright:</b> (C) 
       1994, 1995, 1996, 1997, 2000 Free Software Foundation, Inc.
     </p>
@@ -38,10 +38,6 @@
         <li>
           <a href="#003000000000">Software documentation for the
         NSObject(NSConnectionDelegate)
-        informal protocol</a>
-        </li>
-        <li>
-          <a href="#004000000000">Software documentation for the NSObject(NSPortCoder)
         informal protocol</a>
         </li>
       </ol>
@@ -137,6 +133,7 @@
               -initWithReceivePort:sendPort:
             </a>
 
+            <br /> Both ports must be of the same type.
           
     </p>
     <hr width="25%" align="left" />
@@ -165,6 +162,15 @@
                 </p>
     <p>
       
+            
+    </p>
+    <p>
+
+              Use
+              <a rel="gsdoc" href="NSPortNameServer.html#class$NSSocketPortNameServer">NSSocketPortNameServer</a>
+for connections to remote hosts.    </p>
+    <p>
+      
           
     </p>
     <hr width="25%" align="left" />
@@ -188,7 +194,9 @@
     <p>
 
               The nameserver <em>server</em> is used to look up the
-              send port to be used for the connection.
+              send port to be used for the connection. <br /> Use
+              <a rel="gsdoc" href="NSPortNameServer.html#method$NSSocketPortNameServer+sharedInstance">[NSSocketPortNameServer&nbsp;+sharedInstance]</a>
+ for connections to remote hosts.
                 </p>
     <p>
       
@@ -254,7 +262,7 @@
             connection is invalidated, it won&apos;t be cleaned
             up until this thread calls this method again. The
             connection and it&apos;s ports could hang around for
-            a very long time.
+            a very <strong>long</strong> time.
           
     </p>
     <hr width="25%" align="left" />
@@ -277,7 +285,8 @@
             This method calls
             <a rel="gsdoc" href="#method$NSConnection+connectionWithRegisteredName:host:usingNameServer:">+connectionWithRegisteredName:host:usingNameServer:</a>
  to get a connection, then sends it a <a rel="gsdoc" href="#method$NSConnection-rootProxy">-rootProxy</a>
- message to get a proxy for the root object being vended by the remote connection. Returns the proxy or <code>nil</code> if it couldn&apos;t find a connection or if the root object for the connection has not been set.
+ message to get a proxy for the root object being vended by the remote connection. Returns the proxy or <code>nil</code> if it couldn&apos;t find a connection or if the root object for the connection has not been set. <br /> Use <a rel="gsdoc" href="NSPortNameServer.html#method$NSSocketPortNameServer+sharedInstance">[NSSocketPortNameServer&nbsp;+sharedInstance]</a>
+ for connections to remote hosts.
           
     </p>
     <hr width="25%" align="left" />
@@ -1039,65 +1048,6 @@ This is a designated initialiser for the class.<br />
             An old fashioned synonym for
             <a rel="gsdoc" href="#method$NSObject-connection:shouldMakeNewConnection:">-connection:shouldMakeNewConnection:</a>
  - don&apos;t use this.
-          
-    </p>
-    <hr width="25%" align="left" />
-
-          <h1><a name="004000000000">
-        Software documentation for the NSObject(NSPortCoder)
-        informal protocol
-      </a></h1>
-    <h2><a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSPortCoder)">NSPortCoder</a>)</h2>
-    <blockquote>
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>Foundation/NSConnection.h</dd>
-      </dl>
-    </blockquote>
-    <b>Availability:</b> OpenStep<br />
-    <p>
-      
-          This informal protocol allows an object to control the
-          details of how an object is sent over the wire in
-          distributed objects Port communications.
-        
-    </p>
-    <b>Method summary</b>
-    <ul>
-      <li><a rel="gsdoc" href="NSConnection.html#method$NSObject(NSPortCoder)-classForPortCoder">-classForPortCoder</a></li>
-      <li><a rel="gsdoc" href="NSConnection.html#method$NSObject(NSPortCoder)-replacementObjectForPortCoder:">-replacementObjectForPortCoder:</a></li>
-    </ul>
-    <hr width="50%" align="left" />
-    <h3><a name="method$NSObject(NSPortCoder)-classForPortCoder">classForPortCoder&nbsp;</a></h3>
-    - (Class) <b>classForPortCoder</b>;<br />
-    <b>Availability:</b> OpenStep<br />
-    <p>
-      
-            Must return the class that will be created on the
-            remote side of the connection. If the class to be
-            created is not the same as that of the object
-            returned by replacementObjectForPortCoder: then
-            the class must be capable of recognising the object it
-            actually gets in its initWithCoder: method. The
-            default operation is to return NSDistantObject
-            unless the object is being sent bycopy, in which
-            case the objects actual class is returned. To force
-            bycopy operation the object should return its own
-            class.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$NSObject(NSPortCoder)-replacementObjectForPortCoder:">replacementObjectForPortCoder:&nbsp;</a></h3>
-    - (id) <b>replacementObjectForPortCoder:</b> (<a rel="gsdoc" href="NSPortCoder.html#class$NSPortCoder">NSPortCoder</a>*)aCoder;<br />
-    <b>Availability:</b> OpenStep<br />
-    <p>
-      
-            This message is sent to an object about to be encoded
-            for sending over the wire. The default action is to
-            return an NSDistantObject which is a local proxy for
-            the object unless the object is being sent bycopy, in
-            which case the actual object is returned. To force
-            bycopy, an object should return itself.
           
     </p>
     <hr width="25%" align="left" />

@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.34</p>
-    <p><b>Date:</b> 2005/11/06 13:53:39</p>
+    <p><b>Version:</b> 1.35</p>
+    <p><b>Date:</b> 2005/11/28 15:41:33</p>
     <p><b>Copyright:</b> (C) 1997 Free Software Foundation, Inc.</p>
 
         <div>
@@ -79,8 +79,8 @@
             to create network connections (sockets), secure
             connections and also allows you to use
             compression with these files and connections
-            (as long as GNUstep Base was compiled with the zlib
-            library).
+            (as <strong>long</strong> as GNUstep Base was compiled
+            with the zlib library).
               </p>
     <p>
       
@@ -109,11 +109,6 @@
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslConnect">-sslConnect</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslDisconnect">-sslDisconnect</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslSetCertificate:privateKey:PEMpasswd:">-sslSetCertificate:privateKey:PEMpasswd:</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSFileHandle(GSCompatibility)+fileHandleAsServerAtAddress:service:protocol:">+fileHandleAsServerAtAddress:service:protocol:</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSFileHandle(GSCompatibility)-socketAddress">-socketAddress</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/Local/Library/Documentation/Libraries/Cmd/CmdBase.html#method$NSFileHandle(Printf)-printWithFormat:arguments:">-printWithFormat:arguments:</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/Local/Library/Documentation/Libraries/Cmd/CmdBase.html#method$NSFileHandle(Printf)-printf:,...">-printf:,...</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/Local/Library/Documentation/Libraries/Cmd/CmdBase.html#method$NSFileHandle(Printf)-puts:">-puts:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle+fileHandleForReadingAtPath:">+fileHandleForReadingAtPath:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle+fileHandleForUpdatingAtPath:">+fileHandleForUpdatingAtPath:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle+fileHandleForWritingAtPath:">+fileHandleForWritingAtPath:</a></li>
@@ -413,7 +408,8 @@ This is a designated initialiser for the class.<br />
     <b>Availability:</b> OpenStep<br />
     <p>
       
-            Reads up to maximum unsigned int bytes from file or
+            Reads up to maximum <strong>unsigned</strong>
+            <strong>int</strong> bytes from file or
             communications channel into return data.
           
     </p>
@@ -1066,10 +1062,14 @@ This is a designated initialiser for the class.<br />
     - (BOOL) <b>sslAccept</b>;<br />
     <b>Availability:</b> Base 0.0.0<br />
 <br />
+An empty method provided for subclasses to override.<br />
     <p>
       
             Establishes an SSL connection from the system
-            that the handle is talking to.
+            that the handle is talking to. <br /> This is
+            implented by an SSL handling subclass. <br /> The
+            default implementation just returns <code>NO</code>
+            .
           
     </p>
     <hr width="25%" align="left" />
@@ -1077,10 +1077,14 @@ This is a designated initialiser for the class.<br />
     - (BOOL) <b>sslConnect</b>;<br />
     <b>Availability:</b> Base 0.0.0<br />
 <br />
+An empty method provided for subclasses to override.<br />
     <p>
       
             Establishes an SSL connection to the system
-            that the handle is talking to.
+            that the handle is talking to. <br /> This is
+            implented by an SSL handling subclass. <br /> The
+            default implementation just returns <code>NO</code>
+            .
           
     </p>
     <hr width="25%" align="left" />
@@ -1088,6 +1092,7 @@ This is a designated initialiser for the class.<br />
     - (void) <b>sslDisconnect</b>;<br />
     <b>Availability:</b> Base 0.0.0<br />
 <br />
+An empty method provided for subclasses to override.<br />
     <p>
       
             Shuts down the SSL connection to the system that the
@@ -1099,6 +1104,7 @@ This is a designated initialiser for the class.<br />
     - (void) <b>sslSetCertificate:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)certFile<b> privateKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)privateKey<b> PEMpasswd:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)PEMpasswd;<br />
     <b>Availability:</b> Base 0.0.0<br />
 <br />
+An empty method provided for subclasses to override.<br />
     <p>
       
             Sets the certificate to be used to identify this

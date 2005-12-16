@@ -803,9 +803,9 @@ is exactly the same as    </p>
     <p>
       
           This macro saves the name and location of the function
-          in which the macro is used, along with a short string
-          <var>msg</var> as the tag associated with a recorded
-          <var>object</var>.
+          in which the macro is used, along with a
+          <strong>short</strong> string <var>msg</var> as the
+          tag associated with a recorded <var>object</var>.
         
     </p>
     <hr width="25%" align="left" />
@@ -1033,9 +1033,9 @@ is exactly the same as    </p>
     <p>
       
           This macro saves the name and location of the method in
-          which the macro is used, along with a short string
-          <var>msg</var> as the tag associated with a recorded
-          <var>object</var>.
+          which the macro is used, along with a
+          <strong>short</strong> string <var>msg</var> as the
+          tag associated with a recorded <var>object</var>.
         
     </p>
     <hr width="25%" align="left" />
@@ -1405,13 +1405,51 @@ is exactly the same as    </p>
      NSSetUncaughtExceptionHandler(<b>proc</b>)<br />
     <p>
       
-          Sets the exception handler called when an exception is
-          generated and not caught by the programmer (by
-          enclosing in <code>NS_DURING</code> and
-          <code>NS_HANDLER</code>... <code>NS_ENDHANDLER</code>
-          ). The default prints an error message and exits the
-          program. <var>proc</var> should take a single
-          argument of type <code>NSException *</code>.
+          
+    </p>
+    <p>
+
+            Sets the exception handler called when an exception is
+            generated and not caught by the programmer (by
+            enclosing in <code>NS_DURING</code> and
+            <code>NS_HANDLER</code>...
+            <code>NS_ENDHANDLER</code>). The default prints an
+            error message and exits the program. <var>proc</var>
+            should take a single argument of type
+            <code>NSException *</code>.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            NB. If the exception handler set by this function does
+            not terminate the process, the process will be
+            terminateed anyway. This is a safety precaution
+            to ensure that, in the event of an exception ebing
+            raised and not handled, the program does not try to
+            continue running in a confused state (possibly
+            doing horrible things like billing customers who
+            shouldn&apos;t be billed etc), but shuts down as
+            cleanly as possible.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            Process termination is normally accomplished by
+            calling the standard exit function of theC runtime
+            library, but if the environment variable
+            CRASH_ON_ABORT is set to <code>YES</code> or
+            TRUE or 1 the termination will be accomplished by
+            calling the abort function instead, which should
+            cause a core dump to be made for debugging.
+              </p>
+    <p>
+      
         
     </p>
     <hr width="25%" align="left" />
@@ -1845,9 +1883,9 @@ is exactly the same as    </p>
             apparent reason, it is very likely a memory leak -
             you need to check that you are correctly releasing
             objects of this class, otherwise when your
-            application runs for a long time, it will
-            eventually allocate so many objects as to eat up
-            all your system&apos;s memory...
+            application runs for a <strong>long</strong>
+            time, it will eventually allocate so many objects as
+            to eat up all your system&apos;s memory...
               </p>
     <p>
       
@@ -2154,8 +2192,8 @@ is exactly the same as    </p>
     double NSDecimalDouble(<a rel="gsdoc" href="TypesAndConstants.html#type$NSDecimal">NSDecimal</a>* <b>number</b>);<br />
     <p>
       
-          Give back the value of a NSDecimal as a double in
-          (preallocated) result.
+          Give back the value of a NSDecimal as a
+          <strong>double</strong> in (preallocated) result.
         
     </p>
     <hr width="25%" align="left" />
@@ -3274,7 +3312,8 @@ is exactly the same as    </p>
       
           OpenStep spec states that log messages go to stderr,
           but just in case someone wants them to go somewhere else,
-          they can implement a function like this.
+          they can implement a function like this and assign a
+          pointer to it to _NSLog_printf_handler.
         
     </p>
     <hr width="25%" align="left" />
@@ -3452,8 +3491,9 @@ is exactly the same as    </p>
       
           Return the extra reference count of
           <var>anObject</var> (a value in the range from 0 to the
-          maximum unsigned integer value minus one). <br /> The
-          retain count for an object is this value plus one.
+          maximum <strong>unsigned</strong> integer value minus
+          one). <br /> The retain count for an object is this
+          value plus one.
         
     </p>
     <hr width="25%" align="left" />

@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.353</p>
-    <p><b>Date:</b> 2005/11/06 13:53:40</p>
+    <p><b>Version:</b> 1.357</p>
+    <p><b>Date:</b> 2005/11/28 15:41:34</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -305,8 +305,10 @@ Subclasses <strong>should</strong> override this method.<br />
 
             <code>NSString</code> objects represent an immutable
             string of Unicode 3.0 characters. These may be
-            accessed individually as type <code>unichar</code>
-            , an unsigned short. <br /> The
+            accessed individually as type
+            <code><strong>unichar</strong></code>, an
+            <strong>unsigned</strong> <strong>short</strong>.
+            <br /> The
             <a rel="gsdoc" href="#class$NSMutableString">NSMutableString</a>
 subclass represents a modifiable string. Both are implemented as part of a class cluster and the instances you receive may actually be of unspecified concrete subclasses.    </p>
     <p>
@@ -349,15 +351,6 @@ Where an NSString instance method returns an NSString object, the class of the a
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-boolValue">-boolValue</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-substringFromRange:">-substringFromRange:</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByEscapingXML">-stringByEscapingXML</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByUnescapingXML">-stringByUnescapingXML</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawAtPoint:withAttributes:">-drawAtPoint:withAttributes:</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawInRect:withAttributes:">-drawInRect:withAttributes:</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-sizeWithAttributes:">-sizeWithAttributes:</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/Local/Library/Documentation/Libraries/CoreComponents/SMSUtils.html#method$NSString(ReducingSpaces)-stringByReducingSpaces">-stringByReducingSpaces</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/Local/Library/Documentation/Performance/GSCache.html#method$NSString(SizeInBytes)-sizeInBytes:">-sizeInBytes:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>
@@ -833,8 +826,9 @@ Where an NSString instance method returns an NSString object, the class of the a
     <p>
       
             Returns unicode character at <var>index</var>.
-            <code>unichar</code> is an unsigned short. Thus, a
-            16-bit character is returned.
+            <code><strong>unichar</strong></code> is an
+            <strong>unsigned</strong> <strong>short</strong>.
+            Thus, a 16-bit character is returned.
           
     </p>
     <hr width="25%" align="left" />
@@ -1070,11 +1064,11 @@ Where an NSString instance method returns an NSString object, the class of the a
     <b>Availability:</b> MacOS-X 10.0.0<br />
     <p>
       
-            Returns the string&apos;s content as a double. Skips
-            leading whitespace. <br /> Conversion is not
-            localised (i.e. uses &apos;.&apos; as the decimal
-            separator). <br /> Returns 0.0 on underflow or
-            if the string does not contain a number.
+            Returns the string&apos;s content as a
+            <strong>double</strong>. Skips leading whitespace.
+            <br /> Conversion is not localised (i.e. uses &apos;.&apos; as
+            the decimal separator). <br /> Returns 0.0 on underflow
+            or if the string does not contain a number.
           
     </p>
     <hr width="25%" align="left" />
@@ -1090,7 +1084,7 @@ Where an NSString instance method returns an NSString object, the class of the a
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-fileSystemRepresentation">fileSystemRepresentation&nbsp;</a></h3>
-    - (const char*) <b>fileSystemRepresentation</b>;<br />
+    - (const GSNativeChar*) <b>fileSystemRepresentation</b>;<br />
     <b>Availability:</b> OpenStep<br />
     <p>
       
@@ -1098,11 +1092,12 @@ Where an NSString instance method returns an NSString object, the class of the a
             in the character encoding appropriate for the local host
             file system. This string will be automatically freed
             soon after it is returned, so copy it if you need it
-            for long. <br /> NB. On mingw32 systems the filesystem
-            representation of a path is a 16-bit unicode
-            character string, so you should only pass the
-            value returned by this method to functions expecting
-            wide characters. <br /> This method uses
+            for <strong>long</strong>. <br /> NB. On mingw32
+            systems the filesystem representation of a path is
+            a 16-bit unicode character string, so you should only
+            pass the value returned by this method to functions
+            expecting wide characters. <br /> This method
+            uses
             <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileSystemRepresentationWithPath:">[NSFileManager&nbsp;-fileSystemRepresentationWithPath:]</a>
  to perform the conversion.
           
@@ -1113,11 +1108,11 @@ Where an NSString instance method returns an NSString object, the class of the a
     <b>Availability:</b> OpenStep<br />
     <p>
       
-            Returns the string&apos;s content as a float. Skips
-            leading whitespace. <br /> Conversion is not
-            localised (i.e. uses &apos;.&apos; as the decimal
-            separator). <br /> Returns 0.0 on underflow or
-            if the string does not contain a number.
+            Returns the string&apos;s content as a
+            <strong>float</strong>. Skips leading whitespace.
+            <br /> Conversion is not localised (i.e. uses &apos;.&apos; as
+            the decimal separator). <br /> Returns 0.0 on underflow
+            or if the string does not contain a number.
           
     </p>
     <hr width="25%" align="left" />
@@ -1142,8 +1137,9 @@ Where an NSString instance method returns an NSString object, the class of the a
             Retrieve up to <var>maxLength</var> bytes from the
             receiver into the <var>buffer</var>. <br /> The
             <var>buffer</var> must be at least
-            <var>maxLength</var> + 1 bytes long, so that it has
-            room for the nul terminator that this method adds.
+            <var>maxLength</var> + 1 bytes <strong>long</strong>,
+            so that it has room for the nul terminator that this
+            method adds.
           
     </p>
     <hr width="25%" align="left" />
@@ -1155,8 +1151,9 @@ Where an NSString instance method returns an NSString object, the class of the a
             Retrieve up to <var>maxLength</var> bytes from the
             receiver into the <var>buffer</var>. <br /> The
             <var>buffer</var> must be at least
-            <var>maxLength</var> + 1 bytes long, so that it has
-            room for the nul terminator that this method adds.
+            <var>maxLength</var> + 1 bytes <strong>long</strong>,
+            so that it has room for the nul terminator that this
+            method adds.
           
     </p>
     <hr width="25%" align="left" />
@@ -1184,9 +1181,10 @@ Where an NSString instance method returns an NSString object, the class of the a
     <p>
       
             Returns this string as an array of 16-bit
-            <code>unichar</code> (unsigned short) values.
-            <var>buffer</var> must be preallocated and should be
-            capable of holding
+            <code><strong>unichar</strong></code> (
+            <strong>unsigned</strong> <strong>short</strong>)
+            values. <var>buffer</var> must be preallocated and
+            should be capable of holding
             <a rel="gsdoc" href="#method$NSString-length">
               -length
             </a>
@@ -1201,14 +1199,16 @@ Where an NSString instance method returns an NSString object, the class of the a
     <p>
       
             Returns <var>aRange</var> of string as an array of
-            16-bit <code>unichar</code> (unsigned short) values.
-            <var>buffer</var> must be preallocated and should be
-            capable of holding a sufficient number of shorts.
+            16-bit <code><strong>unichar</strong></code> (
+            <strong>unsigned</strong> <strong>short</strong>)
+            values. <var>buffer</var> must be preallocated and
+            should be capable of holding a sufficient number of
+            shorts.
           
     </p>
     <hr width="25%" align="left" />
     <h3><a name="method$NSString-getFileSystemRepresentation:maxLength:">getFileSystemRepresentation:&nbsp;maxLength:&nbsp;</a></h3>
-    - (BOOL) <b>getFileSystemRepresentation:</b> (char*)buffer<b> maxLength:</b> (unsigned int)size;<br />
+    - (BOOL) <b>getFileSystemRepresentation:</b> (GSNativeChar*)buffer<b> maxLength:</b> (unsigned int)size;<br />
     <b>Availability:</b> OpenStep<br />
     <p>
       
@@ -1300,7 +1300,7 @@ Where an NSString instance method returns an NSString object, the class of the a
             Return 28-bit hash value (in 32-bit integer). The
             top few bits are used for other purposes in a bitfield
             in the concrete string subclasses, so we must not use
-            the full unsigned integer.
+            the full <strong>unsigned</strong> integer.
           
     </p>
     <hr width="25%" align="left" />
@@ -1740,8 +1740,9 @@ Subclasses <strong>should</strong> override this method.<br />
     </p>
     <p>
 
-              Returns the string&apos;s content as an int. <br />
-              Current implementation uses C library
+              Returns the string&apos;s content as an
+              <strong>int</strong>. <br /> Current
+              implementation uses C library
               <code>
                 
                   atoi()
