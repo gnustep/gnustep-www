@@ -470,7 +470,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.gnustep.org/experience/ProjectCenter.html">Project Center</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("dev-apps/ProjectCenter-0.4.2.tar.gz")?>">0.4.2
+<td class="stab"><a href="<?php download("dev-apps/ProjectCenter-0.4.3.tar.gz")?>">0.4.3
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Project developer</td>
