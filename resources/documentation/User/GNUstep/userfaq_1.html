@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on December, 16  2005 by texi2html 1.64 -->
+<!-- Created on February, 21  2006 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -53,7 +53,7 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <!--docid::SEC1::-->
 <P>
 
-Last updated December, 16  2005.
+Last updated February, 21  2006.
 Please send corrections to <A HREF="mailto:gnustep-maintainer@gnu.org">gnustep-maintainer@gnu.org</A>. Also look
 at the (developer) FAQ for more developer oriented questions.
 </P><P>
@@ -95,8 +95,9 @@ at the (developer) FAQ for more developer oriented questions.
 <P>
 
 GNUstep is the Free Software Foundation's effort to implement NeXT
-Software, Inc.'s (now Apple Computer, Inc.) OpenStep Standard.  The project is
-not finished, so some parts are not as polished as they could be.
+Software, Inc.'s (now Apple Computer, Inc.) OpenStep Standard.  Also we
+are building developer and user applications based on this standard which
+may someday be used to form a complete desktop experience.
 </P><P>
 
 <A NAME="What is the OpenStep standard?"></A>
@@ -111,11 +112,12 @@ applications using the Objective-C language.  It was published by NeXT
 Computer, Inc. in 1994.
 </P><P>
 
-OpenStep consists of three parts: the <SAMP>`Foundation Kit'</SAMP>, a library of
-non-graphical objects; the <SAMP>`Application Kit'</SAMP>, a library of objects useful
-in creating graphical applications; and the <SAMP>`Display PostScript System'</SAMP>, an
-interface for drawing to the screen using the PostScript graphics
-language.
+OpenStep consists of three parts: the <SAMP>`Foundation Kit'</SAMP>, a library
+of non-graphical objects; the <SAMP>`Application Kit'</SAMP>, a library of
+objects useful in creating graphical applications; and the <SAMP>`Display
+PostScript System'</SAMP> (DPS), an interface for drawing to the screen using
+the PostScript graphics language. DPS support is not being persued at
+this time however.
 </P><P>
 
 You can obtain a copy of the OpenStep standard from the GNUstep web site
@@ -130,7 +132,7 @@ You can obtain a copy of the OpenStep standard from the GNUstep web site
 <P>
 
 See the list of supported platforms at
-<A HREF="http://www.gnustep.org/information/machines_toc.html">http://www.gnustep.org/information/machines_toc.html</A> for
+<A HREF="machines_toc.html">machines_toc.html</A> for
 information on what machines GNUstep builds on and what the status of
 the ports is. Probably a few days porting to any other UNIX system where
 current gcc compilers and gdb debugger work.
@@ -150,19 +152,13 @@ as GNU/Linux and FreeBSD.
 That being said, the base library should run on Windows NT, 98, 2000, and XP
 with the Cygwin UNIX system-emulation environment from Cygnus
 (<A HREF="http://www.cygwin.com/">http://www.cygwin.com/</A>), or the MinGW environment
-(<A HREF="http://www.mingw.org">http://www.mingw.org</A>).  At present there are a few problems with
-networking (distributed objects) support, but the library is believed to work.
+(<A HREF="http://www.mingw.org">http://www.mingw.org</A>).  
 </P><P>
 
 The GUI library uses the win32 backend library to work under
 Windows.  The backend library is a thin layer that converts the
 GNUstep methods to handle drawing of GUI elements to calls to the
 Windows API.  This project is currently in beta.
-</P><P>
-
-The application-wrapper used for GNUstep already allows for multiple
-binaries to be stored for different systems, so you should be able
-to write once, deploy anywhere.
 </P><P>
 
 <A NAME="What is GNUstep's position towards KDE and the GNOME project?"></A>
@@ -192,15 +188,10 @@ strings to distributed objects.
 <!--docid::SEC8::-->
 <P>
 
-Get the HOWTO from 
-<A HREF="http://www.gnustep.org/resources/documentation/GNUstep-HOWTO">http://www.gnustep.org/resources/documentation/GNUstep-HOWTO</A>
-Get the latest release from <A HREF="ftp://ftp.gnustep.org">ftp://ftp.gnustep.org</A>. If you're
-really adventurous, get the latest snapshot by anonymous ftp from
-<A HREF="ftp://ftp.gnustep.org/pub/daily-snapshots">ftp://ftp.gnustep.org/pub/daily-snapshots</A>
-</P><P>
-
-Use anonymous CVS to keep up to date - instructions are in the
-HOWTO.
+Many distributions include packaged versions of GNUstep (Debian,
+etc). To compile from sratch, download the GNUstep Startup package or
+get the HOWTO from <A HREF="gnustep-howto_toc.html">gnustep-howto_toc.html</A>. Get the latest releases
+from <A HREF="ftp://ftp.gnustep.org/pub/gnustep/core">ftp://ftp.gnustep.org/pub/gnustep/core</A>.
 </P><P>
 
 <A NAME="How do you run GNUstep?"></A>
@@ -272,13 +263,11 @@ snapshots.
 <!--docid::SEC12::-->
 <P>
 
-<UL>
-<LI>gnustep-make does pretty much what the makefiles in NEXTSTEP do.
-<LI>gnustep-base (Foundation) works well and is used in production evironments.
-<LI>gnustep-gdl2 works well and is used in production evironments.
-<LI>gnustep-gui (Application Kit) has a lot working but there is still stuff missing.
-</UL>
-<P>
+Most of GNUstep is quite usable and there are many complex applications
+that work well. However, GNUstep does not completely track the latest
+changes that Apple makes to their interface and there are still some
+parts that need some work).
+</P><P>
 
 What does this mean for users? Many applications will run quite well.
 Applications that require very complex text handling and some unusual
@@ -419,7 +408,7 @@ Although we don't want to force anyone into this, a lot of the power and
 ease of use comes from this feel. The look of GNUstep is something
 different -- buttons and other widgets can look different but still act
 the same way. We hope to implement themes which will allow
-this. Actually we're hoping someone will volunteer to do it.
+this.
 </P><P>
 
 <A NAME="What's up with the directory structure?"></A>
@@ -707,7 +696,7 @@ so that it is done automatically when you log in.
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>December, 16  2005</I>
+by <I>Adam Fedor</I> on <I>February, 21  2006</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 

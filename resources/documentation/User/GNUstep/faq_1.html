@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on December, 16  2005 by texi2html 1.64 -->
+<!-- Created on February, 21  2006 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -53,7 +53,7 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <!--docid::SEC1::-->
 <P>
 
-Last updated December, 16  2005.
+Last updated February, 21  2006.
 Please send corrections to <A HREF="mailto:gnustep-maintainer@gnu.org">gnustep-maintainer@gnu.org</A>. Also look
 at the user FAQ for more user oriented questions.
 </P><P>
@@ -62,9 +62,9 @@ at the user FAQ for more user oriented questions.
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC2">1.1 Compatibility</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC15">1.2 Compiling and Developing</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC26">1.3 GNU Objective C Compiler and Runtime</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC30">1.4 GNUstep Base Library</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC34">1.5 GNUstep GUI Library</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC39">1.6 GNUstep DisplayGhostScript Server</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC28">1.4 GNUstep Base Library</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC32">1.5 GNUstep GUI Library</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC37">1.6 GNUstep DisplayGhostScript Server</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 </TABLE></BLOCKQUOTE>
 <P>
 
@@ -122,7 +122,7 @@ Cocoa:
 <UL>
 <LI>Use #ifndef GNUSTEP for Apple only code.
 <LI>Do not use CoreFoundation
-<LI>Do not use Objective-C++
+<LI>Do not use Objective-C++ (except with gcc 4.1 or later)
 <LI>Do not use Quicktime or other proprietary extension
 <LI>You need to convert .nib files (see next question  see section <A HREF="faq_1.html#SEC5">1.1.3 Tools for porting</A>)
 </UL>
@@ -201,12 +201,9 @@ different machines because of endiness issues, although GNUstep doesn't
 have this problem.
 </P><P>
 
-Your best bet is to implement your own archiving format that would work
-both with GNUstep and Cocoa. Fortunately, you don't have to start from
-scratch, since this has been essentially done for you in the nib2gmodel
-tool, which has an archiver that works both on GNUstep and Cocoa. It
-might be nice to split this off into a separate project to make it
-easier for other people to do the same thing.
+The new keyed archiving using XML file formats is much more portable,
+and GNUstep is trying to maintain compatibility with Apple with this
+type of archiving.
 </P><P>
 
 <A NAME="Does distributed objects work between GNUstep and Cocoa?"></A>
@@ -248,6 +245,11 @@ tool called nib2gmodel that can be compiled under OPENSTEP to convert
 nib files to GNUstep gmodel files.
 </P><P>
 
+Newer nib files use XML format keyed archiving and may possibly be
+transportable, although differences in class and ivar layout may still
+make this difficult.
+</P><P>
+
 <A NAME='Can one use the hybrid "Objective-C++"'></A>
 <HR SIZE="6">
 <A NAME="SEC10"></A>
@@ -256,8 +258,8 @@ nib files to GNUstep gmodel files.
 <P>
 
 No. at present the GNU compiler (gcc) does not support
-"Objective-C++". Apple is interested in adding back their implementation
-to gcc and is slowly adding parts of it to the mainline gcc implementation.
+"Objective-C++". Soon to br released gcc 4.1 will have this support, but
+it is still unclear how robust it will be.
 </P><P>
 
 <A NAME="Is there a plan to support Java/YellowBox Bindings?"></A>
@@ -292,7 +294,7 @@ backend library to provide the interface, nobody has bothered to
 date.
 </P><P>
 
-You should, however, be able to use a GNUstep program with an X11 server 
+You can, however, use a GNUstep program with an X11 server 
 running on MacOSX.
 </P><P>
 
@@ -541,13 +543,9 @@ good idea to get in touch with Adam or Richard to coordinate efforts.
 could either fix the problem, or add it to the task list.
 </P><P>
 
-To write testcases, you need to use anonymous CVS to install the
-latest GNUstep snapshots you can find. Then checkout the 'tests'
-module from CVS.  In the 'tests' directory, you will find a
-regression testing framework.
-In order to use this you will also need a recent (v 1.3.2 or later) copy of
-Guile (you can get this from a GNU ftp site) and will need to check-out,
-built, and installed the 'guile' package from the GNUstep CVS repository.
+To write testcases, you need to use anonymous CVS to install the latest
+GNUstep snapshots you can find. Then checkout the
+'gnustep/dev-apps/test/Testsuite' module from CVS.
 </P><P>
 
 <A NAME="How do I start writing applications?"></A>
@@ -613,8 +611,6 @@ code.
 
 <BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC27">1.3.1 What is the Objective C Runtime?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC28">1.3.2 Does it allow a mixture of Objective C and C++?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC29">1.3.3 Where can I find more information?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 </TABLE></BLOCKQUOTE>
 <P>
 
@@ -655,50 +651,33 @@ Foundation methods/functions instead of the basic
 runtime functions so that you code can run with either system.
 <P>
 
+Apple has recently added new functionality to their runtime, including
+built-in exception handling, etc. Hopefully these will be ported to the
+GNU runtime in the future.
+</P><P>
+
 </UL>
 <P>
 
-<A NAME="Does it allow a mixture of Objective C and C++"></A>
+<A NAME="GNUstep Base Library"></A>
 <HR SIZE="6">
 <A NAME="SEC28"></A>
-<H3> 1.3.2 Does it allow a mixture of Objective C and C++? </H3>
+<H2> 1.4 GNUstep Base Library </H2>
 <!--docid::SEC28::-->
 <P>
 
-No.  
-See see section <A HREF="faq_1.html#SEC10">1.1.8 Can one use the hybrid "Objective-C++"</A>
-</P><P>
-
-<A NAME="Where can I find more information?"></A>
-<HR SIZE="6">
-<A NAME="SEC29"></A>
-<H3> 1.3.3 Where can I find more information? </H3>
-<!--docid::SEC29::-->
-<P>
-
-The FAQ associated with the newsgroup <SAMP>`comp.lang.objective-c'</SAMP>
-contains more information about GNU Objective C.
-</P><P>
-
-<A NAME="GNUstep Base Library"></A>
-<HR SIZE="6">
-<A NAME="SEC30"></A>
-<H2> 1.4 GNUstep Base Library </H2>
-<!--docid::SEC30::-->
-<P>
-
 <BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC31">1.4.1 What is the GNUstep Base Library?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC32">1.4.2 What is its current state of development?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC33">1.4.3 What are the features of GNU Distributed Objects?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC29">1.4.1 What is the GNUstep Base Library?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC30">1.4.2 What is its current state of development?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC31">1.4.3 What are the features of GNU Distributed Objects?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 </TABLE></BLOCKQUOTE>
 <P>
 
 <A NAME="What is the GNUstep Base Library?"></A>
 <HR SIZE="6">
-<A NAME="SEC31"></A>
+<A NAME="SEC29"></A>
 <H3> 1.4.1 What is the GNUstep Base Library? </H3>
-<!--docid::SEC31::-->
+<!--docid::SEC29::-->
 <P>
 
 The GNUstep Base Library is a library of general-purpose, non-graphical
@@ -715,9 +694,9 @@ portion of the OpenStep standard (the Foundation library).
 
 <A NAME="What is base's current state of development?"></A>
 <HR SIZE="6">
-<A NAME="SEC32"></A>
+<A NAME="SEC30"></A>
 <H3> 1.4.2 What is its current state of development? </H3>
-<!--docid::SEC32::-->
+<!--docid::SEC30::-->
 <P>
 
 GNUstep base is currently stable and, to the best of our knowledge,
@@ -729,9 +708,9 @@ so we don't implement all the Cocoa classes.
 
 <A NAME="What are the features of GNU Distributed Objects?"></A>
 <HR SIZE="6">
-<A NAME="SEC33"></A>
+<A NAME="SEC31"></A>
 <H3> 1.4.3 What are the features of GNU Distributed Objects? </H3>
-<!--docid::SEC33::-->
+<!--docid::SEC31::-->
 <P>
 
 GNU Distributed Objects has many of the features of other distributed
@@ -741,15 +720,15 @@ are not available.
 </P><P>
 
 [ NOTE: The GNU distributed object facilities have the same ease-of-use
-as NeXT's; be warned, however, that they are not compatible with each
+as Apple's; be warned, however, that they are not compatible with each
 other.  They have different class hierarchies, different instance
 variables, different method names, different implementation strategies
 and different network message formats.  You cannot communicate with a
-NeXT NSConnection using a GNU NSConnection.  
+Apple NSConnection using a GNU NSConnection.  
 </P><P>
 
-Here are some differences between GNU distributed objects and NeXT's
-distributed objects: NeXT NSDistantObject asks it's remote
+Here are some differences between GNU distributed objects and Apple's
+distributed objects: Apple NSDistantObject asks it's remote
 target for the method encoding types and caches the results; GNU
 NSDistantObject gets the types directly from the local GNU "typed selector"
 mechanism if the information is known locally and only queries the remote
@@ -763,24 +742,24 @@ you like. ].
 
 <A NAME="GNUstep GUI Library"></A>
 <HR SIZE="6">
-<A NAME="SEC34"></A>
+<A NAME="SEC32"></A>
 <H2> 1.5 GNUstep GUI Library </H2>
-<!--docid::SEC34::-->
+<!--docid::SEC32::-->
 <P>
 
 <BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC35">1.5.1 What is the GUI Library?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC36">1.5.2 Explain the organization of the front- and back-ends</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC37">1.5.3 What is the current state of development of the front-end?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC38">1.5.4 What is the current state of development of the back-ends?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC33">1.5.1 What is the GUI Library?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC34">1.5.2 Explain the organization of the front- and back-ends</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC35">1.5.3 What is the current state of development of the front-end?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC36">1.5.4 What is the current state of development of the back-ends?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 </TABLE></BLOCKQUOTE>
 <P>
 
 <A NAME="What is the GUI Library?"></A>
 <HR SIZE="6">
-<A NAME="SEC35"></A>
+<A NAME="SEC33"></A>
 <H3> 1.5.1 What is the GUI Library? </H3>
-<!--docid::SEC35::-->
+<!--docid::SEC33::-->
 <P>
 
 The GNUstep GUI Library is a library of objects useful for writing
@@ -800,9 +779,9 @@ been written to take advantage of GNUstep enhancements wherever possible.
 
 <A NAME="Explain the organization of the front- and back-ends"></A>
 <HR SIZE="6">
-<A NAME="SEC36"></A>
+<A NAME="SEC34"></A>
 <H3> 1.5.2 Explain the organization of the front- and back-ends </H3>
-<!--docid::SEC36::-->
+<!--docid::SEC34::-->
 <P>
 
 The GNUstep GUI Library is divided into a front- and back-end.  The
@@ -819,9 +798,9 @@ platforms to share the large amount of front-end code.
 
 <A NAME="What is the current state of development of the front-end?"></A>
 <HR SIZE="6">
-<A NAME="SEC37"></A>
+<A NAME="SEC35"></A>
 <H3> 1.5.3 What is the current state of development of the front-end? </H3>
-<!--docid::SEC37::-->
+<!--docid::SEC35::-->
 <P>
 
 Many of the classes are well implemented, if not thoroughly tested.
@@ -831,9 +810,9 @@ distribution for the most up-to-date information.
 
 <A NAME="What is the current state of development of the back-ends?"></A>
 <HR SIZE="6">
-<A NAME="SEC38"></A>
+<A NAME="SEC36"></A>
 <H3> 1.5.4 What is the current state of development of the back-ends? </H3>
-<!--docid::SEC38::-->
+<!--docid::SEC36::-->
 <P>
 
 There are several backends currently available:
@@ -841,37 +820,40 @@ There are several backends currently available:
 
 <DL COMPACT>
 <DT><SAMP>`xlib'</SAMP>
-<DD>This is the standard backend that runs on X11 and uses standard xlib
+<DD>This backend runs on X11 and uses standard xlib
 calls for implementing drawing. It works well, but is limited in many
 areas due to the limitations of xlib drawing.
 <DT><SAMP>`art'</SAMP>
 <DD>This is a very good backend that draws using the libart package and
-freetype with near PostScript quality and functionality. At some point 
-it will become the standard.
+freetype with near PostScript quality and functionality. It is currently
+the standard backend (as long as the required libraries are installed). 
 <DT><SAMP>`w32'</SAMP>
-<DD>This backend works on Windows and is currently beta quality.
+<DD>This backend works on Windows and uses basic Windows drawing
+<DT><SAMP>`cairo'</SAMP>
+<DD>An up-and-coming backend. It still relies on unpublished functions in
+the cairo library so using it is not for the beginner.
 </DL>
 <P>
 
 <A NAME="GNUstep DisplayGhostScript Server"></A>
 <HR SIZE="6">
-<A NAME="SEC39"></A>
+<A NAME="SEC37"></A>
 <H2> 1.6 GNUstep DisplayGhostScript Server </H2>
-<!--docid::SEC39::-->
+<!--docid::SEC37::-->
 <P>
 
 <BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC40">1.6.1 What is the Display Ghostscript Server?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC41">1.6.2 What is its current state of development?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC42">1.6.3 What is the relationship between the Display Ghostscript Server and X Windows?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC38">1.6.1 What is the Display Ghostscript Server?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC39">1.6.2 What is its current state of development?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="faq_1.html#SEC40">1.6.3 What is the relationship between the Display Ghostscript Server and X Windows?</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 </TABLE></BLOCKQUOTE>
 <P>
 
 <A NAME="What is the Display Ghostscript Server?"></A>
 <HR SIZE="6">
-<A NAME="SEC40"></A>
+<A NAME="SEC38"></A>
 <H3> 1.6.1 What is the Display Ghostscript Server? </H3>
-<!--docid::SEC40::-->
+<!--docid::SEC38::-->
 <P>
 
 It is a free implementation of a Display PostScript server based on the
@@ -885,9 +867,9 @@ no one wanted to work on it. Now we are using other means of drawing.
 
 <A NAME="What is DGSs current state of development?"></A>
 <HR SIZE="6">
-<A NAME="SEC41"></A>
+<A NAME="SEC39"></A>
 <H3> 1.6.2 What is its current state of development? </H3>
-<!--docid::SEC41::-->
+<!--docid::SEC39::-->
 <P>
 
 GNU contracted with Aladdin Enterprises to add some key features to GNU
@@ -897,14 +879,14 @@ were contracted for.  (Because the work took longer than specified and
 was not completed, Aladdin agreed to waive approximately $10,000 in
 promised fees for the work that was actually done and delivered.)  DGS
 works fairly well with a single context.  Alpha channel and compositing
-currently doesn't work.
+doesn't work.
 </P><P>
 
 <A NAME="What is the relationship between the Display Ghostscript Server and X Windows?"></A>
 <HR SIZE="6">
-<A NAME="SEC42"></A>
+<A NAME="SEC40"></A>
 <H3> 1.6.3 What is the relationship between the Display Ghostscript Server and X Windows? </H3>
-<!--docid::SEC42::-->
+<!--docid::SEC40::-->
 <P>
 
 Display Ghostscript runs on top of X Windows.
@@ -912,7 +894,7 @@ Display Ghostscript runs on top of X Windows.
 
 <HR SIZE="6">
 <TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="faq_1.html#SEC39"> &lt;&lt; </A>]</TD>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="faq_1.html#SEC37"> &lt;&lt; </A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="faq.html#SEC_Top">Top</A>]</TD>
 <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="faq_toc.html#SEC_Contents">Contents</A>]</TD>
@@ -922,7 +904,7 @@ Display Ghostscript runs on top of X Windows.
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>December, 16  2005</I>
+by <I>Adam Fedor</I> on <I>February, 21  2006</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 
