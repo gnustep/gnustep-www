@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on February, 21  2006 by texi2html 1.64 -->
+<!-- Created on March, 7  2006 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -53,7 +53,7 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <!--docid::SEC1::-->
 <P>
 
-Last updated February, 21  2006.
+Last updated March, 7  2006.
 Please send corrections to <A HREF="mailto:gnustep-maintainer@gnu.org">gnustep-maintainer@gnu.org</A>. Also look
 at the (developer) FAQ for more developer oriented questions.
 </P><P>
@@ -519,7 +519,8 @@ as Windows).
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC27">1.4.3 Problems with Alt key</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC28">1.4.4 Problems with gcc3</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC29">1.4.5 Problems with fonts</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC30">1.4.6 No Makefile</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC30">1.4.6 No characters displayed.</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC31">1.4.7 No Makefile</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 </TABLE></BLOCKQUOTE>
 <P>
 
@@ -659,11 +660,33 @@ better. When compiling gnustep-back, start with
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>./configure --enable-graphics=art
 </pre></td></tr></table></P><P>
 
-<A NAME="No Makefile"></A>
+<A NAME="No characters displayed"></A>
 <HR SIZE="6">
 <A NAME="SEC30"></A>
-<H3> 1.4.6 No Makefile </H3>
+<H3> 1.4.6 No characters displayed. </H3>
 <!--docid::SEC30::-->
+<P>
+
+When using the xlib backend, no characters are displayed in any GNUstep
+applications.
+</P><P>
+
+The xlib backend has font anti-aliasing turned on by default. It's possible
+that GNUstep can't find any fonts on your system that can be properly anti-
+aliased. Try
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>defaults write NSGlobalDomain GSFontAntiAlias NO
+</pre></td></tr></table></P><P>
+
+to turn off font anti-aliasing.
+</P><P>
+
+<A NAME="No Makefile"></A>
+<HR SIZE="6">
+<A NAME="SEC31"></A>
+<H3> 1.4.7 No Makefile </H3>
+<!--docid::SEC31::-->
 <P>
 
 I tried to compile something and I get:
@@ -696,7 +719,7 @@ so that it is done automatically when you log in.
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>February, 21  2006</I>
+by <I>Adam Fedor</I> on <I>March, 7  2006</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 

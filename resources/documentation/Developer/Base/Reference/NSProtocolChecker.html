@@ -1,5 +1,6 @@
-<html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
     <title>NSProtocolChecker class reference</title>
   </head>
@@ -14,146 +15,107 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.21</p>
-    <p><b>Date:</b> 2005/06/17 14:51:57</p>
+    <p><b>Date:</b> 2006-02-11 11:22:57 -0700 (Sat, 11 Feb 2006)</p>
     <p><b>Copyright:</b> (C) 1995 Free Software Foundation, Inc.</p>
-
         <div>
     </div>
-
-          <h1><a name="001000000000">
-        Software documentation for the NSProtocolChecker class
-      </a></h1>
+          <h1><a name="001000000000">        Software documentation for the NSProtocolChecker class      </a></h1>
     <h2><a name="class$NSProtocolChecker">NSProtocolChecker</a> : <a rel="gsdoc" href="NSProxy.html#class$NSProxy">NSProxy</a></h2>
-    <blockquote>
+    <blockquote class="declared">
       <dl>
         <dt><b>Declared in:</b></dt>
         <dd>Foundation/NSProtocolChecker.h</dd>
       </dl>
     </blockquote>
-    <b>Availability:</b> OpenStep<br />
-    <p>
-      
-          The NSProtocolChecker and NSProxy classes provide message
-          filtering and forwarding capabilities. If you wish
-          to ensure at runtime that a given object will only be sent
-          messages in a certain protocol, you create an
-          <code>NSProtocolChecker</code> instance with the
-          protocol and the object as arguments-
-
-<pre>
-    id versatileObject = [[ClassWithManyMethods alloc] init];
-    id narrowObject = [NSProtocolChecker protocolCheckerWithTarget: versatileObject
-                                         protocol: @protocol(SomeSpecificProtocol)];
-    return narrowObject;
-</pre>
-      
-          This is often used in conjunction with distributed
-          objects to expose only a subset of an objects methods
-          to remote processes
-        
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                The NSProtocolChecker and NSProxy classes provide message          filtering and forwarding capabilities. If you wish          to ensure at runtime that a given object will only be sent          messages in a certain protocol, you create an          <code>NSProtocolChecker</code> instance with the          protocol and the object as arguments-
+<pre>    id versatileObject = [[ClassWithManyMethods alloc] init];    id narrowObject = [NSProtocolChecker protocolCheckerWithTarget: versatileObject                                         protocol: @protocol(SomeSpecificProtocol)];    return narrowObject;</pre>
+                This is often used in conjunction with distributed          objects to expose only a subset of an objects methods          to remote processes        
+    </div>
     <hr width="50%" align="left" />
     <a href="#_NSProtocolChecker_ivars">Instance Variables</a>
     <br/><br/>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSProtocolChecker.html#method$NSProtocolChecker+protocolCheckerWithTarget:protocol:">+protocolCheckerWithTarget:protocol:</a></li>
-      <li><a rel="gsdoc" href="NSProtocolChecker.html#method$NSProtocolChecker-forwardInvocation:">-forwardInvocation:</a></li>
-      <li><a rel="gsdoc" href="NSProtocolChecker.html#method$NSProtocolChecker-initWithTarget:protocol:">-initWithTarget:protocol:</a></li>
+      <li><a rel="gsdoc" href="NSProtocolChecker.html#method$NSProtocolChecker+protocolCheckerWithTarget$protocol$">+protocolCheckerWithTarget:protocol:</a></li>
+      <li><a rel="gsdoc" href="NSProtocolChecker.html#method$NSProtocolChecker-forwardInvocation$">-forwardInvocation:</a></li>
+      <li><a rel="gsdoc" href="NSProtocolChecker.html#method$NSProtocolChecker-initWithTarget$protocol$">-initWithTarget:protocol:</a></li>
       <li><a rel="gsdoc" href="NSProtocolChecker.html#method$NSProtocolChecker-protocol">-protocol</a></li>
       <li><a rel="gsdoc" href="NSProtocolChecker.html#method$NSProtocolChecker-target">-target</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSProtocolChecker+protocolCheckerWithTarget:protocol:">protocolCheckerWithTarget:&nbsp;protocol:&nbsp;</a></h3>
+<div class="method">
+    <h3><a name="method$NSProtocolChecker+protocolCheckerWithTarget$protocol$">protocolCheckerWithTarget:&nbsp;protocol:&nbsp;</a></h3>
     + (id) <b>protocolCheckerWithTarget:</b> (<a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>*)anObject<b> protocol:</b> (Protocol*)aProtocol;<br />
-    <b>Availability:</b> OpenStep<br />
-    <p>
-      
-            Allocates and initializes an NSProtocolChecker
-            instance by calling
-            <a rel="gsdoc" href="#method$NSProtocolChecker-initWithTarget:protocol:">
-              -initWithTarget:protocol:
-            </a>
-
-            <br /> Autoreleases and returns the new instance.
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  Allocates and initializes an NSProtocolChecker            instance by calling            <a rel="gsdoc" href="#method$NSProtocolChecker-initWithTarget$protocol$">              -initWithTarget:protocol:            </a>
+            <br /> Autoreleases and returns the new instance.          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSProtocolChecker-forwardInvocation:">forwardInvocation:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$NSProtocolChecker-forwardInvocation$">forwardInvocation:&nbsp;</a></h3>
     - (void) <b>forwardInvocation:</b> (<a rel="gsdoc" href="NSInvocation.html#class$NSInvocation">NSInvocation</a>*)anInvocation;<br />
-    <b>Availability:</b> OpenStep<br />
-    <p>
-      
-            Forwards any message to the delegate if the method
-            is declared in the checker&apos;s protocol; otherwise raises
-            an <code>NSInvalidArgumentException</code>.
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  Forwards any message to the delegate if the method            is declared in the checker&apos;s protocol; otherwise raises            an <code>NSInvalidArgumentException</code>.          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSProtocolChecker-initWithTarget:protocol:">initWithTarget:&nbsp;protocol:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$NSProtocolChecker-initWithTarget$protocol$">initWithTarget:&nbsp;protocol:&nbsp;</a></h3>
     - (id) <b>initWithTarget:</b> (<a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>*)anObject<b> protocol:</b> (Protocol*)aProtocol;<br />
-    <b>Availability:</b> OpenStep<br />
-    <p>
-      
-            Initializes a newly allocated NSProtocolChecker
-            instance that will forward any messages in the
-            <var>aProtocol</var> protocol to <var>anObject</var>,
-            its delegate. Thus, the checker can be vended in lieu
-            of <var>anObject</var> to restrict the messages that can
-            be sent to <var>anObject</var>. If any method in the
-            protocol returns <var>anObject</var>, the checker
-            will replace the returned value with itself rather
-            than the target object. <br /> Returns the new
-            instance.
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  Initializes a newly allocated NSProtocolChecker            instance that will forward any messages in the            <var>aProtocol</var> protocol to <var>anObject</var>,            its delegate. Thus, the checker can be vended in lieu            of <var>anObject</var> to restrict the messages that can            be sent to <var>anObject</var>. If any method in the            protocol returns <var>anObject</var>, the checker            will replace the returned value with itself rather            than the target object. <br /> Returns the new            instance.          
+    </div>
     <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSProtocolChecker-protocol">protocol&nbsp;</a></h3>
     - (Protocol*) <b>protocol</b>;<br />
-    <b>Availability:</b> OpenStep<br />
-    <p>
-      
-            Returns the protocol object the checker uses to
-            verify whether a given message should be forwarded
-            to its delegate.
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  Returns the protocol object the checker uses to            verify whether a given message should be forwarded            to its delegate.          
+    </div>
     <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSProtocolChecker-target">target&nbsp;</a></h3>
     - (<a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>*) <b>target</b>;<br />
-    <b>Availability:</b> OpenStep<br />
-    <p>
-      
-            Returns the target of the NSProtocolChecker.
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  Returns the target of the NSProtocolChecker.          
+    </div>
     <hr width="25%" align="left" />
+</div>
 <a name="_NSProtocolChecker_ivars"/>    <br/><hr width="50%" align="left" />
     <h2>Instance Variables for NSProtocolChecker Class</h2>
     <h3><a name="ivariable$NSProtocolChecker*_myProtocol">_myProtocol</a></h3>
     @protected Protocol* <b>_myProtocol</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSProtocolChecker*_myTarget">_myTarget</a></h3>
     @protected NSObject* <b>_myTarget</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
     <br />
