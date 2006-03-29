@@ -557,7 +557,7 @@ packages and applications may require you to install these libraries
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">GWorkspace</a></td>
 <td class="req">Recommended</td>
 <td class="stab">-</td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.7.2.tar.gz">0.7.2</a></td>
+<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.8.2.tar.gz">0.8.2</a></td>
 <td>File manager for GNUstep</td>
 </tr>
 
