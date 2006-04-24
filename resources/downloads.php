@@ -233,7 +233,7 @@ download the <i>Recommended version</i>.</p>
 <tr>
 <td class="src">WindowMaker</td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="http://windowmaker.org/pub/source/release/WindowMaker-0.92.0.tar.bz2">0.92.0</a></td>
+<td class="stab"><a href="http://windowmaker.info/pub/source/release/WindowMaker-0.92.0.tar.bz2">0.92.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Window manager &amp; desktop</td>
 </tr>
