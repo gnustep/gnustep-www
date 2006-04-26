@@ -51,52 +51,49 @@
           <a href="#010000000000">NSRange macros</a>
         </li>
         <li>
-          <a href="#011000000000">NSCalendarDate functions</a>
+          <a href="#011000000000">NSDebug functions</a>
         </li>
         <li>
-          <a href="#012000000000">NSDebug functions</a>
+          <a href="#012000000000">NSDecimal functions</a>
         </li>
         <li>
-          <a href="#013000000000">NSDecimal functions</a>
+          <a href="#013000000000">NSException functions</a>
         </li>
         <li>
-          <a href="#014000000000">NSException functions</a>
+          <a href="#014000000000">NSGeometry functions</a>
         </li>
         <li>
-          <a href="#015000000000">NSGeometry functions</a>
+          <a href="#015000000000">NSHashTable functions</a>
         </li>
         <li>
-          <a href="#016000000000">NSHashTable functions</a>
+          <a href="#016000000000">NSMapTable functions</a>
         </li>
         <li>
-          <a href="#017000000000">NSMapTable functions</a>
+          <a href="#017000000000">NSObjCRuntime functions</a>
         </li>
         <li>
-          <a href="#018000000000">NSObjCRuntime functions</a>
+          <a href="#018000000000">NSObject functions</a>
         </li>
         <li>
-          <a href="#019000000000">NSObject functions</a>
+          <a href="#019000000000">NSPathUtilities functions</a>
         </li>
         <li>
-          <a href="#020000000000">NSPathUtilities functions</a>
+          <a href="#020000000000">NSProcessInfo functions</a>
         </li>
         <li>
-          <a href="#021000000000">NSProcessInfo functions</a>
+          <a href="#021000000000">NSRange functions</a>
         </li>
         <li>
-          <a href="#022000000000">NSRange functions</a>
+          <a href="#022000000000">NSSet functions</a>
         </li>
         <li>
-          <a href="#023000000000">NSSet functions</a>
+          <a href="#023000000000">NSThread functions</a>
         </li>
         <li>
-          <a href="#024000000000">NSThread functions</a>
+          <a href="#024000000000">NSValue functions</a>
         </li>
         <li>
-          <a href="#025000000000">NSValue functions</a>
-        </li>
-        <li>
-          <a href="#026000000000">NSZone functions</a>
+          <a href="#025000000000">NSZone functions</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
@@ -106,7 +103,6 @@
         <li><a rel="gsdoc" href="Functions.html#function$GNUstepConfig">GNUstepConfig</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GNUstepUserConfig">GNUstepUserConfig</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSAtomicMallocZone">GSAtomicMallocZone</a></li>
-        <li><a rel="gsdoc" href="Functions.html#function$GSBreakTime">GSBreakTime</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSCurrentThread">GSCurrentThread</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSCurrentThreadDictionary">GSCurrentThreadDictionary</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSDebugAllocationActive">GSDebugAllocationActive</a></li>
@@ -132,7 +128,6 @@
         <li><a rel="gsdoc" href="Functions.html#function$GSSetDebugAllocationFunctions">GSSetDebugAllocationFunctions</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSSetUserName">GSSetUserName</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSSmallHash">GSSmallHash</a></li>
-        <li><a rel="gsdoc" href="Functions.html#function$GSTime">GSTime</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSUPurge">GSUPurge</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSUSet">GSUSet</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$GSUnique">GSUnique</a></li>
@@ -860,9 +855,9 @@ is exactly the same as    </p>
     <p>
     </p>
     <h3><a name="macro$NS_INVOCATION">NS_INVOCATION</a></h3>
-     NS_INVOCATION(<b>class</b>, <b>message</b><b>,...</b>)<br />
+     NS_INVOCATION(<b>aClass</b>, <b>message</b><b>,...</b>)<br />
     <div class="desc">
-                Creates and returns an autoreleased invocation          containing a <var>message</var> to an instance of          the <var>class</var>. The &apos;message&apos; consists of selector          and arguments like a standard ObjectiveC method call.          <br /> Before using the returned invocation, you need          to set its target.        
+                Creates and returns an autoreleased invocation          containing a <var>message</var> to an instance of          the class. The &apos;message&apos; consists of selector and          arguments like a standard ObjectiveC method call.          <br /> Before using the returned invocation, you need          to set its target.        
     </div>
     <hr width="25%" align="left" />
     <h3><a name="macro$NS_MESSAGE">NS_MESSAGE</a></h3>
@@ -877,7 +872,7 @@ is exactly the same as    </p>
     <h3><a name="macro$GS_INITIALIZED_LOCK">GS_INITIALIZED_LOCK</a></h3>
      GS_INITIALIZED_LOCK(<b>IDENT</b>, <b>CLASSNAME</b>)<br />
     <div class="desc">
-                Returns <var>IDENT</var> which will be initialized to          an instance of a <var>CLASSNAME</var> in a thread safe          manner. If <var>IDENT</var> has been previously          initialized this macro merely returns          <var>IDENT</var>. <var>IDENT</var> is considered          uninitialized, if it contains <code>nil</code>          . <var>CLASSNAME</var> must be either NSLock,          NSRecursiveLock or one of their subclasses.          See          <a rel="gsdoc" href="NSLock.html#method$NSLock+newLockAt$">            [NSLock&nbsp;+newLockAt:]          </a>
+                Returns <var>IDENT</var> which will be initialized to          an instance of a <var>CLASSNAME</var> in a thread safe          manner. If <var>IDENT</var> has been previously          initialized this macro merely returns          <var>IDENT</var>. <var>IDENT</var> is considered          uninitialized, if it contains <code>nil</code>          . <var>CLASSNAME</var> must be either NSLock,          NSRecursiveLock or one of their subclasses.          See          <a rel="gsdoc" href="NSLock.html#method$NSLock+newLockAt$">            [NSLock +newLockAt:]          </a>
           for details. This macro is intended for code that cannot          insure that a lock can be initialized in thread safe          manner otherwise.
 <pre> NSLock *my_lock = nil; void function (void) {   [GS_INITIALIZED_LOCK(my_lock, NSLock) lock];   do_work ();   [my_lock unlock]; } </pre>
               
@@ -901,7 +896,7 @@ is exactly the same as    </p>
     <h3><a name="macro$AUTORELEASE">AUTORELEASE</a></h3>
      AUTORELEASE(<b>object</b>)<br />
     <div class="desc">
-                Basic autorelease operation... calls          <a rel="gsdoc" href="NSObject.html#method$NSObject-autorelease">            [NSObject&nbsp;-autorelease]          </a>
+                Basic autorelease operation... calls          <a rel="gsdoc" href="NSObject.html#method$NSObject-autorelease">            [NSObject -autorelease]          </a>
         
     </div>
     <hr width="25%" align="left" />
@@ -970,14 +965,14 @@ is exactly the same as    </p>
     <h3><a name="macro$RELEASE">RELEASE</a></h3>
      RELEASE(<b>object</b>)<br />
     <div class="desc">
-                Basic release operation... calls          <a rel="gsdoc" href="NSObject.html#method$NSObject-release">            [NSObject&nbsp;-release]          </a>
+                Basic release operation... calls          <a rel="gsdoc" href="NSObject.html#method$NSObject-release">            [NSObject -release]          </a>
         
     </div>
     <hr width="25%" align="left" />
     <h3><a name="macro$RETAIN">RETAIN</a></h3>
      RETAIN(<b>object</b>)<br />
     <div class="desc">
-                Basic retain operation... calls          <a rel="gsdoc" href="NSObject.html#method$NSObject-retain">            [NSObject&nbsp;-retain]          </a>
+                Basic retain operation... calls          <a rel="gsdoc" href="NSObject.html#method$NSObject-retain">            [NSObject -retain]          </a>
         
     </div>
     <hr width="25%" align="left" />
@@ -1014,22 +1009,7 @@ is exactly the same as    </p>
                 To be used inside a method for making sure that a range          does not specify anything outside the size of an          array/string. Raises exception if range extends          beyond [0,size).        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="011000000000">NSCalendarDate functions</a></h1>
-    <p>
-    </p>
-    <h3><a name="function$GSBreakTime">GSBreakTime</a></h3>
-    void GSBreakTime(<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a> <b>when</b>, int* <b>year</b>, int* <b>month</b>, int* <b>day</b>, int* <b>hour</b>, int* <b>minute</b>, int* <b>second</b>, int* <b>mil</b>);<br />
-    <div class="desc">
-                Convert a time interval since the reference date into          broken out elements. <br /> External - so NSDate and          others can use it.        
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="function$GSTime">GSTime</a></h3>
-    <a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a> GSTime(int <b>day</b>, int <b>month</b>, int <b>year</b>, int <b>hour</b>, int <b>minute</b>, int <b>second</b>, int <b>mil</b>);<br />
-    <div class="desc">
-                Convert a broken out time specification into a time          interval since the reference date. <br /> External -          so NSDate and others can use it.        
-    </div>
-    <hr width="25%" align="left" />
-          <h1><a name="012000000000">NSDebug functions</a></h1>
+          <h1><a name="011000000000">NSDebug functions</a></h1>
     <p>
     </p>
     <h3><a name="function$GSDebugAllocationActive">GSDebugAllocationActive</a></h3>
@@ -1097,9 +1077,9 @@ is exactly the same as    </p>
     <h3><a name="function$GSDebugAllocationListRecordedObjects">GSDebugAllocationListRecordedObjects</a></h3>
     <a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>* GSDebugAllocationListRecordedObjects(Class <b>c</b>);<br />
     <div class="desc">
-                Returns an array containing all the allocated objects          of a certain class which have been recorded. Presumably,          you will immediately call          <a rel="gsdoc" href="NSObject.html#method$NSObject-description">            [NSObject&nbsp;-description]          </a>
+                Returns an array containing all the allocated objects          of a certain class which have been recorded. Presumably,          you will immediately call          <a rel="gsdoc" href="NSObject.html#method$NSObject-description">            [NSObject -description]          </a>
           on them to find out the objects you are leaking. Warning -          the objects are put in an array, so until the array is          autoreleased, the objects are not released.          <br /> This function returns an array containing all          the allocated objects of a certain class which have been          recorded... to start the recording, you need to          invoke          <a rel="gsdoc" href="#function$GSDebugAllocationActiveRecordingObjects">GSDebugAllocationActiveRecordingObjects()</a>
-. Presumably, you will immediately call <a rel="gsdoc" href="NSObject.html#method$NSObject-description">[NSObject&nbsp;-description]</a>
+. Presumably, you will immediately call <a rel="gsdoc" href="NSObject.html#method$NSObject-description">[NSObject -description]</a>
  on them to find out the objects you are leaking. The objects are returned in an array, so until the array is autoreleased, the objects are not released.        
     </div>
     <hr width="25%" align="left" />
@@ -1166,7 +1146,7 @@ is exactly the same as    </p>
                 Retrieve stack information. Use caution: uses          built-in gcc functions and currently only works up          to 100 frames.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="013000000000">NSDecimal functions</a></h1>
+          <h1><a name="012000000000">NSDecimal functions</a></h1>
     <p>
     </p>
     <h3><a name="function$NSDecimalAdd">NSDecimalAdd</a></h3>
@@ -1284,7 +1264,7 @@ is exactly the same as    </p>
             protocol for a description of <var>mode</var> and            the return value. The <var>result</var> should be            preallocated but can be the same as            <var>left</var> or <var>right</var>.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="014000000000">NSException functions</a></h1>
+          <h1><a name="013000000000">NSException functions</a></h1>
     <p>
     </p>
     <h3><a name="function$NSUncaughtExceptionHandler">NSUncaughtExceptionHandler</a></h3>
@@ -1307,7 +1287,7 @@ is exactly the same as    </p>
                 Private support routine. Do not call directly.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="015000000000">NSGeometry functions</a></h1>
+          <h1><a name="014000000000">NSGeometry functions</a></h1>
     <p>
     </p>
     <h3><a name="function$NSContainsRect">NSContainsRect</a></h3>
@@ -1496,7 +1476,7 @@ is exactly the same as    </p>
                 Returns aRect&apos;s width.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="016000000000">NSHashTable functions</a></h1>
+          <h1><a name="015000000000">NSHashTable functions</a></h1>
     <p>
     </p>
     <h3><a name="function$NSAllHashTableObjects">NSAllHashTableObjects</a></h3>
@@ -1604,7 +1584,7 @@ is exactly the same as    </p>
                 Returns a string describing the <var>table</var>          contents. <br /> For each item, a string of the          form &quot;value;\n&quot; is appended. The appropriate describe          function is used to generate the strings for each          item.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="017000000000">NSMapTable functions</a></h1>
+          <h1><a name="016000000000">NSMapTable functions</a></h1>
     <p>
     </p>
     <h3><a name="function$NSAllMapTableKeys">NSAllMapTableKeys</a></h3>
@@ -1728,7 +1708,7 @@ is exactly the same as    </p>
                 Returns a string describing the <var>table</var>          contents. <br /> For each key-value pair, a string          of the form &quot;key = value;\n&quot; is appended. The appropriate          describe functions are used to generate the strings          for each key and value.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="018000000000">NSObjCRuntime functions</a></h1>
+          <h1><a name="017000000000">NSObjCRuntime functions</a></h1>
     <p>
     </p>
     <h3><a name="function$GSLogLock">GSLogLock</a></h3>
@@ -1798,7 +1778,7 @@ is exactly the same as    </p>
                 
     </p>
     <p>
-            The resulting message is then passed to a handler            function to perform actual output. Locking is            performed around the call to the function            actually writing the message out, to ensure that            logging is thread-safe. However, the actual            creation of the message written is only as safe as            the            <a rel="gsdoc" href="NSObject.html#method$NSObject-description">              [NSObject&nbsp;-description]            </a>
+            The resulting message is then passed to a handler            function to perform actual output. Locking is            performed around the call to the function            actually writing the message out, to ensure that            logging is thread-safe. However, the actual            creation of the message written is only as safe as            the            <a rel="gsdoc" href="NSObject.html#method$NSObject-description">              [NSObject -description]            </a>
             methods of the arguments you supply.              </p>
     <p>
                 
@@ -1829,13 +1809,13 @@ is exactly the same as    </p>
                 Returns a string object containing the method name          for <var>aSelector</var>. If <var>aSelector</var> is 0,          returns <code>nil</code>.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="019000000000">NSObject functions</a></h1>
+          <h1><a name="018000000000">NSObject functions</a></h1>
     <p>
     </p>
     <h3><a name="function$NSAllocateObject">NSAllocateObject</a></h3>
     <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>* NSAllocateObject(Class <b>aClass</b>, unsigned int <b>extraBytes</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
     <div class="desc">
-                Used to allocate memory to hold an object, and          initialise the class of the object to be          <var>aClass</var> etc. The allocated memory will be          <var>extraBytes</var> larger than the space actually          needed to hold the instance variables of the object.          <br /> This function is used by the          <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone$">            [NSObject&nbsp;+allocWithZone:]          </a>
+                Used to allocate memory to hold an object, and          initialise the class of the object to be          <var>aClass</var> etc. The allocated memory will be          <var>extraBytes</var> larger than the space actually          needed to hold the instance variables of the object.          <br /> This function is used by the          <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone$">            [NSObject +allocWithZone:]          </a>
           method.        
     </div>
     <hr width="25%" align="left" />
@@ -1849,14 +1829,14 @@ is exactly the same as    </p>
     <h3><a name="function$NSDeallocateObject">NSDeallocateObject</a></h3>
     void NSDeallocateObject(<a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>* <b>anObject</b>);<br />
     <div class="desc">
-                Used to release the memory used by an object. <br />          This function is used by the          <a rel="gsdoc" href="NSObject.html#method$NSObject-dealloc">            [NSObject&nbsp;-dealloc]          </a>
+                Used to release the memory used by an object. <br />          This function is used by the          <a rel="gsdoc" href="NSObject.html#method$NSObject-dealloc">            [NSObject -dealloc]          </a>
           method.        
     </div>
     <hr width="25%" align="left" />
     <h3><a name="function$NSDecrementExtraRefCountWasZero">NSDecrementExtraRefCountWasZero</a></h3>
     BOOL NSDecrementExtraRefCountWasZero(id <b>anObject</b>);<br />
     <div class="desc">
-                Examines the extra reference count for the object          and, if non-zero decrements it, otherwise leaves it          unchanged. <br /> Returns a flag to say whether          the count was zero (and hence whether the extra reference          count was decremented). <br /> This function is used by          the          <a rel="gsdoc" href="NSObject.html#method$NSObject-release">            [NSObject&nbsp;-release]          </a>
+                Examines the extra reference count for the object          and, if non-zero decrements it, otherwise leaves it          unchanged. <br /> Returns a flag to say whether          the count was zero (and hence whether the extra reference          count was decremented). <br /> This function is used by          the          <a rel="gsdoc" href="NSObject.html#method$NSObject-release">            [NSObject -release]          </a>
           method.        
     </div>
     <hr width="25%" align="left" />
@@ -1869,7 +1849,7 @@ is exactly the same as    </p>
     <h3><a name="function$NSIncrementExtraRefCount">NSIncrementExtraRefCount</a></h3>
     void NSIncrementExtraRefCount(id <b>anObject</b>);<br />
     <div class="desc">
-                Increments the extra reference count for          <var>anObject</var>. <br /> The GNUstep version raises          an exception if the reference count would be incremented          to too large a value. <br /> This is used by the          <a rel="gsdoc" href="NSObject.html#method$NSObject-retain">            [NSObject&nbsp;-retain]          </a>
+                Increments the extra reference count for          <var>anObject</var>. <br /> The GNUstep version raises          an exception if the reference count would be incremented          to too large a value. <br /> This is used by the          <a rel="gsdoc" href="NSObject.html#method$NSObject-retain">            [NSObject -retain]          </a>
           method.        
     </div>
     <hr width="25%" align="left" />
@@ -1879,7 +1859,7 @@ is exactly the same as    </p>
                 Returns a flag to indicate whether          <var>anObject</var> should be retained or copied in          order to make a copy in the specified zone. <br />          Basically, this tests to see if          <var>anObject</var> was allocated from          <var>requestedZone</var> and returns <code>YES</code>          if it was.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="020000000000">NSPathUtilities functions</a></h1>
+          <h1><a name="019000000000">NSPathUtilities functions</a></h1>
     <p>
     </p>
     <h3><a name="function$GNUstepConfig">GNUstepConfig</a></h3>
@@ -1968,7 +1948,7 @@ is exactly the same as    </p>
           call is used to find the user name.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="021000000000">NSProcessInfo functions</a></h1>
+          <h1><a name="020000000000">NSProcessInfo functions</a></h1>
     <p>
     </p>
     <h3><a name="function$GSDebugSet">GSDebugSet</a></h3>
@@ -1977,7 +1957,7 @@ is exactly the same as    </p>
                 Function for rapid testing to see if a debug          <var>level</var> is set. <br /> This is used by the          debugging macros. <br /> If debug logging has been          turned off, this returns <code>NO</code> even if the          specified <var>level</var> exists in the set of          debug levels.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="022000000000">NSRange functions</a></h1>
+          <h1><a name="021000000000">NSRange functions</a></h1>
     <p>
     </p>
     <h3><a name="function$NSEqualRanges">NSEqualRanges</a></h3>
@@ -2034,7 +2014,7 @@ is exactly the same as    </p>
                 Convenience method for raising an          NSRangeException.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="023000000000">NSSet functions</a></h1>
+          <h1><a name="022000000000">NSSet functions</a></h1>
     <p>
     </p>
     <h3><a name="function$GSUPurge">GSUPurge</a></h3>
@@ -2064,7 +2044,7 @@ is exactly the same as    </p>
           function. If the <var>flag</var> is on, uniquing is          performed, if it is off the function has no          effect. The default is for uniquing to be turned off.        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="024000000000">NSThread functions</a></h1>
+          <h1><a name="023000000000">NSThread functions</a></h1>
     <p>
     </p>
     <h3><a name="function$GSCurrentThread">GSCurrentThread</a></h3>
@@ -2126,22 +2106,22 @@ is exactly the same as    </p>
               
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="025000000000">NSValue functions</a></h1>
+          <h1><a name="024000000000">NSValue functions</a></h1>
     <p>
     </p>
     <h3><a name="function$GSNumberInfoFromObject">GSNumberInfoFromObject</a></h3>
     <a rel="gsdoc" href="TypesAndConstants.html#type$GSNumberInfo">GSNumberInfo</a>* GSNumberInfoFromObject(<a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>* <b>o</b>);<br />
     <div class="desc">
-                Internal method for caching.        
+                Internal method for caching. DO NOT USE.        
     </div>
     <hr width="25%" align="left" />
     <h3><a name="function$GSSmallHash">GSSmallHash</a></h3>
     unsigned int GSSmallHash(int <b>n</b>);<br />
     <div class="desc">
-                Internal method: get cached values for integers in          the range - GS_SMALL to + GS_SMALL        
+                Internal method: get cached values for integers in          the range - GS_SMALL to + GS_SMALL <br /> DO NOT USE        
     </div>
     <hr width="25%" align="left" />
-          <h1><a name="026000000000">NSZone functions</a></h1>
+          <h1><a name="025000000000">NSZone functions</a></h1>
     <p>
     </p>
     <h3><a name="function$GSAtomicMallocZone">GSAtomicMallocZone</a></h3>

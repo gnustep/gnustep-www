@@ -43,9 +43,9 @@
     </p>
     <p>
             A simple retain/release mechanism has problems with            passing objects from one scope to another, so it&apos;s            augmented with autorelease pools. You can use the            <a rel="gsdoc" href="Functions.html#macro$AUTORELEASE">              AUTORELEASE()            </a>
-            macro to call the            <a rel="gsdoc" href="NSObject.html#method$NSObject-autorelease">              [NSObject&nbsp;-autorelease]            </a>
-            method, which adds an object to the current            autorelease pool by calling            <a rel="gsdoc" href="#method$NSAutoreleasePool+addObject$">[NSAutoreleasePool&nbsp;+addObject:]</a>
-. <br /> An autorelease pool simply maintains a reference to each object added to it, and for each addition, the autorelease pool will call the <a rel="gsdoc" href="NSObject.html#method$NSObject-release">[NSObject&nbsp;-release]</a>
+            macro to call the            <a rel="gsdoc" href="NSObject.html#method$NSObject-autorelease">              [NSObject -autorelease]            </a>
+            method, which adds an object to the current            autorelease pool by calling            <a rel="gsdoc" href="#method$NSAutoreleasePool+addObject$">[NSAutoreleasePool +addObject:]</a>
+. <br /> An autorelease pool simply maintains a reference to each object added to it, and for each addition, the autorelease pool will call the <a rel="gsdoc" href="NSObject.html#method$NSObject-release">[NSObject -release]</a>
  method of the object when the pool is released. So doing an <a rel="gsdoc" href="Functions.html#macro$AUTORELEASE">AUTORELEASE()</a>
  is just the same as doing a <a rel="gsdoc" href="Functions.html#macro$RELEASE">RELEASE()</a>
 , but deferred until the current autorelease pool is deallocated.              </p>
@@ -77,29 +77,29 @@
     <p>
                 
       <dl>
-        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject+alloc">                [NSObject&nbsp;+alloc]              </a>
-              ,              <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone$">[NSObject&nbsp;+allocWithZone:]</a>
+        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject+alloc">                [NSObject +alloc]              </a>
+              ,              <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone$">[NSObject +allocWithZone:]</a>
             </dt>
         <dd>
                         Methods whose names begin with alloc return an              uninitialised object, owned by the caller.            
         </dd>
-        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject-init">                [NSObject&nbsp;-init]              </a>
+        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject-init">                [NSObject -init]              </a>
             </dt>
         <dd>
                         Methods whose names begin with init return an              initialised version of the receiving object,              owned by the caller. <br /> NB. The returned object              may not actually be the same as the receiver...              sometimes an init method releases the original              receiver and returns an alternative.            
         </dd>
-        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject+new">                [NSObject&nbsp;+new]              </a>
+        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject+new">                [NSObject +new]              </a>
             </dt>
         <dd>
                         Methods whose names begin with new combine the              effects of allocation and initialisation.            
         </dd>
-        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject-copy">                [NSObject&nbsp;-copy]              </a>
+        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject-copy">                [NSObject -copy]              </a>
               ,              <a rel="gsdoc" href="NSObject.html#method$(NSCopying)-copyWithZone$">[&lt;NSCopying&gt;-copyWithZone:]</a>
             </dt>
         <dd>
                         Methods whose names begin with copy create a copy              of the receiver which is owned by the caller.            
         </dd>
-        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject-mutableCopy">                [NSObject&nbsp;-mutableCopy]              </a>
+        <dt>              <a rel="gsdoc" href="NSObject.html#method$NSObject-mutableCopy">                [NSObject -mutableCopy]              </a>
               ,              <a rel="gsdoc" href="NSObject.html#method$(NSMutableCopying)-mutableCopyWithZone$">[&lt;NSMutableCopying&gt;-mutableCopyWithZone:]</a>
             </dt>
         <dd>
@@ -113,7 +113,6 @@
     <br/><br/>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+_endThread$">+_endThread:</a></li>
       <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+addObject$">+addObject:</a></li>
       <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+allocWithZone$">+allocWithZone:</a></li>
       <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool+autoreleaseCountForObject$">+autoreleaseCountForObject:</a></li>
@@ -129,18 +128,6 @@
       <li><a rel="gsdoc" href="NSAutoreleasePool.html#method$NSAutoreleasePool-retain">-retain</a></li>
     </ul>
     <hr width="50%" align="left" />
-<div class="method">
-    <h3><a name="method$NSAutoreleasePool+_endThread$">_endThread:&nbsp;</a></h3>
-    + (void) <b>_endThread:</b> (<a rel="gsdoc" href="NSThread.html#class$NSThread">NSThread</a>*)thread;<br />
-    <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
-<br />
-    <div class="desc">
-                  Destroys all the autorelease pools in the            <var>thread</var>. <br /> You should not call this            directly, it&apos;s called automatically when a            <var>thread</var> exits. <br /> <em>Warning</em> the            underscore at the start of the name of this            method indicates that it is private, for internal            use only, and you should not use the method in your            code.          
-    </div>
-    <hr width="25%" align="left" />
-</div>
 <div class="method">
     <h3><a name="method$NSAutoreleasePool+addObject$">addObject:&nbsp;</a></h3>
     + (void) <b>addObject:</b> (id)anObj;<br />
