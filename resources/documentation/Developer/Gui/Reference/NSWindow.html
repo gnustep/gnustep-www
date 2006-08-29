@@ -1216,7 +1216,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+                  This method attempts to make <var>aResponder</var> the            first responder. <br /> If <var>aResponder</var> is            already the first responder, this method has no            effect and simply returns <code>YES</code>.            Otherwise, the method sends a            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-resignFirstResponder">              -resignFirstResponder            </a>
+            message to the current first responder (if there is            one) and immediately returns <code>NO</code> if the            current first responder refuses to resign. <br />            Then the method asks <var>aResponder</var> to become            first responder by sending it a            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-becomeFirstResponder">              -becomeFirstResponder            </a>
+            message, and if that returns <code>YES</code> then            this method immediately returns <code>YES</code>.            <br /> However, if that returns <code>NO</code>, the            receiver is made the first responder by sending it            a            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-becomeFirstResponder">              -becomeFirstResponder            </a>
+            message, and this method returns <code>NO</code>.            <br /> If <var>aResponder</var> is neither            <code>nil</code> nor an instance of NSResponder (or            of a subclass of NSResponder) then behavior is undefined            (though the current GNUstep implementation just            returns <code>NO</code>).          
     </div>
     <hr width="25%" align="left" />
 </div>

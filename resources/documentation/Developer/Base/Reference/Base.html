@@ -13,8 +13,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.24 $</p>
-    <p><b>Date:</b> $Date: 2006/04/26 14:52:53 $</p>
+    <p><b>Version:</b> $Revision: 1.25 $</p>
+    <p><b>Date:</b> $Date: 2006/08/29 15:12:57 $</p>
     <p><b>Copyright:</b> (C) 2005 Free Software Foundation, Inc.</p>
               <h1><a name="001000000000">Base</a></h1>
     <p>
@@ -32,11 +32,13 @@
     <dl>
       <dt>GS_GNUSTEP_V</dt>
       <dd>
-        	      Specifies the software version of the header being included.<br />	      Features in that header which are declared as having been	      introduced at or before the specified version, and not being	      removed until or after the specified version are available.<br />	      The version consists of five or six digits ...	      a major number (0-99) followed by a minor number (00-99) and	      a subminor number (00-00).<br />	      Features in the header file are marked as belonging to different	      version ranges using the GS_API_VERSION macro.<br />	      NB. This is the <em>native</em> versioning of the library being	      used via the header file.  You can use this mechanism in your	      own libraries and frameworks.	    
+        	      Specifies the software version of the header being included.<br />	      Features in that header which are declared as having been	      introduced at or before the specified version, and not being	      removed until or after the specified version are available.<br />	      The version consists of five or six digits ...	      a major number (0-99) followed by a minor number (00-99) and	      a subminor number (00-00).<br />	      Features in the header file are marked as belonging to different	      version ranges using the	      <a rel="gsdoc" href="Functions.html#macro$GS_API_VERSION">GS_API_VERSION</a>
+	      macro.<br />	      NB. This is the <em>native</em> versioning of the library being	      used via the header file.  You can use this mechanism in your	      own libraries and frameworks.	    
       </dd>
       <dt>GS_OPENSTEP_V</dt>
       <dd>
-        	      Used only for the software version in sequence of OpenStep	      specification and the NeXT/Apple implementation of that	      specification and its extensions.<br />	      Features in the header being included which are declared	      as having been introduced at or before the specified version,	      and not being removed until or after the specified version	      are available.<br />	      The version consists of five or six digits ...	      a major number (1-99) followed by a minor number (00-99) and	      a subminor number (00-00).<br />	      A major number of 1 indicates the OpenStep specification ...	      available as the GS_API_OSSPEC preprocessor constant.<br />	      A major number of 4 indicates the OPENSTEP implementation ...	      available as the GS_API_OPENSTEP preprocessor constant.<br />	      A major number of 10 indicates the MacOS-X implementation ...	      available as the GS_API_MACOSX preprocessor constant.<br />	      Features in the header file are marked as belonging to different	      version ranges using the OS_API_VERSION macro.<br />	    
+        	      Used only for the software version in sequence of OpenStep	      specification and the NeXT/Apple implementation of that	      specification and its extensions.<br />	      Features in the header being included which are declared	      as having been introduced at or before the specified version,	      and not being removed until or after the specified version	      are available.<br />	      The version consists of five or six digits ...	      a major number (1-99) followed by a minor number (00-99) and	      a subminor number (00-00).<br />	      A major number of 1 indicates the OpenStep specification ...	      available as the GS_API_OSSPEC preprocessor constant.<br />	      A major number of 4 indicates the OPENSTEP implementation ...	      available as the GS_API_OPENSTEP preprocessor constant.<br />	      A major number of 10 indicates the MacOS-X implementation ...	      available as the GS_API_MACOSX preprocessor constant.<br />	      Features in the header file are marked as belonging to different	      version ranges using the	      <a rel="gsdoc" href="Functions.html#macro$GS_API_VERSION">GS_API_VERSION</a>
+	      macro.<br />	    
       </dd>
       <dt>NO_GNUSTEP</dt>
       <dd>
@@ -138,6 +140,16 @@
         	      
         <p>
 		The CRASH_ON_ABORT environment variable can be used to		override this behavior.  If this is defined to <em>NO</em>,		<em>FALSE</em>, or <em>0</em> then the program will simply		exit when an exception occurs.  Any other value of the		variable will cause the program to generate a core dump.	              </p>
+        	    
+      </dd>
+      <dt>CRASH_ON_ZOMBIE</dt>
+      <dd>
+        	      
+        <p>
+		When the a message is sent to a zombie object (see the		<code>NSZombieEnabled</code> environment variable) the		base library allows you to specify whether the program		should continue after logging the message, or have the		program abort.<br />		By default, the program will attempt to continue.	              </p>
+        	      
+        <p>
+		The <code>CRASH_ON_ZOMBIE</code> variable can be used to		override this behavior.  If this is defined to <em>YES</em>,		<em>TRUE</em>, or <em>1</em> then the program will log the		message sent to the zombie and then abort, producing a		core dump on systems where that is possible.	              </p>
         	    
       </dd>
       <dt>GNUSTEP_STRING_ENCODING</dt>
@@ -255,7 +267,7 @@
       <dd>
         	      
         <p>
-		If this is set to YES, then deallocation of an object causes	        the object to be morphed into a Zombie ... a special object		which will call the GNUstep specific GSLogZombie() function		to log the method call.<br />		You can set a breakpoint in this function and examine the		process memory if you are running under a debugger.<br />		As this overrides actual object deallocation, all memory		allocated for objects will be leaked!	              </p>
+		If this is set to YES, then deallocation of an object causes	        the object to be morphed into a Zombie ... a special object		which will call the GNUstep specific GSLogZombie() function		to log the method call.<br />		You can set a breakpoint in this function and examine the		process memory if you are running under a debugger.<br />		As this overrides actual object deallocation, all memory		allocated for objects will be leaked!<br />		You can use the <code>CRASH_ON_ZOMBIE</code> environment		variable to force an abort afdter the message is logged.	              </p>
         	    
       </dd>
       <dt>SOCKS5_SERVER</dt>
@@ -362,12 +374,14 @@
     <p>
 	    These add to the path for NSSystemDomainMask, or	    NSLocalDomainMask as appropriate.	      </p>
     <p>
-	    The exact format of the configuration file is expected to 	    be that of a basic unix &quot;conf&quot; style file, with one	    <em>key = value</em> per line (the format a unix shell	    can &apos;source&apos; in order to define shell variables).<br />	    This configuration file uses the escape sequence and	    quoting conventions of the standard bourne shell.<br />	    The only Keys permitted are those listed in the	    documentation, and all consist of uppercase letters, digits,	    and underscores, and must not begin with a digit.<br />	    A value may be any quoted string (or an unquoted string	    containing no white space).<br />	    Lines beginning with a hash &apos;#&apos; are deemed comment lines	    and ignored.<br />	    The backslash character may be used as an escape character	    anywhere in the file  except within a singly quoted string	    (where it is taken literally).<br />	    A backslash followed immediately by a newline (except in a	    singly quoted string) is removed completely along with the	    newline ... it thus serves to join lines so that they are	    treated as a single line.<br />	    NB. Since ms-windows uses backslash characters in paths,	    it is a good idea to specify path values in the config file	    as singly quoted strings to avoid having to double all	    occurrences of the backslash.	      </p>
+	    All the above values from the configuration file are made	    available in the NSUserDefaults system at runtime, in the	    GSConfigDomain of the defaults.<br />	    In addition, the configuration file may contain the key	    <em>GNUSTEP_EXTRA</em> with a value set to be a comma separated	    list of extra key names which are to be allowed in the config	    file.  This lets you add more key/value pairs to the config	    file intended to be seen in the NSUserDefaults system.<br />	    However, you must take care that any key names you choose	    do not conflict with variable names used with the GNUstep	    Makefiles package or your configuration script may cause	    problems when building software.	      </p>
+    <p>
+	    The exact format of the configuration file is expected to 	    be that of a basic unix &quot;conf&quot; style file, with one	    <em>key = value</em> per line (the format a unix shell	    can &apos;source&apos; in order to define shell variables).<br />	    This configuration file uses the escape sequence and	    quoting conventions of the standard bourne shell.<br />	    The only Keys permitted are those listed above (plus any	    specified in the GNUSTEP_EXTRA list), and all consist of	    uppercase letters, digits, and underscores, and must	    not begin with a digit.<br />	    A value may be any quoted string (or an unquoted string	    containing no white space).<br />	    Lines beginning with a hash &apos;#&apos; are deemed comment lines	    and ignored.<br />	    The backslash character may be used as an escape character	    anywhere in the file  except within a singly quoted string	    (where it is taken literally).<br />	    A backslash followed immediately by a newline (except in a	    singly quoted string) is removed completely along with the	    newline ... it thus serves to join lines so that they are	    treated as a single line.<br />	    NB. Since ms-windows uses backslash characters in paths,	    it is a good idea to specify path values in the config file	    as singly quoted strings to avoid having to double all	    occurrences of the backslash.	      </p>
 	      <h3><a name="001001005000">Relocatable packages</a></h3>
     <p>
 	    The configuration files system has two features which make	    it possible to build standalone packages containing the	    entire GNUstep system in a form which can be moved anywhere	    and just run.	      </p>
     <p>
-	    Firstly, wariables in the configuration file which define	    paths, are expected to by full path specifications, except	    for the special case in which they begin with dot-slash (./).	    In this case the text after the dot-slash is appended to	    the path to the directory containing the configuration file	    (or specified to contain the configuration file if no	    configuration file exists) to form the value used.	      </p>
+	    Firstly, variables in the configuration file which define	    paths, are expected to by full path specifications, except	    for the special case in which they begin with dot-slash (./).	    In this case the text after the dot-slash is appended to	    the path to the directory containing the configuration file	    (or specified to contain the configuration file if no	    configuration file exists) to form the value used.	      </p>
     <p>
 	    Secondly, If the value of the path built in to the base library	    as the location of the config file (or specified by	    the GNUSTEP_CONFIG_FILE environment variable unless that option	    was disabled when the base library was configured)	    begins with a dot and slash (./) then the path used for that	    file is made relative to the base library.<br />	    ie the text after the dot-slash is appended to the path of the	    directory containing the gnustep-base library.	      </p>
     <p>
@@ -400,6 +414,7 @@
         <li><a rel="gsdoc" href="NSAttributedString.html#class$NSAttributedString">NSAttributedString</a></li>
         <li><a rel="gsdoc" href="NSAutoreleasePool.html#class$NSAutoreleasePool">NSAutoreleasePool</a></li>
         <li><a rel="gsdoc" href="NSBundle.html#class$NSBundle">NSBundle</a></li>
+        <li><a rel="gsdoc" href="NSURLCache.html#class$NSCachedURLResponse">NSCachedURLResponse</a></li>
         <li><a rel="gsdoc" href="NSCalendarDate.html#class$NSCalendarDate">NSCalendarDate</a></li>
         <li><a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a></li>
         <li><a rel="gsdoc" href="NSClassDescription.html#class$NSClassDescription">NSClassDescription</a></li>
@@ -424,6 +439,9 @@
         <li><a rel="gsdoc" href="NSFileHandle.html#class$NSFileHandle">NSFileHandle</a></li>
         <li><a rel="gsdoc" href="NSFileManager.html#class$NSFileManager">NSFileManager</a></li>
         <li><a rel="gsdoc" href="NSFormatter.html#class$NSFormatter">NSFormatter</a></li>
+        <li><a rel="gsdoc" href="NSHTTPCookie.html#class$NSHTTPCookie">NSHTTPCookie</a></li>
+        <li><a rel="gsdoc" href="NSHTTPCookieStorage.html#class$NSHTTPCookieStorage">NSHTTPCookieStorage</a></li>
+        <li><a rel="gsdoc" href="NSURLResponse.html#class$NSHTTPURLResponse">NSHTTPURLResponse</a></li>
         <li><a rel="gsdoc" href="NSHost.html#class$NSHost">NSHost</a></li>
         <li><a rel="gsdoc" href="NSIndexPath.html#class$NSIndexPath">NSIndexPath</a></li>
         <li><a rel="gsdoc" href="NSIndexSet.html#class$NSIndexSet">NSIndexSet</a></li>
@@ -443,6 +461,7 @@
         <li><a rel="gsdoc" href="NSIndexSet.html#class$NSMutableIndexSet">NSMutableIndexSet</a></li>
         <li><a rel="gsdoc" href="NSSet.html#class$NSMutableSet">NSMutableSet</a></li>
         <li><a rel="gsdoc" href="NSString.html#class$NSMutableString">NSMutableString</a></li>
+        <li><a rel="gsdoc" href="NSURLRequest.html#class$NSMutableURLRequest">NSMutableURLRequest</a></li>
         <li><a rel="gsdoc" href="NSNotification.html#class$NSNotification">NSNotification</a></li>
         <li><a rel="gsdoc" href="NSNotification.html#class$NSNotificationCenter">NSNotificationCenter</a></li>
         <li><a rel="gsdoc" href="NSNotificationQueue.html#class$NSNotificationQueue">NSNotificationQueue</a></li>
@@ -475,7 +494,17 @@
         <li><a rel="gsdoc" href="NSTimeZone.html#class$NSTimeZoneDetail">NSTimeZoneDetail</a></li>
         <li><a rel="gsdoc" href="NSTimer.html#class$NSTimer">NSTimer</a></li>
         <li><a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a></li>
+        <li><a rel="gsdoc" href="NSURLAuthenticationChallenge.html#class$NSURLAuthenticationChallenge">NSURLAuthenticationChallenge</a></li>
+        <li><a rel="gsdoc" href="NSURLCache.html#class$NSURLCache">NSURLCache</a></li>
+        <li><a rel="gsdoc" href="NSURLConnection.html#class$NSURLConnection">NSURLConnection</a></li>
+        <li><a rel="gsdoc" href="NSURLCredential.html#class$NSURLCredential">NSURLCredential</a></li>
+        <li><a rel="gsdoc" href="NSURLCredentialStorage.html#class$NSURLCredentialStorage">NSURLCredentialStorage</a></li>
+        <li><a rel="gsdoc" href="NSURLDownload.html#class$NSURLDownload">NSURLDownload</a></li>
         <li><a rel="gsdoc" href="NSURLHandle.html#class$NSURLHandle">NSURLHandle</a></li>
+        <li><a rel="gsdoc" href="NSURLProtectionSpace.html#class$NSURLProtectionSpace">NSURLProtectionSpace</a></li>
+        <li><a rel="gsdoc" href="NSURLProtocol.html#class$NSURLProtocol">NSURLProtocol</a></li>
+        <li><a rel="gsdoc" href="NSURLRequest.html#class$NSURLRequest">NSURLRequest</a></li>
+        <li><a rel="gsdoc" href="NSURLResponse.html#class$NSURLResponse">NSURLResponse</a></li>
         <li><a rel="gsdoc" href="NSArchiver.html#class$NSUnarchiver">NSUnarchiver</a></li>
         <li><a rel="gsdoc" href="NSUndoManager.html#class$NSUndoManager">NSUndoManager</a></li>
         <li><a rel="gsdoc" href="NSUserDefaults.html#class$NSUserDefaults">NSUserDefaults</a></li>
@@ -486,7 +515,6 @@
       <b>Protocol</b>
       <ul>
         <li><a rel="gsdoc" href="NSObject.html#protocol$(GCFinalization)">&lt;GCFinalization&gt;</a></li>
-        <li><a rel="gsdoc" href="NSStream.html#protocol$(GSStreamListener)">&lt;GSStreamListener&gt;</a></li>
         <li><a rel="gsdoc" href="NSObject.html#protocol$(NSCoding)">&lt;NSCoding&gt;</a></li>
         <li><a rel="gsdoc" href="NSObject.html#protocol$(NSCopying)">&lt;NSCopying&gt;</a></li>
         <li><a rel="gsdoc" href="NSDecimalNumber.html#protocol$(NSDecimalNumberBehaviors)">&lt;NSDecimalNumberBehaviors&gt;</a></li>
@@ -494,11 +522,14 @@
         <li><a rel="gsdoc" href="NSObject.html#protocol$(NSMutableCopying)">&lt;NSMutableCopying&gt;</a></li>
         <li><a rel="gsdoc" href="NSSerialization.html#protocol$(NSObjCTypeSerializationCallBack)">&lt;NSObjCTypeSerializationCallBack&gt;</a></li>
         <li><a rel="gsdoc" href="NSObject.html#protocol$(NSObject)">&lt;NSObject&gt;</a></li>
+        <li><a rel="gsdoc" href="NSURLAuthenticationChallenge.html#protocol$(NSURLAuthenticationChallengeSender)">&lt;NSURLAuthenticationChallengeSender&gt;</a></li>
         <li><a rel="gsdoc" href="NSURLHandle.html#protocol$(NSURLHandleClient)">&lt;NSURLHandleClient&gt;</a></li>
+        <li><a rel="gsdoc" href="NSURLProtocol.html#protocol$(NSURLProtocolClient)">&lt;NSURLProtocolClient&gt;</a></li>
         <li><a rel="gsdoc" href="NSRunLoop.html#protocol$(RunLoopEvents)">&lt;RunLoopEvents&gt;</a></li>
         <li><a rel="gsdoc" href="NSConnection.html#category$NSObject(NSConnectionDelegate)">(NSConnectionDelegate)</a></li>
         <li><a rel="gsdoc" href="NSFileManager.html#category$NSObject(NSFileManagerHandler)">(NSFileManagerHandler)</a></li>
         <li><a rel="gsdoc" href="NSKeyValueCoding.html#category$NSObject(NSKeyValueCoding)">(NSKeyValueCoding)</a></li>
+        <li><a rel="gsdoc" href="NSStream.html#category$NSObject(NSStreamDelegate)">(NSStreamDelegate)</a></li>
         <li><a rel="gsdoc" href="NSObject.html#category$NSObject(TimedPerformers)">(TimedPerformers)</a></li>
       </ul>
     </div>

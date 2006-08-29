@@ -21,7 +21,7 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Date:</b> 2006-04-12 13:52:10 -0600 (Wed, 12 Apr 2006)</p>
+    <p><b>Date:</b> 2006-08-25 08:15:45 -0600 (Fri, 25 Aug 2006)</p>
     <p><b>Copyright:</b> (C)       1995, 1997, 1999, 2001, 2002 Free Software Foundation, Inc.    </p>
         <div>
       <hr width="50%" align="left" />
@@ -73,9 +73,14 @@
     <ul>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle(GNUstep)+bundleForLibrary$">+bundleForLibrary:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle(GNUstep)+pathForLibraryResource$ofType$inDirectory$">+pathForLibraryResource:ofType:inDirectory:</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSBundle(GSCompatibility)+pathForLibraryResource$ofType$inDirectory$">+pathForLibraryResource:ofType:inDirectory:</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSHelpManager.html#method$NSBundle(NSHelpManager)-contextHelpForKey$">-contextHelpForKey:</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSImage.html#method$NSBundle(NSImageAdditions)-pathForImageResource$">-pathForImageResource:</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSSound.html#method$NSBundle(NSSoundAdditions)-pathForSoundResource$">-pathForSoundResource:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+allBundles">+allBundles</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+allFrameworks">+allFrameworks</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+bundleForClass$">+bundleForClass:</a></li>
+      <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+bundleWithIdentifier$">+bundleWithIdentifier:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+bundleWithPath$">+bundleWithPath:</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+mainBundle">+mainBundle</a></li>
       <li><a rel="gsdoc" href="NSBundle.html#method$NSBundle+pathForResource$ofType$inDirectory$">+pathForResource:ofType:inDirectory:</a></li>
@@ -139,14 +144,25 @@
                   
     </p>
     <p>
-              Return the bundle to which <var>aClass</var>              belongs. If <var>aClass</var> was loaded from a              bundle, return the bundle; if it belongs to a              framework (either a framework linked into the              application, or loaded dynamically), return              the framework; in all other cases, return the main              bundle.                </p>
+              Return the bundle to which <var>aClass</var>              belongs. If <var>aClass</var> was loaded from a              bundle, return the bundle; if it belongs to a              framework (either a framework linked into the              application, or loaded dynamically), return              the framework; if it belongs to a library, return the              bundle for that library; in all other cases,              return the main bundle.                </p>
     <p>
                   
     </p>
     <p>
-              Please note that GNUstep supports plain shared              libraries, while the openstep standard, and              other openstep-like systems, do not; the behaviour              when <var>aClass</var> belongs to a plain shared              library is at the moment still under              investigation -- you should consider it              undefined since it might be changed. :-)                </p>
+              Please note that GNUstep supports plain shared              libraries, while the openstep standard, and              other openstep-like systems, do not; the behaviour              when <var>aClass</var> belongs to a plain shared              library is to return a bundle for that library,              but might be changed. :-)                </p>
     <p>
                   Returns the bundle whose code contains the            specified class. <br /> NB: We will not find a            class if the bundle has not been loaded yet!          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSBundle+bundleWithIdentifier$">bundleWithIdentifier:&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$NSBundle">NSBundle</a>*) <b>bundleWithIdentifier:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)identifier;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  Returns the bundle for the specified            <var>identifier</var> (see -bundleIdentifier) as            <strong>long</strong> as the bundle has already            been loaded. This never causes a bundle to be loaded.          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -355,7 +371,8 @@
 <br />
 This is a designated initialiser for the class.<br />
     <div class="desc">
-                  Init the bundle for reading resources from            <var>path</var>. <br /> The MacOS-X documentation            says that the <var>path</var> must be a full            <var>path</var> to a directory on disk. However, it            (in MacOS-X) version 10.3 at least) actually accepts            relative paths too. <br /> The GNUstep behavior is            similar in that it accepts a relative            <var>path</var>, but GNUstep converts it to an            absolute <var>path</var> by referring to the            current working directory when the is initialised,            so an absolute <var>path</var> is then used and a            warning message is printed. <br /> On MacOS-X using            a bundle initialised with a relative <var>path</var> will            cause a crash if the current working directory is            changed between the point at which the bundle was            initialised and that at which it is used.            <br /> If <var>path</var> is <code>nil</code> or            can&apos;t be accessed, initWithPath: reallocates the            receiver and returns <code>nil</code>. <br /> If a            bundle for that <var>path</var> already existed, it            is returned in place of the receiver (and the receiver            is deallocated).          
+                  Init the bundle for reading resources from            <var>path</var>. <br /> The MacOS-X documentation            says that the <var>path</var> must be a full            <var>path</var> to a directory on disk. However, it            (in MacOS-X) version 10.3 at least) actually accepts            relative paths too. <br /> The GNUstep behavior is            similar in that it accepts a relative            <var>path</var>, but GNUstep converts it to an            absolute <var>path</var> by referring to the            current working directory when the is initialised,            so an absolute <var>path</var> is then used and a            warning message is printed. <br /> On MacOS-X using            a bundle initialised with a relative <var>path</var> will            cause a crash if the current working directory is            changed between the point at which the bundle was            initialised and that at which it is used.            <br /> If <var>path</var> is <code>nil</code> or            can&apos;t be accessed, initWithPath: deallocates the            receiver and returns <code>nil</code>. <br /> If a            bundle for that <var>path</var> already existed, it            is returned in place of the receiver (and the receiver            is deallocated). <br /> If the            <a rel="gsdoc" href="#method$NSBundle-bundleIdentifier">              -bundleIdentifier            </a>
+            is not <code>nil</code>, and a bundle with the same            identifier already exists, the existing bundle            is returned in place of the receiver (and the receiver            is deallocated).          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -366,7 +383,7 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Returns <code>YES</code> if the receiver&apos;s code is            loaded, otherwise, returns <code>NO</code>.          
+                  Returns a boolean indicating whether code for the            bundle has been loaded. <br /> Returns            <code>YES</code> if the receiver&apos;s code is loaded,            otherwise, returns <code>NO</code>.          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -552,7 +569,7 @@ This is a designated initialiser for the class.<br />
 <a name="_NSBundle_ivars"/>    <br/><hr width="50%" align="left" />
     <h2>Instance Variables for NSBundle Class</h2>
     <h3><a name="ivariable$NSBundle*_bundleClasses">_bundleClasses</a></h3>
-    @protected NSArray* <b>_bundleClasses</b>;<br />
+    @protected NSMutableArray* <b>_bundleClasses</b>;<br />
     <div class="desc">
                   <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
     </div>
@@ -636,7 +653,25 @@ This is a designated initialiser for the class.<br />
 </div>
 <br />
     <div class="desc">
-                  This method is an experimental GNUstep extension, and            might change. At the moment, search on the standard            GNUstep directories (starting from            GNUSTEP_USER_ROOT, and going on to            GNUSTEP_SYSTEM_ROOT) for a directory            Libraries/Resources/&apos;libraryName&apos;/.            <br /> Return a bundle which accesses the first            existing directory from the list            GNUSTEP_USER_ROOT/Libraries/Resources/libraryName/            GNUSTEP_NETWORK_ROOT/Libraries/Resources/libraryName/            GNUSTEP_LOCAL_ROOT/Libraries/Resources/libraryName/            GNUSTEP_SYSTEM_ROOT/Libraries/Resources/libraryName/          
+                  This method is an experimental GNUstep extension, and            might change. At the moment, search on the standard            GNUstep directories (starting from            GNUSTEP_USER_ROOT, and going on to            GNUSTEP_SYSTEM_ROOT) for a directory            Libraries/Resources/&apos;libraryName&apos;/.            <br />            
+    </p>
+    <p>
+              Return a bundle which accesses the first existing              directory from the list              GNUSTEP_USER_ROOT/Libraries/Resources/libraryName/              GNUSTEP_NETWORK_ROOT/Libraries/Resources/libraryName/              GNUSTEP_LOCAL_ROOT/Libraries/Resources/libraryName/              GNUSTEP_SYSTEM_ROOT/Libraries/Resources/libraryName/              <br /> Where <var>libraryName</var> is the name of              a library without the <em>lib</em> prefix or any              extensions.                </p>
+    <p>
+                  
+    </p>
+    <p>
+              This method exists to provide resource bundles for              libraries and hos no particular relationship to              the library code itsself. The named library could be              a dynamic library linked in to the running program, a              static library (whose code may not even exist on              the host machine except where it is linked in to the              program), or even a library which is not linked              into the program at all (eg. where you want to share              resources provided for a library you do not              actually use).                </p>
+    <p>
+                  
+    </p>
+    <p>
+              The bundle for the library <em>gnustep-base</em> is a              special case... for this bundle the              <a rel="gsdoc" href="#method$NSBundle-principalClass">                -principalClass              </a>
+              method returns              <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>
+                and the                <a rel="gsdoc" href="#method$NSBundle-executablePath">                  -executablePath                </a>
+                method returns the path to the gnustep-base                dynamic library (if it can be found). As a                general rule, library bundles are not                guaranteed to return values for these                methods as the library may not exist on disk.                  </p>
+    <p>
+                
     </div>
     <hr width="25%" align="left" />
 </div>

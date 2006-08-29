@@ -50,7 +50,7 @@
         You create a GSTable instance with a certain number of rows        and columns. The GSTable object itself is invisible; it is        only a logical device used to specify the subview        position. Then, you place one by one the views you        want to control in the GSTable, by calling a method of the        family        <a rel="gsdoc" href="#method$GSTable-putView$atRow$column$">          -putView:atRow:column:        </a>
         . Before placing a view in the table, you should resize it to        the minimum comfortable size you want it to have. The table        then automatically places the views, organizing them in        well-ordered columns and rows.          </p>
     <p>
-        The initial size of the GSTable is zero; each time you put        a view in the GSTable, the GSTable recomputes sizes and as a        result resizes itself so that it exactly fits the views        it contains. You should not force a GSTable in a size        different from the one it has automatically computed.        The only acceptable, reasonable and meaningful way of        resizing a GSTable is through the appropriate        [NSView -resizeWithOldSuperviewSize:]
+        The initial size of the GSTable is zero; each time you put        a view in the GSTable, the GSTable recomputes sizes and as a        result resizes itself so that it exactly fits the views        it contains. You should not force a GSTable in a size        different from the one it has automatically computed.        The only acceptable, reasonable and meaningful way of        resizing a GSTable is through the appropriate        <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#method$NSView-resizeWithOldSuperviewSize$">[NSView -resizeWithOldSuperviewSize:]</a>
  message when the GSTable is in the view hierarchy.          </p>
     <p>
         When you add a view, you may specify some particular        margins to be used for that view. If nothing is        specified, the view is added to the table with the        margins of 0. You should think of each view and its        margins as a whole. A position in the GSTable is free        or filled with a view and its margins.          </p>
@@ -59,28 +59,28 @@
         . When first filled, the table has this minimum size. If in        any moment you want the table to restore itself to this        size, you should invoke the method        <a rel="gsdoc" href="#method$GSTable-sizeToFit">          -sizeToFit        </a>
         .          </p>
     <p>
-        When the GSTable receives a        [NSView -resizeWithOldSuperviewSize:]
+        When the GSTable receives a        <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#method$NSView-resizeWithOldSuperviewSize$">[NSView -resizeWithOldSuperviewSize:]</a>
  message, it automatically rearranges the views it contains:          </p>
     <ul>
       <li>
                   If the new width or height is equal or less than the          table&apos;s minimum width or height, the GSTable simply          arranges its views in the initial position. In other          words, the GSTable refuse to resize below its minimum          width or height. If you do that, part of the GSTable is          clipped.        
       </li>
       <li>
-                  If the new width or height is bigger than the table&apos;s          minimum width or height, the space in excess is          equally distributed between the columns or rows which          have X (or Y) resizing enabled. When a column or a row          is resized, each view in the column or row is resized          together with its margins. By setting the          autoresizingMask of each view, you may          decide how the resizing operation will act on that          particular view and its margins. For example,          setting the autoresizingMask to          <code>NSViewWidthSizable | NSViewHeightSizable</code>          will always leave the margins fixed to their initial          dimensions, and expand/reduce only the view, in          all directions. Setting the autoresizingMask to          <code>NSViewMinXMargin | NSViewMaxXMargin</code>          <code>| NSViewSizable | NSViewHeightSizable</code>          will instead expand/reduce both the margins and the view          in the horizontal direction, but leave the margins fixed          and expand/reduce only the view in the vertical          direction. Whatever the autoresizingMask and the          amount of the resizing, views and margins are never          resized below their minimum comfortable size, as          explained above. For more information on the          autoresizingMask, please refer to the          description of the                      -setAutoresizingMask:          
+                  If the new width or height is bigger than the table&apos;s          minimum width or height, the space in excess is          equally distributed between the columns or rows which          have X (or Y) resizing enabled. When a column or a row          is resized, each view in the column or row is resized          together with its margins. By setting the          autoresizingMask of each view, you may          decide how the resizing operation will act on that          particular view and its margins. For example,          setting the autoresizingMask to          <code>NSViewWidthSizable | NSViewHeightSizable</code>          will always leave the margins fixed to their initial          dimensions, and expand/reduce only the view, in          all directions. Setting the autoresizingMask to          <code>NSViewMinXMargin | NSViewMaxXMargin</code>          <code>| NSViewSizable | NSViewHeightSizable</code>          will instead expand/reduce both the margins and the view          in the horizontal direction, but leave the margins fixed          and expand/reduce only the view in the vertical          direction. Whatever the autoresizingMask and the          amount of the resizing, views and margins are never          resized below their minimum comfortable size, as          explained above. For more information on the          autoresizingMask, please refer to the          description of the          <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#method$NSView-setAutoresizingMask$">            -setAutoresizingMask:          </a>
           method of the NSView class.        
       </li>
     </ul>
             <h2><a name="001001000000">Advanced Description of GSTable</a></h2>
     <p>
           We call any view which is added to the GSTable a          <var>prisoner</var>. The purpose of the GSTable is to          effectively manage its prisoners. To do so, the          GSTable creates a special view, called a          <var>jail</var>, for each prisoner. The jails are          subviews of the GSTable; each prisoner, when added          to the GSTable, is made a subview of its jail. The GSTable          always moves and resizes directly the jails. The          moving is automatically transmitted to the prisoners,          which are subviews of the jails; the resizing is          transmitted through the usual autoresizing          machinery, because the jails always have          autoresizing of subviews turned on. This works          because if a prisoner sends to its superview a                      -frame          
-          message, the frame of the jail (and <em>not</em> the          frame of the GSTable) is returned, so that each          prisoner will autoresize itself in its jail frame.          Moreover, any prisoner, being a subview of its          jail, is clipped in its jail frame. If a prisoner draws          something out of its jail frame, the output is          discarded by the usual subview/view clipping          machinery. This prevents the prisoners from          disturbing each other. The dimension of the jail          is the dimension of the prisoner plus its margins. Since          the GSTable manages directly the jails, each prisoner is          managed together with its margins. When the jail is          resized, the prisoner receives a          [NSView -resizeWithOldSuperviewSize:]
+          message, the frame of the jail (and <em>not</em> the          frame of the GSTable) is returned, so that each          prisoner will autoresize itself in its jail frame.          Moreover, any prisoner, being a subview of its          jail, is clipped in its jail frame. If a prisoner draws          something out of its jail frame, the output is          discarded by the usual subview/view clipping          machinery. This prevents the prisoners from          disturbing each other. The dimension of the jail          is the dimension of the prisoner plus its margins. Since          the GSTable manages directly the jails, each prisoner is          managed together with its margins. When the jail is          resized, the prisoner receives a          <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#method$NSView-resizeWithOldSuperviewSize$">[NSView -resizeWithOldSuperviewSize:]</a>
 , which makes it resize itself and its margins in the new jail size, according to its autoresizingMask.            </p>
             <h2><a name="001002000000">Setting Row and Column Expand Flag</a></h2>
     <p>
           When the GSTable is resized, the extra space is equally          divided between the Rows and Columns which have the X          (or Y) resizing enabled. The following methods let you          enable/disable the X (or Y) resizing of each          row and column in the GSTable. Note that when the GSTable          is first created, all its columns and rows have by default          resizing enabled.          <a rel="gsdoc" href="#method$GSTable-setXResizingEnabled$forColumn$">            -setXResizingEnabled:forColumn:          </a>
           ,          <a rel="gsdoc" href="#method$GSTable-setYResizingEnabled$forRow$">            -setYResizingEnabled:forRow:          </a>
           .            </p>
-    <h2><a name="class$GSTable">GSTable</a> : NSView</h2>
+    <h2><a name="class$GSTable">GSTable</a> : <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#class$NSView">NSView</a></h2>
     <blockquote class="declared">
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -224,7 +224,7 @@
 </div>
 <div class="method">
     <h3><a name="method$GSTable-putView$atRow$column$">putView:&nbsp;atRow:&nbsp;column:&nbsp;</a></h3>
-    - (void) <b>putView:</b> (NSView*)aView<b> atRow:</b> (int)row<b> column:</b> (int)column;<br />
+    - (void) <b>putView:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#class$NSView">NSView</a>*)aView<b> atRow:</b> (int)row<b> column:</b> (int)column;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -235,7 +235,7 @@
 </div>
 <div class="method">
     <h3><a name="method$GSTable-putView$atRow$column$withMargins$">putView:&nbsp;atRow:&nbsp;column:&nbsp;withMargins:&nbsp;</a></h3>
-    - (void) <b>putView:</b> (NSView*)aView<b> atRow:</b> (int)row<b> column:</b> (int)column<b> withMargins:</b> (float)margins;<br />
+    - (void) <b>putView:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#class$NSView">NSView</a>*)aView<b> atRow:</b> (int)row<b> column:</b> (int)column<b> withMargins:</b> (float)margins;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -246,7 +246,7 @@
 </div>
 <div class="method">
     <h3><a name="method$GSTable-putView$atRow$column$withMinXMargin$maxXMargin$minYMargin$maxYMargin$">putView:&nbsp;atRow:&nbsp;column:&nbsp;withMinXMargin:&nbsp;maxXMargin:&nbsp;minYMargin:&nbsp;maxYMargin:&nbsp;</a></h3>
-    - (void) <b>putView:</b> (NSView*)aView<b> atRow:</b> (int)row<b> column:</b> (int)column<b> withMinXMargin:</b> (float)minXMargin<b> maxXMargin:</b> (float)maxXMargin<b> minYMargin:</b> (float)minYMargin<b> maxYMargin:</b> (float)maxYMargin;<br />
+    - (void) <b>putView:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#class$NSView">NSView</a>*)aView<b> atRow:</b> (int)row<b> column:</b> (int)column<b> withMinXMargin:</b> (float)minXMargin<b> maxXMargin:</b> (float)maxXMargin<b> minYMargin:</b> (float)minYMargin<b> maxYMargin:</b> (float)maxYMargin;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -286,7 +286,7 @@
 </div>
 <div class="method">
     <h3><a name="method$GSTable-putView$atRow$column$withXMargins$yMargins$">putView:&nbsp;atRow:&nbsp;column:&nbsp;withXMargins:&nbsp;yMargins:&nbsp;</a></h3>
-    - (void) <b>putView:</b> (NSView*)aView<b> atRow:</b> (int)row<b> column:</b> (int)column<b> withXMargins:</b> (float)xMargins<b> yMargins:</b> (float)yMargins;<br />
+    - (void) <b>putView:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#class$NSView">NSView</a>*)aView<b> atRow:</b> (int)row<b> column:</b> (int)column<b> withXMargins:</b> (float)xMargins<b> yMargins:</b> (float)yMargins;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />

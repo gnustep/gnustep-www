@@ -15,7 +15,7 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Date:</b> 2006-02-27 02:35:19 -0700 (Mon, 27 Feb 2006)</p>
+    <p><b>Date:</b> 2006-08-15 07:10:49 -0600 (Tue, 15 Aug 2006)</p>
     <p><b>Copyright:</b> (C)       1995, 1996, 1997, 1998 Free Software Foundation, Inc.    </p>
         <div>
       <hr width="50%" align="left" />
@@ -319,6 +319,13 @@ Where an NSString instance method returns an NSString object, the class of the a
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-boolValue">-boolValue</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-substringFromRange$">-substringFromRange:</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByEscapingXML">-stringByEscapingXML</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByUnescapingXML">-stringByUnescapingXML</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawAtPoint$withAttributes$">-drawAtPoint:withAttributes:</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawInRect$withAttributes$">-drawInRect:withAttributes:</a></li>
+      <li><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-sizeWithAttributes$">-sizeWithAttributes:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>
@@ -1095,7 +1102,7 @@ Where an NSString instance method returns an NSString object, the class of the a
     </p>
     <p>
               In MacOS-X class clusters do not have designated              initialisers, and there is a general rule              that <a rel="gsdoc" href="#method$NSString-init">-init</a>
- is              treated as the designated initialiser of the              class cluster, but that other intitialisers may not              work s expected an would need to be individually              overridden in any subclass.                </p>
+ is              treated as the designated initialiser of the              class cluster, but that other intitialisers may not              work as expected and would need to be individually              overridden in any subclass.                </p>
     <p>
                   
     </p>
@@ -1107,6 +1114,13 @@ Where an NSString instance method returns an NSString object, the class of the a
     </p>
     <p>
               For MacOS-X compatibility, you may also need to              override various other initialisers. Exactly              which ones, you will need to determine by trial on              a MacOS-X system... and may vary between releases of              MacOS-X. So to be safe, on MacOS-X you probably              need to re-implement <em>all</em> the class cluster              initialisers you might use in conjunction              with your subclass.                </p>
+    <p>
+                  
+    </p>
+    <p>
+              NB. The GNUstep designated initialiser for the              NSString class cluster has changed to              <a rel="gsdoc" href="#method$NSString-initWithBytesNoCopy$length$encoding$freeWhenDone$">-initWithBytesNoCopy:length:encoding:freeWhenDone:</a>
+ from <a rel="gsdoc" href="#method$NSString-initWithCharactersNoCopy$length$freeWhenDone$">-initWithCharactersNoCopy:length:freeWhenDone:</a>
+ and older code subclassing NSString will need to be updated.                </p>
     <p>
                 
     </div>
@@ -1125,12 +1139,19 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-initWithBytesNoCopy$length$encoding$freeWhenDone$">initWithBytesNoCopy:&nbsp;length:&nbsp;encoding:&nbsp;freeWhenDone:&nbsp;</a></h3>
-    - (id) <b>initWithBytesNoCopy:</b> (const void*)bytes<b> length:</b> (unsigned int)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding<b> freeWhenDone:</b> (BOOL)flag;<br />
+    - (id) <b>initWithBytesNoCopy:</b> (void*)bytes<b> length:</b> (unsigned int)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding<b> freeWhenDone:</b> (BOOL)flag;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0, Base 1.2.0</div>
 <br />
+This is a designated initialiser for the class.<br />
+Subclasses <strong>should</strong> override this method.<br />
     <div class="desc">
-                  Initialises the receiver with the supplied            <var>length</var> of <var>bytes</var>, using the            specified <var>encoding</var>. <br /> For            NSUnicodeStringEncoding and            NSUTF8String <var>encoding</var>, a Byte Order            Marker (if present at the start of the data) is            removed automatically. <br /> If the data is not in            a format which can be used internally unmodified, it is            copied, otherwise it is used as is. If the data is            not copied the <var>flag</var> determines whether the            string will free it when it is no longer needed.            <br /> If the data can not be interpreted using the            <var>encoding</var>, the receiver is released and            <code>nil</code> is returned.          
+                  Initialises the receiver with the supplied            <var>length</var> of <var>bytes</var>, using the            specified <var>encoding</var>. <br /> For            NSUnicodeStringEncoding and            NSUTF8String <var>encoding</var>, a Byte Order            Marker (if present at the start of the data) is            removed automatically. <br /> If the data is not in            a format which can be used internally unmodified, it is            copied, otherwise it is used as is. If the data is            not copied the <var>flag</var> determines whether the            string will free it when it is no longer needed.            <br /> If the data can not be interpreted using the            <var>encoding</var>, the receiver is released and            <code>nil</code> is returned.            
+    </p>
+    <p>
+              Note, this is the most basic initialiser for              strings. In the GNUstep implementation, your              subclasses may override this initialiser in              order to have all other functionality.                </p>
+    <p>
+                
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1220,18 +1241,11 @@ Where an NSString instance method returns an NSString object, the class of the a
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
-This is a designated initialiser for the class.<br />
-Subclasses <strong>should</strong> override this method.<br />
     <div class="desc">
                   
     </p>
     <p>
               Initialize with given unicode <var>chars</var>              up to <var>length</var>, regardless of presence of              null bytes. Does not copy the string. If              <var>flag</var>, frees its storage when this              instance is deallocated.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              Note, this is the most basic initialiser for              unicode strings. In the GNUstep implementation,              your subclasses may override this initialiser in              order to have all others function.                </p>
     <p>
                 
     </div>

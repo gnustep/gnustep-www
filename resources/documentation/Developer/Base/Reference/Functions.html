@@ -916,43 +916,95 @@ is exactly the same as    </p>
     <h3><a name="macro$GS_API_LATEST">GS_API_LATEST</a></h3>
      GS_API_LATEST<br />
     <div class="desc">
-                A constant to represent a feature which is still present in          the latest version. This is the highest possible version          number.        
+                A constant to represent a feature which is still present in          the latest version. This is the highest possible version          number. <br /> eg. <br /> #if          <a rel="gsdoc" href="#macro$OS_API_VERSION">            OS_API_VERSION          </a>
+          (GS_API_MACOSX, GS_API_LATEST) <br /> denotes          code present from the initial MacOS-X version onwards.        
     </div>
     <hr width="25%" align="left" />
     <h3><a name="macro$GS_API_MACOSX">GS_API_MACOSX</a></h3>
      GS_API_MACOSX<br />
     <div class="desc">
-                The version number of the first MacOS-X implementation        
+                The version number of the first MacOS-X implementation.          <br /> eg. <br /> #if          <a rel="gsdoc" href="#macro$OS_API_VERSION">            OS_API_VERSION          </a>
+          (GS_API_MACOSX, GS_API_LATEST) <br /> denotes          code present from the initial MacOS-X version onwards.        
     </div>
     <hr width="25%" align="left" />
     <h3><a name="macro$GS_API_NONE">GS_API_NONE</a></h3>
      GS_API_NONE<br />
     <div class="desc">
-                A constant to represent a feature which is not present in          any version. Use this to say a feature is not present in          an API. <br /> eg. <br /> #if OS_API_VERSION(GS_API_NONE,          GS_API_NONE) <br /> denotes code not present in          OpenStep/OPENSTEP/MacOS-X        
+                A constant to represent a feature which is not present in          any version. Use this to say a feature is not present in          an API. <br /> eg. <br /> #if          <a rel="gsdoc" href="#macro$OS_API_VERSION">            OS_API_VERSION          </a>
+          (GS_API_NONE, GS_API_NONE) <br /> denotes code          not present in OpenStep/OPENSTEP/MacOS-X        
     </div>
     <hr width="25%" align="left" />
     <h3><a name="macro$GS_API_OPENSTEP">GS_API_OPENSTEP</a></h3>
      GS_API_OPENSTEP<br />
     <div class="desc">
-                The version number of the first OPENSTEP implementation        
+                The version number of the first OPENSTEP implementation.          <br /> eg. <br /> #if          <a rel="gsdoc" href="#macro$OS_API_VERSION">            OS_API_VERSION          </a>
+          (GS_API_OPENSTEP, GS_API_LATEST) <br />          denotes code present from the initial OPENSTEP          version onwards.        
     </div>
     <hr width="25%" align="left" />
     <h3><a name="macro$GS_API_OSSPEC">GS_API_OSSPEC</a></h3>
      GS_API_OSSPEC<br />
     <div class="desc">
-                The version number of the initial OpenStep specification        
+                The version number of the initial OpenStep specification.          <br /> eg. <br /> #if          <a rel="gsdoc" href="#macro$OS_API_VERSION">            OS_API_VERSION          </a>
+          (GS_API_OSSPEC, GS_API_LATEST) <br /> denotes          code present from the OpenStep specification onwards.        
     </div>
     <hr width="25%" align="left" />
     <h3><a name="macro$GS_API_VERSION">GS_API_VERSION</a></h3>
      GS_API_VERSION(<b>ADD</b>, <b>REM</b>)<br />
     <div class="desc">
-                Macro to check a defined GNUstep version number          (GS_GNUSTEP_V) against the supplied arguments.          Returns true if no GNUstep version is specified, or          if <var>ADD</var> &lt;= VER &lt; <var>REM</var>        
+                
+    </p>
+    <p>
+            Macro to check a defined GNUstep version number            (GS_GNUSTEP_V) against the supplied            arguments. Returns true if no GNUstep version is            specified, or if <var>ADD</var> &lt;= version            &lt; <var>REM</var>, where <var>ADD</var> is the            version number at which a feature guarded by the            macro was introduced and <var>REM</var> is the            version number at which it was removed.              </p>
+    <p>
+                
+    </p>
+    <p>
+            The version number arguments are six digit integers            where the first two digits are the major version            number, the second two are the minor version number            and the last two are the subminor number (all left            padded with a zero where necessary). However, for            convenience you can also use any of several            predefined constants...            <a rel="gsdoc" href="#macro$GS_API_NONE">              GS_API_NONE            </a>
+            ,            <a rel="gsdoc" href="#macro$GS_API_LATEST">              GS_API_LATEST            </a>
+            ,            <a rel="gsdoc" href="#macro$GS_API_OSSPEC">              GS_API_OSSPEC            </a>
+            ,            <a rel="gsdoc" href="#macro$GS_API_OPENSTEP">              GS_API_OPENSTEP            </a>
+            ,            <a rel="gsdoc" href="#macro$GS_API_MACOSX">              GS_API_MACOSX            </a>
+              </p>
+    <p>
+                
+    </p>
+    <p>
+            Also see            <a rel="gsdoc" href="#macro$OS_API_VERSION">              OS_API_VERSION            </a>
+              </p>
+    <p>
+                
+    </p>
+    <p>
+            NB. If you are changing the API (eg adding a new            feature) you need to control the visibility io the            new header file code using <br />            <code>              #if GS_API_VERSION(<var>ADD</var>,GS_API_LATEST)            </code>            <br /> where <code><var>ADD</var></code> is the            version number of the next minor release after the            most recent one. <br /> As a general principle you            should <em>not</em> change the API with changing            subminor version numbers... as that tends to            confuse people (though Apple has sometimes done            it).              </p>
+    <p>
+              
     </div>
     <hr width="25%" align="left" />
     <h3><a name="macro$OS_API_VERSION">OS_API_VERSION</a></h3>
      OS_API_VERSION(<b>ADD</b>, <b>REM</b>)<br />
     <div class="desc">
-                Macro to check a defined OpenStep/OPENSTEP/MacOS-X          version against the supplied arguments. Returns true          if no version is specified, or if <var>ADD</var> &lt;= VER          &lt; <var>REM</var>        
+                
+    </p>
+    <p>
+            Macro to check a defined OpenStep/OPENSTEP/MacOS-X            version against the supplied arguments. Returns            true if no version is specified, or if <var>ADD</var>            &lt;= version &lt; <var>REM</var>, where            <var>ADD</var> is the version number at which a            feature guarded by the macro was introduced and            <var>REM</var> is the version number at which it was            removed.              </p>
+    <p>
+                
+    </p>
+    <p>
+            The version number arguments are six digit integers            where the first two digits are the major version            number, the second two are the minor version number            and the last two are the subminor number (all left            padded with a zero where necessary). However, for            convenience you can also use any of several            predefined constants...            <a rel="gsdoc" href="#macro$GS_API_NONE">              GS_API_NONE            </a>
+            ,            <a rel="gsdoc" href="#macro$GS_API_LATEST">              GS_API_LATEST            </a>
+            ,            <a rel="gsdoc" href="#macro$GS_API_OSSPEC">              GS_API_OSSPEC            </a>
+            ,            <a rel="gsdoc" href="#macro$GS_API_OPENSTEP">              GS_API_OPENSTEP            </a>
+            ,            <a rel="gsdoc" href="#macro$GS_API_MACOSX">              GS_API_MACOSX            </a>
+              </p>
+    <p>
+                
+    </p>
+    <p>
+            Also see            <a rel="gsdoc" href="#macro$GS_API_VERSION">              GS_API_VERSION            </a>
+              </p>
+    <p>
+              
     </div>
     <hr width="25%" align="left" />
     <h3><a name="macro$RECREATE_AUTORELEASE_POOL">RECREATE_AUTORELEASE_POOL</a></h3>
@@ -1746,11 +1798,11 @@ is exactly the same as    </p>
     <p>
             GNUstep provides powerful alternatives for logging            ... see            <a rel="gsdoc" href="#macro$NSDebugLog">              NSDebugLog()            </a>
             , <a rel="gsdoc" href="#macro$NSWarnLog">NSWarnLog()</a>
-            and GSPrintf()
+            and <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#function$GSPrintf">GSPrintf()</a>
             for example. We recommend the use of            <a rel="gsdoc" href="#macro$NSDebugLog">              NSDebugLog()            </a>
-            and its relatives for debug purposes, and                          GSPrintf()            
+            and its relatives for debug purposes, and            <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#function$GSPrintf">              GSPrintf()            </a>
             for general log messages, with            <a rel="gsdoc" href="#function$NSLog">              NSLog()            </a>
-            being reserved for reporting possible/likely errors.                          GSPrintf()            
+            being reserved for reporting possible/likely errors.            <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#function$GSPrintf">              GSPrintf()            </a>
             is declared in GSObjCRuntime.h.              </p>
     <p>
               
