@@ -493,26 +493,18 @@ packages and applications may require you to install these libraries
 
 <tr>
 <td class="src">nib2gmodel</td>
-<td class="req">Optional</td>
+<td class="req">Obsolete</td>
 <td class="stab"><a href="<?php download("dev-apps/nib2gmodel-0.11.0.tar.gz")?>">0.11.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
-<td>Converts nibs to gmodel</td>
+<td>Converts older (pre-10.2 nibs) </td>
 </tr>
 
 <tr>
 <td class="src">OpenStep 2GNU Converter</td>
-<td class="req">Optional</td>
+<td class="req">Obsolete</td>
 <td class="stab"><a href="<?php download("contrib/Openstep2GNUConverter-20000717.tar.gz")?>">20000717</a></td>
 <td class="unst"><div class="cent">-</div></td>
-<td>PB Project to GNUstep Makefile converter</td>
-</tr>
-
-<tr>
-<td class="src">Testsuite</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("test/gnustep-tests-1.7.0.tar.gz")?>">1.7.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Regression tests</td>
+<td>Older PB Project converter</td>
 </tr>
 
 <tr>
@@ -556,7 +548,7 @@ packages and applications may require you to install these libraries
 <td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">GWorkspace</a></td>
 <td class="req">Recommended</td>
 <td class="stab">-</td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/gworkspace-0.8.2.tar.gz">0.8.2</a></td>
+<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/">0.8.3</a></td>
 <td>File manager for GNUstep</td>
 </tr>
 
@@ -587,7 +579,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">GNUMail</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/GNUMail-1.1.0pre2.tar.gz?rid=75">1.1.0pre2</a></td>
+<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/project/release.cgi?pid=2>1.1.0pre2</a></td>
 <td class="unst">-</td>
 <td>GNU Mail - see also <a href="http://www.collaboration-world.com/gnumail">description</a></td>
 </tr>
