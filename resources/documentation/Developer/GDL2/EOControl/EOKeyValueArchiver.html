@@ -1,24 +1,27 @@
-<html>
-  <head>
-    <title>EOKeyValueArchiver Class</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+    <title>EOKeyValueArchiver <strong>Class</strong></title>
   </head>
   <body>
     <font face="serif">
     <a href="EOControl.html">Up</a>
     <br />
-    <h1><a name="title$EOKeyValueArchiver">EOKeyValueArchiver Class</a></h1>
+    <h1><a name="title$EOKeyValueArchiver">EOKeyValueArchiver <strong>Class</strong></a></h1>
     <h3>Authors</h3>
     <dl>
       <dt>Manuel Guesdon (<a href="mailto:mguesdon@orange-concept.com"><code>mguesdon@orange-concept.com</code></a>)</dt>
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 1.11</p>
-    <p><b>Date:</b> 2004/04/17 12:41:32</p>
+    <p><b>Version:</b> 21645</p>
+    <p><b>Date:</b> 2005-08-17 10:07:57 +0200 (Mit, 17 Aug 2005)</p>
     <blockquote>
+            EOKeyValueArchiver object is used to archive a      tree of objects into a key/value propertyList.      EOKeyValueUnarchiver object is used to      unarchive from a propertyList a tree of objects      archived with a EOKeyValueArchiver. Example: //      Archiving: EOKeyValueArchiver*      archive=AUTORELEASE([EOKeyValueArchiver      new]); [archive setDelegate:MyArchivingDelegate];      [archiver encodeObject:anObject forKey:@&quot;anObjectKey&quot;];      [archiver encodeInt:125 forKey:@&quot;aKey&quot;];...      NSDictionary* archivePropertyList=[archiver      dictionary]; // Now unarchive archivePropertyList      EOKeyValueUnarchiver*      unarchiver=AUTORELEASE([[EOKeyValueUnarchiver      alloc]initWith:archivePropertyList]);      [archive setDelegate:MyUnarchivingDelegate];      <strong>id</strong> anObject=[unarchiver      decodeObjectForKey:@&quot;anObjectKey&quot;];      <strong>int</strong> anInt=[unarchiver      decodeIntForKey:@&quot;anKey&quot;]; [unarchiver      finishInitializationOfObjects];      [unarchiver awakeObjects]    
     </blockquote>
-    <p><b>Copyright:</b> (C) 2000-2002 Free Software Foundation, Inc.</p>
-    <div>
+    <p><b>Copyright:</b> (C)       2000-2002,2003,2004,2005 Free Software      Foundation, Inc.    </p>
+        <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
       <ol>
@@ -52,600 +55,522 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-
-          <h1><a name="001000000000">
-        Software documentation for the EOKeyValueArchiver
-        class
-      </a></h1>
+          <h1><a name="001000000000">        Software documentation for the EOKeyValueArchiver        class      </a></h1>
     <h2><a name="class$EOKeyValueArchiver">EOKeyValueArchiver</a> : NSObject</h2>
-    <blockquote>
+    <blockquote class="declared">
       <dl>
         <dt><b>Declared in:</b></dt>
         <dd>EOControl/EOKeyValueArchiver.h</dd>
       </dl>
     </blockquote>
-    <blockquote>
-      <b>Standards:</b>
-      <ul>
-        <li>MacOS-X</li>
-        <li>OpenStep</li>
-        <li>GNUstep</li>
-      </ul>
-    </blockquote>
-    <p>
-      
-          <em>Description forthcoming.</em>
-        
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                <em>Description forthcoming.</em>        
+    </div>
     <hr width="50%" align="left" />
     <a href="#_EOKeyValueArchiver_ivars">Instance Variables</a>
     <br/><br/>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-_encodeDictionary:forKey:">-_encodeDictionary:forKey:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-_encodeObjects:forKey:">-_encodeObjects:forKey:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-_encodeValue:forKey:">-_encodeValue:forKey:</a></li>
       <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-delegate">-delegate</a></li>
       <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-dictionary">-dictionary</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-encodeBool:forKey:">-encodeBool:forKey:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-encodeInt:forKey:">-encodeInt:forKey:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-encodeObject:forKey:">-encodeObject:forKey:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-encodeReferenceToObject:forKey:">-encodeReferenceToObject:forKey:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-setDelegate:">-setDelegate:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-encodeBool$forKey$">-encodeBool:forKey:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-encodeInt$forKey$">-encodeInt:forKey:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-encodeObject$forKey$">-encodeObject:forKey:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-encodeReferenceToObject$forKey$">-encodeReferenceToObject:forKey:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueArchiver-setDelegate$">-setDelegate:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$EOKeyValueArchiver-_encodeDictionary:forKey:">_encodeDictionary:&nbsp;forKey:&nbsp;</a></h3>
-    - (void) <b>_encodeDictionary:</b> (id)dictionary<b> forKey:</b> (id)key;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueArchiver-_encodeObjects:forKey:">_encodeObjects:&nbsp;forKey:&nbsp;</a></h3>
-    - (void) <b>_encodeObjects:</b> (id)objects<b> forKey:</b> (id)key;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
-    <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueArchiver-_encodeValue:forKey:">_encodeValue:&nbsp;forKey:&nbsp;</a></h3>
-    - (void) <b>_encodeValue:</b> (id)value<b> forKey:</b> (id)key;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
-    <hr width="25%" align="left" />
+<div class="method">
     <h3><a name="method$EOKeyValueArchiver-delegate">delegate&nbsp;</a></h3>
     - (id) <b>delegate</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$EOKeyValueArchiver-dictionary">dictionary&nbsp;</a></h3>
     - (NSDictionary*) <b>dictionary</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueArchiver-encodeBool:forKey:">encodeBool:&nbsp;forKey:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueArchiver-encodeBool$forKey$">encodeBool:&nbsp;forKey:&nbsp;</a></h3>
     - (void) <b>encodeBool:</b> (BOOL)yn<b> forKey:</b> (NSString*)key;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueArchiver-encodeInt:forKey:">encodeInt:&nbsp;forKey:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueArchiver-encodeInt$forKey$">encodeInt:&nbsp;forKey:&nbsp;</a></h3>
     - (void) <b>encodeInt:</b> (int)intValue<b> forKey:</b> (NSString*)key;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueArchiver-encodeObject:forKey:">encodeObject:&nbsp;forKey:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueArchiver-encodeObject$forKey$">encodeObject:&nbsp;forKey:&nbsp;</a></h3>
     - (void) <b>encodeObject:</b> (id)object<b> forKey:</b> (NSString*)key;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueArchiver-encodeReferenceToObject:forKey:">encodeReferenceToObject:&nbsp;forKey:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueArchiver-encodeReferenceToObject$forKey$">encodeReferenceToObject:&nbsp;forKey:&nbsp;</a></h3>
     - (void) <b>encodeReferenceToObject:</b> (id)object<b> forKey:</b> (NSString*)key;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueArchiver-setDelegate:">setDelegate:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueArchiver-setDelegate$">setDelegate:&nbsp;</a></h3>
     - (void) <b>setDelegate:</b> (id)delegate;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
+</div>
 <a name="_EOKeyValueArchiver_ivars"/>    <br/><hr width="50%" align="left" />
     <h2>Instance Variables for EOKeyValueArchiver Class</h2>
     <h3><a name="ivariable$EOKeyValueArchiver*_delegate">_delegate</a></h3>
     @protected id <b>_delegate</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$EOKeyValueArchiver*_propertyList">_propertyList</a></h3>
     @protected NSMutableDictionary* <b>_propertyList</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
-
-          <h1><a name="002000000000">
-        Software documentation for the EOKeyValueUnarchiver
-        class
-      </a></h1>
+          <h1><a name="002000000000">        Software documentation for the EOKeyValueUnarchiver        class      </a></h1>
     <h2><a name="class$EOKeyValueUnarchiver">EOKeyValueUnarchiver</a> : NSObject</h2>
-    <blockquote>
+    <blockquote class="declared">
       <dl>
         <dt><b>Declared in:</b></dt>
         <dd>EOControl/EOKeyValueArchiver.h</dd>
       </dl>
     </blockquote>
-    <blockquote>
-      <b>Standards:</b>
-      <ul>
-        <li>MacOS-X</li>
-        <li>OpenStep</li>
-        <li>GNUstep</li>
-      </ul>
-    </blockquote>
-    <p>
-      
-          <em>Description forthcoming.</em>
-        
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                <em>Description forthcoming.</em>        
+    </div>
     <hr width="50%" align="left" />
     <a href="#_EOKeyValueUnarchiver_ivars">Instance Variables</a>
     <br/><br/>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-_dictionaryForPropertyList:">-_dictionaryForPropertyList:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-_findTypeForPropertyListDecoding:">-_findTypeForPropertyListDecoding:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-_objectForPropertyList:">-_objectForPropertyList:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-_objectsForPropertyList:">-_objectsForPropertyList:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-_dictionaryForPropertyList$">-_dictionaryForPropertyList:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-_findTypeForPropertyListDecoding$">-_findTypeForPropertyListDecoding:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-_objectForPropertyList$">-_objectForPropertyList:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-_objectsForPropertyList$">-_objectsForPropertyList:</a></li>
       <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-awakeObjects">-awakeObjects</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-decodeBoolForKey:">-decodeBoolForKey:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-decodeIntForKey:">-decodeIntForKey:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-decodeObjectForKey:">-decodeObjectForKey:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-decodeObjectReferenceForKey:">-decodeObjectReferenceForKey:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-decodeBoolForKey$">-decodeBoolForKey:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-decodeIntForKey$">-decodeIntForKey:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-decodeObjectForKey$">-decodeObjectForKey:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-decodeObjectReferenceForKey$">-decodeObjectReferenceForKey:</a></li>
       <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-delegate">-delegate</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-ensureObjectAwake:">-ensureObjectAwake:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-ensureObjectAwake$">-ensureObjectAwake:</a></li>
       <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-finishInitializationOfObjects">-finishInitializationOfObjects</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-initWithDictionary:">-initWithDictionary:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-isThereValueForKey:">-isThereValueForKey:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-initWithDictionary$">-initWithDictionary:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-isThereValueForKey$">-isThereValueForKey:</a></li>
       <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-parent">-parent</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-setDelegate:">-setDelegate:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$EOKeyValueUnarchiver-setDelegate$">-setDelegate:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-_dictionaryForPropertyList:">_dictionaryForPropertyList:&nbsp;</a></h3>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-_dictionaryForPropertyList$">_dictionaryForPropertyList:&nbsp;</a></h3>
     - (id) <b>_dictionaryForPropertyList:</b> (NSDictionary*)propList;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-_findTypeForPropertyListDecoding:">_findTypeForPropertyListDecoding:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-_findTypeForPropertyListDecoding$">_findTypeForPropertyListDecoding:&nbsp;</a></h3>
     - (id) <b>_findTypeForPropertyListDecoding:</b> (id)param0;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-_objectForPropertyList:">_objectForPropertyList:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-_objectForPropertyList$">_objectForPropertyList:&nbsp;</a></h3>
     - (id) <b>_objectForPropertyList:</b> (NSDictionary*)propList;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-_objectsForPropertyList:">_objectsForPropertyList:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-_objectsForPropertyList$">_objectsForPropertyList:&nbsp;</a></h3>
     - (id) <b>_objectsForPropertyList:</b> (NSArray*)propList;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this method indicates that it is private, for
-            internal use only, and you should not use the
-            method in your code.
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+    </div>
     <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$EOKeyValueUnarchiver-awakeObjects">awakeObjects&nbsp;</a></h3>
     - (void) <b>awakeObjects</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-decodeBoolForKey:">decodeBoolForKey:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-decodeBoolForKey$">decodeBoolForKey:&nbsp;</a></h3>
     - (BOOL) <b>decodeBoolForKey:</b> (NSString*)key;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-decodeIntForKey:">decodeIntForKey:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-decodeIntForKey$">decodeIntForKey:&nbsp;</a></h3>
     - (int) <b>decodeIntForKey:</b> (NSString*)key;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-decodeObjectForKey:">decodeObjectForKey:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-decodeObjectForKey$">decodeObjectForKey:&nbsp;</a></h3>
     - (id) <b>decodeObjectForKey:</b> (NSString*)key;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-decodeObjectReferenceForKey:">decodeObjectReferenceForKey:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-decodeObjectReferenceForKey$">decodeObjectReferenceForKey:&nbsp;</a></h3>
     - (id) <b>decodeObjectReferenceForKey:</b> (NSString*)key;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$EOKeyValueUnarchiver-delegate">delegate&nbsp;</a></h3>
     - (id) <b>delegate</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-ensureObjectAwake:">ensureObjectAwake:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-ensureObjectAwake$">ensureObjectAwake:&nbsp;</a></h3>
     - (void) <b>ensureObjectAwake:</b> (id)object;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$EOKeyValueUnarchiver-finishInitializationOfObjects">finishInitializationOfObjects&nbsp;</a></h3>
     - (void) <b>finishInitializationOfObjects</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-initWithDictionary:">initWithDictionary:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-initWithDictionary$">initWithDictionary:&nbsp;</a></h3>
     - (id) <b>initWithDictionary:</b> (NSDictionary*)dictionary;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-isThereValueForKey:">isThereValueForKey:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-isThereValueForKey$">isThereValueForKey:&nbsp;</a></h3>
     - (BOOL) <b>isThereValueForKey:</b> (NSString*)key;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$EOKeyValueUnarchiver-parent">parent&nbsp;</a></h3>
     - (id) <b>parent</b>;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$EOKeyValueUnarchiver-setDelegate:">setDelegate:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$EOKeyValueUnarchiver-setDelegate$">setDelegate:&nbsp;</a></h3>
     - (void) <b>setDelegate:</b> (id)delegate;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
+</div>
 <a name="_EOKeyValueUnarchiver_ivars"/>    <br/><hr width="50%" align="left" />
     <h2>Instance Variables for EOKeyValueUnarchiver Class</h2>
     <h3><a name="ivariable$EOKeyValueUnarchiver*_allUnarchivedObjects">_allUnarchivedObjects</a></h3>
     @protected NSMutableArray* <b>_allUnarchivedObjects</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$EOKeyValueUnarchiver*_awakenedObjects">_awakenedObjects</a></h3>
     @protected NSHashTable* <b>_awakenedObjects</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$EOKeyValueUnarchiver*_delegate">_delegate</a></h3>
     @protected id <b>_delegate</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$EOKeyValueUnarchiver*_nextParent">_nextParent</a></h3>
     @protected id <b>_nextParent</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$EOKeyValueUnarchiver*_parent">_parent</a></h3>
     @protected id <b>_parent</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$EOKeyValueUnarchiver*_propertyList">_propertyList</a></h3>
     @protected NSDictionary* <b>_propertyList</b>;<br />
-    <p>
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </p>
+    <div class="desc">
+                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+    </div>
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
-
-          <h1><a name="003000000000">
-        Software documentation for the
-        NSObject(EOKeyValueArchiverDelegation)
-        informal protocol
-      </a></h1>
+          <h1><a name="003000000000">        Software documentation for the        NSObject(EOKeyValueArchiverDelegation)        informal protocol      </a></h1>
     <h2>NSObject(<a name="category$NSObject(EOKeyValueArchiverDelegation)">EOKeyValueArchiverDelegation</a>)</h2>
-    <blockquote>
+    <blockquote class="declared">
       <dl>
         <dt><b>Declared in:</b></dt>
         <dd>EOControl/EOKeyValueArchiver.h</dd>
       </dl>
     </blockquote>
-    <blockquote>
-      <b>Standards:</b>
-      <ul>
-        <li>MacOS-X</li>
-        <li>OpenStep</li>
-        <li>GNUstep</li>
-      </ul>
-    </blockquote>
-    <p>
-      
-          <em>Description forthcoming.</em>
-        
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                <em>Description forthcoming.</em>        
+    </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$NSObject(EOKeyValueArchiverDelegation)-archiver:referenceToEncodeForObject:">-archiver:referenceToEncodeForObject:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$NSObject(EOKeyValueArchiverDelegation)-archiver$referenceToEncodeForObject$">-archiver:referenceToEncodeForObject:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSObject(EOKeyValueArchiverDelegation)-archiver:referenceToEncodeForObject:">archiver:&nbsp;referenceToEncodeForObject:&nbsp;</a></h3>
+<div class="method">
+    <h3><a name="method$NSObject(EOKeyValueArchiverDelegation)-archiver$referenceToEncodeForObject$">archiver:&nbsp;referenceToEncodeForObject:&nbsp;</a></h3>
     - (id) <b>archiver:</b> (<a rel="gsdoc" href="#class$EOKeyValueArchiver">EOKeyValueArchiver</a>*)archiver<b> referenceToEncodeForObject:</b> (id)object;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-
-          <h1><a name="004000000000">
-        Software documentation for the
-        NSObject(EOKeyValueArchivingAwakeMethods)
-        informal protocol
-      </a></h1>
+</div>
+          <h1><a name="004000000000">        Software documentation for the        NSObject(EOKeyValueArchivingAwakeMethods)        informal protocol      </a></h1>
     <h2>NSObject(<a name="category$NSObject(EOKeyValueArchivingAwakeMethods)">EOKeyValueArchivingAwakeMethods</a>)</h2>
-    <blockquote>
+    <blockquote class="declared">
       <dl>
         <dt><b>Declared in:</b></dt>
         <dd>EOControl/EOKeyValueArchiver.h</dd>
       </dl>
     </blockquote>
-    <blockquote>
-      <b>Standards:</b>
-      <ul>
-        <li>MacOS-X</li>
-        <li>OpenStep</li>
-        <li>GNUstep</li>
-      </ul>
-    </blockquote>
-    <p>
-      
-          <em>Description forthcoming.</em>
-        
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                <em>Description forthcoming.</em>        
+    </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$NSObject(EOKeyValueArchivingAwakeMethods)-awakeFromKeyValueUnarchiver:">-awakeFromKeyValueUnarchiver:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$NSObject(EOKeyValueArchivingAwakeMethods)-finishInitializationWithKeyValueUnarchiver:">-finishInitializationWithKeyValueUnarchiver:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$NSObject(EOKeyValueArchivingAwakeMethods)-awakeFromKeyValueUnarchiver$">-awakeFromKeyValueUnarchiver:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$NSObject(EOKeyValueArchivingAwakeMethods)-finishInitializationWithKeyValueUnarchiver$">-finishInitializationWithKeyValueUnarchiver:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSObject(EOKeyValueArchivingAwakeMethods)-awakeFromKeyValueUnarchiver:">awakeFromKeyValueUnarchiver:&nbsp;</a></h3>
+<div class="method">
+    <h3><a name="method$NSObject(EOKeyValueArchivingAwakeMethods)-awakeFromKeyValueUnarchiver$">awakeFromKeyValueUnarchiver:&nbsp;</a></h3>
     - (void) <b>awakeFromKeyValueUnarchiver:</b> (<a rel="gsdoc" href="#class$EOKeyValueUnarchiver">EOKeyValueUnarchiver</a>*)unarchiver;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$NSObject(EOKeyValueArchivingAwakeMethods)-finishInitializationWithKeyValueUnarchiver:">finishInitializationWithKeyValueUnarchiver:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$NSObject(EOKeyValueArchivingAwakeMethods)-finishInitializationWithKeyValueUnarchiver$">finishInitializationWithKeyValueUnarchiver:&nbsp;</a></h3>
     - (void) <b>finishInitializationWithKeyValueUnarchiver:</b> (<a rel="gsdoc" href="#class$EOKeyValueUnarchiver">EOKeyValueUnarchiver</a>*)unarchiver;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-
-          <h1><a name="005000000000">
-        Software documentation for the
-        NSObject(EOKeyValueUnarchiverDelegation)
-        informal protocol
-      </a></h1>
+</div>
+          <h1><a name="005000000000">        Software documentation for the        NSObject(EOKeyValueUnarchiverDelegation)        informal protocol      </a></h1>
     <h2>NSObject(<a name="category$NSObject(EOKeyValueUnarchiverDelegation)">EOKeyValueUnarchiverDelegation</a>)</h2>
-    <blockquote>
+    <blockquote class="declared">
       <dl>
         <dt><b>Declared in:</b></dt>
         <dd>EOControl/EOKeyValueArchiver.h</dd>
       </dl>
     </blockquote>
-    <blockquote>
-      <b>Standards:</b>
-      <ul>
-        <li>MacOS-X</li>
-        <li>OpenStep</li>
-        <li>GNUstep</li>
-      </ul>
-    </blockquote>
-    <p>
-      
-          <em>Description forthcoming.</em>
-        
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                <em>Description forthcoming.</em>        
+    </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$NSObject(EOKeyValueUnarchiverDelegation)-unarchiver:objectForReference:">-unarchiver:objectForReference:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$NSObject(EOKeyValueUnarchiverDelegation)-unarchiver$objectForReference$">-unarchiver:objectForReference:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$NSObject(EOKeyValueUnarchiverDelegation)-unarchiver:objectForReference:">unarchiver:&nbsp;objectForReference:&nbsp;</a></h3>
+<div class="method">
+    <h3><a name="method$NSObject(EOKeyValueUnarchiverDelegation)-unarchiver$objectForReference$">unarchiver:&nbsp;objectForReference:&nbsp;</a></h3>
     - (id) <b>unarchiver:</b> (<a rel="gsdoc" href="#class$EOKeyValueUnarchiver">EOKeyValueUnarchiver</a>*)archiver<b> objectForReference:</b> (id)keyPath;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-
-          <h1><a name="006000000000">
-        Software documentation for the EOKeyValueArchiving
-        protocol
-      </a></h1>
+</div>
+          <h1><a name="006000000000">        Software documentation for the EOKeyValueArchiving        protocol      </a></h1>
     <h2><a name="protocol$(EOKeyValueArchiving)">EOKeyValueArchiving</a></h2>
-    <blockquote>
+    <blockquote class="declared">
       <dl>
         <dt><b>Declared in:</b></dt>
         <dd>EOControl/EOKeyValueArchiver.h</dd>
       </dl>
     </blockquote>
-    <blockquote>
-      <b>Standards:</b>
-      <ul>
-        <li>MacOS-X</li>
-        <li>OpenStep</li>
-        <li>GNUstep</li>
-      </ul>
-    </blockquote>
-    <p>
-      
-          <em>Description forthcoming.</em>
-        
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                <em>Description forthcoming.</em>        
+    </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$(EOKeyValueArchiving)-encodeWithKeyValueArchiver:">-encodeWithKeyValueArchiver:</a></li>
-      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$(EOKeyValueArchiving)-initWithKeyValueUnarchiver:">-initWithKeyValueUnarchiver:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$(EOKeyValueArchiving)-encodeWithKeyValueArchiver$">-encodeWithKeyValueArchiver:</a></li>
+      <li><a rel="gsdoc" href="EOKeyValueArchiver.html#method$(EOKeyValueArchiving)-initWithKeyValueUnarchiver$">-initWithKeyValueUnarchiver:</a></li>
     </ul>
     <hr width="50%" align="left" />
-    <h3><a name="method$(EOKeyValueArchiving)-encodeWithKeyValueArchiver:">encodeWithKeyValueArchiver:&nbsp;</a></h3>
+<div class="method">
+    <h3><a name="method$(EOKeyValueArchiving)-encodeWithKeyValueArchiver$">encodeWithKeyValueArchiver:&nbsp;</a></h3>
     - (void) <b>encodeWithKeyValueArchiver:</b> (<a rel="gsdoc" href="#class$EOKeyValueArchiver">EOKeyValueArchiver</a>*)archiver;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
-    <h3><a name="method$(EOKeyValueArchiving)-initWithKeyValueUnarchiver:">initWithKeyValueUnarchiver:&nbsp;</a></h3>
+</div>
+<div class="method">
+    <h3><a name="method$(EOKeyValueArchiving)-initWithKeyValueUnarchiver$">initWithKeyValueUnarchiver:&nbsp;</a></h3>
     - (id) <b>initWithKeyValueUnarchiver:</b> (<a rel="gsdoc" href="#class$EOKeyValueUnarchiver">EOKeyValueUnarchiver</a>*)unarchiver;<br />
-    <p>
-      
-            <em>Description forthcoming.</em>
-          
-    </p>
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+                  <em>Description forthcoming.</em>          
+    </div>
     <hr width="25%" align="left" />
+</div>
     <br />
     <a href="EOControl.html">Up</a>
     </font>
