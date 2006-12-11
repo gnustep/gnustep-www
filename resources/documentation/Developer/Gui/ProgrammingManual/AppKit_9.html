@@ -1,0 +1,185 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on December, 11  2006 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Using the GNUstep AppKit 0.1: tableview</TITLE>
+
+<META NAME="description" CONTENT="Using the GNUstep AppKit 0.1: tableview">
+<META NAME="keywords" CONTENT="Using the GNUstep AppKit 0.1: tableview">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC61"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_8.html#SEC60"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC62"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_8.html#SEC57"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_10.html#SEC66"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 9. Tableviews </H1>
+<!--docid::SEC61::-->
+<A NAME="Tableviews"></A>
+<A NAME="IDX42"></A>
+<A NAME="IDX43"></A>
+A tableview is a grid of rows and columns for the display of data. In the AppKit, you use the <CODE>NSTableView</CODE> class to put a tableview in your application.
+<P>
+
+Gorm already has a palette set up for a tableview, that you can simply drag and drop onto your application window (refer to the sections on Gorm and the Gorm manual).
+</P><P>
+
+More involved, however, is getting data into your tableview and responding to certain tableview specific events. Both of these are implemented using objects that respond to certain protocols, as described below.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC62"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC61"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC63"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC63"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 9.1 Columns </H2>
+<!--docid::SEC62::-->
+Instead of taking an array oriented model of a table, the <CODE>NSTableView</CODE> class uses a column-oriented model, where columns are used as objects of separate classes, <CODE>NSTableColumn</CODE>. 
+<P>
+
+These can be instantiated with the <CODE>-initWithIdentifier:</CODE> method, where the identifier is an internal object, not displayed, used by the data source (see below) to identify what column data should be placed in. You can retrieve the table column's identifier from the <CODE>-identifier</CODE> method.
+</P><P>
+
+This column-oriented model for displaying data makes tableviews useful for information originating from a database, where columns are akin to fields, and each row represents a record in a table or query.
+</P><P>
+
+FIXME: How do you initialize a table's column's and it's identifiers when a nib is loaded. Do you use one of it's delegates methods to set all this stuff up?
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC63"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC62"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC64"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC64"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC64"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 9.2 Supplying Data </H2>
+<!--docid::SEC63::-->
+When you first create your tableview, Gorm puts some example data into it for you. However, you will want to put in your own data. GNUstep uses a <EM>data source</EM> model, which means that you need to supply an object that will provide data for your table view.
+<P>
+
+Firstly, you will need to connect the <CODE>dataSource</CODE> outlet of a tableview in Gorm to an instantiated object of a class. Create a class that will have it's objects provide data for your tableview(s), and instantiate it so that it appears as a <EM>top level object</EM> in the Objects pane.
+</P><P>
+
+<A NAME="IDX44"></A>
+Your object will need to implement an informal protocol to supply data to the tableview, namely the <CODE>NSTableDataSource</CODE> protocol (for more information on informal protocols, see the <CITE>GNUstep Base Programming Manual</CITE>).
+</P><P>
+
+Most of the methods in this protocol are optional. The compulsory methods, however, are called quite often, so you should optimise them so that they run as fast as possible.
+</P><P>
+
+The <CODE>-numberOfRowsInTableView:</CODE> method is called to determine how many rows are to be shown in your table view. This could change from time to time, and as the data in your table view changes, you will need to inform the <CODE>NSTableView</CODE> object that data has changed (usually via the <CODE>-update</CODE> method). When it performs it's update, it will use this method to determine how many rows to draw. This method is compulsory to implement, and your will experience errors if you don't implement it.
+</P><P>
+
+Another compulsory method is the <CODE>-tableView:objectValueForTableColumn:row:</CODE>. This is used to get the data that the table view will put in it's cells. It will pass you the table column that the cell appears in, the cell's row, and the associated tableview. The method returns an object to be displayed in the relevant cell; this object is usually a string.
+</P><P>
+
+Note that if the data to be displayed in a tableview changes, it has no way of knowing if and when it has changed. For this reason, you need to call <CODE>-update</CODE> manually on the tableview to force it to redisplay. Only then will it again invoke the methods above on your data source.
+</P><P>
+
+If you want your tableview to be editable, you will need to implement the <CODE>-tableView:setObjectValue: forTableColumn:row:</CODE> method. You use this to update your internal representation of what is displayed in the table view to the user.
+</P><P>
+
+Both these methods supply a reference to a tableview as well, so the same object (or objects of the same class) can be used as a data source for more than one tableview (e.g. across many documents, or for many tables in a database).
+</P><P>
+
+You can setup your tableview to accept drop operations. It must implement <CODE>-tableView:writeRows:toPasteboard:</CODE>. This method is called first, and is asking you to write the data in the specified rows to the specified pasteboard. This method should return <VAR>YES</VAR> to authorise the drop, or <VAR>NO</VAR> to reject it.
+More methods that can be implemented to provide information to the tableview during a drop operation include <CODE>-tableView:acceptDrop:row:dropOperation:</CODE> and <CODE>-tableView:validateDrop: proposedRow:proposedDropOperation:</CODE> methods. These are used to validate and accept drop operations, where the latter is called to validate a potential drop operation, the former just before a validated drop operation is about to take place. 
+</P><P>
+
+If the data in your data source changes for any reason, e.g. the action of a user, you must notify the tableview. You could do this by calling <CODE>-reloadData</CODE> on the tableview object, which you can reference by an outlet on your application's controller class (or otherwise).
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC64"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC63"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC65"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC65"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC65"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 9.3 Delegates </H2>
+<!--docid::SEC64::-->
+Tableviews support a delegate for catching certain events in the lifetime of an <CODE>NSTableView</CODE> object. You will need to implement the informal <CODE>NSTableViewDelegate</CODE> protocol. This is different from the data source - you implement a delegate if you wish to catch tableview specific events created by the user.
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC65"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC64"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_10.html#SEC66"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 9.4 Notifications </H2>
+<!--docid::SEC65::-->
+<P>
+
+A tableview many post notifications to indicate changes to it (that otherwise are not sent to the delegate) such as user selection changes or the reordering of columns or rows.
+</P><P>
+
+<A NAME="outlineviews"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>December, 11  2006</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

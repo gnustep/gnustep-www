@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
     <head>
     <title>NSApplication</title>
   </head>
@@ -25,6 +26,7 @@
       The one and only application class.
     </blockquote>
     <p><b>Copyright:</b> (C) 1996,1999 Free Software Foundation, Inc.</p>
+
         <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
@@ -49,7 +51,10 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-          <h1><a name="001000000000">        Software documentation for the NSApplication class      </a></h1>
+
+          <h1><a name="001000000000">
+        Software documentation for the NSApplication class
+      </a></h1>
     <h2><a name="class$NSApplication">NSApplication</a> : <a rel="gsdoc" href="NSResponder.html#class$NSResponder">NSResponder</a></h2>
     <blockquote class="declared">
       <dl>
@@ -67,31 +72,80 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                
+      
+          
     </p>
     <p>
-            Every graphical GNUstep application has exactly one            instance of <code>NSApplication</code> (or a            subclass) instantiated. Usually this is created            through the            <a rel="gsdoc" href="#method$NSApplication+sharedApplication">              +sharedApplication            </a>
-            method. Once created, this instance is always            accessible through the global variable &apos;            <code>NSApp</code> &apos;.              </p>
+
+            Every graphical GNUstep application has exactly one
+            instance of <code>NSApplication</code> (or a
+            subclass) instantiated. Usually this is created
+            through the
+            <a rel="gsdoc" href="#method$NSApplication+sharedApplication">
+              +sharedApplication
+            </a>
+
+            method. Once created, this instance is always
+            accessible through the global variable &apos;
+            <code>NSApp</code> &apos;.
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            The NSApplication instance manages the main run loop,            dispatches events, and manages resources. It            sets up the connection to the window server and            provides special methods for putting up &quot;modal&quot;            (always on top) windows.              </p>
+
+            The NSApplication instance manages the main run loop,
+            dispatches events, and manages resources. It
+            sets up the connection to the window server and
+            provides special methods for putting up &quot;modal&quot;
+            (always on top) windows.
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            Typically,            <a rel="gsdoc" href="#method$NSApplication-run">              -run            </a>
-            is called by an application&apos;s <code>main</code> method            after the NSApplication instance is created, which            never returns. However, applications needing to            integrate other event loops may strategically            call the <a rel="gsdoc" href="NSSound.html#method$NSSound-stop">-stop</a>
-            method, followed by            <a rel="gsdoc" href="#method$NSApplication-run">              -run            </a>
-            later on.              </p>
+
+            Typically,
+            <a rel="gsdoc" href="#method$NSApplication-run">
+              -run
+            </a>
+
+            is called by an application&apos;s <code>main</code> method
+            after the NSApplication instance is created, which
+            never returns. However, applications needing to
+            integrate other event loops may strategically
+            call the <a rel="gsdoc" href="#method$NSApplication-stop$">-stop:</a>
+
+            method, followed by
+            <a rel="gsdoc" href="#method$NSApplication-run">
+              -run
+            </a>
+
+            later on.
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            To avoid most common needs for subclassing,            NSApplication allows you to specify a            <em>delegate</em> that is messaged in particular            situations. See            <a rel="gsdoc" href="#method$NSApplication-delegate">              -delegate            </a>
-            ,            <a rel="gsdoc" href="#method$NSApplication-setDelegate$">              -setDelegate:            </a>
-            , and            <a rel="gsdoc" href="#protocol$(GSAppDelegateProtocol)">&lt;GSAppDelegateProtocol&gt;</a>
+
+            To avoid most common needs for subclassing,
+            NSApplication allows you to specify a
+            <em>delegate</em> that is messaged in particular
+            situations. See
+            <a rel="gsdoc" href="#method$NSApplication-delegate">
+              -delegate
+            </a>
+
+            ,
+            <a rel="gsdoc" href="#method$NSApplication-setDelegate$">
+              -setDelegate:
+            </a>
+
+            , and
+            <a rel="gsdoc" href="#protocol$(GSAppDelegateProtocol)">&lt;GSAppDelegateProtocol&gt;</a>
 .    </p>
     <p>
        
@@ -101,7 +155,8 @@
  when the method described above is not sufficient, or to intercept events by overriding <a rel="gsdoc" href="#method$NSApplication-sendEvent$">-sendEvent:</a>
 .    </p>
     <p>
-              
+      
+        
     </div>
     <hr width="50%" align="left" />
     <a href="#_NSApplication_ivars">Instance Variables</a>
@@ -201,8 +256,11 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Calls            <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSThread.html#method$NSThread+detachNewThreadSelector$toTarget$withObject$">[NSThread +detachNewThreadSelector:toTarget:withObject:]</a>
- with the invocation wrapped by an autorelease pool.          
+      
+            Calls
+            <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSThread.html#method$NSThread+detachNewThreadSelector$toTarget$withObject$">[NSThread +detachNewThreadSelector:toTarget:withObject:]</a>
+ with the invocation wrapped by an autorelease pool.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -213,25 +271,89 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Return the shared application instance, creating              one (of the receiver class) if needed. There is (and              must always be) only a single shared application              instance for each application. After the shared              application instance has been created, you              can access it directly via the global variable              <code>NSApp</code> (but not before!). When the              shared application instance is created, it is also              automatically initialized (that is, its              <code>init</code> method is called), which              connects to the window server and prepares the              gui library for actual operation. For this reason,              you must always call              <code>[NSApplication sharedApplication]</code>              before using any functionality of the gui library              - so, normally, this should be one of the first              commands in your program (if you use              <code>                <a rel="gsdoc" href="Functions.html#function$NSApplicationMain">                  NSApplicationMain()                </a>
-              </code>              , this is automatically done).                </p>
+
+              Return the shared application instance, creating
+              one (of the receiver class) if needed. There is (and
+              must always be) only a single shared application
+              instance for each application. After the shared
+              application instance has been created, you
+              can access it directly via the global variable
+              <code>NSApp</code> (but not before!). When the
+              shared application instance is created, it is also
+              automatically initialized (that is, its
+              <code>init</code> method is called), which
+              connects to the window server and prepares the
+              gui library for actual operation. For this reason,
+              you must always call
+              <code>[NSApplication sharedApplication]</code>
+              before using any functionality of the gui library
+              - so, normally, this should be one of the first
+              commands in your program (if you use
+              <code>
+                <a rel="gsdoc" href="Functions.html#function$NSApplicationMain">
+                  NSApplicationMain()
+                </a>
+
+              </code>
+              , this is automatically done).
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              The shared application instance is normally an              instance of NSApplication; but you can subclass              NSApplication, and have an instance of              your own subclass be created and used as the shared              application instance. If you want to get this              result, you need to make sure the first time you              call              <a rel="gsdoc" href="#method$NSApplication+sharedApplication">                +sharedApplication              </a>
-              is on your custom NSApplication subclass (rather than              on NSApplication). Putting              <code>                [MyApplicationClass                sharedApplication]              </code>              ; as the first command in your program is the              recommended way. :-) If you use              <code>                <a rel="gsdoc" href="Functions.html#function$NSApplicationMain">                  NSApplicationMain()                </a>
-              </code>              , it automatically creates the appropriate instance              (which you can control by editing the info              dictionary of the application).                </p>
+
+              The shared application instance is normally an
+              instance of NSApplication; but you can subclass
+              NSApplication, and have an instance of
+              your own subclass be created and used as the shared
+              application instance. If you want to get this
+              result, you need to make sure the first time you
+              call
+              <a rel="gsdoc" href="#method$NSApplication+sharedApplication">
+                +sharedApplication
+              </a>
+
+              is on your custom NSApplication subclass (rather than
+              on NSApplication). Putting
+              <code>
+                [MyApplicationClass
+                sharedApplication]
+              </code>
+              ; as the first command in your program is the
+              recommended way. :-) If you use
+              <code>
+                <a rel="gsdoc" href="Functions.html#function$NSApplicationMain">
+                  NSApplicationMain()
+                </a>
+
+              </code>
+              , it automatically creates the appropriate instance
+              (which you can control by editing the info
+              dictionary of the application).
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              It is not safe to call this method from multiple              threads - it would be useless anyway since the              whole library is not thread safe: there must always              be at most one thread using the gui library at a time.              (If you absolutely need to have multiple threads in              your application, make sure only one of them uses              the gui [the &apos;drawing&apos; thread], and the other ones do              not).                </p>
+
+              It is not safe to call this method from multiple
+              threads - it would be useless anyway since the
+              whole library is not thread safe: there must always
+              be at most one thread using the gui library at a time.
+              (If you absolutely need to have multiple threads in
+              your application, make sure only one of them uses
+              the gui [the &apos;drawing&apos; thread], and the other ones do
+              not).
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -242,11 +364,28 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Halts a currently running modal event loop started by            <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">              -runModalForWindow:            </a>
-            or            <a rel="gsdoc" href="#method$NSApplication-runModalSession$">              -runModalSession:            </a>
-            . If you wish to halt the session in response to user            interaction with the modal window, use            <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">              -stopModalWithCode:            </a>
+      
+            Halts a currently running modal event loop started by
+            <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">
+              -runModalForWindow:
+            </a>
+
+            or
+            <a rel="gsdoc" href="#method$NSApplication-runModalSession$">
+              -runModalSession:
+            </a>
+
+            . If you wish to halt the session in response to user
+            interaction with the modal window, use
+            <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">
+              -stopModalWithCode:
+            </a>
+
             or <a rel="gsdoc" href="#method$NSApplication-stopModal">-stopModal</a>
-            instead; only use this to halt the loop from            elsewhere, such as another thread.          
+
+            instead; only use this to halt the loop from
+            elsewhere, such as another thread.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -257,7 +396,19 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Activate app unconditionally if <var>flag</var> is            <code>YES</code>, otherwise only if no other app is            active. (            <em>              <strong>Note:</strong> this is currently not              implemented under GNUstep. The app is always              activated unconditionally.            </em>            ) Usually it is not necessary to manually call this            method, except in some circumstances of            interapplication communication.          
+      
+            Activate app unconditionally if <var>flag</var> is
+            <code>YES</code>, otherwise only if no other app is
+            active. (
+            <em>
+              <strong>Note:</strong> this is currently not
+              implemented under GNUstep. The app is always
+              activated unconditionally.
+            </em>
+            ) Usually it is not necessary to manually call this
+            method, except in some circumstances of
+            interapplication communication.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -268,7 +419,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Adds an item to the app&apos;s Windows menu. This is            usually done automatically so you don&apos;t need to            call this method.          
+      
+            Adds an item to the app&apos;s Windows menu. This is
+            usually done automatically so you don&apos;t need to
+            call this method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -279,18 +434,29 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Returns the current icon be used for the              application.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              See Also:              <a rel="gsdoc" href="#method$NSApplication-setApplicationIconImage$">                -setApplicationIconImage:              </a>
+
+              Returns the current icon be used for the
+              application.
                 </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              See Also:
+              <a rel="gsdoc" href="#method$NSApplication-setApplicationIconImage$">
+                -setApplicationIconImage:
+              </a>
+
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -301,8 +467,15 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Arranges all app&apos;s windows in front by            successively calling            <a rel="gsdoc" href="NSWindow.html#method$NSWindow-orderFront$">              [NSWindow -orderFront:]            </a>
-            on each window in the app&apos;s Windows menu.          
+      
+            Arranges all app&apos;s windows in front by
+            successively calling
+            <a rel="gsdoc" href="NSWindow.html#method$NSWindow-orderFront$">
+              [NSWindow -orderFront:]
+            </a>
+
+            on each window in the app&apos;s Windows menu.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -313,7 +486,12 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Set up modal session for <var>theWindow</var>, and, if            it is not visible already, puts it up on screen,            centering it if it is an NSPanel. It is then            ordered front and made key or main window.          
+      
+            Set up modal session for <var>theWindow</var>, and, if
+            it is not visible already, puts it up on screen,
+            centering it if it is an NSPanel. It is then
+            ordered front and made key or main window.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -324,7 +502,24 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Put up a modal <var>sheet</var> sliding down from top            of <var>docWindow</var>. If <var>modalDelegate</var> is            non-nil and responds to <var>didEndSelector</var>            (this is optional), it is invoked after the session            ends. The selector should take three arguments:            NSWindow *, <strong>int</strong>,            <strong>void</strong> *. It is passed the            <var>sheet</var> window, the return code, and the            <var>contextInfo</var> passed in here.            <em>              Under GNUstep, the <var>sheet</var> aspect is not              implemented (just centers window on the              screen), but <var>modalDelegate</var>              <var>didEndSelector</var> is called if both              non-nil.            </em>          
+      
+            Put up a modal <var>sheet</var> sliding down from top
+            of <var>docWindow</var>. If <var>modalDelegate</var> is
+            non-nil and responds to <var>didEndSelector</var>
+            (this is optional), it is invoked after the session
+            ends. The selector should take three arguments:
+            NSWindow *, <strong>int</strong>,
+            <strong>void</strong> *. It is passed the
+            <var>sheet</var> window, the return code, and the
+            <var>contextInfo</var> passed in here.
+            <em>
+              Under GNUstep, the <var>sheet</var> aspect is not
+              implemented (just centers window on the
+              screen), but <var>modalDelegate</var>
+              <var>didEndSelector</var> is called if both
+              non-nil.
+            </em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -335,8 +530,16 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Cancels a <var>request</var> previously made            through calling            <a rel="gsdoc" href="#method$NSApplication-requestUserAttention$">              -requestUserAttention:            </a>
-            . Note that <var>request</var> is cancelled automatically            if user activates the app.          
+      
+            Cancels a <var>request</var> previously made
+            through calling
+            <a rel="gsdoc" href="#method$NSApplication-requestUserAttention$">
+              -requestUserAttention:
+            </a>
+
+            . Note that <var>request</var> is cancelled automatically
+            if user activates the app.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -347,8 +550,16 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Changes the Window menu item associated with            <var>aWindow</var> to <var>aString</var>. If no            associated window item exists, one is created.            If <var>isFilename</var> is <code>YES</code>, then            <var>aString</var> is assumed to be a filename            representation the way            <a rel="gsdoc" href="NSWindow.html#method$NSWindow-setTitleWithRepresentedFilename$">[NSWindow -setTitleWithRepresentedFilename:]</a>
- would format it, otherwise the string is displayed literally in the menu item.          
+      
+            Changes the Window menu item associated with
+            <var>aWindow</var> to <var>aString</var>. If no
+            associated window item exists, one is created.
+            If <var>isFilename</var> is <code>YES</code>, then
+            <var>aString</var> is assumed to be a filename
+            representation the way
+            <a rel="gsdoc" href="NSWindow.html#method$NSWindow-setTitleWithRepresentedFilename$">[NSWindow -setTitleWithRepresentedFilename:]</a>
+ would format it, otherwise the string is displayed literally in the menu item.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -359,7 +570,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the default drawing context for the app.          
+      
+            Returns the default drawing context for the app.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -370,8 +583,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the most recent event            <a rel="gsdoc" href="#method$NSApplication-run">              -run            </a>
-            pulled off the event queue.          
+      
+            Returns the most recent event
+            <a rel="gsdoc" href="#method$NSApplication-run">
+              -run
+            </a>
+
+            pulled off the event queue.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -382,7 +601,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Forcefully deactivate the app, without            activating another. It is rarely necessary to            use this method.          
+      
+            Forcefully deactivate the app, without
+            activating another. It is rarely necessary to
+            use this method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -393,25 +616,49 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the application&apos;s delegate, as set by the            <a rel="gsdoc" href="#method$NSApplication-setDelegate$">              -setDelegate:            </a>
-            method. <br />            
+      
+            Returns the application&apos;s delegate, as set by the
+            <a rel="gsdoc" href="#method$NSApplication-setDelegate$">
+              -setDelegate:
+            </a>
+
+            method. <br />
+            
     </p>
     <p>
-              The application delegate will automatically be sent              various notifications (as <strong>long</strong>              as it implements the appropriate methods) when              application events occur. The method to              handle each of these notifications has name              mirroring the notification name, so for              instance an              <em>NSApplicationDidBecomeActiveNotification</em> is              handled by an              <code>applicationDidBecomeActive:</code> method.                </p>
+
+              The application delegate will automatically be sent
+              various notifications (as <strong>long</strong>
+              as it implements the appropriate methods) when
+              application events occur. The method to
+              handle each of these notifications has name
+              mirroring the notification name, so for
+              instance an
+              <em>NSApplicationDidBecomeActiveNotification</em> is
+              handled by an
+              <code>applicationDidBecomeActive:</code> method.
+                </p>
     <p>
-                  
+      
+            
       <ul>
         <li>
-                          NSApplicationDidBecomeActiveNotification              
+          
+                NSApplicationDidBecomeActiveNotification
+              
         </li>
         <li>
-                          NSApplicationDidFinishLaunchingNotification              
+          
+                NSApplicationDidFinishLaunchingNotification
+              
         </li>
         <li>
           NSApplicationDidHideNotification
         </li>
         <li>
-                          NSApplicationDidResignActiveNotification              
+          
+                NSApplicationDidResignActiveNotification
+              
         </li>
         <li>
           NSApplicationDidUnhideNotification
@@ -420,19 +667,27 @@
           NSApplicationDidUpdateNotification
         </li>
         <li>
-                          NSApplicationWillBecomeActiveNotification              
+          
+                NSApplicationWillBecomeActiveNotification
+              
         </li>
         <li>
-                          NSApplicationWillFinishLaunchingNotification              
+          
+                NSApplicationWillFinishLaunchingNotification
+              
         </li>
         <li>
           NSApplicationWillHideNotification
         </li>
         <li>
-                          NSApplicationWillResignActiveNotification              
+          
+                NSApplicationWillResignActiveNotification
+              
         </li>
         <li>
-                          NSApplicationWillTerminateNotification              
+          
+                NSApplicationWillTerminateNotification
+              
         </li>
         <li>
           NSApplicationWillUnhideNotification
@@ -441,15 +696,24 @@
           NSApplicationWillUpdateNotification
         </li>
       </ul>
-                  
+      
+            
     </p>
     <p>
-              The delegate is also sent various messages to ask for              authorisation to perform actions, or to ask              it to perform actions (again, as <strong>long</strong>              as it implements the appropriate methods).                </p>
+
+              The delegate is also sent various messages to ask for
+              authorisation to perform actions, or to ask
+              it to perform actions (again, as <strong>long</strong>
+              as it implements the appropriate methods).
+                </p>
     <p>
-                  
+      
+            
       <ul>
         <li>
-                          application:shouldTerminateAfterLastWindowClosed:              
+          
+                application:shouldTerminateAfterLastWindowClosed:
+              
         </li>
         <li>
           application:shouldOpenUntitledFile:
@@ -476,29 +740,57 @@
           application:shouldTerminate:
         </li>
         <li>
-                          application:shouldTerminateAfterLastWindowClosed:              
+          
+                application:shouldTerminateAfterLastWindowClosed:
+              
         </li>
       </ul>
-                  
+      
+            
     </p>
     <p>
-              The delegate is also called upon to respond to any              actions which are not handled by a window, a              window delgate, or by the application object              itself. This is controlled by the              <a rel="gsdoc" href="#method$NSApplication-targetForAction$">                -targetForAction:              </a>
-              method.                </p>
+
+              The delegate is also called upon to respond to any
+              actions which are not handled by a window, a
+              window delgate, or by the application object
+              itself. This is controlled by the
+              <a rel="gsdoc" href="#method$NSApplication-targetForAction$">
+                -targetForAction:
+              </a>
+
+              method.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              Finally, the application delegate is responsible              for handling messages sent to the application from              remote processes (see the section documenting              distributed objects for              <a rel="gsdoc" href="NSPasteboard.html#class$NSPasteboard">NSPasteboard</a>
-                ).                  </p>
+
+              Finally, the application delegate is responsible
+              for handling messages sent to the application from
+              remote processes (see the section documenting
+              distributed objects for
+              <a rel="gsdoc" href="NSPasteboard.html#class$NSPasteboard">NSPasteboard</a>
+
+                ).
+                  </p>
     <p>
-                    
+      
+              
     </p>
     <p>
-                See                <a rel="gsdoc" href="#method$NSApplication-setDelegate$">                  -setDelegate:                </a>
-                and                <a rel="gsdoc" href="#protocol$(GSAppDelegateProtocol)">&lt;GSAppDelegateProtocol&gt;</a>
+
+                See
+                <a rel="gsdoc" href="#method$NSApplication-setDelegate$">
+                  -setDelegate:
+                </a>
+
+                and
+                <a rel="gsdoc" href="#protocol$(GSAppDelegateProtocol)">&lt;GSAppDelegateProtocol&gt;</a>
 for more information.    </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -509,7 +801,14 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Drop events matching <var>mask</var> from the queue,            before but not including <var>lastEvent</var>. The            <var>mask</var> is a bitwise AND of event            <var>mask</var> constants. See (EventType). Use            <code>NSAnyEventMask</code> to discard everything up            to <var>lastEvent</var>.          
+      
+            Drop events matching <var>mask</var> from the queue,
+            before but not including <var>lastEvent</var>. The
+            <var>mask</var> is a bitwise AND of event
+            <var>mask</var> constants. See (EventType). Use
+            <code>NSAnyEventMask</code> to discard everything up
+            to <var>lastEvent</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -520,7 +819,11 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Clean up after a modal session has been run. Called            with <var>theSession</var> returned from a previous            call to beginModalSessionForWindow:.          
+      
+            Clean up after a modal session has been run. Called
+            with <var>theSession</var> returned from a previous
+            call to beginModalSessionForWindow:.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -531,8 +834,14 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Analogous to            <a rel="gsdoc" href="#method$NSApplication-stopModal">              -stopModal            </a>
-            for sheets.          
+      
+            Analogous to
+            <a rel="gsdoc" href="#method$NSApplication-stopModal">
+              -stopModal
+            </a>
+
+            for sheets.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -543,8 +852,14 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Analogous to            <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">              -stopModalWithCode:            </a>
-            for sheets.          
+      
+            Analogous to
+            <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">
+              -stopModalWithCode:
+            </a>
+
+            for sheets.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -555,18 +870,40 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Activates the application, sets the application              icon, loads the main Nib file if              <code>NSMainNibFile</code> is set in the              application property list, posts an              <code>                NSApplicationWillFinishLaunchingNotification              </code>              , and takes care of a few other startup tasks, then              posts              <code>                NSApplicationDidFinishLaunchingNotification              </code>              . If you override this method, be sure to call              <em>super</em>.                </p>
+
+              Activates the application, sets the application
+              icon, loads the main Nib file if
+              <code>NSMainNibFile</code> is set in the
+              application property list, posts an
+              <code>
+                NSApplicationWillFinishLaunchingNotification
+              </code>
+              , and takes care of a few other startup tasks, then
+              posts
+              <code>
+                NSApplicationDidFinishLaunchingNotification
+              </code>
+              . If you override this method, be sure to call
+              <em>super</em>.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
+
               The <a rel="gsdoc" href="#method$NSApplication-run">-run</a>
- method              calls this the first time it is called, before              starting the event loop for the first time.                </p>
+ method
+              calls this the first time it is called, before
+              starting the event loop for the first time.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -577,19 +914,39 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Request this application to &quot;hide&quot; (unmap all              windows from the screen except the icon window).              Posts              <code>NSApplicationWillHideNotification</code> and              <code>NSApplicationDidHideNotification</code>. On              OS X this activates the next app that is running,              however on GNUstep this is up to the window              manager.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              See Also:              <a rel="gsdoc" href="#method$NSApplication-unhide$">                -unhide:              </a>
-              <a rel="gsdoc" href="#method$NSApplication-isHidden">                -isHidden              </a>
+
+              Request this application to &quot;hide&quot; (unmap all
+              windows from the screen except the icon window).
+              Posts
+              <code>NSApplicationWillHideNotification</code> and
+              <code>NSApplicationDidHideNotification</code>. On
+              OS X this activates the next app that is running,
+              however on GNUstep this is up to the window
+              manager.
                 </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              See Also:
+              <a rel="gsdoc" href="#method$NSApplication-unhide$">
+                -unhide:
+              </a>
+
+              <a rel="gsdoc" href="#method$NSApplication-isHidden">
+                -isHidden
+              </a>
+
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -600,7 +957,9 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Cause all other apps to hide themselves.          
+      
+            Cause all other apps to hide themselves.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -611,7 +970,12 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns whether this app is the currently active            GNUstep application. Note that on a GNUstep system,            unlike OS X, it is possible for <code>NO</code>            GNUstep app to be active.          
+      
+            Returns whether this app is the currently active
+            GNUstep application. Note that on a GNUstep system,
+            unlike OS X, it is possible for <code>NO</code>
+            GNUstep app to be active.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -622,19 +986,29 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Returns whether app is currently in hidden state.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              See Also: <a rel="gsdoc" href="#method$NSApplication-hide$">-hide:</a>
-              <a rel="gsdoc" href="#method$NSApplication-unhide$">                -unhide:              </a>
+
+              Returns whether app is currently in hidden state.
                 </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              See Also: <a rel="gsdoc" href="#method$NSApplication-hide$">-hide:</a>
+
+              <a rel="gsdoc" href="#method$NSApplication-unhide$">
+                -unhide:
+              </a>
+
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -645,8 +1019,14 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns whether the event loop managed by            <a rel="gsdoc" href="#method$NSApplication-run">              -run            </a>
-            is currently active.          
+      
+            Returns whether the event loop managed by
+            <a rel="gsdoc" href="#method$NSApplication-run">
+              -run
+            </a>
+
+            is currently active.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -657,7 +1037,12 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns current key window. If this app is active,            one window should be key. If this app is not active,            <code>nil</code> should be returned. The key window            is the one that will receive keyboard input.          
+      
+            Returns current key window. If this app is active,
+            one window should be key. If this app is not active,
+            <code>nil</code> should be returned. The key window
+            is the one that will receive keyboard input.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -668,7 +1053,9 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the main menu of the receiver.          
+      
+            Returns the main menu of the receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -679,7 +1066,12 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns current main window of this application.            There need not necessarily be a main window, even if            app is active, and this should return <code>nil</code>            if the app is inactive.          
+      
+            Returns current main window of this application.
+            There need not necessarily be a main window, even if
+            app is active, and this should return <code>nil</code>
+            if the app is inactive.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -690,7 +1082,14 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sends <var>aSelector</var> to each window, either in            the app&apos;s internal window list (<var>flag</var> =            <code>NO</code>) or their stacking order from front            to back on the screen (<var>flag</var> =            <code>YES</code>,            <em>currently not implemented under GNUstep</em>).          
+      
+            Sends <var>aSelector</var> to each window, either in
+            the app&apos;s internal window list (<var>flag</var> =
+            <code>NO</code>) or their stacking order from front
+            to back on the screen (<var>flag</var> =
+            <code>YES</code>,
+            <em>currently not implemented under GNUstep</em>).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -701,7 +1100,9 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Iconify all windows in the app.          
+      
+            Iconify all windows in the app.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -712,18 +1113,29 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Returns the window that is part of the current              modal session, if any.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              See              <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">                -runModalForWindow:              </a>
+
+              Returns the window that is part of the current
+              modal session, if any.
                 </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              See
+              <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">
+                -runModalForWindow:
+              </a>
+
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -734,7 +1146,15 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Return the next event matching <var>mask</var> from            the queue, dequeuing if <var>flag</var> is            <code>YES</code>. Intervening events are NOT            dequeued. If no matching event is on the queue,            will wait for one until <var>expiration</var>,            returning <code>nil</code> if none found. See            (EventType) for the list of masks.          
+      
+            Return the next event matching <var>mask</var> from
+            the queue, dequeuing if <var>flag</var> is
+            <code>YES</code>. Intervening events are NOT
+            dequeued. If no matching event is on the queue,
+            will wait for one until <var>expiration</var>,
+            returning <code>nil</code> if none found. See
+            (EventType) for the list of masks.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -745,8 +1165,11 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Calls            <a rel="gsdoc" href="#method$NSApplication-orderFrontStandardAboutPanelWithOptions$">-orderFrontStandardAboutPanelWithOptions:</a>
- with <code>nil</code> passed as the options dictionary.          
+      
+            Calls
+            <a rel="gsdoc" href="#method$NSApplication-orderFrontStandardAboutPanelWithOptions$">-orderFrontStandardAboutPanelWithOptions:</a>
+ with <code>nil</code> passed as the options dictionary.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -757,8 +1180,11 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  OS X compatibility: Calls            <a rel="gsdoc" href="#method$NSApplication-orderFrontStandardInfoPanelWithOptions$">-orderFrontStandardInfoPanelWithOptions:</a>
-.          
+      
+            OS X compatibility: Calls
+            <a rel="gsdoc" href="#method$NSApplication-orderFrontStandardInfoPanelWithOptions$">-orderFrontStandardInfoPanelWithOptions:</a>
+.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -766,12 +1192,14 @@ for more information.    </p>
     <h3><a name="method$NSApplication-orderFrontStandardInfoPanel$">orderFrontStandardInfoPanel:&nbsp;</a></h3>
     - (void) <b>orderFrontStandardInfoPanel:</b> (id)sender;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Calls            <a rel="gsdoc" href="#method$NSApplication-orderFrontStandardInfoPanelWithOptions$">-orderFrontStandardInfoPanelWithOptions:</a>
- with <code>nil</code> passed as the options dictionary.          
+      
+            Calls
+            <a rel="gsdoc" href="#method$NSApplication-orderFrontStandardInfoPanelWithOptions$">-orderFrontStandardInfoPanelWithOptions:</a>
+ with <code>nil</code> passed as the options dictionary.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -779,57 +1207,152 @@ for more information.    </p>
     <h3><a name="method$NSApplication-orderFrontStandardInfoPanelWithOptions$">orderFrontStandardInfoPanelWithOptions:&nbsp;</a></h3>
     - (void) <b>orderFrontStandardInfoPanelWithOptions:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*)dictionary;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Orders front the standard info panel for the              application, taking the needed information              from the <code><var>dictionary</var></code>              argument. There is a single standard info panel              per application; it is created the first time that              this method is invoked, and then reused in all              subsequent calls. The application standard              info panel is immutable and can not be changed after              creation. Useful keys for the              <code><var>dictionary</var></code> are:                </p>
+
+              Orders front the standard info panel for the
+              application, taking the needed information
+              from the <code><var>dictionary</var></code>
+              argument. There is a single standard info panel
+              per application; it is created the first time that
+              this method is invoked, and then reused in all
+              subsequent calls. The application standard
+              info panel is immutable and can not be changed after
+              creation. Useful keys for the
+              <code><var>dictionary</var></code> are:
+                </p>
     <p>
-                  
+      
+            
       <dl>
         <dt>ApplicationName</dt>
         <dd>
-                          A string with the name of the application (eg,                <var>&quot;Gorm&quot;</var>). If not available, the                <code>Info-gnustep.plist</code> file is searched                for the value of <var>ApplicationName</var>                followed by                <var>NSHumanReadableShortName</var>. If this also                fails, the string returned by                <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSProcessInfo.html#method$NSProcessInfo-processName">[NSProcessInfo -processName]</a>
- is used.              
+          
+                A string with the name of the application (eg,
+                <var>&quot;Gorm&quot;</var>). If not available, the
+                <code>Info-gnustep.plist</code> file is searched
+                for the value of <var>ApplicationName</var>
+                followed by
+                <var>NSHumanReadableShortName</var>. If this also
+                fails, the string returned by
+                <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSProcessInfo.html#method$NSProcessInfo-processName">[NSProcessInfo -processName]</a>
+ is used.
+              
         </dd>
         <dt>ApplicationDescription</dt>
         <dd>
-                          A string with a very <strong>short</strong>                description of the application (eg,                <var>                  &quot;GNUstep Graphics Objects Relationship                  Modeller&quot;                </var>                ). If not available, <code>Info-gnustep.plist</code>                is searched for that key; if this fails, no                application description is shown.              
+          
+                A string with a very <strong>short</strong>
+                description of the application (eg,
+                <var>
+                  &quot;GNUstep Graphics Objects Relationship
+                  Modeller&quot;
+                </var>
+                ). If not available, <code>Info-gnustep.plist</code>
+                is searched for that key; if this fails, no
+                application description is shown.
+              
         </dd>
         <dt>ApplicationIcon</dt>
         <dd>
-                          An image to be shown near the title. If not                available, <code>Info-gnustep.plist</code>                is searched for <var>ApplicationIcon</var>; if this                fails, NSApp&apos;s                <a rel="gsdoc" href="#method$NSApplication-applicationIconImage">                  -applicationIconImage                </a>
-                method is used instead.              
+          
+                An image to be shown near the title. If not
+                available, <code>Info-gnustep.plist</code>
+                is searched for <var>ApplicationIcon</var>; if this
+                fails, NSApp&apos;s
+                <a rel="gsdoc" href="#method$NSApplication-applicationIconImage">
+                  -applicationIconImage
+                </a>
+
+                method is used instead.
+              
         </dd>
         <dt>ApplicationRelease</dt>
         <dd>
-                          A string with the name of the application, release                included (eg, <var>&quot;Gorm 0.1&quot;</var>). If not                available, the value for                <var>ApplicationVersion</var> is used instead. If                this fails, <code>Info-gnustep.plist</code> is                searched for <var>ApplicationRelease</var> or                <var>NSAppVersion</var>, otherwise,                <var>&quot;Unknown&quot;</var> is used.              
+          
+                A string with the name of the application, release
+                included (eg, <var>&quot;Gorm 0.1&quot;</var>). If not
+                available, the value for
+                <var>ApplicationVersion</var> is used instead. If
+                this fails, <code>Info-gnustep.plist</code> is
+                searched for <var>ApplicationRelease</var> or
+                <var>NSAppVersion</var>, otherwise,
+                <var>&quot;Unknown&quot;</var> is used.
+              
         </dd>
         <dt>FullVersionID</dt>
         <dd>
-                          A string with the full version of the application                (eg, <var>&quot;0.1.2b&quot;</var> or                <var>&quot;snap011100&quot;</var>). If not available,                <var>Version</var> is used instead. If this                fails, <code>Info-gnustep.plist</code> is looked                for <var>NSBuildVersion</var>. If all fails, no                full version is shown.              
+          
+                A string with the full version of the application
+                (eg, <var>&quot;0.1.2b&quot;</var> or
+                <var>&quot;snap011100&quot;</var>). If not available,
+                <var>Version</var> is used instead. If this
+                fails, <code>Info-gnustep.plist</code> is looked
+                for <var>NSBuildVersion</var>. If all fails, no
+                full version is shown.
+              
         </dd>
         <dt>Authors</dt>
         <dd>
-                          An array of strings, each one with the name of an                author (eg,                <var>                  [NSArray arrayWithObject: &quot;Nicola Pero                  &lt;n.pero\@mi.flashnet.it&gt;&quot;]                </var>                ). If not found, <code>Info-gnustep.plist</code> is                searched for <var>Authors</var>, if this                fails, <var>&quot;Unknown&quot;</var> is displayed.              
+          
+                An array of strings, each one with the name of an
+                author (eg,
+                <var>
+                  [NSArray arrayWithObject: &quot;Nicola Pero
+                  &lt;n.pero\@mi.flashnet.it&gt;&quot;]
+                </var>
+                ). If not found, <code>Info-gnustep.plist</code> is
+                searched for <var>Authors</var>, if this
+                fails, <var>&quot;Unknown&quot;</var> is displayed.
+              
         </dd>
         <dt>URL</dt>
         <dd>
-                          [This field is still under work, so it might be                changed] A string with an URL (eg,                <var>&quot;See http://www.gnustep.org&quot;</var>).              
+          
+                [This field is still under work, so it might be
+                changed] A string with an URL (eg,
+                <var>&quot;See http://www.gnustep.org&quot;</var>).
+              
         </dd>
         <dt>Copyright</dt>
         <dd>
-                          A string with copyright owners (eg,                <var>                  &quot;Copyright (C) 2000 The Free Software                  Foundation, Inc.&quot;                </var>                ). Support for multiple line strings is planned but                not yet available. If not found,                <code>Info-gnustep.plist</code> is searched for                <var>Copyright</var> and then (failing this) for                <var>NSHumanReadableCopyright</var>. If all                fails,                <var>&quot;Copyright Information Not Available&quot;</var>                is used.              
+          
+                A string with copyright owners (eg,
+                <var>
+                  &quot;Copyright (C) 2000 The Free Software
+                  Foundation, Inc.&quot;
+                </var>
+                ). Support for multiple line strings is planned but
+                not yet available. If not found,
+                <code>Info-gnustep.plist</code> is searched for
+                <var>Copyright</var> and then (failing this) for
+                <var>NSHumanReadableCopyright</var>. If all
+                fails,
+                <var>&quot;Copyright Information Not Available&quot;</var>
+                is used.
+              
         </dd>
         <dt>CopyrightDescription</dt>
         <dd>
-                          A string describing the kind of copyright (eg,                <var>                  &quot;Released under the GNU General Public                  License 2.0&quot;                </var>                ). If not available, <code>Info-gnustep.plist</code>                is searched for <var>CopyrightDescription</var>. If                this fails, no copyright description is shown.              
+          
+                A string describing the kind of copyright (eg,
+                <var>
+                  &quot;Released under the GNU General Public
+                  License 2.0&quot;
+                </var>
+                ). If not available, <code>Info-gnustep.plist</code>
+                is searched for <var>CopyrightDescription</var>. If
+                this fails, no copyright description is shown.
+              
         </dd>
       </dl>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -840,7 +1363,11 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  OS X scripting method to return document objects being            handled by application.            <em>Not implemented yet under GNUstep.</em>          
+      
+            OS X scripting method to return document objects being
+            handled by application.
+            <em>Not implemented yet under GNUstep.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -851,7 +1378,15 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  OS X scripting method to return windows in front-to-back            on-screen order.            <em>              The GNUstep implementation returns all the windows in              an arbitrary order.            </em>          
+      
+            OS X scripting method to return windows in front-to-back
+            on-screen order for scriptable windows.
+            <em>
+              The GNUstep implementation returns all the windows
+              excluding NSPanels. some backends may return an
+              array in an unspecified order.
+            </em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -862,7 +1397,14 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Add an <var>event</var> to be processed by the app,            either at end or at beginning (next up) if            <var>flag</var> is <code>YES</code>. This provides a            way to provide synthetic input to an application, or,            for whatever reason, to allow a real <var>event</var>            to be re-dispatched.          
+      
+            Add an <var>event</var> to be processed by the app,
+            either at end or at beginning (next up) if
+            <var>flag</var> is <code>YES</code>. This provides a
+            way to provide synthetic input to an application, or,
+            for whatever reason, to allow a real <var>event</var>
+            to be re-dispatched.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -873,7 +1415,12 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Prevent window reordering in response to most            recent mouse down (useful to prevent            raise-on-mouse-click).            <em>Not implemented under GNUstep.</em>          
+      
+            Prevent window reordering in response to most
+            recent mouse down (useful to prevent
+            raise-on-mouse-click).
+            <em>Not implemented under GNUstep.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -884,7 +1431,16 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Registers the types this application can send and            receive over Services. <var>sendTypes</var>            represents the pasteboard types this app can            receive in Service invocation. This is used to set            up the services menu of this app -- an item is added for            each registered service that can accept one of            <var>sendTypes</var> or return one of            <var>returnTypes</var>          
+      
+            Registers the types this application can send and
+            receive over Services. <var>sendTypes</var>
+            represents the pasteboard types this app can
+            receive in Service invocation. This is used to set
+            up the services menu of this app -- an item is added for
+            each registered service that can accept one of
+            <var>sendTypes</var> or return one of
+            <var>returnTypes</var>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -895,7 +1451,11 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Removes an item from the app&apos;s Windows menu. This            is usually done automatically so you don&apos;t need to call            this method.          
+      
+            Removes an item from the app&apos;s Windows menu. This
+            is usually done automatically so you don&apos;t need to call
+            this method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -906,8 +1466,17 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Terminates the app if <var>shouldTerminate</var>            is <code>YES</code>, otherwise does nothing. This should            be called by user code if a delegate has returned            <code>NSTerminateLater</code> to an            <a rel="gsdoc" href="#method$(GSAppDelegateProtocol)-applicationShouldTerminate$">              -applicationShouldTerminate:            </a>
-            message.          
+      
+            Terminates the app if <var>shouldTerminate</var>
+            is <code>YES</code>, otherwise does nothing. This should
+            be called by user code if a delegate has returned
+            <code>NSTerminateLater</code> to an
+            <a rel="gsdoc" href="#method$(GSAppDelegateProtocol)-applicationShouldTerminate$">
+              -applicationShouldTerminate:
+            </a>
+
+            message.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -918,7 +1487,9 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  NSLogs an exception without raising it.          
+      
+            NSLogs an exception without raising it.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -929,7 +1500,15 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Method that on OS X makes the icon jump in the doc.            Mercifully, this is unimplemented under            GNUstep. If it <em>were</em> implemented,            <var>requestType</var> could be either            <code>NSCriticalRequest</code> (bounce endlessly) or            <code>NSInformationalRequest</code> (bounce for one            second).          
+      
+            Method that on OS X makes the icon jump in the doc.
+            Mercifully, this is unimplemented under
+            GNUstep. If it <em>were</em> implemented,
+            <var>requestType</var> could be either
+            <code>NSCriticalRequest</code> (bounce endlessly) or
+            <code>NSInformationalRequest</code> (bounce for one
+            second).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -940,22 +1519,50 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              This method first calls              <a rel="gsdoc" href="#method$NSApplication-finishLaunching">                -finishLaunching              </a>
-              (if this is the first time -run) has been called,              then starts the main event loop of the application              which continues until              <a rel="gsdoc" href="#method$NSApplication-terminate$">                -terminate:              </a>
+
+              This method first calls
+              <a rel="gsdoc" href="#method$NSApplication-finishLaunching">
+                -finishLaunching
+              </a>
+
+              (if this is the first time -run) has been called,
+              then starts the main event loop of the application
+              which continues until
+              <a rel="gsdoc" href="#method$NSApplication-terminate$">
+                -terminate:
+              </a>
+
               or <a rel="gsdoc" href="#method$NSApplication-stop$">-stop:</a>
- is              called.                </p>
+ is
+              called.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              At each iteration, at most one event is dispatched,              the main and services menus are sent              <a rel="gsdoc" href="NSMenu.html#method$NSMenu-update">                [NSMenu -update]              </a>
-              messages, and              <a rel="gsdoc" href="#method$NSApplication-updateWindows">                -updateWindows              </a>
-              is possibly called if this has been flagged as              necessary.                </p>
+
+              At each iteration, at most one event is dispatched,
+              the main and services menus are sent
+              <a rel="gsdoc" href="NSMenu.html#method$NSMenu-update">
+                [NSMenu -update]
+              </a>
+
+              messages, and
+              <a rel="gsdoc" href="#method$NSApplication-updateWindows">
+                -updateWindows
+              </a>
+
+              is possibly called if this has been flagged as
+              necessary.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -966,12 +1573,35 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Starts modal event loop for given window, after            calling            <a rel="gsdoc" href="#method$NSApplication-beginModalSessionForWindow$">              -beginModalSessionForWindow:            </a>
-            . Loop is broken only by            <a rel="gsdoc" href="#method$NSApplication-stopModal">              -stopModal            </a>
-            ,            <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">              -stopModalWithCode:            </a>
-            , or            <a rel="gsdoc" href="#method$NSApplication-abortModal">              -abortModal            </a>
-            , at which time            <a rel="gsdoc" href="#method$NSApplication-endModalSession$">              -endModalSession:            </a>
-            is called automatically.          
+      
+            Starts modal event loop for given window, after
+            calling
+            <a rel="gsdoc" href="#method$NSApplication-beginModalSessionForWindow$">
+              -beginModalSessionForWindow:
+            </a>
+
+            . Loop is broken only by
+            <a rel="gsdoc" href="#method$NSApplication-stopModal">
+              -stopModal
+            </a>
+
+            ,
+            <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">
+              -stopModalWithCode:
+            </a>
+
+            , or
+            <a rel="gsdoc" href="#method$NSApplication-abortModal">
+              -abortModal
+            </a>
+
+            , at which time
+            <a rel="gsdoc" href="#method$NSApplication-endModalSession$">
+              -endModalSession:
+            </a>
+
+            is called automatically.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -982,8 +1612,13 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Put up a modal window centered relative to            <var>docWindow</var>. On OS X this is deprecated in            favor of            <a rel="gsdoc" href="#method$NSApplication-beginSheet$modalForWindow$modalDelegate$didEndSelector$contextInfo$">-beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:</a>
-. <em>Not implemented under GNUstep. Currently just centers window on the screen.</em>          
+      
+            Put up a modal window centered relative to
+            <var>docWindow</var>. On OS X this is deprecated in
+            favor of
+            <a rel="gsdoc" href="#method$NSApplication-beginSheet$modalForWindow$modalDelegate$didEndSelector$contextInfo$">-beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:</a>
+. <em>Not implemented under GNUstep. Currently just centers window on the screen.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -994,29 +1629,64 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Processes any events for a modal session              described by the <var>theSession</var>              variable. When finished, it returns the state              of the session (i.e. whether it is still running or              has been stopped, etc)                </p>
-    <p>
-                  
-    </p>
-    <p>
-              If there are no pending events for the session, this              method returns immediately.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              Although Apple&apos;s docs state that, before              processing the events, it makes the session              window key and orders the window front, this              method does not attempt to do this, because: 1) we              don&apos;t want to interfere with use of other apps              during modal session for this app; 2) occasionally              other windows are active and should be usable              during modal sessions (e.g., a popup dialog from a              modal window); 3) most of the time              <a rel="gsdoc" href="#method$NSApplication-beginModalSessionForWindow$">                -beginModalSessionForWindow:              </a>
-              will have been called in advance. If the latter is              not the case, you may need to order the window front              yourself in advance.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              See Also:              <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">                -runModalForWindow:              </a>
+
+              Processes any events for a modal session
+              described by the <var>theSession</var>
+              variable. When finished, it returns the state
+              of the session (i.e. whether it is still running or
+              has been stopped, etc)
                 </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              If there are no pending events for the session, this
+              method returns immediately.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Although Apple&apos;s docs state that, before
+              processing the events, it makes the session
+              window key and orders the window front, this
+              method does not attempt to do this, because: 1) we
+              don&apos;t want to interfere with use of other apps
+              during modal session for this app; 2) occasionally
+              other windows are active and should be usable
+              during modal sessions (e.g., a popup dialog from a
+              modal window); 3) most of the time
+              <a rel="gsdoc" href="#method$NSApplication-beginModalSessionForWindow$">
+                -beginModalSessionForWindow:
+              </a>
+
+              will have been called in advance. If the latter is
+              not the case, you may need to order the window front
+              yourself in advance.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              See Also:
+              <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">
+                -runModalForWindow:
+              </a>
+
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1027,8 +1697,22 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sends the <var>aSelector</var> message to the            receiver returned by the            <a rel="gsdoc" href="#method$NSApplication-targetForAction$to$from$">              -targetForAction:to:from:            </a>
-            method (to which the <var>aTarget</var> and            <var>sender</var> arguments are passed). <br /> The            method in the receiver must expect a single argument            ... the <var>sender</var>. <br /> Any value returned by            the method in the receiver is ignored. <br /> This            method returns <code>YES</code> on success,            <code>NO</code> on failure (when no receiver can be            found for <var>aSelector</var>).          
+      
+            Sends the <var>aSelector</var> message to the
+            receiver returned by the
+            <a rel="gsdoc" href="#method$NSApplication-targetForAction$to$from$">
+              -targetForAction:to:from:
+            </a>
+
+            method (to which the <var>aTarget</var> and
+            <var>sender</var> arguments are passed). <br /> The
+            method in the receiver must expect a single argument
+            ... the <var>sender</var>. <br /> Any value returned by
+            the method in the receiver is ignored. <br /> This
+            method returns <code>YES</code> on success,
+            <code>NO</code> on failure (when no receiver can be
+            found for <var>aSelector</var>).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1039,9 +1723,19 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Called by <a rel="gsdoc" href="#method$NSApplication-run">-run</a>
- to            dispatch events that are received according to            AppKit&apos;s forwarding conventions. You rarely need            to invoke this directly. If you want to synthesize an            event for processing, call            <a rel="gsdoc" href="#method$NSApplication-postEvent$atStart$">              -postEvent:atStart:            </a>
-            .          
+      
+            Called by <a rel="gsdoc" href="#method$NSApplication-run">-run</a>
+ to
+            dispatch events that are received according to
+            AppKit&apos;s forwarding conventions. You rarely need
+            to invoke this directly. If you want to synthesize an
+            event for processing, call
+            <a rel="gsdoc" href="#method$NSApplication-postEvent$atStart$">
+              -postEvent:atStart:
+            </a>
+
+            .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1052,18 +1746,26 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
 Returns the services menu of the receiver.    </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              See Also:              <a rel="gsdoc" href="#method$NSApplication-setServicesMenu$">                -setServicesMenu:              </a>
+
+              See Also:
+              <a rel="gsdoc" href="#method$NSApplication-setServicesMenu$">
+                -setServicesMenu:
+              </a>
+
                 </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1074,19 +1776,34 @@ Returns the services menu of the receiver.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Returns the services provided previously              registered using the              <a rel="gsdoc" href="#method$NSApplication-setServicesProvider$">                -setServicesProvider:              </a>
-              method.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              See Also:              <a rel="gsdoc" href="#method$NSApplication-setServicesProvider$">                -setServicesProvider:              </a>
+
+              Returns the services provided previously
+              registered using the
+              <a rel="gsdoc" href="#method$NSApplication-setServicesProvider$">
+                -setServicesProvider:
+              </a>
+
+              method.
                 </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              See Also:
+              <a rel="gsdoc" href="#method$NSApplication-setServicesProvider$">
+                -setServicesProvider:
+              </a>
+
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1097,7 +1814,10 @@ Returns the services menu of the receiver.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Here for compatibility with OS X, but currently a            no-op.          
+      
+            Here for compatibility with OS X, but currently a
+            no-op.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1108,18 +1828,30 @@ Returns the services menu of the receiver.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Sets the application&apos;s icon. Any windows that use              the old application icon image as their mini window              image will be updated to use the new image.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              See Also:              <a rel="gsdoc" href="#method$NSApplication-applicationIconImage">                -applicationIconImage              </a>
+
+              Sets the application&apos;s icon. Any windows that use
+              the old application icon image as their mini window
+              image will be updated to use the new image.
                 </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              See Also:
+              <a rel="gsdoc" href="#method$NSApplication-applicationIconImage">
+                -applicationIconImage
+              </a>
+
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1130,19 +1862,34 @@ Returns the services menu of the receiver.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the delegate of the application to            <var>anObject</var>. <br />            
+      
+            Sets the delegate of the application to
+            <var>anObject</var>. <br />
+            
     </p>
     <p>
-              <em>Beware</em>, this does not retain              <var>anObject</var>, so you must be sure that, in              the event of <var>anObject</var> being deallocated,              you stop it being the application delagate by calling              this method again with another object (or              <code>nil</code>) as the argument.                </p>
+
+              <em>Beware</em>, this does not retain
+              <var>anObject</var>, so you must be sure that, in
+              the event of <var>anObject</var> being deallocated,
+              you stop it being the application delagate by calling
+              this method again with another object (or
+              <code>nil</code>) as the argument.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
+
               See <a rel="gsdoc" href="#method$NSApplication-delegate">-delegate</a>
-              and              <a rel="gsdoc" href="#protocol$(GSAppDelegateProtocol)">&lt;GSAppDelegateProtocol&gt;</a>
+
+              and
+              <a rel="gsdoc" href="#protocol$(GSAppDelegateProtocol)">&lt;GSAppDelegateProtocol&gt;</a>
 for more information.    </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1153,7 +1900,10 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the main menu of the receiver. This is sent            update messages by the main event loop.          
+      
+            Sets the main menu of the receiver. This is sent
+            update messages by the main event loop.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1164,18 +1914,31 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              ets the services menu for the receiver. This should              be called, otherwise warnings will be generated by the              main event loop, which is in charge of updating all              menus, including the Services menu.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              See Also:              <a rel="gsdoc" href="#method$NSApplication-servicesMenu">                -servicesMenu              </a>
+
+              ets the services menu for the receiver. This should
+              be called, otherwise warnings will be generated by the
+              main event loop, which is in charge of updating all
+              menus, including the Services menu.
                 </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              See Also:
+              <a rel="gsdoc" href="#method$NSApplication-servicesMenu">
+                -servicesMenu
+              </a>
+
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1186,8 +1949,17 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the object which provides services to other            applications. <br /> Passing a            <code>nil</code> value for <var>anObject</var> will            result in the provision of services to other            applications by this application being            disabled. <br /> See            <a rel="gsdoc" href="NSPasteboard.html#class$NSPasteboard">NSPasteboard</a>
-              for information about providing services.          
+      
+            Sets the object which provides services to other
+            applications. <br /> Passing a
+            <code>nil</code> value for <var>anObject</var> will
+            result in the provision of services to other
+            applications by this application being
+            disabled. <br /> See
+            <a rel="gsdoc" href="NSPasteboard.html#class$NSPasteboard">NSPasteboard</a>
+
+              for information about providing services.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1198,7 +1970,11 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the windows menu of the receiver. The windows            menu keeps track of all windows open in the            application.          
+      
+            Sets the windows menu of the receiver. The windows
+            menu keeps track of all windows open in the
+            application.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1209,7 +1985,12 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Set whether the main run loop will request all visible            windows update themselves after the current or next            event is processed. (Update occurs after event            dispatch in the loop.)          
+      
+            Set whether the main run loop will request all visible
+            windows update themselves after the current or next
+            event is processed. (Update occurs after event
+            dispatch in the loop.)
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1220,7 +2001,10 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Stops the main run loop, as well as a modal session            if it is running.          
+      
+            Stops the main run loop, as well as a modal session
+            if it is running.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1231,21 +2015,44 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Stops a running modal session causing              <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">                -runModalForWindow:              </a>
-              or              <a rel="gsdoc" href="#method$NSApplication-runModalSession$">                -runModalSession:              </a>
-              to return <code>NSRunStoppedResponse</code>. Use this              or              <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">                -stopModalWithCode:              </a>
-              to end a modal session in response to user input.                </p>
-    <p>
-                  
-    </p>
-    <p>
-              See Also:              <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">                -stopModalWithCode:              </a>
+
+              Stops a running modal session causing
+              <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">
+                -runModalForWindow:
+              </a>
+
+              or
+              <a rel="gsdoc" href="#method$NSApplication-runModalSession$">
+                -runModalSession:
+              </a>
+
+              to return <code>NSRunStoppedResponse</code>. Use this
+              or
+              <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">
+                -stopModalWithCode:
+              </a>
+
+              to end a modal session in response to user input.
                 </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              See Also:
+              <a rel="gsdoc" href="#method$NSApplication-stopModalWithCode$">
+                -stopModalWithCode:
+              </a>
+
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1256,10 +2063,24 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Stops a running modal session causing            <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">              -runModalForWindow:            </a>
-            or            <a rel="gsdoc" href="#method$NSApplication-runModalSession$">              -runModalSession:            </a>
-            to return the specified integer code. Use this or            <a rel="gsdoc" href="#method$NSApplication-stopModal">              -stopModal            </a>
-            to end a modal session in response to user input.          
+      
+            Stops a running modal session causing
+            <a rel="gsdoc" href="#method$NSApplication-runModalForWindow$">
+              -runModalForWindow:
+            </a>
+
+            or
+            <a rel="gsdoc" href="#method$NSApplication-runModalSession$">
+              -runModalSession:
+            </a>
+
+            to return the specified integer code. Use this or
+            <a rel="gsdoc" href="#method$NSApplication-stopModal">
+              -stopModal
+            </a>
+
+            to end a modal session in response to user input.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1270,12 +2091,22 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Returns the target object that will respond to              <var>aSelector</var>, if any. The method first              checks if any of the key window&apos;s first              responders, the key window or its delegate              responds. Next it checks the main window in the              same way. Finally it checks the receiver              (NSApplication) and its delegate.                </p>
+
+              Returns the target object that will respond to
+              <var>aSelector</var>, if any. The method first
+              checks if any of the key window&apos;s first
+              responders, the key window or its delegate
+              responds. Next it checks the main window in the
+              same way. Finally it checks the receiver
+              (NSApplication) and its delegate.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1286,7 +2117,13 @@ for more information.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  If <var>theTarget</var> responds to <var>theAction</var>            it is returned, otherwise the application searches for            an object which will handle <var>theAction</var> and            returns the first object found. <br /> Returns            <code>nil</code> on failure.          
+      
+            If <var>theTarget</var> responds to <var>theAction</var>
+            it is returned, otherwise the application searches for
+            an object which will handle <var>theAction</var> and
+            returns the first object found. <br /> Returns
+            <code>nil</code> on failure.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1297,8 +2134,18 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Requests the application terminates the            application. First an            <a rel="gsdoc" href="#method$(GSAppDelegateProtocol)-applicationShouldTerminate$">              -applicationShouldTerminate:            </a>
-            message is sent to the delegate, and only if it            returns <code>YES</code> (or            <code>NSTerminateNow</code>) will termination be            carried out.          
+      
+            Requests the application terminates the
+            application. First an
+            <a rel="gsdoc" href="#method$(GSAppDelegateProtocol)-applicationShouldTerminate$">
+              -applicationShouldTerminate:
+            </a>
+
+            message is sent to the delegate, and only if it
+            returns <code>YES</code> (or
+            <code>NSTerminateNow</code>) will termination be
+            carried out.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1309,8 +2156,11 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Attempts to perform <var>aSelector</var> using            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-tryToPerform$with$">[NSResponder -tryToPerform:with:]</a>
- and if that is not possible, attempts to get the application delegate to perform the <var>aSelector</var>. <br /> Returns <code>YES</code> if an object was found to perform <var>aSelector</var>, <code>NO</code> otherwise.          
+      
+            Attempts to perform <var>aSelector</var> using
+            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-tryToPerform$with$">[NSResponder -tryToPerform:with:]</a>
+ and if that is not possible, attempts to get the application delegate to perform the <var>aSelector</var>. <br /> Returns <code>YES</code> if an object was found to perform <var>aSelector</var>, <code>NO</code> otherwise.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1321,20 +2171,34 @@ for more information.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
 Unhides and activates this application.    </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              See Also:              <a rel="gsdoc" href="#method$NSApplication-unhideWithoutActivation">                -unhideWithoutActivation              </a>
-              <a rel="gsdoc" href="#method$NSApplication-hide$">                -hide:              </a>
-              <a rel="gsdoc" href="#method$NSApplication-isHidden">                -isHidden              </a>
+
+              See Also:
+              <a rel="gsdoc" href="#method$NSApplication-unhideWithoutActivation">
+                -unhideWithoutActivation
+              </a>
+
+              <a rel="gsdoc" href="#method$NSApplication-hide$">
+                -hide:
+              </a>
+
+              <a rel="gsdoc" href="#method$NSApplication-isHidden">
+                -isHidden
+              </a>
+
                 </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1345,7 +2209,10 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Cause all apps including this one to unhide            themselves.          
+      
+            Cause all apps including this one to unhide
+            themselves.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1356,7 +2223,10 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Unhides this app (displays its windows) but does            not activate it.          
+      
+            Unhides this app (displays its windows) but does
+            not activate it.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1367,9 +2237,20 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sends each of the app&apos;s visible windows an            <a rel="gsdoc" href="NSWindow.html#method$NSWindow-update">              [NSWindow -update]            </a>
-            message. This method is called once per iteration            of the main run loop managed by            <a rel="gsdoc" href="#method$NSApplication-run">              -run            </a>
-            .          
+      
+            Sends each of the app&apos;s visible windows an
+            <a rel="gsdoc" href="NSWindow.html#method$NSWindow-update">
+              [NSWindow -update]
+            </a>
+
+            message. This method is called once per iteration
+            of the main run loop managed by
+            <a rel="gsdoc" href="#method$NSApplication-run">
+              -run
+            </a>
+
+            .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1380,7 +2261,11 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Update Windows menu item for <var>aWindow</var>, to            reflect its edited status. This is usually done            automatically so you don&apos;t need to call this.          
+      
+            Update Windows menu item for <var>aWindow</var>, to
+            reflect its edited status. This is usually done
+            automatically so you don&apos;t need to call this.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1391,8 +2276,17 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Return an object capable of sending and receiving            the specified <var>sendType</var> and            <var>returnType</var> in a services interaction.            NSApp is generally the last responder to get this            request, and the implementation passes it on to            the delegate if it handles it and is not itself an            <a rel="gsdoc" href="NSResponder.html#class$NSResponder">NSResponder</a>
-              , or returns <code>nil</code> otherwise.          
+      
+            Return an object capable of sending and receiving
+            the specified <var>sendType</var> and
+            <var>returnType</var> in a services interaction.
+            NSApp is generally the last responder to get this
+            request, and the implementation passes it on to
+            the delegate if it handles it and is not itself an
+            <a rel="gsdoc" href="NSResponder.html#class$NSResponder">NSResponder</a>
+
+              , or returns <code>nil</code> otherwise.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1403,8 +2297,15 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns window for <var>windowNum</var>. Note the            window number can be obtained for a window from            <a rel="gsdoc" href="NSWindow.html#method$NSWindow-windowNumber">              [NSWindow -windowNumber]            </a>
-            .          
+      
+            Returns window for <var>windowNum</var>. Note the
+            window number can be obtained for a window from
+            <a rel="gsdoc" href="NSWindow.html#method$NSWindow-windowNumber">
+              [NSWindow -windowNumber]
+            </a>
+
+            .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1415,7 +2316,10 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns array of app&apos;s visible and invisible            windows.          
+      
+            Returns array of app&apos;s visible and invisible
+            windows.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1426,7 +2330,11 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns current Windows menu for the application            (whose window contents are managed automatically by            this class and NSWindow).          
+      
+            Returns current Windows menu for the application
+            (whose window contents are managed automatically by
+            this class and NSWindow).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1434,138 +2342,341 @@ Unhides and activates this application.    </p>
     <h2>Instance Variables for NSApplication Class</h2>
     <h3><a name="ivariable$NSApplication*_app_icon">_app_icon</a></h3>
     @protected NSImage* <b>_app_icon</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_app_icon_window">_app_icon_window</a></h3>
     @protected NSWindow* <b>_app_icon_window</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_app_is_active">_app_is_active</a></h3>
     @protected BOOL <b>_app_is_active</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_app_is_hidden">_app_is_hidden</a></h3>
     @protected BOOL <b>_app_is_hidden</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_app_is_launched">_app_is_launched</a></h3>
     @protected BOOL <b>_app_is_launched</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_app_is_running">_app_is_running</a></h3>
     @protected BOOL <b>_app_is_running</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_current_event">_current_event</a></h3>
     @protected NSEvent* <b>_current_event</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_default_context">_default_context</a></h3>
     @protected NSGraphicsContext* <b>_default_context</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_delegate">_delegate</a></h3>
     @protected id <b>_delegate</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_hidden">_hidden</a></h3>
     @protected NSMutableArray* <b>_hidden</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_hidden_key">_hidden_key</a></h3>
     @protected NSWindow* <b>_hidden_key</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_inactive">_inactive</a></h3>
     @protected NSMutableArray* <b>_inactive</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_infoPanel">_infoPanel</a></h3>
     @protected GSInfoPanel* <b>_infoPanel</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_key_window">_key_window</a></h3>
     @protected NSWindow* <b>_key_window</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_listener">_listener</a></h3>
     @protected id <b>_listener</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_main_menu">_main_menu</a></h3>
     @protected NSMenu* <b>_main_menu</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_main_window">_main_window</a></h3>
     @protected NSWindow* <b>_main_window</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_runLoopPool">_runLoopPool</a></h3>
     @protected NSAutoreleasePool* <b>_runLoopPool</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_session">_session</a></h3>
     @protected NSModalSession <b>_session</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_unhide_on_activation">_unhide_on_activation</a></h3>
     @protected BOOL <b>_unhide_on_activation</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_windows_menu">_windows_menu</a></h3>
     @protected NSMenu* <b>_windows_menu</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSApplication*_windows_need_update">_windows_need_update</a></h3>
     @protected BOOL <b>_windows_need_update</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
-          <h1><a name="002000000000">        Software documentation for the        NSApplication(GSGUIInternal)        category      </a></h1>
+
+          <h1><a name="002000000000">
+        Software documentation for the
+        NSApplication(GSGUIInternal)
+        category
+      </a></h1>
     <h2><a rel="gsdoc" href="#class$NSApplication">NSApplication</a>(<a name="category$NSApplication(GSGUIInternal)">GSGUIInternal</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -1574,11 +2685,12 @@ Unhides and activates this application.    </p>
       </dl>
     </blockquote>
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                <em>Description forthcoming.</em>        
+      
+          <em>Description forthcoming.</em>
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1589,15 +2701,24 @@ Unhides and activates this application.    </p>
     <h3><a name="method$NSApplication(GSGUIInternal)-_windowWillDealloc$">_windowWillDealloc:&nbsp;</a></h3>
     - (void) <b>_windowWillDealloc:</b> (<a rel="gsdoc" href="NSWindow.html#class$NSWindow">NSWindow</a>*)window;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="003000000000">        Software documentation for the        NSObject(NSServicesRequests)        informal protocol      </a></h1>
+
+          <h1><a name="003000000000">
+        Software documentation for the
+        NSObject(NSServicesRequests)
+        informal protocol
+      </a></h1>
     <h2><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSServicesRequests)">NSServicesRequests</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -1609,7 +2730,10 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                Informal protocol declaring methods for sending to          and receiving from remote services providers.        
+      
+          Informal protocol declaring methods for sending to
+          and receiving from remote services providers.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1622,11 +2746,12 @@ Unhides and activates this application.    </p>
     <h3><a name="method$NSObject(NSServicesRequests)-iconWindow">iconWindow&nbsp;</a></h3>
     - (<a rel="gsdoc" href="NSWindow.html#class$NSWindow">NSWindow</a>*) <b>iconWindow</b>;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1637,7 +2762,11 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Request to transfer data from given pasteboard to            selection (called when a called remote service            has provided data to this pasteboard).          
+      
+            Request to transfer data from given pasteboard to
+            selection (called when a called remote service
+            has provided data to this pasteboard).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1648,11 +2777,19 @@ Unhides and activates this application.    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Request to write selection data to given pasteboard            (called when a called remote service is to be            invoked).          
+      
+            Request to write selection data to given pasteboard
+            (called when a called remote service is to be
+            invoked).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="004000000000">        Software documentation for the GSAppDelegateProtocol        protocol      </a></h1>
+
+          <h1><a name="004000000000">
+        Software documentation for the GSAppDelegateProtocol
+        protocol
+      </a></h1>
     <h2><a name="protocol$(GSAppDelegateProtocol)">GSAppDelegateProtocol</a></h2>
     <blockquote class="declared">
       <dl>
@@ -1661,12 +2798,21 @@ Unhides and activates this application.    </p>
       </dl>
     </blockquote>
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                This is a formal protocol that duplicates the informal          protocol for          <a rel="gsdoc" href="#class$NSApplication">NSApplication</a>
-            delegates. Your delegate does not need to            implement the formal protocol; it is declared            only for documentation purposes. Your delegate should            just implement the methods it needs to, which will            allow <code>NSApp</code> to use default            implementations in other cases.        
+      
+          This is a formal protocol that duplicates the informal
+          protocol for
+          <a rel="gsdoc" href="#class$NSApplication">NSApplication</a>
+
+            delegates. Your delegate does not need to
+            implement the formal protocol; it is declared
+            only for documentation purposes. Your delegate should
+            just implement the methods it needs to, which will
+            allow <code>NSApp</code> to use default
+            implementations in other cases.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1701,11 +2847,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-application$delegateHandlesKey$">application:&nbsp;delegateHandlesKey:&nbsp;</a></h3>
     - (BOOL) <b>application:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)sender<b> delegateHandlesKey:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)key;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Method called by scripting framework on OS X.            <em>Not implemented (sent) yet on GNUstep.</em>          
+      
+            Method called by scripting framework on OS X.
+            <em>Not implemented (sent) yet on GNUstep.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1713,11 +2861,14 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-application$openFile$">application:&nbsp;openFile:&nbsp;</a></h3>
     - (BOOL) <b>application:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)app<b> openFile:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)filename;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Sender requests application to open            <var>filename</var>. <code>YES</code> should be            returned on success, <code>NO</code> on failure.          
+      
+            Sender requests application to open
+            <var>filename</var>. <code>YES</code> should be
+            returned on success, <code>NO</code> on failure.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1725,11 +2876,16 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-application$openFileWithoutUI$">application:&nbsp;openFileWithoutUI:&nbsp;</a></h3>
     - (BOOL) <b>application:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)app<b> openFileWithoutUI:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)filename;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Sender <var>app</var> (not necessarily this            application) requests application to open file            without bringing up its normal UI, for programmatic            manipulation. <code>YES</code> should be            returned on success, <code>NO</code> on failure.          
+      
+            Sender <var>app</var> (not necessarily this
+            application) requests application to open file
+            without bringing up its normal UI, for programmatic
+            manipulation. <code>YES</code> should be
+            returned on success, <code>NO</code> on failure.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1737,11 +2893,15 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-application$openTempFile$">application:&nbsp;openTempFile:&nbsp;</a></h3>
     - (BOOL) <b>application:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)app<b> openTempFile:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)filename;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Sender requests application to open a temporary            file. Responsibility for eventual deletion lies with            this application. <code>YES</code> should be returned            on success, <code>NO</code> on failure.          
+      
+            Sender requests application to open a temporary
+            file. Responsibility for eventual deletion lies with
+            this application. <code>YES</code> should be returned
+            on success, <code>NO</code> on failure.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1749,11 +2909,17 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-application$printFile$">application:&nbsp;printFile:&nbsp;</a></h3>
     - (BOOL) <b>application:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)theApplication<b> printFile:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)filename;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Sender requests application to print            <var>filename</var>. This should generally be done            without presenting a GUI to the user, unless            default options are likely to be changed.            <code>YES</code> should be returned on success,            <code>NO</code> on failure.          
+      
+            Sender requests application to print
+            <var>filename</var>. This should generally be done
+            without presenting a GUI to the user, unless
+            default options are likely to be changed.
+            <code>YES</code> should be returned on success,
+            <code>NO</code> on failure.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1761,11 +2927,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationDidBecomeActive$">applicationDidBecomeActive:&nbsp;</a></h3>
     - (void) <b>applicationDidBecomeActive:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application has become            active.          
+      
+            Invoked on notification that application has become
+            active.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1773,11 +2941,16 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationDidChangeScreenParameters$">applicationDidChangeScreenParameters:&nbsp;</a></h3>
     - (void) <b>applicationDidChangeScreenParameters:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Called on OS X when the resolution or other            characteristics of the display have changed            (through control panel operation, connecting a new            monitor, etc.).            <em>Not implemented/sent yet under GNUstep.</em>          
+      
+            Called on OS X when the resolution or other
+            characteristics of the display have changed
+            (through control panel operation, connecting a new
+            monitor, etc.).
+            <em>Not implemented/sent yet under GNUstep.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1785,12 +2958,15 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationDidFinishLaunching$">applicationDidFinishLaunching:&nbsp;</a></h3>
     - (void) <b>applicationDidFinishLaunching:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application has            finished launching (            <a rel="gsdoc" href="#method$NSApplication-finishLaunching">[NSApplication -finishLaunching]</a>
- has completed, but no event dispatching has begun.          
+      
+            Invoked on notification that application has
+            finished launching (
+            <a rel="gsdoc" href="#method$NSApplication-finishLaunching">[NSApplication -finishLaunching]</a>
+ has completed, but no event dispatching has begun.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1798,11 +2974,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationDidHide$">applicationDidHide:&nbsp;</a></h3>
     - (void) <b>applicationDidHide:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application has just            been hidden.          
+      
+            Invoked on notification that application has just
+            been hidden.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1810,11 +2988,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationDidResignActive$">applicationDidResignActive:&nbsp;</a></h3>
     - (void) <b>applicationDidResignActive:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application has just            been deactivated.          
+      
+            Invoked on notification that application has just
+            been deactivated.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1822,11 +3002,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationDidUnhide$">applicationDidUnhide:&nbsp;</a></h3>
     - (void) <b>applicationDidUnhide:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application has just            been unhidden.          
+      
+            Invoked on notification that application has just
+            been unhidden.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1834,11 +3016,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationDidUpdate$">applicationDidUpdate:&nbsp;</a></h3>
     - (void) <b>applicationDidUpdate:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application has            updated its windows.          
+      
+            Invoked on notification that application has
+            updated its windows.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1846,11 +3030,15 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationDockMenu$">applicationDockMenu:&nbsp;</a></h3>
     - (<a rel="gsdoc" href="NSMenu.html#class$NSMenu">NSMenu</a>*) <b>applicationDockMenu:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)sender;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Method used on OS X to allow an application to            override the standard menu obtained by            right-clicking on the application&apos;s dock            icon. <em>Not sent yet in GNUstep.</em>          
+      
+            Method used on OS X to allow an application to
+            override the standard menu obtained by
+            right-clicking on the application&apos;s dock
+            icon. <em>Not sent yet in GNUstep.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1858,11 +3046,14 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationOpenUntitledFile$">applicationOpenUntitledFile:&nbsp;</a></h3>
     - (BOOL) <b>applicationOpenUntitledFile:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)app;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Sender requests application to open a fresh            document. <code>YES</code> should be returned on            success, <code>NO</code> on failure.          
+      
+            Sender requests application to open a fresh
+            document. <code>YES</code> should be returned on
+            success, <code>NO</code> on failure.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1870,11 +3061,19 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationShouldHandleReopen$hasVisibleWindows$">applicationShouldHandleReopen:&nbsp;hasVisibleWindows:&nbsp;</a></h3>
     - (BOOL) <b>applicationShouldHandleReopen:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)theApplication<b> hasVisibleWindows:</b> (BOOL)flag;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Method used on OS X to allow delegate to handle            event when user clicks on dock icon of an            already-open app. If <code>YES</code> is            returned, a default implementation executes (for            example, to create a new untitled document); if            <code>NO</code> is returned nothing is done (and you            can handle it here in this method).            <em>Not sent yet under GNUstep.</em>          
+      
+            Method used on OS X to allow delegate to handle
+            event when user clicks on dock icon of an
+            already-open app. If <code>YES</code> is
+            returned, a default implementation executes (for
+            example, to create a new untitled document); if
+            <code>NO</code> is returned nothing is done (and you
+            can handle it here in this method).
+            <em>Not sent yet under GNUstep.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1882,11 +3081,14 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationShouldOpenUntitledFile$">applicationShouldOpenUntitledFile:&nbsp;</a></h3>
     - (BOOL) <b>applicationShouldOpenUntitledFile:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)sender;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Sender will request application to open a fresh            document, unless <code>NO</code> is returned            here.          
+      
+            Sender will request application to open a fresh
+            document, unless <code>NO</code> is returned
+            here.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1894,13 +3096,24 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationShouldTerminate$">applicationShouldTerminate:&nbsp;</a></h3>
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSApplicationTerminateReply">NSApplicationTerminateReply</a>) <b>applicationShouldTerminate:</b> (<a rel="gsdoc" href="#class$NSApplication">NSApplication</a>*)sender;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Sent from within the            <a rel="gsdoc" href="#method$NSApplication-terminate$">              [NSApplication -terminate:]            </a>
-            . If <code>NSTerminateNow</code> is returned, termination            will proceed. If <code>NSTerminateCancel</code> is            returned, termination will NOT proceed. If            <code>NSTerminateLater</code> is returned,            termination will be halted, but the application            should call            <a rel="gsdoc" href="#method$NSApplication-replyToApplicationShouldTerminate$">[NSApplication -replyToApplicationShouldTerminate:]</a>
- with a <code>YES</code> or <code>NO</code>. (Used if confirmation windows, etc. need to be put up.)          
+      
+            Sent from within the
+            <a rel="gsdoc" href="#method$NSApplication-terminate$">
+              [NSApplication -terminate:]
+            </a>
+
+            . If <code>NSTerminateNow</code> is returned, termination
+            will proceed. If <code>NSTerminateCancel</code> is
+            returned, termination will NOT proceed. If
+            <code>NSTerminateLater</code> is returned,
+            termination will be halted, but the application
+            should call
+            <a rel="gsdoc" href="#method$NSApplication-replyToApplicationShouldTerminate$">[NSApplication -replyToApplicationShouldTerminate:]</a>
+ with a <code>YES</code> or <code>NO</code>. (Used if confirmation windows, etc. need to be put up.)
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1908,12 +3121,18 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationShouldTerminateAfterLastWindowClosed$">applicationShouldTerminateAfterLastWindowClosed:&nbsp;</a></h3>
     - (BOOL) <b>applicationShouldTerminateAfterLastWindowClosed:</b> (id)sender;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked when the last window is closed in an            application. If <code>YES</code> is returned,            <a rel="gsdoc" href="#method$(GSAppDelegateProtocol)-applicationShouldTerminate$">              -applicationShouldTerminate:            </a>
-            is invoked.          
+      
+            Invoked when the last window is closed in an
+            application. If <code>YES</code> is returned,
+            <a rel="gsdoc" href="#method$(GSAppDelegateProtocol)-applicationShouldTerminate$">
+              -applicationShouldTerminate:
+            </a>
+
+            is invoked.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1921,11 +3140,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationWillBecomeActive$">applicationWillBecomeActive:&nbsp;</a></h3>
     - (void) <b>applicationWillBecomeActive:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application will            become active.          
+      
+            Invoked on notification that application will
+            become active.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1933,11 +3154,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationWillFinishLaunching$">applicationWillFinishLaunching:&nbsp;</a></h3>
     - (void) <b>applicationWillFinishLaunching:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application will            become active.          
+      
+            Invoked on notification that application will
+            become active.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1945,11 +3168,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationWillHide$">applicationWillHide:&nbsp;</a></h3>
     - (void) <b>applicationWillHide:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application will be            hidden.          
+      
+            Invoked on notification that application will be
+            hidden.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1957,11 +3182,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationWillResignActive$">applicationWillResignActive:&nbsp;</a></h3>
     - (void) <b>applicationWillResignActive:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification just before application            resigns active status.          
+      
+            Invoked on notification just before application
+            resigns active status.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1969,11 +3196,14 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationWillTerminate$">applicationWillTerminate:&nbsp;</a></h3>
     - (void) <b>applicationWillTerminate:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification just before application            terminates. (There is no opportunity to avert            it now.)          
+      
+            Invoked on notification just before application
+            terminates. (There is no opportunity to avert
+            it now.)
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1981,11 +3211,13 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationWillUnhide$">applicationWillUnhide:&nbsp;</a></h3>
     - (void) <b>applicationWillUnhide:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application will be            unhidden.          
+      
+            Invoked on notification that application will be
+            unhidden.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1993,12 +3225,15 @@ Unhides and activates this application.    </p>
     <h3><a name="method$(GSAppDelegateProtocol)-applicationWillUpdate$">applicationWillUpdate:&nbsp;</a></h3>
     - (void) <b>applicationWillUpdate:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Invoked on notification that application will now            update its windows. (See            <a rel="gsdoc" href="#method$NSApplication-updateWindows">[NSApplication -updateWindows]</a>
-.          
+      
+            Invoked on notification that application will now
+            update its windows. (See
+            <a rel="gsdoc" href="#method$NSApplication-updateWindows">[NSApplication -updateWindows]</a>
+.
+          
     </div>
     <hr width="25%" align="left" />
 </div>

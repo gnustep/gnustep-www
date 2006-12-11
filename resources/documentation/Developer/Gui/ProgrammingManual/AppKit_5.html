@@ -1,0 +1,352 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on December, 11  2006 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Using the GNUstep AppKit 0.1: interfacefiles</TITLE>
+
+<META NAME="description" CONTENT="Using the GNUstep AppKit 0.1: interfacefiles">
+<META NAME="keywords" CONTENT="Using the GNUstep AppKit 0.1: interfacefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC20"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_4.html#SEC19"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC21"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_4.html#SEC19"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_6.html#SEC30"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 5. Interface Files </H1>
+<!--docid::SEC20::-->
+<P>
+
+<A NAME="IDX8"></A>
+<EM>Interface files</EM> are used to store your applications graphical user interface. It's separation means that you can modify it more easily than other interface generation mechanisms, such as code generators, which generate code that makes it hard to modify the interface or requires you to rewrite your own code. The advantage of a separate interface file is that you can change the interface without having to recompile one bit of code (in most instances). 
+</P><P>
+
+<A NAME="IDX9"></A>
+Interface files are often referred to as "nib" files.<A NAME="DOCF4" HREF="AppKit_fot.html#FOOT4">(4)</A> These are not the same as those appearing on NeXT and MacOS X systems, and are completely incompatible (tagged XML nib's may change this in future). This section is very important to understanding key concepts in the AppKit, especially with regards to manipulation of your user interface. It is strongly recommended you do not skip this section, and refer back to it if you do not understand anything, even if you don't intend to use Gorm (also not recommended).
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC21"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC20"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC22"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC29"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 5.1 Using Gorm </H2>
+<!--docid::SEC21::-->
+Gorm is the GNUstep application used to create interface files for applications. It uses a drag and drop interface to place the control's on your window form and menu. See the Gorm manual, currently posted on the <CITE>GNUstep Wiki</CITE> for further information on using Gorm for the creation of interfaces. This section is also relevant to those using Renaissance.
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC22"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC21"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC23"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC23"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.1.1 The Palette </H3>
+<!--docid::SEC22::-->
+<P>
+
+The palette contains pictures of various objects that you can drag and drop onto a window or a menu, including a window itself. These are the graphical objects that you may put onto your interface. They can be resized on the window itself by using the resize handles.
+</P><P>
+
+The graphical elements you place on your window(s) using Gorm, including the window itself, come from the palette. When your nib file is loaded, all the graphical elements are instantiated by GNUstep and all connections are made (see outlets and actions below). You don't need to instantiate objects in code, unless you intend to draw them programatically and add them to your interface. This differs from many other toolkits, where you often need to make connections to your interface in code (e.g. Win32 resource files) as well as instantiate custom objects for them, e.g. in Gtk, you need to add object variables that refer to the objects in your interface such as windows and buttons. 
+</P><P>
+
+In GNUstep, you need only draw your interface and make connections to objects using Gorm, and then provide reference variables in the classes you specify connections (outlets and actions) for.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC23"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC22"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC24"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC24"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC24"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.1.2 The Inspector </H3>
+<!--docid::SEC23::-->
+<P>
+
+The inspector contains four sections, which let you modify the properties of any object (including those appearing on your window, the windows themselves and objects in the Objects Pane) in four sections:
+</P><P>
+
+<DL COMPACT>
+
+<DT><CODE>Attributes</CODE>
+<DD>This contains the attributes of the object you are modifying e.g. it's title, it's colour, tag items, etc. Note that fonts are modified using the Font Panel, which is opened in the menus, separately.
+<P>
+
+<DT><CODE>Connections</CODE>
+<DD>Connections has three panes: the outlets, actions and object connections that you have made for this object (see see  <A HREF="AppKit_5.html#Outlets and Actions">Outlets and Actions</A>).
+<P>
+
+<DT><CODE>Size</CODE>
+<DD>Lets you modify the size using numbers, and the resizing data for this object (the springs at the bottom). See the Gorm manual for more details on this pane.
+<P>
+
+<DT><CODE>Help</CODE>
+<DD>Help related to this object type. Still being completed.
+<P>
+
+<DT><CODE>Custom class</CODE>
+<DD>Let's you set the class for this object manually (NOTE: this only appears for some objects where it is possible to set a custom class).
+<P>
+
+</DL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC24"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC23"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC25"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC25"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC25"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.1.3 The Objects Pane </H3>
+<!--docid::SEC24::-->
+<P>
+
+This is a graphical display of your application's objects. They appear with a subtitled icon, and can be manipulated like the graphical objects on the window forms, as well as be connected to outlets and actions. 
+</P><P>
+
+You can also instantiate subclasses (where necessary) to connect to other objects. The object's here may be representative (for example, NSOwner and NSFirst) or be instances of custom classes you create in your code.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC25"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC24"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC26"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC26"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC26"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.1.4 The Classes Pane </H3>
+<!--docid::SEC25::-->
+<P>
+
+This permits you to subclass and add actions and outlets to classes that you want Gorm to link up at runtime. The GNUstep class hierachy is shown in this pane, allowing you to see the various views and helper classes (e.g. NSDocument/NSDocumentController, used for document based applications).
+</P><P>
+
+In here, you can create subclasses of the classes specified, often <CODE>NSObject</CODE> and then add actions (methods) or outlets (instance variables) to them. What you do in here must be reflected in your own code at the time your nib file is loaded. As a result, Gorm can generate the appropriate header and source files for you, or you can create them yourself. However you do this, you must make sure any subclasses you create here can be found at runtime, and that they contain all the instance variables and methods that you specify as outlets and actions at the time that your code loads the nib file (often by calling <CODE>-loadNibNamed:</CODE> on the main bundle).
+</P><P>
+
+<A NAME="Outlets and Actions"></A>
+<HR SIZE="6">
+<A NAME="SEC26"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC25"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC27"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC27"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC27"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.1.5 Outlets and Actions: Connecting objects </H3>
+<!--docid::SEC26::-->
+<P>
+
+Gorm permits you to connect your graphical objects together using it's interface, to save you the trouble of connecting them at runtime using extra lines of code (and wondering where you should put them). We introduce two concepts here: <EM>outlets</EM> and <EM>actions</EM>. They form the basis of event handling and graphical object linkage when using Interface Files for your programme's interface in GNUstep. This outlet and action paradigm is incredibly important, as you will see, as it eliminates the need for subclassing objects of graphical elements (a.k.a widgets) for all but the most complex GUI applications. You don't even need to subclass NSWindow to create a window; you merely need to instantiate it, and that bit is taken care of by GNUstep anyway (unlike most other GUI toolkits, including the Win32 API, Gtk, Qt/KDE, and many others).
+</P><P>
+
+The concept of <EM>outlets and actions</EM> is presented in many beginner tutorials to GNUstep and Cocoa. It is well recommended you follow one of these to get a better idea of how these things work. With practice, they become second nature in interface design, and are useful for thinking about how your interface will interact with your code, but still keeping a useful abstract distance between the two.
+</P><P>
+
+<A NAME="IDX10"></A>
+An <EM>outlet</EM> is a property of an object, that can be used to store a reference to another object, which is usually some sort of graphical element (like a button or text box). You usually add outlets to your custom subclasses and then connect them to graphical elements on your window, so that you can directly manipulate them in your code. If you were to add an outlet to a class, it would appear in code under the data value declarations part of your class as an object reference. It takes the syntax:
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>id myOutlet;
+</FONT></pre></td></tr></table>(NOTE: <CODE>id</CODE> may also be <CODE>IBOutlet</CODE>, especially if generated by ProjectCenter. It seems not to matter.)
+</P><P>
+
+For example, if you connect a button to the outlet of one of your objects, say and outlet called <CODE>myButton</CODE>, when that nib is instantiated, <CODE>myButton</CODE> will contain a reference to an <CODE>NSButton</CODE> object, namely the button object on your interface that is connected to that outlet.
+</P><P>
+
+Another example is creating a main window for your user interface. You may decide later that you wish to customise this window in code, based on user interactions. It would be appropriate to add an outlet to a top level object so that you can access this instance of the window.
+</P><P>
+
+You will often create a special subclass of <CODE>NSObject</CODE> named something like <VAR>AppController</VAR> or <CODE>ApplicationController</CODE> and instantiate it. You will then add outlets and actions to this so that you can centralise access to your programme's widgets. The default Application project type in ProjectCenter does this for you, and many tutorials will present outlets and actions to you like this.
+</P><P>
+
+<A NAME="IDX11"></A>
+An <EM>action</EM> is a method or function of behaviour that a class may perform. For example, you can connect a button to an action listed in NSOwner, so that when the button is clicked, it will send a message to the NSOwner object that will perform the action you connected. Actions are listed as methods on objects, but they take the form:
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>- (void) myAction:(id)sender;
+</FONT></pre></td></tr></table></P><P>
+
+Hence they are instance methods, taking one parameter, which is a reference to the object that is connected to the action. You could connect any number of objects to action on one object, so that it could distinguish between it's caller's by checking the sender object with GNUstep's introspection/reflection features.
+</P><P>
+
+For example, say that you create an action on one of your custom objects called <CODE>compute:</CODE>. If you then connect a button object to your custom object and set <CODE>compute:</CODE> as the action, when the button is clicked, it will call <CODE>compute:</CODE> on your custom object.
+</P><P>
+
+In short, objects are connected to outlets or actions, but outlets or actions are not connected to each other. To connect an object to an outlet or an action, you first select the object, then hold down the first control key (usually the left <KBD><KBD>Ctrl</KBD></KBD> key on your keyboard), and select (using the mouse) the object which contains the outlet or action you wish to connect to. In the Inspector window, you select the target outlet or action, and click <CODE>Connect</CODE>. The action or outlet on the latter object will be connected to the first object.
+</P><P>
+
+<A NAME="IDX12"></A>
+<HR SIZE="6">
+<A NAME="SEC27"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC26"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC28"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC28"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC28"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.1.6 NSOwner: Who controls your interface? </H3>
+<!--docid::SEC27::-->
+<P>
+
+<EM>NSOwner</EM> will appear as an object in the Objects Pane. You will notice that the only property you can set is it's class. NSOwner is an object, decided upon at runtime by your code, that will "own" this instance of your interface. You can instantiate interfaces more than once upon runtime, each time associating an instance with a different object.
+</P><P>
+
+You can set NSOwner to be a custom class, with your outlets and actions, and then connect NSOwner to other objects or graphical elements or methods in your interface. 
+</P><P>
+
+For example, you may create a custom subclass of NSObject called <CODE>MyController</CODE>. You may then give it a number of outlets, including one called <CODE>window</CODE>. You could set NSOwner to be of your subclass type, then connect <CODE>window</CODE> to the NSWindow object in the Object's pane. Upon runtime, whatever <CODE>MyController</CODE> object you set as NSOwner would have the associated NSWindow instance appear in it's <CODE>window</CODE> instance data value.
+</P><P>
+
+<A NAME="IDX13"></A>
+<HR SIZE="6">
+<A NAME="SEC28"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC27"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC29"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 5.1.7 NSFirst </H3>
+<!--docid::SEC28::-->
+<P>
+
+<A NAME="IDX14"></A>
+NSFirst is an abstract object, and may refer to any number of different graphical elements during the lifetime of your programme. It is what's known as the <EM>first responder</EM>, the object that is connected in such a way to receive event's first. The first responder may change depending on user interaction with a window, e.g. selecting an object in your window may cause it to become the first responder. 
+</P><P>
+
+What you can do is connect outlets and actions to the first responder, and depending on whether the object that is set as <CODE>NSFirst</CODE>, the use may be able to perform that action. 
+</P><P>
+
+For example, you may connect a menu item to call the <CODE>print:</CODE> action on the NSFirst object. GNUstep will automatically grey out this menu item if the object set as the first responder (decided by the user's currently selected object) is not able to respond to this action. If another object is to be later set as the first responder, and is able to respond to this action, GNUstep will automatically make the menu item available again. This way, you don't have to handle instances where the first responder object cannot respond to your method. GNUstep sets this all up using Objective-C's introspection features, by checking whether your object responds to the method corresponding to the action.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC29"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_5.html#SEC28"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_6.html#SEC30"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 5.2 Loading and Instantiating Interface Files </H2>
+<!--docid::SEC29::-->
+<P>
+
+<A NAME="IDX15"></A>
+Once you've created your interfaces files, you will want to instantiate them and display them. This is relatively simple in code, and merely requires you deal with the <VAR>NSNib</VAR> class. If your application contains only one interface file, it is possible to avoid this step altogether, and set the main interface nib as a property in your application's property list, as well as including it as a resource in your application's makefile.
+</P><P>
+
+Otherwise, if you would like to instantiate it manually, especially if you have multiple interface files, you first create an NSNib object using the name of your interface file, and then instantiate it with a reference to your NSOwner object.
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>id myOwner;
+NSNib* myNib;
+NSArray* topLevelObjects;
+
+// Assign myOwner to an object of the class that you set as NSOwner.
+
+myNib = [[NSNib alloc] initWithNibNamed:@"MyNibFile" bundle:nil];
+[myNib instantiateNibWithOwner:myOwner topLevelObjects:&#38;topLevelObjects];
+</pre></td></tr></table></P><P>
+
+<A NAME="IDX16"></A>
+In this case, we first create the <CODE>NSNib</CODE> object <CODE>myNib</CODE> with a interface file called <TT>`MyNibFile'</TT>. We pass <CODE>nil</CODE> to the bundle parameter to indicate the main bundle; you can otherwise specify another bundle you may have already loaded into your programme. The <CODE>topLevelObjects:</CODE> parameter refers to the objects that appear in the Objects pane in Gorm. You can use Objective-C's reflection features to identify them.
+</P><P>
+
+The nib is then instantiated with myOwner as the NSOwner object (you have to create this beforehand) and is passed a pointer to an <CODE>NSArray</CODE> reference so that you can receive the top level objects in your interface file. See the NSNib documenation in the AppKit reference manual for more details. There is simpler methods calls available for instantiating nib's as well under <CODE>NSBundle</CODE> (see the <CITE>GNUstep GUI Reference Manual</CITE>.
+</P><P>
+
+<A NAME="controls"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>December, 11  2006</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

@@ -1,0 +1,111 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on December, 11  2006 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Using the GNUstep AppKit 0.1: basicconcepts</TITLE>
+
+<META NAME="description" CONTENT="Using the GNUstep AppKit 0.1: basicconcepts">
+<META NAME="keywords" CONTENT="Using the GNUstep AppKit 0.1: basicconcepts">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC7"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_1.html#SEC6"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_3.html#SEC8"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_1.html#SEC1"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_3.html#SEC8"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 2. Basic Concepts </H1>
+<!--docid::SEC7::-->
+<P>
+
+Throughout this manual, we refer to a number of concepts that you will need to be familiar with. It may be useful to at least glance over this section and make sure you are familiar with the concepts presented.
+</P><P>
+
+<DL COMPACT>
+
+<DT><I>application wrapper (or appwrapper)</I>
+<DD>GNUstep applications rarely consist of just an executable file. They often contain interface files, property lists and other resources such as images. These are bundled together with the executable into a directory known as an <EM>application wrapper</EM>. To launch applications, you use the <CODE>openapp</CODE> command.
+<P>
+
+<DT><I>delegate</I>
+<DD><P>
+
+A <EM>delegate</EM> usually refers to an object that handles certain events and methods on behalf of another object. The methods a delegate should implement are declared as either a formal or informal protocol. 
+</P><P>
+
+Many of the view and control classes within the AppKit allow you to supply delegate objects to help them make decisions about different things such as what data to display, how to handle events, whether to permit the user to select things, handling drag and drop, etc.
+</P><P>
+
+<DT><I>formal protocol</I>
+<DD><P>
+
+A <EM>formal protocol</EM> is a protocol that requires you to implement all the methods that are listed within it. They are used much less often that informal protocols in the AppKit.
+</P><P>
+
+Formal protocols are declared using their own statement, the <CODE>@protocol</CODE> identifier. You implement a formal protocol by placing it's name in arrow brackets ('&#60;' and '&#62;') and listing its methods in your interface declaration.
+</P><P>
+
+<DT><I>informal protocol</I>
+<DD>Objective-C can have both <EM>formal</EM> and <EM>informal</EM> protocols. Informal protocols don't require you to implement all of their methods.
+<P>
+
+Informal protocols are declared as a category of <CODE>NSObject</CODE>. You implement them in your own class by simply declaring and implementing the methods in the protocol you wish to. Always check the documentation of the classes that use the protocol to see which methods you should implement (usually at least one of them is mandatory).
+</P><P>
+
+<DT><I>nib file</I>
+<DD><EM>nib files</EM> are your program's interface files, which contain definitions of all the windows, controls and menus as well as their connections to classes from your application. They have the extension <TT>`.gorm'</TT>.
+<P>
+
+See see  <A HREF="AppKit_4.html#Interface Files">Interface Files</A> for more information.
+</P><P>
+
+<DT><I>notification</I>
+<DD>A <EM>notification</EM> is an indicator of a certain event. Notifications are objects posted to a <EM>notification center</EM>. Other objects may register with a notification center to receive notifications.
+<P>
+
+For more information about notifications, refer to the <CITE>GNUstep Base Programming Manual</CITE>.
+</P><P>
+
+</DL>
+<P>
+
+<A NAME="gnustepapplications"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_1.html#SEC1"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_3.html#SEC8"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>December, 11  2006</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

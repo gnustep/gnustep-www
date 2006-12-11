@@ -1,0 +1,1038 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+    <head>
+    <title>GSTheme</title>
+  </head>
+  <body>
+    <font face="serif">
+    <a href="GuiAdditions.html">Up</a>
+    <br />
+    <h1><a name="title$GSTheme">GSTheme</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Adam Fedor (<a href="mailto:fedor@gnu.org"><code>fedor@gnu.org</code></a>)</dt>
+      <dd>
+      </dd>
+      <dt>Richard Frith-Macdonald (<a href="mailto:rfm@gnu.org"><code>rfm@gnu.org</code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <blockquote>
+      
+      Useful/configurable drawing functions
+    
+    </blockquote>
+    <p><b>Copyright:</b> (C) 2004-2006 Free Software Foundation, Inc.</p>
+
+        <div>
+      <hr width="50%" align="left" />
+      <h3>Contents -</h3>
+      <ol>
+        <li>
+          <a href="#001000000000">The theme management system</a>
+        </li>
+        <li>
+          <a href="#001001000000">Types of theming</a>
+        </li>
+        <li>
+          <a href="#002000000000">Software documentation for the GSTheme class</a>
+        </li>
+        <li>
+          <a href="#003000000000">Software documentation for the GSTheme(Drawing)
+        category</a>
+        </li>
+        <li>
+          <a href="#004000000000">Software documentation for the
+        GSTheme(LowLevelDrawing) category</a>
+        </li>
+        <li>
+          <a href="#005000000000">Software documentation for the
+        GSTheme(MidLevelDrawing) category</a>
+        </li>
+      </ol>
+      <hr width="50%" align="left" />
+    </div>
+
+          <h1><a name="001000000000">The theme management system</a></h1>
+    <p>
+
+        The theme management system for the GNUstep GUI is based
+        around the
+        <a rel="gsdoc" href="#class$GSTheme">GSTheme</a>
+
+          class, which provides support for loading of theme
+          bundles and methods for drawing common user interface
+          elements. <br /> The theme system works in
+          conjunction with a variety of other GUI classes
+          and is intended to eventually allow for very major
+          changes in GUI appearance and behavior.
+            </p>
+    <p>
+
+          Various design imperatives apply to the theme system,
+          but probably the key ones are:
+            </p>
+    <ul>
+      <li>
+        
+            It should allow designers and other non-technical users
+            to easily develop new and interesting GUI styles likely
+            to attract new users to GNUstep.
+          
+      </li>
+      <li>
+        
+            Using and switching between themes should be an easy
+            and pleasant experience... so that people are not put
+            off when they try using themes.
+          
+      </li>
+      <li>
+        
+            It should eventually permit a GNUstep application to
+            appear as a native application on ms-windows and
+            other systems.
+          
+      </li>
+    </ul>
+    <p>
+
+          To attain these aims implies the recognition of some more
+          specific objectives and some possible technical
+          solutions:
+            </p>
+    <ul>
+      <li>
+        
+            We must have as simple as possible an API for the
+            functions handling the way GUI elements work and
+            the way they draw themselves. <br /> The standard
+            OpenStep/MacOS-X API provides mechanisms
+            for controlling the colors used to draw controls (via
+            <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSColor.html#class$NSColor">NSColor</a>
+
+              and
+              <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSColorList.html#class$NSColorList">NSColorList</a>
+
+                ) and controlling the way controls behave
+                (NSInterfaceStyleForKey() and
+                <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSResponder.html#method$NSResponder-interfaceStyle">[NSResponder -interfaceStyle]</a>
+), but we need to extend that with methods to draw controls entirely differently if required.
+              
+      </li>
+      <li>
+        
+                We must have a GUI application for theme
+                development. It is not sufficient to
+                provide an API if we want good graphic
+                designers and user interface specialists to
+                develop themes for us.
+              
+      </li>
+      <li>
+        
+                It must be possible for an application to
+                dynamically change the theme in use while
+                it is running and it should be easy for a user to
+                select between available themes. <br /> This
+                implies that themes must be loadable bundles
+                and that it must always be possible to unload a
+                theme as well as loading one. <br /> It suggests
+                that the theme selection mechanism should be in
+                every application, perhaps as an extension to an
+                existing panel such as the info panel.
+              
+      </li>
+    </ul>
+
+                  <h2><a name="001001000000">Types of theming</a></h2>
+    <p>
+
+                There are various aspects of theming which can be
+                treated pretty much separately, so there is no
+                reason why a theme might not be created which
+                just employs one of these mechanisms.
+                  </p>
+    <dl>
+      <dt>System images</dt>
+      <dd>
+        
+                  Possibly the simples theme change... a theme
+                  might supply a new set of system images used
+                  for arrows and other icons that the GUI decorates
+                  controls with.
+                
+      </dd>
+      <dt>System colors</dt>
+      <dd>
+        
+                  A theme might simply define a new system color
+                  list, so that controls are drawn in a new color
+                  range, though they would still function the
+                  same way. Even specifying new colors can make
+                  the GUI look quite different though.
+                
+      </dd>
+      <dt>Image tiling</dt>
+      <dd>
+        
+                  Controls might be given sets of images used
+                  as tiling to draw themselves rather than using the
+                  standard line drawing and color fill
+                  mechanisms.
+                
+      </dd>
+      <dt>Interface style</dt>
+      <dd>
+        
+                  A theme might supply a set of interface style keys
+                  for various controls, defining how those controls
+                  should behave subject to the limitation of the
+                  range of behaviors coded into the GUI library.
+                
+      </dd>
+      <dt>Method override</dt>
+      <dd>
+        
+                  A theme might actually provide code, in the form of
+                  a subclass of
+                  <a rel="gsdoc" href="#class$GSTheme">GSTheme</a>
+
+                    such that drawing methods have completely
+                    custom behavior.
+                  
+      </dd>
+    </dl>
+
+          <h1><a name="002000000000">
+        Software documentation for the GSTheme class
+      </a></h1>
+    <h2><a name="class$GSTheme">GSTheme</a> : <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+    <blockquote class="declared">
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>GNUstepGUI/GSTheme.h</dd>
+      </dl>
+    </blockquote>
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+          
+    </p>
+    <p>
+
+            <em>
+              This interface is <strong>HIGHLY</strong> unstable
+              and incomplete at present.
+            </em>
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            This is a class used for &apos;theming&apos;, which is mostly a
+            matter of encapsulating common drawing behaviors so
+            that GUI appearance can be easily modified, but also
+            includes mechanisms for altering some GUI behavior
+            (such mas orientation and position of menus).
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            Methods in this class standardize drawing of
+            buttons, borders and other common GUI elements, so
+            that all other classes within the GUI will provide a
+            consistent appearance by using these methods.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The default implementation uses the standard
+            configurable colors defined in NSColor, such
+            as <code>controlLightHighlightColor</code>,
+            <code>controlShadowColor</code> and
+            <code>controlDarkShadowColor</code>. <br /> Themes
+            are expected to override the default system color list
+            with their own versions, and this class cooperates
+            with
+            <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSColor.html#class$NSColor">NSColor</a>
+
+              and
+              <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSColorList.html#class$NSColorList">NSColorList</a>
+
+                to establish the correct system color list when a
+                theme is activated.
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                The class provides a mechanism for automatic
+                loading of theme bundles consisting of
+                resources used to define how drawing is done,
+                plus an optional binary subclass of this class (to
+                replace/extend the drawing methods this
+                class provides).
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                In future this class should provide mechanisms to
+                draw controls by tiling of images, and provide
+                control over GUI behavior by controlling the
+                values returned by
+                <a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/Functions.html#function$NSInterfaceStyleForKey">
+                  NSInterfaceStyleForKey()
+                </a>
+
+                so that controls use the appropriate behavior.
+                  </p>
+    <p>
+      
+        
+    </div>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(Drawing)-drawButton$in$view$style$state$">-drawButton:in:view:style:state:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(Drawing)-drawFocusFrame$view$">-drawFocusFrame:view:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(Drawing)-drawWindowBackground$view$">-drawWindowBackground:view:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(LowLevelDrawing)-fillHorizontalRect$withImage$fromRect$flipped$">-fillHorizontalRect:withImage:fromRect:flipped:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(LowLevelDrawing)-fillRect$withRepeatedImage$fromRect$center$">-fillRect:withRepeatedImage:fromRect:center:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(LowLevelDrawing)-fillRect$withTiles$background$fillStyle$">-fillRect:withTiles:background:fillStyle:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(LowLevelDrawing)-fillVerticalRect$withImage$fromRect$flipped$">-fillVerticalRect:withImage:fromRect:flipped:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawButton$withClip$">-drawButton:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawDarkBezel$withClip$">-drawDarkBezel:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawDarkButton$withClip$">-drawDarkButton:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawFramePhoto$withClip$">-drawFramePhoto:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawGradientBorder$inRect$withClip$">-drawGradientBorder:inRect:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawGrayBezel$withClip$">-drawGrayBezel:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawGroove$withClip$">-drawGroove:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawLightBezel$withClip$">-drawLightBezel:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawWhiteBezel$withClip$">-drawWhiteBezel:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme+orderFrontSharedThemePanel$">+orderFrontSharedThemePanel:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme+setTheme$">+setTheme:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme+theme">+theme</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-activate">-activate</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-authors">-authors</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-bundle">-bundle</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-deactivate">-deactivate</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-icon">-icon</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-infoDictionary">-infoDictionary</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-initWithBundle$">-initWithBundle:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-name">-name</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-themeInspector">-themeInspector</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme-tilesNamed$cache$">-tilesNamed:cache:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+<div class="method">
+    <h3><a name="method$GSTheme+orderFrontSharedThemePanel$">orderFrontSharedThemePanel:&nbsp;</a></h3>
+    + (void) <b>orderFrontSharedThemePanel:</b> (id)sender;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Creates and displays a panel allowing selection of
+            different themes and display of the current theme
+            inspector.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme+setTheme$">setTheme:&nbsp;</a></h3>
+    + (void) <b>setTheme:</b> (<a rel="gsdoc" href="#class$GSTheme">GSTheme</a>*)theme;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Set the currently active <var>theme</var> to be the
+            instance specified. <br /> You do not normally
+            need to call this method as it is called automatically
+            when the user default which specifies the current
+            <var>theme</var> (GSTheme) is updated.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme+theme">theme&nbsp;</a></h3>
+    + (<a rel="gsdoc" href="#class$GSTheme">GSTheme</a>*) <b>theme</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Returns the currently active theme instance. This
+            is the value most recently set using
+            <a rel="gsdoc" href="#method$GSTheme+setTheme$">
+              +setTheme:
+            </a>
+
+            or (if none has been set) is a default instance of the
+            base class.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-activate">activate&nbsp;</a></h3>
+    - (void) <b>activate</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            
+    </p>
+    <p>
+
+              This method is called automatically when the
+              receiver is made into the currently active theme
+              by the
+              <a rel="gsdoc" href="#method$GSTheme+setTheme$">
+                +setTheme:
+              </a>
+
+              method. Subclasses may override it to perform
+              startup operations, but should call the super
+              class implementation after doing their own thing.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The base implementation handles setup and caching of
+              the system color list, standard image information,
+              tiling information, and user defaults. <br /> It
+              then sends a GSThemeDidActivateNotification to allow
+              other parts of the GUI library to update themselves
+              from the new theme. <br /> If the theme sets an
+              alternative system color list, the
+              notification userInfo dictionary will
+              contain that list keyed on <em>Colors</em>.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              Finally, this method marks all windows in the
+              application as needing update... so they will
+              draw themselves with the new theme information.
+                </p>
+    <p>
+      
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-authors">authors&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>authors</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Returns the names of the theme&apos;s authors.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-bundle">bundle&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSBundle.html#class$NSBundle">NSBundle</a>*) <b>bundle</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Return the bundle containing the resources used by
+            the current theme.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-deactivate">deactivate&nbsp;</a></h3>
+    - (void) <b>deactivate</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            
+    </p>
+    <p>
+
+              This method is called automatically when the
+              receiver is stopped from being the currently
+              active theme by the use of the
+              <a rel="gsdoc" href="#method$GSTheme+setTheme$">
+                +setTheme:
+              </a>
+
+              method to make another theme active. Subclasses
+              may override it to perform shutdown operations, but
+              should call the super class implementation after
+              their own.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The base implementation handles some cleanup and then
+              sends a GSThemeDidDeactivateNotification to allow
+              other parts of the GUI library to update
+              themselves.
+                </p>
+    <p>
+      
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-icon">icon&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSImage.html#class$NSImage">NSImage</a>*) <b>icon</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Returns the theme&apos;s icon.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-infoDictionary">infoDictionary&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>infoDictionary</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            
+    </p>
+    <p>
+
+              Returns the info dictionary for this theme. In
+              the base class implementation this is simply the info
+              dictionary of the theme bundle, but subclasses
+              may override this method to return extra or different
+              information.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+Keys found in this dictionary include:    </p>
+    <p>
+      
+            
+      <dl>
+        <dt>GSThemeDomain</dt>
+        <dd>
+          
+                A dictionary whose key/value pairs are used to set up
+                new values in the GSThemeDomain domain of the user
+                defaults system, and hence define values for
+                these unless overridden by values set explicitly
+                by the user.
+              
+        </dd>
+        <dt>GSThemeTiles</dt>
+        <dd>
+          
+                A dictionary keyed on tile names and containing the
+                following:
+                
+          <dl>
+            <dt>FileName</dt>
+            <dd>
+              
+                    Name of the file (within the GSThemeTiles
+                    directory in the bundle) in which the
+                    image for this tile is tored.
+                  
+            </dd>
+            <dt>HorizontalDivision</dt>
+            <dd>
+              
+                    The offet along the X-axis used to divide the
+                    image into columns of tiles.
+                  
+            </dd>
+            <dt>VerticalDivision</dt>
+            <dd>
+              
+                    The offet along the Y-axis used to divide the
+                    image into rows of tiles.
+                  
+            </dd>
+          </dl>
+          
+              
+        </dd>
+      </dl>
+      
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-initWithBundle$">initWithBundle:&nbsp;</a></h3>
+    - (id) <b>initWithBundle:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSBundle.html#class$NSBundle">NSBundle</a>*)bundle;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+This is a designated initialiser for the class.<br />
+    <div class="desc">
+      
+            Initialise an instance of a theme with the
+            specified resource <var>bundle</var>. <br /> You
+            don&apos;t need to call this method directly, but if you
+            are subclassing you may need to override this to
+            provide additional initialisation.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-name">name&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>name</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Return the theme&apos;s name.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-themeInspector">themeInspector&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSWindow.html#class$NSWindow">NSWindow</a>*) <b>themeInspector</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            
+    </p>
+    <p>
+
+              Provides a standard inspector window used to
+              display information about the receiver. The
+              default implementation displays the icon, the
+              name, and the authors of the theme.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The code managing this object (if any) must be
+              prepared to have the content view of the window
+              reparented into another window for display on
+              screen.
+                </p>
+    <p>
+      
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme-tilesNamed$cache$">tilesNamed:&nbsp;cache:&nbsp;</a></h3>
+    - (GSDrawTiles*) <b>tilesNamed:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aName<b> cache:</b> (BOOL)useCache;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Returns the tile image information for a particular
+            image name, or <code>nil</code> if there is no such
+            information. <br /> The GUI library uses this
+            internally to handling tiling of image
+            information to draw user interface elements.
+            The tile information returned by this method can be
+            passed to the
+            <a rel="gsdoc" href="#method$GSTheme-fillRect$withTiles$background$fillStyle$">-fillRect:withTiles:background:fillStyle:</a>
+ method. <br /> The <var>useCache</var> argument controls whether the information is retrieved from cache or regenerated from information in the theme bundle.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+
+          <h1><a name="003000000000">
+        Software documentation for the GSTheme(Drawing)
+        category
+      </a></h1>
+    <h2><a rel="gsdoc" href="#class$GSTheme">GSTheme</a>(<a name="category$GSTheme(Drawing)">Drawing</a>)</h2>
+    <blockquote class="declared">
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>GNUstepGUI/GSTheme.h</dd>
+      </dl>
+    </blockquote>
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+          Theme drawing methods
+        
+    </div>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(Drawing)-drawButton$in$view$style$state$">-drawButton:in:view:style:state:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(Drawing)-drawFocusFrame$view$">-drawFocusFrame:view:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(Drawing)-drawWindowBackground$view$">-drawWindowBackground:view:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+<div class="method">
+    <h3><a name="method$GSTheme(Drawing)-drawButton$in$view$style$state$">drawButton:&nbsp;in:&nbsp;view:&nbsp;style:&nbsp;state:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawButton:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)frame<b> in:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSButtonCell.html#class$NSButtonCell">NSButtonCell</a>*)cell<b> view:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#class$NSView">NSView</a>*)view<b> style:</b> (int)style<b> state:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$GSThemeControlState">GSThemeControlState</a>)state;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draws a button <var>frame</var> and background (not
+            its content) for the specified <var>cell</var> and
+            <var>view</var>. <br /> Returns the rectangle into
+            which the <var>cell</var> contents should be drawn.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(Drawing)-drawFocusFrame$view$">drawFocusFrame:&nbsp;view:&nbsp;</a></h3>
+    - (void) <b>drawFocusFrame:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)frame<b> view:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#class$NSView">NSView</a>*)view;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draws the indicator (normally a dotted rectangle) to
+            show that the <var>view</var> currently has keyboard
+            focus.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(Drawing)-drawWindowBackground$view$">drawWindowBackground:&nbsp;view:&nbsp;</a></h3>
+    - (void) <b>drawWindowBackground:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)frame<b> view:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSView.html#class$NSView">NSView</a>*)view;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draws the background of a window... normally a simple
+            fill with the the window&apos;s background color.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+
+          <h1><a name="004000000000">
+        Software documentation for the
+        GSTheme(LowLevelDrawing) category
+      </a></h1>
+    <h2><a rel="gsdoc" href="#class$GSTheme">GSTheme</a>(<a name="category$GSTheme(LowLevelDrawing)">LowLevelDrawing</a>)</h2>
+    <blockquote class="declared">
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>GNUstepGUI/GSTheme.h</dd>
+      </dl>
+    </blockquote>
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+          Low level drawiong methods... themes may use these for
+          drawing, but should not normally override them.
+        
+    </div>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(LowLevelDrawing)-fillHorizontalRect$withImage$fromRect$flipped$">-fillHorizontalRect:withImage:fromRect:flipped:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(LowLevelDrawing)-fillRect$withRepeatedImage$fromRect$center$">-fillRect:withRepeatedImage:fromRect:center:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(LowLevelDrawing)-fillRect$withTiles$background$fillStyle$">-fillRect:withTiles:background:fillStyle:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(LowLevelDrawing)-fillVerticalRect$withImage$fromRect$flipped$">-fillVerticalRect:withImage:fromRect:flipped:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+<div class="method">
+    <h3><a name="method$GSTheme(LowLevelDrawing)-fillHorizontalRect$withImage$fromRect$flipped$">fillHorizontalRect:&nbsp;withImage:&nbsp;fromRect:&nbsp;flipped:&nbsp;</a></h3>
+    - (void) <b>fillHorizontalRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)rect<b> withImage:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSImage.html#class$NSImage">NSImage</a>*)image<b> fromRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)source<b> flipped:</b> (BOOL)flipped;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Method to tile the supplied <var>image</var> to fill
+            the horizontal rectangle. <br /> The <var>rect</var>
+            argument is the rectangle to be filled. <br /> The
+            <var>image</var> argument is the data to fill with.
+            <br /> The <var>source</var> argument is the
+            rectangle within the <var>image</var> which is
+            used. <br /> The <var>flipped</var> argument
+            specifies what sort of coordinate system is in
+            use in the view where we are drawing.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(LowLevelDrawing)-fillRect$withRepeatedImage$fromRect$center$">fillRect:&nbsp;withRepeatedImage:&nbsp;fromRect:&nbsp;center:&nbsp;</a></h3>
+    - (void) <b>fillRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)rect<b> withRepeatedImage:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSImage.html#class$NSImage">NSImage</a>*)image<b> fromRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)source<b> center:</b> (BOOL)center;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Tile <var>rect</var> with <var>image</var>. The tiling
+            starts with the origin of the first copy of the
+            <var>image</var> at the bottom left corner of the
+            <var>rect</var> unless <var>center</var> is
+            <code>YES</code>, in which case the <var>image</var>
+            is centered in <var>rect</var> and tiled outwards from
+            that.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(LowLevelDrawing)-fillRect$withTiles$background$fillStyle$">fillRect:&nbsp;withTiles:&nbsp;background:&nbsp;fillStyle:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>fillRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)rect<b> withTiles:</b> (GSDrawTiles*)tiles<b> background:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSColor.html#class$NSColor">NSColor</a>*)color<b> fillStyle:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$GSThemeFillStyle">GSThemeFillStyle</a>)style;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Method to tile a rectangle given a group of up to
+            nine tile images. <br /> The GSDrawTiles object
+            encapsulates the tile images and information
+            about what parts of each image are used for tiling.
+            <br /> This draws the left, right, top and bottom
+            borders by tiling the images at left, right, top
+            and bottom. It then draws the four corner images and
+            finally deals with the remaining space in the
+            middle according to the specified <var>style</var>.
+            <br /> The background <var>color</var> specified is
+            used to fill the center where <var>style</var> is
+            FillStyleNone. <br /> The return value is
+            the central rectangle (inside the border images).
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(LowLevelDrawing)-fillVerticalRect$withImage$fromRect$flipped$">fillVerticalRect:&nbsp;withImage:&nbsp;fromRect:&nbsp;flipped:&nbsp;</a></h3>
+    - (void) <b>fillVerticalRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)rect<b> withImage:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/NSImage.html#class$NSImage">NSImage</a>*)image<b> fromRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)source<b> flipped:</b> (BOOL)flipped;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Method to tile the supplied <var>image</var> to fill
+            the vertical rectangle. <br /> The <var>rect</var>
+            argument is the rectangle to be filled. <br /> The
+            <var>image</var> argument is the data to fill with.
+            <br /> The <var>source</var> argument is the
+            rectangle within the <var>image</var> which is
+            used. <br /> The <var>flipped</var> argument
+            specifies what sort of coordinate system is in
+            use in the view where we are drawing.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+
+          <h1><a name="005000000000">
+        Software documentation for the
+        GSTheme(MidLevelDrawing) category
+      </a></h1>
+    <h2><a rel="gsdoc" href="#class$GSTheme">GSTheme</a>(<a name="category$GSTheme(MidLevelDrawing)">MidLevelDrawing</a>)</h2>
+    <blockquote class="declared">
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>GNUstepGUI/GSTheme.h</dd>
+      </dl>
+    </blockquote>
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+          Helper functions for drawing standard items.
+        
+    </div>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawButton$withClip$">-drawButton:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawDarkBezel$withClip$">-drawDarkBezel:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawDarkButton$withClip$">-drawDarkButton:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawFramePhoto$withClip$">-drawFramePhoto:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawGradientBorder$inRect$withClip$">-drawGradientBorder:inRect:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawGrayBezel$withClip$">-drawGrayBezel:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawGroove$withClip$">-drawGroove:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawLightBezel$withClip$">-drawLightBezel:withClip:</a></li>
+      <li><a rel="gsdoc" href="GSTheme.html#method$GSTheme(MidLevelDrawing)-drawWhiteBezel$withClip$">-drawWhiteBezel:withClip:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+<div class="method">
+    <h3><a name="method$GSTheme(MidLevelDrawing)-drawButton$withClip$">drawButton:&nbsp;withClip:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawButton:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)border<b> withClip:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)clip;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draw a standard button
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(MidLevelDrawing)-drawDarkBezel$withClip$">drawDarkBezel:&nbsp;withClip:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawDarkBezel:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)border<b> withClip:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)clip;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draw a dark bezel <var>border</var>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(MidLevelDrawing)-drawDarkButton$withClip$">drawDarkButton:&nbsp;withClip:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawDarkButton:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)border<b> withClip:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)clip;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draw a &quot;dark&quot; button <var>border</var> (used in
+            tableviews)
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(MidLevelDrawing)-drawFramePhoto$withClip$">drawFramePhoto:&nbsp;withClip:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawFramePhoto:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)border<b> withClip:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)clip;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draw a frame photo <var>border</var>. Used in
+            NSImageView.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(MidLevelDrawing)-drawGradientBorder$inRect$withClip$">drawGradientBorder:&nbsp;inRect:&nbsp;withClip:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawGradientBorder:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Gui/Reference/TypesAndConstants.html#type$NSGradientType">NSGradientType</a>)gradientType<b> inRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)border<b> withClip:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)clip;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draw a gradient <var>border</var>.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(MidLevelDrawing)-drawGrayBezel$withClip$">drawGrayBezel:&nbsp;withClip:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawGrayBezel:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)border<b> withClip:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)clip;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draw a grey bezel <var>border</var>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(MidLevelDrawing)-drawGroove$withClip$">drawGroove:&nbsp;withClip:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawGroove:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)border<b> withClip:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)clip;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draw a groove <var>border</var>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(MidLevelDrawing)-drawLightBezel$withClip$">drawLightBezel:&nbsp;withClip:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawLightBezel:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)border<b> withClip:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)clip;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draw a light bezel <var>border</var>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$GSTheme(MidLevelDrawing)-drawWhiteBezel$withClip$">drawWhiteBezel:&nbsp;withClip:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawWhiteBezel:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)border<b> withClip:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)clip;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Draw a white bezel <var>border</var>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+    <br />
+    <a href="GuiAdditions.html">Up</a>
+    </font>
+</body>
+</html>

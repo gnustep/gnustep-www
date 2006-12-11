@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
     <head>
     <title>NSComboBoxCell</title>
   </head>
@@ -19,6 +20,7 @@
       </dd>
     </dl>
     <p><b>Copyright:</b> (C) 1999 Free Software Foundation, Inc.</p>
+
         <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
@@ -34,11 +36,28 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
+
           <h1><a name="001000000000"><strong>Class</strong> Description</a></h1>
     <p>
-        An NSComboBoxCell is what we can call a completion/choices        box cell, derived from NSTextFieldCell, it allows you to        enter text like in a text field but also to click in the        ellipsis button (indicating the fact other user inputs        are possible) on the right of it to obtain a list of        choices, you can use them as the text field value by        selecting a row in this list. You can also obtain        direct completion when it is enabled via        <code>setCompletes:</code> to get a suggested text field        value updated as you type.          </p>
+
+        An NSComboBoxCell is what we can call a completion/choices
+        box cell, derived from NSTextFieldCell, it allows you to
+        enter text like in a text field but also to click in the
+        ellipsis button (indicating the fact other user inputs
+        are possible) on the right of it to obtain a list of
+        choices, you can use them as the text field value by
+        selecting a row in this list. You can also obtain
+        direct completion when it is enabled via
+        <code>setCompletes:</code> to get a suggested text field
+        value updated as you type.
+          </p>
     <p>
-        Like other NSCell classes, NSComboBoxCell has a matching        NSControl named NSComboBox which is relying on it to        implement the combo box behavior in a standalone        control.          </p>
+
+        Like other NSCell classes, NSComboBoxCell has a matching
+        NSControl named NSComboBox which is relying on it to
+        implement the combo box behavior in a standalone
+        control.
+          </p>
     <h2><a name="class$NSComboBoxCell">NSComboBoxCell</a> : <a rel="gsdoc" href="NSTextFieldCell.html#class$NSTextFieldCell">NSTextFieldCell</a></h2>
     <blockquote class="declared">
       <dl>
@@ -50,12 +69,18 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                <br />          
+      
+          <br />
+          
     </p>
     <p>
-            No special instructions to use NSComboBoxCell or text to            detail the implementation.              </p>
+
+            No special instructions to use NSComboBoxCell or text to
+            detail the implementation.
+              </p>
     <p>
-              
+      
+        
     </div>
     <hr width="50%" align="left" />
     <a href="#_NSComboBoxCell_ivars">Instance Variables</a>
@@ -106,7 +131,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Adds an item to the combo box cell default items list            which is used when <code>usesDataSource</code>            returns <code>NO</code>. In the case            <code>usesDataSource</code> returns <code>YES</code>            , this method logs a warning.          
+      
+            Adds an item to the combo box cell default items list
+            which is used when <code>usesDataSource</code>
+            returns <code>NO</code>. In the case
+            <code>usesDataSource</code> returns <code>YES</code>
+            , this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -117,7 +148,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Adds several items in an array to the combo box cell            default items list which is used when            <code>usesDataSource</code> returns <code>NO</code>.            In the case <code>usesDataSource</code> returns            <code>YES</code>, this method logs a warning.          
+      
+            Adds several items in an array to the combo box cell
+            default items list which is used when
+            <code>usesDataSource</code> returns <code>NO</code>.
+            In the case <code>usesDataSource</code> returns
+            <code>YES</code>, this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -128,7 +165,26 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Returns a string by looking in the combo box cell            list for an item wich starts with <var>substring</var>            , or <code>nil</code> when there is no such string.            <var>substring</var> is equal to what the user            entered in the text field part. You rarely needs to            call this method explicitly in your code. By default,            the implementation of this method first checks whether            the combo box cell uses a data source and whether the            data source responds to            <code>comboBox:completedString:</code> or            <code>comboBoxCell:completedString:</code>. When it            is the case, it uses this method to return            <var>str</var>, else this method goes through the            combo box cell items one by one and returns the first            item found starting with <var>substring</var>. In the            case, you want another behavior, you can override            this method without need to call the superclass            method.          
+      
+            Returns a string by looking in the combo box cell
+            list for an item wich starts with <var>substring</var>
+            , or <code>nil</code> when there is no such string.
+            <var>substring</var> is equal to what the user
+            entered in the text field part. You rarely needs to
+            call this method explicitly in your code. By default,
+            the implementation of this method first checks whether
+            the combo box cell uses a data source and whether the
+            data source responds to
+            <code>comboBox:completedString:</code> or
+            <code>comboBoxCell:completedString:</code>. When it
+            is the case, it uses this method to return
+            <var>str</var>, else this method goes through the
+            combo box cell items one by one and returns the first
+            item found starting with <var>substring</var>. In the
+            case, you want another behavior, you can override
+            this method without need to call the superclass
+            method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -139,7 +195,13 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Returns <code>YES</code> when the combo box cell            automatic completion is active, returns            <code>NO</code> otherwise. Take a look at the            <code>setCompletes:</code> method documentation to            know how the automatic completion works.          
+      
+            Returns <code>YES</code> when the combo box cell
+            automatic completion is active, returns
+            <code>NO</code> otherwise. Take a look at the
+            <code>setCompletes:</code> method documentation to
+            know how the automatic completion works.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -150,7 +212,15 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the combo box cell data source object which            is reponsible to provide the data to be displayed. To            know how to implement a data source object, take a            look at the NSComboBoxDataSource informal protocol            description. In the case            <code>usesDataSource</code> returns <code>NO</code>,            this method logs a warning.          
+      
+            Returns the combo box cell data source object which
+            is reponsible to provide the data to be displayed. To
+            know how to implement a data source object, take a
+            look at the NSComboBoxDataSource informal protocol
+            description. In the case
+            <code>usesDataSource</code> returns <code>NO</code>,
+            this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -161,7 +231,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Deselects the combo box cell list row at            <var>index</var> in the case this row is selected.            Posts an NSComboBoxSelectionDidChangeNotification to            the default notification center, when there is a new            selection.          
+      
+            Deselects the combo box cell list row at
+            <var>index</var> in the case this row is selected.
+            Posts an NSComboBoxSelectionDidChangeNotification to
+            the default notification center, when there is a new
+            selection.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -172,7 +248,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns <code>YES</code> when the combo box cell            displays a vertical scroller for its list, returns            <code>NO</code> otherwise. Take note that the            scroller will be displayed even when the sum of            the items height in the list is inferior to the minimal            height of the list displayed area.          
+      
+            Returns <code>YES</code> when the combo box cell
+            displays a vertical scroller for its list, returns
+            <code>NO</code> otherwise. Take note that the
+            scroller will be displayed even when the sum of
+            the items height in the list is inferior to the minimal
+            height of the list displayed area.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -183,7 +266,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the lowest index associated with a value in            the combo box cell default items list, which is equal            to <var>object</var>, and returns NSNotFound when there            is no such value. In the case            <code>usesDataSource</code> returns <code>YES</code>            , this method logs a warning.          
+      
+            Returns the lowest index associated with a value in
+            the combo box cell default items list, which is equal
+            to <var>object</var>, and returns NSNotFound when there
+            is no such value. In the case
+            <code>usesDataSource</code> returns <code>YES</code>
+            , this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -194,7 +284,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the index of the selected item in the combo            box cell list or -1 when there is no selection, the            selected item can be related to the data source            object in the case <code>usesDataSource</code>            returns <code>YES</code> else to the default items            list.          
+      
+            Returns the index of the selected item in the combo
+            box cell list or -1 when there is no selection, the
+            selected item can be related to the data source
+            object in the case <code>usesDataSource</code>
+            returns <code>YES</code> else to the default items
+            list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -205,7 +302,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Inserts an item in the combo box cell default items            list which is used when <code>usesDataSource</code>            returns <code>NO</code>. In the case            <code>usesDataSource</code> returns <code>YES</code>            , this method logs a warning.          
+      
+            Inserts an item in the combo box cell default items
+            list which is used when <code>usesDataSource</code>
+            returns <code>NO</code>. In the case
+            <code>usesDataSource</code> returns <code>YES</code>
+            , this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -216,7 +319,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the width and the height (as the values of            an NSSize variable) between each item of the combo box            cell list.          
+      
+            Returns the width and the height (as the values of
+            an NSSize variable) between each item of the combo box
+            cell list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -227,7 +334,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the height of the items in the combo box            cell list.          
+      
+            Returns the height of the items in the combo box
+            cell list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -238,7 +348,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the object value at <var>index</var> within            combo box cell default items list. When the            <var>index</var> is beyond the end of the list, an            NSRangeException is raised. In the case            <code>usesDataSource</code> returns <code>YES</code>            , this method logs a warning.          
+      
+            Returns the object value at <var>index</var> within
+            combo box cell default items list. When the
+            <var>index</var> is beyond the end of the list, an
+            NSRangeException is raised. In the case
+            <code>usesDataSource</code> returns <code>YES</code>
+            , this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -249,7 +366,20 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Informs the combo box cell that the number of items            in its data source has changed, in order to permit to            the scrollers in its displayed list being updated            without needing the reload of the data. It is            recommended to use this method with a data            source that continually receives data in the            background, to keep the the combo box cell            responsive to the user while the data is            received. Take a look at the            <code>NSComboBoxDataSource</code> informal protocol            specification to know more on the messages            NSComboBox sends to its data source.          
+      
+            Informs the combo box cell that the number of items
+            in its data source has changed, in order to permit to
+            the scrollers in its displayed list being updated
+            without needing the reload of the data. It is
+            recommended to use this method with a data
+            source that continually receives data in the
+            background, to keep the the combo box cell
+            responsive to the user while the data is
+            received. Take a look at the
+            <code>NSComboBoxDataSource</code> informal protocol
+            specification to know more on the messages
+            NSComboBox sends to its data source.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -260,7 +390,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the number of items in the the combo box            cell list, the numbers of items can be be related to            the data source object in the case            <code>usesDataSource</code> returns <code>YES</code>            else to the default items list.          
+      
+            Returns the number of items in the the combo box
+            cell list, the numbers of items can be be related to
+            the data source object in the case
+            <code>usesDataSource</code> returns <code>YES</code>
+            else to the default items list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -271,7 +407,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the maximum number of allowed items to be            displayed in the combo box cell list.          
+      
+            Returns the maximum number of allowed items to be
+            displayed in the combo box cell list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -282,7 +421,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the object value of the selected item in            the combo box cell default items list or            <code>nil</code> when there is no selection. In the            case <code>usesDataSource</code> returns            <code>YES</code>, this method logs a warning.          
+      
+            Returns the object value of the selected item in
+            the combo box cell default items list or
+            <code>nil</code> when there is no selection. In the
+            case <code>usesDataSource</code> returns
+            <code>YES</code>, this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -293,7 +438,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the combo box cell default items list in an            array.          
+      
+            Returns the combo box cell default items list in an
+            array.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -304,7 +452,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Marks the combo box cell in order to have its items            list reloaded in the case it uses a data source, and            to have it redisplayed.          
+      
+            Marks the combo box cell in order to have its items
+            list reloaded in the case it uses a data source, and
+            to have it redisplayed.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -315,7 +467,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Removes all the items in the combo box cell default            items list which is used when            <code>usesDataSource</code> returns <code>NO</code>.            In the case <code>usesDataSource</code> returns            <code>YES</code>, this method logs a warning.          
+      
+            Removes all the items in the combo box cell default
+            items list which is used when
+            <code>usesDataSource</code> returns <code>NO</code>.
+            In the case <code>usesDataSource</code> returns
+            <code>YES</code>, this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -326,7 +484,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Removes the item with the specified            <var>index</var> in the combo box cell default items            list which is used when <code>usesDataSource</code>            returns <code>NO</code>. In the case            <code>usesDataSource</code> returns <code>YES</code>            , this method logs a warning.          
+      
+            Removes the item with the specified
+            <var>index</var> in the combo box cell default items
+            list which is used when <code>usesDataSource</code>
+            returns <code>NO</code>. In the case
+            <code>usesDataSource</code> returns <code>YES</code>
+            , this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -337,7 +502,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Removes an item in the combo box cell default items            list which is used when <code>usesDataSource</code>            returns <code>NO</code>. In the case            <code>usesDataSource</code> returns <code>YES</code>            , this method logs a warning.          
+      
+            Removes an item in the combo box cell default items
+            list which is used when <code>usesDataSource</code>
+            returns <code>NO</code>. In the case
+            <code>usesDataSource</code> returns <code>YES</code>
+            , this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -348,7 +519,12 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Scrolls the combo box cell list vertically in order            to have the item at <var>index</var> in the closest            position relative to the top. There is no need to            have the list displayed when this method is invoked.          
+      
+            Scrolls the combo box cell list vertically in order
+            to have the item at <var>index</var> in the closest
+            position relative to the top. There is no need to
+            have the list displayed when this method is invoked.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -359,7 +535,12 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Scrolls the combo box cell list vertically in order            to have the item at <var>index</var> visible. There is            no need to have the list displayed when this method is            invoked.          
+      
+            Scrolls the combo box cell list vertically in order
+            to have the item at <var>index</var> visible. There is
+            no need to have the list displayed when this method is
+            invoked.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -370,7 +551,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Selects the combo box cell list row at            <var>index</var>. Take note no changes occurs in the            combo box cell list when this method is called. Posts            an NSComboBoxSelectionDidChangeNotification to the            default notification center when there is a new            selection different from the previous one.          
+      
+            Selects the combo box cell list row at
+            <var>index</var>. Take note no changes occurs in the
+            combo box cell list when this method is called. Posts
+            an NSComboBoxSelectionDidChangeNotification to the
+            default notification center when there is a new
+            selection different from the previous one.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -381,7 +569,17 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Selects the first item in the default combo box            cell list which is equal to <var>object</var>. In the            case <code>usesDataSource</code> returns            <code>YES</code>, this method logs a warning. Take            note that this method doesn&apos;t update the text field            part value. Posts an NSComboBoxSelectionDidChange            notification to the default notification            center when the new selection is different than the            previous one.          
+      
+            Selects the first item in the default combo box
+            cell list which is equal to <var>object</var>. In the
+            case <code>usesDataSource</code> returns
+            <code>YES</code>, this method logs a warning. Take
+            note that this method doesn&apos;t update the text field
+            part value. Posts an NSComboBoxSelectionDidChange
+            notification to the default notification
+            center when the new selection is different than the
+            previous one.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -392,7 +590,20 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Sets whether the combo box cell automatic completion            is active or not. The automatic completion tries to            complete what the user types in the text field            part, it tries to complete only when the the user            adds characters at the end of the string, not when it            deletes characters or when the insertion point            precedes the end of the string. To do the            automatic completion, the            <code>completedString:</code> method is called, and            when the returned string is longer than the current            one in the text field, the completion occurs and the            completed part gets selected.          
+      
+            Sets whether the combo box cell automatic completion
+            is active or not. The automatic completion tries to
+            complete what the user types in the text field
+            part, it tries to complete only when the the user
+            adds characters at the end of the string, not when it
+            deletes characters or when the insertion point
+            precedes the end of the string. To do the
+            automatic completion, the
+            <code>completedString:</code> method is called, and
+            when the returned string is longer than the current
+            one in the text field, the completion occurs and the
+            completed part gets selected.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -403,7 +614,21 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the combo box cell data source to            <var>aSource</var>. Just calling this method doesn&apos;t            set <code>usesDataSource</code> to return            <code>YES</code>, you must call            <code>setUsesDataSource:</code> with            <code>YES</code> before or a warning will be logged.            To know how to implement a data source objects, take a            look at the NSComboBoxDataSource informal protocol            description. When <var>aSource</var> doesn&apos;t            respond to the methods            <code>numberOfItemsInComboBox:</code>            <code>comboBox:objectValueForItemAtIndex:</code>,            this method logs a warning.          
+      
+            Sets the combo box cell data source to
+            <var>aSource</var>. Just calling this method doesn&apos;t
+            set <code>usesDataSource</code> to return
+            <code>YES</code>, you must call
+            <code>setUsesDataSource:</code> with
+            <code>YES</code> before or a warning will be logged.
+            To know how to implement a data source objects, take a
+            look at the NSComboBoxDataSource informal protocol
+            description. When <var>aSource</var> doesn&apos;t
+            respond to the methods
+            <code>numberOfItemsInComboBox:</code>
+            <code>comboBox:objectValueForItemAtIndex:</code>,
+            this method logs a warning.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -414,7 +639,20 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets whether the combo box cell list displays a            vertical scroller, by default it is the case. When            <var>flag</var> is <code>NO</code> and the combo cell            list has more items (either in its default list or            from its data source) than the number returned by            <code>numberOfVisibleItems</code>, only a subset of            them will be displayed. Uses scroll related methods to            position this subset in the combo box cell list.            Take note that the scroller will be displayed even            when the sum of the items height in the list is            inferior to the minimal height of the list            displayed area.          
+      
+            Sets whether the combo box cell list displays a
+            vertical scroller, by default it is the case. When
+            <var>flag</var> is <code>NO</code> and the combo cell
+            list has more items (either in its default list or
+            from its data source) than the number returned by
+            <code>numberOfVisibleItems</code>, only a subset of
+            them will be displayed. Uses scroll related methods to
+            position this subset in the combo box cell list.
+            Take note that the scroller will be displayed even
+            when the sum of the items height in the list is
+            inferior to the minimal height of the list
+            displayed area.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -425,7 +663,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the width and the height between each item of the            combo box cell list to the values in <var>aSize</var>            .          
+      
+            Sets the width and the height between each item of the
+            combo box cell list to the values in <var>aSize</var>
+            .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -436,7 +678,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the height of the items in the combo box cell            list to <var>itemHeight</var>.          
+      
+            Sets the height of the items in the combo box cell
+            list to <var>itemHeight</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -447,7 +692,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the maximum number of allowed items to be            displayed in the combo box cell list.          
+      
+            Sets the maximum number of allowed items to be
+            displayed in the combo box cell list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -458,7 +706,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets according to <var>flag</var> whether the combo            box cell uses a data source (which is external) to            populate its items list.          
+      
+            Sets according to <var>flag</var> whether the combo
+            box cell uses a data source (which is external) to
+            populate its items list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -469,7 +721,22 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Overrides NSCell            <code>trackMouse:inRect:ofView:untilMouseUp:</code>            method to establish a new method behavior. In the            case <var>flag</var> is <code>NO</code>, returns            <code>NO</code> when the mouse down occurs in the            text cell part or when the mouse down occurs in the            button cell part followed by a mouse up outside,            otherwise returns <code>YES</code> (when both the            mouse down and the mouse up occurs in the button cell            part). In the case <var>flag</var> is            <code>YES</code>, returns <code>NO</code> when the            mouse occurs in the text cell part, otherwise returns            <code>YES</code> (when the mouse down occurs in the            button cell part).          
+      
+            Overrides NSCell
+            <code>trackMouse:inRect:ofView:untilMouseUp:</code>
+            method to establish a new method behavior. In the
+            case <var>flag</var> is <code>NO</code>, returns
+            <code>NO</code> when the mouse down occurs in the
+            text cell part or when the mouse down occurs in the
+            button cell part followed by a mouse up outside,
+            otherwise returns <code>YES</code> (when both the
+            mouse down and the mouse up occurs in the button cell
+            part). In the case <var>flag</var> is
+            <code>YES</code>, returns <code>NO</code> when the
+            mouse occurs in the text cell part, otherwise returns
+            <code>YES</code> (when the mouse down occurs in the
+            button cell part).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -480,7 +747,12 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns <code>YES</code> when the combo box cell            uses a data source (which is external) to populate its            items list, otherwise returns <code>NO</code> in the            case it uses its default list.          
+      
+            Returns <code>YES</code> when the combo box cell
+            uses a data source (which is external) to populate its
+            items list, otherwise returns <code>NO</code> in the
+            case it uses its default list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -488,78 +760,191 @@
     <h2>Instance Variables for NSComboBoxCell Class</h2>
     <h3><a name="ivariable$NSComboBoxCell*_buttonCell">_buttonCell</a></h3>
     @protected NSButtonCell* <b>_buttonCell</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_completes">_completes</a></h3>
     @protected BOOL <b>_completes</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_dataSource">_dataSource</a></h3>
     @protected id <b>_dataSource</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_hasVerticalScroller">_hasVerticalScroller</a></h3>
     @protected BOOL <b>_hasVerticalScroller</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_intercellSpacing">_intercellSpacing</a></h3>
     @protected NSSize <b>_intercellSpacing</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_itemHeight">_itemHeight</a></h3>
     @protected float <b>_itemHeight</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_lastValidFrame">_lastValidFrame</a></h3>
     @protected NSRect <b>_lastValidFrame</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_popUpList">_popUpList</a></h3>
     @protected NSMutableArray* <b>_popUpList</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_prevSelectedRange">_prevSelectedRange</a></h3>
     @protected NSRange <b>_prevSelectedRange</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_selectedItem">_selectedItem</a></h3>
     @protected int <b>_selectedItem</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_usesDataSource">_usesDataSource</a></h3>
     @protected BOOL <b>_usesDataSource</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSComboBoxCell*_visibleItems">_visibleItems</a></h3>
     @protected int <b>_visibleItems</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
-          <h1><a name="002000000000">        Software documentation for the        NSObject(NSComboBoxCellDataSource)        informal protocol      </a></h1>
+
+          <h1><a name="002000000000">
+        Software documentation for the
+        NSObject(NSComboBoxCellDataSource)
+        informal protocol
+      </a></h1>
     <h2><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSComboBoxCellDataSource)">NSComboBoxCellDataSource</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -571,7 +956,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                <em>Description forthcoming.</em>        
+      
+          <em>Description forthcoming.</em>
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -588,7 +975,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -599,7 +988,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -610,7 +1001,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -621,7 +1014,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>

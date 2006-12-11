@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
     <head>
     <title>NSWindow</title>
   </head>
@@ -25,6 +26,7 @@
       The window class
     </blockquote>
     <p><b>Copyright:</b> (C) 1996 Free Software Foundation, Inc.</p>
+
         <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
@@ -48,15 +50,48 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
+
           <h1><a name="001000000000">NSWindow</a></h1>
     <p>
-        Instances of the NSWindow class handle on-screen        windows, their associated NSViews, and events generate        by the user. An NSWindow&apos;s size is defined by its frame        rectangle, which encompasses its entire structure,        and its content rectangle, which includes only the content.          </p>
+
+        Instances of the NSWindow class handle on-screen
+        windows, their associated NSViews, and events generate
+        by the user. An NSWindow&apos;s size is defined by its frame
+        rectangle, which encompasses its entire structure,
+        and its content rectangle, which includes only the content.
+          </p>
     <p>
-        Every NSWindow has a content view, the NSView which forms        the root of the window&apos;s view hierarchy. This view can be        set using the <code>setContentView:</code> method, and        accessed through the <code>contentView</code> method.        <code>setContentView:</code> replaces the default        content view created by NSWindow.          </p>
+
+        Every NSWindow has a content view, the NSView which forms
+        the root of the window&apos;s view hierarchy. This view can be
+        set using the <code>setContentView:</code> method, and
+        accessed through the <code>contentView</code> method.
+        <code>setContentView:</code> replaces the default
+        content view created by NSWindow.
+          </p>
     <p>
-        Other views may be added to the window by using the        content view&apos;s <code>addSubview:</code> method. These        subviews can also have subviews added, forming a tree        structure, the view hierarchy. When an NSWindow must        display itself, it causes this hierarchy to draw        itself. Leaf nodes in the view hierarchy are drawn        last, causing them to potentially obscure views further        up in the hierarchy.          </p>
+
+        Other views may be added to the window by using the
+        content view&apos;s <code>addSubview:</code> method. These
+        subviews can also have subviews added, forming a tree
+        structure, the view hierarchy. When an NSWindow must
+        display itself, it causes this hierarchy to draw
+        itself. Leaf nodes in the view hierarchy are drawn
+        last, causing them to potentially obscure views further
+        up in the hierarchy.
+          </p>
     <p>
-        A delegate can be specified for an NSWindow, which will        receive notifications of events pertaining to the        window. The delegate is set using        <code>setDelegate:</code>, and can be retrieved using        <code>delegate</code>. The delegate can restrain        resizing by implementing the        <code>windowWillResize: toSize:</code> method, or        control the closing of the window by implementing        <code>windowShouldClose:</code>.          </p>
+
+        A delegate can be specified for an NSWindow, which will
+        receive notifications of events pertaining to the
+        window. The delegate is set using
+        <code>setDelegate:</code>, and can be retrieved using
+        <code>delegate</code>. The delegate can restrain
+        resizing by implementing the
+        <code>windowWillResize: toSize:</code> method, or
+        control the closing of the window by implementing
+        <code>windowShouldClose:</code>.
+          </p>
     <h2><a name="class$NSWindow">NSWindow</a> : <a rel="gsdoc" href="NSResponder.html#class$NSResponder">NSResponder</a></h2>
     <blockquote class="declared">
       <dl>
@@ -74,7 +109,85 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                <em>Description forthcoming.</em>        
+      
+          
+    </p>
+    <p>
+
+            An NSWindow instance represents a window, panel or menu
+            on the screen. <br /> Each window has a style, which
+            determines how the window is decorated: ie
+            whether it has a border, a title bar, a resize bar,
+            minimise and close buttons.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            A window has a <em>frame</em>. This is the frame of the
+            <em>entire</em> window on the screen, including all
+            decorations and borders. The origin of the
+            frame represents its bottom left corner and the frame
+            is expressed in screen coordinates (see
+            <a rel="gsdoc" href="NSScreen.html#class$NSScreen">NSScreen</a>
+
+              ).
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              When a window is created, it has a <em>private</em>
+              <a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>
+
+                instance which fills the entire window frame
+                and whose coordinate system is the same as the base
+                coordinate system of the window (ie zero x
+                and y coordinates are at the bottom left corner of
+                the window, with increasing x and y corresponding
+                to points to the right and above the origin). <br />
+                This view may be used by the library internals
+                (and theme engines) to draw window decorations if
+                the backend library is not handling the window
+                decorations.
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                A window always contains a <em>content view</em>
+                which is the highest level view available for
+                public (application) use. This view fills the
+                area of the window inside any decoration/border.
+                <br /> This is the only part of the window that
+                application programmers are allowed to draw
+                in directly.
+                  </p>
+    <p>
+      
+              
+    </p>
+    <p>
+
+                You can convert between view coordinates and window
+                base coordinates using the
+                <a rel="gsdoc" href="NSView.html#method$NSView-convertPoint$fromView$">[NSView -convertPoint:fromView:]</a>
+, <a rel="gsdoc" href="NSView.html#method$NSView-convertPoint$toView$">[NSView -convertPoint:toView:]</a>
+, <a rel="gsdoc" href="NSView.html#method$NSView-convertRect$fromView$">[NSView -convertRect:fromView:]</a>
+, and <a rel="gsdoc" href="NSView.html#method$NSView-convertRect$toView$">[NSView -convertRect:toView:]</a>
+ methods with a <code>nil</code> view argument. <br /> You can convert between window and screen coordinates using the <a rel="gsdoc" href="#method$NSWindow-convertBaseToScreen$">-convertBaseToScreen:</a>
+ and <a rel="gsdoc" href="#method$NSWindow-convertScreenToBase$">-convertScreenToBase:</a>
+ methods.
+                  </p>
+    <p>
+      
+        
     </div>
     <hr width="50%" align="left" />
     <a href="#_NSWindow_ivars">Instance Variables</a>
@@ -89,11 +202,9 @@
       <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+contentRectForFrameRect$styleMask$">+contentRectForFrameRect:styleMask:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+defaultDepthLimit">+defaultDepthLimit</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+frameRectForContentRect$styleMask$">+frameRectForContentRect:styleMask:</a></li>
-      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+frameRectForScreenRect$styleMask$">+frameRectForScreenRect:styleMask:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+menuChanged$">+menuChanged:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+minFrameWidthWithTitle$styleMask$">+minFrameWidthWithTitle:styleMask:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+removeFrameUsingName$">+removeFrameUsingName:</a></li>
-      <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow+screenRectForFrameRect$styleMask$">+screenRectForFrameRect:styleMask:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-acceptsMouseMovedEvents">-acceptsMouseMovedEvents</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-alphaValue">-alphaValue</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSWindow-animationResizeTime$">-animationResizeTime:</a></li>
@@ -272,7 +383,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Returns the rectangle which would be used for the
+            content view of a window whose on-screen size and
+            position is specified by <var>aRect</var> and
+            which is decorated with the border and title etc
+            given by <var>aStyle</var>. <br /> Both rectangles
+            are expressed in screen coordinates.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -283,7 +401,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -294,18 +414,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
-    <h3><a name="method$NSWindow+frameRectForScreenRect$styleMask$">frameRectForScreenRect:&nbsp;styleMask:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>frameRectForScreenRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)aRect<b> styleMask:</b> (unsigned int)aStyle;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Returns the rectangle which would be used for the
+            on-screen frame of a window if that window had a
+            content view occupying the rectangle
+            <var>aRect</var> and was decorated with the border
+            and title etc given by <var>aStyle</var>. <br /> Both
+            rectangles are expressed in screen coordinates.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -316,7 +432,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -327,7 +445,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Returns the smallest frame width that will fit the
+            given title and style. This is the on-screen width of
+            the window including decorations.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -338,18 +460,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
-    <h3><a name="method$NSWindow+screenRectForFrameRect$styleMask$">screenRectForFrameRect:&nbsp;styleMask:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>screenRectForFrameRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)aRect<b> styleMask:</b> (unsigned int)aStyle;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -360,7 +473,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -371,7 +486,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -382,7 +499,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -393,7 +512,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -404,7 +525,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -415,7 +538,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -426,7 +551,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -437,7 +564,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -448,7 +577,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -459,7 +590,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -470,7 +603,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns <code>YES</code> if the receiver can be            made key. If this method returns <code>NO</code>, the            window will not be made key. This implementation            returns <code>YES</code> if the window is resizable            or has a title bar. You can override this method to            change it&apos;s behavior          
+      
+            Returns <code>YES</code> if the receiver can be
+            made key. If this method returns <code>NO</code>, the
+            window will not be made key. This implementation
+            returns <code>YES</code> if the window is resizable
+            or has a title bar. You can override this method to
+            change it&apos;s behavior
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -481,7 +621,15 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns <code>YES</code> if the receiver can be the            main window. If this method returns <code>NO</code>,            the window will not become the main window. This            implementation returns <code>YES</code> if            the window is resizable or has a title bar and is            visible and is not an NSPanel. You can override            this method to change it&apos;s behavior          
+      
+            Returns <code>YES</code> if the receiver can be the
+            main window. If this method returns <code>NO</code>,
+            the window will not become the main window. This
+            implementation returns <code>YES</code> if
+            the window is resizable or has a title bar and is
+            visible and is not an NSPanel. You can override
+            this method to change it&apos;s behavior
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -492,7 +640,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -503,7 +653,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -514,7 +666,16 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Positions the receiver at <var>topLeftPoint</var>
+            (or if <var>topLeftPoint</var> is NSZeroPoint, leaves
+            the receiver unmoved except for any necessary
+            constraint to fit on screen). <br /> Returns the
+            position of the top left corner of the receivers
+            content view (after repositioning), so that another
+            window cascaded at the returned point will not
+            obscure the title bar of the receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -525,7 +686,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -536,7 +699,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -547,7 +712,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Given a proposed frame rectangle, return a modified            version which will fit inside the <var>screen</var>            .          
+      
+            Given a proposed frame rectangle, return a modified
+            version which will fit inside the <var>screen</var>
+            .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -558,7 +727,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -569,7 +740,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Convert from a point in the base coordinate system            for the window to a point in the screen coordinate            system.          
+      
+            Converts <var>aPoint</var> from the base
+            coordinate system of the receiver to a point in
+            the screen coordinate system. <br /> Convert from a
+            point in the base coordinate system for the window to
+            a point in the screen coordinate system.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -580,7 +757,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Convert from a point in the screen coordinate            system to a point in the screen coordinate system of            the receiver.          
+      
+            Converts <var>aPoint</var> from the screen
+            coordinate system to a point in the base
+            coordinate system of the receiver. <br />
+            Convert from a point in the screen coordinate
+            system to a point in the screen coordinate system of
+            the receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -588,11 +772,12 @@
     <h3><a name="method$NSWindow-counterpart">counterpart&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$NSWindow">NSWindow</a>*) <b>counterpart</b>;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -603,7 +788,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -614,7 +801,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -625,7 +814,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -636,7 +827,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the screen the window is on. Unlike            (apparently) OpenStep and MacOSX, GNUstep does            not support windows being split across multiple screens          
+      
+            Returns the screen the window is on. Unlike
+            (apparently) OpenStep and MacOSX, GNUstep does
+            not support windows being split across multiple screens
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -647,7 +842,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -658,7 +855,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Returns the delegate.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -669,7 +868,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Causes the window to deminiaturize. Normally you            would not call this method directly. A window is            automatically deminiaturized by the user via            a mouse click event. Does nothing it the window isn&apos;t            miniaturized.          
+      
+            Causes the window to deminiaturize. Normally you
+            would not call this method directly. A window is
+            automatically deminiaturized by the user via
+            a mouse click event. Does nothing it the window isn&apos;t
+            miniaturized.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -680,7 +885,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -691,7 +898,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -702,7 +911,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -713,7 +924,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -724,7 +937,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -735,7 +950,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -746,7 +963,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -757,7 +976,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -768,7 +989,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -779,7 +1002,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -790,7 +1015,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -801,7 +1028,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Returns all drawers associated with this window.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -812,7 +1041,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -823,7 +1054,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -834,7 +1067,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -845,7 +1080,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -856,7 +1093,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Opens the fax panel to allow the user to fax the
+            contents of the window view.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -867,7 +1107,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -878,7 +1120,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Returns the first responder of the window.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -889,7 +1133,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Flush all drawing in the windows buffer to the screen            unless the window is not buffered or flushing is not            enabled.          
+      
+            Flush all drawing in the windows buffer to the screen
+            unless the window is not buffered or flushing is not
+            enabled.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -900,7 +1148,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -911,7 +1161,12 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Returns the frame of the receiver... the
+            rectangular area that the window (including any
+            border, title, and other decorations) occupies on
+            screen.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -922,7 +1177,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -933,7 +1190,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -944,7 +1203,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -955,7 +1216,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -966,7 +1229,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -977,22 +1242,46 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Initializes the receiver with a content rect              of <var>contentRect</var>, a style mask of              <var>styleMask</var>, and a backing store type of              <var>backingType</var>.                </p>
+
+              Initializes the receiver with a content rect
+              of <var>contentRect</var>, a style mask of
+              <var>styleMask</var>, and a backing store type of
+              <var>backingType</var>.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              The style mask values are              <code>NSTitledWindowMask</code>, for a window with              a title, <code>NSClosableWindowMask</code>, for a              window with a close widget,              <code>NSMiniaturizableWindowMask</code>, for a              window with a miniaturize widget, and              <code>NSResizableWindowMask</code>, for a window              with a resizing widget. These mask values can be              OR&apos;d in any combination.                </p>
+
+              The style mask values are
+              <code>NSTitledWindowMask</code>, for a window with
+              a title, <code>NSClosableWindowMask</code>, for a
+              window with a close widget,
+              <code>NSMiniaturizableWindowMask</code>, for a
+              window with a miniaturize widget, and
+              <code>NSResizableWindowMask</code>, for a window
+              with a resizing widget. These mask values can be
+              OR&apos;d in any combination.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              Backing store values are              <code>NSBackingStoreBuffered</code>,              <code>NSBackingStoreRetained</code> and              <code>NSBackingStoreNonretained</code>.                </p>
+
+              Backing store values are
+              <code>NSBackingStoreBuffered</code>,
+              <code>NSBackingStoreRetained</code> and
+              <code>NSBackingStoreNonretained</code>.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1003,22 +1292,55 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            Creates a new window with the specified
+            characteristics. <br /> The
+            <var>contentRect</var> is expressed in screen
+            coordinates (for <var>aScreen</var>) and the
+            window frame is calculated from the content
+            rectangle and the window style mask. <br />
+            
     </p>
     <p>
-              Initializes the receiver with a content rect              of <var>contentRect</var>, a style mask of              <var>styleMask</var>, a backing store type of              <var>backingType</var> and a boolean              <var>flag</var>. <var>flag</var> specifies whether              the window should be created now (<code>NO</code>),              or when it is displayed (<code>YES</code>).                </p>
+
+              Initializes the receiver with a content rect
+              of <var>contentRect</var>, a style mask of
+              <var>styleMask</var>, a backing store type of
+              <var>backingType</var> and a boolean
+              <var>flag</var>. <var>flag</var> specifies whether
+              the window should be created now (<code>NO</code>),
+              or when it is displayed (<code>YES</code>).
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              The style mask values are              <code>NSTitledWindowMask</code>, for a window with              a title, <code>NSClosableWindowMask</code>, for a              window with a close widget,              <code>NSMiniaturizableWindowMask</code>, for a              window with a miniaturize widget, and              <code>NSResizableWindowMask</code>, for a window              with a resizing widget. These mask values can be              OR&apos;d in any combination.                </p>
+
+              The style mask values are
+              <code>NSTitledWindowMask</code>, for a window with
+              a title, <code>NSClosableWindowMask</code>, for a
+              window with a close widget,
+              <code>NSMiniaturizableWindowMask</code>, for a
+              window with a miniaturize widget, and
+              <code>NSResizableWindowMask</code>, for a window
+              with a resizing widget. These mask values can be
+              OR&apos;d in any combination.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              Backing store values are              <code>NSBackingStoreBuffered</code>,              <code>NSBackingStoreRetained</code> and              <code>NSBackingStoreNonretained</code>.                </p>
+
+              Backing store values are
+              <code>NSBackingStoreBuffered</code>,
+              <code>NSBackingStoreRetained</code> and
+              <code>NSBackingStoreNonretained</code>.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1029,7 +1351,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1040,7 +1364,10 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            returns the initial first responder of the
+            receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1051,7 +1378,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1062,7 +1391,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1073,7 +1404,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Returns <code>YES</code>, if the document has been
+            changed.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1084,7 +1418,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1095,7 +1431,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1106,7 +1444,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1117,7 +1457,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1128,7 +1470,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1139,7 +1483,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1150,7 +1496,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1161,7 +1509,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Returns <code>YES</code>, if the window is released
+            when it is closed.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1172,7 +1523,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1183,7 +1536,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Processes <var>theEvent</var> when a key is
+            pressed while within the window.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1194,7 +1550,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1205,7 +1563,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1216,10 +1576,43 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  This method attempts to make <var>aResponder</var> the            first responder. <br /> If <var>aResponder</var> is            already the first responder, this method has no            effect and simply returns <code>YES</code>.            Otherwise, the method sends a            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-resignFirstResponder">              -resignFirstResponder            </a>
-            message to the current first responder (if there is            one) and immediately returns <code>NO</code> if the            current first responder refuses to resign. <br />            Then the method asks <var>aResponder</var> to become            first responder by sending it a            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-becomeFirstResponder">              -becomeFirstResponder            </a>
-            message, and if that returns <code>YES</code> then            this method immediately returns <code>YES</code>.            <br /> However, if that returns <code>NO</code>, the            receiver is made the first responder by sending it            a            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-becomeFirstResponder">              -becomeFirstResponder            </a>
-            message, and this method returns <code>NO</code>.            <br /> If <var>aResponder</var> is neither            <code>nil</code> nor an instance of NSResponder (or            of a subclass of NSResponder) then behavior is undefined            (though the current GNUstep implementation just            returns <code>NO</code>).          
+      
+            This method attempts to make <var>aResponder</var> the
+            first responder. <br /> If <var>aResponder</var> is
+            already the first responder, this method has no
+            effect and simply returns <code>YES</code>.
+            Otherwise, the method sends a
+            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-resignFirstResponder">
+              -resignFirstResponder
+            </a>
+
+            message to the current first responder (if there is
+            one) and immediately returns <code>NO</code> if the
+            current first responder refuses to resign. <br />
+            Then the method asks <var>aResponder</var> to become
+            first responder by sending it a
+            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-becomeFirstResponder">
+              -becomeFirstResponder
+            </a>
+
+            message, and if that returns <code>YES</code> then
+            this method immediately returns <code>YES</code>.
+            <br /> However, if that returns <code>NO</code>, the
+            receiver is made the first responder by sending it
+            a
+            <a rel="gsdoc" href="NSResponder.html#method$NSResponder-becomeFirstResponder">
+              -becomeFirstResponder
+            </a>
+
+            message, and this method returns <code>NO</code>.
+            <br /> If <var>aResponder</var> is neither
+            <code>nil</code> nor an instance of NSResponder (or
+            of a subclass of NSResponder) then behavior is undefined
+            (though the current GNUstep implementation just
+            returns <code>NO</code>). <br /> Makes
+            <var>aResponder</var> the first responder within the
+            receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1230,7 +1623,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1241,7 +1636,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1252,7 +1649,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1263,7 +1662,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1274,7 +1675,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1285,7 +1688,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Causes the window to miniaturize, that is the window            is removed from the screen and it&apos;s counterpart            (mini)window is displayed. Does nothing if the            window can&apos;t be miniaturized (eg. because it&apos;s            already miniaturized).          
+      
+            Causes the window to miniaturize, that is the window
+            is removed from the screen and it&apos;s counterpart
+            (mini)window is displayed. Does nothing if the
+            window can&apos;t be miniaturized (eg. because it&apos;s
+            already miniaturized).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1296,7 +1705,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1307,7 +1718,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1318,7 +1731,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1329,7 +1744,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1340,7 +1757,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1351,8 +1770,15 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Orders the window to the back of its level.            Equivalent to                          -orderWindow:            
-            NSWindowBelow relativeTo: 0.          
+      
+            Orders the window to the back of its level.
+            Equivalent to
+            <a rel="gsdoc" href="#method$NSWindow-orderWindow$relativeTo$">
+              -orderWindow:relativeTo:
+            </a>
+
+            with arguments NSWindowBelow and 0.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1363,8 +1789,20 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  If the application is active, orders the window to the            front in its level. If the application is not active,            the window is ordered in as far forward as possible in            its level without being ordered in front of the key or            main window of the currently active app. The current            key and main window status is not changed. Equivalent            to                          -orderWindow:            
-            NSWindowAbove relativeTo: 0.          
+      
+            If the application is active, orders the window to the
+            front in its level. If the application is not active,
+            the window is ordered in as far forward as possible in
+            its level without being ordered in front of the key or
+            main window of the currently active app. The current
+            key and main window status is not changed. Equivalent
+            to
+            <a rel="gsdoc" href="#method$NSWindow-orderWindow$relativeTo$">
+              -orderWindow:relativeTo:
+            </a>
+
+            with arguments NSWindowAbove and 0.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1375,7 +1813,15 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Orders the window to the front in its level (even in            front of the key and main windows of the current app)            regardless of whether the app is current or not.            This method should only be used in rare cases where            the app is cooperating with another app that is            displaying data for it. The current key and main            window status is not changed.          
+      
+            Orders the window to the front in its level (even in
+            front of the key and main windows of the current app)
+            regardless of whether the app is current or not.
+            This method should only be used in rare cases where
+            the app is cooperating with another app that is
+            displaying data for it. The current key and main
+            window status is not changed.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1386,8 +1832,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Orders the window out from the screen. Equivalent to                          -orderWindow:            
-            NSWindowOut relativeTo: 0.          
+      
+            Orders the window out from the screen. Equivalent to
+            <a rel="gsdoc" href="#method$NSWindow-orderWindow$relativeTo$">
+              -orderWindow:relativeTo:
+            </a>
+
+            with arguments NSWindowOut and 0.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1398,17 +1850,44 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              If <var>place</var> is NSWindowOut, removes the window              from the screen. If <var>place</var> is              NSWindowAbove, places the window directly              above <var>otherWin</var>, or directly above all              windows in its level if <var>otherWin</var> is 0.              If <var>place</var> is NSWindowBelow, places the              window directly below <var>otherWin</var>, or              directly below all windows in its level if              <var>otherWin</var> is 0.                </p>
+
+              If <var>place</var> is NSWindowOut, removes the window
+              from the screen. If <var>place</var> is
+              NSWindowAbove, places the window directly
+              above <var>otherWin</var>, or directly above all
+              windows in its level if <var>otherWin</var> is 0.
+              If <var>place</var> is NSWindowBelow, places the
+              window directly below <var>otherWin</var>, or
+              directly below all windows in its level if
+              <var>otherWin</var> is 0.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              If <var>place</var> is NSWindowAbove or NSWindowBelow              and the application is hidden, the application is              unhidden.                </p>
+
+              If <var>otherWin</var> is zero and the key window is
+              at the same window level as the receiver, the receiver
+              cannot be positioned above the key window.
+                </p>
     <p>
-                
+      
+            
+    </p>
+    <p>
+
+              If <var>place</var> is NSWindowAbove or NSWindowBelow
+              and the application is hidden, the application is
+              unhidden.
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1419,7 +1898,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Causes the window to close. Calls the
+            windowShouldClose: method on the
+            delegate to determine if it should close and calls
+            shouldCloseWindowController on
+            the controller for the receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1430,8 +1915,22 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Miniaturize the receiver... as            <strong>long</strong> as its style mask includes            NSMiniaturizableWindowMask (and            as <strong>long</strong> as the receiver is not an icon            or mini window itsself). Calls            <a rel="gsdoc" href="#method$NSWindow-miniaturize$">              -miniaturize:            </a>
-            to do this. <br /> Beeps if the window can&apos;t be            miniaturised. <br /> Should ideally provide            visual feedback (highlighting the miniaturize button            as if it had been clicked) first... but that&apos;s not yet            implemented.          
+      
+            Miniaturize the receiver... as
+            <strong>long</strong> as its style mask includes
+            NSMiniaturizableWindowMask (and
+            as <strong>long</strong> as the receiver is not an icon
+            or mini window itsself). Calls
+            <a rel="gsdoc" href="#method$NSWindow-miniaturize$">
+              -miniaturize:
+            </a>
+
+            to do this. <br /> Beeps if the window can&apos;t be
+            miniaturised. <br /> Should ideally provide
+            visual feedback (highlighting the miniaturize button
+            as if it had been clicked) first... but that&apos;s not yet
+            implemented.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1442,7 +1941,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Performs the zoom method on the receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1453,7 +1954,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1464,7 +1967,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Opens the print panel to allow the user to print the
+            contents of the window view.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1475,7 +1981,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1486,7 +1994,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1497,7 +2007,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1508,7 +2020,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1519,7 +2033,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1530,7 +2046,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1541,7 +2059,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1552,7 +2072,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1563,7 +2085,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1574,7 +2098,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the screen the window is on.          
+      
+            Returns the screen the window is on.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1585,7 +2111,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1596,7 +2124,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1607,7 +2137,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1618,7 +2150,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1629,7 +2163,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Handles mouse and other events sent to the receiver            by NSApplication. Do not invoke this method directly.          
+      
+            Handles mouse and other events sent to the receiver
+            by NSApplication. Do not invoke this method directly.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1640,7 +2177,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1651,7 +2190,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1662,7 +2203,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1673,7 +2216,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1684,7 +2229,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1695,7 +2242,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1706,7 +2255,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1717,7 +2268,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Sets the size of the receiver&apos;s content view to
+            <var>aSize</var>, implicitly adjusting the size of
+            the receiver&apos;s frame to match.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1728,7 +2283,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the window&apos;s content view to <var>aView</var>,            replacing any previous content view.          
+      
+            Sets the window&apos;s content view to <var>aView</var>,
+            replacing any previous content view.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1739,7 +2297,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1750,7 +2310,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Sets the delegate to <var>anObject</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1761,7 +2323,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1772,7 +2336,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Set document edit status. If <code>YES</code>, then, if
+            the receiver has a close button, the close button will
+            show a broken X. If <code>NO</code>, then, if the
+            reciever has a close button, the close button will
+            show a solid X.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1783,7 +2353,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1794,7 +2366,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1805,7 +2379,32 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            
+    </p>
+    <p>
+
+              Sets the frame for the receiver to
+              <var>frameRect</var> and if <var>flag</var> is
+              <code>YES</code> causes the window contents to be
+              refreshed. The value of <var>frameRect</var>
+              is the desired on-screen size and position of the
+              window including all border/decoration.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              The size of the frame is constrained to the minimum
+              and maximum sizes set for the receiver (if any).
+              <br /> Its position is constrained to be on screen
+              if it is a titled window.
+                </p>
+    <p>
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1816,7 +2415,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1827,7 +2428,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1838,7 +2441,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1849,7 +2454,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Sets the origin (bottom left corner) of the receiver&apos;s
+            frame to be the specified point (in screen
+            coordinates).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1860,7 +2469,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Sets the top left corner of the receiver&apos;s frame to be
+            the specified point (in screen coordinates).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1871,7 +2483,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1882,7 +2496,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1893,7 +2509,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1904,7 +2522,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1915,7 +2535,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Sets the initial first responder of the receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1926,7 +2548,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1937,7 +2561,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1948,7 +2574,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1959,7 +2587,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1970,7 +2600,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1981,7 +2613,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1992,7 +2626,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2003,7 +2639,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            If <code>YES</code>, then the window is released when
+            the close method is called.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2014,7 +2653,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2025,7 +2666,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2036,7 +2679,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2047,7 +2692,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the window&apos;s title to the string            <var>aString</var>.          
+      
+            Sets the window&apos;s title to the string
+            <var>aString</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2058,7 +2706,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2069,7 +2719,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2080,7 +2732,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2091,7 +2745,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2102,7 +2758,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2113,7 +2771,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2124,7 +2784,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns an NSString containing the text of the            window&apos;s title.          
+      
+            Returns an NSString containing the text of the
+            window&apos;s title.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2135,7 +2798,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2146,7 +2811,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2157,7 +2824,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2168,7 +2837,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2179,7 +2850,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2190,7 +2863,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2201,7 +2876,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2212,7 +2889,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2223,7 +2902,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2234,7 +2915,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2245,7 +2928,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2256,7 +2941,11 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            Zooms the receiver. This method calls the delegate
+            method windowShouldZoom:toFrame: to determine if the
+            window should be allowed to zoom to full screen.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2264,270 +2953,671 @@
     <h2>Instance Variables for NSWindow Class</h2>
     <h3><a name="ivariable$NSWindow*_alphaValue">_alphaValue</a></h3>
     @protected float <b>_alphaValue</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_autosaveName">_autosaveName</a></h3>
     @protected NSString* <b>_autosaveName</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_backgroundColor">_backgroundColor</a></h3>
     @protected NSColor* <b>_backgroundColor</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_backingType">_backingType</a></h3>
     @protected NSBackingStoreType <b>_backingType</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_cachedImage">_cachedImage</a></h3>
     @protected NSCachedImageRep* <b>_cachedImage</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_cachedImageOrigin">_cachedImageOrigin</a></h3>
     @protected NSPoint <b>_cachedImageOrigin</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_contentView">_contentView</a></h3>
     @protected id <b>_contentView</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_counterpart">_counterpart</a></h3>
     @protected int <b>_counterpart</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_defaultButtonCell">_defaultButtonCell</a></h3>
     @protected id <b>_defaultButtonCell</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_delegate">_delegate</a></h3>
     @protected id <b>_delegate</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_depthLimit">_depthLimit</a></h3>
     @protected NSWindowDepth <b>_depthLimit</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_disableFlushWindow">_disableFlushWindow</a></h3>
     @protected unsigned int <b>_disableFlushWindow</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_f">_f</a></h3>
     @protected struct GSWindowFlagsType <b>_f</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_fieldEditor">_fieldEditor</a></h3>
     @protected id <b>_fieldEditor</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_firstResponder">_firstResponder</a></h3>
     @protected id <b>_firstResponder</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_frame">_frame</a></h3>
     @protected NSRect <b>_frame</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_futureFirstResponder">_futureFirstResponder</a></h3>
     @protected id <b>_futureFirstResponder</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_gstate">_gstate</a></h3>
     @protected int <b>_gstate</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_increments">_increments</a></h3>
     @protected NSSize <b>_increments</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_initialFirstResponder">_initialFirstResponder</a></h3>
     @protected NSView* <b>_initialFirstResponder</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_lastDragOperationMask">_lastDragOperationMask</a></h3>
     @protected int <b>_lastDragOperationMask</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_lastDragView">_lastDragView</a></h3>
     @protected id <b>_lastDragView</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_lastPoint">_lastPoint</a></h3>
     @protected NSPoint <b>_lastPoint</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_lastView">_lastView</a></h3>
     @protected id <b>_lastView</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_maximumSize">_maximumSize</a></h3>
     @protected NSSize <b>_maximumSize</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_miniaturizedImage">_miniaturizedImage</a></h3>
     @protected NSImage* <b>_miniaturizedImage</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_miniaturizedTitle">_miniaturizedTitle</a></h3>
     @protected NSString* <b>_miniaturizedTitle</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_minimumSize">_minimumSize</a></h3>
     @protected NSSize <b>_minimumSize</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_rectNeedingFlush">_rectNeedingFlush</a></h3>
     @protected NSRect <b>_rectNeedingFlush</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_rectsBeingDrawn">_rectsBeingDrawn</a></h3>
     @protected NSMutableArray* <b>_rectsBeingDrawn</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_representedFilename">_representedFilename</a></h3>
     @protected NSString* <b>_representedFilename</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_reserved_1">_reserved_1</a></h3>
     @protected void* <b>_reserved_1</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_reserved_2">_reserved_2</a></h3>
     @protected void* <b>_reserved_2</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_reserved_s">_reserved_s</a></h3>
     @protected void* <b>_reserved_s</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_screen">_screen</a></h3>
     @protected NSScreen* <b>_screen</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_selectionDirection">_selectionDirection</a></h3>
     @protected NSSelectionDirection <b>_selectionDirection</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_styleMask">_styleMask</a></h3>
     @protected unsigned int <b>_styleMask</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_toolbar">_toolbar</a></h3>
     @protected NSToolbar* <b>_toolbar</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_toolbarView">_toolbarView</a></h3>
     @protected id <b>_toolbarView</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_windowController">_windowController</a></h3>
     @protected NSWindowController* <b>_windowController</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_windowLevel">_windowLevel</a></h3>
     @protected int <b>_windowLevel</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_windowNum">_windowNum</a></h3>
     @protected int <b>_windowNum</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_windowTitle">_windowTitle</a></h3>
     @protected NSString* <b>_windowTitle</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSWindow*_wv">_wv</a></h3>
     @protected GSWindowDecorationView* <b>_wv</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
-          <h1><a name="002000000000">        Software documentation for the        NSObject(NSWindowDelegate) informal        protocol      </a></h1>
+
+          <h1><a name="002000000000">
+        Software documentation for the
+        NSObject(NSWindowDelegate) informal
+        protocol
+      </a></h1>
     <h2><a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSWindowDelegate)">NSWindowDelegate</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -2539,7 +3629,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                <em>Description forthcoming.</em>        
+      
+          <em>Description forthcoming.</em>
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -2571,7 +3663,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2582,7 +3676,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2593,7 +3689,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2604,7 +3702,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2615,7 +3715,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2626,7 +3728,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2637,7 +3741,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2648,7 +3754,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2659,7 +3767,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2670,7 +3780,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2681,7 +3793,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2692,7 +3806,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2703,7 +3819,9 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2714,7 +3832,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2725,7 +3845,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2736,7 +3858,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2747,7 +3871,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2758,7 +3884,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2769,11 +3897,17 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="003000000000">        Software documentation for the        NSWindow(GNUstepBackend) category      </a></h1>
+
+          <h1><a name="003000000000">
+        Software documentation for the
+        NSWindow(GNUstepBackend) category
+      </a></h1>
     <h2><a rel="gsdoc" href="#class$NSWindow">NSWindow</a>(<a name="category$NSWindow(GNUstepBackend)">GNUstepBackend</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -2782,11 +3916,12 @@
       </dl>
     </blockquote>
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                <em>Description forthcoming.</em>        
+      
+          <em>Description forthcoming.</em>
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -2800,11 +3935,15 @@
     <h3><a name="method$NSWindow(GNUstepBackend)-_captureMouse$">_captureMouse:&nbsp;</a></h3>
     - (void) <b>_captureMouse:</b> (id)sender;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2812,11 +3951,15 @@
     <h3><a name="method$NSWindow(GNUstepBackend)-_initDefaults">_initDefaults&nbsp;</a></h3>
     - (void) <b>_initDefaults</b>;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2824,11 +3967,15 @@
     <h3><a name="method$NSWindow(GNUstepBackend)-_releaseMouse$">_releaseMouse:&nbsp;</a></h3>
     - (void) <b>_releaseMouse:</b> (id)sender;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -2836,15 +3983,23 @@
     <h3><a name="method$NSWindow(GNUstepBackend)-_setVisible$">_setVisible:&nbsp;</a></h3>
     - (void) <b>_setVisible:</b> (BOOL)flag;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="004000000000">        Software documentation for the        NSWindow(GNUstepTextView) category      </a></h1>
+
+          <h1><a name="004000000000">
+        Software documentation for the
+        NSWindow(GNUstepTextView) category
+      </a></h1>
     <h2><a rel="gsdoc" href="#class$NSWindow">NSWindow</a>(<a name="category$NSWindow(GNUstepTextView)">GNUstepTextView</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -2853,11 +4008,12 @@
       </dl>
     </blockquote>
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                <em>Description forthcoming.</em>        
+      
+          <em>Description forthcoming.</em>
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -2868,11 +4024,15 @@
     <h3><a name="method$NSWindow(GNUstepTextView)-_futureFirstResponder">_futureFirstResponder&nbsp;</a></h3>
     - (id) <b>_futureFirstResponder</b>;<br />
     <div class="availability">
-<b>Availability:</b> Gui 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this method indicates that it is private, for            internal use only, and you should not use the            method in your code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this method indicates that it is private, for
+            internal use only, and you should not use the
+            method in your code.
+          
     </div>
     <hr width="25%" align="left" />
 </div>

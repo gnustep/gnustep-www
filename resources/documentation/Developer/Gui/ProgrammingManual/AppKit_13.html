@@ -1,0 +1,743 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on December, 11  2006 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Using the GNUstep AppKit 0.1: dataexchange</TITLE>
+
+<META NAME="description" CONTENT="Using the GNUstep AppKit 0.1: dataexchange">
+<META NAME="keywords" CONTENT="Using the GNUstep AppKit 0.1: dataexchange">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC75"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_12.html#SEC74"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC76"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_12.html#SEC71"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_14.html#SEC91"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 13. Data Exchange </H1>
+<!--docid::SEC75::-->
+<P>
+
+<EM>Data Exchange</EM> refers to the many high-level options GNUstep provides for allowing different applications to exchange common types of data. The sorts of services include "cut and paste", "drag and drop", service applications, filter services and distributed objects.
+</P><P>
+
+We begin our discussion with an explanation of pasteboards, which form the basis of data exchange in GNUstep. We will then go on to explain how your application can expose or consume these different sorts of data exchange services. However you receive data, it will most likely involve the use of pasteboards, hence the next section is very important.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC76"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC75"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC77"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC79"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 13.1 Pasteboards </H2>
+<!--docid::SEC76::-->
+<P>
+
+A <EM>pasteboard</EM> is the helper object used to exchange data between applications. It is an instance of the <CODE>NSPasteboard</CODE> class. Data is written to the pasteboard in different forms that it can be represented, so that the application or service receiving the data can use it.
+</P><P>
+
+There is a pasteboard server, a service provided with GNUstep which handles pasting between GNUstep applications. You may recognise it as the <CODE>gpbs</CODE> application.
+</P><P>
+
+<A NAME="IDX57"></A>
+Every pasteboard has a name that can be used to identify it. This is a string, which should be unique, but some standard pasteboard names are defined for certain uses:
+<DL COMPACT>
+<A NAME="IDX58"></A>
+<DT><CODE>NSGeneralPboard</CODE>
+<DD><A NAME="IDX59"></A>
+The <EM>general pasteboard</EM>, often used with copy and paste.
+<P>
+
+<A NAME="IDX60"></A>
+<DT><CODE>NSFontPboard</CODE>
+<DD><A NAME="IDX61"></A>
+Used for the exchange of font data.
+<P>
+
+<A NAME="IDX62"></A>
+<DT><CODE>NSRulerPboard</CODE>
+<DD><A NAME="IDX63"></A>
+Used for the exchange of ruler data.
+<P>
+
+<A NAME="IDX64"></A>
+<DT><CODE>NSFindPboard</CODE>
+<DD><A NAME="IDX65"></A>
+Used for "Find and Replace" editing.
+<P>
+
+<A NAME="IDX66"></A>
+<DT><CODE>NSDragPboard</CODE>
+<DD><A NAME="IDX67"></A>
+Used in the exchange of drag'n'drop data.
+<P>
+
+</DL>
+<P>
+
+You can retreive a pasteboard by name using the <CODE>+pasteboardWithName:</CODE> method, or with a guaranteed unique name with the <CODE>+pasteboardWithUniqueName</CODE> method.
+</P><P>
+
+All pasteboards also have any number of <EM>types</EM>. A <EM>type</EM> is simply one form of data that the pasteboard will contain, such as HTML data or text data. The supported data types are listed below:
+<A NAME="IDX68"></A>
+<UL>
+<LI>NSColorPboardType
+<LI>NSDataLinkPboardType
+<LI>NSFileContentsPboardType
+<LI>NSFilenamesPboardType
+<LI>NSFontPboardType
+<LI>NSGeneralPboardType
+<LI>NSHTMLPboardType
+<LI>NSPostScriptPboardType
+<LI>NSPDFPboardType
+<LI>NSPICTPboardType
+<LI>NSRTFPboardType
+<LI>NSRTFDPboardType
+<LI>NSRulerPboardType
+<LI>NSStringPboardType
+<LI>NSTabularTextPboardType
+<LI>NSTIFFPboardType
+<LI>NSURLPboardType
+</UL>
+See the AppKit manual for more information about storing these types of data on a pasteboard.
+<P>
+
+Finally a pasteboard may or may not have an <EM>owner</EM>. An <EM>owner</EM> is an object implmenting the <CODE>NSPasteboardOwner</CODE> informal protocol that can provide the pasteboard with data of a certain type upon request. If you don't supply an owner object, you should store the data onto the pasteboard straight away.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC77"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC76"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC78"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC78"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 13.1.1 Constructing a pasteboard </H3>
+<!--docid::SEC77::-->
+<P>
+
+You can get a pasteboard using the <CODE>+pasteboardWithName:</CODE> method with one of the standard names above, or the <CODE>+pasteboardWithUniqueName:</CODE> for a pasteboard with a name that is unique to the pasteboard server. You can also get a pasteboard based on the available filter services by calling <CODE>+pasteboardByFilteringFile:</CODE> for a pasteboard containing file, accessible by all the data types that it can be filtered to. If you know the source data type, you can use <CODE>+pasteboardByFilterData:ofType:</CODE> specifying a data object for a pasteboard that can convert data to different types that can be filtered from your data's type.
+</P><P>
+
+If you are constructing a pasteboard, you will want to call <CODE>-setData:forType:</CODE> method to put the associated data in the pasteboard for another object to read it out. Use <CODE>-declareTypes:owner:</CODE> to declare the types that this pasteboard will contain, and an owner object that will supply the data for those types that you don't explicitly write to the pasteboard. 
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC78"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC77"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC79"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 13.1.2 Using an Owner </H3>
+<!--docid::SEC78::-->
+<P>
+
+You can provide a pasteboard owner by implementing the <CODE>NSPasteboardOwner</CODE> informal protocol. This is used for the "lazy" provision of data. The pasteboard will call methods on the owner when it can't find the data being requested already stored on it.
+</P><P>
+
+The first method to implement is <CODE>-pasteboard:provideDataForType:</CODE>. This is called when the pasteboard doesn't have the data specified by <VAR>type</VAR>. You give it to the pasteboard by calling <CODE>-setData:forType:</CODE> on the pasteboard.
+</P><P>
+
+We can also implement <CODE>-pasteboardChangedOwner:</CODE>, which informs us that the owner has been changed and we no longer have to provide data to the pasteboard. GNUstep also has an extension, the <CODE>-pasteboard:provideDataForType:andVersion:</CODE> which should be implemented when data of a certain version as well is required. 
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC79"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC78"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC80"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC80"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC80"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 13.2 Cut and Paste </H2>
+<!--docid::SEC79::-->
+<P>
+
+Cut, copy and paste is the most common service you will want to provide in your application. Thankfully, all standard GNUstep objects handle copying and pasting where commonly appropriate, such as the NSText variety of objects. However, in some cases it may be useful to provide copying and pasting services, especially for your own views or on customised GNUstep views.
+</P><P>
+
+The first thing to to is to provide two methods on your object called <CODE>-cut:</CODE>, <CODE>-copy:</CODE>, and/or <CODE>-paste:</CODE> both taking an object (the sender) as their first parameter. This will enable Gorm's standard "Cut", "Copy" and "Paste" menu items if you place them in your interface. 
+</P><P>
+
+You will usually use the general pasteboard for cut and paste, which can be retreived by going:
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>NSPasteboard* generalPB = [NSPasteboard pasteboardWithName:NSGeneralPboard];
+</FONT></pre></td></tr></table></P><P>
+
+The implementation of these methods should then follow. For cutting and copying:
+<OL>
+<LI>Create a pasteboard
+<P>
+
+Usually we use the general pasteboard, but you can create one with your own name if you like.
+</P><P>
+
+<LI>Register types of data to be provided
+<P>
+
+The next thing to do is specify which types of data you will provide on the pasteboard. Use the <CODE>-declareTypes:owner:</CODE> method, passing an array of types, and optionally, an owner object. 
+</P><P>
+
+<LI>Provide data for pasting
+<P>
+
+You supply data to the pasteboard for pasting by using the <CODE>-setData:forType:</CODE> method. If you have used an owner, make sure that it implements the <CODE>NSPasteboardOwner</CODE> protocol and that it can return data in the form(s) specified in the previous step.
+</OL>
+<P>
+
+If you decide to provide data in a number of types, it is often recommended you supply the <I>richest</I> type directly to the pasteboard, and use an owner to supply more basic data types. Simply use <CODE>if/else if</CODE> statements in the <CODE>-pasteboard:provideDataForType:</CODE> method on your owner.
+</P><P>
+
+Pasting data is much simpler. Simply retreive the general pasteboard, and call the <CODE>-stringForType:</CODE> or <CODE>-propertyListForType:</CODE> method, passing in a type.
+</P><P>
+
+Make sure that you declare the types your pasteboard supports with the <CODE>-declareTypes:owner:</CODE> method. You can specify nil for the owner if you are not using lazy data provision.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC80"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC79"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC81"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC84"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC84"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 13.3 Drag and Drop </H2>
+<!--docid::SEC80::-->
+<P>
+
+<EM>Drag and drop</EM> is often more complex. Many different standard views provide their own delegate protocols for receiving drag and drop events, and you should refer to the documentation for those (especially tableviews and outline views) before following the instructions in this section. However, this is still useful in explaining some important concepts.
+</P><P>
+
+Such operations consist of both a <EM>drag</EM> and a <EM>drop</EM><A NAME="DOCF16" HREF="AppKit_fot.html#FOOT16">(16)</A>. The <EM>drag</EM> occurs when the user clicks their mouse button on a visible GUI element, and begins to mouse the mouse away from it. A <EM>drop</EM> occurs when the user moves the mouse over another GUI element and releases the mouse button. Obviously, dragging and dropping can only occur on visible elements of the screen that take up some real estate.
+</P><P>
+
+Below, we discuss dragging sources and dragging destinations, and what is required to make your views responsive as such.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC81"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC80"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC82"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC82"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 13.3.1 Dragging Sources </H3>
+<!--docid::SEC81::-->
+<P>
+
+<A NAME="IDX69"></A>
+When a drag event is initiated, the <CODE>-dragImage:at:offset: event:pasteboard: source:slideBack:</CODE> method is called on your subclass of NSView.  In this method, you need to supply a dragging image, a pasteboard to hold the data, and and a <EM>dragging source</EM> object (specified by the <CODE>source:</CODE> parameter).
+</P><P>
+
+<A NAME="IDX70"></A>
+The <EM>dragging source</EM> object should implement the <CODE>NSDraggingSource</CODE> protocol. The main method to implement is <CODE>-draggingSourceOperationMaskForLocal:</CODE>, whereas the others are used for dragging session events (and are otherwise optional). In this method, you should return the set of binary or-ed values corresponding to the permitted drag operations on this displayed image representation, listed below:
+<A NAME="IDX71"></A>
+<DL COMPACT>
+<DT><CODE>NSDragOperationNone</CODE>
+<DD>No drag operations are permitted with this data.
+<P>
+
+<DT><CODE>NSDragOperationCopy</CODE>
+<DD>This data can be copied.
+<P>
+
+<DT><CODE>NSDragOperationLink</CODE>
+<DD>This data can be "shared". FIXME: WTF does this mean.
+<P>
+
+<DT><CODE>NSDragOperationGeneric</CODE>
+<DD>The type of drag operation that this is can be defined by the dragging destination.
+<P>
+
+<DT><CODE>NSDragOperationPrivate</CODE>
+<DD>This type of drag operation is defined privately by the source and destination objects, and hence negotiated between them.
+<P>
+
+<DT><CODE>NSDragOperationMove</CODE>
+<DD>The data represented by this drag operation can be moved to the destination.
+<P>
+
+<DT><CODE>NSDragOperationDelete</CODE>
+<DD>The destination can be responsible for deleting the data.
+<P>
+
+<DT><CODE>NSDragOperationAll</CODE>
+<DD><DT><CODE>NSDragOperationEvery</CODE>
+<DD>All the above drag operations are acceptable.
+</DL>
+<P>
+
+You can specify more than one of the above by binary or-ing them together (the single pipe operator). Note that if you permit the <CODE>NSDragOperationMove</CODE> or <CODE>NSDragOperationDelete</CODE> methods, you must implement the <CODE>-draggedImage:endedAt:operation:</CODE> method, which is called when a dragging operation is finished so that your source can cleanup any visual or internal data in the source (such as making the source image disappear).
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC82"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC81"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC83"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC83"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC83"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 13.3.2 Dragging Destinations </H3>
+<!--docid::SEC82::-->
+<P>
+
+<A NAME="IDX72"></A>
+<A NAME="IDX73"></A>
+A view or window that is to act as a <EM>dragging destination</EM> should be sent the message <CODE>-registerForDraggedTypes:</CODE> with an array of the accepted dragging types. The view or window should then implement some of the methods in the <CODE>NSDraggingDestination</CODE> informal protocol.
+</P><P>
+
+Some of these methods are listed below:
+<DL COMPACT>
+
+<DT><CODE>- draggingEntered:</CODE>
+<DD>This is method is called when the user drags something into the frame of your window or view. Use it to return what dragging types you will permit for the dragging info passed in <CODE>sender</CODE>. 
+<P>
+
+<DT><CODE>- prepareForDragOperation:</CODE>
+<DD>This is called just after the user has dropped the dragged object. Use this method to make any preparations for the drop. Return YES to cancel the drop.
+<P>
+
+<DT><CODE>- performDragOperation:</CODE>
+<DD>This method is called so that you can perform the drop operation. This method is a must to implement. 
+<P>
+
+<DT><CODE>- concludeDragOperation:</CODE>
+<DD>This is again optional, and can be used to perform any cleanup or post-drop operations.
+<P>
+
+<DT><CODE>- draggingUpdated:</CODE>
+<DD>This is called periodically as the drag image is moved within your frame. It can be optionally implemented to update the drag operation with different drag types (returned) as the user moves the drag images over various parts of your view. It may be useful if drag operations are context sensitive with respect to the graphical elements that your view displays.
+<P>
+
+</DL>
+<P>
+
+Hence to act as a dragging destination, you need to at least implement <CODE>-draggingEntered:</CODE> and <CODE>-performDragOperation</CODE>. Make sure that when you actually perform the drag operation, that you retreive the pasteboard being used from the dragging destination (see below), as opposed to just retreiving the <CODE>NSDragPboard</CODE> named pasteboard, as you cannot be certain which pasteboard the dragging source has used for the drag operation.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC83"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC82"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC84"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 13.3.3 Dragging Information </H3>
+<!--docid::SEC83::-->
+<P>
+
+Both <CODE>NSDraggingSource</CODE> and <CODE>NSDraggingDestination</CODE> use objects implementing the <CODE>NSDraggingInformation</CODE> protocol to convey information about the drag'n'drop operation. You can use this to make better decisions in many of the above mentioned methods with relation to permitting/disallowing different drag types and drag operations. You never implement this protocol, however.
+</P><P>
+
+The pasteboard being used for the drag operation can be retreived via the <CODE>-draggingPasteboard</CODE> method. The image being used for the drag operation and its location can be retrieved via the <CODE>-draggingImage</CODE> and <CODE>-draggingImageLocation</CODE> methods respectively. If you need to snap the image during the drag operation, use the <CODE>-slideDraggedImageTo:</CODE> method, but only do this during <CODE>-prepareForDragOperation:</CODE> in the destination object.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC84"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC83"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC85"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC85"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC85"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 13.4 Services and Filter Services </H2>
+<!--docid::SEC84::-->
+<P>
+
+A <EM>service</EM> is a special type of application or tool that can be used to process data outside of the application. An application can both take advantage of services, or provide them to other applications. Like "cut and paste" and "drag'n'drop", services use pasteboard to receive data and send it back to the calling application.
+</P><P>
+
+A user can usually make use of a service by selecting something in your application (such as some text or an object) and selecting a service from the "Services" menu. You can also invoke services programmatically.
+</P><P>
+
+One way is to put a <VAR>Services</VAR> sub-menu in your interface file's menu using <CODE>Gorm</CODE> (as mentioned above. The other way is to call the <CODE>NSPerformService()</CODE> function. It takes two parameters, a service name and a pasteboard. If the service invocation is successful, the pasteboard will contain the output data from the service. The latter method is useful for filter services (described below).
+</P><P>
+
+A service becomes available to any NSResponder object in your application's interface. Most GNUstep classes are setup to consume services, but if you have your own <CODE>NSView</CODE> or <CODE>NSWindow</CODE> subclasses, you will need to implement extra methods so that it can make use of services. A service that isn't available to an object will not appear available in the Services menu.
+</P><P>
+
+Providing services is a little bit different, and requires a bit more work. You can implement a service as a normal GNUstep application, or as a special command-line type using the <CODE>service.make</CODE> template in your GNUmakefile. Either way, you need to also provide extra information in your <TT>`Info-gnustep.plist'</TT> file that describes what services your application provides.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC85"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC84"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC86"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC90"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC90"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 13.5 Providing Services </H2>
+<!--docid::SEC85::-->
+<P>
+
+There are two types of services you can provide: normal services and filter services. Normal services may either send, receive or both send and receive data. They are often useful for initiating outside processes based on simple string information, such as loading up a "New Message" window in your email client with an email address that the user has highlighted in your application. Such as service wouldn't need to return any data. These services also are registered to appear in the "Services" menu of applications.
+</P><P>
+
+For example, the user would highlight an email address in a text box, and then select "Send Email" from the services menu. GNUstep would then locate the associated service and put the email address on a pasteboard. The pasteboard is sent to the service application (and loaded if necessary), which processes it accordingly.
+</P><P>
+
+On the other hand, a filter service is much more specific. They are designed to convert data from one type to another, and are only ever invoked programatically i.e. they don't appear in the "Services" menu.
+</P><P>
+
+We begin making our application or command-line service ready for acting as a service by calling <CODE>-setServicesProvider:</CODE> on the <CODE>NSApplication</CODE> object, or by calling the <CODE>NSRegisterServicesProvider()</CODE> function. Both take an object, which will provide the service, as a parameter, and the latter also takes a <EM>port name</EM> as a string, which will be used to contact the application. <CODE>NSApplication</CODE> uses the name of your application as the port name.
+</P><P>
+
+Secondly, the object that will provide the service needs to implement a method in the form of: <CODE>[methodname]:userData:error:</CODE>, where <VAR>methodname</VAR> is a custom, arbitrary name of the method. For example if you were to create a service that encrypts data and you want to call it something like <CODE>-encryptData</CODE>, the method would take the form:
+<TABLE><tr><td>&nbsp;</td><td class=smallexample><FONT SIZE=-1><pre>- (void) encryptData:(NSPasteboard*)pBoard 
+	    userData:(NSString*)userData 
+	       error:(NSString**)error;
+</FONT></pre></td></tr></table></P><P>
+
+As you can see, the first part is arbitrary, but the rest must be the same for all services. It is the first part that you will use in the <CODE>NSMessage</CODE> key below.
+</P><P>
+
+Lastly, all services need a special addition to their Info-gnustep.plist file, which should be included as a <CODE>RESOURCE</CODE> in your <TT>`GNUmakefile'</TT>. See the <CITE>GNUstep Makefile Manual</CITE> for more details.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC86"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC85"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC88"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC88"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 13.5.1 Normal Services </H3>
+<!--docid::SEC86::-->
+<P>
+
+As mentioned before, normal services may either send data, receive data, or both. Their Info-gnustep.plist file must have a top-level key named <CODE>NSServices</CODE>, which becomes an array of dictionaries. This array has one dictionary per service that is provided. 
+</P><P>
+
+Each service dictionary has the following keys:
+<DL COMPACT>
+
+<DT><VAR>NSMessage</VAR>
+<DD>This is the first part of the method name (as described above). For example, if your services provider object implements a method called <CODE>-randomData:userData:error:</CODE>, this key should take a string value equal to <CODE>"randomData"</CODE>.
+<P>
+
+<DT><VAR>NSSendTypes</VAR>
+<DD>This key contains an array of the types of data that your service provider can handle (the types of data that may be sent to it). These types are the string values defined earlier for pasteboard types. Simply use the same name as used in the source code, e.g. <CODE>NSStringPboardType</CODE>.
+<P>
+
+<DT><VAR>NSReturnTypes</VAR>
+<DD>This is an array of string values that contains the types your service provider can return.
+<P>
+
+<DT><VAR>NSPortName</VAR>
+<DD>A service must be contacted via a distributed objects port, and this string value must contain the name of the port your application will be listening on for message. Unless you are not writing an application, this is usually set to the name of the application.
+<P>
+
+<DT><VAR>NSMenuItem</VAR>
+<DD>This is a dictionary used to set the menu item name for this service. Each key in the dictionary is the name of a language, with the value set to a string that will be displayed as the menu item for this service in the set language. You can also provide a <VAR>default</VAR> key, which will be displayed if none of the translations you have provided match the user's language settings. You may also place one forward slash character ('/') in the menu item name, which will be used to split the item into a sub-menu of <CODE>Services</CODE> and the menu item. It is useful for grouping related services in a sub-menu.
+<P>
+
+<DT><VAR>NSUserData</VAR>
+<DD>This key is optional, and is set to a string value which may be whatever you like. It is passed to the method implementing the service. Use this if you want the one method to handle a number of service implementations, which are selected based on this string.
+<P>
+
+<DT><VAR>NSKeyEquivalent</VAR>
+<DD>This is an optional dictionary which contains the key equivalents to the menu items you have listed in <VAR>NSMenuItem</VAR>. Each dictionary key is the name of a language (or <VAR>default</VAR> as described above) with its value set to a single letter that corresponds to a keyboard key.
+<P>
+
+<DT><VAR>NSTimeout</VAR>
+<DD>This key is optional, and specifies how long the system should wait for the service provider to complete providing the service. It is a number in milliseconds. By default, the system waits 30 seconds.
+<P>
+
+<DT><VAR>NSExecutable</VAR>
+<DD>This is an optional string value that contains the path of the executable which should be launched if the service is not already running. You will not usually need this for normal applications.
+</DL>
+<P>
+
+<A NAME="SEC87"></A>
+<H4> Example </H4>
+<!--docid::SEC87::-->
+We want to provide a service that turns ordinary string data into coded HTML text. Our service application is called "WebSiteEditor" and the method that provides the HTML translation is called <CODE>textToHtml:</CODE>. It accepts string data, and publishes the HTML back in string form.
+<P>
+
+Our example Info-gnustep.plist array could be:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>{ 
+  ..
+
+   (application specific keys)
+
+  ..
+
+  NSServices = (
+    {
+      NSPortName = WebSiteEditor;
+      NSMessage = textToHtml;
+      NSSendTypes = ( NSStringPboardType );
+      NSReturnTypes = ( NSStringPboardType );
+      NSMenuItem = { 
+        default = "Convert to HTML";
+      };
+      NSTimeout = 25000;
+      NSKeyEquivalent = {
+        default = H;
+      };
+      NSUserData = "NoBodyTags";
+    }
+    .. (More service definitions)
+  );
+}
+</pre></td></tr></table></P><P>
+
+As can be seen above, <VAR>NSServices</VAR> is an array containing one dictionary, which corresponds to one service. The service appears in the menu as "Convert to HTML", which expects string data.
+</P><P>
+
+A possible code implementation may be:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>
+- (void) textToHTML:(NSPasteboard*)pboard
+           userData:(NSString*)userData
+              error:(NString**)error
+{
+  NSString* data, *convertedData;
+  if ([[pboard types] containsObject:NSStringPboardType])
+  {
+     // Extract string data from pasteboard
+     data = [pboard stringForType:NSStringPboardType];
+     
+     // Convert to HTML as a string
+     //..
+
+     // Put the result back onto the pasteboard
+     [pboard declareTypes:[NSArrayWithObject:NSStringPboardType]
+                    owner:nil
+     [pboard setString:convertedData forType:NSStringPboardType];
+  }
+  else
+    *error = &Iuml;ncorrect data type provided to textToHTML: service.";
+}
+
+</pre></td></tr></table></P><P>
+
+<HR SIZE="6">
+<A NAME="SEC88"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC86"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC89"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC89"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC89"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 13.5.2 Filter Services </H3>
+<!--docid::SEC88::-->
+<P>
+
+As mentioned before, filter services are not initiated by the user, but are initiated by programme's to convert data from one type to another. They also have entries in an application's <TT>`Info-gnustep.plist'</TT> <VAR>NSServices</VAR> array. These entries are dictionaries as well, but they contain the following keys:
+<DL COMPACT>
+
+<DT><VAR>NSFilter</VAR>
+<DD>This is the equivalent of the <VAR>NSMessage</VAR> key used for normal services. It is the name of the distributed objects port that the filter service will listen on for messages. It again is usually set to the name of the application, but as filter services are more likely to be standalone tools, this one can differ somewhat.
+<P>
+
+<DT><VAR>NSInputMechanism</VAR>
+<DD>This is an optional key that specifies a string value corresponding to a different input mechanism than the usual distributed objects message passing.
+These values may be:
+<DL COMPACT>
+<DT><VAR>NSIdentity</VAR>
+<DD>The data is placed on a pasteboard. It is not changed.
+<P>
+
+<DT><VAR>NSMapFile</VAR>
+<DD>The data is the name of a file. The contents of this file will be placed on the pasteboard instead.
+<P>
+
+<DT><VAR>NSUnixStdio</VAR>
+<DD>The data is the name of a file. This file is passed as an argument to a command-line programme, which is executed. The stdout of the programme is placed on the pasteboard instead.
+</DL>
+</DL>
+<P>
+
+<HR SIZE="6">
+<A NAME="SEC89"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC88"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC90"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H3> 13.5.3 Registering Services </H3>
+<!--docid::SEC89::-->
+Before a service can be consumed by applications, it must be registered programatically and on the command line.
+<P>
+
+An application registers the object that will be providing service(s) by calling <CODE>-setServicesProvider:</CODE> on their <CODE>NSApplication</CODE> object. Tool applications must call <CODE>NSRegisterServicesProvider()</CODE>, which is a function that takes the service object and the port name (as specified by <CODE>NSMessage</CODE> or <CODE>NSFilter</CODE> in the <TT>`Info-gnustep.plist'</TT> file).
+</P><P>
+
+Once that is in code and your application has been installed, you also need to execute <CODE>make_services</CODE>, which is a script that comes with GNUstep. It locates the Info-gnustep.plist file and builds a list of services. This list of services becomes available to applications started after the script is executed.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC90"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_13.html#SEC89"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_14.html#SEC91"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 13.6 Using Services </H2>
+<!--docid::SEC90::-->
+<P>
+
+For the most part, AppKit objects are implemented to take advantage of most service types where appropriate, especially in regard to string data. However, there are situations where you will want to register for service consumption yourself, or where you want to allow your custom views to consume services.
+</P><P>
+
+An <VAR>NSResponder</VAR> object must first register the pasteboard types it supports. Then, when a user tries to invoke a service, GNUstep first checks the responder chain for an object that can handle the service's input type, and then it queries the object for the data to be processed by the service. If data is returned from the service, GNUstep then gives the pasteboard back to the object for it's own processing.
+</P><P>
+
+<OL>
+
+<LI>Registering for service consumption
+<P>
+
+Your object must at some point register it's ability to consume services of certain pasteboard types. It does this by calling <CODE>-registerServicesMenuSendTypes: returnTypes:</CODE> with an array of send types (the pasteboard types the object can send to a service) and return types (the pasteboard types the object can receive from a service).
+</P><P>
+
+This method is to be only called once for your subclass. It is convenient to put it in your class' <CODE>+initialize</CODE> method, which is usually called after your class is loaded into the runtime (and hence only once).
+</P><P>
+
+<LI>Sending data to a Service
+<P>
+
+When sending data to a service, GNUstep must first check that your object can send those types of data before it requests the pasteboard from your object.
+</P><P>
+
+So that GNUstep can check whether your object is able to export the pasteboard types requested by the service, you must implement the <CODE>-validRequestorForSendType:returnType:</CODE> method. It is passed a send pasteboard type and a return pasteboard type. 
+</P><P>
+
+Your implementation should return an object if it is capable of handling that combination of send and return type (and is ready to do so), or return nil if it can't. It usually returns <CODE>self</CODE>.
+</P><P>
+
+If GNUstep gets a positive answer to this method, it will then call <CODE>-writeSelectionToPasteboard:types</CODE> on your object. You should implement this method to fill the pasteboard with data (or use lazy provision, as discussed earlier in this chapter). It should return <CODE>YES</CODE> if it suceeds, or <CODE>NO</CODE> if it fails.
+</P><P>
+
+<LI>Receiving data from a service
+<P>
+
+If the service being invoked returns data, GNUstep will call <CODE>-readSelectionFromPasteboard:</CODE> on your object when the service returns. This method should retrieve the service data from the pasteboard and use that data to update it's object's state.
+</P><P>
+
+</OL>
+<P>
+
+<A NAME="images"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>December, 11  2006</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>

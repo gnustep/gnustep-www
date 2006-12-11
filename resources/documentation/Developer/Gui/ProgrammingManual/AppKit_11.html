@@ -1,0 +1,152 @@
+<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- Created on December, 11  2006 by texi2html 1.64 -->
+<!-- 
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
+Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
+ 
+-->
+<HEAD>
+<TITLE>Using the GNUstep AppKit 0.1: matrix</TITLE>
+
+<META NAME="description" CONTENT="Using the GNUstep AppKit 0.1: matrix">
+<META NAME="keywords" CONTENT="Using the GNUstep AppKit 0.1: matrix">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.64">
+
+</HEAD>
+
+<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<A NAME="SEC68"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_10.html#SEC67"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_11.html#SEC69"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_10.html#SEC66"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_12.html#SEC71"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H1> 11. Matrix Controls </H1>
+<!--docid::SEC68::-->
+<A NAME="Matrix Controls"></A>
+<A NAME="IDX45"></A>
+<A NAME="IDX46"></A>
+Matrix controls are groups of cells, arranged in a table like format, 
+with each cell indexed by row and column. It is similar to a table view, but differs in that it doesn't have a predefined cell class. Instead, it uses objects of classes derived from NSCell to be implemented. A matrix is implemented by the NSMatrix class.<A NAME="DOCF14" HREF="AppKit_fot.html#FOOT14">(14)</A>
+<P>
+
+It takes it's implementation from NSControl, and hence what applies to controls also applies to matrixes. This matrix control is used to implement browsers as well. Note that it does not use a delegate or a data source to display or obtain it's data or size. Instead, this is done using accessor methods, making the NSMatrix class more passive in it's representation of data.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC69"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_11.html#SEC68"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_11.html#SEC70"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_11.html#SEC70"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 11.1 Creating Matrix Controls </H2>
+<!--docid::SEC69::-->
+<P>
+
+A matrix control can be creating by new <CODE>NSMatrix</CODE> instance and then calling <CODE>-initWithFrame:mode:prototype:numberOfRows:numberOfColumns:</CODE> or <CODE>-initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:</CODE>. The former method uses an instance of a cell to instantiate cells for the rows and columns, while the latter uses a cell class to create the cells.
+</P><P>
+
+Both these methods require a matrix mode, those of which are specified in <CODE>NSMatrixMode</CODE> and control how the matrix "tracks" the mouse:
+<DL COMPACT>
+<DT><CODE>NSRadioModeMatrix</CODE>
+<DD>Only permits one cell in the matrix to be selected at a time.
+<P>
+
+<DT><CODE>NSHighlightModeMatrix</CODE>
+<DD>Performs trackng (as described below) as well as highlighting the cell before tracking commences.
+<P>
+
+<DT><CODE>NSListModeMatrix</CODE>
+<DD>Cells objects are highlighted without the opportunity to track the mouse.
+<P>
+
+<DT><CODE>NSTrackModeMatrix</CODE>
+<DD>The cell is able to track the mouse while the cursor is within it's bounds. 
+<P>
+
+</DL>
+<P>
+
+For more information about cell tracking, See  <A HREF="AppKit_6.html#Basic Controls">Basic Controls</A>.
+</P><P>
+
+<HR SIZE="6">
+<A NAME="SEC70"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_11.html#SEC69"> &lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_12.html#SEC71"> &gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<H2> 11.2 Using Matrix controls </H2>
+<!--docid::SEC70::-->
+<P>
+
+After having placed one on a window using Gorm, we can change what appears in the matrix by using it's methods.
+</P><P>
+
+<A NAME="IDX47"></A>
+<A NAME="IDX48"></A>
+The <EM>cell class</EM> is what class is to be used (by default) to create cells. We can use instances of many different cells classes, for example, you may choose to populate your matrix with <CODE>NSTextCell</CODE> instances as well as <CODE>NSButtonCell</CODE> instances if you were creating an interactive form. You set the default cell class by calling either <CODE>+setCellClass:</CODE> on the <CODE>NSMatrix</CODE> class to set the cell class over all new <CODE>NSMatrix</CODE> instances, or you can call <CODE>-setCellClass:</CODE> to set the class used to create new cells on a instance-by-instance basis for each of your matrix instances.
+</P><P>
+
+We can retrieve information about the cells in a matrix through a variety of methods. To retrieve the cell at a certain location, use the <CODE>-cellAtRow:column:</CODE> method. The size of cells is retrieved using the <CODE>-cellSize</CODE> method. To access specific cells, use <CODE>-cellAtRow:column:</CODE>, or to access all the cells, simple call <CODE>-cells</CODE> to get an array.
+</P><P>
+
+We can begin adding rows or columns to the end our matrix using the <CODE>-addColumn</CODE> and <CODE>-addRow</CODE> methods. To specify the specific cells, use the <CODE>-addColumnWithCells:</CODE> and <CODE>-addRowWithCells:</CODE> methods, passing an array of the cells for that column/row. Alternatively, rows and columns can be inserted at arbitrary locations using the <CODE>-insertRow:</CODE> and <CODE>-insertColumn:</CODE> methods, specifying a row or column number. <CODE>-insertRow:withCells:</CODE> and <CODE>-insertColumn:withCells:</CODE> lets you pass in the cells to be inserted.
+</P><P>
+
+Rows and columns can also be removed or replaced. You can remove a column or a row by number using the <CODE>-removeColumn:</CODE> or <CODE>-removeRow:</CODE> methods respectively. To replace a particular cell, use the <CODE>-putCell:atRow:column:</CODE> method.
+</P><P>
+
+The cell selection and selection behaviour can be modified. A specific cell can be selected with the <CODE>-selectCellAtRow:column:</CODE> by specifying it's location, <CODE>-selectCellWithTag:</CODE> by specifying it's tag, or <CODE>-selectCell:</CODE> with the cell object. You can also select all the cells with the <CODE>-selectAll:</CODE> method.
+</P><P>
+
+The selected cell is returned from <CODE>-selectedCell:</CODE>, or <CODE>-selectedCells</CODE> if more than one cell is selected. <CODE>-selectedRow</CODE> and <CODE>-selectedColumn</CODE> can be used if an entire row/column is selected.
+</P><P>
+
+<A NAME="browsercontrols"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>  
+<FONT SIZE="-1">
+This document was generated
+by <I>Adam Fedor</I> on <I>December, 11  2006</I>
+using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
+"><I>texi2html</I></A>
+
+</BODY>
+</HTML>
