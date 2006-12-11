@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
     <head>
     <title>NSFormatter class reference</title>
   </head>
@@ -15,11 +16,15 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Date:</b> 2006-02-11 11:22:57 -0700 (Sat, 11 Feb 2006)</p>
+    <p><b>Date:</b> 2006-10-20 04:56:27 -0600 (Fri, 20 Oct 2006)</p>
     <p><b>Copyright:</b> (C) 1998 Free Software Foundation, Inc.</p>
+
         <div>
     </div>
-          <h1><a name="001000000000">        Software documentation for the NSFormatter class      </a></h1>
+
+          <h1><a name="001000000000">
+        Software documentation for the NSFormatter class
+      </a></h1>
     <h2><a name="class$NSFormatter">NSFormatter</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote class="declared">
       <dl>
@@ -38,9 +43,19 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                This abstract class defines the interface for classes          that support conversion between strings and objects of          various types. GNUstep provides two concrete          implementations of this class:          <a rel="gsdoc" href="NSDateFormatter.html#class$NSDateFormatter">NSDateFormatter</a>
-            and            <a rel="gsdoc" href="NSNumberFormatter.html#class$NSNumberFormatter">NSNumberFormatter</a>
-              . Others may be implemented for specialized              applications.        
+      
+          This abstract class defines the interface for classes
+          that support conversion between strings and objects of
+          various types. GNUstep provides two concrete
+          implementations of this class:
+          <a rel="gsdoc" href="NSDateFormatter.html#class$NSDateFormatter">NSDateFormatter</a>
+
+            and
+            <a rel="gsdoc" href="NSNumberFormatter.html#class$NSNumberFormatter">NSNumberFormatter</a>
+
+              . Others may be implemented for specialized
+              applications.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -59,8 +74,19 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  This method calls            <a rel="gsdoc" href="#method$NSFormatter-stringForObjectValue$">              [-stringForObjectValue:]            </a>
-            then marks up the string with attributes if it should            be displayed specially. For example, in an application            you may want to display out-of-range dates or numbers            in italics. This is an optional method and may return            <code>nil</code> to indicate that an attributed            string is not provided.          
+      
+            This method calls
+            <a rel="gsdoc" href="#method$NSFormatter-stringForObjectValue$">
+              [-stringForObjectValue:]
+            </a>
+
+            then marks up the string with attributes if it should
+            be displayed specially. For example, in an application
+            you may want to display out-of-range dates or numbers
+            in italics. This is an optional method and may return
+            <code>nil</code> to indicate that an attributed
+            string is not provided.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -71,10 +97,20 @@
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  For use in applications where user interactively edits            a string. If the version of the string for editing            purposes should look different from the string            displayed (returned by            <a rel="gsdoc" href="#method$NSFormatter-stringForObjectValue$">              [-stringForObjectValue:]            </a>
-            or            <a rel="gsdoc" href="#method$NSFormatter-attributedStringForObjectValue$withDefaultAttributes$">-attributedStringForObjectValue:withDefaultAttributes:</a>
+      
+            For use in applications where user interactively edits
+            a string. If the version of the string for editing
+            purposes should look different from the string
+            displayed (returned by
+            <a rel="gsdoc" href="#method$NSFormatter-stringForObjectValue$">
+              [-stringForObjectValue:]
+            </a>
+
+            or
+            <a rel="gsdoc" href="#method$NSFormatter-attributedStringForObjectValue$withDefaultAttributes$">-attributedStringForObjectValue:withDefaultAttributes:</a>
 ), return that here. For example, the edited string may contain formatting codes or similar that are not displayed in the final string. The default implementation simply returns <a rel="gsdoc" href="#method$NSFormatter-stringForObjectValue$">-stringForObjectValue:</a>
-.          
+.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -86,7 +122,19 @@
 <br />
 Subclasses <strong>should</strong> override this method.<br />
     <div class="desc">
-                  Primary method for converting a <var>string</var>            to an object through parsing. <var>anObject</var> and            <var>error</var> are output parameters; you should            allocate memory for one pointer each for the            variables passed into these methods. The returned            object will have been created through            <code>alloc-init</code>. If there is a problem with            conversion, a constant-string description of            what went wrong is returned through <var>error</var>,            and <code>NO</code> is returned, otherwise            <code>YES</code>.          
+      
+            Primary method for converting a <var>string</var>
+            to an object through parsing. <var>anObject</var> and
+            <var>error</var> are output parameters; you should
+            allocate memory for one pointer each for the
+            variables passed into these methods. The returned
+            object will have been created through
+            <code>alloc-init</code>. If there is a problem with
+            conversion, a constant-string description of
+            what went wrong is returned through <var>error</var>,
+            and <code>NO</code> is returned, otherwise
+            <code>YES</code>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -97,7 +145,20 @@ Subclasses <strong>should</strong> override this method.<br />
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Checks whether <var>partialString</var>            <em>could</em>, if it were completed, be parsed into a            valid object. <var>newString</var> and            <var>error</var> are output parameters; you should            allocate memory for one pointer each for the            variables passed into these methods. This method            is set up to be called after every keystroke during user            editing. If it returns <code>NO</code>, it            optionally returns <var>newString</var> to            replace what the user was editing; if it doesn&apos;t,            the editor should delete the last character the user            typed.          
+      
+            Checks whether <var>partialString</var>
+            <em>could</em>, if it were completed, be parsed into a
+            valid object. <var>newString</var> and
+            <var>error</var> are output parameters; you should
+            allocate memory for one pointer each for the
+            variables passed into these methods. This method
+            is set up to be called after every keystroke during user
+            editing. If it returns <code>NO</code>, it
+            optionally returns <var>newString</var> to
+            replace what the user was editing; if it doesn&apos;t,
+            the editor should delete the last character the user
+            typed.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -108,7 +169,23 @@ Subclasses <strong>should</strong> override this method.<br />
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Checks whether a change to a string leaves it a            valid string that, if it were completed, could be            parsed into a valid object. <var>origString</var>            contains the string before the proposed change,            and origSelRange contains the range that is updated in            the proposed change. <var>partialStringPtr</var>            contains the new string to validate and            <var>proposedSelRangePtr</var> holds the selection            range that will be used if the string is accepted or            replaced. Basically, this method returns            <code>YES</code> if <var>partialStringPtr</var> is            valid, otherwise <code>NO</code> and may replace            <var>partialStringPtr</var> and proposedSelectedRange            with improved values, and may report the reason in            <var>error</var>.          
+      
+            Checks whether a change to a string leaves it a
+            valid string that, if it were completed, could be
+            parsed into a valid object. <var>origString</var>
+            contains the string before the proposed change,
+            and origSelRange contains the range that is updated in
+            the proposed change. <var>partialStringPtr</var>
+            contains the new string to validate and
+            <var>proposedSelRangePtr</var> holds the selection
+            range that will be used if the string is accepted or
+            replaced. Basically, this method returns
+            <code>YES</code> if <var>partialStringPtr</var> is
+            valid, otherwise <code>NO</code> and may replace
+            <var>partialStringPtr</var> and proposedSelectedRange
+            with improved values, and may report the reason in
+            <var>error</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -120,7 +197,15 @@ Subclasses <strong>should</strong> override this method.<br />
 <br />
 Subclasses <strong>should</strong> override this method.<br />
     <div class="desc">
-                  Primary method for converting an object to a string            through formatting. Object will be converted to            string according to the formatter&apos;s implementation            and init parameters. There is no default handling if            the class of <var>anObject</var> is not what the            formatter expects, and usually <code>nil</code>            will be returned in this case.          
+      
+            Primary method for converting an object to a string
+            through formatting. Object will be converted to
+            string according to the formatter&apos;s implementation
+            and init parameters. There is no default handling if
+            the class of <var>anObject</var> is not what the
+            formatter expects, and usually <code>nil</code>
+            will be returned in this case.
+          
     </div>
     <hr width="25%" align="left" />
 </div>

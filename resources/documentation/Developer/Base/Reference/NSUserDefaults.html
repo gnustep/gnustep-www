@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
     <head>
     <title>NSUserDefaults class reference</title>
   </head>
@@ -18,11 +19,15 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Date:</b> 2006-06-27 13:06:44 -0600 (Tue, 27 Jun 2006)</p>
+    <p><b>Date:</b> 2006-10-29 23:01:20 -0700 (Sun, 29 Oct 2006)</p>
     <p><b>Copyright:</b> (C) 1995-2001 Free Software Foundation, Inc.</p>
+
         <div>
     </div>
-          <h1><a name="001000000000">        Software documentation for the NSUserDefaults class      </a></h1>
+
+          <h1><a name="001000000000">
+        Software documentation for the NSUserDefaults class
+      </a></h1>
     <h2><a name="class$NSUserDefaults">NSUserDefaults</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote class="declared">
       <dl>
@@ -34,65 +39,169 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                
+      
+          
     </p>
     <p>
-            NSUserDefaults provides an interface to the            defaults system, which allows an application            access to global and/or application specific            defaults set by the user. A particular instance of            NSUserDefaults, standardUserDefaults, is            provided as a convenience. Most of the information            described below pertains to the            standardUserDefaults. It is unlikely            that you would want to instantiate your own            userDefaults object, since it would not be set            up in the same way as the standardUserDefaults.              </p>
+
+            NSUserDefaults provides an interface to the
+            defaults system, which allows an application
+            access to global and/or application specific
+            defaults set by the user. A particular instance of
+            NSUserDefaults, standardUserDefaults, is
+            provided as a convenience. Most of the information
+            described below pertains to the
+            standardUserDefaults. It is unlikely
+            that you would want to instantiate your own
+            userDefaults object, since it would not be set
+            up in the same way as the standardUserDefaults.
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            Defaults are managed based on <em>domains</em>.            Certain domains, such as            <code>NSGlobalDomain</code>, are persistent. These            domains have defaults that are stored externally.            Other domains are volatile. The defaults in these            domains remain in effect only during the existence            of the application and may in fact be different for            applications running at the same time. When            asking for a default value from            standardUserDefaults, NSUserDefaults            looks through the various domains in a particular            order.              </p>
+
+            Defaults are managed based on <em>domains</em>.
+            Certain domains, such as
+            <code>NSGlobalDomain</code>, are persistent. These
+            domains have defaults that are stored externally.
+            Other domains are volatile. The defaults in these
+            domains remain in effect only during the existence
+            of the application and may in fact be different for
+            applications running at the same time. When
+            asking for a default value from
+            standardUserDefaults, NSUserDefaults
+            looks through the various domains in a particular
+            order.
+              </p>
     <p>
-                
+      
+          
       <dl>
-        <dt>              <code>NSArgumentDomain</code>... volatile            </dt>
+        <dt>
+              <code>NSArgumentDomain</code>... volatile
+            </dt>
         <dd>
-                        Contains defaults read from the arguments              provided to the application at startup. <br />              Pairs of arguments are used for this, with the              first argument in each pair being the name of a              default (with a hyphen prepended) and the second              argument of the pair being the value of the              default. <br /> NB. In GNUstep special arguments              of the form <code>--GNU-Debug=...</code> are used to              enable debugging. Despite beginning with a hyphen,              these are not treated as default keys.            
+          
+              Contains defaults read from the arguments
+              provided to the application at startup. <br />
+              Pairs of arguments are used for this, with the
+              first argument in each pair being the name of a
+              default (with a hyphen prepended) and the second
+              argument of the pair being the value of the
+              default. <br /> NB. In GNUstep special arguments
+              of the form <code>--GNU-Debug=...</code> are used to
+              enable debugging. Despite beginning with a hyphen,
+              these are not treated as default keys.
+            
         </dd>
-        <dt>              Application (name of the current process)...              persistent            </dt>
+        <dt>
+              Application (name of the current process)...
+              persistent
+            </dt>
         <dd>
-                        Contains application specific defaults, such as              window positions.            
+          
+              Contains application specific defaults, such as
+              window positions.
+            
         </dd>
-        <dt>              <code>NSGlobalDomain</code>... persistent            </dt>
+        <dt>
+              <code>NSGlobalDomain</code>... persistent
+            </dt>
         <dd>
-                        Global defaults applicable to all applications.            
+          
+              Global defaults applicable to all applications.
+            
         </dd>
-        <dt>              Language (name based on users&apos;s language)...              volatile            </dt>
+        <dt>
+              Language (name based on users&apos;s language)...
+              volatile
+            </dt>
         <dd>
-                        Constants that help with localization to the              users&apos;s language.            
+          
+              Constants that help with localization to the
+              users&apos;s language.
+            
         </dd>
         <dt><code>GSConfigDomain</code>... volatile</dt>
         <dd>
-                        Information retrieved from the GNUstep              configuration system. Usually the system              wide and user specific GNUstep.conf files, or from              information compiled in when the base library              was built.            
+          
+              Information retrieved from the GNUstep
+              configuration system. Usually the system
+              wide and user specific GNUstep.conf files, or from
+              information compiled in when the base library
+              was built.
+            
         </dd>
-        <dt>              <code>NSRegistrationDomain</code>... volatile            </dt>
+        <dt>
+              <code>NSRegistrationDomain</code>... volatile
+            </dt>
         <dd>
-                        Temporary defaults set up by the application.            
+          
+              Temporary defaults set up by the application.
+            
         </dd>
       </dl>
-                
+      
+          
     </p>
     <p>
-            The <em>NSLanguages</em> default value is used to set            up the constants for localization. GNUstep will also            look for the <code>LANGUAGES</code> environment            variable if it is not set in the defaults system.            If it exists, it consists of an array of languages that            the user prefers. At least one of the languages should            have a corresponding localization file (typically            located in the <code>Languages</code> directory of            the GNUstep resources).              </p>
+
+            The <em>NSLanguages</em> default value is used to set
+            up the constants for localization. GNUstep will also
+            look for the <code>LANGUAGES</code> environment
+            variable if it is not set in the defaults system.
+            If it exists, it consists of an array of languages that
+            the user prefers. At least one of the languages should
+            have a corresponding localization file (typically
+            located in the <code>Languages</code> directory of
+            the GNUstep resources).
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            As a special extension, on systems that support locales            (e.g. GNU/Linux and Solaris), GNUstep will use            information from the user specified locale, if            the <em>NSLanguages</em> default value is not found.            Typically the locale is specified in the            environment with the <code>LANG</code>            environment variable.              </p>
+
+            As a special extension, on systems that support locales
+            (e.g. GNU/Linux and Solaris), GNUstep will use
+            information from the user specified locale, if
+            the <em>NSLanguages</em> default value is not found.
+            Typically the locale is specified in the
+            environment with the <code>LANG</code>
+            environment variable.
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            The first change to a persistent domain after a            <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">              -synchronize            </a>
-            will cause an NSUserDefaultsDidChangeNotification to            be posted (as will any change caused by reading new            values from disk), so your application can keep            track of changes made to the defaults by other            software.              </p>
+
+            The first change to a persistent domain after a
+            <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">
+              -synchronize
+            </a>
+
+            will cause an NSUserDefaultsDidChangeNotification to
+            be posted (as will any change caused by reading new
+            values from disk), so your application can keep
+            track of changes made to the defaults by other
+            software.
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            NB. The GNUstep implementation differs from the Apple            one in that it is thread-safe while Apple&apos;s (as of            MacOS-X 10.1) is not.              </p>
+
+            NB. The GNUstep implementation differs from the Apple
+            one in that it is thread-safe while Apple&apos;s (as of
+            MacOS-X 10.1) is not.
+              </p>
     <p>
-              
+      
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -138,11 +247,21 @@
     <h3><a name="method$NSUserDefaults+resetStandardUserDefaults">resetStandardUserDefaults&nbsp;</a></h3>
     + (void) <b>resetStandardUserDefaults</b>;<br />
     <div class="availability">
-<b>Availability:</b> MacOS-X 10.0.0</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Resets the shared user defaults object to reflect            the current user ID. Needed by setuid processes which            change the user they are running as. <br /> In            GNUstep you should call            <a rel="gsdoc" href="Functions.html#function$GSSetUserName">              GSSetUserName()            </a>
-            when changing your effective user ID, and that            function will call this function for you.          
+      
+            Resets the shared user defaults object to reflect
+            the current user ID. Needed by setuid processes which
+            change the user they are running as. <br /> In
+            GNUstep you should call
+            <a rel="gsdoc" href="Functions.html#function$GSSetUserName">
+              GSSetUserName()
+            </a>
+
+            when changing your effective user ID, and that
+            function will call this function for you.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -150,11 +269,14 @@
     <h3><a name="method$NSUserDefaults+setUserLanguages$">setUserLanguages:&nbsp;</a></h3>
     + (void) <b>setUserLanguages:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)languages;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Sets the array of user <var>languages</var>            preferences. Places the specified array in the            <em>NSLanguages</em> user default.          
+      
+            Sets the array of user <var>languages</var>
+            preferences. Places the specified array in the
+            <em>NSLanguages</em> user default.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -165,7 +287,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the shared defaults object. If it doesn&apos;t            exist yet, it&apos;s created. The defaults are initialized            for the current user. The search list is guaranteed to            be standard only the first time this method is invoked.            The shared instance is provided as a convenience; other            instances may also be created.          
+      
+            Returns the shared defaults object. If it doesn&apos;t
+            exist yet, it&apos;s created. The defaults are initialized
+            for the current user. The search list is guaranteed to
+            be standard only the first time this method is invoked.
+            The shared instance is provided as a convenience; other
+            instances may also be created.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -173,11 +302,16 @@
     <h3><a name="method$NSUserDefaults+userLanguages">userLanguages&nbsp;</a></h3>
     + (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>userLanguages</b>;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Returns the array of user languages preferences.            Uses the <em>NSLanguages</em> user default if            available, otherwise tries to infer setup from            operating system information etc (in particular,            uses the <em>LANGUAGES</em> environment variable).          
+      
+            Returns the array of user languages preferences.
+            Uses the <em>NSLanguages</em> user default if
+            available, otherwise tries to infer setup from
+            operating system information etc (in particular,
+            uses the <em>LANGUAGES</em> environment variable).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -185,11 +319,20 @@
     <h3><a name="method$NSUserDefaults-addSuiteNamed$">addSuiteNamed:&nbsp;</a></h3>
     - (void) <b>addSuiteNamed:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aName;<br />
     <div class="availability">
-<b>Availability:</b> MacOS-X 10.0.0</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Adds the domain names <var>aName</var> to the search            list of the receiver. <br /> The domain is added after            the application domain. <br /> Suites may be removed            using the            <a rel="gsdoc" href="#method$NSUserDefaults-removeSuiteNamed$">              -removeSuiteNamed:            </a>
-            method.          
+      
+            Adds the domain names <var>aName</var> to the search
+            list of the receiver. <br /> The domain is added after
+            the application domain. <br /> Suites may be removed
+            using the
+            <a rel="gsdoc" href="#method$NSUserDefaults-removeSuiteNamed$">
+              -removeSuiteNamed:
+            </a>
+
+            method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -200,8 +343,15 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Looks up a value for a specified default using            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">              -objectForKey:            </a>
-            and checks that it is an NSArray object. Returns            <code>nil</code> if it is not.          
+      
+            Looks up a value for a specified default using
+            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">
+              -objectForKey:
+            </a>
+
+            and checks that it is an NSArray object. Returns
+            <code>nil</code> if it is not.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -212,8 +362,21 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Looks up a value for a specified default using            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">              -objectForKey:            </a>
-            and returns its boolean representation. <br /> Returns            <code>NO</code> if it is not a boolean. <br /> The            text &apos;yes&apos; or &apos;true&apos; or any non zero numeric value is            considered to be a boolean <code>YES</code>.            Other string values are <code>NO</code>. <br /> NB.            This differs slightly from the documented behavior for            MacOS-X (August 2002) in that the GNUstep version            accepts the string &apos;TRUE&apos; as equivalent to &apos;YES&apos;.          
+      
+            Looks up a value for a specified default using
+            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">
+              -objectForKey:
+            </a>
+
+            and returns its boolean representation. <br /> Returns
+            <code>NO</code> if it is not a boolean. <br /> The
+            text &apos;yes&apos; or &apos;true&apos; or any non zero numeric value is
+            considered to be a boolean <code>YES</code>.
+            Other string values are <code>NO</code>. <br /> NB.
+            This differs slightly from the documented behavior for
+            MacOS-X (August 2002) in that the GNUstep version
+            accepts the string &apos;TRUE&apos; as equivalent to &apos;YES&apos;.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -224,8 +387,15 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Looks up a value for a specified default using            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">              -objectForKey:            </a>
-            and checks that it is an NSData object. Returns            <code>nil</code> if it is not.          
+      
+            Looks up a value for a specified default using
+            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">
+              -objectForKey:
+            </a>
+
+            and checks that it is an NSData object. Returns
+            <code>nil</code> if it is not.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -236,8 +406,15 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Looks up a value for a specified default using            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">              -objectForKey:            </a>
-            and checks that it is an NSDictionary object. Returns            <code>nil</code> if it is not.          
+      
+            Looks up a value for a specified default using
+            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">
+              -objectForKey:
+            </a>
+
+            and checks that it is an NSDictionary object. Returns
+            <code>nil</code> if it is not.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -248,7 +425,11 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a dictionary representing the current state            of the defaults system... this is a merged version of            all the domains in the search list.          
+      
+            Returns a dictionary representing the current state
+            of the defaults system... this is a merged version of
+            all the domains in the search list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -259,8 +440,15 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Looks up a value for a specified default using            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">              -objectForKey:            </a>
-            and checks that it is a <strong>float</strong>. Returns            0.0 if it is not.          
+      
+            Looks up a value for a specified default using
+            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">
+              -objectForKey:
+            </a>
+
+            and checks that it is a <strong>float</strong>. Returns
+            0.0 if it is not.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -271,7 +459,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Initializes defaults for current user calling            initWithUser:          
+      
+            Initializes defaults for current user calling
+            initWithUser:
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -283,7 +474,11 @@
 <br />
 This is a designated initialiser for the class.<br />
     <div class="desc">
-                  Initializes defaults for the specified            <var>path</var>. Returns an object with an empty            search list.          
+      
+            Initializes defaults for the specified
+            <var>path</var>. Returns an object with an empty
+            search list.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -294,7 +489,13 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Initializes defaults for the specified user            calling            <a rel="gsdoc" href="#method$NSUserDefaults-initWithContentsOfFile$">              -initWithContentsOfFile:            </a>
+      
+            Initializes defaults for the specified user
+            calling
+            <a rel="gsdoc" href="#method$NSUserDefaults-initWithContentsOfFile$">
+              -initWithContentsOfFile:
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -306,8 +507,15 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Looks up a value for a specified default using            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">              -objectForKey:            </a>
-            and checks that it is an integer. Returns 0 if it is            not.          
+      
+            Looks up a value for a specified default using
+            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">
+              -objectForKey:
+            </a>
+
+            and returns its integer value or 0 if it is not
+            representable as an integer.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -318,7 +526,13 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Looks up a value for a specified default using. The            lookup is performed by accessing the domains in the            order given in the search list. <br /> Returns            <code>nil</code> if <var>defaultName</var> cannot be            found.          
+      
+            Looks up a value for a specified default using. The
+            lookup is performed by accessing the domains in the
+            order given in the search list. <br /> Returns
+            <code>nil</code> if <var>defaultName</var> cannot be
+            found.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -329,7 +543,10 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the persistent domain specified by            <var>domainName</var>.          
+      
+            Returns the persistent domain specified by
+            <var>domainName</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -340,7 +557,10 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns an array listing the name of all the            persistent domains.          
+      
+            Returns an array listing the name of all the
+            persistent domains.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -351,7 +571,15 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Merges the contents of the dictionary            <var>newVals</var> into the registration domain.            Registration defaults may be added to or            replaced using this method, but may never be            removed. Thus, setting registration defaults at            any point in your program guarantees that the defaults            will be available thereafter.          
+      
+            Merges the contents of the dictionary
+            <var>newVals</var> into the registration domain.
+            Registration defaults may be added to or
+            replaced using this method, but may never be
+            removed. Thus, setting registration defaults at
+            any point in your program guarantees that the defaults
+            will be available thereafter.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -362,7 +590,10 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Removes the default with the specified name from            the application domain.          
+      
+            Removes the default with the specified name from
+            the application domain.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -373,8 +604,18 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Removes the persistent domain specified by            <var>domainName</var> from the user defaults. <br />            Causes a NSUserDefaultsDidChangeNotification to be            posted if this is the first change to a            persistent-domain since the last            <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">              -synchronize            </a>
-            .          
+      
+            Removes the persistent domain specified by
+            <var>domainName</var> from the user defaults. <br />
+            Causes a NSUserDefaultsDidChangeNotification to be
+            posted if this is the first change to a
+            persistent-domain since the last
+            <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">
+              -synchronize
+            </a>
+
+            .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -382,11 +623,18 @@ This is a designated initialiser for the class.<br />
     <h3><a name="method$NSUserDefaults-removeSuiteNamed$">removeSuiteNamed:&nbsp;</a></h3>
     - (void) <b>removeSuiteNamed:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)aName;<br />
     <div class="availability">
-<b>Availability:</b> MacOS-X 10.0.0</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Removes the named domain from the search list of            the receiver. <br /> Suites may be added using the            <a rel="gsdoc" href="#method$NSUserDefaults-addSuiteNamed$">              -addSuiteNamed:            </a>
-            method.          
+      
+            Removes the named domain from the search list of
+            the receiver. <br /> Suites may be added using the
+            <a rel="gsdoc" href="#method$NSUserDefaults-addSuiteNamed$">
+              -addSuiteNamed:
+            </a>
+
+            method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -397,7 +645,10 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Removes the volatile domain specified by            <var>domainName</var> from the user defaults.          
+      
+            Removes the volatile domain specified by
+            <var>domainName</var> from the user defaults.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -408,7 +659,12 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns an array listing the domains searched in            order to look up a value in the defaults system. The            order of the names in the array is the order in which            the domains are searched.          
+      
+            Returns an array listing the domains searched in
+            order to look up a value in the defaults system. The
+            order of the names in the array is the order in which
+            the domains are searched.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -419,8 +675,19 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets a boolean <var>value</var> for            <var>defaultName</var> in the application domain.            <br /> The boolean <var>value</var> is stored as a            string - either <code>YES</code> or <code>NO</code>.            Calls            <a rel="gsdoc" href="#method$NSUserDefaults-setObject$forKey$">              -setObject:forKey:            </a>
-            to make the change.          
+      
+            Sets a boolean <var>value</var> for
+            <var>defaultName</var> in the application domain.
+            <br /> Calls
+            <a rel="gsdoc" href="#method$NSUserDefaults-setObject$forKey$">
+              -setObject:forKey:
+            </a>
+
+            to make the change by storing a boolean
+            <a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>
+
+              instance.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -431,8 +698,19 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets a <strong>float</strong> <var>value</var> for            <var>defaultName</var> in the application domain.            <br /> Calls            <a rel="gsdoc" href="#method$NSUserDefaults-setObject$forKey$">              -setObject:forKey:            </a>
-            to make the change.          
+      
+            Sets a <strong>float</strong> <var>value</var> for
+            <var>defaultName</var> in the application domain.
+            <br /> Calls
+            <a rel="gsdoc" href="#method$NSUserDefaults-setObject$forKey$">
+              -setObject:forKey:
+            </a>
+
+            to make the change by storing a <strong>float</strong>
+            <a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>
+
+              instance.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -443,8 +721,19 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets an integer <var>value</var> for            <var>defaultName</var> in the application domain.            <br /> Calls            <a rel="gsdoc" href="#method$NSUserDefaults-setObject$forKey$">              -setObject:forKey:            </a>
-            to make the change.          
+      
+            Sets an integer <var>value</var> for
+            <var>defaultName</var> in the application domain.
+            <br /> Calls
+            <a rel="gsdoc" href="#method$NSUserDefaults-setObject$forKey$">
+              -setObject:forKey:
+            </a>
+
+            to make the change by storing an intege
+            <a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>
+
+              instance.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -455,15 +744,40 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets an object <var>value</var> for            <var>defaultName</var> in the application domain.            <br /> The <var>defaultName</var> must be a            non-empty string. <br /> The <var>value</var>            must be an instance of one of the            <a rel="gsdoc" href="NSString.html#method$NSString-propertyList">              [NSString -propertyList]            </a>
-            classes. <br />            
+      
+            Sets an object <var>value</var> for
+            <var>defaultName</var> in the application domain.
+            <br /> The <var>defaultName</var> must be a
+            non-empty string. <br /> The <var>value</var>
+            must be an instance of one of the
+            <a rel="gsdoc" href="NSString.html#method$NSString-propertyList">
+              [NSString -propertyList]
+            </a>
+
+            classes. <br />
+            
     </p>
     <p>
-              Causes a NSUserDefaultsDidChangeNotification to be              posted if this is the first change to a              persistent-domain since the last              <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">                -synchronize              </a>
-              .                </p>
+
+              Causes a NSUserDefaultsDidChangeNotification to be
+              posted if this is the first change to a
+              persistent-domain since the last
+              <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">
+                -synchronize
+              </a>
+
+              .
+                </p>
     <p>
-                  If <var>value</var> is <code>nil</code>, this is            equivalent to the            <a rel="gsdoc" href="#method$NSUserDefaults-removeObjectForKey$">              -removeObjectForKey:            </a>
-            method.          
+      
+            If <var>value</var> is <code>nil</code>, this is
+            equivalent to the
+            <a rel="gsdoc" href="#method$NSUserDefaults-removeObjectForKey$">
+              -removeObjectForKey:
+            </a>
+
+            method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -474,8 +788,22 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Replaces the persistent-domain specified by            <var>domainName</var> with <var>domain</var>... a            dictionary containing keys and defaults values.            <br /> Raises an NSInvalidArgumentException if            <var>domainName</var> already exists as a            volatile-domain. <br /> Causes a            NSUserDefaultsDidChangeNotification            to be posted if this is the first change to a            persistent-domain since the last            <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">              -synchronize            </a>
-            .          
+      
+            Replaces the persistent-domain specified by
+            <var>domainName</var> with <var>domain</var>... a
+            dictionary containing keys and defaults values.
+            <br /> Raises an NSInvalidArgumentException if
+            <var>domainName</var> already exists as a
+            volatile-domain. <br /> Causes a
+            NSUserDefaultsDidChangeNotification
+            to be posted if this is the first change to a
+            persistent-domain since the last
+            <a rel="gsdoc" href="#method$NSUserDefaults-synchronize">
+              -synchronize
+            </a>
+
+            .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -486,7 +814,13 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the list of the domains searched in order to look            up a value in the defaults system. The order of the            names in the array is the order in which the domains            are searched. <br /> On lookup, the first match is            used.          
+      
+            Sets the list of the domains searched in order to look
+            up a value in the defaults system. The order of the
+            names in the array is the order in which the domains
+            are searched. <br /> On lookup, the first match is
+            used.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -497,7 +831,14 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the volatile-domain specified by            <var>domainName</var> to <var>domain</var>... a            dictionary containing keys and defaults values.            <br /> Raises an NSInvalidArgumentException if            <var>domainName</var> already exists as either a            volatile-domain or a persistent-domain.          
+      
+            Sets the volatile-domain specified by
+            <var>domainName</var> to <var>domain</var>... a
+            dictionary containing keys and defaults values.
+            <br /> Raises an NSInvalidArgumentException if
+            <var>domainName</var> already exists as either a
+            volatile-domain or a persistent-domain.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -508,8 +849,16 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Calls            <a rel="gsdoc" href="#method$NSUserDefaults-arrayForKey$">              -arrayForKey:            </a>
-            to get an array value for <var>defaultName</var> and            checks that the array contents are string objects...            if not, returns <code>nil</code>.          
+      
+            Calls
+            <a rel="gsdoc" href="#method$NSUserDefaults-arrayForKey$">
+              -arrayForKey:
+            </a>
+
+            to get an array value for <var>defaultName</var> and
+            checks that the array contents are string objects...
+            if not, returns <code>nil</code>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -520,8 +869,15 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Looks up a value for a specified default using            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">              -objectForKey:            </a>
-            and checks that it is an NSString. Returns            <code>nil</code> if it is not.          
+      
+            Looks up a value for a specified default using
+            <a rel="gsdoc" href="#method$NSUserDefaults-objectForKey$">
+              -objectForKey:
+            </a>
+
+            and checks that it is an NSString. Returns
+            <code>nil</code> if it is not.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -532,7 +888,16 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Ensures that the in-memory and on-disk            representations of the defaults are in            sync. You may call this yourself, but probably don&apos;t            need to since it is invoked at intervals whenever a            runloop is running. <br /> If any persistent domain            is changed by reading new values from disk, an            NSUserDefaultsDidChangeNotification            is posted.          
+      
+            Ensures that the in-memory and on-disk
+            representations of the defaults are in
+            sync. You may call this yourself, but probably don&apos;t
+            need to since it is invoked at intervals whenever a
+            runloop is running. <br /> If any persistent domain
+            is changed by reading new values from disk, an
+            NSUserDefaultsDidChangeNotification
+            is posted.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -543,7 +908,10 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the volatile domain specified by            <var>domainName</var>.          
+      
+            Returns the volatile domain specified by
+            <var>domainName</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -554,7 +922,10 @@ This is a designated initialiser for the class.<br />
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns an array listing the name of all the            volatile domains.          
+      
+            Returns an array listing the name of all the
+            volatile domains.
+          
     </div>
     <hr width="25%" align="left" />
 </div>

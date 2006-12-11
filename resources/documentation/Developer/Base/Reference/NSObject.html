@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
     <head>
     <title>NSObject class reference</title>
   </head>
@@ -15,8 +16,9 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Date:</b> 2006-08-13 01:09:31 -0600 (Sun, 13 Aug 2006)</p>
+    <p><b>Date:</b> 2006-11-27 18:20:46 -0700 (Mon, 27 Nov 2006)</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1998 Free Software Foundation, Inc.</p>
+
         <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
@@ -60,7 +62,10 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-          <h1><a name="001000000000">        Software documentation for the NSObject class      </a></h1>
+
+          <h1><a name="001000000000">
+        Software documentation for the NSObject class
+      </a></h1>
     <h2><a name="class$NSObject">NSObject</a></h2>
     <blockquote class="declared">
       <dl>
@@ -78,32 +83,96 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                
+      
+          
     </p>
     <p>
-            <code>NSObject</code> is the root class (a root            class is a class with no superclass) of the GNUstep            base library class hierarchy, so all classes normally            inherit from <code>NSObject</code>. There is an            exception though: <code>NSProxy</code> (which is            used for remote messaging) does not inherit from            <code>NSObject</code>.              </p>
+
+            <code>NSObject</code> is the root class (a root
+            class is a class with no superclass) of the GNUstep
+            base library class hierarchy, so all classes normally
+            inherit from <code>NSObject</code>. There is an
+            exception though: <code>NSProxy</code> (which is
+            used for remote messaging) does not inherit from
+            <code>NSObject</code>.
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            Unless you are really sure of what you are doing,            all your own classes should inherit (directly or            indirectly) from <code>NSObject</code> (or in            special cases from <code>NSProxy</code>).            <code>NSObject</code> provides the basic common            functionality shared by all GNUstep classes            and objects.              </p>
+
+            Unless you are really sure of what you are doing,
+            all your own classes should inherit (directly or
+            indirectly) from <code>NSObject</code> (or in
+            special cases from <code>NSProxy</code>).
+            <code>NSObject</code> provides the basic common
+            functionality shared by all GNUstep classes
+            and objects.
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            The essential methods which must be implemented by all            classes for their instances to be usable within            GNUstep are declared in a separate protocol, which            is the <code>NSObject</code> protocol. Both            <code>NSObject</code> and <code>NSProxy</code>            conform to this protocol, which means all objects            in a GNUstep application will conform to this protocol            (btw, if you don&apos;t find a method of            <code>NSObject</code> you are looking for in this            documentation, make sure you also look into            the documentation for the <code>NSObject</code>            protocol).              </p>
+
+            The essential methods which must be implemented by all
+            classes for their instances to be usable within
+            GNUstep are declared in a separate protocol, which
+            is the <code>NSObject</code> protocol. Both
+            <code>NSObject</code> and <code>NSProxy</code>
+            conform to this protocol, which means all objects
+            in a GNUstep application will conform to this protocol
+            (btw, if you don&apos;t find a method of
+            <code>NSObject</code> you are looking for in this
+            documentation, make sure you also look into
+            the documentation for the <code>NSObject</code>
+            protocol).
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            Theoretically, in special cases you might            need to implement a new root class. If you do, you            need to make sure that your root class conforms (at            least) to the <code>NSObject</code> protocol,            otherwise it will not interact correctly with the            GNUstep framework. Said that, I must note that I            have never seen a case in which a new root class is            needed.              </p>
+
+            Theoretically, in special cases you might
+            need to implement a new root class. If you do, you
+            need to make sure that your root class conforms (at
+            least) to the <code>NSObject</code> protocol,
+            otherwise it will not interact correctly with the
+            GNUstep framework. Said that, I must note that I
+            have never seen a case in which a new root class is
+            needed.
+              </p>
     <p>
-                
+      
+          
     </p>
     <p>
-            <code>NSObject</code> is a root class, which implies            that instance methods of <code>NSObject</code> are            treated in a special way by the Objective-C            runtime. This is an exception to the normal way            messaging works with class and instance methods:            if the Objective-C runtime can&apos;t find a class method for            a class object, as a last resort it looks for an instance            method of the root class with the same name, and            executes it if it finds it. This means that            instance methods of the root class (such as            <code>NSObject</code>) can be performed by class            objects which inherit from that root class ! This            can only happen if the class doesn&apos;t have a class            method with the same name, otherwise that method -            of course - takes the precedence. Because of this            exception, <code>NSObject</code> &apos;s instance            methods are written in such a way that they work            both on <code>NSObject</code> &apos;s instances and on            class objects.              </p>
+
+            <code>NSObject</code> is a root class, which implies
+            that instance methods of <code>NSObject</code> are
+            treated in a special way by the Objective-C
+            runtime. This is an exception to the normal way
+            messaging works with class and instance methods:
+            if the Objective-C runtime can&apos;t find a class method for
+            a class object, as a last resort it looks for an instance
+            method of the root class with the same name, and
+            executes it if it finds it. This means that
+            instance methods of the root class (such as
+            <code>NSObject</code>) can be performed by class
+            objects which inherit from that root class ! This
+            can only happen if the class doesn&apos;t have a class
+            method with the same name, otherwise that method -
+            of course - takes the precedence. Because of this
+            exception, <code>NSObject</code> &apos;s instance
+            methods are written in such a way that they work
+            both on <code>NSObject</code> &apos;s instances and on
+            class objects.
+              </p>
     <p>
-              
+      
+        
     </div>
     <hr width="50%" align="left" />
     <a href="#_NSObject_ivars">Instance Variables</a>
@@ -473,9 +542,23 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Allocates a new instance of the receiver from the            default zone, by invoking            <a rel="gsdoc" href="#method$NSObject+allocWithZone$">              +allocWithZone:            </a>
-            with            <code>              <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">                NSDefaultMallocZone()              </a>
-            </code>            as the zone argument. <br /> Returns the created            instance.          
+      
+            Allocates a new instance of the receiver from the
+            default zone, by invoking
+            <a rel="gsdoc" href="#method$NSObject+allocWithZone$">
+              +allocWithZone:
+            </a>
+
+            with
+            <code>
+              <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">
+                NSDefaultMallocZone()
+              </a>
+
+            </code>
+            as the zone argument. <br /> Returns the created
+            instance.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -486,22 +569,58 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  This is the basic method to create a new instance. It            allocates a new instance of the receiver from the            specified memory zone.            
+      
+            This is the basic method to create a new instance. It
+            allocates a new instance of the receiver from the
+            specified memory zone.
+            
     </p>
     <p>
-              Memory for an instance of the receiver is              allocated; a pointer to this newly created              instance is returned. All instance variables are              set to 0 except the <code>isa</code> pointer which is              set to point to the object class. No initialization              of the instance is performed: it is your              responsibility to initialize the instance              by calling an appropriate <code>init</code> method. If              you are not using the garbage collector, it is also              your responsibility to make sure the returned              instance is destroyed when you finish using it,              by calling the <code>release</code> method to destroy              the instance directly, or by using              <code>autorelease</code> and autorelease pools.                </p>
+
+              Memory for an instance of the receiver is
+              allocated; a pointer to this newly created
+              instance is returned. All instance variables are
+              set to 0 except the <code>isa</code> pointer which is
+              set to point to the object class. No initialization
+              of the instance is performed: it is your
+              responsibility to initialize the instance
+              by calling an appropriate <code>init</code> method. If
+              you are not using the garbage collector, it is also
+              your responsibility to make sure the returned
+              instance is destroyed when you finish using it,
+              by calling the <code>release</code> method to destroy
+              the instance directly, or by using
+              <code>autorelease</code> and autorelease pools.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              You do not normally need to override this method in              subclasses, unless you are implementing a              class which for some reasons silently allocates              instances of another class (this is typically              needed to implement class clusters and similar              design schemes).                </p>
+
+              You do not normally need to override this method in
+              subclasses, unless you are implementing a
+              class which for some reasons silently allocates
+              instances of another class (this is typically
+              needed to implement class clusters and similar
+              design schemes).
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              If you have turned on debugging of object allocation              (by calling the <code>GSDebugAllocationActive</code>              function), this method will also update the              various debugging counts and monitors of              allocated objects, which you can access using              the <code>GSDebugAllocation...</code> functions.                </p>
+
+              If you have turned on debugging of object allocation
+              (by calling the <code>GSDebugAllocationActive</code>
+              function), this method will also update the
+              various debugging counts and monitors of
+              allocated objects, which you can access using
+              the <code>GSDebugAllocation...</code> functions.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -512,7 +631,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the receiver.          
+      
+            Returns the receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -523,8 +644,16 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a string describing the receiving class.            The default implementation gives the name of the class            by calling            <a rel="gsdoc" href="Functions.html#function$NSStringFromClass">              NSStringFromClass()            </a>
-            .          
+      
+            Returns a string describing the receiving class.
+            The default implementation gives the name of the class
+            by calling
+            <a rel="gsdoc" href="Functions.html#function$NSStringFromClass">
+              NSStringFromClass()
+            </a>
+
+            .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -535,9 +664,23 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  This message is sent to a class once just before it is            used for the first time. If class has a superclass,            its implementation of            <a rel="gsdoc" href="#method$NSObject+initialize">              +initialize            </a>
-            is called first. You can implement            <a rel="gsdoc" href="#method$NSObject+initialize">              +initialize            </a>
-            in your own class if you need to. NSObject&apos;s            implementation handles essential root object            and base library initialization.          
+      
+            This message is sent to a class once just before it is
+            used for the first time. If class has a superclass,
+            its implementation of
+            <a rel="gsdoc" href="#method$NSObject+initialize">
+              +initialize
+            </a>
+
+            is called first. You can implement
+            <a rel="gsdoc" href="#method$NSObject+initialize">
+              +initialize
+            </a>
+
+            in your own class if you need to. NSObject&apos;s
+            implementation handles essential root object
+            and base library initialization.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -548,7 +691,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a pointer to the C function implementing            the method used to respond to messages with            <var>aSelector</var> by instances of the receiving            class. <br /> Raises NSInvalidArgumentException if            given a null selector.          
+      
+            Returns a pointer to the C function implementing
+            the method used to respond to messages with
+            <var>aSelector</var> by instances of the receiving
+            class. <br /> Raises NSInvalidArgumentException if
+            given a null selector.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -559,7 +708,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a pointer to the C function implementing            the method used to respond to messages with            <var>aSelector</var> which are sent to instances of            the receiving class. <br /> Raises            NSInvalidArgumentException if            given a null selector.          
+      
+            Returns a pointer to the C function implementing
+            the method used to respond to messages with
+            <var>aSelector</var> which are sent to instances of
+            the receiving class. <br /> Raises
+            NSInvalidArgumentException if
+            given a null selector.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -570,8 +726,21 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a flag to say if instances of the receiver            class will respond to the specified selector. This            ignores situations where a subclass implements            <a rel="gsdoc" href="#method$NSObject-forwardInvocation$">              -forwardInvocation:            </a>
-            to respond to selectors not normally handled... in these            cases the subclass may override this method to handle            it. <br /> If given a null selector, raises            NSInvalidArgumentException when            in MacOS-X compatibility more, or returns            <code>NO</code> otherwise.          
+      
+            Returns a flag to say if instances of the receiver
+            class will respond to the specified selector. This
+            ignores situations where a subclass implements
+            <a rel="gsdoc" href="#method$NSObject-forwardInvocation$">
+              -forwardInvocation:
+            </a>
+
+            to respond to selectors not normally handled... in these
+            cases the subclass may override this method to handle
+            it. <br /> If given a null selector, raises
+            NSInvalidArgumentException when
+            in MacOS-X compatibility more, or returns
+            <code>NO</code> otherwise.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -582,7 +751,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns <code>YES</code> if the receiver is            <var>aClass</var> or a subclass of <var>aClass</var>.          
+      
+            Returns <code>YES</code> if the receiver is
+            <var>aClass</var> or a subclass of <var>aClass</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -593,67 +765,129 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              This method is a short-hand for alloc followed by              init, that is,                </p>
+
+              This method is a short-hand for alloc followed by
+              init, that is,
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
 <code>NSObject *object = [NSObject new];</code>    </p>
     <p>
-                  is exactly the same as            
+      
+            is exactly the same as
+            
     </p>
     <p>
-              <code>                NSObject *object = [[NSObject alloc] init];              </code>                </p>
+
+              <code>
+                NSObject *object = [[NSObject alloc] init];
+              </code>
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              This is a general convention: all              <code>new...</code> methods are supposed to return              a newly allocated and initialized instance, as would be              generated by an <code>alloc</code> method              followed by a corresponding <code>init...</code>              method. Please note that if you are not using a              garbage collector, this means that instances              generated by the <code>new...</code> methods              are not autoreleased, that is, you are responsible              for releasing (autoreleasing) the instances yourself.              So when you use <code>new</code> you typically do              something like:                </p>
+
+              This is a general convention: all
+              <code>new...</code> methods are supposed to return
+              a newly allocated and initialized instance, as would be
+              generated by an <code>alloc</code> method
+              followed by a corresponding <code>init...</code>
+              method. Please note that if you are not using a
+              garbage collector, this means that instances
+              generated by the <code>new...</code> methods
+              are not autoreleased, that is, you are responsible
+              for releasing (autoreleasing) the instances yourself.
+              So when you use <code>new</code> you typically do
+              something like:
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              <code>                NSMutableArray *array = AUTORELEASE                ([NSMutableArray new]);              </code>                </p>
+
+              <code>
+                NSMutableArray *array = AUTORELEASE
+                ([NSMutableArray new]);
+              </code>
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              You do not normally need to override <code>new</code>              in subclasses, because if you override              <code>init</code> (and optionally              <code>allocWithZone:</code> if you really need),              <code>new</code> will automatically use your              subclass methods.                </p>
+
+              You do not normally need to override <code>new</code>
+              in subclasses, because if you override
+              <code>init</code> (and optionally
+              <code>allocWithZone:</code> if you really need),
+              <code>new</code> will automatically use your
+              subclass methods.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              You might need instead to define new              <code>new...</code> methods specific to your              subclass to match any <code>init...</code>              specific to your subclass. For example, if your              subclass defines an instance method                </p>
+
+              You might need instead to define new
+              <code>new...</code> methods specific to your
+              subclass to match any <code>init...</code>
+              specific to your subclass. For example, if your
+              subclass defines an instance method
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
 <code>initWithName:</code>    </p>
     <p>
-                  
+      
+            
     </p>
     <p>
 it might be handy for you to have a class method    </p>
     <p>
-                  
+      
+            
     </p>
     <p>
 <code>newWithName:</code>    </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              which combines <code>alloc</code> and              <code>initWithName:</code>. You would implement it              as follows:                </p>
+
+              which combines <code>alloc</code> and
+              <code>initWithName:</code>. You would implement it
+              as follows:
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              <code>                + (<strong>id</strong>) newWithName: (NSString                *)aName {return [[self alloc] initWithName:                aName];}              </code>                </p>
+
+              <code>
+                + (<strong>id</strong>) newWithName: (NSString
+                *)aName {return [[self alloc] initWithName:
+                aName];}
+              </code>
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -664,7 +898,11 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets up the ObjC runtime so that the receiver is used            wherever code calls for <var>aClassObject</var> to            be used.          
+      
+            Sets up the ObjC runtime so that the receiver is used
+            wherever code calls for <var>aClassObject</var> to
+            be used.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -672,11 +910,13 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject+requiresTypedMemory">requiresTypedMemory&nbsp;</a></h3>
     + (BOOL) <b>requiresTypedMemory</b>;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  A utility method used when garbage collection is enabled.            Can be ignored.          
+      
+            A utility method used when garbage collection is enabled.
+            Can be ignored.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -687,7 +927,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets the version number of the receiving class. Should            be nonnegative.          
+      
+            Sets the version number of the receiving class. Should
+            be nonnegative.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -698,7 +941,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the super class from which the receiver was            derived.          
+      
+            Returns the super class from which the receiver was
+            derived.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -709,7 +955,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the version number of the receiving class.            This will default to a number assigned by the            Objective C compiler if [NSObject -setVersion]            has not been called.          
+      
+            Returns the version number of the receiving class.
+            This will default to a number assigned by the
+            Objective C compiler if [NSObject -setVersion]
+            has not been called.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -720,9 +971,18 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Adds the receiver to the current autorelease pool, so            that it will be sent a            <a rel="gsdoc" href="#method$NSObject-release">              -release            </a>
-            message when the pool is destroyed. <br /> Returns            the receiver. <br /> In GNUstep, the            <a rel="gsdoc" href="#method$NSObject+enableDoubleReleaseCheck$">[NSObject +enableDoubleReleaseCheck:]</a>
- method may be used to turn on checking for ratain/release errors in this method.          
+      
+            Adds the receiver to the current autorelease pool, so
+            that it will be sent a
+            <a rel="gsdoc" href="#method$NSObject-release">
+              -release
+            </a>
+
+            message when the pool is destroyed. <br /> Returns
+            the receiver. <br /> In GNUstep, the
+            <a rel="gsdoc" href="#method$NSObject+enableDoubleReleaseCheck$">[NSObject +enableDoubleReleaseCheck:]</a>
+ method may be used to turn on checking for retain/release errors in this method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -733,7 +993,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Called after the receiver has been created by            decoding some sort of archive. Returns self.            Subclasses may override this to perform some            special initialisation upon being decoded.          
+      
+            Called after the receiver has been created by
+            decoding some sort of archive. Returns self.
+            Subclasses may override this to perform some
+            special initialisation upon being decoded.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -744,7 +1009,15 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the class of which the receiver is an            instance. <br /> The default implementation            returns the private <code>isa</code> instance            variable of NSObject, which is used to store a            pointer to the objects class. <br /> NB. When            NSZombie is enabled (see NSDebug.h) this pointer            is changed upon object deallocation.          
+      
+            Returns the class of which the receiver is an
+            instance. <br /> The default implementation
+            returns the private <code>isa</code> instance
+            variable of NSObject, which is used to store a
+            pointer to the objects class. <br /> NB. When
+            NSZombie is enabled (see NSDebug.h) this pointer
+            is changed upon object deallocation.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -755,9 +1028,18 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Override to substitute class when an instance is            being archived by an            <a rel="gsdoc" href="NSArchiver.html#class$NSArchiver">NSArchiver</a>
-              . Default implementation returns              <a rel="gsdoc" href="#method$NSObject-classForCoder">                -classForCoder              </a>
-              .          
+      
+            Override to substitute class when an instance is
+            being archived by an
+            <a rel="gsdoc" href="NSArchiver.html#class$NSArchiver">NSArchiver</a>
+
+              . Default implementation returns
+              <a rel="gsdoc" href="#method$NSObject-classForCoder">
+                -classForCoder
+              </a>
+
+              .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -768,8 +1050,14 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Override to substitute class when an instance is            being serialized by an            <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>
-              . Default implementation returns              <code>[self class]</code> (no substitution).          
+      
+            Override to substitute class when an instance is
+            being serialized by an
+            <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>
+
+              . Default implementation returns
+              <code>[self class]</code> (no substitution).
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -780,8 +1068,16 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
-                  Returns the name of the class of the receiving            object by using the            <a rel="gsdoc" href="Functions.html#function$NSStringFromClass">              NSStringFromClass()            </a>
-            function. <br /> This is a MacOS-X addition for            apple scripting, which is also generally useful.          
+      
+            Returns the name of the class of the receiving
+            object by using the
+            <a rel="gsdoc" href="Functions.html#function$NSStringFromClass">
+              NSStringFromClass()
+            </a>
+
+            function. <br /> This is a MacOS-X addition for
+            apple scripting, which is also generally useful.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -792,7 +1088,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a flag to say whether the class of the            receiver conforms to <var>aProtocol</var>.          
+      
+            Returns a flag to say whether the class of the
+            receiver conforms to <var>aProtocol</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -803,8 +1102,18 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Creates and returns a copy of the receiver by            calling            <a rel="gsdoc" href="#method$(NSCopying)-copyWithZone$">              -copyWithZone:            </a>
-            passing            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">              NSDefaultMallocZone()            </a>
+      
+            Creates and returns a copy of the receiver by
+            calling
+            <a rel="gsdoc" href="#method$(NSCopying)-copyWithZone$">
+              -copyWithZone:
+            </a>
+
+            passing
+            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">
+              NSDefaultMallocZone()
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -816,48 +1125,140 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Deallocates the receiver by calling            <a rel="gsdoc" href="Functions.html#function$NSDeallocateObject">              NSDeallocateObject()            </a>
-            with self as the argument. <br />            
+      
+            Deallocates the receiver by calling
+            <a rel="gsdoc" href="Functions.html#function$NSDeallocateObject">
+              NSDeallocateObject()
+            </a>
+
+            with self as the argument. <br />
+            
     </p>
     <p>
-              You should normally call the superclass              implementation of this method when you              override it in a subclass, or the memory              occupied by your object will not be released.                </p>
+
+              You should normally call the superclass
+              implementation of this method when you
+              override it in a subclass, or the memory
+              occupied by your object will not be released.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              <code>NSObject</code> &apos;s implementation of this              method destroys the receiver, by returning the              memory allocated to the receiver to the system.              After this method has been called on an instance,              you must not refer the instance in any way, because              it does not exist any longer. If you do, it is a bug              and your program might even crash with a segmentation              fault.                </p>
+
+              <code>NSObject</code> &apos;s implementation of this
+              method destroys the receiver, by returning the
+              memory allocated to the receiver to the system.
+              After this method has been called on an instance,
+              you must not refer the instance in any way, because
+              it does not exist any longer. If you do, it is a bug
+              and your program might even crash with a segmentation
+              fault.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              If you have turned on the debugging facilities for              instance allocation, <code>NSObject</code> &apos;s              implementation of this method will also              update the various counts and monitors of              allocated instances (see the              <code>GSDebugAllocation...</code> functions for              more info).                </p>
+
+              If you have turned on the debugging facilities for
+              instance allocation, <code>NSObject</code> &apos;s
+              implementation of this method will also
+              update the various counts and monitors of
+              allocated instances (see the
+              <code>GSDebugAllocation...</code> functions for
+              more info).
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              Normally you are supposed to manage the memory              taken by objects by using the high level interface              provided by the <code>retain</code>,              <code>release</code> and <code>autorelease</code>              methods (or better by the corresponding macros              <code>RETAIN</code>, <code>RELEASE</code> and              <code>AUTORELEASE</code>), and by autorelease              pools and such; whenever the release/autorelease              mechanism determines that an object is no              longer needed (which happens when its retain count              reaches 0), it will call the <code>dealloc</code>              method to actually deallocate the object. This              means that normally, you should not need to call              <code>dealloc</code> directly as the gnustep base              library automatically calls it for you when the              retain count of an object reaches 0.                </p>
+
+              Normally you are supposed to manage the memory
+              taken by objects by using the high level interface
+              provided by the <code>retain</code>,
+              <code>release</code> and <code>autorelease</code>
+              methods (or better by the corresponding macros
+              <code>RETAIN</code>, <code>RELEASE</code> and
+              <code>AUTORELEASE</code>), and by autorelease
+              pools and such; whenever the release/autorelease
+              mechanism determines that an object is no
+              longer needed (which happens when its retain count
+              reaches 0), it will call the <code>dealloc</code>
+              method to actually deallocate the object. This
+              means that normally, you should not need to call
+              <code>dealloc</code> directly as the gnustep base
+              library automatically calls it for you when the
+              retain count of an object reaches 0.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              Because the <code>dealloc</code> method will be              called when an instance is being destroyed, if              instances of your subclass use objects or              resources (as it happens for most useful              classes), you must override              <code>dealloc</code> in subclasses to release all              objects and resources which are used by the              instance, otherwise these objects and resources              would be leaked. In the subclass implementation,              you should first release all your subclass specific              objects and resources, and then invoke super&apos;s              implementation (which will do the same,              and so on up in the class hierarchy to              <code>NSObject</code> &apos;s implementation, which              finally destroys the object). Here is an example              of the implementation of <code>dealloc</code> for a              subclass whose instances have a single instance              variable <code>name</code> which needs to be              released when an instance is deallocated:                </p>
+
+              Because the <code>dealloc</code> method will be
+              called when an instance is being destroyed, if
+              instances of your subclass use objects or
+              resources (as it happens for most useful
+              classes), you must override
+              <code>dealloc</code> in subclasses to release all
+              objects and resources which are used by the
+              instance, otherwise these objects and resources
+              would be leaked. In the subclass implementation,
+              you should first release all your subclass specific
+              objects and resources, and then invoke super&apos;s
+              implementation (which will do the same,
+              and so on up in the class hierarchy to
+              <code>NSObject</code> &apos;s implementation, which
+              finally destroys the object). Here is an example
+              of the implementation of <code>dealloc</code> for a
+              subclass whose instances have a single instance
+              variable <code>name</code> which needs to be
+              released when an instance is deallocated:
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              <code>                - (<strong>void</strong>) dealloc {RELEASE (name);                [super dealloc];}              </code>                </p>
+
+              <code>
+                - (<strong>void</strong>) dealloc {RELEASE (name);
+                [super dealloc];}
+              </code>
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              <code>dealloc</code> might contain code to release              not only objects, but also other resources, such as              open files, network connections, raw memory              allocated in other ways, etc.                </p>
+
+              <code>dealloc</code> might contain code to release
+              not only objects, but also other resources, such as
+              open files, network connections, raw memory
+              allocated in other ways, etc.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              If you have allocated the memory using a non-standard              mechanism, you will not call the superclass              (NSObject) implementation of the method as you              will need to handle the deallocation specially.              <br /> In some circumstances, an object may wish              to prevent itself from being deallocated, it can do              this simply be refraining from calling the              superclass implementation.                </p>
+
+              If you have allocated the memory using a non-standard
+              mechanism, you will not call the superclass
+              (NSObject) implementation of the method as you
+              will need to handle the deallocation specially.
+              <br /> In some circumstances, an object may wish
+              to prevent itself from being deallocated, it can do
+              this simply be refraining from calling the
+              superclass implementation.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -868,7 +1269,11 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a string describing the receiver. The            default implementation gives the class and memory            location of the receiver.          
+      
+            Returns a string describing the receiver. The
+            default implementation gives the class and memory
+            location of the receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -879,7 +1284,11 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Raises an invalid argument exception providing            information about the receivers inability to            handle <var>aSelector</var>.          
+      
+            Raises an invalid argument exception providing
+            information about the receivers inability to
+            handle <var>aSelector</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -890,7 +1299,15 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  This method is called automatically to handle a            message sent to the receiver for which the            receivers class has no method. <br /> The default            implementation calls            <a rel="gsdoc" href="#method$NSObject-doesNotRecognizeSelector$">              -doesNotRecognizeSelector:            </a>
+      
+            This method is called automatically to handle a
+            message sent to the receiver for which the
+            receivers class has no method. <br /> The default
+            implementation calls
+            <a rel="gsdoc" href="#method$NSObject-doesNotRecognizeSelector$">
+              -doesNotRecognizeSelector:
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -902,9 +1319,24 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the hash of the receiver. Subclasses should            ensure that their implementations of this method            obey the rule that if the            <a rel="gsdoc" href="#method$NSObject-isEqual$">              -isEqual:            </a>
-            method returns <code>YES</code> for two instances of            the class, the            <a rel="gsdoc" href="#method$NSObject-hash">              -hash            </a>
-            method returns the same value for both instances.            <br /> The default implementation returns a value            based on the address of the instance.          
+      
+            Returns the hash of the receiver. Subclasses should
+            ensure that their implementations of this method
+            obey the rule that if the
+            <a rel="gsdoc" href="#method$NSObject-isEqual$">
+              -isEqual:
+            </a>
+
+            method returns <code>YES</code> for two instances of
+            the class, the
+            <a rel="gsdoc" href="#method$NSObject-hash">
+              -hash
+            </a>
+
+            method returns the same value for both instances.
+            <br /> The default implementation returns a value
+            based on the address of the instance.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -915,7 +1347,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Initialises the receiver... the NSObject            implementation simply returns self.          
+      
+            Initialises the receiver... the NSObject
+            implementation simply returns self.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -926,8 +1361,20 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Tests <var>anObject</var> and the receiver for            equality. The default implementation considers            two objects to be equal only if they are the same            object (ie occupy the same memory location). <br />            If a subclass overrides this method, it should also            override the            <a rel="gsdoc" href="#method$NSObject-hash">              -hash            </a>
-            method so that if two objects are equal they both            have the same hash.          
+      
+            Tests <var>anObject</var> and the receiver for
+            equality. The default implementation considers
+            two objects to be equal only if they are the same
+            object (ie occupy the same memory location). <br />
+            If a subclass overrides this method, it should also
+            override the
+            <a rel="gsdoc" href="#method$NSObject-hash">
+              -hash
+            </a>
+
+            method so that if two objects are equal they both
+            have the same hash.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -938,7 +1385,11 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns <code>YES</code> if the class of the            receiver is either the same as <var>aClass</var>            or is derived from (a subclass of) <var>aClass</var>.          
+      
+            Returns <code>YES</code> if the class of the
+            receiver is either the same as <var>aClass</var>
+            or is derived from (a subclass of) <var>aClass</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -949,7 +1400,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns <code>YES</code> if the class of the            receiver is <var>aClass</var>          
+      
+            Returns <code>YES</code> if the class of the
+            receiver is <var>aClass</var>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -960,7 +1414,13 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a flag to differentiate between &apos;true&apos;            objects, and objects which are proxies for other            objects (ie they forward messages to the other            objects). <br /> The default implementation            returns <code>NO</code>.          
+      
+            Returns a flag to differentiate between &apos;true&apos;
+            objects, and objects which are proxies for other
+            objects (ie they forward messages to the other
+            objects). <br /> The default implementation
+            returns <code>NO</code>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -971,7 +1431,13 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a pointer to the C function implementing            the method used to respond to messages with            <var>aSelector</var>. <br /> Raises            NSInvalidArgumentException if            given a null selector.          
+      
+            Returns a pointer to the C function implementing
+            the method used to respond to messages with
+            <var>aSelector</var>. <br /> Raises
+            NSInvalidArgumentException if
+            given a null selector.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -982,7 +1448,13 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the method signature describing how the            receiver would handle a message with            <var>aSelector</var>. <br /> Raises            NSInvalidArgumentException if            given a null selector.          
+      
+            Returns the method signature describing how the
+            receiver would handle a message with
+            <var>aSelector</var>. <br /> Raises
+            NSInvalidArgumentException if
+            given a null selector.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -993,9 +1465,20 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Creates and returns a mutable copy of the receiver            by calling            <a rel="gsdoc" href="#method$(NSMutableCopying)-mutableCopyWithZone$">              -mutableCopyWithZone:            </a>
-            passing            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">              NSDefaultMallocZone()            </a>
-            .          
+      
+            Creates and returns a mutable copy of the receiver
+            by calling
+            <a rel="gsdoc" href="#method$(NSMutableCopying)-mutableCopyWithZone$">
+              -mutableCopyWithZone:
+            </a>
+
+            passing
+            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">
+              NSDefaultMallocZone()
+            </a>
+
+            .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1006,7 +1489,15 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Causes the receiver to execute the method            implementation corresponding to            <var>aSelector</var> and returns the result. <br />            The method must be one which takes no arguments and            returns an object. <br /> Raises            NSInvalidArgumentException if            given a null selector.          
+      
+            Causes the receiver to execute the method
+            implementation corresponding to
+            <var>aSelector</var> and returns the result. <br />
+            The method must be one which takes no arguments and
+            returns an object. <br /> Raises
+            NSInvalidArgumentException if
+            given a null selector.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1017,7 +1508,15 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Causes the receiver to execute the method            implementation corresponding to            <var>aSelector</var> and returns the result. <br />            The method must be one which takes one argument and            returns an object. <br /> Raises            NSInvalidArgumentException if            given a null selector.          
+      
+            Causes the receiver to execute the method
+            implementation corresponding to
+            <var>aSelector</var> and returns the result. <br />
+            The method must be one which takes one argument and
+            returns an object. <br /> Raises
+            NSInvalidArgumentException if
+            given a null selector.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1028,7 +1527,15 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Causes the receiver to execute the method            implementation corresponding to            <var>aSelector</var> and returns the result. <br />            The method must be one which takes two arguments and            returns an object. <br /> Raises            NSInvalidArgumentException if            given a null selector.          
+      
+            Causes the receiver to execute the method
+            implementation corresponding to
+            <var>aSelector</var> and returns the result. <br />
+            The method must be one which takes two arguments and
+            returns an object. <br /> Raises
+            NSInvalidArgumentException if
+            given a null selector.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1039,9 +1546,23 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Decrements the retain count for the receiver if            greater than zero, otherwise calls the dealloc            method instead. <br /> The default implementation            calls the            <a rel="gsdoc" href="Functions.html#function$NSDecrementExtraRefCountWasZero">              NSDecrementExtraRefCountWasZero()            </a>
-            function to test the extra reference count for the            receiver (and decrement it if non-zero) - if the            extra reference count is zero then the retain count            is one, and the dealloc method is called. <br /> In            GNUstep, the            <a rel="gsdoc" href="#method$NSObject+enableDoubleReleaseCheck$">[NSObject +enableDoubleReleaseCheck:]</a>
- method may be used to turn on checking for ratain/release errors in this method.          
+      
+            Decrements the retain count for the receiver if
+            greater than zero, otherwise calls the dealloc
+            method instead. <br /> The default implementation
+            calls the
+            <a rel="gsdoc" href="Functions.html#function$NSDecrementExtraRefCountWasZero">
+              NSDecrementExtraRefCountWasZero()
+            </a>
+
+            function to test the extra reference count for the
+            receiver (and decrement it if non-zero) - if the
+            extra reference count is zero then the retain count
+            is one, and the dealloc method is called. <br /> In
+            GNUstep, the
+            <a rel="gsdoc" href="#method$NSObject+enableDoubleReleaseCheck$">[NSObject +enableDoubleReleaseCheck:]</a>
+ method may be used to turn on checking for ratain/release errors in this method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1052,9 +1573,18 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Override to substitute another object for this            instance when being archived by given            <a rel="gsdoc" href="NSArchiver.html#class$NSArchiver">NSArchiver</a>
-              . Default implementation returns              <a rel="gsdoc" href="#method$NSObject-replacementObjectForCoder$">                -replacementObjectForCoder:              </a>
-              .          
+      
+            Override to substitute another object for this
+            instance when being archived by given
+            <a rel="gsdoc" href="NSArchiver.html#class$NSArchiver">NSArchiver</a>
+
+              . Default implementation returns
+              <a rel="gsdoc" href="#method$NSObject-replacementObjectForCoder$">
+                -replacementObjectForCoder:
+              </a>
+
+              .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1065,8 +1595,13 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Override to substitute another object for this            instance when being serialized by given            <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>
-              . Default implementation returns <code>self</code>.          
+      
+            Override to substitute another object for this
+            instance when being serialized by given
+            <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>
+
+              . Default implementation returns <code>self</code>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1077,8 +1612,21 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a flag to say if the receiver will respond            to the specified selector. This ignores situations where            a subclass implements            <a rel="gsdoc" href="#method$NSObject-forwardInvocation$">              -forwardInvocation:            </a>
-            to respond to selectors not normally handled... in these            cases the subclass may override this method to handle            it. <br /> If given a null selector, raises            NSInvalidArgumentException when            in MacOS-X compatibility more, or returns            <code>NO</code> otherwise.          
+      
+            Returns a flag to say if the receiver will respond
+            to the specified selector. This ignores situations where
+            a subclass implements
+            <a rel="gsdoc" href="#method$NSObject-forwardInvocation$">
+              -forwardInvocation:
+            </a>
+
+            to respond to selectors not normally handled... in these
+            cases the subclass may override this method to handle
+            it. <br /> If given a null selector, raises
+            NSInvalidArgumentException when
+            in MacOS-X compatibility more, or returns
+            <code>NO</code> otherwise.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1089,7 +1637,14 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Increments the reference count and returns the            receiver. <br /> The default implementation does            this by calling            <a rel="gsdoc" href="Functions.html#function$NSIncrementExtraRefCount">              NSIncrementExtraRefCount()            </a>
+      
+            Increments the reference count and returns the
+            receiver. <br /> The default implementation does
+            this by calling
+            <a rel="gsdoc" href="Functions.html#function$NSIncrementExtraRefCount">
+              NSIncrementExtraRefCount()
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1101,8 +1656,20 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the reference count for the receiver. Each            instance has an implicit reference count of 1, and            has an &apos;extra reference count&apos; returned by the            <a rel="gsdoc" href="Functions.html#function$NSExtraRefCount">              NSExtraRefCount()            </a>
-            function, so the value returned by this method is            always greater than zero. <br /> By convention,            objects which should (or can) never be deallocated            return the maximum <strong>unsigned</strong> integer            value.          
+      
+            Returns the reference count for the receiver. Each
+            instance has an implicit reference count of 1, and
+            has an &apos;extra reference count&apos; returned by the
+            <a rel="gsdoc" href="Functions.html#function$NSExtraRefCount">
+              NSExtraRefCount()
+            </a>
+
+            function, so the value returned by this method is
+            always greater than zero. <br /> By convention,
+            objects which should (or can) never be deallocated
+            return the maximum <strong>unsigned</strong> integer
+            value.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1113,7 +1680,9 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the receiver.          
+      
+            Returns the receiver.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1124,7 +1693,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the super class from which the receivers            class was derived.          
+      
+            Returns the super class from which the receivers
+            class was derived.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1135,7 +1707,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns the memory allocation zone in which the            receiver is located.          
+      
+            Returns the memory allocation zone in which the
+            receiver is located.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1143,13 +1718,28 @@ it might be handy for you to have a class method    </p>
     <h2>Instance Variables for NSObject Class</h2>
     <h3><a name="ivariable$NSObject*isa">isa</a></h3>
     @protected Class <b>isa</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  Points to instance&apos;s class. Used by runtime to            access method implementations, etc.. Set in            <a rel="gsdoc" href="#method$NSObject+alloc">              +alloc            </a>
-            , Unlike other instance variables, which are cleared            there.          
+      
+            Points to instance&apos;s class. Used by runtime to
+            access method implementations, etc.. Set in
+            <a rel="gsdoc" href="#method$NSObject+alloc">
+              +alloc
+            </a>
+
+            , Unlike other instance variables, which are cleared
+            there.
+          
     </div>
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
-          <h1><a name="002000000000">        Software documentation for the NSObject(GNUstep)        category      </a></h1>
+
+          <h1><a name="002000000000">
+        Software documentation for the NSObject(GNUstep)
+        category
+      </a></h1>
     <h2><a rel="gsdoc" href="#class$NSObject">NSObject</a>(<a name="category$NSObject(GNUstep)">GNUstep</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -1158,11 +1748,13 @@ it might be handy for you to have a class method    </p>
       </dl>
     </blockquote>
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                Some non-standard extensions mainly needed for backwards          compatibility and internal utility reasons.        
+      
+          Some non-standard extensions mainly needed for backwards
+          compatibility and internal utility reasons.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1180,11 +1772,12 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GNUstep)+autoreleaseClass">autoreleaseClass&nbsp;</a></h3>
     + (Class) <b>autoreleaseClass</b>;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  returns the class used to autorelease objects.          
+      
+            returns the class used to autorelease objects.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1192,28 +1785,56 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GNUstep)+enableDoubleReleaseCheck$">enableDoubleReleaseCheck:&nbsp;</a></h3>
     + (void) <b>enableDoubleReleaseCheck:</b> (BOOL)enable;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Enables runtime checking of            retain/release/autorelease            operations. <br />            
+      
+            Enables runtime checking of
+            retain/release/autorelease
+            operations. <br />
+            
     </p>
     <p>
-              Whenever either              <a rel="gsdoc" href="#method$NSObject-autorelease">                -autorelease              </a>
+
+              Whenever either
+              <a rel="gsdoc" href="#method$NSObject-autorelease">
+                -autorelease
+              </a>
+
               or <a rel="gsdoc" href="#method$NSObject-release">-release</a>
- is              called, the contents of any autorelease pools              will be checked to see if there are more outstanding              release operations than the objects retain count.              In which case an exception is raised to say that the              object is released too many times.                </p>
+ is
+              called, the contents of any autorelease pools
+              will be checked to see if there are more outstanding
+              release operations than the objects retain count.
+              In which case an exception is raised to say that the
+              object is released too many times.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              <strong>Beware</strong>, since this feature              entails examining all active autorelease pools              every time an object is released or autoreleased,              it can cause a massive performance degradation... it              should only be enabled for debugging.                </p>
+
+              <strong>Beware</strong>, since this feature
+              entails examining all active autorelease pools
+              every time an object is released or autoreleased,
+              it can cause a massive performance degradation... it
+              should only be enabled for debugging.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              When you are having memory allocation problems, it              may make more sense to look at the memory allocation              debugging functions documented in NSDebug.h, or              use the NSZombie features.                </p>
+
+              When you are having memory allocation problems, it
+              may make more sense to look at the memory allocation
+              debugging functions documented in NSDebug.h, or
+              use the NSZombie features.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1221,11 +1842,13 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GNUstep)+setAutoreleaseClass$">setAutoreleaseClass:&nbsp;</a></h3>
     + (void) <b>setAutoreleaseClass:</b> (Class)aClass;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Called to change the class used for autoreleasing            objects.          
+      
+            Called to change the class used for autoreleasing
+            objects.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1233,11 +1856,12 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GNUstep)-isInstance">isInstance&nbsp;</a></h3>
     - (BOOL) <b>isInstance</b>;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  <em>Description forthcoming.</em>          
+      
+            <em>Description forthcoming.</em>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1245,11 +1869,23 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GNUstep)-makeImmutableCopyOnFail$">makeImmutableCopyOnFail:&nbsp;</a></h3>
     - (id) <b>makeImmutableCopyOnFail:</b> (BOOL)force;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Transmutes the receiver into an immutable            version of the same object and returns the result.            <br /> If the receiver is not a mutable object or            cannot be simply transmuted, then this method either            returns the receiver unchanged or, if the            <var>force</var> flag is set to <code>YES</code>,            returns an autoreleased copy of the receiver.            <br /> Mutable classes should override this default            implementation. <br /> This method is used            in methods which are declared to return immutable            objects (eg. an NSArray), but which create and            build mutable ones internally.          
+      
+            Transmutes the receiver into an immutable
+            version of the same object and returns the result.
+            <br /> If the receiver is not a mutable object or
+            cannot be simply transmuted, then this method either
+            returns the receiver unchanged or, if the
+            <var>force</var> flag is set to <code>YES</code>,
+            returns an autoreleased copy of the receiver.
+            <br /> Mutable classes should override this default
+            implementation. <br /> This method is used
+            in methods which are declared to return immutable
+            objects (eg. an NSArray), but which create and
+            build mutable ones internally.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1257,11 +1893,14 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GNUstep)-read$">read:&nbsp;</a></h3>
     - (id) <b>read:</b> (TypedStream*)aStream;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Originally used to read the instance variables            declared in this particular part of the object            from a stream. Currently stubbed out.          
+      
+            Originally used to read the instance variables
+            declared in this particular part of the object
+            from a stream. Currently stubbed out.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1269,11 +1908,17 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GNUstep)-transmuteClassTo$">transmuteClassTo:&nbsp;</a></h3>
     - (Class) <b>transmuteClassTo:</b> (Class)aClassObject;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Changes the class of the receiver (the &apos;isa&apos;            pointer) to be <var>aClassObject</var>, but only            if the receiver is an instance of a subclass of            <var>aClassObject</var> which has not added extra            instance variables. <br /> Returns zero on            failure, or the old class on success.          
+      
+            Changes the class of the receiver (the &apos;isa&apos;
+            pointer) to be <var>aClassObject</var>, but only
+            if the receiver is an instance of a subclass of
+            <var>aClassObject</var> which has not added extra
+            instance variables. <br /> Returns zero on
+            failure, or the old class on success.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1281,15 +1926,22 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GNUstep)-write$">write:&nbsp;</a></h3>
     - (id) <b>write:</b> (TypedStream*)aStream;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Originally used to write the instance variables            declared in this particular part of the object to            a stream. Currently stubbed out.          
+      
+            Originally used to write the instance variables
+            declared in this particular part of the object to
+            a stream. Currently stubbed out.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="003000000000">        Software documentation for the NSObject(GSCategories)        category      </a></h1>
+
+          <h1><a name="003000000000">
+        Software documentation for the NSObject(GSCategories)
+        category
+      </a></h1>
     <h2><a rel="gsdoc" href="#class$NSObject">NSObject</a>(<a name="category$NSObject(GSCategories)">GSCategories</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -1298,11 +1950,14 @@ it might be handy for you to have a class method    </p>
       </dl>
     </blockquote>
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                Provides a number of GNUstep-specific methods that          are used to aid implementation of the Base library.          <br /> Extension methods for the NSObject class        
+      
+          Provides a number of GNUstep-specific methods that
+          are used to aid implementation of the Base library.
+          <br /> Extension methods for the NSObject class
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1316,13 +1971,36 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GSCategories)-compare$">compare:&nbsp;</a></h3>
     - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (id)anObject;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  WARNING: The            <a rel="gsdoc" href="#method$NSObject-compare$">              -compare:            </a>
-            method for NSObject is deprecated due to subclasses            declaring the same selector with conflicting            signatures. Comparison of arbitrary objects is            not just meaningless but also dangerous as most            concrete implementations expect comparable objects            as arguments often accessing instance variables            directly. This method will be removed in a future            release. <br /> WARNING: The            <a rel="gsdoc" href="#method$NSObject-compare$">              -compare:            </a>
-            method for NSObject is deprecated due to subclasses            declaring the same selector with conflicting            signatures. Comparison of arbitrary objects is            not just meaningless but also dangerous as most            concrete implementations expect comparable objects            as arguments often accessing instance variables            directly. This method will be removed in a future            release.          
+      
+            WARNING: The
+            <a rel="gsdoc" href="#method$NSObject-compare$">
+              -compare:
+            </a>
+
+            method for NSObject is deprecated due to subclasses
+            declaring the same selector with conflicting
+            signatures. Comparison of arbitrary objects is
+            not just meaningless but also dangerous as most
+            concrete implementations expect comparable objects
+            as arguments often accessing instance variables
+            directly. This method will be removed in a future
+            release. <br /> WARNING: The
+            <a rel="gsdoc" href="#method$NSObject-compare$">
+              -compare:
+            </a>
+
+            method for NSObject is deprecated due to subclasses
+            declaring the same selector with conflicting
+            signatures. Comparison of arbitrary objects is
+            not just meaningless but also dangerous as most
+            concrete implementations expect comparable objects
+            as arguments often accessing instance variables
+            directly. This method will be removed in a future
+            release.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1330,11 +2008,16 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GSCategories)-notImplemented$">notImplemented:&nbsp;</a></h3>
     - (id) <b>notImplemented:</b> (SEL)aSel;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Message sent when an implementation wants to            explicitly exclude a method (but cannot due to            compiler constraint), and wants to make sure it is            not called by mistake. Default implementation raises an            exception at runtime.          
+      
+            Message sent when an implementation wants to
+            explicitly exclude a method (but cannot due to
+            compiler constraint), and wants to make sure it is
+            not called by mistake. Default implementation raises an
+            exception at runtime.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1342,11 +2025,19 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GSCategories)-shouldNotImplement$">shouldNotImplement:&nbsp;</a></h3>
     - (id) <b>shouldNotImplement:</b> (SEL)aSel;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Message sent when an implementation wants to            explicitly exclude a method (but cannot due to            compiler constraint) and forbid that subclasses            implement it. Default implementation raises an            exception at runtime. If a subclass <em>does</em>            implement this method, however, the superclass&apos;s            implementation will not be called, so this            is not a perfect mechanism.          
+      
+            Message sent when an implementation wants to
+            explicitly exclude a method (but cannot due to
+            compiler constraint) and forbid that subclasses
+            implement it. Default implementation raises an
+            exception at runtime. If a subclass <em>does</em>
+            implement this method, however, the superclass&apos;s
+            implementation will not be called, so this
+            is not a perfect mechanism.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1354,15 +2045,26 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(GSCategories)-subclassResponsibility$">subclassResponsibility:&nbsp;</a></h3>
     - (id) <b>subclassResponsibility:</b> (SEL)aSel;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Message sent when an implementation wants to            explicitly require a subclass to implement a            method (but cannot at compile time since there is no            <code>abstract</code> keyword in Objective-C).            Default implementation raises an exception at            runtime to alert developer that he/she forgot to            override a method.          
+      
+            Message sent when an implementation wants to
+            explicitly require a subclass to implement a
+            method (but cannot at compile time since there is no
+            <code>abstract</code> keyword in Objective-C).
+            Default implementation raises an exception at
+            runtime to alert developer that he/she forgot to
+            override a method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="004000000000">        Software documentation for the NSObject(NEXTSTEP)        category      </a></h1>
+
+          <h1><a name="004000000000">
+        Software documentation for the NSObject(NEXTSTEP)
+        category
+      </a></h1>
     <h2><a rel="gsdoc" href="#class$NSObject">NSObject</a>(<a name="category$NSObject(NEXTSTEP)">NEXTSTEP</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -1371,11 +2073,13 @@ it might be handy for you to have a class method    </p>
       </dl>
     </blockquote>
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                Methods for compatibility with the NEXTSTEP          (pre-OpenStep) &apos;Object&apos; class.        
+      
+          Methods for compatibility with the NEXTSTEP
+          (pre-OpenStep) &apos;Object&apos; class.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1386,16 +2090,26 @@ it might be handy for you to have a class method    </p>
     <h3><a name="method$NSObject(NEXTSTEP)-error$,...">error:&nbsp;,...</a></h3>
     - (id) <b>error:</b> (const char*)aString<b>,...</b>;<br />
     <div class="availability">
-<b>Availability:</b> Base 0.0.0<br />
-</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
-                  Logs a message. <em>Deprecated.</em> Use            <a rel="gsdoc" href="Functions.html#function$NSLog">              NSLog()            </a>
-            in new code.          
+      
+            Logs a message. <em>Deprecated.</em> Use
+            <a rel="gsdoc" href="Functions.html#function$NSLog">
+              NSLog()
+            </a>
+
+            in new code.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="005000000000">        Software documentation for the        NSObject(TimedPerformers) informal        protocol      </a></h1>
+
+          <h1><a name="005000000000">
+        Software documentation for the
+        NSObject(TimedPerformers) informal
+        protocol
+      </a></h1>
     <h2><a rel="gsdoc" href="#class$NSObject">NSObject</a>(<a name="category$NSObject(TimedPerformers)">TimedPerformers</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -1407,7 +2121,11 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                Declares some methods for sending messages to self          after a fixed delay. (These methods <em>are</em> in          OpenStep and OS X.)        
+      
+          Declares some methods for sending messages to self
+          after a fixed delay. (These methods <em>are</em> in
+          OpenStep and OS X.)
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1424,7 +2142,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Cancels any perform operations set up for the            specified target in the current run loop.          
+      
+            Cancels any perform operations set up for the
+            specified target in the current run loop.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1435,8 +2156,19 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Cancels any perform operations set up for the            specified target in the current loop, but only if            the value of aSelector and argument with which the            performs were set up match those supplied. <br />            Matching of the argument may be either by pointer            equality or by use of the            <a rel="gsdoc" href="#method$NSObject-isEqual$">              [NSObject -isEqual:]            </a>
-            method.          
+      
+            Cancels any perform operations set up for the
+            specified target in the current loop, but only if
+            the value of aSelector and argument with which the
+            performs were set up match those supplied. <br />
+            Matching of the argument may be either by pointer
+            equality or by use of the
+            <a rel="gsdoc" href="#method$NSObject-isEqual$">
+              [NSObject -isEqual:]
+            </a>
+
+            method.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1447,8 +2179,13 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets given message to be sent to this instance after            given delay, in any run loop mode. See            <a rel="gsdoc" href="NSRunLoop.html#class$NSRunLoop">NSRunLoop</a>
-              .          
+      
+            Sets given message to be sent to this instance after
+            given delay, in any run loop mode. See
+            <a rel="gsdoc" href="NSRunLoop.html#class$NSRunLoop">NSRunLoop</a>
+
+              .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1459,12 +2196,20 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Sets given message to be sent to this instance after            given delay, in given run loop <var>modes</var>. See            <a rel="gsdoc" href="NSRunLoop.html#class$NSRunLoop">NSRunLoop</a>
-              .          
+      
+            Sets given message to be sent to this instance after
+            given delay, in given run loop <var>modes</var>. See
+            <a rel="gsdoc" href="NSRunLoop.html#class$NSRunLoop">NSRunLoop</a>
+
+              .
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="006000000000">        Software documentation for the GCFinalization protocol      </a></h1>
+
+          <h1><a name="006000000000">
+        Software documentation for the GCFinalization protocol
+      </a></h1>
     <h2><a name="protocol$(GCFinalization)">GCFinalization</a></h2>
     <blockquote class="declared">
       <dl>
@@ -1476,7 +2221,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                Protocol for garbage collection finalization - same          as libFoundation for compatibility.        
+      
+          Protocol for garbage collection finalization - same
+          as libFoundation for compatibility.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1490,11 +2238,18 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Called before receiver is deallocated by garbage            collector. If you want to do anything special            before [NSObject -dealloc] is called, do it here.          
+      
+            Called before receiver is deallocated by garbage
+            collector. If you want to do anything special
+            before [NSObject -dealloc] is called, do it here.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="007000000000">        Software documentation for the NSCoding protocol      </a></h1>
+
+          <h1><a name="007000000000">
+        Software documentation for the NSCoding protocol
+      </a></h1>
     <h2><a name="protocol$(NSCoding)">NSCoding</a></h2>
     <blockquote class="declared">
       <dl>
@@ -1506,7 +2261,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                This protocol must be adopted by any class wishing to          support saving and restoring instances to an archive,          or copying them to remote processes via the Distributed          Objects mechanism.        
+      
+          This protocol must be adopted by any class wishing to
+          support saving and restoring instances to an archive,
+          or copying them to remote processes via the Distributed
+          Objects mechanism.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1521,11 +2281,25 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Called when it is time for receiver to be serialized            for writing to an archive or network connection.            Receiver should record all of its instance            variables using methods on <var>aCoder</var>. See            documentation for            <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>
-              ,              <a rel="gsdoc" href="NSArchiver.html#class$NSArchiver">NSArchiver</a>
-                ,                <a rel="gsdoc" href="NSKeyedArchiver.html#class$NSKeyedArchiver">NSKeyedArchiver</a>
-                  , and/or                  <a rel="gsdoc" href="NSPortCoder.html#class$NSPortCoder">NSPortCoder</a>
-                    for more information.          
+      
+            Called when it is time for receiver to be serialized
+            for writing to an archive or network connection.
+            Receiver should record all of its instance
+            variables using methods on <var>aCoder</var>. See
+            documentation for
+            <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>
+
+              ,
+              <a rel="gsdoc" href="NSArchiver.html#class$NSArchiver">NSArchiver</a>
+
+                ,
+                <a rel="gsdoc" href="NSKeyedArchiver.html#class$NSKeyedArchiver">NSKeyedArchiver</a>
+
+                  , and/or
+                  <a rel="gsdoc" href="NSPortCoder.html#class$NSPortCoder">NSPortCoder</a>
+
+                    for more information.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -1536,15 +2310,32 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Called on a freshly allocated receiver when it is            time to reconstitute from serialized bytes in an            archive or from a network connection. Receiver            should load all of its instance variables using            methods on aCoder. See documentation for            <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>
-              ,              <a rel="gsdoc" href="NSArchiver.html#class$NSUnarchiver">NSUnarchiver</a>
-                ,                <a rel="gsdoc" href="NSKeyedArchiver.html#class$NSKeyedUnarchiver">NSKeyedUnarchiver</a>
-                  , and/or                  <a rel="gsdoc" href="NSPortCoder.html#class$NSPortCoder">NSPortCoder</a>
-                    for more information.          
+      
+            Called on a freshly allocated receiver when it is
+            time to reconstitute from serialized bytes in an
+            archive or from a network connection. Receiver
+            should load all of its instance variables using
+            methods on aCoder. See documentation for
+            <a rel="gsdoc" href="NSCoder.html#class$NSCoder">NSCoder</a>
+
+              ,
+              <a rel="gsdoc" href="NSArchiver.html#class$NSUnarchiver">NSUnarchiver</a>
+
+                ,
+                <a rel="gsdoc" href="NSKeyedArchiver.html#class$NSKeyedUnarchiver">NSKeyedUnarchiver</a>
+
+                  , and/or
+                  <a rel="gsdoc" href="NSPortCoder.html#class$NSPortCoder">NSPortCoder</a>
+
+                    for more information.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="008000000000">        Software documentation for the NSCopying protocol      </a></h1>
+
+          <h1><a name="008000000000">
+        Software documentation for the NSCopying protocol
+      </a></h1>
     <h2><a name="protocol$(NSCopying)">NSCopying</a></h2>
     <blockquote class="declared">
       <dl>
@@ -1556,7 +2347,13 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                This protocol must be adopted by any class wishing to          support copying - ie where instances of the class          should be able to create new instances which are          copies of the original and, where a class has mutable          and immutable versions, where the copies are immutable.        
+      
+          This protocol must be adopted by any class wishing to
+          support copying - ie where instances of the class
+          should be able to create new instances which are
+          copies of the original and, where a class has mutable
+          and immutable versions, where the copies are immutable.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1570,13 +2367,39 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Called by            <a rel="gsdoc" href="#method$NSObject-copy">              [NSObject -copy]            </a>
-            passing            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">              NSDefaultMallocZone()            </a>
-            as <var>zone</var>. <br /> This method returns a copy of            the receiver and, where the receiver is a mutable            variant of a class which has an immutable partner            class, the object returned is an instance of that            immutable class. <br /> The new object is            <em>not</em> autoreleased, and is considered to be            &apos;owned&apos; by the calling code... which is therefore            responsible for releasing it. <br /> In the            case where the receiver is an instance of a container            class, it is undefined whether contained objects are            merely retained in the new copy, or are themselves            copied, or whether some other mechanism entirely is            used.          
+      
+            Called by
+            <a rel="gsdoc" href="#method$NSObject-copy">
+              [NSObject -copy]
+            </a>
+
+            passing
+            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">
+              NSDefaultMallocZone()
+            </a>
+
+            as <var>zone</var>. <br /> This method returns a copy of
+            the receiver and, where the receiver is a mutable
+            variant of a class which has an immutable partner
+            class, the object returned is an instance of that
+            immutable class. <br /> The new object is
+            <em>not</em> autoreleased, and is considered to be
+            &apos;owned&apos; by the calling code... which is therefore
+            responsible for releasing it. <br /> In the
+            case where the receiver is an instance of a container
+            class, it is undefined whether contained objects are
+            merely retained in the new copy, or are themselves
+            copied, or whether some other mechanism entirely is
+            used.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="009000000000">        Software documentation for the NSMutableCopying        protocol      </a></h1>
+
+          <h1><a name="009000000000">
+        Software documentation for the NSMutableCopying
+        protocol
+      </a></h1>
     <h2><a name="protocol$(NSMutableCopying)">NSMutableCopying</a></h2>
     <blockquote class="declared">
       <dl>
@@ -1588,7 +2411,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                This protocol must be adopted by any class wishing to          support mutable copying - ie where instances of the          class should be able to create mutable copies of          themselves.        
+      
+          This protocol must be adopted by any class wishing to
+          support mutable copying - ie where instances of the
+          class should be able to create mutable copies of
+          themselves.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1602,13 +2430,37 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Called by            <a rel="gsdoc" href="#method$NSObject-mutableCopy">              [NSObject -mutableCopy]            </a>
-            passing            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">              NSDefaultMallocZone()            </a>
-            as <var>zone</var>. <br /> This method returns a copy of            the receiver and, where the receiver is an immutable            variant of a class which has a mutable partner            class, the object returned is an instance of that            mutable class. The new object is <em>not</em>            autoreleased, and is considered to be &apos;owned&apos;            by the calling code... which is therefore responsible            for releasing it. <br /> In the case where the receiver            is an instance of a container class, it is undefined            whether contained objects are merely retained in            the new copy, or are themselves copied, or whether some            other mechanism entirely is used.          
+      
+            Called by
+            <a rel="gsdoc" href="#method$NSObject-mutableCopy">
+              [NSObject -mutableCopy]
+            </a>
+
+            passing
+            <a rel="gsdoc" href="Functions.html#function$NSDefaultMallocZone">
+              NSDefaultMallocZone()
+            </a>
+
+            as <var>zone</var>. <br /> This method returns a copy of
+            the receiver and, where the receiver is an immutable
+            variant of a class which has a mutable partner
+            class, the object returned is an instance of that
+            mutable class. The new object is <em>not</em>
+            autoreleased, and is considered to be &apos;owned&apos;
+            by the calling code... which is therefore responsible
+            for releasing it. <br /> In the case where the receiver
+            is an instance of a container class, it is undefined
+            whether contained objects are merely retained in
+            the new copy, or are themselves copied, or whether some
+            other mechanism entirely is used.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
-          <h1><a name="010000000000">        Software documentation for the NSObject protocol      </a></h1>
+
+          <h1><a name="010000000000">
+        Software documentation for the NSObject protocol
+      </a></h1>
     <h2><a name="protocol$(NSObject)">NSObject</a></h2>
     <blockquote class="declared">
       <dl>
@@ -1620,7 +2472,13 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                The NSObject protocol describes a minimal set of methods          that all objects are expected to support. You should be          able to send any of the messages listed in this protocol          to an object, and be safe in assuming that the receiver          can handle it.        
+      
+          The NSObject protocol describes a minimal set of methods
+          that all objects are expected to support. You should be
+          able to send any of the messages listed in this protocol
+          to an object, and be safe in assuming that the receiver
+          can handle it.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -1652,7 +2510,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-autorelease">              [NSObject -autorelease]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-autorelease">
+              [NSObject -autorelease]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1664,7 +2527,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-class">              [NSObject -class]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-class">
+              [NSObject -class]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1676,7 +2544,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-conformsToProtocol$">[NSObject -conformsToProtocol:]</a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-conformsToProtocol$">[NSObject -conformsToProtocol:]</a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1688,7 +2559,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-description">              [NSObject -description]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-description">
+              [NSObject -description]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1700,7 +2576,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-hash">              [NSObject -hash]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-hash">
+              [NSObject -hash]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1712,7 +2593,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-isEqual$">              [NSObject -isEqual:]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-isEqual$">
+              [NSObject -isEqual:]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1724,7 +2610,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-isKindOfClass$">              [NSObject -isKindOfClass:]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-isKindOfClass$">
+              [NSObject -isKindOfClass:]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1736,7 +2627,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-isMemberOfClass$">[NSObject -isMemberOfClass:]</a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-isMemberOfClass$">[NSObject -isMemberOfClass:]</a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1748,7 +2642,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-isProxy">              [NSObject -isProxy]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-isProxy">
+              [NSObject -isProxy]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1760,7 +2659,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-performSelector$">[NSObject -performSelector:]</a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-performSelector$">[NSObject -performSelector:]</a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1772,7 +2674,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-performSelector$withObject$">[NSObject -performSelector:withObject:]</a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-performSelector$withObject$">[NSObject -performSelector:withObject:]</a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1784,7 +2689,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-performSelector$withObject$withObject$">[NSObject -performSelector:withObject:withObject:]</a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-performSelector$withObject$withObject$">[NSObject -performSelector:withObject:withObject:]</a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1796,7 +2704,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-release">              [NSObject -release]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-release">
+              [NSObject -release]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1808,7 +2721,10 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-respondsToSelector$">[NSObject -respondsToSelector:]</a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-respondsToSelector$">[NSObject -respondsToSelector:]</a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1820,7 +2736,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-retain">              [NSObject -retain]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-retain">
+              [NSObject -retain]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1832,7 +2753,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-retainCount">              [NSObject -retainCount]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-retainCount">
+              [NSObject -retainCount]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1844,7 +2770,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-self">              [NSObject -self]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-self">
+              [NSObject -self]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1856,7 +2787,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-superclass">              [NSObject -superclass]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-superclass">
+              [NSObject -superclass]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />
@@ -1868,7 +2804,12 @@ it might be handy for you to have a class method    </p>
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  See            <a rel="gsdoc" href="#method$NSObject-zone">              [NSObject -zone]            </a>
+      
+            See
+            <a rel="gsdoc" href="#method$NSObject-zone">
+              [NSObject -zone]
+            </a>
+
           
     </div>
     <hr width="25%" align="left" />

@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
     <head>
     <title>NSThread class reference</title>
   </head>
@@ -24,8 +25,9 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Date:</b> 2006-06-04 00:42:10 -0600 (Sun, 04 Jun 2006)</p>
+    <p><b>Date:</b> 2006-10-31 00:05:46 -0700 (Tue, 31 Oct 2006)</p>
     <p><b>Copyright:</b> (C) 1996-2000 Free Software Foundation, Inc.</p>
+
         <div>
       <hr width="50%" align="left" />
       <h3>Contents -</h3>
@@ -41,7 +43,10 @@
       </ol>
       <hr width="50%" align="left" />
     </div>
-          <h1><a name="001000000000">        Software documentation for the NSThread class      </a></h1>
+
+          <h1><a name="001000000000">
+        Software documentation for the NSThread class
+      </a></h1>
     <h2><a name="class$NSThread">NSThread</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote class="declared">
       <dl>
@@ -53,8 +58,22 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                This class encapsulates OpenStep threading. See          <a rel="gsdoc" href="NSLock.html#class$NSLock">NSLock</a>
-            and its subclasses for handling synchronisation between            threads. <br /> Each process begins with a main            thread and additional threads can be created using            NSThread. The GNUstep implementation of OpenStep            has been carefully designed so that the internals of            the base library do not use threading (except for            methods which explicitly deal with threads of            course) so that you can write applications without            threading. Non-threaded applications are more            efficient (no locking is required) and are easier            to debug during development.        
+      
+          This class encapsulates OpenStep threading. See
+          <a rel="gsdoc" href="NSLock.html#class$NSLock">NSLock</a>
+
+            and its subclasses for handling synchronisation between
+            threads. <br /> Each process begins with a main
+            thread and additional threads can be created using
+            NSThread. The GNUstep implementation of OpenStep
+            has been carefully designed so that the internals of
+            the base library do not use threading (except for
+            methods which explicitly deal with threads of
+            course) so that you can write applications without
+            threading. Non-threaded applications are more
+            efficient (no locking is required) and are easier
+            to debug during development.
+        
     </div>
     <hr width="50%" align="left" />
     <a href="#_NSThread_ivars">Instance Variables</a>
@@ -78,18 +97,33 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Returns the NSThread object corresponding to the              current thread.                </p>
+
+              Returns the NSThread object corresponding to the
+              current thread.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              NB. In GNUstep the library internals use the              <a rel="gsdoc" href="Functions.html#function$GSCurrentThread">                GSCurrentThread()              </a>
-              function as a more efficient mechanism for doing              this job - so you cannot use a category to override              this method and expect the library internals to use              your implementation.                </p>
+
+              NB. In GNUstep the library internals use the
+              <a rel="gsdoc" href="Functions.html#function$GSCurrentThread">
+                GSCurrentThread()
+              </a>
+
+              function as a more efficient mechanism for doing
+              this job - so you cannot use a category to override
+              this method and expect the library internals to use
+              your implementation.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -100,12 +134,23 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              Create a new thread - use this method rather than              alloc-init. The new thread will begin              executing the message given by              <var>aSelector</var>, <var>aTarget</var>, and              <var>anArgument</var>. This should have no return              value, and must set up an autorelease pool if              retain/release memory management is used.              It should free this pool before it finishes execution.                </p>
+
+              Create a new thread - use this method rather than
+              alloc-init. The new thread will begin
+              executing the message given by
+              <var>aSelector</var>, <var>aTarget</var>, and
+              <var>anArgument</var>. This should have no return
+              value, and must set up an autorelease pool if
+              retain/release memory management is used.
+              It should free this pool before it finishes execution.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -116,7 +161,13 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Terminates the current thread. <br /> Normally            you don&apos;t need to call this method explicitly, since            exiting the method with which the thread was            detached causes this method to be called            automatically.          
+      
+            Terminates the current thread. <br /> Normally
+            you don&apos;t need to call this method explicitly, since
+            exiting the method with which the thread was
+            detached causes this method to be called
+            automatically.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -127,7 +178,16 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Returns a flag to say whether the application is            multi-threaded or not. <br /> An application            is considered to be multi-threaded if any thread other            than the main thread has been started, irrespective of            whether that thread has since terminated. <br />            NB. This method returns <code>YES</code> if called            within a handler processing            <code>NSWillBecomeMultiThreadedNotification</code>          
+      
+            Returns a flag to say whether the application is
+            multi-threaded or not. <br /> An application
+            is considered to be multi-threaded if any thread other
+            than the main thread has been started, irrespective of
+            whether that thread has since terminated. <br />
+            NB. This method returns <code>YES</code> if called
+            within a handler processing
+            <code>NSWillBecomeMultiThreadedNotification</code>
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -138,7 +198,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Set the priority of the current thread. This is a value            in the range 0.0 (lowest) to 1.0 (highest) which is            mapped to the underlying system priorities. The            current gnu objc runtime supports three priority            levels which you can obtain using values of 0.0,            0.5, and 1.0          
+      
+            Set the priority of the current thread. This is a value
+            in the range 0.0 (lowest) to 1.0 (highest) which is
+            mapped to the underlying system priorities. The
+            current gnu objc runtime supports three priority
+            levels which you can obtain using values of 0.0,
+            0.5, and 1.0
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -149,7 +216,10 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Delaying a thread... pause until the specified            <var>date</var>.          
+      
+            Delaying a thread... pause until the specified
+            <var>date</var>.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -160,7 +230,9 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Return the priority of the current thread.          
+      
+            Return the priority of the current thread.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -171,7 +243,14 @@
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
-                  Return the thread dictionary. This dictionary can be            used to store arbitrary thread specific data. <br />            NB. This cannot be autoreleased, since we cannot be            sure that the autorelease pool for the thread will            continue to exist for the entire life of the            thread!          
+      
+            Return the thread dictionary. This dictionary can be
+            used to store arbitrary thread specific data. <br />
+            NB. This cannot be autoreleased, since we cannot be
+            sure that the autorelease pool for the thread will
+            continue to exist for the entire life of the
+            thread!
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -179,54 +258,131 @@
     <h2>Instance Variables for NSThread Class</h2>
     <h3><a name="ivariable$NSThread*_active">_active</a></h3>
     @public BOOL <b>_active</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_arg">_arg</a></h3>
     @protected id <b>_arg</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_autorelease_vars">_autorelease_vars</a></h3>
     @public struct autorelease_thread_vars <b>_autorelease_vars</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_exception_handler">_exception_handler</a></h3>
     @public NSHandler* <b>_exception_handler</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_gcontext">_gcontext</a></h3>
     @public id <b>_gcontext</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_selector">_selector</a></h3>
     @protected SEL <b>_selector</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_target">_target</a></h3>
     @protected id <b>_target</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSThread*_thread_dictionary">_thread_dictionary</a></h3>
     @public NSMutableDictionary* <b>_thread_dictionary</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
     <div class="desc">
-                  <em>Warning</em> the underscore at the start of the            name of this instance variable indicates that, even            though it is not technically <em>private</em>, it is            intended for internal use within the package, and            you should not use the variable in other code.          
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
     </div>
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
-          <h1><a name="002000000000">        Software documentation for the        NSObject(NSMainThreadPerformAdditions)        category      </a></h1>
+
+          <h1><a name="002000000000">
+        Software documentation for the
+        NSObject(NSMainThreadPerformAdditions)
+        category
+      </a></h1>
     <h2><a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(NSMainThreadPerformAdditions)">NSMainThreadPerformAdditions</a>)</h2>
     <blockquote class="declared">
       <dl>
@@ -235,10 +391,19 @@
       </dl>
     </blockquote>
     <div class="availability">
-<b>Availability:</b> MacOS-X 10.0.0</div>
+<b>Availability:</b> Base 10.0.0<br />
+</div>
 <br />
     <div class="desc">
-                Extra methods to permit messages to be sent to an          object such that they are executed in the          <em>main</em> thread. <br /> The main thread is the          thread in which the GNUstep system is started, and          where the GNUstep gui is used, it is the thread in          which gui drawing operations <strong>must</strong> be          performed.        
+      
+          Extra methods to permit messages to be sent to an
+          object such that they are executed in the
+          <em>main</em> thread. <br /> The main thread is the
+          thread in which the GNUstep system is started, and
+          where the GNUstep gui is used, it is the thread in
+          which gui drawing operations <strong>must</strong> be
+          performed.
+        
     </div>
     <b>Method summary</b>
     <ul>
@@ -250,11 +415,15 @@
     <h3><a name="method$NSObject(NSMainThreadPerformAdditions)-performSelectorOnMainThread$withObject$waitUntilDone$">performSelectorOnMainThread:&nbsp;withObject:&nbsp;waitUntilDone:&nbsp;</a></h3>
     - (void) <b>performSelectorOnMainThread:</b> (SEL)aSelector<b> withObject:</b> (id)anObject<b> waitUntilDone:</b> (BOOL)aFlag;<br />
     <div class="availability">
-<b>Availability:</b> MacOS-X 10.0.0</div>
+<b>Availability:</b> Base 10.0.0<br />
+</div>
 <br />
     <div class="desc">
-                  Invokes            <a rel="gsdoc" href="#method$NSObject-performSelectorOnMainThread$withObject$waitUntilDone$modes$">-performSelectorOnMainThread:withObject:waitUntilDone:modes:</a>
- using the supplied arguments and an array containing common modes. <br /> These modes consist of NSRunLoopMode, NSConnectionreplyMode, and if in an application, the NSApplication modes.          
+      
+            Invokes
+            <a rel="gsdoc" href="#method$NSObject-performSelectorOnMainThread$withObject$waitUntilDone$modes$">-performSelectorOnMainThread:withObject:waitUntilDone:modes:</a>
+ using the supplied arguments and an array containing common modes. <br /> These modes consist of NSRunLoopMode, NSConnectionreplyMode, and if in an application, the NSApplication modes.
+          
     </div>
     <hr width="25%" align="left" />
 </div>
@@ -262,35 +431,78 @@
     <h3><a name="method$NSObject(NSMainThreadPerformAdditions)-performSelectorOnMainThread$withObject$waitUntilDone$modes$">performSelectorOnMainThread:&nbsp;withObject:&nbsp;waitUntilDone:&nbsp;modes:&nbsp;</a></h3>
     - (void) <b>performSelectorOnMainThread:</b> (SEL)aSelector<b> withObject:</b> (id)anObject<b> waitUntilDone:</b> (BOOL)aFlag<b> modes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)anArray;<br />
     <div class="availability">
-<b>Availability:</b> MacOS-X 10.0.0</div>
+<b>Availability:</b> Base 10.0.0<br />
+</div>
 <br />
     <div class="desc">
-                  
+      
+            
     </p>
     <p>
-              This method performs <var>aSelector</var> on the              receiver, passing <var>anObject</var> as an              argument, but does so in the main thread of the              program. The receiver and <var>anObject</var>              are both retained until the method is performed.                </p>
+
+              This method performs <var>aSelector</var> on the
+              receiver, passing <var>anObject</var> as an
+              argument, but does so in the main thread of the
+              program. The receiver and <var>anObject</var>
+              are both retained until the method is performed.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              The selector is performed when the runloop of the              main thread next runs in one of the modes specified              in <var>anArray</var>. <br /> Where this method has              been called more than once before the runloop of the              main thread runs in the required mode, the order in              which the operations in the main thread is done is              the same as that in which they were added using this              method.                </p>
+
+              The selector is performed when the runloop of the
+              main thread next runs in one of the modes specified
+              in <var>anArray</var>. <br /> Where this method has
+              been called more than once before the runloop of the
+              main thread runs in the required mode, the order in
+              which the operations in the main thread is done is
+              the same as that in which they were added using this
+              method.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              If there are no modes in <var>anArray</var>, the              method has no effect and simply returns              immediately.                </p>
+
+              If there are no modes in <var>anArray</var>, the
+              method has no effect and simply returns
+              immediately.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              The argument <var>aFlag</var> specifies whether the              method should wait until the selector has been              performed before returning. <br />              <strong>NB.</strong> This method does              <em>not</em> cause the runloop of the main thread to              be run... so if the runloop is not executed by some              code in the main thread, the thread waiting for the              perform to complete will block forever.                </p>
+
+              The argument <var>aFlag</var> specifies whether the
+              method should wait until the selector has been
+              performed before returning. <br />
+              <strong>NB.</strong> This method does
+              <em>not</em> cause the runloop of the main thread to
+              be run... so if the runloop is not executed by some
+              code in the main thread, the thread waiting for the
+              perform to complete will block forever.
+                </p>
     <p>
-                  
+      
+            
     </p>
     <p>
-              As a special case, if <var>aFlag</var> ==              <code>YES</code> and the current thread is the              main thread, the modes array is ignored and the              selector is performed immediately. This behavior              is necessary to avoid the main thread being blocked by              waiting for a perform which will never happen              because the runloop is not executing.                </p>
+
+              As a special case, if <var>aFlag</var> ==
+              <code>YES</code> and the current thread is the
+              main thread, the modes array is ignored and the
+              selector is performed immediately. This behavior
+              is necessary to avoid the main thread being blocked by
+              waiting for a perform which will never happen
+              because the runloop is not executing.
+                </p>
     <p>
-                
+      
+          
     </div>
     <hr width="25%" align="left" />
 </div>
