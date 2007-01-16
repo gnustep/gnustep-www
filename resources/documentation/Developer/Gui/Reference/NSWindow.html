@@ -1551,7 +1551,45 @@
 <br />
     <div class="desc">
       
-            <em>Description forthcoming.</em>
+            Returns the value of _selectionDirection, the
+            direction of the current key view. <br /> See
+            Also:
+            
+      <ul>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSWindow-selectKeyViewFollowingView$">
+                  -selectKeyViewFollowingView:
+                </a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSWindow-selectKeyViewPrecedingView$">
+                  -selectKeyViewPrecedingView:
+                </a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSWindow-selectNextKeyView$">
+                  -selectNextKeyView:
+                </a>
+
+              
+        </li>
+        <li>
+          
+                <a rel="gsdoc" href="#method$NSWindow-selectPreviousKeyView$">
+                  -selectPreviousKeyView:
+                </a>
+
+              
+        </li>
+      </ul>
+      
           
     </div>
     <hr width="25%" align="left" />
@@ -2112,7 +2150,17 @@
 <br />
     <div class="desc">
       
-            <em>Description forthcoming.</em>
+            If <var>aView</var> responds to
+            <a rel="gsdoc" href="NSView.html#method$NSView-nextValidKeyView">
+              -nextValidKeyView
+            </a>
+
+            with a new NSView, call
+            <a rel="gsdoc" href="#method$NSWindow-makeFirstResponder$">
+              -makeFirstResponder:
+            </a>
+
+            for the returned view.
           
     </div>
     <hr width="25%" align="left" />
@@ -2125,7 +2173,17 @@
 <br />
     <div class="desc">
       
-            <em>Description forthcoming.</em>
+            If <var>aView</var> responds to
+            <a rel="gsdoc" href="NSView.html#method$NSView-previousValidKeyView">
+              -previousValidKeyView
+            </a>
+
+            with a new NSView, call
+            <a rel="gsdoc" href="#method$NSWindow-makeFirstResponder$">
+              -makeFirstResponder:
+            </a>
+
+            for this view.
           
     </div>
     <hr width="25%" align="left" />
@@ -2138,7 +2196,46 @@
 <br />
     <div class="desc">
       
-            <em>Description forthcoming.</em>
+            This method checks if:
+            
+      <ul>
+        <li>
+          
+                _firstResponder answers to
+                <a rel="gsdoc" href="NSView.html#method$NSView-nextValidKeyView">
+                  -nextValidKeyView
+                </a>
+
+              
+        </li>
+        <li>
+          
+                _initialFirstResponder answers
+                to
+                <a rel="gsdoc" href="NSResponder.html#method$NSResponder-acceptsFirstResponder">
+                  -acceptsFirstResponder
+                </a>
+
+              
+        </li>
+        <li>
+          
+                _initialFirstResponder answers
+                to
+                <a rel="gsdoc" href="NSView.html#method$NSView-previousValidKeyView">
+                  -previousValidKeyView
+                </a>
+
+              
+        </li>
+      </ul>
+      
+            If any of these checks return a NSView, call
+            <a rel="gsdoc" href="#method$NSWindow-makeFirstResponder$">
+              -makeFirstResponder:
+            </a>
+
+            on this NSView.
           
     </div>
     <hr width="25%" align="left" />
@@ -2151,7 +2248,46 @@
 <br />
     <div class="desc">
       
-            <em>Description forthcoming.</em>
+            This method checks if:
+            
+      <ul>
+        <li>
+          
+                _firstResponder answers to
+                <a rel="gsdoc" href="NSView.html#method$NSView-previousValidKeyView">
+                  -previousValidKeyView
+                </a>
+
+              
+        </li>
+        <li>
+          
+                _initialFirstResponder answers
+                to
+                <a rel="gsdoc" href="NSResponder.html#method$NSResponder-acceptsFirstResponder">
+                  -acceptsFirstResponder
+                </a>
+
+              
+        </li>
+        <li>
+          
+                _initialFirstResponder answers
+                to
+                <a rel="gsdoc" href="NSView.html#method$NSView-previousValidKeyView">
+                  -previousValidKeyView
+                </a>
+
+              
+        </li>
+      </ul>
+      
+            If any of these checks return a NSView, call
+            <a rel="gsdoc" href="#method$NSWindow-makeFirstResponder$">
+              -makeFirstResponder:
+            </a>
+
+            on this NSView.
           
     </div>
     <hr width="25%" align="left" />
@@ -3635,10 +3771,13 @@
     </div>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-window$willPositionSheet$usingRect$">-window:willPositionSheet:usingRect:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidBecomeKey$">-windowDidBecomeKey:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidBecomeMain$">-windowDidBecomeMain:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidChangeScreen$">-windowDidChangeScreen:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidChangeScreenProfile$">-windowDidChangeScreenProfile:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidDeminiaturize$">-windowDidDeminiaturize:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidEndSheet$">-windowDidEndSheet:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidExpose$">-windowDidExpose:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidMiniaturize$">-windowDidMiniaturize:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidMove$">-windowDidMove:</a></li>
@@ -3648,14 +3787,29 @@
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowDidUpdate$">-windowDidUpdate:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowShouldClose$">-windowShouldClose:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowShouldZoom$toFrame$">-windowShouldZoom:toFrame:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowWillBeginSheet$">-windowWillBeginSheet:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowWillClose$">-windowWillClose:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowWillMiniaturize$">-windowWillMiniaturize:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowWillMove$">-windowWillMove:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowWillResize$toSize$">-windowWillResize:toSize:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowWillReturnFieldEditor$toObject$">-windowWillReturnFieldEditor:toObject:</a></li>
+      <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowWillReturnUndoManager$">-windowWillReturnUndoManager:</a></li>
       <li><a rel="gsdoc" href="NSWindow.html#method$NSObject(NSWindowDelegate)-windowWillUseStandardFrame$defaultFrame$">-windowWillUseStandardFrame:defaultFrame:</a></li>
     </ul>
     <hr width="50%" align="left" />
+<div class="method">
+    <h3><a name="method$NSObject(NSWindowDelegate)-window$willPositionSheet$usingRect$">window:&nbsp;willPositionSheet:&nbsp;usingRect:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>window:</b> (<a rel="gsdoc" href="#class$NSWindow">NSWindow</a>*)window<b> willPositionSheet:</b> (<a rel="gsdoc" href="#class$NSWindow">NSWindow</a>*)sheet<b> usingRect:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)rect;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.0.0</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
 <div class="method">
     <h3><a name="method$NSObject(NSWindowDelegate)-windowDidBecomeKey$">windowDidBecomeKey:&nbsp;</a></h3>
     - (void) <b>windowDidBecomeKey:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
@@ -3696,10 +3850,36 @@
     <hr width="25%" align="left" />
 </div>
 <div class="method">
+    <h3><a name="method$NSObject(NSWindowDelegate)-windowDidChangeScreenProfile$">windowDidChangeScreenProfile:&nbsp;</a></h3>
+    - (void) <b>windowDidChangeScreenProfile:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.0.0</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSObject(NSWindowDelegate)-windowDidDeminiaturize$">windowDidDeminiaturize:&nbsp;</a></h3>
     - (void) <b>windowDidDeminiaturize:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSObject(NSWindowDelegate)-windowDidEndSheet$">windowDidEndSheet:&nbsp;</a></h3>
+    - (void) <b>windowDidEndSheet:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
       
@@ -3826,6 +4006,19 @@
     <hr width="25%" align="left" />
 </div>
 <div class="method">
+    <h3><a name="method$NSObject(NSWindowDelegate)-windowWillBeginSheet$">windowWillBeginSheet:&nbsp;</a></h3>
+    - (void) <b>windowWillBeginSheet:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.0.0</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSObject(NSWindowDelegate)-windowWillClose$">windowWillClose:&nbsp;</a></h3>
     - (void) <b>windowWillClose:</b> (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotification">NSNotification</a>*)aNotification;<br />
     <div class="availability">
@@ -3882,6 +4075,19 @@
     - (id) <b>windowWillReturnFieldEditor:</b> (<a rel="gsdoc" href="#class$NSWindow">NSWindow</a>*)sender<b> toObject:</b> (id)client;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSObject(NSWindowDelegate)-windowWillReturnUndoManager$">windowWillReturnUndoManager:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/Users/fedor/gnustep-Eldorado/System/Library/Documentation/Developer/Base/Reference/NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>*) <b>windowWillReturnUndoManager:</b> (<a rel="gsdoc" href="#class$NSWindow">NSWindow</a>*)sender;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
       
