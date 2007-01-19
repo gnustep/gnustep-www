@@ -409,7 +409,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">SQLClient</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/SQLClient-1.2.0.tar.gz")?>">1.2.0</a></td>
+<td class="stab"><a href="<?php download("libs/SQLClient-1.3.0.tar.gz")?>">1.3.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Simple OO Interface to SQL databases</td>
 </tr>
@@ -417,7 +417,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">WebServer</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/WebServer-1.1.0.tar.gz")?>">1.1.0</a></td>
+<td class="stab"><a href="<?php download("libs/WebServer-1.1.1.tar.gz")?>">1.1.1</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Simple web server for applications</td>
 </tr>
@@ -425,7 +425,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">Performance</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/Performance-0.0.1.tar.gz")?>">0.0.1</a></td>
+<td class="stab"><a href="<?php download("libs/Performance-0.2.4.tar.gz")?>">0.2.4</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Performance measuring classes</td>
 </tr>
