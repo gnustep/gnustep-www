@@ -207,7 +207,7 @@ download the <i>Recommended version</i>.</p>
 </tr>
 
 <tr>
-<td class="src">libjpg</td>
+<td class="src">libjpeg</td>
 <td class="req">Recommended</td>
 <td class="stab">-</td>
 <td class="unst">-</td>
