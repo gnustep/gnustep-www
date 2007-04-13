@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on December, 11  2006 by texi2html 1.64 -->
+<!-- Created on April, 12  2007 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -53,7 +53,7 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <!--docid::SEC1::-->
 <P>
 
-Last updated December, 11  2006.
+Last updated April, 12  2007.
 Please send corrections to <A HREF="mailto:gnustep-maintainer@gnu.org">gnustep-maintainer@gnu.org</A>. Also look
 at the user FAQ for more user oriented questions.
 </P><P>
@@ -124,7 +124,9 @@ Cocoa:
 <LI>Do not use CoreFoundation
 <LI>Do not use Objective-C++ (except with gcc 4.1 or later)
 <LI>Do not use Quicktime or other proprietary extension
-<LI>You need to convert .nib files (see next question  see section <A HREF="faq_1.html#SEC5">1.1.3 Tools for porting</A>)
+<LI>GNUstep should be able to read Cocoa nib files automatically, so there
+is no need to port these, although you might want to have GNUstep specific
+versions of them anyway.
 </UL>
 <P>
 
@@ -147,10 +149,11 @@ programs.
 
 <DL COMPACT>
 <DT><SAMP>`ni2gmodel'</SAMP>
-<DD>This program coverts nib files from any system, such as Cocoa or OPENSTEP to
+<DD>This program coverts nib files from any system, such as OPENSTEP to
 a gmodel format file. Gmodel can be read directly by GNUstep or you can
 convert this to a more GNUstep-native gorm format (using the Gorm interface
-modeller).
+modeller). Note this is not necessary for Cocoa nibs - GNUstep can read these
+directly.
 <P>
 
 <DT><SAMP>`Renaissance'</SAMP>
@@ -195,10 +198,7 @@ poses a problem for anyone wanting to implement compatibility with it.
 However, even if we reverse engineered the format, there are enough
 differences between the class and ivar layouts to make this sort of
 compatibility difficult. Not to mention the fact that we would
-constantly have to keep up with the changes Apple made. Also Apple's
-archiving format, as far as we know, would not be compatible between
-different machines because of endiness issues, although GNUstep doesn't
-have this problem.
+constantly have to keep up with the changes Apple made. 
 </P><P>
 
 The new keyed archiving using XML file formats is much more portable,
@@ -573,6 +573,8 @@ Talk to Adam Fedor <A HREF="mailto:fedor@gnu.org">fedor@gnu.org</A>, the maintai
 The GNUstep website is kept as a CVS module, but the largest portions
 of it (the FAQ and the Documentation) are actually
 generated from files in the individual GNUstep packages.
+Many highly changeable portions are kept on the Wiki, so anyone can change
+these (first you need to get write access, though).
 </P><P>
 
 If you want to update the FAQ or documentation  - grab
@@ -904,7 +906,7 @@ Display Ghostscript runs on top of X Windows.
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>December, 11  2006</I>
+by <I>Adam Fedor</I> on <I>April, 12  2007</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 

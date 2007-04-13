@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on December, 11  2006 by texi2html 1.64 -->
+<!-- Created on April, 12  2007 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -66,28 +66,62 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <A NAME="SEC8"></A>
 <H2> 4.1 Environment Setup </H2>
 <!--docid::SEC8::-->
-Add the shell script <TT>`GNUstep.sh'</TT> located in the Makefile
-package to your shell startup file (such as <TT>`.profile'</TT>). For instance,
-if your GNUSTEP_SYSTEM_ROOT is <TT>`/usr/GNUstep/System'</TT>,
 <P>
+
+You need to make sure your environment is properly setup in order to
+compile and run GNUstep software.  The steps to setup your environment
+differ slightly depending on your filesystem layout.
+</P><P>
+
+There is a way of setting up your environment that always works:
+sourcing the <TT>`GNUstep.sh'</TT> shell script before using GNUstep.  The
+shell script <TT>`GNUstep.sh'</TT> is located in the Makefile package; you
+may want to add it to your shell startup file (such as
+<TT>`.profile'</TT>). For instance, if you installed GNUstep with the
+default GNUstep filesystem layout in <TT>`/usr/GNUstep'</TT>, then adding
+</P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>. /usr/GNUstep/System/Library/Makefiles/GNUstep.sh
 </pre></td></tr></table></P><P>
 
-in your <TT>`.profile'</TT> file will work (Note the period at the beginning
-of the line, and the space between the period and the following path; 
-if your GNUSTEP_SYSTEM_ROOT is different, you need to replace 
-<TT>`/usr/GNUstep/System'</TT> with your GNUSTEP_SYSTEM_ROOT).
-It defines environment variables that are needed to find
-GNUstep files and executables.  Users of csh need to use the
-<TT>`GNUstep.csh'</TT> script. Read the make package <TT>`README'</TT> for more
-info. Some systems, like GNU/Linux have an <TT>`/etc/profile.d'</TT>
-directory where scripts can be executed automatically. If you want to
-set up GNUstep for every user on your system, you can try
-copying/linking the <TT>`GNUstep.sh'</TT> there. For csh or tcsh, try
+in your <TT>`.profile'</TT> file will work (Note the period at the
+beginning of the line, and the space between the period and the
+following path; if you installed GNUstep somewhere else, you need to
+replace <TT>`/usr/GNUstep/System/Library/Makefiles'</TT> with the path to
+your <TT>`GNUstep.sh'</TT> script).  The script defines environment
+variables that are needed to find GNUstep files and executables.
+</P><P>
+
+Users of csh need to use the <TT>`GNUstep.csh'</TT> script. Read the make
+package <TT>`README'</TT> for more info. Some systems, like GNU/Linux have
+an <TT>`/etc/profile.d'</TT> directory where scripts can be executed
+automatically. If you want to set up GNUstep for every user on your
+system, you can try copying/linking the <TT>`GNUstep.sh'</TT> there. For
+csh or tcsh, try
 </P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>source /usr/GNUstep/System/Library/Makefiles/GNUstep.csh
+</pre></td></tr></table></P><P>
+
+Finally, in most filesystem configuration it's also possible to
+manually set up your environment by setting PATH, the linker library
+paths and the <CODE>GNUSTEP_MAKEFILES</CODE> variable (instead of using
+<TT>`GNUstep.sh'</TT>).  For example, on GNU/Linux (with a default GNUstep
+installation), instead of sourcing <TT>`GNUstep.sh'</TT> you could manually
+add the Tools directories to your PATH:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>PATH="/usr/GNUstep/System/Tools:/usr/GNUstep/Local/Tools:$PATH"
+</pre></td></tr></table></P><P>
+
+manually add <TT>`/usr/GNUstep/System/Library/Libraries'</TT> and
+<TT>`/usr/GNUstep/Local/Library/Libraries'</TT> to your
+<TT>`/etc/ld.so.conf'</TT> file (don't forget to run <CODE>ldconfig</CODE> every
+time you install a library), and set the environment variable
+<CODE>GNUSTEP_MAKEFILES</CODE> when you want to compile something:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>GNUSTEP_MAKEFILES=/usr/GNUstep/System/Library/Makefiles
 </pre></td></tr></table></P><P>
 
 <A NAME="GNUstep Home"></A>
@@ -98,12 +132,12 @@ copying/linking the <TT>`GNUstep.sh'</TT> there. For csh or tcsh, try
 <P>
 
 Your home GNUstep directory should be created automatically the first
-time you use a GNUstep tool or application.
-This is where user defaults are kept as well as
-other user configuration files. User installed apps, libraries, etc
-are also here (if the default user directory is used). By default this
-is the directory <TT>`GNUstep'</TT> under your home directory, but you can change
-this (see the gnustep-make installation documentation).
+time you use a GNUstep tool or application.  This is where user
+defaults are kept as well as other user configuration files. User
+installed apps, libraries, etc are also here (if the default user
+directory is used).  By default this is the directory <TT>`GNUstep'</TT>
+under your home directory, but you can change this (see the
+gnustep-make installation documentation).
 </P><P>
 
 <A NAME="Time Zone"></A>
@@ -122,7 +156,10 @@ zone. Type something like <KBD>defaults write NSGlobalDomain "Local
 Time Zone" GB</KBD>.  Where <KBD>GB</KBD> is a time zone abbreviation.
 </P><P>
 
-See <TT>`$GNUSTEP_SYSTEM_ROOT/Library/Libraries/Resources/gnustep-bsae/NSTimeZones/zones'</TT> for typical time zones):
+See
+<TT>`/usr/GNUstep/System/Library/Libraries/gnustep-base/Versions/1.14/Resources/NSTimeZones/zones/'</TT>
+(or equivalent on your system depending on your filesystem layout) for
+typical time zones.
 </P><P>
 
 <A NAME="GNUstep deamons"></A>
@@ -132,16 +169,15 @@ See <TT>`$GNUSTEP_SYSTEM_ROOT/Library/Libraries/Resources/gnustep-bsae/NSTimeZon
 <!--docid::SEC11::-->
 <P>
 
-Set up your system to execute some GNUstep deamons. If you don't do
-this, they will be started automatically when you run your first GNUstep
-app:
+Set up your system to execute some GNUstep deamons.  This is optional
+because if you don't do this, they will be started automatically when
+you run your first GNUstep app:
 </P><P>
 
 <UL>
 <LI>gdomap - Put this in a system startup file, like <TT>`/etc/rc.local'</TT> or <TT>`/etc/rc.d/rc.local'</TT> (customize for your system)
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>GNUSTEP_SYSTEM_ROOT=/usr/GNUstep/System
-if [ -f $GNUSTEP_SYSTEM_ROOT/Tools/gdomap ]; then
-  $GNUSTEP_SYSTEM_ROOT/Tools/gdomap
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>if [ -f /usr/GNUstep/System/Tools/gdomap ]; then
+  /usr/GNUstep/System/Tools/gdomap
 fi
 </pre></td></tr></table><LI>gdnc - Start after sourcing <TT>`GNUstep.sh'</TT> (e.g. in .profile)
 <LI>gpbs - Same as with gdnc, make sure X-Windows is running.
@@ -171,7 +207,7 @@ make_services
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>December, 11  2006</I>
+by <I>Adam Fedor</I> on <I>April, 12  2007</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 

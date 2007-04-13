@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on December, 11  2006 by texi2html 1.64 -->
+<!-- Created on April, 12  2007 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -93,28 +93,42 @@ the gnustep-make Documentation directory (such as README.MingW for Windows).
 <!--docid::SEC4::-->
 <P>
 
-The GNUstep packages uses the Autoconf mechanism for
-configuration; it checks some host capabilties which are used by
-all GNUstep software.  To configure just type:
+The GNUstep packages uses the Autoconf mechanism for configuration; it
+checks some host capabilities which are used by all GNUstep software.
+The first package you will compile is gnustep-make.  To configure
+gnustep-make just type:
 </P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>./configure
 </pre></td></tr></table></P><P>
 
-The GNUstep makefile package needs a root directory.  If the
-GNUSTEP_SYSTEM_ROOT environment variable is set then configure will
-determine the root directory from its value (by removing the final
-/System path component from it).  You can also specify the root 
-directory when you run configure with the prefix paramater; the 
-following command makes /usr/local/GNUstep the root directory:
+The GNUstep makefile package can be configured to use different types
+of filesystem layouts.  By default, GNUstep is installed with a
+GNUstep filesystem layout into /usr/GNUstep.  That is a good,
+recommended default if you don't have an opinion on which filesystem
+layout to use.
+</P><P>
+
+But you can also install it somewhere else by using the prefix
+parameter; the following command makes /usr/local/GNUstep the root
+directory:
 </P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre>./configure --prefix=/usr/local/GNUstep
 </pre></td></tr></table></P><P>
 
-If you do not have the GNUSTEP_SYSTEM_ROOT environment variable set
-and you do not specify a root directory when running configure, then
-configure will use /usr/GNUstep as the default root directory.
+You can also install GNUstep using an FHS layout (or some other filesystem layout
+of your choice) by using the with-layout parameter; the following command
+configures GNUstep to use the standard FHS (unix) filesystem layout:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>./configure --with-layout=fhs
+</pre></td></tr></table></P><P>
+
+In this document we will always present examples that assume that you
+are using the default GNUstep filesystem layout in /usr/GNUstep.  If
+you are using a different layout, you will need to make the obvious
+changes.
 </P><P>
 
 <BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
@@ -151,15 +165,15 @@ make
 make install
 </pre></td></tr></table></P><P>
 
-Start with the Makefile Pacakge (gnustep-make). After installing
-gnustep-make you need to execute GNUstep's shell configuration
-script, as follows:
+Start with the Makefile Package (gnustep-make). After installing
+gnustep-make you need to execute GNUstep's shell configuration script,
+as follows:
 </P><P>
 
 <TABLE><tr><td>&nbsp;</td><td class=example><pre> . /usr/GNUstep/System/Library/Makefiles/GNUstep.sh
 </pre></td></tr></table></P><P>
 
-before proceeding any further. 
+before proceeding any further.
 </P><P>
 
 NOTE for gcc 2.X or MinGW users: Now install gnustep-objc. Before building
@@ -198,7 +212,7 @@ administrator to start the gdomap server using it.
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>December, 11  2006</I>
+by <I>Adam Fedor</I> on <I>April, 12  2007</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 

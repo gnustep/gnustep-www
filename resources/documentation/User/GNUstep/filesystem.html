@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on December, 11  2006 by texi2html 1.64 -->
+<!-- Created on April, 12  2007 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -51,28 +51,63 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="filesystem_2.html#SEC2">1.1 The Local Domain</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="filesystem_3.html#SEC3">1.2 The Network Domain</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="filesystem_4.html#SEC4">1.3 The Users Domain</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="filesystem_5.html#SEC5">1.4 Hierarchy</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="filesystem_6.html#SEC11">1.5 Description</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="filesystem_7.html#SEC37">1.6 Configuration</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="filesystem_5.html#SEC5">1.4 Structure of a Domain</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="filesystem_6.html#SEC36">1.5 Configuration</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 </TABLE></BLOCKQUOTE>
 <P>
 
-On GNUstep, there are four separate places where files related to GNUstep
-are installed: these places are called "domains".  These four 
-domains are the System domain, the Local domain, the Network domain,
-and the User domain.  Each of these domains serve a special purpose.  
+On GNUstep, there are four separate places where files related to
+GNUstep are installed: these places are called "domains".  These four
+domains are the System domain, the Network domain, the Local domain,
+and the User domain.  Each of these domains serve a special purpose.
 </P><P>
 
-The following is a general overview of the GNUstep domains.  A detailed
-explanation of the directory structure contained within each domain is
-found later in this document.
+You can install various things in each domain; for example
+applications, tools or libraries.  Each domain should allow you to
+install the different types of resources or compiled software.
+</P><P>
+
+Starting with gnustep-make version 2.0, each GNUstep installation can
+specify how these domains should be organized and mapped to
+directories on the filesystem.  A way to map GNUstep domains to
+filesystem directories is called a "filesystem layout".  A
+filesystem layout will specify in which directory System Tools are to
+be installed, for example.  The description of various filesystem
+layouts (and instructions on how to create your own) can be found in
+the <TT>`FilesystemLayouts'</TT> directory inside gnustep-make.
+</P><P>
+
+Applications, libraries, bundles and other resources are normally
+looked up in domains following a fixed order: User first, then Local,
+then Network, then System.
+</P><P>
+
+In this document we give a general overview of the GNUstep domains and
+of the interesting locations in a domain.  We also describe the
+default GNUstep filesystem layout.
+</P><P>
+
+The default GNUstep filesystem layout is a good way to discuss
+domains, because it is very simple: in the default GNUstep filesystem
+layout, every domain is mapped to a single directory on disk.  For
+example, the System domain could be mapped to the
+<TT>`/usr/GNUstep/System'</TT> directory, and everything that is installed
+into the System domain is then installed into some subdirectory of
+<TT>`/usr/GNUstep/System'</TT>.  Before gnustep-make version 2.0, this was
+the only filesystem layout available.
+</P><P>
+
+Please keep in mind that (starting from gnustep-make version 2.0) this
+is not the case for a general filesystem layout; for example a typical
+FHS (Unix) layout might be installing System Tools in <TT>`/usr/bin'</TT>
+and System Admin Tools in <TT>`/sbin'</TT>.
 </P><P>
 
 <HR SIZE=1>
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>December, 11  2006</I>
+by <I>Adam Fedor</I> on <I>April, 12  2007</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 
