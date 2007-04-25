@@ -146,12 +146,12 @@ download the <i>Recommended version</i>.</p>
 <td class="src">gcc</td>
 <td class="req">Required</td>
 <td class="stab"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-2.95.3.tar.gz">2.95.3</a></td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gcc"><i>current</i></a></td>
+<td class="unst"><a href="http://gcc.gnu.org"><i>current</i></a></td>
 <td>GNU C &amp; Objective-C Compiler</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#FOREIGN.FUNCTION.INTERFACES">ffcall</a></td>
+<td class="src">ffcall</td>
 <td class="req">Required</td>
 <td class="stab">1.8</td>
 <td class="unst"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
@@ -159,7 +159,7 @@ download the <i>Recommended version</i>.</p>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#FOREIGN.FUNCTION.INTERFACES">libffi</a></td>
+<td class="src">libffi</td>
 <td class="req">Optional</td>
 <td class="stab">gcc 3.3.1</td>
 <td class="unst"><div class="cent">-</div></td>
@@ -256,7 +256,8 @@ download the <i>Recommended version</i>.</p>
 <p>All GNUstep users should install the following items. Choose either the
 GNUstep Startup package, which combines all four core packages (plus ffcall) 
 or download and install the four core packages separately.
-<small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">Building GNUstep</a></i> in Build Guide)</small></p>
+<small>(see <i><a href="../experience/documentation.html">Installation Docs</a>
+or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">Building GNUstep</a></i> in Build Guide)</small></p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
 
@@ -295,7 +296,7 @@ or download and install the four core packages separately.
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Make</a></td>
+<td class="src">GNUstep Make</td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-make-2.0.0.tar.gz")?>">2.0.0</a></td>
 <td class="unst">-</td>
@@ -303,7 +304,7 @@ or download and install the four core packages separately.
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Base</a></td>
+<td class="src">GNUstep Base</td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-base-1.14.0.tar.gz")?>">1.14.0</a></td>
 <td class="unst"><a href="<?php download("core/gnustep-base-1.15.0.tar.gz")?>">1.15.0</a></td>
@@ -311,7 +312,7 @@ or download and install the four core packages separately.
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep GUI</a></td>
+<td class="src">GNUstep GUI/td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-gui-0.12.0.tar.gz")?>">0.12.0</a></td>
 <td class="unst">-</td>
@@ -319,7 +320,7 @@ or download and install the four core packages separately.
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">GNUstep Backend</a></td>
+<td class="src">GNUstep Backend</td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-back-0.12.0.tar.gz")?>">0.12.0</a></td>
 <td class="unst">-</td>
@@ -334,7 +335,6 @@ or download and install the four core packages separately.
 
 <p>These libraries and tools offer additional capabilities. Some
 packages and applications may require you to install these libraries
-<small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">Building Extensions</a></i> in Build Guide)</small>
 </p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
@@ -358,15 +358,15 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">Renaissance</a></td>
+<td class="src"><a href="http://www.gnustep.it/Renaissance/index.html">Renaissance</a></td>
 <td class="req">Optional</td>
 <td class="stab"><div class="cent">-</div></td>
-<td class="unst"><a href="http://www.gnustep.it/Renaissance/Download/Renaissance-0.7.0.tar.gz">0.7.0</a></td>
+<td class="unst"><a href="http://www.gnustep.it/Renaissance/Download/Renaissance-0.8.0.tar.gz">0.8.0</a></td>
 <td>Multi-platform UI layout</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">GNUstep Guile</a></td>
+<td class="src">GNUstep Guile</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/gnustep-guile-1.1.4.tar.gz")?>">1.1.4</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -374,7 +374,7 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.EXTENSIONS">StepTalk</a></td>
+<td class="src">StepTalk</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/StepTalk-0.10.0.tar.gz")?>">0.10.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
@@ -434,7 +434,7 @@ packages and applications may require you to install these libraries
 <td class="src">Pantomime</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0.tar.gz?rid=77">1.1.0</a></td>
-<td class="unst">-</td>
+<td class="unst"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.2.0pre3.tar.gz?rid=77">1.2.0pre3</a></td>
 <td>GNUMail framework - see also <a href="http://www.collaboration-world.com/pantomime">description</a></td>
 </tr>
 
@@ -521,7 +521,7 @@ packages and applications may require you to install these libraries
 
 <h2 id="user">GNUstep User Environment</h2>
 
-<p>If you intend to use GNUstep to manage files, run applications and so on, please install the items you require from the following list:<small>(see <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">GNUstep environment</a></i> in Build Guide)</small>
+<p>If you intend to use GNUstep to manage files, run applications and so on, please install the items you require from the following list:
 </p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
@@ -545,10 +545,10 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
-<td class="src"><a href="http://gnustep.made-it.com/BuildGuide/index.html#GNUSTEP.WORKSPACE">GWorkspace</a></td>
+<td class="src"><a href="http://www.gnustep.it/enrico/gworkspace/">GWorkspace</a></td>
 <td class="req">Recommended</td>
 <td class="stab">-</td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/">0.8.3</a></td>
+<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/">0.8.5</a></td>
 <td>File manager for GNUstep</td>
 </tr>
 
