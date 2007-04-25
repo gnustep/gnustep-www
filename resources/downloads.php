@@ -256,7 +256,7 @@ download the <i>Recommended version</i>.</p>
 <p>All GNUstep users should install the following items. Choose either the
 GNUstep Startup package, which combines all four core packages (plus ffcall) 
 or download and install the four core packages separately.
-<small>(see <i><a href="../experience/documentation.html">Installation Docs</a>
+<small>(see <a href="../experience/documentation.html">Installation Docs</a>
 or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">Building GNUstep</a></i> in Build Guide)</small></p>
 
 <table border=0 width="100%" cellpadding=3 cellspacing=0>
@@ -477,7 +477,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.gnustep.org/experience/Gorm.html">Gorm</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("dev-apps/gorm-1.1.0.tar.gz")?>">1.1.0</a></td>
+<td class="stab"><a href="<?php download("dev-apps/gorm-1.2.0.tar.gz")?>">1.2.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Graphical interface builder</td>
 </tr>
