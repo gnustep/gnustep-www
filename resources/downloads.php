@@ -579,7 +579,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">GNUMail</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/project/release.cgi?pid=2>1.1.0pre2</a></td>
+<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/project/release.cgi?pid=2">1.1.0pre2</a></td>
 <td class="unst">-</td>
 <td>GNU Mail - see also <a href="http://www.collaboration-world.com/gnumail">description</a></td>
 </tr>
