@@ -312,7 +312,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 </tr>
 
 <tr>
-<td class="src">GNUstep GUI/td>
+<td class="src">GNUstep GUI</td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-gui-0.12.0.tar.gz")?>">0.12.0</a></td>
 <td class="unst">-</td>
