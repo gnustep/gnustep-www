@@ -1,6 +1,6 @@
 <HTML>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on May, 26  2007 by texi2html 1.64 -->
+<!-- Created on November, 8  2007 by texi2html 1.64 -->
 <!-- 
 Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
@@ -53,7 +53,7 @@ Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
 <!--docid::SEC1::-->
 <P>
 
-Last updated May, 26  2007.
+Last updated November, 8  2007.
 Please send corrections to <A HREF="mailto:gnustep-maintainer@gnu.org">gnustep-maintainer@gnu.org</A>. Also look
 at the (developer) FAQ for more developer oriented questions.
 </P><P>
@@ -516,11 +516,12 @@ as Windows).
 <BLOCKQUOTE><TABLE BORDER=0 CELLSPACING=0> 
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC25">1.4.1 Problems compiling (loading shared libs)</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC26">1.4.2 Problems compiling (GNUstep Internal Error)</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC27">1.4.3 Problems with Alt key</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC27">1.4.3 Problems running tools and compiling</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 <TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC28">1.4.4 Problems with gcc3</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC29">1.4.5 Problems with fonts</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC30">1.4.6 No characters displayed.</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
-<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC31">1.4.7 No Makefile</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC29">1.4.5 Problems with Alt key</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC30">1.4.6 Problems with fonts</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC31">1.4.7 No characters displayed.</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
+<TR><TD ALIGN="left" VALIGN="TOP"><A HREF="userfaq_1.html#SEC32">1.4.8 No Makefile</A></TD><TD>&nbsp;&nbsp;</TD><TD ALIGN="left" VALIGN="TOP"></TD></TR>
 </TABLE></BLOCKQUOTE>
 <P>
 
@@ -589,11 +590,53 @@ There could also be a mismatch between the base and gui library versions.
 Make sure you have the latest release of each library installed.
 </P><P>
 
-<A NAME="Problems with Alt key"></A>
+<A NAME="Problems running tools and compiling"></A>
 <HR SIZE="6">
 <A NAME="SEC27"></A>
-<H3> 1.4.3 Problems with Alt key </H3>
+<H3> 1.4.3 Problems running tools and compiling </H3>
 <!--docid::SEC27::-->
+<P>
+
+If you have a system that has SELinux enabled (Fedora Core for example),
+you may have trouble running and/or compiling (some tools are run during
+the compilation process) GNUstep. This is due to the use of ffcall
+and/or libffi and other techniques used to access memory in a way that
+SELinux does not like. You might get errors like
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>trampoline: cannot make memory executable
+/bin/sh: line 5:  8427 Aborted                 ././shared_obj/ 
+make_services --test GSspell.service/Resources/Info-gnustep.plist
+gmake[2]: *** [GSspell.service/Resources/Info-gnustep.plist] Error 1
+</pre></td></tr></table>or
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>libgnustep-base.so.1.13: cannot restore segment prot after reloc: Permission denied
+</pre></td></tr></table></P><P>
+
+If you are using ffcall, you might need to switch to libffi. But in
+either case, it might help to do this:
+</P><P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>chcon -t texrel_shlib_t /usr/GNUstep/System/Library/Libraries/*.so
+</pre></td></tr></table></P><P>
+
+after installing the base libraries.
+</P><P>
+
+<A NAME="Problems with gcc3"></A>
+<HR SIZE="6">
+<A NAME="SEC28"></A>
+<H3> 1.4.4 Problems with gcc3 </H3>
+<!--docid::SEC28::-->
+<P>
+
+Don't forget you need to update binutils and libc also.
+</P><P>
+
+<A NAME="Problems with Alt key"></A>
+<HR SIZE="6">
+<A NAME="SEC29"></A>
+<H3> 1.4.5 Problems with Alt key </H3>
+<!--docid::SEC29::-->
 <P>
 
 It's possible the Alt key is not where you think it is or is defined
@@ -611,21 +654,11 @@ Mouse Preferences. Then use another value for the "Mouse grab modifier"
 (bottom right). That will allow you to alt-drag things.
 </P><P>
 
-<A NAME="Problems with gcc3"></A>
-<HR SIZE="6">
-<A NAME="SEC28"></A>
-<H3> 1.4.4 Problems with gcc3 </H3>
-<!--docid::SEC28::-->
-<P>
-
-Don't forget you need to update binutils and libc also.
-</P><P>
-
 <A NAME="Problems with fonts"></A>
 <HR SIZE="6">
-<A NAME="SEC29"></A>
-<H3> 1.4.5 Problems with fonts </H3>
-<!--docid::SEC29::-->
+<A NAME="SEC30"></A>
+<H3> 1.4.6 Problems with fonts </H3>
+<!--docid::SEC30::-->
 <P>
 
 Why do the characters get changed to asterisks ('*')?
@@ -662,9 +695,9 @@ better. When compiling gnustep-back, start with
 
 <A NAME="No characters displayed"></A>
 <HR SIZE="6">
-<A NAME="SEC30"></A>
-<H3> 1.4.6 No characters displayed. </H3>
-<!--docid::SEC30::-->
+<A NAME="SEC31"></A>
+<H3> 1.4.7 No characters displayed. </H3>
+<!--docid::SEC31::-->
 <P>
 
 When using the xlib backend, no characters are displayed in any GNUstep
@@ -684,9 +717,9 @@ to turn off font anti-aliasing.
 
 <A NAME="No Makefile"></A>
 <HR SIZE="6">
-<A NAME="SEC31"></A>
-<H3> 1.4.7 No Makefile </H3>
-<!--docid::SEC31::-->
+<A NAME="SEC32"></A>
+<H3> 1.4.8 No Makefile </H3>
+<!--docid::SEC32::-->
 <P>
 
 I tried to compile something and I get:
@@ -719,7 +752,7 @@ so that it is done automatically when you log in.
 <BR>  
 <FONT SIZE="-1">
 This document was generated
-by <I>Adam Fedor</I> on <I>May, 26  2007</I>
+by <I>Adam Fedor</I> on <I>November, 8  2007</I>
 using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
 "><I>texi2html</I></A>
 
