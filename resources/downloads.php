@@ -161,9 +161,9 @@ download the <i>Recommended version</i>.</p>
 <tr>
 <td class="src">libffi</td>
 <td class="req">Optional</td>
-<td class="stab">gcc 3.3.1</td>
+<td class="stab"><a href="<?php download("libs/libffi-gcc4.2.2.tar.gz")?>">gcc4.2.2</a></td>
 <td class="unst"><div class="cent">-</div></td>
-<td>Alternative to ffcall (part of gcc)</td>
+<td>Alternative to ffcall</td>
 </tr>
 
 <tr>
