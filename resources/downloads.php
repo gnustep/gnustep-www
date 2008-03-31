@@ -283,7 +283,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <td class="src">GNUstep Startup</td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-startup-0.18.4.tar.gz")?>">0.18.4</a></td>
-<td class="unst"><a href="<?php download("core/gnustep-startup-0.19.2.tar.gz")?>">0.19.2</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-startup-0.19.3.tar.gz")?>">0.19.3</a></td>
 <td>Easy Install Core Packages</td>
 </tr>
 
