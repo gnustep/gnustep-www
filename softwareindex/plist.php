@@ -4,7 +4,7 @@ require "include/connect.inc.php";
 
 /*
 
- PLIST in Datei schreiben so dass sie Cocoa lesen kann
+ PLIST in Datei schreiben so dass sie NSDictionary lesen kann
  
  arguments:
 	since="2005-12-12"		filter entries older than date
@@ -16,8 +16,9 @@ require "include/connect.inc.php";
 */
 header("Content-Encoding: text/xml");
 header("Cachecontrol: no-transform", false);
-?><!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
+?><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//GNUstep//DTD plist 0.9//EN" "http://www.gnustep.org/plist-0_9.xml">
+<plist version="0.9">
 <array>
 <?php // make propertly list of requested (new) applications in database
 $query="select *, DATE_FORMAT(updated, '%e %b %Y') as upd from ${DB_TABLE}";
