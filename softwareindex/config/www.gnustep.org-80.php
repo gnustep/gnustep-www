@@ -15,7 +15,7 @@ $DB_TABLE="swi_gs";
 $URL="http://www.gnustep.org/softwareindex";		// URL where SWI resides
 $TITLE="GNUstep Software Index";		// the TITLE
 $FROM="swi@gnustep.org";				// where mails originate
-$MAIN="<h1>GNUstep.org<br/>Software<br/>Index</h1>";
+$MAIN="<h1><img src="http://www.gnustep.org/images/AlternateGNUstepLogo.png"><br/>Software<br/>Index</h1>";
 $CONTENT="<b>The GNUstep Software Index</b>";
 $KEYWORDS="GNUstep";
 
