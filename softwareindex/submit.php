@@ -279,8 +279,8 @@ else
         <TBODY>
         <TR>
 		<TD vAlign=top><B>Note:</B> </TD>
-		<TD><B>Stop submitting windows software that is not related to the 
-		Zaurus in any way. It will be deleted.</B>
+		<TD><B>Stop submitting anything that is not related to 
+		GNUstep in any way. It will be deleted.</B>
 		
 		</TD></TR>
         <TR>
@@ -355,13 +355,9 @@ else
 					<td>
 					<?php 
 					selectionlist("rom", array("Any",
-											   "Sharp ROM",
-												   "Cacko", 
-												   "pdaXrom", 
-												   "Open Zaurus",
-												   "QuantumSTEP",
-												   "MacOS X",
-												   "Linux x86",
+											   "Linux",
+												   "Windows", 
+												   "Darwin", 
 													"Other",
 											   ), $row['rom']);
 					?>
