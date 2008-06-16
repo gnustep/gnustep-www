@@ -16,8 +16,8 @@ require "include/connect.inc.php";
 */
 header("Content-Encoding: text/xml");
 header("Cachecontrol: no-transform", false);
-?><?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//GNUstep//DTD plist 0.9//EN" "http://www.gnustep.org/plist-0_9.xml">
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+?><!DOCTYPE plist PUBLIC "-//GNUstep//DTD plist 0.9//EN" "http://www.gnustep.org/plist-0_9.xml">
 <plist version="0.9">
 <array>
 <?php // make propertly list of requested (new) applications in database
