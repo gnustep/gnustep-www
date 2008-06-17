@@ -17,20 +17,226 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.31 $</p>
-    <p><b>Date:</b> $Date: 2008/01/02 00:42:56 $</p>
+    <p><b>Version:</b> $Revision: 1.32 $</p>
+    <p><b>Date:</b> $Date: 2008/06/17 13:20:37 $</p>
     <p><b>Copyright:</b> (C) 2005,2006 Free Software Foundation, Inc.</p>
 
     
           <h1><a name="001000000000">Base Release Notes</a></h1>
     <p>
 
-        The release notes include descriptions of API changes, behavior
+        The release notes include descriptions of API changes, behaviour
 	changes and other information that might help developers and users
 	migrate to using a newer version of the library.
           </p>
 
-	    <h2><a name="001001000000">Version 1.15.2</a></h2>
+	    <h2><a name="001001000000">Version 1.16.1</a></h2>
+    <p>
+ 
+          This is a bugfix release.
+	    </p>
+    <p>
+ 
+          This release differs from 1.16.0 mostly in that it fixes
+          a bug which shows up on some 64bit machines where
+          sizeof(int) != sizeof(void*)<br />
+          The effect of this bug is that some notification observers
+          (those whose address is higher than can be represented in
+          32 bits) may not receive the notifications that they should.<br />
+          It is recommended that you upgrade to this release if you are
+          using a 64bit processor.
+	    </p>
+
+	    <h2><a name="001002000000">Version 1.16.0</a></h2>
+    <p>
+ 
+          This is a stable release.
+	    </p>
+    <dl>
+      <dt>NSArray</dt>
+      <dd>
+        New OSX method stubs.
+      </dd>
+      <dt>NSAutoreleasePool</dt>
+      <dd>
+        Dummy OSX method (-drain).
+      </dd>
+      <dt>NSBundle</dt>
+      <dd>
+        New OSX method stubs.
+      </dd>
+      <dt>NSCoder</dt>
+      <dd>
+        New OSX10.5 methods for NSInteger implemented.
+      </dd>
+      <dt>NSConnection</dt>
+      <dd>
+        New OSX10.5 methods for server connections implemented.
+      </dd>
+      <dt>NSData</dt>
+      <dd>
+        New OSX method stubs.
+      </dd>
+      <dt>NSException</dt>
+      <dd>
+        Implement stack address reporting.
+      </dd>
+      <dt>NSIndexSet</dt>
+      <dd>
+        Add OSX10.5 stub for countOfIndexesInRange
+      </dd>
+      <dt>NSKeyvalueObserving</dt>
+      <dd>
+        OSX10.5 additions implemented
+      </dd>
+      <dt>NSSet</dt>
+      <dd>
+        Implemented new OSX methods.
+      </dd>
+      <dt>NSStream</dt>
+      <dd>
+        Implemented basic SSL/TLS support using gnu-TLS.
+      </dd>
+      <dt>NSThread</dt>
+      <dd>
+        Implemented new OSX methods.
+      </dd>
+      <dt>NSLock, NSRecursiveLock, NSConditionLock</dt>
+      <dd>
+        Implemented names.
+      </dd>
+      <dt>GSXML, NSXMLParser</dt>
+      <dd>
+        Fully support namespace handling and fix bugs.
+      </dd>
+      <dt>NSKeyValueCoding, NSKeyValueObserving</dt>
+      <dd>
+        Made fully functional and MacOS-X compatible.
+      </dd>
+    </dl>
+    <p>
+The current emphasis of the base library is MacOS-X compatibility,
+        and the headers in this release mark many non-MacOS-X methods as being
+        scheduled for removal by the next release (from 1.17.0).<br />
+        These methods will mostly be moved to the &apos;additions&apos; library,
+        (which can be built stand-alone in conjunction with the Cocoa Foundation
+        framework as libgnustep-baseadd on OSX) and their declarations will
+        be in the headers of that library (&lt;GNUstepBase/...&gt;) rather
+        than in the <em>Foundation</em> directory.<br />
+        NB. The markup in the headers and documentation should not be
+        assumed to be exhaustive ...  it is planned that the next stable
+        release of the base library will enforce MacOS-X compatibility
+        by default, and you will have to explicitly include headers from
+        &lt;GNUstepBase/...&gt; in order to use GNUstep specific
+        additions.<br />
+        You should track the unstable branch of the base library (subversion
+        trunk) to find out what changes your software actually needs to make.
+            </p>
+    <p>
+The TODO list for MacOS-X 10.5 compatibility follows,
+        this is all stuff which would ideally be done by the next
+        stable release of this library.
+            </p>
+    <ul>
+      <li>
+        Remove all non OSX10.5 declarations from standard headers
+      </li>
+      <li>
+        Implement most new method stubs.
+      </li>
+      <li>
+        Implement new OSX10.5 NSCalendar class.
+      </li>
+      <li>
+        Implement new OSX10.5 NSLocale class.
+      </li>
+      <li>
+        Implement new OSX10.5 NSOperation class.
+      </li>
+      <li>
+        Implement new OSX10.5 XML classes.
+      </li>
+      <li>
+        Implement NSInteger coding for NSCoder subclasses.
+      </li>
+      <li>
+        Implement support for now enumerated values
+          in NSComparisonPredicate.
+      </li>
+      <li>
+        Implement new OSX10.5 features of NSDateFormatter.
+      </li>
+      <li>
+        Implement new OSX10.5 features of NSExpression.
+      </li>
+      <li>
+        Implement new OSX10.5 features of NSPredicate.
+      </li>
+      <li>
+        Implement new OSX10.5 features of NSFileManager.
+      </li>
+      <li>
+        Implement new OSX10.5 features of NSProcessInfo.
+      </li>
+      <li>
+        Implement new OSX10.5 NSHashTable class.
+      </li>
+      <li>
+        Implement new OSX10.5 NSMapTable class.
+      </li>
+      <li>
+        Implement new OSX10.5 NSPointerArray class.
+      </li>
+      <li>
+        Implement new OSX10.5 NSLocale additions.
+      </li>
+      <li>
+        Implement new OSX10.5 features of NSNumberFormatter.
+      </li>
+      <li>
+        Implement new OSX10.5 features of NSNumber/NSValue.
+      </li>
+      <li>
+        Update NSDistributedNotificationCenter
+          with new OSX methods.
+      </li>
+    </ul>
+
+	    <h2><a name="001003000000">Version 1.15.3</a></h2>
+    <p>
+ 
+          This is an unstable release.
+	    </p>
+    <dl>
+      <dt>Configuration/NSUserDefaults</dt>
+      <dd>
+        
+          Syntax within the configuration file extended so that a leading
+          &apos;../&apos; in a path name denotes a relative path in a relocatable
+          installation.<br />
+          New &apos;GlobalDefaults.plist&apos; file in the same directory as the main
+          GNUstep config file allows packagers/sysadmins to set up global
+          defaults easily.
+	  
+      </dd>
+      <dt>NSStream</dt>
+      <dd>
+        
+	  Addition of TLS/SSL support using GNU TLS on both unix-like
+          and mswindows systems.  First draft.<br />
+          Additions of SOCKS proxying support for socket streams.  First draft.
+	  
+      </dd>
+      <dt>NSURLConnection</dt>
+      <dd>
+        
+          Added support for https using new stream code.<br />
+          Added support for basic and digest authentication.
+	  
+      </dd>
+    </dl>
+
+	    <h2><a name="001004000000">Version 1.15.2</a></h2>
     <p>
  
           This is an unstable release. Bug fixes include improved thread
@@ -57,7 +263,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001002000000">Version 1.15.1</a></h2>
+	    <h2><a name="001005000000">Version 1.15.1</a></h2>
     <p>
  
           This is an unstable release. There have been many bug fixes, but
@@ -98,15 +304,15 @@
       </dd>
     </dl>
 
-	    <h2><a name="001003000000">Version 1.15.0</a></h2>
+	    <h2><a name="001006000000">Version 1.15.0</a></h2>
     <p>
  
           This is an unstable release from 1.14.0.  It is otherwise
 	  identical to the 1.14.0 release. Releases in the 1.15 series
-	  may not be foreward compatible with previous 1.15 releases.
+	  may not be forward compatible with previous 1.15 releases.
 	    </p>
 
-	    <h2><a name="001004000000">Version 1.14.0</a></h2>
+	    <h2><a name="001007000000">Version 1.14.0</a></h2>
     <p>
  
           This is a stable release ... all programs linked with earlier
@@ -145,7 +351,7 @@
       <dd>
         
 	     Fixes for lock contention with retain/release, so the performance
-	     of massively multithreaded applications is much better.
+	     of massively multi-threaded applications is much better.
 	  
       </dd>
       <dt>NSNetServices</dt>
@@ -181,7 +387,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001005000000">Version 1.13.1</a></h2>
+	    <h2><a name="001008000000">Version 1.13.1</a></h2>
     <p>
  
           This is a bugfix release improving the stability and security
@@ -195,13 +401,13 @@
       <dd>
         
 	    Fix for crash when initialising the bundle system in
-	    an applicatiuon linked with many frameworks.
+	    an application linked with many frameworks.
 	  
       </dd>
       <dt>NSCalendarDate</dt>
       <dd>
         
-	     Fix for buffer overrun problem mwhen initialising
+	     Fix for buffer overrun problem when initialising
 	     date from string.  Also fixed to return nil when
 	     initialising from some illegal strings.
 	  
@@ -210,7 +416,7 @@
       <dd>
         
 	     Some locking fixes to avoid rare deadlocks in heavily
-	     multithreaded applications.
+	     multi-threaded applications.
 	  
       </dd>
       <dt>NSDecimalNumber</dt>
@@ -264,24 +470,24 @@
       </dd>
     </dl>
 
-	    <h2><a name="001006000000">Version 1.13.0</a></h2>
+	    <h2><a name="001009000000">Version 1.13.0</a></h2>
     <p>
  
           Several sets of classes have been added for dealing with urls and
-          predicates. A few minor api changes have occured as well.
+          predicates. A few minor api changes have occurred as well.
 	    </p>
     <dl>
       <dt>Character sets</dt>
       <dd>
         
-	       Character sets were improved with regard to ranges (chinese
+	       Character sets were improved with regard to ranges (Chinese
                characters, etc).
 	    
       </dd>
       <dt>Keyed Archiving</dt>
       <dd>
         
-               Better compatibility with MacOSX. In particular, some gueses
+               Better compatibility with MacOSX. In particular, some guesses
                are made as to how some objects should be encoded.
 	    
       </dd>
@@ -306,7 +512,7 @@
                gcc objective-c++ compiler.
 	    
       </dd>
-      <dt>NSString designated initializer</dt>
+      <dt>NSString designated initialiser</dt>
       <dd>
         
                The GNUstep designated initialiser for the NSString class 
@@ -314,7 +520,7 @@
                <code>-initWithBytesNoCopy:length:encoding:freeWhenDone:</code>
                from 
                <code>-initWithCharactersNoCopy:length:freeWhenDone:</code> 
-               and older code subclassing NSString will need to be updated.
+               and older code sub classing NSString will need to be updated.
 	    
       </dd>
       <dt>NSBundle bundleWithIndentifier:</dt>
@@ -349,14 +555,14 @@
       <dt>Run loops</dt>
       <dd>
         
-              Removed the timeout facility for runloop watchers - you should
+              Removed the timeout facility for run loop watchers - you should
               use standard timers instead. The watcher interface is deprecated
               anyway.
 	    
       </dd>
     </dl>
 
-	    <h2><a name="001007000000">Version 1.12.0</a></h2>
+	    <h2><a name="001010000000">Version 1.12.0</a></h2>
     <p>
  There have been a number of API changes and several
 	methods have been depreciated in this release. Although
@@ -393,7 +599,7 @@
 	    Several deprecated and private methods were removed from
 	    the public interface including
 	    <code>+gnustepBundle</code>, and
-	    <code>+pathForGNUstepResource:ofTpye:inDirectory:</code>.
+	    <code>+pathForGNUstepResource:ofType:inDirectory:</code>.
 	    
       </dd>
       <dt>NSNotificationCenter deprecated method</dt>
@@ -470,7 +676,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001008000000">Version 1.11.2</a></h2>
+	    <h2><a name="001011000000">Version 1.11.2</a></h2>
     <dl>
       <dt>GNUstep.conf and relocation</dt>
       <dd>
@@ -509,7 +715,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001009000000">Version 1.11.1</a></h2>
+	    <h2><a name="001012000000">Version 1.11.1</a></h2>
     <dl>
       <dt>NSSortDescriptor</dt>
       <dd>
@@ -534,7 +740,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001010000000">Version 1.11.0</a></h2>
+	    <h2><a name="001013000000">Version 1.11.0</a></h2>
     <p>
 
 	    The interface version of the base library has changed in
@@ -630,13 +836,13 @@
       </dd>
     </dl>
 
-	    <h2><a name="001011000000">Version 1.10.3</a></h2>
+	    <h2><a name="001014000000">Version 1.10.3</a></h2>
     <p>
 
 	This release includes a few minor bug fixes.
 	    </p>
 
-	    <h2><a name="001012000000">Version 1.10.2</a></h2>
+	    <h2><a name="001015000000">Version 1.10.2</a></h2>
     <p>
 
 	This release is most likely the last release in this series,
@@ -699,7 +905,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001013000000">Version 1.10.1</a></h2>
+	    <h2><a name="001016000000">Version 1.10.1</a></h2>
     <p>
 
 	    </p>
@@ -740,7 +946,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001014000000">Version 1.10.0</a></h2>
+	    <h2><a name="001017000000">Version 1.10.0</a></h2>
     <p>
 
 	    </p>
@@ -790,7 +996,7 @@
       </dd>
     </dl>
 
-	    <h2><a name="001015000000">Version 1.9.2</a></h2>
+	    <h2><a name="001018000000">Version 1.9.2</a></h2>
     <p>
 
 	    </p>
