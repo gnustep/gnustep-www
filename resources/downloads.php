@@ -425,7 +425,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">Performance</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/Performance-0.2.4.tar.gz")?>">0.2.4</a></td>
+<td class="stab"><a href="<?php download("libs/Performance-0.2.5.tar.gz")?>">0.2.5</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Performance measuring classes</td>
 </tr>
