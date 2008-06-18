@@ -417,7 +417,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">WebServer</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/WebServer-1.1.1.tar.gz")?>">1.1.1</a></td>
+<td class="stab"><a href="<?php download("libs/WebServer-1.2.1.tar.gz")?>">1.2.1</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Simple web server for applications</td>
 </tr>
