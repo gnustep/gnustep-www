@@ -423,6 +423,14 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
+<td class="src">WebServices</td>
+<td class="req">Optional</td>
+<td class="stab"><a href="<?php download("libs/WebServices-0.1.0.tar.gz")?>">0.1.0</a></td>
+<td class="unst"><div class="cent">-</div></td>
+<td>Classes for building web services (alpha)</td>
+</tr>
+
+<tr>
 <td class="src">Performance</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/Performance-0.2.5.tar.gz")?>">0.2.5</a></td>
