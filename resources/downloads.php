@@ -150,22 +150,22 @@ download the <i>Recommended version</i>.</p>
 <td>GNU C &amp; Objective-C Compiler</td>
 </tr>
 
-<tr>
-<td class="src">ffcall</td>
+<td class="src">libffi</td>
 <td class="req">Required</td>
-<td class="stab">1.8</td>
-<td class="unst"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
+<td class="stab"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.1.tar.gz">3.0.1</a></td>
+<td class="unst"><div class="cent">-</div></td>
 <td>Message forwarding</td>
 </tr>
 
 <tr>
-<td class="src">libffi</td>
+<td class="src">ffcall</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.1.tar.gz">3.0.1</a></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Alternative to ffcall</td>
+<td class="stab">1.8</td>
+<td class="unst"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
+<td>Alternative to libffi</td>
 </tr>
 
+<tr>
 <tr>
 <td class="src">gmp</td>
 <td class="req">Optional</td>
