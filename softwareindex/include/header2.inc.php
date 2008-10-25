@@ -182,7 +182,8 @@ selectionlist("model", array("Any",
 						  <a href="submit.php">New Entry</a> |
 						  <a href="comment.php?cmd=all">Comments</a> |
 						  <a href="stats.php">Pending</a> |
-						  <a href="rss.php?<?php echo autologin()?>">RSS</a>
+						  <a href="rss.php?<?php echo autologin()?>">RSS</a> |
+						  <a href="plist.php">.plist</a>
 						  <?php
 						  if(!isloggedin())
 							echo " | <a href=\"login.php\">Login</a>";
