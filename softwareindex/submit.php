@@ -59,7 +59,7 @@ if($_POST['change'] == "ignore")
 		}
 	else if(!$_POST['name'])
 		echo "<b>No product name specified.</b>";
-	else if($id != 0 && (!$record || $_POST['version'] == $record['version']))
+	else if($id != 0 && (!$record || $_POST['edit-version'] == "edit" || $_POST['version'] == $record['version']))
 		{ // existing version change request
 		if(!$record)
 			echo "<b>Application $id not found.</b>";
@@ -128,7 +128,7 @@ if($_POST['change'] == "ignore")
 			}
 		}
 	else
-		{ // store a new record
+		{ // store a new record (i.e. different version number)
 		$query="select name from ${DB_TABLE} where name=".quote($_POST['name']);
 		$result=query($query);
 		if(($_POST['baseid']+0) == 0 && $row=mysql_fetch_array($result))
@@ -299,7 +299,7 @@ else
 		?>
         <TR>
 		<TD>Name</TD>
-		<TD><INPUT size="30" value="<?php echo htmlentities($row['name']);?>" name="name"> (please do not include version number here)</TD>
+		<TD><INPUT size="30" value="<?php echo htmlentities($row['name']);?>" name="name"> (please do not include version number here!)</TD>
 		</TR>
         <TR>
 		<TD>Short Description</TD>
@@ -349,7 +349,9 @@ else
 					</TR>
 					<TR>
 					<TD>Version # </TD>
-					<TD><INPUT size="55" name="version" value="<?php echo htmlentities($row['version']);?>"> </TD></TR>
+					<TD><INPUT size="55" name="version" value="<?php echo htmlentities($row['version']);?>"> 
+					<INPUT type="checkbox" name="edit-version" value="edit"> (edit typo in version number without creating a new version) </TD>
+					</TR>
 					<TR>
 					<TD>Operating system</TD>
 					<td>
