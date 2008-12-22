@@ -298,7 +298,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td class="src">GNUstep Make</td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-make-2.0.6.tar.gz")?>">2.0.6</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-make-2.0.7.tar.gz")?>">2.0.6</a></td>
 <td class="unst">-</td>
 <td>Makefile Package</td>
 </tr>
@@ -306,7 +306,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td class="src">GNUstep Base</td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-base-1.16.5.tar.gz")?>">1.16.5</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-base-1.18.0.tar.gz")?>">1.18.0</a></td>
 <td class="unst"><a href="<?php download("core/gnustep-base-1.15.4.tar.gz")?>">1.15.4</a></td>
 <td>Foundation</td>
 </tr>
@@ -314,7 +314,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td class="src">GNUstep GUI</td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-gui-0.14.0.tar.gz")?>">0.14.0</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-gui-0.16.0.tar.gz")?>">0.16.0</a></td>
 <td class="unst"><a href="<?php download("core/gnustep-gui-0.13.2.tar.gz")?>">0.13.2</a></td>
 <td>Graphical user interface class library</td>
 </tr>
@@ -322,7 +322,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td class="src">GNUstep Backend</td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-back-0.14.0.tar.gz")?>">0.14.0</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-back-0.16.0.tar.gz")?>">0.16.0</a></td>
 <td class="unst"><a href="<?php download("core/gnustep-back-0.13.2.tar.gz")?>">0.13.2</a></td>
 <td>Generic back-end</td>
 </tr>
