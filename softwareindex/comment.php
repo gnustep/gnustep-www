@@ -11,12 +11,13 @@ global $_POST;
 
 if(!isloggedin())
 {
-	echo "<b>Please log in before you can submit comments.</b>\n";
+	echo "<b>Please <a href=\"login.php\">log in</a> before you can submit or view comments.</b>\n";
 }
 else
 {
 	if($_GET['cmd'] == "all")
 		{ // show all comments
+			// FIXME
 		echo "Show all comments, your own first, ordered by date descending";
 		include "include/footer.inc.php";
 		exit;

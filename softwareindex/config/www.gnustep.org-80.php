@@ -27,4 +27,12 @@ $CONTACT="Comments: <a href=\"mailto:$FROM\">$FROM</a>";
 $IMPRESSUM="<a href=\"http://www.gnustep.org/index.html\">GNUstep Home</a>";
 $HINT="<a href=\"http://wiki.gnustep.org\">GNUstep Wiki</a>";
 
+	$ROM_VARIANTS=array("Any"
+											//"---",
+											//"Other",
+											);
+	
+	$MODEL_VARIANTS=array("Any"
+												);
+	
 ?>

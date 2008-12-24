@@ -143,6 +143,7 @@ if($_POST['change'] == "ignore")
 			$query.=" downloadurl, homepageurl, feedurl, sourceurl, author, description, creator,";
 			$query.=" category1, category2, category3, category4";
 			$query.=") values (";
+				// FIXME - should be publication date that defaults to now if not specified
 			$query.="now(), ";
 			$query.=quote($_POST['name']).", ";
 			$query.=quote($_POST['summary']).", ";
@@ -241,7 +242,7 @@ if($_POST['change'] == "ignore")
 				}
 			if(($_POST['baseid']+0) != 0)
 				{
-				requestchange(($_POST['baseid']+0), 'replacedby', $id, "new version requested");
+//				requestchange(($_POST['baseid']+0), 'replacedby', $id, "new version requested");
 				echo "<b>New version queued for approval.</b>\n";
 				}
 			else
@@ -304,7 +305,11 @@ else
         <TR>
 		<TD>Short Description</TD>
 		<TD><INPUT size="80" value="<?php echo htmlentities($row['summary']);?>" name="summary">
+
+		<!-- Release date should be an input field! -->
 		<INPUT type="hidden" value="<?php echo htmlentities($row['added']);?>" name="added">
+
+		<!-- Publication date -->
 		<INPUT type="hidden" value="<?php echo htmlentities($row['updated']);?>" name="updated">
 		<INPUT value="ignore" name="change" type="hidden">
 		<INPUT type="hidden" value="<?php echo htmlentities($id);?>" name="baseid"> </TD></TR>

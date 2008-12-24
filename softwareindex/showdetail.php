@@ -31,17 +31,39 @@ function title($row)
 			<span class="hline">
 				<?php 
 				echo htmlentities($row['name']);
-				if($row['version'])
-				echo " - ".htmlentities($row['version']);
-				if($row['replacedby'])
-					echo " <a href=showdetail.php?app=".$row['replacedby']."><font color=\"red\">update available</font></a>";
+				$v=$row['version'];	// found
+				if(!$v)
+					$v=$row['added'];	// substitute publishing date as version
+					// format as yyyy.mm.dd
+					//				if($row['version'])
+//					echo " - ".htmlentities($row['version']);
+				$query="select * from ${DB_TABLE} where name=".quote($row['name'])." and approved=1 order by added desc, updated desc, version desc";
+				$values=array();
+				$ids=array();
+				$result=query($query);
+				while($vrow=mysql_fetch_array($result))
+					{
+					  $vv=$vrow['version'];	// found
+						if(!$vv)
+							$vv=$vrow['added'];	// substitute publishing date as version
+							// format as yyyy.mm.dd
+						$values[]=$vv;	// add
+						$ids[]=$vrow['id'];	// add id
+					}
+				echo " - ";
+				selectionlist("version", $values, $v, "showdetail.php?app=", $ids);
+				mysql_free_result($result);
+				if($v != $values[0])
+					echo " <font color=\"red\">updates available</font>";	// current is not first
+//				if($row['replacedby'])
+//					echo " <a href=showdetail.php?app=".$row['replacedby']."><font color=\"red\">update available</font></a>";
 				?>
 			</span>
 	</td>
 	<td width="20%" align="right">
 				<?php
 				if($row['upd'])
-					echo "changed: ".htmlentities($row['upd']);
+					echo "published: ".htmlentities($row['upd']);
 				?>
 	</td>
 	</tr>
@@ -192,7 +214,7 @@ function details($id, $row)
 										</td>
 										</tr>
 										<?php
-							   echo field($row, "Added", "ad");
+							   echo field($row, "Released", "ad");
 							   echo urlfield($row, "Homepage", "homepageurl");
 							   echo urlfield($row, "Feed", "feedurl");
 							   echo urlfield($row, "Download", "downloadurl");
@@ -351,6 +373,8 @@ function morescreens($id, $row)
 function comments($id)
 { // show comments - if available
 	global $DB_TABLE;
+	// FIXME: show comments by same appname not id
+	// fetch version number belonging to comment
 	$query="select *, DATE_FORMAT(`date`, '%e %b %Y %H:%i:%s') as d from ${DB_TABLE}_comment where appid=$id order by `date` desc";
 	$result=query($query);
 	$first=1;
