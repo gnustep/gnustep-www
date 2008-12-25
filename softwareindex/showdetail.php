@@ -54,12 +54,7 @@ function title($row)
 				selectionlist("version", $values, $v, "showdetail.php?app=", $ids);
 				mysql_free_result($result);
 				if($v != $values[0])
-					{
-						if($v == $values[1])
-							echo " <font color=\"red\">update available</font>";	// second newest
-						else
-							echo " <font color=\"red\">updates available</font>";	// current is not first
-					}
+					echo " <font color=\"red\">updates available</font>";	// current is not first
 //				if($row['replacedby'])
 //					echo " <a href=showdetail.php?app=".$row['replacedby']."><font color=\"red\">update available</font></a>";
 				?>
