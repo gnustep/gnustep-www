@@ -5,7 +5,7 @@
  -
  */
 
-function selectionlist($name, $values, $default="", $onchange="")
+function selectionlist($name, $values, $default="", $onchange="", $links="")
 {
 	echo "<select name=\"$name\"";
 	if($onchange)
@@ -18,12 +18,15 @@ function selectionlist($name, $values, $default="", $onchange="")
 		echo "<option";
 		if($onchange)
 			{
-			if($value == "---")
-				echo " value=\"".$onchange."?".$name."=".$default."\"";
+			if($links)
+				$link=$links[$key];
+			else if($value == "---")
+				$link=$default;
 			else if($value == "Any")
-				echo " value=\"".$onchange."\"";
+			  $link="";
 			else
-				echo " value=\"".$onchange."?".$name."=".$value."\"";
+				$link=$value;
+			echo " value=\"".$onchange.$link."\"";
 			}
 		if($value == $default)
 			echo " selected>".htmlentities($value);
@@ -151,29 +154,11 @@ $sql .= 'ORDER BY t.category1 ASC';
 									<form method="get" action="index.php">
 										<label><b>Filter by OS</b></label>
 <?php
-selectionlist("rom", array("Any",
-						   "---",
-						   "Sharp ROM",
-						   "Cacko", 
-						   "pdaXrom", 
-						   "Open Zaurus",
-						   "QuantumSTEP",
-						   "MacOS X",
-						   "Linux x86", 
-						   "Other",
-						   ), $_GET['rom'], "index.php");
+selectionlist("rom", $ROM_VARIANTS, $_GET['rom'], "index.php?rom=");
 ?>
 										<label><b>Filter by Model</b></label>
 <?php
-selectionlist("model", array("Any",
-						   "---",
-						   "SL5x00",
-						   "C7x0", 
-						   "C860", 
-						   "C1000",
-						   "C3000",
-						   "SL6000",
-						   ), $_GET['model'], "index.php");
+selectionlist("model", $MODEL_VARIANTS, $_GET['model'], "index.php?model=");
 ?>
 									</form>
 									</td>

@@ -47,14 +47,19 @@ function title($row)
 						if(!$vv)
 							$vv=$vrow['added'];	// substitute publishing date as version
 							// format as yyyy.mm.dd
-						$values[]=$vv;	// add
-						$ids[]=$vrow['id'];	// add id
+						$values[] = $vv;	// add
+						$ids[] = $vrow['id'];	// add id
 					}
 				echo " - ";
 				selectionlist("version", $values, $v, "showdetail.php?app=", $ids);
 				mysql_free_result($result);
 				if($v != $values[0])
-					echo " <font color=\"red\">updates available</font>";	// current is not first
+					{
+						if($v == $values[1])
+							echo " <font color=\"red\">update available</font>";	// second newest
+						else
+							echo " <font color=\"red\">updates available</font>";	// current is not first
+					}
 //				if($row['replacedby'])
 //					echo " <a href=showdetail.php?app=".$row['replacedby']."><font color=\"red\">update available</font></a>";
 				?>
