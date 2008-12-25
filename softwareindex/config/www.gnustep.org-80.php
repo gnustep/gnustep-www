@@ -33,6 +33,8 @@ $HINT="<a href=\"http://wiki.gnustep.org\">GNUstep Wiki</a>";
 											);
 	
 	$MODEL_VARIANTS=array("Any"
+												//"---",
+												//"Other",
 												);
 	
 ?>
