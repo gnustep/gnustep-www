@@ -298,7 +298,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td class="src">GNUstep Make</td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-make-2.0.7.tar.gz")?>">2.0.6</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-make-2.0.8.tar.gz")?>">2.0.8</a></td>
 <td class="unst">-</td>
 <td>Makefile Package</td>
 </tr>
