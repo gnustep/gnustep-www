@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.35 $</p>
-    <p><b>Date:</b> $Date: 2008/06/17 13:14:50 $</p>
+    <p><b>Version:</b> $Revision: 1.36 $</p>
+    <p><b>Date:</b> $Date: 2009/01/20 19:05:45 $</p>
     <p><b>Copyright:</b> (C) 2005 Free Software Foundation, Inc.</p>
 
     
@@ -77,7 +77,7 @@
 	      a subminor number (00-99).<br />
 	      Features in the header file are marked as belonging to different
 	      version ranges using the
-	      <a rel="gsdoc" href="Functions.html#macro$GS_API_VERSION">GS_API_VERSION</a>
+	      GS_API_VERSION
 
 	      macro.<br />
 	      NB. This is the <em>native</em> versioning of the library being
@@ -106,7 +106,7 @@
 	      available as the GS_API_MACOSX preprocessor constant.<br />
 	      Features in the header file are marked as belonging to different
 	      version ranges using the
-	      <a rel="gsdoc" href="Functions.html#macro$GS_API_VERSION">GS_API_VERSION</a>
+	      GS_API_VERSION
 
 	      macro.<br />
 	      For MacOS-X compatibility, if this constant is not defined
@@ -271,7 +271,7 @@
 		which contain characters not legal in XML.  GNUstep always
 		generates legal XML, at the cost of a certain degree of
 		compatibility.  GNUstep XML property lists use a backslash
-		to escape illegal chatracters, and consequently any string
+		to escape illegal characters, and consequently any string
 		containing either a backslash or an illegal character will
 		be written differently to the same string on MacOS-X.
 	              </p>
@@ -356,9 +356,41 @@
 	      
         <p>
 
-	        When this is set to <em>YES</em> a stack trace is
-                added to the output of the description method of
-                a raised exception object.
+	        When this is set to <em>YES</em> a human readable stack trace
+		(with function names and line numbers) is added to the output
+		of the description method of a raised exception object.<br />
+	        This only works if gnustep was built with support for it
+		using libbfd, so it may not be available on all systems.
+	              </p>
+        
+	      
+        <p>
+
+	        When this is set to <em>NO</em> the raw stack trace provided
+		by [NSException-callStackReturnAddresses] is didsabled.<br />
+		The possible reasons for disabling this are:<br />
+		1. that the feature is implemented using a function of the
+		gcc complier to provide stack addresses, and the function is
+		buggy on some systems/compiler versions, and will cause a
+		signal to be sent which would crash your program if not caught.
+		The GNUstep code catches the signal and recovers using a signal
+		handler, but there have been two reports of this not working
+		with no known cause.<br />
+		2. that you have code which uses exceptions in a way in which
+		they were not designed to be used ... so that they are
+		routinely and frquently called rather than being called only
+		occasionally when exceptional conditions occur.  In this case
+		you may want to disable the stack frame generation implicit	
+		in each raised exception, in order to improve performance.
+	              </p>
+        
+	      
+        <p>
+
+		When this is not set, or is set to a non-boolean value, the
+		stack trace handling on exceptionsis MacOS-X compatible ...
+		stack return addresses are available but a human readable
+		traceback is not logged.
 	              </p>
         
 	    
@@ -672,7 +704,8 @@
       <dt>GNUSTEP_SYSTEM_ROOT</dt>
       <dd>
         
-		Obsolete.  Used to specify the GNUstep system root directory ... all
+		Obsolete.
+		Used to specify the GNUstep system root directory ... all
 		system libraries, tools, applications, headers, resources
 		in general are located relative to this.
 	      
@@ -704,7 +737,8 @@
     <dl>
       <dt>GNUSTEP_USER_DIR</dt>
       <dd>
-        Obsolete.  Path for user specific GNUstep resources (eg. &apos;GNUstep&apos;).
+        Obsolete.
+	    Path for user specific GNUstep resources (eg. &apos;GNUstep&apos;).
 	    Relative to the user&apos;s home directory.
 	    
       </dd>
@@ -885,6 +919,7 @@
       <b>Class</b>
       <ul>
         <li><a rel="gsdoc" href="NSStream.html#class$GSServerStream">GSServerStream</a></li>
+        <li><a rel="gsdoc" href="NSAffineTransform.html#class$NSAffineTransform">NSAffineTransform</a></li>
         <li><a rel="gsdoc" href="NSArchiver.html#class$NSArchiver">NSArchiver</a></li>
         <li><a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a></li>
         <li><a rel="gsdoc" href="NSException.html#class$NSAssertionHandler">NSAssertionHandler</a></li>

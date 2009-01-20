@@ -17,8 +17,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.32 $</p>
-    <p><b>Date:</b> $Date: 2008/06/17 13:20:37 $</p>
+    <p><b>Version:</b> $Revision: 1.33 $</p>
+    <p><b>Date:</b> $Date: 2009/01/20 19:05:53 $</p>
     <p><b>Copyright:</b> (C) 2005,2006 Free Software Foundation, Inc.</p>
 
     
@@ -30,27 +30,71 @@
 	migrate to using a newer version of the library.
           </p>
 
-	    <h2><a name="001001000000">Version 1.16.1</a></h2>
+	    <h2><a name="001001000000">Version 1.19.0</a></h2>
     <p>
  
-          This is a bugfix release.
+          This is a new unstable release of the base library.  Note that
+          gnustep-core is now installed in the LOCAL domain by default
+          instead of the SYSTEM domain. You may want to remove old
+          installations in the SYSTEM domain to avoid any
+          incompatibility problems.  Or you can force installation in
+          SYSTEM using make GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
+          install.
 	    </p>
-    <p>
- 
-          This release differs from 1.16.0 mostly in that it fixes
-          a bug which shows up on some 64bit machines where
-          sizeof(int) != sizeof(void*)<br />
-          The effect of this bug is that some notification observers
-          (those whose address is higher than can be represented in
-          32 bits) may not receive the notifications that they should.<br />
-          It is recommended that you upgrade to this release if you are
-          using a 64bit processor.
-	    </p>
+    <dl>
+      <dt>NSBundle</dt>
+      <dd>
+        Improve lookup of versioned library resources and improve
+	  location of resources based on the location of the executable
+	  under ms-windows.
+          
+      </dd>
+      <dt>NSConnection</dt>
+      <dd>
+        Adds a new keepalive mechanism to check connections at periodic
+	  intervals to see if the other end is still there.  This is enabled
+	  for message ports on ms-windows, where the operating system does
+	  not inform us when the other end goes away, and is not needed on
+	  the socket based connections on Unix.
+          
+      </dd>
+      <dt>NSException</dt>
+      <dd>
+        Implement full support for native objecive-c exceptions,
+	  though this requires a fix for the objc runtme which is not yet
+	  available in gcc.  The patch for the runtime can be found at
+	  http://gcc.gnu.org/bugzilla/show_bug.cgi?id=27466
+          
+      </dd>
+      <dt>NSTask</dt>
+      <dd>
+        Adds a new method in a category in the Additions library ...
+	  The +launchPathForTool: method will locate a named tool by looking
+	  in all the standard locations in the USER, LOCAL, NETWORK and
+	  SYSTEM domains, and also by looking in PATH.
+          
+      </dd>
+      <dt>Portability and compatibility work</dt>
+      <dd>
+        There are various minor changes to improve portability
+	  (both improved configuration/detection of system software and
+	  runtime iimprovements) to different operating systems such as
+	  64bit ms-windows.  There are also various improvements to
+	  MacOS-X compatibility.
+	  
+      </dd>
+      <dt>@synchronize</dt>
+      <dd>
+        
+	  Implementation of runtime support for @synchronize.
+	  
+      </dd>
+    </dl>
 
-	    <h2><a name="001002000000">Version 1.16.0</a></h2>
+	    <h2><a name="001002000000">Version 1.15.4</a></h2>
     <p>
  
-          This is a stable release.
+          This is an unstable release.
 	    </p>
     <dl>
       <dt>NSArray</dt>
@@ -71,7 +115,10 @@
       </dd>
       <dt>NSConnection</dt>
       <dd>
-        New OSX10.5 methods for server connections implemented.
+        New OSX10.5 methods for server connections implemented.<br />
+	  A keepalive facility so that daemons can tell (on mswindows)
+	  that all client processes have gone away, and shut themselves down.
+	  
       </dd>
       <dt>NSData</dt>
       <dd>
@@ -113,11 +160,21 @@
       <dd>
         Made fully functional and MacOS-X compatible.
       </dd>
+      <dt>Windows 64bit</dt>
+      <dd>
+        Changes so that the library can be built/used for 64bit windows.
+	  
+      </dd>
+      <dt>@synchronize</dt>
+      <dd>
+        Support for new ObjC language feature.
+	  
+      </dd>
     </dl>
     <p>
 The current emphasis of the base library is MacOS-X compatibility,
         and the headers in this release mark many non-MacOS-X methods as being
-        scheduled for removal by the next release (from 1.17.0).<br />
+        scheduled for removal by the next unstable release (from 1.17.0).<br />
         These methods will mostly be moved to the &apos;additions&apos; library,
         (which can be built stand-alone in conjunction with the Cocoa Foundation
         framework as libgnustep-baseadd on OSX) and their declarations will

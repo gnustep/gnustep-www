@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 26630</p>
-    <p><b>Date:</b> 2008-06-12 11:44:00 +0100 (Thu, 12 Jun 2008)</p>
+    <p><b>Version:</b> 27578</p>
+    <p><b>Date:</b> 2009-01-12 12:48:46 +0000 (Mon, 12 Jan 2009)</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -27,32 +27,69 @@
       <h3>Contents -</h3>
       <ol>
         <li>
-          <a href="#001000000000">Software documentation for the NSMutableString class</a>
+          <a href="#001000000000">Portable path handling</a>
         </li>
         <li>
-          <a href="#002000000000">Software documentation for the NSString class</a>
+          <a href="#002000000000">Software documentation for the NSMutableString class</a>
         </li>
         <li>
-          <a href="#003000000000">Software documentation for the NXConstantString class</a>
+          <a href="#003000000000">Software documentation for the NSString class</a>
         </li>
         <li>
-          <a href="#004000000000">Software documentation for the
-        NSMutableString(GNUstep) category</a>
+          <a href="#004000000000">Software documentation for the NXConstantString class</a>
         </li>
         <li>
           <a href="#005000000000">Software documentation for the
+        NSMutableString(GNUstep) category</a>
+        </li>
+        <li>
+          <a href="#006000000000">Software documentation for the
         NSMutableString(GSCategories)
         category</a>
         </li>
         <li>
-          <a href="#006000000000">Software documentation for the NSString(GSCategories)
+          <a href="#007000000000">Software documentation for the NSString(GSCategories)
         category</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
     </div>
 
-          <h1><a name="001000000000">
+          <h1><a name="001000000000">Portable path handling</a></h1>
+    <p>
+
+        Portable path handling (across both unix-like and
+        mswindows operating systems) requires some care. A
+        modern operating system uses the concept of a single
+        root to the filesystem, but mswindows has multiple
+        filesystems with no common root, so code must be
+        aware of this. There is also the more minor issue that
+        windows uses a backslash as a separator between the
+        components of a path and unix-like systems use a
+        forward slash.
+          </p>
+    <p>
+
+        GNUstep has three path handling modes, &apos;gnustep&apos;,
+        &apos;unix&apos;, and &apos;windows&apos;. You should probably stick to
+        using the default &apos;gnustep&apos; mode in which the path
+        handling methods cope with both unix and windows style
+        paths in portable and tolerant manner: <br /> Paths are
+        read in literally so they can be in the native format
+        provided by the operating system or in a non-native
+        format. <br /> Paths are written out using the native
+        format of the system the application is running on (eg
+        on windows slashes are converted to backslashes). <br /> The
+        path handling methods accept either a forward or backward
+        slash as a path separator when parsing any path. <br />
+        The path handling methods add forward slashes when building
+        new paths internally or when standardising paths, so those
+        path strings provide a portable representation (as
+        <strong>long</strong> as they are relative paths, not
+        including system specific roots).
+          </p>
+
+          <h1><a name="002000000000">
         Software documentation for the NSMutableString class
       </a></h1>
     <h2><a name="class$NSMutableString">NSMutableString</a> : <a rel="gsdoc" href="#class$NSString">NSString</a></h2>
@@ -342,7 +379,7 @@ Subclasses <strong>should</strong> override this method.<br />
     <hr width="25%" align="left" />
 </div>
 
-          <h1><a name="002000000000">
+          <h1><a name="003000000000">
         Software documentation for the NSString class
       </a></h1>
     <h2><a name="class$NSString">NSString</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
@@ -417,14 +454,7 @@ Where an NSString instance method returns an NSString object, the class of the a
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-boolValue">-boolValue</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSString(GSCompatibility)-substringFromRange$">-substringFromRange:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByEscapingXML">-stringByEscapingXML</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByUnescapingXML">-stringByUnescapingXML</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawAtPoint$withAttributes$">-drawAtPoint:withAttributes:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-drawInRect$withAttributes$">-drawInRect:withAttributes:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSStringDrawing.html#method$NSString(NSStringDrawing)-sizeWithAttributes$">-sizeWithAttributes:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local/Library/Documentation/Libraries/CoreComponents/SMSUtils.html#method$NSString(ReducingSpaces)-stringByReducingSpaces">-stringByReducingSpaces</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/GNUstep/Local/Library/Documentation/Libraries/CoreComponents/SMSUtils.html#method$NSString(ReducingSpaces)-stringByReducingSpaces">-stringByReducingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>
@@ -1221,7 +1251,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-componentsSeparatedByCharactersInSet$">componentsSeparatedByCharactersInSet:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>componentsSeparatedByCharactersInSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)set;<br />
+    - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>componentsSeparatedByCharactersInSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)separator;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.5.0</div>
 <br />
@@ -1235,12 +1265,12 @@ Where an NSString instance method returns an NSString object, the class of the a
               <a rel="gsdoc" href="#class$NSString">NSString</a>
 
                 s representing substrings of this string that are
-                separated by characters in the <var>set</var>
-                (which must not be <code>nil</code>). If there
-                are no occurrences of separator, the whole string
-                is returned. If string begins or ends with
-                separator, empty strings will be returned
-                for those positions.
+                separated by characters in the set (which
+                must not be <code>nil</code>). If there are no
+                occurrences of <var>separator</var>, the
+                whole string is returned. If string begins or
+                ends with <var>separator</var>, empty strings will
+                be returned for those positions.
                   </p>
     <p>
       
@@ -1610,7 +1640,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-getParagraphStart$end$contentsEnd$forRange$">getParagraphStart:&nbsp;end:&nbsp;contentsEnd:&nbsp;forRange:&nbsp;</a></h3>
-    - (void) <b>getParagraphStart:</b> (NSUInteger*)startPtr<b> end:</b> (NSUInteger*)parEndPtr<b> contentsEnd:</b> (NSUInteger*)contentsEndPtr<b> forRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)range;<br />
+    - (void) <b>getParagraphStart:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>*)startPtr<b> end:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>*)parEndPtr<b> contentsEnd:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>*)contentsEndPtr<b> forRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)range;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.3.0</div>
 <br />
@@ -2264,7 +2294,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSString-integerValue">integerValue&nbsp;</a></h3>
-    - (NSInteger) <b>integerValue</b>;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>integerValue</b>;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.5.0</div>
 <br />
@@ -2291,10 +2321,10 @@ Subclasses <strong>should</strong> override this method.<br />
             by a slash or backslash, is an absolute path, as is any
             path beginning with a tilde. <br /> In any mode a UNC
             path (//host/share...) is always absolute. <br /> In
-            gnustep path handling mode, the rules are the same
-            as for windows, except that a path whose root is a slash
-            denotes an absolute path when running on unix and a
-            relative path when running under windows.
+            the default gnustep path handling mode, the rules are
+            the same as for windows, except that a path whose root
+            is a slash denotes an absolute path when running on unix
+            and a relative path when running under windows.
           
     </div>
     <hr width="25%" align="left" />
@@ -3438,7 +3468,7 @@ If the string cannot be parsed as a normal property list format, this method als
     <hr width="25%" align="left" />
 </div>
 
-          <h1><a name="003000000000">
+          <h1><a name="004000000000">
         Software documentation for the NXConstantString class
       </a></h1>
     <h2><a name="class$NXConstantString">NXConstantString</a> : <a rel="gsdoc" href="#class$NSString">NSString</a></h2>
@@ -3542,7 +3572,7 @@ If the string cannot be parsed as a normal property list format, this method als
     <hr width="25%" align="left" />
     <br/><hr width="50%" align="left" /><br/>
 
-          <h1><a name="004000000000">
+          <h1><a name="005000000000">
         Software documentation for the
         NSMutableString(GNUstep) category
       </a></h1>
@@ -3589,7 +3619,7 @@ If the string cannot be parsed as a normal property list format, this method als
     <hr width="25%" align="left" />
 </div>
 
-          <h1><a name="005000000000">
+          <h1><a name="006000000000">
         Software documentation for the
         NSMutableString(GSCategories)
         category
@@ -3719,7 +3749,7 @@ If the string cannot be parsed as a normal property list format, this method als
     <hr width="25%" align="left" />
 </div>
 
-          <h1><a name="006000000000">
+          <h1><a name="007000000000">
         Software documentation for the NSString(GSCategories)
         category
       </a></h1>

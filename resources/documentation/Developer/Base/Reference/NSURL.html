@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 26630</p>
-    <p><b>Date:</b> 2008-06-12 11:44:00 +0100 (Thu, 12 Jun 2008)</p>
+    <p><b>Version:</b> 27578</p>
+    <p><b>Date:</b> 2009-01-12 12:48:46 +0000 (Mon, 12 Jan 2009)</p>
     <p><b>Copyright:</b> (C) 1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -77,8 +77,6 @@
     <br/><br/>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSPasteboard.html#method$NSURL(NSPasteboard)+URLFromPasteboard$">+URLFromPasteboard:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSPasteboard.html#method$NSURL(NSPasteboard)-writeToPasteboard$">-writeToPasteboard:</a></li>
       <li><a rel="gsdoc" href="NSURL.html#method$NSURL+URLWithString$">+URLWithString:</a></li>
       <li><a rel="gsdoc" href="NSURL.html#method$NSURL+URLWithString$relativeToURL$">+URLWithString:relativeToURL:</a></li>
       <li><a rel="gsdoc" href="NSURL.html#method$NSURL+fileURLWithPath$">+fileURLWithPath:</a></li>
@@ -261,7 +259,9 @@
             <code>nil</code> if there is no host supplied in the
             URL. <br /> Percent escape sequences in the user
             string are translated and the string treated as
-            UTF8. <br />
+            UTF8. <br /> Returns IPv6 addresses <em>without</em>
+            the enclosing square brackets required (by RFC2732) in
+            URL strings.
           
     </div>
     <hr width="25%" align="left" />
@@ -304,7 +304,14 @@
 
             <br /> This method adds percent escapes to
             <var>aPath</var> if it contains characters which need
-            ascaping.
+            escaping. <br /> Accepts RFC2732 style IPv6 host
+            addresses either with or without the enclosing
+            square brackets (MacOS-X at least up to version 10.5
+            does not handle these correctly, but GNUstep does).
+            <br /> Permits the &apos;aHost&apos; part to contain
+            &apos;username:password@host:port&apos;
+            or &apos;host:port&apos; in addition to a simple host name or
+            address.
           
     </div>
     <hr width="25%" align="left" />
@@ -338,8 +345,9 @@ This is a designated initialiser for the class.<br />
             Initialised using <var>aUrlString</var> and
             <var>aBaseUrl</var>. The value of <var>aBaseUrl</var>
             may be <code>nil</code>, but <var>aUrlString</var> must
-            be non-nil. <br /> If the string cannot be parsed the
-            method returns <code>nil</code>.
+            be non-nil. <br /> Accepts RFC2732 style IPv6 host
+            addresses. <br /> If the string cannot be parsed
+            the method returns <code>nil</code>.
           
     </div>
     <hr width="25%" align="left" />
