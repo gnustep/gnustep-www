@@ -10,9 +10,9 @@ echo "<rss version=\"2.0\">";
 
 ?>
 <channel>
-<title>Handheld Linux Software Index</title>
+<title><?php echo htmlentities($TITLE);?></title>
 <link><?php echo $URL;?></link>
-<description><?echo $CONTENT;?></description>
+<description><?php echo htmlentities($CONTENT);?></description>
 <language>en-en</language>
 <copyright>hns@dsitri.de</copyright>
 <pubDate><?php echo date("r", time());?></pubDate>

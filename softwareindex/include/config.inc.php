@@ -1,13 +1,13 @@
 <?php
 
+	$VERSION="SWI 2.6.1";
+
 // load machine specific configuration
 
 	global $ROM_VARIANTS;
 	global $MODEL_VARIANTS;
 
 require "config/".$_SERVER['SERVER_NAME']."-".$_SERVER['SERVER_PORT'].".php";
-
-$VERSION="SWI 2.6.0";
 
 	if(!$ROM_VARIANTS)
 		$ROM_VARIANTS=array("Any",
