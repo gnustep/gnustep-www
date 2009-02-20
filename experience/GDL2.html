@@ -25,11 +25,12 @@ Objective-C objects to rows of relational database management systems
 (EOF) as released with WebObjects 4.5 from Apple Inc.  It requires:
 </p>
 <p><ul>
-<li> the GNUstep Make Package 1.13.0</li>
-<li> the Base Library 1.13.0</li>
-<li> the GUI Package 1.11.0</li>
-<li> the Back Package 1.11.0</li>
-<li> GORM Package 1.1.0</li>
+<li> the GNUstep Make Package</li>
+<li> the Base Library</li>
+<li> the GUI Package</li>
+<li> the Back Package</li>
+<li> the GORM Package</li>
+<li> the Renaissance Package</li>
 </ul></p>
 <h3><u>Contents</u></h3>
 <p>
@@ -41,45 +42,56 @@ Objective-C objects to rows of relational database management systems
 <br />
 <h3><a name="Introduction" id=
 "Introduction"><u>Introduction</u></a></h3>
-<p>
-GDL2 consists of the following components:
-<ul>
-<li>EOControl (gnustep-db2control)</li>
-
-<p>The fundamental abstraction library which includes many non RDBMS
+<p>GDL2 consists of the following components:</p>
+<dl>
+<dt>EOControl</dt>
+<dd>The fundamental abstraction library which includes many non RDBMS
 related extensions such as KeyValueCoding extensions and other
 categories.  Most importantly it contains the classes which handle the
-coordination of object graphs namely EOEditingContext.</p>
+coordination of object graphs namely EOEditingContext.</dd>
 
-<li>EOAccess (gnustep-db2)</li>
-
-<p>This library implements the underlying mechanism to retrieve and store
+<dt>EOAccess</dt>
+<dd>This library implements the underlying mechanism to retrieve and store
 data in RDBMS.  It defines the abstract classes like EOAdaptor which
-are subclassed to interface with concrete RDBMS implementations.</p>
+are subclassed to interface with concrete RDBMS implementations.</dd>
 
-<li>EOInterface</li>
-
-<p>This library implements classes used to synchronize UI components such
+<dt>EOInterface</dt>
+<dd>This library implements classes used to synchronize UI components such
 as NSTextFields, NSButtons and NSTableViews with the state of objects
-which an EOEditingContext contains.</p>
+which an EOEditingContext contains.</dd>
 
-<li>EOAdaptors</li>
+<dt>EOAdaptors</dt>
+<dd>This is a collection of concrete EOAdaptor projects needed to connect
+to specific databases.  GDL2 currently supplies Adaptors for
+the PostgreSQL and SQLite databases.
+  <ul>
+  <li>PostgreSQL: we aim to support PostgreSQL 8.1 and higher API</li>
+  <li>SQLite: Compatible with SQLite version 3.x</li>
+  </ul>
+</dd>
 
-<p>This is a collection of concrete EOAdaptor projects needed to connect
-to specific databases.  GDL2 currently only supplies an Adaptor for
-the PostgreSQL database.  Even though the Adaptor is still called
-Postgres95 we aim to support PostgreSQL 7.2 and higher API.  In fact
-the Adaptor may very soon be renamed to PostgreSQL.</p>
+<dt>DBModeler</dt>
+<dd>GDL2 offers an alpha version of DBModeler to create and maintain .eomodel(d)
+files.</dd>
 
-<li>DBModeler</li>
+<dt>EOModeler</dt>
+<dd>This framework is used by DBModeler and can used to write bundles
+for DBModeler to interface with the application.</dd>
 
-<p>GDL2 offers an alpha version of DBModeler to create and maintain .eomodel(d)
-files.</p>
-</ul>
-</p>
+<dt>GDL2Palette</dt>
+<dd>Both Gorm and InterfaceBuilder can be used to create nib files which
+contain display groups an EOEditingContext.  The palette provides those
+applications with the necessary code to hook up UI components with
+the model objects.</dd>
+
+<dt>Examples/Trading</dt>
+<dd>The Trading framework, provides an example model, and some routines to
+create a database from the model, and populate the database with data,
+while not an example itself it is indented for use by example applications
+using GDL2 alone, EOInterface or GSWeb, and for higher level tests.</dd>
+</dl>
 
 <h3><a name="State" id="State"><u>State</u></a></h3>
-
 <p>Currently <i>GDL2</i> is meant for developers who can help test and contribute
 to the current code or are willing to test the interface.  It is not
 ready for general purpose production code.  Having said that, it
@@ -90,35 +102,26 @@ and has been much tested in those contexts.<p>
 functions and methods not documented in EOF 4.5.  Even the library
 names themselves may change.</p>
 
-<p>We currently do not support the EOSchemaSynchronization methods yet.  
-But you are likely to find many more missing implementations within the source.  
-If you identify something that you need, please let us know at
+<p>If you identify something that you need, please let us know at
 <discuss-gnustep@gnu.org> or even better get copyright assignment for
 the FSF and post a patch.</p>
 
-
 <h3><a name="Documentation" id="Documentation"><u>Documentation</u></a></h3>
-
 <p>For installation help, please refer to the INSTALL file included
 in the GDL2 package</p>
 
 <h3><a name="Download" id="Download"><u>How to get GDL2</u></a></h3>
-
-<p>The last offically released version is 0.10.1 (September 2006),
+<p>The last offically released version is 0.12.0 (February 2009),
 which you can 
-<a href="ftp://ftp.gnustep.org/pub/gnustep/libs/gnustep-dl2-0.10.1.tar.gz">download here</a>.</p>
+<a href="ftp://ftp.gnustep.org/pub/gnustep/libs/gnustep-dl2-0.12.0.tar.gz">download here</a>.</p>
 
 <h3><a name="RelatedLinks" id="RelatedLinks"><u>Related links</u></a></h3>
-
 <p><a href="http://www.gnustepweb.net">GNUstepWeb</a> (WebObjects 4.5 clone)</p>
 
 </div></div>
-
 </div>
 
-
-<div class="sidebar">
-	
+<div class="sidebar">	
   <a href="../">Home page</a><br />
   <a href="../information/aboutGNUstep.html">Introduction</a><br />
   <a href="../experience/apps.html">Applications</a><br />
@@ -132,10 +135,6 @@ which you can
   <a href="http://wiki.gnustep.org/">Project Wiki</a><br />
   <br />
   Site by <a href="mailto:webmasters@gnustep.org">webmasters@gnustep.org</a>
-  
 </div>
-
-
-
 </body>
 </html>
