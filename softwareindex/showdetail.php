@@ -122,7 +122,7 @@ function checklink($url)
 		
 //			echo " GET $path HTTP/1.1\n\n";
 			
-			fputs($fp,"GET $path HTTP/1.1\nHost: ".$parsed['host']."\n\n");
+			fputs($fp,"HEAD $path HTTP/1.1\nHost: ".$parsed['host']."\n\n");	// ask for header only (large files!)
 			$lines=fgets($fp, 1024);	// get first line(s)
 		
 //			echo $lines;

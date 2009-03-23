@@ -1,6 +1,6 @@
 <?php
 
-	$VERSION="SWI 2.6.1";
+include "include/version.inc.php";
 
 // load machine specific configuration
 
