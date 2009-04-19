@@ -56,7 +56,7 @@ else
 	mysql_free_result($result);
 	echo "Please add comments for <b>".$row['name']." - ".$row['version']."</b>\n";
 	?>
-	<form method="POST" action="comment.php?cmd=save&app=<?php echo $_GET['app'];?>">
+	<form method="POST" action="comment.php?cmd=save&app=<?php echo $_GET['app'];?>" accept-charset="iso-8859-1">
 	<table align=left>
 	<tbody>
 	<tr>

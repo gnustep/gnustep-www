@@ -1,3 +1,3 @@
 <?php
-$VERSION="SWI 2.6.3";
+$VERSION='<a href="www.quantum-step.com">SWI 2.6.4</a>';
 ?>

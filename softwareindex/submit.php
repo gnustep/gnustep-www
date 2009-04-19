@@ -275,7 +275,7 @@ else
 	else
 		$row=array();
 	?>
-		<FORM method="POST" enctype="multipart/form-data">
+		<FORM method="POST" enctype="multipart/form-data" accept-charset="iso-8859-1">
 		<TABLE align=center>
         <TBODY>
         <TR>

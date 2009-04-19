@@ -88,7 +88,7 @@ if($_GET['cmd'] == "login" && $_POST['email'] && $_POST['passcode'])
 		echo "login.php?cmd=create";
 	else
 		echo "login.php?cmd=login";
-	?>">
+	?>" accept-charset="iso-8859-1">
 	<table align=left>
 	<tbody>
 	<tr>

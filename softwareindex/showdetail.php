@@ -461,7 +461,7 @@ if($_GET['cmd'] == "disapprove")
 {
 	echo "<b>This function is to request to delete the application. Please note that this request will be reviewed.</b>";
 	?>
-		<form method="POST" enctype="multipart/form-data" action="showdetail.php?app=<?php echo $id;?>&cmd=disapprove-ok">
+		<form method="POST" enctype="multipart/form-data" action="showdetail.php?app=<?php echo $id;?>&cmd=disapprove-ok" accept-charset="iso-8859-1">
 		<table>
 		<tr>
 		<td>Reason:</td><td><INPUT size="30" value="" name="comment"></input></td>

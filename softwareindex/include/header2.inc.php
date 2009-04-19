@@ -35,15 +35,19 @@ function selectionlist($name, $values, $default="", $onchange="", $links="")
 		}
 	echo "</select>";
 }
-?>
+	
+// header("Content-Type: text/html; charset=utf-8");	
+	header("Content-Type: text/html; charset=iso-8859-1");	
 
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>		
 	<title><?php echo $TITLE;?></title>
 	<META NAME="DESCRIPTION" CONTENT="<?php echo $CONTENT;?>">
 	<META NAME="KEYWORDS" CONTENT="<?php echo $KEYWORDS;?>">
-	<link rel="stylesheet" type="text/css" href="css/swi.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="css/swi.css"/>
 </head>
 
 <body>
@@ -144,14 +148,14 @@ $sql .= 'ORDER BY t.category1 ASC';
 									<table border=0>
 									<tr>
 									<td>
-									<form method="get" action="search.php">
+									<form method="get" action="search.php" accept-charset="iso-8859-1">
 										<label><b>Search for</b></label>
 										<input type="text" id="query" name="q" size="15" value="">
 										<input type="image" border="0" value="Go" src="images/srch_32.png" alt="Go" width="20" height="20" align="top">
 									</form>
 									</td>
 									<td>
-									<form method="get" action="index.php">
+									<form method="get" action="index.php" accept-charset="iso-8859-1">
 										<label><b>Filter by OS</b></label>
 <?php
 selectionlist("rom", $ROM_VARIANTS, $_GET['rom'], "index.php?rom=");
