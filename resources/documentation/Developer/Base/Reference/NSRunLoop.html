@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 27610</p>
-    <p><b>Date:</b> 2009-01-16 13:35:03 +0000 (Fri, 16 Jan 2009)</p>
+    <p><b>Version:</b> 28328</p>
+    <p><b>Date:</b> 2009-06-06 08:36:48 +0100 (Sat, 06 Jun 2009)</p>
     <p><b>Copyright:</b> (C) 1996-1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -85,17 +85,21 @@
     </p>
     <p>
 
-              In general, there is one run loop per thread in an
-              application, which may always be obtained
-              through the
+              There is one run loop per thread in an application,
+              which may always be obtained through the
               <code>
                 <a rel="gsdoc" href="#method$NSRunLoop+currentRunLoop">
                   +currentRunLoop
                 </a>
 
               </code>
-              method, however unless you are using the AppKit
-              and the
+              method (you cannot use
+              <a rel="gsdoc" href="NSObject.html#method$NSObject-init">
+                -init
+              </a>
+
+              or +new), however unless you are using the AppKit and
+              the
               NSApplication
 
                 class, the run loop will not be started unless
@@ -173,8 +177,8 @@
             the earliest limit date has passed (whichever comes
             first). <br /> If the supplied <var>mode</var> is
             <code>nil</code>, uses NSDefaultRunLoopMode. <br />
-            If there are no input sources in the <var>mode</var>,
-            returns immediately.
+            If there are no input sources or timers in the
+            <var>mode</var>, returns immediately.
           
     </div>
     <hr width="25%" align="left" />
@@ -220,7 +224,11 @@
             Fires timers whose fire date has passed, and checks
             timers and limit dates for input sources,
             determining the earliest time that any future
-            timeout becomes due. Returns that date/time.
+            timeout becomes due. Returns that date/time. <br />
+            Returns distant future if the loop contains no
+            timers, just input sources without timeouts. <br />
+            Returns <code>nil</code> if the loop contains
+            neither timers nor input sources.
           
     </div>
     <hr width="25%" align="left" />
@@ -270,10 +278,11 @@
             the first input or timeout. <br /> If the specified
             <var>date</var> is in the past, this runs the loop
             once only, to handle any events already available.
-            <br /> If there are no input sources in
-            <var>mode</var>, returns <code>NO</code> without
-            running the loop, otherwise returns
-            <code>YES</code>.
+            <br /> If there are no input sources or timers in
+            <var>mode</var>, this method returns <code>NO</code>
+            without running the loop (irrespective of the
+            supplied <var>date</var> argument), otherwise
+            returns <code>YES</code>.
           
     </div>
     <hr width="25%" align="left" />
@@ -492,7 +501,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSRunLoop(OPENSTEP)-performSelector$target$argument$order$modes$">performSelector:&nbsp;target:&nbsp;argument:&nbsp;order:&nbsp;modes:&nbsp;</a></h3>
-    - (void) <b>performSelector:</b> (SEL)aSelector<b> target:</b> (id)target<b> argument:</b> (id)argument<b> order:</b> (unsigned int)order<b> modes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)modes;<br />
+    - (void) <b>performSelector:</b> (SEL)aSelector<b> target:</b> (id)target<b> argument:</b> (id)argument<b> order:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)order<b> modes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)modes;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />

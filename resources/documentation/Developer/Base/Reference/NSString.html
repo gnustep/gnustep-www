@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 27578</p>
-    <p><b>Date:</b> 2009-01-12 12:48:46 +0000 (Mon, 12 Jan 2009)</p>
+    <p><b>Version:</b> 28192</p>
+    <p><b>Date:</b> 2009-04-10 09:25:03 +0100 (Fri, 10 Apr 2009)</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -64,18 +64,29 @@
         root to the filesystem, but mswindows has multiple
         filesystems with no common root, so code must be
         aware of this. There is also the more minor issue that
-        windows uses a backslash as a separator between the
-        components of a path and unix-like systems use a
-        forward slash.
+        windows often uses a backslash as a separator between
+        the components of a path and unix-like systems always use
+        forward slash. <br /> On windows there is also the
+        issue that two styles of path are used, most commonly
+        with a drive letter and a path on that drive (eg.
+        &apos;C:\directory\file&apos;) but also UNC paths
+        (eg. &apos;//host/share/directory/file&apos;) so path handling
+        functions must deal with both formats.
           </p>
     <p>
 
         GNUstep has three path handling modes, &apos;gnustep&apos;,
-        &apos;unix&apos;, and &apos;windows&apos;. You should probably stick to
-        using the default &apos;gnustep&apos; mode in which the path
-        handling methods cope with both unix and windows style
-        paths in portable and tolerant manner: <br /> Paths are
-        read in literally so they can be in the native format
+        &apos;unix&apos;, and &apos;windows&apos;. The mode defaults to &apos;gnustep&apos;
+        but may be set using the
+        
+          GSPathHandling()
+        
+
+        function. <br /> You should probably stick to using
+        the default &apos;gnustep&apos; mode in which the path handling
+        methods cope with both unix and windows style paths in
+        portable and tolerant manner: <br /> Paths are read in
+        literally so they can be in the native format
         provided by the operating system or in a non-native
         format. <br /> Paths are written out using the native
         format of the system the application is running on (eg
@@ -86,7 +97,12 @@
         new paths internally or when standardising paths, so those
         path strings provide a portable representation (as
         <strong>long</strong> as they are relative paths, not
-        including system specific roots).
+        including system specific roots). <br /> An important
+        case to note is that on windows a path which looks at
+        first glance like an absolute path may actually be a
+        relative one. <br /> &apos;C:file&apos; is a relative path
+        because it specifies a file on the C drive but does not
+        say what directory it is in.
           </p>
 
           <h1><a name="002000000000">
@@ -167,7 +183,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSMutableString+stringWithCString$length$">stringWithCString:&nbsp;length:&nbsp;</a></h3>
-    + (id) <b>stringWithCString:</b> (const char*)byteString<b> length:</b> (unsigned int)length;<br />
+    + (id) <b>stringWithCString:</b> (const char*)byteString<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -184,7 +200,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSMutableString+stringWithCapacity$">stringWithCapacity:&nbsp;</a></h3>
-    + (<a rel="gsdoc" href="#class$NSMutableString">NSMutableString</a>*) <b>stringWithCapacity:</b> (unsigned int)capacity;<br />
+    + (<a rel="gsdoc" href="#class$NSMutableString">NSMutableString</a>*) <b>stringWithCapacity:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)capacity;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -198,7 +214,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSMutableString+stringWithCharacters$length$">stringWithCharacters:&nbsp;length:&nbsp;</a></h3>
-    + (id) <b>stringWithCharacters:</b> (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)characters<b> length:</b> (unsigned int)length;<br />
+    + (id) <b>stringWithCharacters:</b> (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)characters<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -288,12 +304,12 @@
 </div>
 <div class="method">
     <h3><a name="method$NSMutableString-initWithCapacity$">initWithCapacity:&nbsp;</a></h3>
-    - (id) <b>initWithCapacity:</b> (unsigned int)capacity;<br />
+    - (id) <b>initWithCapacity:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)capacity;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
 This is a designated initialiser for the class.<br />
-Subclasses <strong>should</strong> override this method.<br />
+Subclasses <strong>must</strong> override this method.<br />
     <div class="desc">
       
             Constructs an empty string with initial buffer
@@ -312,7 +328,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSMutableString-insertString$atIndex$">insertString:&nbsp;atIndex:&nbsp;</a></h3>
-    - (void) <b>insertString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> atIndex:</b> (unsigned int)loc;<br />
+    - (void) <b>insertString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> atIndex:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)loc;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -341,7 +357,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSMutableString-replaceOccurrencesOfString$withString$options$range$">replaceOccurrencesOfString:&nbsp;withString:&nbsp;options:&nbsp;range:&nbsp;</a></h3>
-    - (unsigned int) <b>replaceOccurrencesOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)replace<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by<b> options:</b> (unsigned int)opts<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)searchRange;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>replaceOccurrencesOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)replace<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)opts<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)searchRange;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -454,7 +470,6 @@ Where an NSString instance method returns an NSString object, the class of the a
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString(GSCategories)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
-      <li><a rel="gsdoc" href="/home/brains99/GNUstep/Local/Library/Documentation/Libraries/CoreComponents/SMSUtils.html#method$NSString(ReducingSpaces)-stringByReducingSpaces">-stringByReducingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>
@@ -757,7 +772,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString+stringWithCString$length$">stringWithCString:&nbsp;length:&nbsp;</a></h3>
-    + (id) <b>stringWithCString:</b> (const char*)byteString<b> length:</b> (unsigned int)length;<br />
+    + (id) <b>stringWithCString:</b> (const char*)byteString<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -774,7 +789,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString+stringWithCharacters$length$">stringWithCharacters:&nbsp;length:&nbsp;</a></h3>
-    + (id) <b>stringWithCharacters:</b> (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (unsigned int)length;<br />
+    + (id) <b>stringWithCharacters:</b> (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -956,7 +971,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-cStringLength">cStringLength&nbsp;</a></h3>
-    - (unsigned int) <b>cStringLength</b>;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>cStringLength</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1052,7 +1067,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-characterAtIndex$">characterAtIndex:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>) <b>characterAtIndex:</b> (unsigned int)index;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>) <b>characterAtIndex:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)index;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1068,7 +1083,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-commonPrefixWithString$options$">commonPrefixWithString:&nbsp;options:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>commonPrefixWithString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask;<br />
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>commonPrefixWithString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1114,7 +1129,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-compare$options$">compare:&nbsp;options:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1141,7 +1156,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-compare$options$range$">compare:&nbsp;options:&nbsp;range:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1171,7 +1186,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-compare$options$range$locale$">compare:&nbsp;options:&nbsp;range:&nbsp;locale:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string<b> options:</b> (unsigned int)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)compareRange<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)dict;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)compareRange<b> locale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)dict;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
@@ -1226,7 +1241,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-completePathIntoString$caseSensitive$matchesIntoArray$filterTypes$">completePathIntoString:&nbsp;caseSensitive:&nbsp;matchesIntoArray:&nbsp;filterTypes:&nbsp;</a></h3>
-    - (unsigned int) <b>completePathIntoString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>**)outputName<b> caseSensitive:</b> (BOOL)flag<b> matchesIntoArray:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>**)outputArray<b> filterTypes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)filterTypes;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>completePathIntoString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>**)outputName<b> caseSensitive:</b> (BOOL)flag<b> matchesIntoArray:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>**)outputArray<b> filterTypes:</b> (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*)filterTypes;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1455,7 +1470,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-getCString$maxLength$">getCString:&nbsp;maxLength:&nbsp;</a></h3>
-    - (void) <b>getCString:</b> (char*)buffer<b> maxLength:</b> (unsigned int)maxLength;<br />
+    - (void) <b>getCString:</b> (char*)buffer<b> maxLength:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)maxLength;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1473,7 +1488,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-getCString$maxLength$encoding$">getCString:&nbsp;maxLength:&nbsp;encoding:&nbsp;</a></h3>
-    - (BOOL) <b>getCString:</b> (char*)buffer<b> maxLength:</b> (unsigned int)maxLength<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
+    - (BOOL) <b>getCString:</b> (char*)buffer<b> maxLength:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)maxLength<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0, Base 1.2.0</div>
 <br />
@@ -1509,7 +1524,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-getCString$maxLength$range$remainingRange$">getCString:&nbsp;maxLength:&nbsp;range:&nbsp;remainingRange:&nbsp;</a></h3>
-    - (void) <b>getCString:</b> (char*)buffer<b> maxLength:</b> (unsigned int)maxLength<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange<b> remainingRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>*)leftoverRange;<br />
+    - (void) <b>getCString:</b> (char*)buffer<b> maxLength:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)maxLength<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange<b> remainingRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>*)leftoverRange;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1567,7 +1582,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-getFileSystemRepresentation$maxLength$">getFileSystemRepresentation:&nbsp;maxLength:&nbsp;</a></h3>
-    - (BOOL) <b>getFileSystemRepresentation:</b> (GSNativeChar*)buffer<b> maxLength:</b> (unsigned int)size;<br />
+    - (BOOL) <b>getFileSystemRepresentation:</b> (GSNativeChar*)buffer<b> maxLength:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)size;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1593,7 +1608,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-getLineStart$end$contentsEnd$forRange$">getLineStart:&nbsp;end:&nbsp;contentsEnd:&nbsp;forRange:&nbsp;</a></h3>
-    - (void) <b>getLineStart:</b> (unsigned int*)startIndex<b> end:</b> (unsigned int*)lineEndIndex<b> contentsEnd:</b> (unsigned int*)contentsEndIndex<b> forRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
+    - (void) <b>getLineStart:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>*)startIndex<b> end:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>*)lineEndIndex<b> contentsEnd:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>*)contentsEndIndex<b> forRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
@@ -1681,7 +1696,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-hash">hash&nbsp;</a></h3>
-    - (unsigned int) <b>hash</b>;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>hash</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1772,7 +1787,7 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-initWithBytes$length$encoding$">initWithBytes:&nbsp;length:&nbsp;encoding:&nbsp;</a></h3>
-    - (id) <b>initWithBytes:</b> (const void*)bytes<b> length:</b> (unsigned int)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
+    - (id) <b>initWithBytes:</b> (const void*)bytes<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0, Base 1.2.0</div>
 <br />
@@ -1794,12 +1809,12 @@ Where an NSString instance method returns an NSString object, the class of the a
 </div>
 <div class="method">
     <h3><a name="method$NSString-initWithBytesNoCopy$length$encoding$freeWhenDone$">initWithBytesNoCopy:&nbsp;length:&nbsp;encoding:&nbsp;freeWhenDone:&nbsp;</a></h3>
-    - (id) <b>initWithBytesNoCopy:</b> (void*)bytes<b> length:</b> (unsigned int)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding<b> freeWhenDone:</b> (BOOL)flag;<br />
+    - (id) <b>initWithBytesNoCopy:</b> (void*)bytes<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding<b> freeWhenDone:</b> (BOOL)flag;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0, Base 1.2.0</div>
 <br />
 This is a designated initialiser for the class.<br />
-Subclasses <strong>should</strong> override this method.<br />
+Subclasses <strong>must</strong> override this method.<br />
     <div class="desc">
       
             Initialises the receiver with the supplied
@@ -1881,7 +1896,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSString-initWithCString$length$">initWithCString:&nbsp;length:&nbsp;</a></h3>
-    - (id) <b>initWithCString:</b> (const char*)byteString<b> length:</b> (unsigned int)length;<br />
+    - (id) <b>initWithCString:</b> (const char*)byteString<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1905,7 +1920,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSString-initWithCStringNoCopy$length$freeWhenDone$">initWithCStringNoCopy:&nbsp;length:&nbsp;freeWhenDone:&nbsp;</a></h3>
-    - (id) <b>initWithCStringNoCopy:</b> (char*)byteString<b> length:</b> (unsigned int)length<b> freeWhenDone:</b> (BOOL)flag;<br />
+    - (id) <b>initWithCStringNoCopy:</b> (char*)byteString<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length<b> freeWhenDone:</b> (BOOL)flag;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1931,7 +1946,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSString-initWithCharacters$length$">initWithCharacters:&nbsp;length:&nbsp;</a></h3>
-    - (id) <b>initWithCharacters:</b> (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (unsigned int)length;<br />
+    - (id) <b>initWithCharacters:</b> (const <a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1954,7 +1969,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSString-initWithCharactersNoCopy$length$freeWhenDone$">initWithCharactersNoCopy:&nbsp;length:&nbsp;freeWhenDone:&nbsp;</a></h3>
-    - (id) <b>initWithCharactersNoCopy:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (unsigned int)length<b> freeWhenDone:</b> (BOOL)flag;<br />
+    - (id) <b>initWithCharactersNoCopy:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$unichar">unichar</a>*)chars<b> length:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)length<b> freeWhenDone:</b> (BOOL)flag;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2405,7 +2420,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSString-length">length&nbsp;</a></h3>
-    - (unsigned int) <b>length</b>;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>length</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2420,7 +2435,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSString-lengthOfBytesUsingEncoding$">lengthOfBytesUsingEncoding:&nbsp;</a></h3>
-    - (unsigned) <b>lengthOfBytesUsingEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>lengthOfBytesUsingEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0, Base 1.2.0</div>
 <br />
@@ -2525,7 +2540,7 @@ Subclasses <strong>should</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSString-maximumLengthOfBytesUsingEncoding$">maximumLengthOfBytesUsingEncoding:&nbsp;</a></h3>
-    - (unsigned) <b>maximumLengthOfBytesUsingEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>maximumLengthOfBytesUsingEncoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)encoding;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0, Base 1.2.0</div>
 <br />
@@ -2783,7 +2798,7 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-rangeOfCharacterFromSet$options$">rangeOfCharacterFromSet:&nbsp;options:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfCharacterFromSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)aSet<b> options:</b> (unsigned int)mask;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfCharacterFromSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)aSet<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2805,7 +2820,7 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-rangeOfCharacterFromSet$options$range$">rangeOfCharacterFromSet:&nbsp;options:&nbsp;range:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfCharacterFromSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)aSet<b> options:</b> (unsigned int)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfCharacterFromSet:</b> (<a rel="gsdoc" href="NSCharacterSet.html#class$NSCharacterSet">NSCharacterSet</a>*)aSet<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2828,7 +2843,7 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-rangeOfComposedCharacterSequenceAtIndex$">rangeOfComposedCharacterSequenceAtIndex:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfComposedCharacterSequenceAtIndex:</b> (unsigned int)anIndex;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfComposedCharacterSequenceAtIndex:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)anIndex;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2875,7 +2890,7 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-rangeOfString$options$">rangeOfString:&nbsp;options:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string<b> options:</b> (unsigned int)mask;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)string<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2894,7 +2909,7 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-rangeOfString$options$range$">rangeOfString:&nbsp;options:&nbsp;range:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (unsigned int)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
+    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>) <b>rangeOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)aString<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask<b> range:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -3129,17 +3144,17 @@ If the string cannot be parsed as a normal property list format, this method als
             for a definition of a path component.
 
 <pre>
-   @&quot;hello/there&quot; produces @&quot;hello&quot;
-   @&quot;hello&quot; produces @&quot;&quot;
-   @&quot;/hello&quot; produces @&quot;/&quot;
-   @&quot;/&quot; produces @&quot;/&quot;
-   @&quot;C:file&quot; produces @&quot;C:&quot;
-   @&quot;C:&quot; produces @&quot;C:&quot;
-   @&quot;C:/file&quot; produces @&quot;C:/&quot;
-   @&quot;C:/&quot; produces @&quot;C:/&quot;
-   @&quot;//host/share/file&quot; produces @&quot;//host/share/&quot;
-   @&quot;//host/share/&quot; produces @&quot;/host/share/&quot;
-   @&quot;//host/share&quot; produces @&quot;/host/share&quot;
+   @&quot;hello/there&quot; produces @&quot;hello&quot; (a relative path)
+   @&quot;hello&quot; produces @&quot;&quot; (a relative path)
+   @&quot;/hello&quot; produces @&quot;/&quot; (an absolute unix path)
+   @&quot;/&quot; produces @&quot;/&quot; (an absolute unix path)
+   @&quot;C:file&quot; produces @&quot;C:&quot; (a relative windows path)
+   @&quot;C:&quot; produces @&quot;C:&quot; (a relative windows path)
+   @&quot;C:/file&quot; produces @&quot;C:/&quot; (an absolute windows path)
+   @&quot;C:/&quot; produces @&quot;C:/&quot; (an absolute windows path)
+   @&quot;//host/share/file&quot; produces @&quot;//host/share/&quot; (a UNC path)
+   @&quot;//host/share/&quot; produces @&quot;//host/share/&quot; (a UNC path)
+   @&quot;//path/file&quot; produces @&quot;//path&quot; (an absolute Unix path)
  </pre>
       
           
@@ -3200,7 +3215,7 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-stringByPaddingToLength$withString$startingAtIndex$">stringByPaddingToLength:&nbsp;withString:&nbsp;startingAtIndex:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByPaddingToLength:</b> (unsigned int)newLength<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)padString<b> startingAtIndex:</b> (unsigned int)padIndex;<br />
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByPaddingToLength:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)newLength<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)padString<b> startingAtIndex:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)padIndex;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
@@ -3332,7 +3347,7 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-substringFromIndex$">substringFromIndex:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>substringFromIndex:</b> (unsigned int)index;<br />
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>substringFromIndex:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)index;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -3370,7 +3385,7 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-substringToIndex$">substringToIndex:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>substringToIndex:</b> (unsigned int)index;<br />
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>substringToIndex:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)index;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
