@@ -307,7 +307,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <td class="src">GNUstep Base</td>
 <td class="req">Required</td>
 <td class="stab"><a href="<?php download("core/gnustep-base-1.18.0.tar.gz")?>">1.18.0</a></td>
-<td class="unst"><a href="<?php download("core/gnustep-base-1.19.2.tar.gz")?>">1.19.2</a></td>
+<td class="unst"><a href="<?php download("core/gnustep-base-1.19.3.tar.gz")?>">1.19.3</a></td>
 <td>Foundation</td>
 </tr>
 
