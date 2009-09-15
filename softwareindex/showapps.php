@@ -24,7 +24,7 @@ if($license)
 	$query.=" and license=".quote($license);
 if($_GET['rom'])
 	$query.=" and rom=".quote($_GET['rom']);
-$query.=" order by name asc";
+$query.=" order by name asc, updated desc";
 
 listapps($query, "<b>Category:</b> ".htmlentities($cat));
 

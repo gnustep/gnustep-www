@@ -12,7 +12,7 @@ if(isloggedin())
 	$query.=" where approved=1";
 	$query.=" and appid=id";
 	$query.=" and email=".quote(loginname());
-	$query.=" order by name asc";
+	$query.=" order by name asc, updated desc";
 	listapps($query, "<b>Subscriptions for:</b> ".htmlentities(loginname()));
 	}
 else

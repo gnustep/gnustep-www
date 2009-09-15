@@ -21,7 +21,7 @@ listapps($query, "<b>Latest changes/additions:</b>
 (Last 
  <a href=\"index.php?count=25\">25</a> |
  <a href=\"index.php?count=50\">50</a> |
- <a href=\"index.php?count=100\">100</a>)");
+ <a href=\"index.php?count=100\">100</a>)", true);
 ?>
 
 <?php

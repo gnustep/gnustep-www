@@ -5,7 +5,7 @@
 require "include/connect.inc.php";		// load database connection
 require "include/login.inc.php";		// login manager
 
-function listapps($query, $info="<p>")
+function listapps($query, $info="<p>", $showall=false)
 {
 	global $_GET;
 	global $DB_TABLE;
@@ -13,9 +13,13 @@ echo "$info<p>\n";
 // echo $query;
 $result=query($query);
 $rownum=0;
+$lastname="";
 echo "<table width=\"95%\" cellspacing=0>";
 while($row=mysql_fetch_array($result))
 {
+	if(!$showall && $row['name'] == $lastname)
+		continue;	// show first entry only (must be ordered by version/date descending)
+	$lastname=$row['name'];
 	$rownum++;
 	if($rownum % 2 == 0)
 		echo "<tr class=\"listing\">";
