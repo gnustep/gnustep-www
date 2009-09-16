@@ -21,7 +21,7 @@ $query.=" group by appid";
 $query.=" order by upd desc, ${DB_TABLE}.name asc";
 $query.=" limit $count";
 
-listapps($query, "<b>Top $count:</b> (Top <a href=\"?count=10\">10</a> | <a href=\"?count=20\">20</a> | <a href=\"?count=50\">50</a>)");
+listapps($query, "<b>Top $count:</b> (Top <a href=\"?count=10\">10</a> | <a href=\"?count=20\">20</a> | <a href=\"?count=50\">50</a>)", true);
 
 ?>
 

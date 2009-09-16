@@ -71,21 +71,21 @@ $query.=" where approved=1 group by category1 order by category1 asc;";
 $result=query($sql);
  */
 
+	/*
  $query="create table if not exists ${DB_TABLE}_temp (category1 varchar(50)) type=heap";
  query($query);
  $query="delete from ${DB_TABLE}_temp";
  query($query);
- $query="insert into ${DB_TABLE}_temp select category1 from ${DB_TABLE} where approved=1 and category1<>''";
- query($query);
- $query="insert into ${DB_TABLE}_temp select category2 from ${DB_TABLE} where approved=1 and category2<>''";
- query($query);
- $query="insert into ${DB_TABLE}_temp select category3 from ${DB_TABLE} where approved=1 and category3<>''";
- query($query);
- $query="insert into ${DB_TABLE}_temp select category4 from ${DB_TABLE} where approved=1 and category4<>''";
- query($query);
+	for($i=1; $i <= 4; $i++)
+	{
+		// this adds one line with the category for each app
+		// FIXME: we should not count duplicate names, i.e. different versions should be counted only once!
+		$query="insert into ${DB_TABLE}_temp select category$i from ${DB_TABLE} where approved=1 and category$i<>''";
+		query($query);
+	}
  $query="select count(category1) as count,category1 from ${DB_TABLE}_temp group by category1 order by category1 asc";
  $result=query($query);
-
+*/
 
 /*
 SELECT t.category1, count( t.category1 ) AS count
@@ -127,17 +127,42 @@ $sql .= 'ORDER BY t.category1 ASC';
 	$result=query($sql);
 */
 
+	$query="select name, category1, category2, category3, category4 from ${DB_TABLE} where approved=1 order by name asc, updated desc";
+	$result=query($query);
+	$counts=array();
+	$lastname="";
 	while($row=mysql_fetch_array($result))
 		{
+//			echo $row['name'];
+			if($row['name'] == $lastname)
+				continue;	// older version found
+			$lastname=$row['name'];
+			for($i=1; $i <= 4; $i++)
+				{
+					$c=$row["category$i"];
+					if($c)
+						$counts[$c]++;	// one more for this category
+				}
 //		if(!$row['category1'])
 //			continue;	// skip "none"
-		echo "<a href='showapps.php?cat=".$row['category1'];
+/*
+ echo "<a href='showapps.php?cat=".$row['category1'];
 		if($_GET['rom'])
 			echo "&rom=".rawurlencode($_GET['rom']);
 
 		echo "'>".$row['category1']."(".$row['count'].")</a><br/>";
+ */
 		}
 	mysql_free_result($result);
+	$categories=array_keys($counts);
+	while($category=next($categories))
+	{
+		echo "<a href='showapps.php?cat=".$category;
+		if($_GET['rom'])
+			echo "&rom=".rawurlencode($_GET['rom']);
+		
+		echo "'>".$category."(".$counts[$category].")</a><br/>";
+	}
 ?>
 					</td>
 
