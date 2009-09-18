@@ -155,7 +155,9 @@ $sql .= 'ORDER BY t.category1 ASC';
 		}
 	mysql_free_result($result);
 	$categories=array_keys($counts);
-	while($category=next($categories))
+	sort($categories);
+	reset($categories);
+	while(list($key, $category)=each($categories))
 	{
 		echo "<a href='showapps.php?cat=".$category;
 		if($_GET['rom'])

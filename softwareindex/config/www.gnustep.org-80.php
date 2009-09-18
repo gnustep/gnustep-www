@@ -36,5 +36,16 @@ $HINT="<a href=\"http://wiki.gnustep.org\">GNUstep Wiki</a>";
 												//"---",
 												//"Other",
 												);
+
+	$CATEGORIES_MENU=array("Application",
+						   "Commercial",
+						   "Developer Tool",
+						   "Distribution",
+						   "Framework",
+						   "Game",
+						   "Preference",
+						   "System Tool",
+						   "Tool"
+						  );
 	
 ?>

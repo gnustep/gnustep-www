@@ -316,14 +316,15 @@ else
 		<INPUT type="hidden" value="12345" name="ignore">
 
 		<?php
-		$query="select category from ${DB_TABLE}_categories order by category asc";
-				$result=query($query);
+			//	$query="select category from ${DB_TABLE}_categories order by category asc";
+			//	$result=query($query);
 				$categories=array("---");
+				$categories=array_merge($categories, $CATEGORIES_MENU);
 				//			print_r($categories);
-				while($r=mysql_fetch_array($result))
-					array_push($categories, $r['category']);	// make list of categories
+			//	while($r=mysql_fetch_array($result))
+			//		array_push($categories, $r['category']);	// make list of categories
 				//			print_r($categories);
-				mysql_free_result($result);
+			//	mysql_free_result($result);
 				
 				for($i=1; $i<=4; $i++)
 					{ // create 4 fields to store categories 1-4
