@@ -361,7 +361,7 @@ packages and applications may require you to install these libraries
 <td class="src"><a href="http://www.gnustep.it/Renaissance/index.html">Renaissance</a></td>
 <td class="req">Optional</td>
 <td class="stab"><div class="cent">-</div></td>
-<td class="unst"><a href="http://www.gnustep.it/Renaissance/Download/Renaissance-0.8.0.tar.gz">0.8.0</a></td>
+<td class="unst"><div class="cent">from svn</div></td>
 <td>Multi-platform UI layout</td>
 </tr>
 
