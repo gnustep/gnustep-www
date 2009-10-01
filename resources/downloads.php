@@ -370,7 +370,7 @@ packages and applications may require you to install these libraries
 <td class="req">Unsupported</td>
 <td class="stab"><a href="<?php download("libs/gnustep-guile-1.1.4.tar.gz")?>">1.1.4</a></td>
 <td class="unst"><div class="cent">-</div></td>
-<td>Interactive development system</td>
+<td>Requires OLD versions of GNUstep and Guile to build/run</td>
 </tr>
 
 <tr>
