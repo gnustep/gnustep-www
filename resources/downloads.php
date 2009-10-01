@@ -367,7 +367,7 @@ packages and applications may require you to install these libraries
 
 <tr>
 <td class="src">GNUstep Guile</td>
-<td class="req">Optional</td>
+<td class="req">Unsupported</td>
 <td class="stab"><a href="<?php download("libs/gnustep-guile-1.1.4.tar.gz")?>">1.1.4</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Interactive development system</td>
@@ -375,7 +375,7 @@ packages and applications may require you to install these libraries
 
 <tr>
 <td class="src">StepTalk</td>
-<td class="req">Optional</td>
+<td class="req">Unsupported</td>
 <td class="stab"><a href="<?php download("libs/StepTalk-0.10.0.tar.gz")?>">0.10.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Scripting language support</td>
@@ -392,7 +392,7 @@ packages and applications may require you to install these libraries
 
 <tr>
 <td class="src"><a href="http://www.gnustep.org/experience/RIGS.html">RIGS</a></td>
-<td class="req">Optional</td>
+<td class="req">Unsupported</td>
 <td class="stab"><a href="<?php download("libs/rigs-0.2.2.tar.gz")?>">0.2.2</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Ruby bridge</td>
