@@ -153,7 +153,7 @@ download the <i>Recommended version</i>.</p>
 <td class="src">libffi</td>
 <td class="req">Required</td>
 <td class="stab"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.1.tar.gz">3.0.1</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td class="unst"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
 <td>Message forwarding</td>
 </tr>
 
