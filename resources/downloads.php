@@ -152,7 +152,7 @@ download the <i>Recommended version</i>.</p>
 
 <td class="src">libffi</td>
 <td class="req">Required</td>
-<td class="stab"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.1.tar.gz">3.0.1</a></td>
+<td class="stab"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
 <td class="unst"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
 <td>Message forwarding</td>
 </tr>
@@ -162,7 +162,7 @@ download the <i>Recommended version</i>.</p>
 <td class="req">Optional</td>
 <td class="stab">1.8</td>
 <td class="unst"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
-<td>Alternative to libffi</td>
+<td>Possible alternative to libffi</td>
 </tr>
 
 <tr>
