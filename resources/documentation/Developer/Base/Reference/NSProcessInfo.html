@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 28378</p>
-    <p><b>Date:</b> 2009-07-04 12:28:34 +0100 (Sat, 04 Jul 2009)</p>
+    <p><b>Version:</b> 30649</p>
+    <p><b>Date:</b> 2010-06-10 11:13:51 +0100 (Thu, 10 Jun 2010)</p>
     <p><b>Copyright:</b> (C) 1995-2001 Free Software Foundation, Inc.</p>
 
         <div>
@@ -68,11 +68,10 @@
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)+initializeWithArguments$count$environment$">+initializeWithArguments:count:environment:</a></li>
-      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)-debugLoggingEnabled">-debugLoggingEnabled</a></li>
-      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)-debugSet">-debugSet</a></li>
-      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)-setDebugLoggingEnabled$">-setDebugLoggingEnabled:</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)-setLogFile$">-setLogFile:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSProcessInfo(GSCompatibility)-debugSet">-debugSet</a></li>
+      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSProcessInfo+GNUstepBase.html#method$NSProcessInfo(GNUstepBase)-debugLoggingEnabled">-debugLoggingEnabled</a></li>
+      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSProcessInfo+GNUstepBase.html#method$NSProcessInfo(GNUstepBase)-debugSet">-debugSet</a></li>
+      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSProcessInfo+GNUstepBase.html#method$NSProcessInfo(GNUstepBase)-setDebugLoggingEnabled$">-setDebugLoggingEnabled:</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo+processInfo">+processInfo</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-activeProcessorCount">-activeProcessorCount</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo-arguments">-arguments</a></li>
@@ -478,9 +477,6 @@
     <b>Method summary</b>
     <ul>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)+initializeWithArguments$count$environment$">+initializeWithArguments:count:environment:</a></li>
-      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)-debugLoggingEnabled">-debugLoggingEnabled</a></li>
-      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)-debugSet">-debugSet</a></li>
-      <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)-setDebugLoggingEnabled$">-setDebugLoggingEnabled:</a></li>
       <li><a rel="gsdoc" href="NSProcessInfo.html#method$NSProcessInfo(GNUstep)-setLogFile$">-setLogFile:</a></li>
     </ul>
     <hr width="50%" align="left" />
@@ -493,69 +489,13 @@
 <br />
     <div class="desc">
       
-            Fallback/override method. The developer
-            must call this method to initialize the NSProcessInfo
-            system if none of the system-specific hacks to
-            auto-initialize it are working. <br /> It
-            is also safe to call this method to override the effects
-            of the automatic initialisation, which some applications
-            may need to do when using GNUstep libraries embedded
-            within other frameworks.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
-    <h3><a name="method$NSProcessInfo(GNUstep)-debugLoggingEnabled">debugLoggingEnabled&nbsp;</a></h3>
-    - (BOOL) <b>debugLoggingEnabled</b>;<br />
-    <div class="availability">
-<b>Availability:</b> Base<br />
- Likely to be changed/moved/removed at 1.17.0</div>
-<br />
-    <div class="desc">
-      
-            Returns a indication of whether debug logging is
-            enabled. This returns <code>YES</code> unless a
-            call to
-            <a rel="gsdoc" href="#method$NSProcessInfo-setDebugLoggingEnabled$">
-              -setDebugLoggingEnabled:
+            Obsolete... the
+            <a rel="gsdoc" href="Functions.html#function$GSInitializeProcess">
+              GSInitializeProcess()
             </a>
 
-            has been used to turn logging off.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
-    <h3><a name="method$NSProcessInfo(GNUstep)-debugSet">debugSet&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="NSSet.html#class$NSMutableSet">NSMutableSet</a>*) <b>debugSet</b>;<br />
-    <div class="availability">
-<b>Availability:</b> Base<br />
- Likely to be changed/moved/removed at 1.17.0</div>
-<br />
-    <div class="desc">
-      
-            This method returns a set of debug levels set using
-            the --GNU-Debug=... command line option and/or the
-            GNU-Debug user default. <br /> You can modify
-            this set to change the debug logging under your
-            programs control... but such modifications are not
-            thread-safe.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
-    <h3><a name="method$NSProcessInfo(GNUstep)-setDebugLoggingEnabled$">setDebugLoggingEnabled:&nbsp;</a></h3>
-    - (void) <b>setDebugLoggingEnabled:</b> (BOOL)flag;<br />
-    <div class="availability">
-<b>Availability:</b> Base<br />
- Likely to be changed/moved/removed at 1.17.0</div>
-<br />
-    <div class="desc">
-      
-            This method permits you to turn all debug logging on
-            or off without modifying the set of debug levels in use.
+            function has the same effect and can be called
+            more easily from other languages (particularly C).
           
     </div>
     <hr width="25%" align="left" />

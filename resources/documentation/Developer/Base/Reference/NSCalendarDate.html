@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 28287</p>
-    <p><b>Date:</b> 2009-05-16 20:35:20 +0100 (Sat, 16 May 2009)</p>
+    <p><b>Version:</b> 30473</p>
+    <p><b>Date:</b> 2010-05-29 10:09:53 +0100 (Sat, 29 May 2010)</p>
     <p><b>Copyright:</b> (C) 
       1996, 1998, 1999, 2000, 2002 Free Software Foundation, Inc.
     </p>
@@ -34,16 +34,11 @@
         </li>
         <li>
           <a href="#002000000000">Software documentation for the
-        NSCalendarDate(GSCategories)
-        category</a>
-        </li>
-        <li>
-          <a href="#003000000000">Software documentation for the
         NSCalendarDate(GregorianDate)
         category</a>
         </li>
         <li>
-          <a href="#004000000000">Software documentation for the
+          <a href="#003000000000">Software documentation for the
         NSCalendarDate(OPENSTEP) category</a>
         </li>
       </ol>
@@ -79,7 +74,7 @@
     <br/><br/>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSCalendarDate.html#method$NSCalendarDate(GSCategories)-weekOfYear">-weekOfYear</a></li>
+      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSCalendarDate+GNUstepBase.html#method$NSCalendarDate(GNUstepBase)-weekOfYear">-weekOfYear</a></li>
       <li><a rel="gsdoc" href="NSCalendarDate.html#method$NSCalendarDate(GregorianDate)-absoluteGregorianDay$month$year$">-absoluteGregorianDay:month:year:</a></li>
       <li><a rel="gsdoc" href="NSCalendarDate.html#method$NSCalendarDate(GregorianDate)-gregorianDateFromAbsolute$day$month$year$">-gregorianDateFromAbsolute:day:month:year:</a></li>
       <li><a rel="gsdoc" href="NSCalendarDate.html#method$NSCalendarDate(GregorianDate)-lastDayOfGregorianMonth$year$">-lastDayOfGregorianMonth:year:</a></li>
@@ -402,12 +397,14 @@
         </li>
         <li>
           
-                %d day of month as decimal number (leading zero)
+                %d day of month as two digit decimal number (leading
+                zero)
               
         </li>
         <li>
           
-                %e day of month as decimal number (leading space)
+                %e day of month as decimal number (without leading
+                zero)
               
         </li>
         <li>
@@ -425,6 +422,11 @@
         </li>
         <li>
           %j day of year as a decimal number
+        </li>
+        <li>
+          
+                %k same as %H with leading space instead of zero
+              
         </li>
         <li>
           %m month as decimal number
@@ -487,6 +489,15 @@
           %% literal % character
         </li>
       </ul>
+      
+            
+    </p>
+    <p>
+
+              NB. If GSMacOSCompatible is set to <code>YES</code>,
+              the %k specifier is not recognized.
+                </p>
+    <p>
       
           
     </div>
@@ -605,13 +616,12 @@
           %c same as &apos;%X %x&apos;
         </li>
         <li>
-          %d day of month as decimal number
+          
+                %d day of month as a two digit decimal number
+              
         </li>
         <li>
-          
-                %e same as %d without leading zero (you get a
-                leading space instead)
-              
+          %e same as %d without leading zero
         </li>
         <li>
           %F milliseconds as a decimal number
@@ -628,6 +638,12 @@
         </li>
         <li>
           %j day of year as a decimal number
+        </li>
+        <li>
+          
+                %k same as %H without leading zero (leading space is
+                used instead)
+              
         </li>
         <li>
           %m month as decimal number
@@ -702,6 +718,15 @@
             the format, 0 is assumed. <br /> If no timezone is
             specified in the format, the local timezone is
             assumed.
+            
+    </p>
+    <p>
+
+              If GSMacOSXCompatible is <code>YES</code>, the %k
+              specifier is not recognized.
+                </p>
+    <p>
+      
             
     </p>
     <p>
@@ -983,61 +1008,6 @@
 
           <h1><a name="002000000000">
         Software documentation for the
-        NSCalendarDate(GSCategories)
-        category
-      </a></h1>
-    <h2><a rel="gsdoc" href="#class$NSCalendarDate">NSCalendarDate</a>(<a name="category$NSCalendarDate(GSCategories)">GSCategories</a>)</h2>
-    <blockquote class="declared">
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>Foundation/NSCalendarDate.h</dd>
-      </dl>
-    </blockquote>
-    <div class="availability">
-<b>Availability:</b> Not in OpenStep/MacOS-X</div>
-<br />
-    <div class="desc">
-      
-          Adds
-          <code>
-            <a rel="gsdoc" href="#method$NSCalendarDate-weekOfYear">
-              -weekOfYear
-            </a>
-
-          </code>
-          method.
-        
-    </div>
-    <b>Method summary</b>
-    <ul>
-      <li><a rel="gsdoc" href="NSCalendarDate.html#method$NSCalendarDate(GSCategories)-weekOfYear">-weekOfYear</a></li>
-    </ul>
-    <hr width="50%" align="left" />
-<div class="method">
-    <h3><a name="method$NSCalendarDate(GSCategories)-weekOfYear">weekOfYear&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>weekOfYear</b>;<br />
-    <div class="availability">
-<b>Availability:</b> Not in OpenStep/MacOS-X</div>
-<br />
-    <div class="desc">
-      
-            The ISO standard week of the year is based on the first
-            week of the year being that week (starting on monday)
-            for which the thursday is on or after the first of
-            january. <br /> This has the effect that, if
-            january first is a friday, saturday or sunday, the
-            days of that week (up to and including the sunday) are
-            considered to be in week 53 of the preceding
-            year. Similarly if the last day of the year is a
-            monday tuesday or wednesday, these days are part of
-            week 1 of the next year.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-
-          <h1><a name="003000000000">
-        Software documentation for the
         NSCalendarDate(GregorianDate)
         category
       </a></h1>
@@ -1108,7 +1078,7 @@
     <hr width="25%" align="left" />
 </div>
 
-          <h1><a name="004000000000">
+          <h1><a name="003000000000">
         Software documentation for the
         NSCalendarDate(OPENSTEP) category
       </a></h1>

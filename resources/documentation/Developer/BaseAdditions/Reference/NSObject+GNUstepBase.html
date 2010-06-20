@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+    <head>
+    <title>NSObject+GNUstepBase documentation</title>
+  </head>
+  <body>
+    <font face="serif">
+    <a href="BaseAdditions.html">Up</a>
+    <br />
+    <h1><a name="title$NSObject+GNUstepBase">NSObject+GNUstepBase documentation</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Richard Frith-Macdonald (<a href="mailto:rfm@gnu.org"><code>rfm@gnu.org</code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Copyright:</b> (C) 2003-2010 Free Software Foundation, Inc.</p>
+
+        <div>
+    </div>
+
+          <h1><a name="001000000000">
+        Software documentation for the NSObject(GNUstepBase)
+        informal protocol
+      </a></h1>
+    <h2><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a>(<a name="category$NSObject(GNUstepBase)">GNUstepBase</a>)</h2>
+    <blockquote class="declared">
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>GNUstepBase/NSObject+GNUstepBase.h</dd>
+      </dl>
+    </blockquote>
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+          <em>Description forthcoming.</em>
+        
+    </div>
+    <b>Method summary</b>
+    <ul>
+      <li><a rel="gsdoc" href="NSObject+GNUstepBase.html#method$NSObject(GNUstepBase)-compare$">-compare:</a></li>
+      <li><a rel="gsdoc" href="NSObject+GNUstepBase.html#method$NSObject(GNUstepBase)-isInstance">-isInstance</a></li>
+      <li><a rel="gsdoc" href="NSObject+GNUstepBase.html#method$NSObject(GNUstepBase)-makeImmutableCopyOnFail$">-makeImmutableCopyOnFail:</a></li>
+      <li><a rel="gsdoc" href="NSObject+GNUstepBase.html#method$NSObject(GNUstepBase)-notImplemented$">-notImplemented:</a></li>
+      <li><a rel="gsdoc" href="NSObject+GNUstepBase.html#method$NSObject(GNUstepBase)-shouldNotImplement$">-shouldNotImplement:</a></li>
+      <li><a rel="gsdoc" href="NSObject+GNUstepBase.html#method$NSObject(GNUstepBase)-subclassResponsibility$">-subclassResponsibility:</a></li>
+    </ul>
+    <hr width="50%" align="left" />
+<div class="method">
+    <h3><a name="method$NSObject(GNUstepBase)-compare$">compare:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSComparisonResult">NSComparisonResult</a>) <b>compare:</b> (id)anObject;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            WARNING: The
+            <a rel="gsdoc" href="#method$NSObject-compare$">
+              -compare:
+            </a>
+
+            method for NSObject is deprecated due to subclasses
+            declaring the same selector with conflicting
+            signatures. Comparision of arbitrary objects is
+            not just meaningless but also dangerous as most
+            concrete implementations expect comparable objects
+            as arguments often accessing instance variables
+            directly. This method will be removed in a future
+            release.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSObject(GNUstepBase)-isInstance">isInstance&nbsp;</a></h3>
+    - (BOOL) <b>isInstance</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            For backward compatibility only... use
+            
+              class_isMetaClass()
+            
+
+            on the class of the receiver instead.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSObject(GNUstepBase)-makeImmutableCopyOnFail$">makeImmutableCopyOnFail:&nbsp;</a></h3>
+    - (id) <b>makeImmutableCopyOnFail:</b> (BOOL)force;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Transmutes the receiver into an immutable
+            version of the same object and returns the result.
+            <br /> If the receiver is not a mutable object or
+            cannot be simply transmuted, then this method either
+            returns the receiver unchanged or, if the
+            <var>force</var> flag is set to <code>YES</code>,
+            returns an autoreleased copy of the receiver.
+            <br /> Mutable classes should override this default
+            implementation. <br /> This method is used
+            in methods which are declared to return immutable
+            objects (eg. an NSArray), but which create and
+            build mutable ones internally.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSObject(GNUstepBase)-notImplemented$">notImplemented:&nbsp;</a></h3>
+    - (id) <b>notImplemented:</b> (SEL)aSel;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Message sent when an implementation wants to
+            explicitly exclude a method (but cannot due to
+            compiler constraint), and wants to make sure it is
+            not called by mistake. Default implementation raises an
+            exception at runtime.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSObject(GNUstepBase)-shouldNotImplement$">shouldNotImplement:&nbsp;</a></h3>
+    - (id) <b>shouldNotImplement:</b> (SEL)aSel;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Message sent when an implementation wants to
+            explicitly exclude a method (but cannot due to
+            compiler constraint) and forbid that subclasses
+            implement it. Default implementation raises an
+            exception at runtime. If a subclass <em>does</em>
+            implement this method, however, the superclass&apos;s
+            implementation will not be called, so this
+            is not a perfect mechanism.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSObject(GNUstepBase)-subclassResponsibility$">subclassResponsibility:&nbsp;</a></h3>
+    - (id) <b>subclassResponsibility:</b> (SEL)aSel;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Message sent when an implementation wants to
+            explicitly require a subclass to implement a
+            method (but cannot at compile time since there is no
+            <code>abstract</code> keyword in Objective-C).
+            Default implementation raises an exception at
+            runtime to alert developer that he/she forgot to
+            override a method.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+    <br />
+    <a href="BaseAdditions.html">Up</a>
+    </font>
+</body>
+</html>

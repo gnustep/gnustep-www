@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 28462</p>
-    <p><b>Date:</b> 2009-08-15 22:44:21 +0100 (Sat, 15 Aug 2009)</p>
+    <p><b>Version:</b> 30773</p>
+    <p><b>Date:</b> 2010-06-17 20:09:26 +0100 (Thu, 17 Jun 2010)</p>
     <p><b>Copyright:</b> (C) 1998,2003 Free Software Foundation, Inc.</p>
 
         <div>
@@ -138,14 +138,11 @@
     <ul>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-sendsToSuper">-sendsToSuper</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(GNUstep)-setSendsToSuper$">-setSendsToSuper:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSInvocation(GSCompatibility)-initWithArgframe$selector$">-initWithArgframe:selector:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/GSCategories.html#method$NSInvocation(GSCompatibility)-returnFrame$">-returnFrame:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForInvocation$">+_newProxyForInvocation:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForMessage$">+_newProxyForMessage:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_returnInvocationAndDestroyProxy$">+_returnInvocationAndDestroyProxy:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithArgframe$selector$">-initWithArgframe:selector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithMethodSignature$">-initWithMethodSignature:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithSelector$">-initWithSelector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-returnFrame$">-returnFrame:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+invocationWithMethodSignature$">+invocationWithMethodSignature:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-argumentsRetained">-argumentsRetained</a></li>
@@ -451,7 +448,7 @@
 <a name="_NSInvocation_ivars"/>    <br/><hr width="50%" align="left" />
     <h2>Instance Variables for NSInvocation Class</h2>
     <h3><a name="ivariable$NSInvocation*_argsRetained">_argsRetained</a></h3>
-    @protected BOOL <b>_argsRetained</b>;<br />
+    @public BOOL <b>_argsRetained</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -466,22 +463,7 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_cframe">_cframe</a></h3>
-    @protected void* <b>_cframe</b>;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_dummy">_dummy</a></h3>
-    @protected void* <b>_dummy</b>;<br />
+    @public void* <b>_cframe</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -496,7 +478,7 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_info">_info</a></h3>
-    @protected NSArgumentInfo* <b>_info</b>;<br />
+    @public void* <b>_info</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -511,7 +493,22 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_numArgs">_numArgs</a></h3>
-    @protected unsigned int <b>_numArgs</b>;<br />
+    @public unsigned int <b>_numArgs</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </div>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_retptr">_retptr</a></h3>
+    @public void* <b>_retptr</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -526,7 +523,7 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_retval">_retval</a></h3>
-    @protected void* <b>_retval</b>;<br />
+    @public void* <b>_retval</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -541,7 +538,7 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_selector">_selector</a></h3>
-    @protected SEL <b>_selector</b>;<br />
+    @public SEL <b>_selector</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -556,7 +553,7 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_sendToSuper">_sendToSuper</a></h3>
-    @protected BOOL <b>_sendToSuper</b>;<br />
+    @public BOOL <b>_sendToSuper</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -571,7 +568,7 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_sig">_sig</a></h3>
-    @protected NSMethodSignature* <b>_sig</b>;<br />
+    @public NSMethodSignature* <b>_sig</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -586,7 +583,7 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_target">_target</a></h3>
-    @protected id <b>_target</b>;<br />
+    @public id <b>_target</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -601,7 +598,22 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_targetRetained">_targetRetained</a></h3>
-    @protected BOOL <b>_targetRetained</b>;<br />
+    @public BOOL <b>_targetRetained</b>;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+            <em>Warning</em> the underscore at the start of the
+            name of this instance variable indicates that, even
+            though it is not technically <em>private</em>, it is
+            intended for internal use within the package, and
+            you should not use the variable in other code.
+          
+    </div>
+    <hr width="25%" align="left" />
+    <h3><a name="ivariable$NSInvocation*_unused">_unused</a></h3>
+    @public void* <b>_unused</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -616,7 +628,7 @@
     </div>
     <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_validReturn">_validReturn</a></h3>
-    @protected BOOL <b>_validReturn</b>;<br />
+    @public BOOL <b>_validReturn</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -736,7 +748,6 @@
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_returnInvocationAndDestroyProxy$">+_returnInvocationAndDestroyProxy:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithArgframe$selector$">-initWithArgframe:selector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithMethodSignature$">-initWithMethodSignature:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithSelector$">-initWithSelector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-returnFrame$">-returnFrame:</a></li>
     </ul>
     <hr width="50%" align="left" />
@@ -827,28 +838,6 @@ Subclasses <strong>must</strong> override this method.<br />
             invocation. <br /> Raises an
             NSInvalidArgumentException if
             <var>aSignature</var> is <code>nil</code>.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
-    <h3><a name="method$NSInvocation(MacroSetup)-initWithSelector$">initWithSelector:&nbsp;</a></h3>
-    - (id) <b>initWithSelector:</b> (SEL)aSelector;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            Tries to produce a method signature based on
-            <var>aSelector</var> and uses that to initialise self
-            by calling the
-            <a rel="gsdoc" href="#method$NSInvocation-initWithMethodSignature$">
-              -initWithMethodSignature:
-            </a>
-
-            method. <br /> If the argument type of
-            <var>aSelector</var> cannot be determined, this
-            releases self and returns <code>nil</code>.
           
     </div>
     <hr width="25%" align="left" />

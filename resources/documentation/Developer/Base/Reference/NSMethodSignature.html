@@ -16,25 +16,13 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 27962</p>
-    <p><b>Date:</b> 2009-02-23 20:42:32 +0000 (Mon, 23 Feb 2009)</p>
+    <p><b>Version:</b> 30473</p>
+    <p><b>Date:</b> 2010-05-29 10:09:53 +0100 (Sat, 29 May 2010)</p>
     <p><b>Copyright:</b> (C) 
       1994, 1995, 1996, 1998 Free Software Foundation, Inc.
     </p>
 
         <div>
-      <hr width="50%" align="left" />
-      <h3>Contents -</h3>
-      <ol>
-        <li>
-          <a href="#001000000000">Software documentation for the NSMethodSignature class</a>
-        </li>
-        <li>
-          <a href="#002000000000">Software documentation for the
-        NSMethodSignature(GNUstep) category</a>
-        </li>
-      </ol>
-      <hr width="50%" align="left" />
     </div>
 
           <h1><a name="001000000000">
@@ -78,28 +66,21 @@
 
                 Basically, types are represented as
                 Objective-C <code>@encode(...)</code>
-                compatible strings, together with size
-                information. The arguments are numbered
-                starting from 0, including the implicit
-                arguments <code><em>self</em></code> (type
-                <code><strong>id</strong></code>, at position 0)
-                and <code><em>_cmd</em></code> (type
-                <code><strong>SEL</strong></code>, at position
-                1).
+                compatible strings. The arguments are
+                numbered starting from 0, including the
+                implicit arguments <code><em>self</em></code>
+                (type <code><strong>id</strong></code>, at
+                position 0) and <code><em>_cmd</em></code>
+                (type <code><strong>SEL</strong></code>, at
+                position 1).
                   </p>
     <p>
       
         
     </div>
-    <hr width="50%" align="left" />
-    <a href="#_NSMethodSignature_ivars">Instance Variables</a>
-    <br/><br/>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="NSMethodSignature.html#method$NSMethodSignature(GNUstep)-methodInfo">-methodInfo</a></li>
-      <li><a rel="gsdoc" href="NSMethodSignature.html#method$NSMethodSignature(GNUstep)-methodType">-methodType</a></li>
       <li><a rel="gsdoc" href="NSMethodSignature.html#method$NSMethodSignature+signatureWithObjCTypes$">+signatureWithObjCTypes:</a></li>
-      <li><a rel="gsdoc" href="NSMethodSignature.html#method$NSMethodSignature-argumentInfoAtIndex$">-argumentInfoAtIndex:</a></li>
       <li><a rel="gsdoc" href="NSMethodSignature.html#method$NSMethodSignature-frameLength">-frameLength</a></li>
       <li><a rel="gsdoc" href="NSMethodSignature.html#method$NSMethodSignature-getArgumentTypeAtIndex$">-getArgumentTypeAtIndex:</a></li>
       <li><a rel="gsdoc" href="NSMethodSignature.html#method$NSMethodSignature-isOneway">-isOneway</a></li>
@@ -120,20 +101,6 @@
             description of return type and argument types,
             using the Objective-C <code>@encode(...)</code> type
             codes.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
-    <h3><a name="method$NSMethodSignature-argumentInfoAtIndex$">argumentInfoAtIndex:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSArgumentInfo">NSArgumentInfo</a>) <b>argumentInfoAtIndex:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)index;<br />
-    <div class="availability">
-<b>Availability:</b> OPENSTEP 4.0.0 removed at MacOS-X 10.0.0</div>
-<br />
-    <div class="desc">
-      
-            Returns full information on given argument. Indices
-            start at 0. Provide -1 to get info on return value.
           
     </div>
     <hr width="25%" align="left" />
@@ -168,6 +135,8 @@
             <code><strong>id</strong></code>, at position 0) and
             <code><em>_cmd</em></code> (type
             <code><strong>SEL</strong></code>, at position 1).
+            <br /> Type strings may include leading type
+            qualifiers.
           
     </div>
     <hr width="25%" align="left" />
@@ -209,13 +178,9 @@
 <br />
     <div class="desc">
       
-            Returns Objective-C <code>@encode(...)</code>
-            compatible string. Arguments are numbered
-            starting from 0, including the implicit arguments
-            <code><em>self</em></code> (type
-            <code><strong>id</strong></code>, at position 0) and
-            <code><em>_cmd</em></code> (type
-            <code><strong>SEL</strong></code>, at position 1).
+            Returns an Objective-C <code>@encode(...)</code>
+            compatible string describing the return type of
+            the method. This may include type qualifiers.
           
     </div>
     <hr width="25%" align="left" />
@@ -231,128 +196,6 @@
             Returns number of arguments to method, including
             the implicit <code><em>self</em></code> and
             <code><em>_cmd</em></code>.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<a name="_NSMethodSignature_ivars"/>    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for NSMethodSignature Class</h2>
-    <h3><a name="ivariable$NSMethodSignature*_argFrameLength">_argFrameLength</a></h3>
-    @protected NSUInteger <b>_argFrameLength</b>;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSMethodSignature*_info">_info</a></h3>
-    @protected void* <b>_info</b>;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSMethodSignature*_methodTypes">_methodTypes</a></h3>
-    @protected const char* <b>_methodTypes</b>;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSMethodSignature*_numArgs">_numArgs</a></h3>
-    @protected NSUInteger <b>_numArgs</b>;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </div>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
-
-          <h1><a name="002000000000">
-        Software documentation for the
-        NSMethodSignature(GNUstep) category
-      </a></h1>
-    <h2><a rel="gsdoc" href="#class$NSMethodSignature">NSMethodSignature</a>(<a name="category$NSMethodSignature(GNUstep)">GNUstep</a>)</h2>
-    <blockquote class="declared">
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>Foundation/NSMethodSignature.h</dd>
-      </dl>
-    </blockquote>
-    <div class="availability">
-<b>Availability:</b> Base<br />
- Likely to be changed/moved/removed at 1.17.0</div>
-<br />
-    <div class="desc">
-      
-          Declares a convenience method for getting the entire
-          array of raw type and size information.
-        
-    </div>
-    <b>Method summary</b>
-    <ul>
-      <li><a rel="gsdoc" href="NSMethodSignature.html#method$NSMethodSignature(GNUstep)-methodInfo">-methodInfo</a></li>
-      <li><a rel="gsdoc" href="NSMethodSignature.html#method$NSMethodSignature(GNUstep)-methodType">-methodType</a></li>
-    </ul>
-    <hr width="50%" align="left" />
-<div class="method">
-    <h3><a name="method$NSMethodSignature(GNUstep)-methodInfo">methodInfo&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="TypesAndConstants.html#type$NSArgumentInfo">NSArgumentInfo</a>*) <b>methodInfo</b>;<br />
-    <div class="availability">
-<b>Availability:</b> Base<br />
- Likely to be changed/moved/removed at 1.17.0</div>
-<br />
-    <div class="desc">
-      
-            Convenience method for getting the entire array
-            of raw type and size information.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
-    <h3><a name="method$NSMethodSignature(GNUstep)-methodType">methodType&nbsp;</a></h3>
-    - (const char*) <b>methodType</b>;<br />
-    <div class="availability">
-<b>Availability:</b> Base<br />
- Likely to be changed/moved/removed at 1.17.0</div>
-<br />
-    <div class="desc">
-      
-            Returns a string containing all Objective-C
-            <code>@encode(...)</code> compatible type
-            information.
           
     </div>
     <hr width="25%" align="left" />
