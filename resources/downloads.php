@@ -91,164 +91,7 @@ the version number in the appropriate column.</p>
 <li><a href="#user">User Environment</a></li>
 </ul>
 
-<h2 id="pre">Pre-requisites</h2>
 
-<p>Please ensure you have at least the <i>Minimum version req'd</i> of
-each of the following (where needed) on you system, before you install
-GNUstep. If you need to obtain the software, we suggest that you
-download the <i>Recommended version</i>.</p>
-
-<table border=0 width="100%" cellpadding=3 cellspacing=0>
-
-<col class="src">
-<col class="req">
-<col class="ver">
-<col class="ver">
-<col class="note">
-
-<thead>
-<tr>
-<th>Sources</th>
-<th>Required?</th>
-<th>Minimum<br>version<br>req'd</th>
-<th>Recom-<br>mended<br>version</th>
-<th>Notes</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td class="src">make</td>
-<td class="req">Required</td>
-<td class="stab">3.75</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/gnu/make/"><i>current</i></a></td>
-<td>GNU make</td>
-</tr>
-
-<tr>
-<td class="src">binutils</td>
-<td class="req">Depends on OS</td>
-<td class="stab">2.9.6</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/gnu/binutils/"><i>current</i></a></td>
-<td>GNU binutils</td>
-</tr>
-
-<tr>
-<td class="src">iconv</td>
-<td class="req">If no glibc</td>
-<td class="stab">1.7</td>
-<td class="unst"><a href="ftp://ftp.ilog.fr/pub/Users/haible/gnu"><i>current</i></a></td>
-<td>Convert file encoding</td>
-</tr>
-
-<tr>
-<td class="src">gcc</td>
-<td class="req">Required</td>
-<td class="stab"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-2.95.3.tar.gz">2.95.3</a></td>
-<td class="unst"><a href="http://gcc.gnu.org"><i>current</i></a></td>
-<td>GNU C &amp; Objective-C Compiler</td>
-</tr>
-
-<td class="src">libffi</td>
-<td class="req">Required</td>
-<td class="stab"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
-<td class="unst"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
-<td>Message forwarding</td>
-</tr>
-
-<tr>
-<td class="src">ffcall</td>
-<td class="req">Optional</td>
-<td class="stab">1.8</td>
-<td class="unst"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
-<td>Possible alternative to libffi</td>
-</tr>
-
-<tr>
-<tr>
-<td class="src">gmp</td>
-<td class="req">Optional</td>
-<td class="stab">3.1.1</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gmp"><i>current</i></a></td>
-<td>Arbitrary precision arithmetic</td>
-</tr>
-
-<tr>
-<td class="src">guile</td>
-<td class="req">For guile scripting</td>
-<td class="stab">1.4</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/guile"><i>current</i></a></td>
-<td><i>Scheme</i> language interpreter</td>
-</tr>
-
-<tr>
-<td class="src">openssl</td>
-<td class="req">Recommended</td>
-<td class="stab">0.9.6b</td>
-<td class="unst"><a href="http://www.openssl.org/source"><i>current</i></a></td>
-<td>SSL and TSL support</td>
-</tr>
-
-<tr>
-<td class="src">libtiff</td>
-<td class="req">Required</td>
-<td class="stab">3.4036</td>
-<td class="unst"><a href="ftp://ftp.remotesensing.org/pub/libtiff"><i>current</i></a></td>
-<td>TIFF image support</td>
-</tr>
-
-<tr>
-<td class="src">libpng</td>
-<td class="req">Recommended</td>
-<td class="stab">-</td>
-<td class="unst">-</td>
-<td>PNG image support</td>
-</tr>
-
-<tr>
-<td class="src">libjpeg</td>
-<td class="req">Recommended</td>
-<td class="stab">-</td>
-<td class="unst">-</td>
-<td>JPEG image support</td>
-</tr>
-
-<tr>
-<td class="src">libxml</td>
-<td class="req">Required</td>
-<td class="stab">2.3.0</td>
-<td class="unst"><a href="ftp://ftp.gnome.org/pub/GNOME/sources/libxml2"><i>current</i></a></td>
-<td>For XML property lists and docs</td>
-</tr>
-
-<tr>
-<td class="src"><a href="http://68k.org/~michael/audiofile/">audiofile</a></td>
-<td class="req">Recommended</td>
-<td class="stab">0.2.3</td>
-<td class="unst"><a href="http://www.68k.org/~michael/audiofile/audiofile-0.2.6.tar.gz"><i>current</i></a></td>
-<td>Program interface to digital audio formats</td>
-</tr>
-
-<tr>
-<td class="src">WindowMaker</td>
-<td class="req">Recommended</td>
-<td class="stab"><a href="http://windowmaker.info/pub/source/release/WindowMaker-0.92.0.tar.bz2">0.92.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Window manager &amp; desktop</td>
-</tr>
-
-<tr>
-<td class="src">libobjc</td>
-<td class="req">ONLY MinGW/Cygwin or gcc2</td>
-<td class="stab"><a href="<?php download("libs/gnustep-objc-1.6.0.tar.gz")?>">1.6.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Updated libobjc for some systems.</td>
-</tr>
-
-</tbody>
-
-</table>
 
 
 <h2 id="core">GNUstep Core</h2>
@@ -598,6 +441,165 @@ packages and applications may require you to install these libraries
 <td class="stab"><a href="<?php download("usr-apps/")?>">Various</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Other User Applications</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<h2 id="pre">Pre-requisites</h2>
+
+<p>Please ensure you have at least the <i>Minimum version req'd</i> of
+each of the following (where needed) on you system, before you install
+GNUstep. If you need to obtain the software, we suggest that you
+download the <i>Recommended version</i>.</p>
+
+<table border=0 width="100%" cellpadding=3 cellspacing=0>
+
+<col class="src">
+<col class="req">
+<col class="ver">
+<col class="ver">
+<col class="note">
+
+<thead>
+<tr>
+<th>Sources</th>
+<th>Required?</th>
+<th>Minimum<br>version<br>req'd</th>
+<th>Recom-<br>mended<br>version</th>
+<th>Notes</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td class="src">make</td>
+<td class="req">Required</td>
+<td class="stab">3.75</td>
+<td class="unst"><a href="ftp://ftp.gnu.org/gnu/make/"><i>current</i></a></td>
+<td>GNU make</td>
+</tr>
+
+<tr>
+<td class="src">binutils</td>
+<td class="req">Depends on OS</td>
+<td class="stab">2.9.6</td>
+<td class="unst"><a href="ftp://ftp.gnu.org/gnu/binutils/"><i>current</i></a></td>
+<td>GNU binutils</td>
+</tr>
+
+<tr>
+<td class="src">iconv</td>
+<td class="req">If no glibc</td>
+<td class="stab">1.7</td>
+<td class="unst"><a href="ftp://ftp.ilog.fr/pub/Users/haible/gnu"><i>current</i></a></td>
+<td>Convert file encoding</td>
+</tr>
+
+<tr>
+<td class="src">gcc</td>
+<td class="req">Required</td>
+<td class="stab"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-2.95.3.tar.gz">2.95.3</a></td>
+<td class="unst"><a href="http://gcc.gnu.org"><i>current</i></a></td>
+<td>GNU C &amp; Objective-C Compiler</td>
+</tr>
+
+<td class="src">libffi</td>
+<td class="req">Required</td>
+<td class="stab"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
+<td class="unst"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
+<td>Message forwarding</td>
+</tr>
+
+<tr>
+<td class="src">ffcall</td>
+<td class="req">Optional</td>
+<td class="stab">1.8</td>
+<td class="unst"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
+<td>Possible alternative to libffi</td>
+</tr>
+
+<tr>
+<tr>
+<td class="src">gmp</td>
+<td class="req">Optional</td>
+<td class="stab">3.1.1</td>
+<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gmp"><i>current</i></a></td>
+<td>Arbitrary precision arithmetic</td>
+</tr>
+
+<tr>
+<td class="src">guile</td>
+<td class="req">For guile scripting</td>
+<td class="stab">1.4</td>
+<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/guile"><i>current</i></a></td>
+<td><i>Scheme</i> language interpreter</td>
+</tr>
+
+<tr>
+<td class="src">openssl</td>
+<td class="req">Recommended</td>
+<td class="stab">0.9.6b</td>
+<td class="unst"><a href="http://www.openssl.org/source"><i>current</i></a></td>
+<td>SSL and TSL support</td>
+</tr>
+
+<tr>
+<td class="src">libtiff</td>
+<td class="req">Required</td>
+<td class="stab">3.4036</td>
+<td class="unst"><a href="ftp://ftp.remotesensing.org/pub/libtiff"><i>current</i></a></td>
+<td>TIFF image support</td>
+</tr>
+
+<tr>
+<td class="src">libpng</td>
+<td class="req">Recommended</td>
+<td class="stab">-</td>
+<td class="unst">-</td>
+<td>PNG image support</td>
+</tr>
+
+<tr>
+<td class="src">libjpeg</td>
+<td class="req">Recommended</td>
+<td class="stab">-</td>
+<td class="unst">-</td>
+<td>JPEG image support</td>
+</tr>
+
+<tr>
+<td class="src">libxml</td>
+<td class="req">Required</td>
+<td class="stab">2.3.0</td>
+<td class="unst"><a href="ftp://ftp.gnome.org/pub/GNOME/sources/libxml2"><i>current</i></a></td>
+<td>For XML property lists and docs</td>
+</tr>
+
+<tr>
+<td class="src"><a href="http://68k.org/~michael/audiofile/">audiofile</a></td>
+<td class="req">Recommended</td>
+<td class="stab">0.2.3</td>
+<td class="unst"><a href="http://www.68k.org/~michael/audiofile/audiofile-0.2.6.tar.gz"><i>current</i></a></td>
+<td>Program interface to digital audio formats</td>
+</tr>
+
+<tr>
+<td class="src">WindowMaker</td>
+<td class="req">Recommended</td>
+<td class="stab"><a href="http://windowmaker.info/pub/source/release/WindowMaker-0.92.0.tar.bz2">0.92.0</a></td>
+<td class="unst"><div class="cent">-</div></td>
+<td>Window manager &amp; desktop</td>
+</tr>
+
+<tr>
+<td class="src">libobjc</td>
+<td class="req">ONLY MinGW/Cygwin or gcc2</td>
+<td class="stab"><a href="<?php download("libs/gnustep-objc-1.6.0.tar.gz")?>">1.6.0</a></td>
+<td class="unst"><div class="cent">-</div></td>
+<td>Updated libobjc for some systems.</td>
 </tr>
 
 </tbody>
