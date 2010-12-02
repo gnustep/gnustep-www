@@ -396,10 +396,10 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.it/enrico/gworkspace/">GWorkspace</a></td>
+<td class="src"><a href="../experience/GWorkspace.html">GWorkspace</a></td>
 <td class="req">Recommended</td>
 <td class="stab">-</td>
-<td class="unst"><a href="http://www.gnustep.it/enrico/gworkspace/">0.8.5</a></td>
+<td class="unst"><a href="<?php download("usr-apps/gworkspace-0.8.8.tar.gz")?>">0.8.8</a></td>
 <td>File manager for GNUstep</td>
 </tr>
 
@@ -409,14 +409,6 @@ packages and applications may require you to install these libraries
 <td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/RpmViewer.tar.gz">RPM Viewer</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>GWorkspace inspector for RPM packages</td>
-</tr>
-
-<tr>
-<td class="src"><a href="http://www.gnustep.it/enrico/gworkspace/">Localization</a></td>
-<td class="req">Optional</td>
-<td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/">Various</a></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Language translations for GWorkspace</td>
 </tr>
 
 <tr>
