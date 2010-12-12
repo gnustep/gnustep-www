@@ -398,8 +398,8 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="../experience/GWorkspace.html">GWorkspace</a></td>
 <td class="req">Recommended</td>
-<td class="stab">-</td>
-<td class="unst"><a href="<?php download("usr-apps/gworkspace-0.8.8.tar.gz")?>">0.8.8</a></td>
+<td class="stab"><a href="<?php download("usr-apps/gworkspace-0.8.8.tar.gz")?>">0.8.8</a></td>
+<td class="unst">-</td>
 <td>File manager for GNUstep</td>
 </tr>
 
