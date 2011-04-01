@@ -253,7 +253,7 @@ packages and applications may require you to install these libraries
 <td class="src">SQLClient</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/SQLClient-1.5.1.tar.gz")?>">1.5.1</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/sqlclient/trunk/">from svn</a></td>
 <td>Simple OO Interface to SQL databases</td>
 </tr>
 
@@ -261,7 +261,7 @@ packages and applications may require you to install these libraries
 <td class="src">WebServer</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/WebServer-1.4.0.tar.gz")?>">1.4.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/webserver/trunk/">from svn</a></td>
 <td>Simple web server for applications</td>
 </tr>
 
@@ -269,15 +269,15 @@ packages and applications may require you to install these libraries
 <td class="src">WebServices</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/WebServices-0.4.0.tar.gz")?>">0.4.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
-<td>Classes for building web services (beta)</td>
+<td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/webservices/trunk/">from svn</a></td>
+<td>Classes for building web services (partial)</td>
 </tr>
 
 <tr>
 <td class="src">Performance</td>
 <td class="req">Optional</td>
 <td class="stab"><a href="<?php download("libs/Performance-0.3.0.tar.gz")?>">0.3.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/performance/trunk/">from svn</a></td>
 <td>Performance improvement and measuring classes</td>
 </tr>
 
