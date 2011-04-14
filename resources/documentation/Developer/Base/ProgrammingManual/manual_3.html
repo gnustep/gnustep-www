@@ -1,161 +1,195 @@
-<HTML>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on January, 1  2008 by texi2html 1.64 -->
-<!-- 
-Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on April 13, 2011 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
-Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
- 
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
-<HEAD>
-<TITLE>Objective-C GNUstep Base Programming Manual: Objects</TITLE>
+<head>
+<title>Objective-C GNUstep Base Programming Manual: 3. Working with Objects</title>
 
-<META NAME="description" CONTENT="Objective-C GNUstep Base Programming Manual: Objects">
-<META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Objects">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.64">
+<meta name="description" content="Objective-C GNUstep Base Programming Manual: 3. Working with Objects">
+<meta name="keywords" content="Objective-C GNUstep Base Programming Manual: 3. Working with Objects">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
 
-</HEAD>
 
-<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+</head>
 
-<A NAME="SEC38"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_2.html#SEC37"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H1> 3. Working with Objects </H1>
-<!--docid::SEC38::-->
-<P>
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-Objective-C and GNUstep provide a rich object allocation and memory management
+<a name="Objects"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="manual_2.html#Loading-and-Saving-Strings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Initializing-and-Allocating-Objects" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual_2.html#Objective_002dC" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Working-with-Objects"></a>
+<h1 class="chapter">3. Working with Objects</h1>
+<a name="index-working-with-objects"></a>
+<a name="index-objects_002c-working-with"></a>
+
+
+<p>Objective-C and GNUstep provide a rich object allocation and memory management
 framework.  Objective-C affords independent memory allocation and
 initialization steps for objects, and GNUstep supports three alternative
 schemes for memory management.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC39"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC40"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> 3.1 Initializing and Allocating Objects </H2>
-<!--docid::SEC39::-->
-<P>
+<hr size="6">
+<a name="Initializing-and-Allocating-Objects"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Initialization-with-Arguments" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">3.1 Initializing and Allocating Objects</h2>
+<a name="index-objects_002c-initalizing-and-allocating"></a>
+<a name="index-allocating-objects"></a>
 
-Unlike most object-oriented languages, Objective-C exposes memory allocation
+<p>Unlike most object-oriented languages, Objective-C exposes memory allocation
 for objects and initialization as two separate steps.  In particular, every
-class provides an '<CODE>+alloc</CODE>' method for creating blank new instances.
+class provides an &rsquo;<code>+alloc</code>&rsquo; method for creating blank new instances.
 However, initialization is carried out by an instance method, not a class
-method.  By convention, the default initialization method is '<CODE>-init</CODE>'.
+method.  By convention, the default initialization method is &rsquo;<code>-init</code>&rsquo;.
 The general procedure for obtaining a newly initialized object is thus:
-</P><P>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">id newObj = [[SomeClass alloc] init];
+</pre></td></tr></table>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>id newObj = [[SomeClass alloc] init];
-</pre></td></tr></table></P><P>
-
-Here, the call to <CODE>alloc</CODE> returns an uninitialized instance, on which
-<CODE>init</CODE> is then invoked.  (Actually, <CODE>alloc</CODE> <I>does</I> set all
-instance variable memory to 0, and it initializes the special <CODE>isa</CODE>
-variable mentioned earlier which points to the object's class, allowing it to
-respond to messages.)  The <CODE>alloc</CODE> and <CODE>init</CODE> calls may be collapsed
+<p>Here, the call to <code>alloc</code> returns an uninitialized instance, on which
+<code>init</code> is then invoked.  (Actually, <code>alloc</code> <i>does</i> set all
+instance variable memory to 0, and it initializes the special <code>isa</code>
+variable mentioned earlier which points to the object&rsquo;s class, allowing it to
+respond to messages.)  The <code>alloc</code> and <code>init</code> calls may be collapsed
 for convenience into a single call:
-</P><P>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">id newObj = [SomeClass new];
+</pre></td></tr></table>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>id newObj = [SomeClass new];
-</pre></td></tr></table></P><P>
-
-The default implementation of <CODE>new</CODE> simply calls <CODE>alloc</CODE> and
-<CODE>init</CODE> as above, however other actions are possible.  For example,
-<CODE>new</CODE> could be overridden to reuse an existing object and just call
-<CODE>init</CODE> on it (skipping the <CODE>alloc</CODE> step).  (Technically this kind of
-instantiation management can be done inside <CODE>init</CODE> as well -- it
+<p>The default implementation of <code>new</code> simply calls <code>alloc</code> and
+<code>init</code> as above, however other actions are possible.  For example,
+<code>new</code> could be overridden to reuse an existing object and just call
+<code>init</code> on it (skipping the <code>alloc</code> step).  (Technically this kind of
+instantiation management can be done inside <code>init</code> as well &ndash; it
 can deallocate the receiving object and return another one in its place.
-However this practice is not recommended; the <CODE>new</CODE> method should be
+However this practice is not recommended; the <code>new</code> method should be
 used for this instead since it avoids unnecessary memory allocation for
 instances that are not used.)
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC40"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC41"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 3.1.1 Initialization with Arguments </H3>
-<!--docid::SEC40::-->
-<P>
+<hr size="6">
+<a name="Initialization-with-Arguments"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Initializing-and-Allocating-Objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Memory-Allocation-and-Zones" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Initializing-and-Allocating-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.1.1 Initialization with Arguments</h3>
 
-In many cases you want to initialize an object with some specific information.
-For example a <CODE>Point</CODE> object might need to be given an <I>x, y</I> position.
+<p>In many cases you want to initialize an object with some specific information.
+For example a <code>Point</code> object might need to be given an <i>x, y</i> position.
 In this case the class may define additional initializers, such as:
-</P><P>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">id pt = [[Point alloc] initWithX: 1.5 Y: 2.0];
+</pre></td></tr></table>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>id pt = [[Point alloc] initWithX: 1.5 Y: 2.0];
-</pre></td></tr></table></P><P>
-
-Again, a <CODE>new</CODE> method may be defined, though sometimes the word "new"
+<p>Again, a <code>new</code> method may be defined, though sometimes the word &ldquo;new&rdquo;
 is not used in the name:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>id pt = [Point newWithX: 1.5 Y: 2.0];
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">id pt = [Point newWithX: 1.5 Y: 2.0];
   // alternative
 id pt = [Point pointAtX: 1.5 Y: 2.0];
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-In general the convention in Objective-C is to name initializers in a way that
+<p>In general the convention in Objective-C is to name initializers in a way that
 is intuitive for their classes.  Initialization is covered in more detail in
-<A HREF="manual_4.html#SEC51">Instance Initialization</A>.  Finally, it is acceptable for an
-<CODE>init...</CODE> method to return <CODE>nil</CODE> at times when insufficient memory
+<a href="manual_4.html#Classes">Instance Initialization</a>.  Finally, it is acceptable for an
+<code>init...</code> method to return <code>nil</code> at times when insufficient memory
 is available or it is passed an invalid argument; for example the argument to
-the <CODE>NSString</CODE> method <CODE>initWithContentsOfFile:</CODE> may be an erroneous
+the <code>NSString</code> method <code>initWithContentsOfFile:</code> may be an erroneous
 file name.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC41"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC40"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC42"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC42"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 3.1.2 Memory Allocation and Zones </H3>
-<!--docid::SEC41::-->
-<P>
 
-Memory allocation for objects in GNUstep supports the ability to specify that
+<hr size="6">
+<a name="Memory-Allocation-and-Zones"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Initialization-with-Arguments" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Memory-Deallocation" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Initializing-and-Allocating-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.1.2 Memory Allocation and Zones</h3>
+<a name="index-Zones"></a>
+
+<p>Memory allocation for objects in GNUstep supports the ability to specify that
 memory is to be taken from a particular region of addressable memory.  In the
 days that computer RAM was relatively limited, it was important to be able to
 ensure that parts of a large application that needed to interact with one
@@ -168,9 +202,8 @@ them out at the same time, perhaps to make way for a separate portion of the
 application that operated mostly independently.  (Think of a word processor
 that keeps structures for postscript generation for printing separate from
 those for managing widgets in the onscreen editor.)
-</P><P>
-
-With the growth of computer RAM and the increasing sophistication of memory
+</p>
+<p>With the growth of computer RAM and the increasing sophistication of memory
 management by operating systems, it is not as important these days to control
 the regions where memory is allocated from, however it may be of use in
 certain situations.  For example, you may wish to save time by allocating
@@ -179,189 +212,195 @@ allocation.  If you know you are going to be allocating large numbers of
 objects of a certain size, it may pay to create a zone that allocates memory
 in multiples of this size.  The GNUstep/Objective-C mechanisms supporting
 memory allocation are therefore described here.
-</P><P>
-
-The fundamental structure describing a region of memory in GNUstep is called a
-<I>Zone</I>, and it is represented by the <CODE>NSZone</CODE> struct.  All
-<CODE>NSObject</CODE> methods dealing with the allocation of memory optionally take
-an <CODE>NSZone</CODE> argument specifying the Zone to get the memory from.  For
-example, in addition to the fundamental <CODE>alloc</CODE> method described above,
-there is the <CODE>allocWithZone:</CODE> method:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>+ (id) alloc;
+</p>
+<p>The fundamental structure describing a region of memory in GNUstep is called a
+<i>Zone</i>, and it is represented by the <code>NSZone</code> struct.  All
+<code>NSObject</code> methods dealing with the allocation of memory optionally take
+an <code>NSZone</code> argument specifying the Zone to get the memory from.  For
+example, in addition to the fundamental <code>alloc</code> method described above,
+there is the <code>allocWithZone:</code> method:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">+ (id) alloc;
 + (id) allocWithZone: (NSZone*)zone;
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-Both methods will allocate memory to hold an object, however the first one
+<p>Both methods will allocate memory to hold an object, however the first one
 automatically takes the memory from a default Zone (which is returned by the
-<CODE>NSDefaultMallocZone()</CODE> function).  When it is necessary to group objects
+<code>NSDefaultMallocZone()</code> function).  When it is necessary to group objects
 in the same area of memory, or allocate in chunks - perhaps for performance
 reasons, you may create a Zone from where you would allocate those objects by
-using the <CODE>NSCreateZone</CODE> function.  This will minimise the paging
+using the <code>NSCreateZone</code> function.  This will minimise the paging
 required by your application when accessing those objects frequently.
-</P><P>
-
-Low level memory allocation is performed by the <CODE>NSAllocateObject()</CODE>
+</p>
+<p>Low level memory allocation is performed by the <code>NSAllocateObject()</code>
 function.  This is rarely used but available when you require more advanced
-control or performance. This function is called by <CODE>[NSObject
-+allocWithZone:]</CODE>.  However, if you call <CODE>NSAllocateObject()</CODE> directly to
+control or performance. This function is called by <code>[NSObject
++allocWithZone:]</code>.  However, if you call <code>NSAllocateObject()</code> directly to
 create an instance of a class you did not write, you may break some
 functionality of that class, such as caching of frequently used objects.
-</P><P>
-
-Other <CODE>NSObject</CODE> methods besides <CODE>alloc</CODE> that may optionally take
-Zones include <CODE>-copy</CODE> and <CODE>-mutableCopy</CODE>.  For 95% of cases you
+</p>
+<p>Other <code>NSObject</code> methods besides <code>alloc</code> that may optionally take
+Zones include <code>-copy</code> and <code>-mutableCopy</code>.  For 95% of cases you
 will probably not need to worry about Zones at all; unless performance is
 critical, you can just use the methods without zone arguments, that take the
 default zone.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC42"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC41"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC39"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 3.1.3 Memory Deallocation </H3>
-<!--docid::SEC42::-->
-<P>
+<hr size="6">
+<a name="Memory-Deallocation"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Memory-Allocation-and-Zones" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Memory-Management" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Initializing-and-Allocating-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.1.3 Memory Deallocation</h3>
+<a name="index-memory-deallocation"></a>
 
-Objects should be deallocated from memory when they are no longer needed.
+<p>Objects should be deallocated from memory when they are no longer needed.
 While there are several alternative schemes for managing this process (see
-next section), they all eventually resort to calling the <CODE>NSObject</CODE>
-method <CODE>-dealloc</CODE>, which is more or less the opposite of <CODE>-alloc</CODE>.
+next section), they all eventually resort to calling the <code>NSObject</code>
+method <code>-dealloc</code>, which is more or less the opposite of <code>-alloc</code>.
 It returns the memory occupied by the object to the Zone from which it was
-originally allocated.  The <CODE>NSObject</CODE> implementation of the method
+originally allocated.  The <code>NSObject</code> implementation of the method
 deallocates only instance variables.  Additional allocated, unshared memory
 used by the object must be deallocated separately.  Other entities that depend
 solely on the deallocated receiver, including complete objects, must also be
 deallocated separately.  Usually this is done by subclasses overriding
-<CODE>-dealloc</CODE> (see <A HREF="manual_4.html#SEC51">Instance Deallocation</A>).
-</P><P>
-
-As with <CODE>alloc</CODE>, the underlying implementation utilizes a function
-(<CODE>NSDeallocateObject()</CODE>) that can be used by your code if you know what
+<code>-dealloc</code> (see <a href="manual_4.html#Classes">Instance Deallocation</a>).
+</p>
+<p>As with <code>alloc</code>, the underlying implementation utilizes a function
+(<code>NSDeallocateObject()</code>) that can be used by your code if you know what
 you are doing.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC43"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC42"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC44"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> 3.2 Memory Management </H2>
-<!--docid::SEC43::-->
-<P>
+<hr size="6">
+<a name="Memory-Management"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Memory-Deallocation" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Explicit-Memory-Management" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">3.2 Memory Management</h2>
+<a name="index-memory-management"></a>
 
-In an object-oriented environment, ensuring that all memory is freed when it
+<p>In an object-oriented environment, ensuring that all memory is freed when it
 is no longer needed can be a challenge.  To assist in this regard, there are
 three alternative forms of memory management available in Objective-C:
-</P><P>
-
-<UL>
-<LI>Explicit<BR>
-You allocate objects using <CODE>alloc</CODE>, <CODE>copy</CODE> etc, and deallocate
-them when you have finished with them (using <CODE>dealloc</CODE>).
+</p>
+<ul class="toc">
+<li>- Explicit<br>
+You allocate objects using <code>alloc</code>, <code>copy</code> etc, and deallocate
+them when you have finished with them (using <code>dealloc</code>).
 This gives you complete control over memory management, and is highly
 efficient, but error prone.
-<P>
 
-<LI>Retain count<BR>
+</li><li>- Retain count<br>
 You use the OpenStep retain/release mechanism, along with autorelease
 pools which provide a degree of automated memory management.  This gives
 a good degree of control over memory management, but requires some care
-in following simple rules.  It's pretty efficient.
-<P>
+in following simple rules.  It&rsquo;s pretty efficient.
 
-<LI>Garbage collection<BR>
+</li><li>- Garbage collection<br>
 You build the GNUstep base library with garbage collection, and link
-with the Boehm GC library <small>...</small> then never bother about
+with the Boehm GC library &hellip; then never bother about
 releasing/deallocating memory.  This requires a slightly different
-approach to programming <small>...</small> you need to take care about what happens
-when objects are deallocated <small>...</small> but don't need to worry about
+approach to programming &hellip; you need to take care about what happens
+when objects are deallocated &hellip; but don&rsquo;t need to worry about
 deallocating them.
-</UL>
-<P>
+</li></ul>
 
-The recommended approach is to use some standard macros defined in
-<CODE>NSObject.h</CODE> which encapsulate the retain/release/autorelease mechanism,
+<p>The recommended approach is to use some standard macros defined in
+<code>NSObject.h</code> which encapsulate the retain/release/autorelease mechanism,
 but which permit efficient use of the garbage collection system if you build
 your software with that.  We will justify this recommendation after describing
 the three alternatives in greater detail.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC44"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 3.2.1 Explicit Memory Management </H3>
-<!--docid::SEC44::-->
-<P>
+<hr size="6">
+<a name="Explicit-Memory-Management"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Memory-Management" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#OpenStep_002dStyle-_0028Retain_002fRelease_0029-Memory-Management" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Memory-Management" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.2.1 Explicit Memory Management</h3>
+<a name="index-memory-management_002c-explicit"></a>
 
-This is the standard route to memory management taken in C and C++ programs.
-As in standard C when using <CODE>malloc</CODE>, or in C++ when using <CODE>new</CODE> and
-<CODE>delete</CODE>, you need to keep track of every object created through an
-<CODE>alloc</CODE> call and destroy it by use of <CODE>dealloc</CODE> when it is no longer
+<p>This is the standard route to memory management taken in C and C++ programs.
+As in standard C when using <code>malloc</code>, or in C++ when using <code>new</code> and
+<code>delete</code>, you need to keep track of every object created through an
+<code>alloc</code> call and destroy it by use of <code>dealloc</code> when it is no longer
 needed.  You must make sure to no longer reference deallocated objects;
 although messaging them will not cause a segmentation fault as in C/C++, it
 will still lead to your program behaving in unintended ways.
-</P><P>
-
-This approach is generally <I>not</I> recommended since the Retain/Release style
+</p>
+<p>This approach is generally <i>not</i> recommended since the Retain/Release style
 of memory management is significantly less leak-prone while still being quite
 efficient.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC45"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC44"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC46"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 3.2.2 OpenStep-Style (Retain/Release) Memory Management </H3>
-<!--docid::SEC45::-->
-<P>
+<hr size="6">
+<a name="OpenStep_002dStyle-_0028Retain_002fRelease_0029-Memory-Management"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Explicit-Memory-Management" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Autorelease-Pools" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Memory-Management" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.2.2 OpenStep-Style (Retain/Release) Memory Management</h3>
+<a name="index-memory-management_002c-OpenStep_002dstyle"></a>
+<a name="index-memory-management_002c-retain-count"></a>
 
-The standard OpenStep system of memory management employs retain counts.
+<p>The standard OpenStep system of memory management employs retain counts.
 When an object is created, it has a retain count of 1.  When an object
 is retained, the retain count is incremented.  When it is released the
 retain count is decremented, and when the retain count goes to zero the
 object gets deallocated.
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  Coin	*c = [[Coin alloc] initWithValue: 10];
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  Coin	*c = [[Coin alloc] initWithValue: 10];
 
     // Put coin in pouch,
   [c retain];	// Calls 'retain' method (retain count now 2)
@@ -369,43 +408,37 @@ object gets deallocated.
   [c release];	// Calls 'release' method (retain count now 1)
     // Drop in bottomless well
   [c release];	// Calls 'release' ... (retain count 0) then 'dealloc'
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-One way of thinking about the initial retain count of 1 on the object is that
-a call to <CODE>alloc</CODE> (or <CODE>copy</CODE>) implicitly calls <CODE>retain</CODE> as
-well.  There are a couple of default conventions about how <CODE>retain</CODE> and
-<CODE>release</CODE> are to be used in practice.
-</P><P>
-
-<UL>
-<LI>
-<I>If a block of code causes an object to be allocated, it "owns" this
+<p>One way of thinking about the initial retain count of 1 on the object is that
+a call to <code>alloc</code> (or <code>copy</code>) implicitly calls <code>retain</code> as
+well.  There are a couple of default conventions about how <code>retain</code> and
+<code>release</code> are to be used in practice.
+</p>
+<ul>
+<li>
+<i>If a block of code causes an object to be allocated, it &ldquo;owns&rdquo; this
 object and is responsible for releasing it.  If a block of code merely
-receives a created object from elsewhere, it is <B>not</B> responsible for
-releasing it.</I>
-<P>
+receives a created object from elsewhere, it is <b>not</b> responsible for
+releasing it.</i>
 
-<LI>
-<I>More generally, the total number of <CODE>retain</CODE>s in a block should be
-matched by an equal number of <CODE>release</CODE>s.</I>
-<P>
+</li><li>
+<i>More generally, the total number of <code>retain</code>s in a block should be
+matched by an equal number of <code>release</code>s.</i>
 
-</UL>
-<P>
+</li></ul>
 
-Thus, a typical usage pattern is:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *msg = [[NSString alloc] initWithString: @"Test message."];
+<p>Thus, a typical usage pattern is:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  NSString *msg = [[NSString alloc] initWithString: @&quot;Test message.&quot;];
   NSLog(msg);
     // we created msg with alloc -- release it
   [msg release];
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-Retain and release must also be used for instance variables that are objects:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (void)setFoo:(FooClass *newFoo)
+<p>Retain and release must also be used for instance variables that are objects:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">- (void)setFoo:(FooClass *newFoo)
 {
     // first, assert reference to newFoo
   [newFoo retain];
@@ -415,13 +448,12 @@ Retain and release must also be used for instance variables that are objects:
     // be destroyed if retain count has reached 0
   foo = newFoo;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-Because of this retain/release management, it is safest to use accessor
+<p>Because of this retain/release management, it is safest to use accessor
 methods to set variables even within a class:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (void)resetFoo
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">- (void)resetFoo
 {
   FooClass *foo = [[FooClass alloc] init];
   [self setFoo: foo];
@@ -429,159 +461,155 @@ methods to set variables even within a class:
     // undo the retain done by alloc
   [foo release];
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-<B>Exceptions</B>
-</P><P>
-
-In practice, the extra method call overhead should be avoided in performance
+<p><b>Exceptions</b>
+</p>
+<p>In practice, the extra method call overhead should be avoided in performance
 critical areas and the instance variable should be set directly.  However in
 all other cases it has proven less error-prone in practice to consistently use
 the accessor.
-</P><P>
-
-There are certain situations in which the rule of having retains and releases
+</p>
+<p>There are certain situations in which the rule of having retains and releases
 be equal in a block should be violated.  For example, the standard
-implementation of a container class <CODE>retain</CODE>s each object that is added
-to it, and <CODE>release</CODE>s it when it is removed, in a separate method.  In
+implementation of a container class <code>retain</code>s each object that is added
+to it, and <code>release</code>s it when it is removed, in a separate method.  In
 general you need to be careful in these cases that retains and releases match.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC46"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC47"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H4> 3.2.2.1 Autorelease Pools </H4>
-<!--docid::SEC46::-->
-<P>
+<hr size="6">
+<a name="Autorelease-Pools"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#OpenStep_002dStyle-_0028Retain_002fRelease_0029-Memory-Management" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Avoiding-Retain-Cycles" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#OpenStep_002dStyle-_0028Retain_002fRelease_0029-Memory-Management" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h4 class="subsubsection">3.2.2.1 Autorelease Pools</h4>
 
-One important case where the retain/release system has difficulties is when
-an object needs to be transferred or handed off to another.  You don't want
+<p>One important case where the retain/release system has difficulties is when
+an object needs to be transferred or handed off to another.  You don&rsquo;t want
 to retain the transferred object in the transferring code, but neither do you
 want the object to be destroyed before the handoff can take place.  The
-OpenStep/GNUstep solution to this is the <I>autorelease pool</I>.  An
+OpenStep/GNUstep solution to this is the <i>autorelease pool</i>.  An
 autorelease pool is a special mechanism that will retain objects it is given
-for a limited time -- always enough for a transfer to take place.  This
-mechanism is accessed by calling <CODE>autorelease</CODE> on an object instead of
-<CODE>release</CODE>.  <CODE>Autorelease</CODE> first adds the object to the active
-autorelease pool, which retains it, then sends a <CODE>release</CODE> to the
+for a limited time &ndash; always enough for a transfer to take place.  This
+mechanism is accessed by calling <code>autorelease</code> on an object instead of
+<code>release</code>.  <code>Autorelease</code> first adds the object to the active
+autorelease pool, which retains it, then sends a <code>release</code> to the
 object.  At some point later on, the pool will send the object a second
-<CODE>release</CODE> message, but by this time the object will presumably either
+<code>release</code> message, but by this time the object will presumably either
 have been retained by some other code, or is no longer needed and can thus be
 deallocated.  For example:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (NSString *) getStatus
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">- (NSString *) getStatus
 {
   NSString *status =
-    [[NSString alloc] initWithFormat: "Count is %d", [self getCount]];
+    [[NSString alloc] initWithFormat: &quot;Count is %d&quot;, [self getCount]];
    // set to be released sometime in the future
   [status autorelease];
   return status;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-Any block of code that calls <CODE>-getStatus</CODE> can also forego retaining the
+<p>Any block of code that calls <code>-getStatus</code> can also forego retaining the
 return value if it just needs to use it locally.  If the return value is to be
 stored and used later on however, it should be retained:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  ...
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  ...
   NSString *status = [foo getStatus];
     // 'status' is still being retained by the autorelease pool
   NSLog(status);
   return;
     // status will be released automatically later
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  ...
+<table><tr><td>&nbsp;</td><td><pre class="example">  ...
   currentStatus = [foo getStatus];
     // currentStatus is an instance variable; we do not want its value
     // to be destroyed when the autorelease pool cleans up, so we
     // retain it ourselves
   [currentStatus retain];
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-<B>Convenience Constructors</B>
-</P><P>
-
-A special case of object transfer occurs when a <I>convenience</I> constructor is
-called (instead of <CODE>alloc</CODE> followed by <CODE>init</CODE>) to create an object.
+<p><b>Convenience Constructors</b>
+</p>
+<p>A special case of object transfer occurs when a <i>convenience</i> constructor is
+called (instead of <code>alloc</code> followed by <code>init</code>) to create an object.
 (Convenience constructors are class methods that create a new instance and do
-not start with "new".)  In this case, since the convenience method is the
-one calling <CODE>alloc</CODE>, it is responsible for releasing it, and it does so
-by calling <CODE>autorelease</CODE> before returning.  Thus, if you receive an
-object created by any convenience method, it is autoreleased, so you don't
+not start with &ldquo;new&rdquo;.)  In this case, since the convenience method is the
+one calling <code>alloc</code>, it is responsible for releasing it, and it does so
+by calling <code>autorelease</code> before returning.  Thus, if you receive an
+object created by any convenience method, it is autoreleased, so you don&rsquo;t
 need to release it if you are just using it temporarily, and you DO need to
 retain it if you want to hold onto it for a while.
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>- (NSString *) getStatus
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">- (NSString *) getStatus
 {
     NSString *status =
-        [NSString stringWithFormat: "Count is %d", [self getCount]];
+        [NSString stringWithFormat: &quot;Count is %d&quot;, [self getCount]];
     // 'status' has been autoreleased already
     return status;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-<B>Pool Management</B>
-</P><P>
-
-An autorelease pool is created automatically if you are using the GNUstep
+<p><b>Pool Management</b>
+</p>
+<p>An autorelease pool is created automatically if you are using the GNUstep
 GUI classes, however if you are just using the GNUstep Base classes for a
 nongraphical application, you must create and release autorelease pools
 yourself:
-</P><P>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+</pre></td></tr></table>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-</pre></td></tr></table></P><P>
-
-Once a pool has been created, any autorelease calls will automatically find
+<p>Once a pool has been created, any autorelease calls will automatically find
 it.  To close out a pool, releasing all of its objects, simply release the
 pool itself:
-</P><P>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  [pool release];
+</pre></td></tr></table>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  [pool release];
-</pre></td></tr></table></P><P>
-
-To achieve finer control over autorelease behavior you may also create
+<p>To achieve finer control over autorelease behavior you may also create
 additional pools and release them in a nested manner.  Calls to
-<CODE>autorelease</CODE> will always use the most recently created pool.
-</P><P>
-
-Finally, note that <CODE>autorelease</CODE> calls are significantly slower than
-plain <CODE>release</CODE>.  Therefore you should only use them when they are
+<code>autorelease</code> will always use the most recently created pool.
+</p>
+<p>Finally, note that <code>autorelease</code> calls are significantly slower than
+plain <code>release</code>.  Therefore you should only use them when they are
 necessary.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC47"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC46"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC48"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC48"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H4> 3.2.2.2 Avoiding Retain Cycles </H4>
-<!--docid::SEC47::-->
-<P>
+<hr size="6">
+<a name="Avoiding-Retain-Cycles"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Autorelease-Pools" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Summary" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#OpenStep_002dStyle-_0028Retain_002fRelease_0029-Memory-Management" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h4 class="subsubsection">3.2.2.2 Avoiding Retain Cycles</h4>
 
-One difficulty that sometimes occurs with the retain/release system is that
+<p>One difficulty that sometimes occurs with the retain/release system is that
 cycles can arise in which, essentially, Object A has retained Object B, and
 Object B has also retained Object A.  In this situation, neither A nor B will
 ever be deallocated, even if they become completely disconnected from the rest
@@ -590,113 +618,100 @@ objects and multiple retain links.  The only way to avoid such cycles is to be
 careful with your designs.  If you notice a situation where a retain cycle
 could arise, remove at least one of the links in the chain, but not in such a
 way that references to deallocated objects might be mistakenly used.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC48"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC47"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC45"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H4> 3.2.2.3 Summary </H4>
-<!--docid::SEC48::-->
-<P>
+<hr size="6">
+<a name="Summary"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Avoiding-Retain-Cycles" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Garbage-Collection-Based-Memory-Management" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#OpenStep_002dStyle-_0028Retain_002fRelease_0029-Memory-Management" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h4 class="subsubsection">3.2.2.3 Summary</h4>
 
-The following summarizes the retain/release-related methods:
-</P><P>
-
-<TABLE>
-<TR><TD>Method </TD><TD> Description</TD>
-</TR>
-<TR><TD><CODE>-retain</CODE></TD>
-</TD><TD> increases the reference count of an object by 1
-</TR>
-<TR><TD><CODE>-release</CODE></TD>
-</TD><TD> decreases the reference count of an object by 1
-</TR>
-<TR><TD><CODE>-autorelease</CODE></TD>
-</TD><TD> decreases the reference count of an object by 1 at some stage in the future
-</TR>
-<TR><TD><CODE>+alloc</CODE> and <CODE>+allocWithZone:</CODE></TD>
-</TD><TD> allocates memory for an object, and returns it with retain count of 1
-</TR>
-<TR><TD><CODE>-copy</CODE>, <CODE>-mutableCopy</CODE>, <CODE>copyWithZone:</CODE> and <CODE>-mutableCopyWithZone:</CODE></TD>
-</TD><TD> makes a copy of an object, and returns it with retain count of 1
-</TR>
-<TR><TD><CODE>-init</CODE> and any method whose name begins with <CODE>init</CODE></TD>
-</TD><TD> initialises the receiver, returning the retain count unchanged.
-<CODE>-init</CODE> has had no effect on the reference count.
-</TR>
-<TR><TD><CODE>-new</CODE> and any method whose name begins with <CODE>new</CODE></TD>
-</TD><TD> allocates memory for an object, initialises it, and returns the result.
-</TR>
-<TR><TD><CODE>-dealloc</CODE></TD>
-</TD><TD> deallocates object immediately (regardless of value of retain count)
-</TR>
-<TR><TD>convenience constructors</TD>
-</TD><TD> allocate memory for an object, and returns it in an autoreleased state
+<p>The following summarizes the retain/release-related methods:
+</p>
+<table>
+<tr><td width="25%">Method</td><td width="75%">Description</td></tr>
+<tr><td width="25%"><code>-retain</code></td><td width="75%">increases the reference count of an object by 1</td></tr>
+<tr><td width="25%"><code>-release</code></td><td width="75%">decreases the reference count of an object by 1</td></tr>
+<tr><td width="25%"><code>-autorelease</code></td><td width="75%">decreases the reference count of an object by 1 at some stage in the future</td></tr>
+<tr><td width="25%"><code>+alloc</code> and <code>+allocWithZone:</code></td><td width="75%">allocates memory for an object, and returns it with retain count of 1</td></tr>
+<tr><td width="25%"><code>-copy</code>, <code>-mutableCopy</code>, <code>copyWithZone:</code> and <code>-mutableCopyWithZone:</code></td><td width="75%">makes a copy of an object, and returns it with retain count of 1</td></tr>
+<tr><td width="25%"><code>-init</code> and any method whose name begins with <code>init</code></td><td width="75%">initialises the receiver, returning the retain count unchanged.
+<code>-init</code> has had no effect on the reference count.</td></tr>
+<tr><td width="25%"><code>-new</code> and any method whose name begins with <code>new</code></td><td width="75%">allocates memory for an object, initialises it, and returns the result.</td></tr>
+<tr><td width="25%"><code>-dealloc</code></td><td width="75%">deallocates object immediately (regardless of value of retain count)</td></tr>
+<tr><td width="25%">convenience constructors</td><td width="75%">allocate memory for an object, and returns it in an autoreleased state
 (retain=1, but will be released automatically at some stage in the future).
 These constructors are class methods whose name generally begins with the
-name of the class (initial letter converted to lowercase).
-</TR></TABLE>
-<P>
+name of the class (initial letter converted to lowercase).</td></tr>
+</table>
 
-The following are the main conventions you need to remember:
-</P><P>
-
-<UL>
-<LI>
+<p>The following are the main conventions you need to remember:
+</p>
+<ul>
+<li>
 If a unit of code allocates, retains, or copies an object, the same unit,
 loosely speaking, is responsible for releasing or autoreleasing it at some
 future point.  It is best to balance retains and releases within each
 individual block of code.
-<P>
 
-<LI>
+</li><li>
 If you receive an autoreleased object, it will normally remain valid for the
 rest of the current method call and can even be returned as the result of the
 method.  If you need to store it away for future use (e.g. as an instance
 variable), you must retain it.
-<P>
 
-<LI>
+</li><li>
 The retain counts mentioned are guidelines only ... more sophisticated classes
-often perform caching and other tricks, so that <CODE>+alloc</CODE> methods may
-retain an instance from a cache and return it, and <CODE>-init</CODE> methods
+often perform caching and other tricks, so that <code>+alloc</code> methods may
+retain an instance from a cache and return it, and <code>-init</code> methods
 may release their receiver and return a different object (possibly obtained
 by retaining a cached object).  In these cases, the retain counts of the
 returned objects will obviously differ from the simple examples, but the
 ownership rules (how you should use the returned values) remain the same.
-</UL>
-<P>
+</li></ul>
 
-<HR SIZE="6">
-<A NAME="SEC49"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC48"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC50"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC50"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 3.2.3 Garbage Collection Based Memory Management </H3>
-<!--docid::SEC49::-->
-<P>
 
-The GNUstep system can be optionally compiled with a memory sweeping
-<B>garbage collection</B> mechanism using the Boehm conservative garbage
-collection library (<A HREF="http://www.hpl.hp.com/personal/Hans_Boehm/gc">http://www.hpl.hp.com/personal/Hans_Boehm/gc</A>).
+
+
+<hr size="6">
+<a name="Garbage-Collection-Based-Memory-Management"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Summary" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Current-Recommendations" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Memory-Management" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.2.3 Garbage Collection Based Memory Management</h3>
+<a name="index-memory-management_002c-garbage-collection-based"></a>
+<a name="index-garbage-collection"></a>
+
+<p>The GNUstep system can be optionally compiled with a memory sweeping
+<b>garbage collection</b> mechanism using the Boehm conservative garbage
+collection library (<a href="http://www.hpl.hp.com/personal/Hans_Boehm/gc">http://www.hpl.hp.com/personal/Hans_Boehm/gc</a>).
 In this case, you need not worry about retaining and releasing objects; the
 garbage collector will automatically track which objects are still referred to
 at any given point within the program, and which are not.  Those that are not
@@ -704,58 +719,35 @@ are automatically deallocated.  The situation is largely similar to
 programming in Java, except that garbage collection will only be triggered
 during memory allocation requests and will be less efficient since pointers
 in C are not always explicitly marked.
-</P><P>
-
-Whether in Java or Objective-C, life is still not completely worry-free under
-garbage collection however.  You still must "help the garbage collector
-along" by explicitly dropping references to objects when they become
+</p>
+<p>Whether in Java or Objective-C, life is still not completely worry-free under
+garbage collection however.  You still must &ldquo;help the garbage collector
+along&rdquo; by explicitly dropping references to objects when they become
 unneeded.  Failing to do this is easier than you might think, and leads to
 memory leaks.
-</P><P>
-
-When GNUstep was compiled with garbage collection, the macro flag
-<CODE>GS_WITH_GC</CODE> will be defined, which you can use in programs to determine
-whether you need to call <CODE>retain</CODE>, <CODE>release</CODE>, etc..  Rather than
+</p>
+<p>When GNUstep was compiled with garbage collection, the macro flag
+<code>GS_WITH_GC</code> will be defined, which you can use in programs to determine
+whether you need to call <code>retain</code>, <code>release</code>, etc..  Rather than
 doing this manually, however, you may use special macros in place of the
-<CODE>retain</CODE> and <CODE>release</CODE> method calls.  These macros call the methods
-in question when garbage collection is <I>not</I> available, but do nothing when
+<code>retain</code> and <code>release</code> method calls.  These macros call the methods
+in question when garbage collection is <i>not</i> available, but do nothing when
 it is.
-</P><P>
+</p>
+<table>
+<tr><td width="25%">Macro</td><td width="75%">Functionality</td></tr>
+<tr><td width="25%"><code>RETAIN(foo);</code></td><td width="75%"><code>[foo retain];</code></td></tr>
+<tr><td width="25%"><code>RELEASE(foo);</code></td><td width="75%"><code>[foo release];</code></td></tr>
+<tr><td width="25%"><code>AUTORELEASE(foo);</code></td><td width="75%"><code>[foo autorelease];</code></td></tr>
+<tr><td width="25%"><code>ASSIGN(foo, bar);</code></td><td width="75%"><code>[bar retain]; [foo release]; foo = bar;</code></td></tr>
+<tr><td width="25%"><code>ASSIGNCOPY(foo, bar);</code></td><td width="75%"><code>[foo release]; foo = [bar copy];</code></td></tr>
+<tr><td width="25%"><code>DESTROY(foo);</code></td><td width="75%"><code>[foo release]; foo = nil;</code></td></tr>
+</table>
 
-<TABLE>
-<TR><TD>Macro </TD><TD> Functionality</TD>
-
-</TR>
-<TR><TD><CODE>RETAIN(foo);</CODE></TD>
-</TD><TD> <CODE>[foo retain];</CODE>
-
-</TR>
-<TR><TD><CODE>RELEASE(foo);</CODE></TD>
-</TD><TD> <CODE>[foo release];</CODE>
-
-</TR>
-<TR><TD><CODE>AUTORELEASE(foo);</CODE></TD>
-</TD><TD> <CODE>[foo autorelease];</CODE>
-
-</TR>
-<TR><TD><CODE>ASSIGN(foo, bar);</CODE></TD>
-</TD><TD> <CODE>[bar retain]; [foo release]; foo = bar;</CODE>
-
-</TR>
-<TR><TD><CODE>ASSIGNCOPY(foo, bar);</CODE></TD>
-</TD><TD> <CODE>[foo release]; foo = [bar copy];</CODE>
-
-</TR>
-<TR><TD><CODE>DESTROY(foo);</CODE></TD>
-</TD><TD> <CODE>[foo release]; foo = nil;</CODE>
-</TR></TABLE>
-<P>
-
-In the latter three "convenience" macros, appropriate <CODE>nil</CODE> checks are
-made so that no retain/release messages are sent to <CODE>nil</CODE>.
-</P><P>
-
-Some authorities recommend that you always use the RETAIN/RELEASE macros in
+<p>In the latter three &ldquo;convenience&rdquo; macros, appropriate <code>nil</code> checks are
+made so that no retain/release messages are sent to <code>nil</code>.
+</p>
+<p>Some authorities recommend that you always use the RETAIN/RELEASE macros in
 place of the actual method calls, in order to allow running in a non-garbage
 collecting GNUstep environment yet also save unneeded method calls in the case
 your code runs in a garbage collecting enviromnent.  On the other hand, if you
@@ -763,48 +755,59 @@ know you are always going to be running in a non-garbage collecting
 environment, there is no harm in using the method calls, and if you know you
 will always have garbage collection available you can save development effort
 by avoiding any use of retain/release or RETAIN/RELEASE.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC50"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC49"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC43"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 3.2.4 Current Recommendations </H3>
-<!--docid::SEC50::-->
-<P>
+<hr size="6">
+<a name="Current-Recommendations"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Garbage-Collection-Based-Memory-Management" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Memory-Management" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">3.2.4 Current Recommendations</h3>
 
-As of May 2004 the garbage collection in GNUstep was still considered beta
-quality (some bugs exist).  In the OS X world, Apple's Cocoa does <I>not</I>
+<p>As of May 2004 the garbage collection in GNUstep was still considered beta
+quality (some bugs exist).  In the OS X world, Apple&rsquo;s Cocoa does <i>not</i>
 employ garbage collection, and it is not clear whether there are plans to
 implement it.  Therefore the majority of GNUstep programmers use the
 RETAIN/RELEASE approach to memory management.
-</P><P>
+</p>
 
-<A NAME="Classes"></A>
-<HR SIZE="6">
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_3.html#SEC38"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_4.html#SEC51"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<BR>  
-<FONT SIZE="-1">
-This document was generated
-by <I>Adam Fedor</I> on <I>January, 1  2008</I>
-using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
-"><I>texi2html</I></A>
 
-</BODY>
-</HTML>
+
+
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>root</em> on <em>April 13, 2011</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>

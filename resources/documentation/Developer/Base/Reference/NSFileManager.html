@@ -25,8 +25,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 30473</p>
-    <p><b>Date:</b> 2010-05-29 10:09:53 +0100 (Sat, 29 May 2010)</p>
+    <p><b>Version:</b> 32794</p>
+    <p><b>Date:</b> 2011-04-06 23:09:08 -0600 (Wed, 06 Apr 2011)</p>
     <p><b>Copyright:</b> (C) 1997,1999-2005 Free Software Foundation, Inc.</p>
 
         <div>
@@ -436,11 +436,13 @@
   <b>Method summary</b>
   <ul>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager+defaultManager">+defaultManager</a></li>
+    <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-attributesOfItemAtPath$error$">-attributesOfItemAtPath:error:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-changeCurrentDirectoryPath$">-changeCurrentDirectoryPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-changeFileAttributes$atPath$">-changeFileAttributes:atPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-componentsToDisplayForPath$">-componentsToDisplayForPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-contentsAtPath$">-contentsAtPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-contentsEqualAtPath$andPath$">-contentsEqualAtPath:andPath:</a></li>
+    <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-copyItemAtPath$toPath$error$">-copyItemAtPath:toPath:error:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-copyPath$toPath$handler$">-copyPath:toPath:handler:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-createDirectoryAtPath$attributes$">-createDirectoryAtPath:attributes:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-createDirectoryAtPath$withIntermediateDirectories$attributes$error$">-createDirectoryAtPath:withIntermediateDirectories:attributes:error:</a></li>
@@ -460,6 +462,7 @@
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-isReadableFileAtPath$">-isReadableFileAtPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-isWritableFileAtPath$">-isWritableFileAtPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-linkPath$toPath$handler$">-linkPath:toPath:handler:</a></li>
+    <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-moveItemAtPath$toPath$error$">-moveItemAtPath:toPath:error:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-movePath$toPath$handler$">-movePath:toPath:handler:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-pathContentOfSymbolicLinkAtPath$">-pathContentOfSymbolicLinkAtPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-removeFileAtPath$handler$">-removeFileAtPath:handler:</a></li>
@@ -477,6 +480,245 @@
     
             Returns a shared default file manager which may be
             used throughout an application.
+          
+  </div>
+  <hr width="25%" align="left" />
+</div>
+<div class="method">
+  <h3><a name="method$NSFileManager-attributesOfItemAtPath$error$">attributesOfItemAtPath:&nbsp;error:&nbsp;</a></h3>
+  - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>attributesOfItemAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+  <div class="desc">
+    
+            If a file (or directory etc) exists at the specified
+            <var>path</var>, and can be queried for its
+            attributes, this method returns a dictionary
+            containing the various attributes of that file.
+            Otherwise <code>nil</code> is returned. <br /> If
+            an <var>error</var> occurs, <var>error</var> describes
+            the problem. Pass NULL if you do not want
+            <var>error</var> information.
+            
+  </p>
+  <p>
+
+              The dictionary keys for attributes are -
+              </p>
+  <p>
+    
+            
+    <dl>
+      <dt><code>NSFileAppendOnly</code></dt>
+      <dd>
+        NSNumber... boolean
+      </dd>
+      <dt><code>NSFileCreationDate</code></dt>
+      <dd>
+        
+                NSDate when the file was created (if supported)
+              
+      </dd>
+      <dt><code>NSFileDeviceIdentifier</code></dt>
+      <dd>
+        
+                NSNumber (identifies the device on which the
+                file is stored)
+              
+      </dd>
+      <dt><code>NSFileExtensionHidden</code></dt>
+      <dd>
+        NSNumber... boolean
+      </dd>
+      <dt>
+                <code>NSFileGroupOwnerAccountName</code>
+              </dt>
+      <dd>
+        NSString name of the file group
+      </dd>
+      <dt>
+                <code>NSFileGroupOwnerAccountID</code>
+              </dt>
+      <dd>
+        NSNumber ID of the file group
+      </dd>
+      <dt><code>NSFileHFSCreatorCode</code></dt>
+      <dd>
+        NSNumber not used
+      </dd>
+      <dt><code>NSFileHFSTypeCode</code></dt>
+      <dd>
+        NSNumber not used
+      </dd>
+      <dt><code>NSFileImmutable</code></dt>
+      <dd>
+        NSNumber... boolean
+      </dd>
+      <dt><code>NSFileModificationDate</code></dt>
+      <dd>
+        
+                NSDate when the file was last modified
+              
+      </dd>
+      <dt><code>NSFileOwnerAccountName</code></dt>
+      <dd>
+        NSString name of the file owner
+      </dd>
+      <dt><code>NSFileOwnerAccountID</code></dt>
+      <dd>
+        NSNumber ID of the file owner
+      </dd>
+      <dt><code>NSFilePosixPermissions</code></dt>
+      <dd>
+        
+                NSNumber posix access permissions mask
+              
+      </dd>
+      <dt><code>NSFileReferenceCount</code></dt>
+      <dd>
+        NSNumber number of links to this file
+      </dd>
+      <dt><code>NSFileSize</code></dt>
+      <dd>
+        NSNumber size of the file in bytes
+      </dd>
+      <dt><code>NSFileSystemFileNumber</code></dt>
+      <dd>
+        
+                NSNumber the identifier for the file on the
+                filesystem
+              
+      </dd>
+      <dt><code>NSFileSystemNumber</code></dt>
+      <dd>
+        
+                NSNumber the filesystem on which the file is
+                stored
+              
+      </dd>
+      <dt><code>NSFileType</code></dt>
+      <dd>
+        NSString the type of file
+      </dd>
+    </dl>
+    
+            
+  </p>
+  <p>
+
+              The
+              <a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>
+
+                class also has a set of convenience accessor
+                methods which enable you to get at file
+                attribute information more efficiently than
+                using the keys above to extract it. You should
+                generally use the accessor methods where they
+                are available.
+                </p>
+  <p>
+    
+              
+    <ul>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileCreationDate">[NSDictionary(NSFileAttributes) -fileCreationDate]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileExtensionHidden">[NSDictionary(NSFileAttributes) -fileExtensionHidden]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileHFSCreatorCode">[NSDictionary(NSFileAttributes) -fileHFSCreatorCode]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileHFSTypeCode">[NSDictionary(NSFileAttributes) -fileHFSTypeCode]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileIsAppendOnly">[NSDictionary(NSFileAttributes) -fileIsAppendOnly]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileIsImmutable">[NSDictionary(NSFileAttributes) -fileIsImmutable]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileSize">[NSDictionary(NSFileAttributes) -fileSize]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileType">[NSDictionary(NSFileAttributes) -fileType]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileOwnerAccountName">[NSDictionary(NSFileAttributes) -fileOwnerAccountName]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileOwnerAccountID">[NSDictionary(NSFileAttributes) -fileOwnerAccountID]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileGroupOwnerAccountName">[NSDictionary(NSFileAttributes) -fileGroupOwnerAccountName]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileGroupOwnerAccountID">[NSDictionary(NSFileAttributes) -fileGroupOwnerAccountID]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileModificationDate">[NSDictionary(NSFileAttributes) -fileModificationDate]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-filePosixPermissions">[NSDictionary(NSFileAttributes) -filePosixPermissions]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileSystemNumber">[NSDictionary(NSFileAttributes) -fileSystemNumber]</a>
+
+                
+      </li>
+      <li>
+        
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileSystemFileNumber">[NSDictionary(NSFileAttributes) -fileSystemFileNumber]</a>
+
+                
+      </li>
+    </ul>
+    
           
   </div>
   <hr width="25%" align="left" />
@@ -581,6 +823,19 @@
   <hr width="25%" align="left" />
 </div>
 <div class="method">
+  <h3><a name="method$NSFileManager-copyItemAtPath$toPath$error$">copyItemAtPath:&nbsp;toPath:&nbsp;error:&nbsp;</a></h3>
+  - (BOOL) <b>copyItemAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)src<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)dst<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+  <div class="desc">
+    
+            <em>Description forthcoming.</em>
+          
+  </div>
+  <hr width="25%" align="left" />
+</div>
+<div class="method">
   <h3><a name="method$NSFileManager-copyPath$toPath$handler$">copyPath:&nbsp;toPath:&nbsp;handler:&nbsp;</a></h3>
   - (BOOL) <b>copyPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)source<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)destination<b> handler:</b> (id)handler;<br />
   <div class="availability">
@@ -591,8 +846,8 @@
             Copies the file or directory at <var>source</var> to
             <var>destination</var>, using a <var>handler</var>
             object which should respond to
-            <a rel="gsdoc" href="#method$NSObject-fileManager$willProcessPath$">[NSObject -fileManager:willProcessPath:]</a>
- and <a rel="gsdoc" href="#method$NSObject-fileManager$shouldProceedAfterError$">[NSObject -fileManager:shouldProceedAfterError:]</a>
+            <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$willProcessPath$">[NSObject(NSFileManagerHandler) -fileManager:willProcessPath:]</a>
+ and <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$shouldProceedAfterError$">[NSObject(NSFileManagerHandler) -fileManager:shouldProceedAfterError:]</a>
  messages. <br /> Will not copy to a <var>destination</var> which already exists.
           
   </div>
@@ -786,7 +1041,9 @@
             
   </p>
   <p>
-The dictionary keys for attributes are -  </p>
+
+              The dictionary keys for attributes are -
+              </p>
   <p>
     
             
@@ -904,97 +1161,97 @@ The dictionary keys for attributes are -  </p>
     <ul>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileCreationDate">[NSDictionary -fileCreationDate]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileCreationDate">[NSDictionary(NSFileAttributes) -fileCreationDate]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileExtensionHidden">[NSDictionary -fileExtensionHidden]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileExtensionHidden">[NSDictionary(NSFileAttributes) -fileExtensionHidden]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileHFSCreatorCode">[NSDictionary -fileHFSCreatorCode]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileHFSCreatorCode">[NSDictionary(NSFileAttributes) -fileHFSCreatorCode]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileHFSTypeCode">[NSDictionary -fileHFSTypeCode]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileHFSTypeCode">[NSDictionary(NSFileAttributes) -fileHFSTypeCode]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileIsAppendOnly">[NSDictionary -fileIsAppendOnly]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileIsAppendOnly">[NSDictionary(NSFileAttributes) -fileIsAppendOnly]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileIsImmutable">[NSDictionary -fileIsImmutable]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileIsImmutable">[NSDictionary(NSFileAttributes) -fileIsImmutable]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileSize">[NSDictionary -fileSize]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileSize">[NSDictionary(NSFileAttributes) -fileSize]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileType">[NSDictionary -fileType]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileType">[NSDictionary(NSFileAttributes) -fileType]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileOwnerAccountName">[NSDictionary -fileOwnerAccountName]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileOwnerAccountName">[NSDictionary(NSFileAttributes) -fileOwnerAccountName]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileOwnerAccountID">[NSDictionary -fileOwnerAccountID]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileOwnerAccountID">[NSDictionary(NSFileAttributes) -fileOwnerAccountID]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileGroupOwnerAccountName">[NSDictionary -fileGroupOwnerAccountName]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileGroupOwnerAccountName">[NSDictionary(NSFileAttributes) -fileGroupOwnerAccountName]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileGroupOwnerAccountID">[NSDictionary -fileGroupOwnerAccountID]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileGroupOwnerAccountID">[NSDictionary(NSFileAttributes) -fileGroupOwnerAccountID]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileModificationDate">[NSDictionary -fileModificationDate]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileModificationDate">[NSDictionary(NSFileAttributes) -fileModificationDate]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-filePosixPermissions">[NSDictionary -filePosixPermissions]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-filePosixPermissions">[NSDictionary(NSFileAttributes) -filePosixPermissions]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileSystemNumber">[NSDictionary -fileSystemNumber]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileSystemNumber">[NSDictionary(NSFileAttributes) -fileSystemNumber]</a>
 
                 
       </li>
       <li>
         
-                  <a rel="gsdoc" href="#method$NSDictionary-fileSystemFileNumber">[NSDictionary -fileSystemFileNumber]</a>
+                  <a rel="gsdoc" href="#method$NSDictionary(NSFileAttributes)-fileSystemFileNumber">[NSDictionary(NSFileAttributes) -fileSystemFileNumber]</a>
 
                 
       </li>
@@ -1191,8 +1448,8 @@ The dictionary keys for attributes are -  </p>
               Links the file or directory at <var>source</var> to
               <var>destination</var>, using a <var>handler</var>
               object which should respond to
-              <a rel="gsdoc" href="#method$NSObject-fileManager$willProcessPath$">[NSObject -fileManager:willProcessPath:]</a>
- and <a rel="gsdoc" href="#method$NSObject-fileManager$shouldProceedAfterError$">[NSObject -fileManager:shouldProceedAfterError:]</a>
+              <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$willProcessPath$">[NSObject(NSFileManagerHandler) -fileManager:willProcessPath:]</a>
+ and <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$shouldProceedAfterError$">[NSObject(NSFileManagerHandler) -fileManager:shouldProceedAfterError:]</a>
  messages.
               </p>
   <p>
@@ -1230,6 +1487,19 @@ The dictionary keys for attributes are -  </p>
   <hr width="25%" align="left" />
 </div>
 <div class="method">
+  <h3><a name="method$NSFileManager-moveItemAtPath$toPath$error$">moveItemAtPath:&nbsp;toPath:&nbsp;error:&nbsp;</a></h3>
+  - (BOOL) <b>moveItemAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)src<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)dst<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+  <div class="desc">
+    
+            <em>Description forthcoming.</em>
+          
+  </div>
+  <hr width="25%" align="left" />
+</div>
+<div class="method">
   <h3><a name="method$NSFileManager-movePath$toPath$handler$">movePath:&nbsp;toPath:&nbsp;handler:&nbsp;</a></h3>
   - (BOOL) <b>movePath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)source<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)destination<b> handler:</b> (id)handler;<br />
   <div class="availability">
@@ -1240,8 +1510,8 @@ The dictionary keys for attributes are -  </p>
             Moves the file or directory at <var>source</var> to
             <var>destination</var>, using a <var>handler</var>
             object which should respond to
-            <a rel="gsdoc" href="#method$NSObject-fileManager$willProcessPath$">[NSObject -fileManager:willProcessPath:]</a>
- and <a rel="gsdoc" href="#method$NSObject-fileManager$shouldProceedAfterError$">[NSObject -fileManager:shouldProceedAfterError:]</a>
+            <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$willProcessPath$">[NSObject(NSFileManagerHandler) -fileManager:willProcessPath:]</a>
+ and <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$shouldProceedAfterError$">[NSObject(NSFileManagerHandler) -fileManager:shouldProceedAfterError:]</a>
  messages. Will not move to a <var>destination</var> which already exists. <br />
           
   </div>
@@ -1272,8 +1542,8 @@ The dictionary keys for attributes are -  </p>
             Removes the file or directory at <var>path</var>,
             using a <var>handler</var> object which should
             respond to
-            <a rel="gsdoc" href="#method$NSObject-fileManager$willProcessPath$">[NSObject -fileManager:willProcessPath:]</a>
- and <a rel="gsdoc" href="#method$NSObject-fileManager$shouldProceedAfterError$">[NSObject -fileManager:shouldProceedAfterError:]</a>
+            <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$willProcessPath$">[NSObject(NSFileManagerHandler) -fileManager:willProcessPath:]</a>
+ and <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$shouldProceedAfterError$">[NSObject(NSFileManagerHandler) -fileManager:shouldProceedAfterError:]</a>
  messages.
           
   </div>

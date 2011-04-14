@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 30773</p>
-    <p><b>Date:</b> 2010-06-17 20:09:26 +0100 (Thu, 17 Jun 2010)</p>
+    <p><b>Version:</b> 32507</p>
+    <p><b>Date:</b> 2011-03-09 03:24:18 -0700 (Wed, 09 Mar 2011)</p>
     <p><b>Copyright:</b> (C) 1998,2003 Free Software Foundation, Inc.</p>
 
         <div>
@@ -141,9 +141,7 @@
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForInvocation$">+_newProxyForInvocation:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForMessage$">+_newProxyForMessage:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_returnInvocationAndDestroyProxy$">+_returnInvocationAndDestroyProxy:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithArgframe$selector$">-initWithArgframe:selector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithMethodSignature$">-initWithMethodSignature:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-returnFrame$">-returnFrame:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation+invocationWithMethodSignature$">+invocationWithMethodSignature:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-argumentsRetained">-argumentsRetained</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation-getArgument$atIndex$">-getArgument:atIndex:</a></li>
@@ -612,21 +610,6 @@
           
     </div>
     <hr width="25%" align="left" />
-    <h3><a name="ivariable$NSInvocation*_unused">_unused</a></h3>
-    @public void* <b>_unused</b>;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            <em>Warning</em> the underscore at the start of the
-            name of this instance variable indicates that, even
-            though it is not technically <em>private</em>, it is
-            intended for internal use within the package, and
-            you should not use the variable in other code.
-          
-    </div>
-    <hr width="25%" align="left" />
     <h3><a name="ivariable$NSInvocation*_validReturn">_validReturn</a></h3>
     @public BOOL <b>_validReturn</b>;<br />
     <div class="availability">
@@ -683,7 +666,7 @@
     <div class="desc">
       
             Returns the status of the flag set by
-            <a rel="gsdoc" href="#method$NSInvocation-setSendsToSuper$">
+            <a rel="gsdoc" href="#method$NSInvocation(GNUstep)-setSendsToSuper$">
               -setSendsToSuper:
             </a>
 
@@ -746,9 +729,7 @@
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForInvocation$">+_newProxyForInvocation:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_newProxyForMessage$">+_newProxyForMessage:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)+_returnInvocationAndDestroyProxy$">+_returnInvocationAndDestroyProxy:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithArgframe$selector$">-initWithArgframe:selector:</a></li>
       <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-initWithMethodSignature$">-initWithMethodSignature:</a></li>
-      <li><a rel="gsdoc" href="NSInvocation.html#method$NSInvocation(MacroSetup)-returnFrame$">-returnFrame:</a></li>
     </ul>
     <hr width="50%" align="left" />
 <div class="method">
@@ -762,7 +743,10 @@
             <em>Warning</em> the underscore at the start of the
             name of this method indicates that it is private, for
             internal use only, and you should not use the
-            method in your code.
+            method in your code. <br /> Internal use. <br />
+            Provides a return frame that the ObjectiveC
+            runtime can use to return the result of an
+            invocation to a calling function.
           
     </div>
     <hr width="25%" align="left" />
@@ -800,23 +784,6 @@
     <hr width="25%" align="left" />
 </div>
 <div class="method">
-    <h3><a name="method$NSInvocation(MacroSetup)-initWithArgframe$selector$">initWithArgframe:&nbsp;selector:&nbsp;</a></h3>
-    - (id) <b>initWithArgframe:</b> (arglist_t)frame<b> selector:</b> (SEL)aSelector;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            Internal use. <br /> Initialises the receiver with
-            a known selector and argument list as supplied to the
-            forward:: method by the ObjectiveC runtime when
-            it is unable to locate an implementation for the
-            selector in a class.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
     <h3><a name="method$NSInvocation(MacroSetup)-initWithMethodSignature$">initWithMethodSignature:&nbsp;</a></h3>
     - (id) <b>initWithMethodSignature:</b> (<a rel="gsdoc" href="NSMethodSignature.html#class$NSMethodSignature">NSMethodSignature</a>*)aSignature;<br />
     <div class="availability">
@@ -838,21 +805,6 @@ Subclasses <strong>must</strong> override this method.<br />
             invocation. <br /> Raises an
             NSInvalidArgumentException if
             <var>aSignature</var> is <code>nil</code>.
-          
-    </div>
-    <hr width="25%" align="left" />
-</div>
-<div class="method">
-    <h3><a name="method$NSInvocation(MacroSetup)-returnFrame$">returnFrame:&nbsp;</a></h3>
-    - (void*) <b>returnFrame:</b> (arglist_t)argFrame;<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            Internal use. <br /> Provides a return frame that
-            the ObjectiveC runtime can use to return the result of
-            an invocation to a calling function.
           
     </div>
     <hr width="25%" align="left" />

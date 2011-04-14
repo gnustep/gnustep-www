@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 30473</p>
-    <p><b>Date:</b> 2010-05-29 10:09:53 +0100 (Sat, 29 May 2010)</p>
+    <p><b>Version:</b> 32459</p>
+    <p><b>Date:</b> 2011-03-05 08:01:35 -0700 (Sat, 05 Mar 2011)</p>
     <p><b>Copyright:</b> (C) 1995, 1996, 1998 Free Software Foundation, Inc.</p>
 
         <div>
@@ -344,6 +344,8 @@ Subclasses <strong>must</strong> override this method.<br />
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-count">-count</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-description">-description</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-descriptionWithLocale$">-descriptionWithLocale:</a></li>
+      <li><a rel="gsdoc" href="NSSet.html#method$NSSet-enumerateObjectsUsingBlock$">-enumerateObjectsUsingBlock:</a></li>
+      <li><a rel="gsdoc" href="NSSet.html#method$NSSet-enumerateObjectsWithOptions$usingBlock$">-enumerateObjectsWithOptions:usingBlock:</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-init">-init</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-initWithArray$">-initWithArray:</a></li>
       <li><a rel="gsdoc" href="NSSet.html#method$NSSet-initWithObjects$,...">-initWithObjects:,...</a></li>
@@ -519,13 +521,52 @@ Subclasses <strong>must</strong> override this method.<br />
 </div>
 <div class="method">
     <h3><a name="method$NSSet-descriptionWithLocale$">descriptionWithLocale:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)locale;<br />
+    - (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*) <b>descriptionWithLocale:</b> (id)locale;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
     <div class="desc">
       
             Returns listing of objects in set.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSSet-enumerateObjectsUsingBlock$">enumerateObjectsUsingBlock:&nbsp;</a></h3>
+    - (void) <b>enumerateObjectsUsingBlock:</b> (GSSetEnumeratorBlock)aBlock;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.6.0</div>
+<br />
+    <div class="desc">
+      
+            Enumerate over the collection using a given
+            block. The first argument is the object. The second
+            argument is a pointer to a BOOL indicating whether
+            the enumeration should stop. Setting this to
+            <code>YES</code> will interupt the enumeration.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSSet-enumerateObjectsWithOptions$usingBlock$">enumerateObjectsWithOptions:&nbsp;usingBlock:&nbsp;</a></h3>
+    - (void) <b>enumerateObjectsWithOptions:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSEnumerationOptions">NSEnumerationOptions</a>)opts<b> usingBlock:</b> (GSSetEnumeratorBlock)aBlock;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.6.0</div>
+<br />
+    <div class="desc">
+      
+            Enumerate over the collection using the given
+            block. The first argument is the object. The second
+            argument is a pointer to a BOOL indicating whether
+            the enumeration should stop. Setting this to
+            <code>YES</code> will interrupt the enumeration. The
+            <var>opts</var> argument is a bitfield. Setting the
+            NSNSEnumerationConcurrent flag
+            specifies that it is thread-safe. The
+            NSEnumerationReverse bit specifies
+            that it should be enumerated in reverse order.
           
     </div>
     <hr width="25%" align="left" />

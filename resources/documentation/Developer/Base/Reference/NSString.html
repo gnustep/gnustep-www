@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 30756</p>
-    <p><b>Date:</b> 2010-06-16 08:01:40 +0100 (Wed, 16 Jun 2010)</p>
+    <p><b>Version:</b> 32488</p>
+    <p><b>Date:</b> 2011-03-07 08:47:07 -0700 (Mon, 07 Mar 2011)</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -71,8 +71,8 @@
 
         function. <br /> You should probably stick to using
         the default &apos;gnustep&apos; mode in which the path handling
-        methods cope with both unix and windows style paths in
-        portable and tolerant manner: <br /> Paths are read in
+        methods cope with both &apos;unix&apos; and &apos;windows&apos; style paths
+        in portable and tolerant manner: <br /> Paths are read in
         literally so they can be in the native format
         provided by the operating system or in a non-native
         format. <br /> Paths are written out using the native
@@ -80,8 +80,13 @@
         on windows slashes are converted to backslashes). <br /> The
         path handling methods accept either a forward or backward
         slash as a path separator when parsing any path. <br />
-        The path handling methods add forward slashes when building
-        new paths internally or when standardising paths, so those
+        Unless operating in &apos;unix&apos; mode, a leading letter
+        followed by a colon is considered the start of a
+        windows style path (the drive specifier), and a path
+        beginning with something of the form &apos;//host/share/&apos;
+        is considered the start of a UNC style path. <br /> The path
+        handling methods add forward slashes when building new
+        paths internally or when standardising paths, so those
         path strings provide a portable representation (as
         <strong>long</strong> as they are relative paths, not
         including system specific roots). <br /> An important
@@ -115,13 +120,6 @@
     </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-deletePrefix$">-deletePrefix:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-deleteSuffix$">-deleteSuffix:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-immutableProxy">-immutableProxy</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-replaceString$withString$">-replaceString:withString:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-trimLeadSpaces">-trimLeadSpaces</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-trimSpaces">-trimSpaces</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-trimTailSpaces">-trimTailSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+string">+string</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithCString$">+stringWithCString:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithCString$length$">+stringWithCString:length:</a></li>
@@ -418,49 +416,90 @@ Subclasses <strong>must</strong> override this method.<br />
             <a rel="gsdoc" href="#class$NSMutableString">NSMutableString</a>
 subclass represents a modifiable string. Both are implemented as part of a class cluster and the instances you receive may actually be of unspecified concrete subclasses.    </p>
     <p>
-       
+      
+            
     </p>
     <p>
-A constant <code>NSString</code> can be created using the following syntax: <code>@&quot;...&quot;</code>, where the contents of the quotes are the string, using only ASCII characters.    </p>
+
+              A constant <code>NSString</code> can be created using
+              the following syntax: <code>@&quot;...&quot;</code>, where the
+              contents of the quotes are the string, using
+              only ASCII characters.
+                </p>
     <p>
-       
+      
+            
     </p>
     <p>
-A variable string can be created using a C printf-like <em>format</em>, as in <code>[NSString stringWithFormat: @&quot;Total is %f&quot;, t]</code>.    </p>
+
+              A variable string can be created using a C printf-like
+              <em>format</em>, as in
+              <code>
+                [NSString stringWithFormat: @&quot;Total is %f&quot;,
+                t]
+              </code>
+              .
+                </p>
     <p>
-       
+      
+            
     </p>
     <p>
-To create a concrete subclass of <code>NSString</code>, you must have your class inherit from <code>NSString</code> and override at least the two primitive methods - <a rel="gsdoc" href="#method$NSString-length">-length</a>
- and <a rel="gsdoc" href="#method$NSString-characterAtIndex$">-characterAtIndex:</a>
+
+              To create a concrete subclass of <code>NSString</code>
+              , you must have your class inherit from
+              <code>NSString</code> and override at least the
+              two primitive methods -
+              <a rel="gsdoc" href="#method$NSString-length">
+                -length
+              </a>
+
+              and
+              <a rel="gsdoc" href="#method$NSString-characterAtIndex$">
+                -characterAtIndex:
+              </a>
+
+                </p>
+    <p>
+      
+            
     </p>
     <p>
-       
+
+              In general the rule is that your subclass must
+              override any initialiser that you want to use
+              with it. The GNUstep implementation relaxes that to
+              say that, you may override only the
+              <em>designated initialiser</em> and the other
+              initialisation methods should work.
+                </p>
+    <p>
+      
+            
     </p>
     <p>
-In general the rule is that your subclass must override any initialiser that you want to use with it. The GNUstep implementation relaxes that to say that, you may override only the <em>designated initialiser</em> and the other initialisation methods should work.    </p>
-    <p>
-       
-    </p>
-    <p>
-Where an NSString instance method returns an NSString object, the class of the actual object returned may be any subclass of NSString. The actual value returned may be a new autoreleased object, an autoreleased copy of the receiver, or the receiver itsself. While the abstract base class implementations of methods (other than initialisers) will avoid returning mutable strings by returning an autoreleased copy of a mutable receiver, concrete subclasses may behave differently, so code should not rely upon the mutability of returned strings nor upon their lifetime being greater than that of the receiver which returned them.    </p>
+
+              Where an NSString instance method returns an
+              NSString object, the class of the actual object
+              returned may be any subclass of NSString. The
+              actual value returned may be a new autoreleased
+              object, an autoreleased copy of the receiver, or
+              the receiver itsself. While the abstract base class
+              implementations of methods (other than
+              initialisers) will avoid returning mutable
+              strings by returning an autoreleased copy of a
+              mutable receiver, concrete subclasses may behave
+              differently, so code should not rely upon
+              the mutability of returned strings nor upon their
+              lifetime being greater than that of the receiver
+              which returned them.
+                </p>
     <p>
       
         
     </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)+stringWithFormat$arguments$">+stringWithFormat:arguments:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByDeletingPrefix$">-stringByDeletingPrefix:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByDeletingSuffix$">-stringByDeletingSuffix:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByReplacingString$withString$">-stringByReplacingString:withString:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-substringFromRange$">-substringFromRange:</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByEscapingXML">-stringByEscapingXML</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByUnescapingXML">-stringByUnescapingXML</a></li>
-      <li><a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Libraries/CoreComponents/SMSUtils.html#method$NSString(ReducingSpaces)-stringByReducingSpaces">-stringByReducingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>
@@ -580,6 +619,7 @@ Where an NSString instance method returns an NSString object, the class of the a
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingPathExtension">-stringByDeletingPathExtension</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByExpandingTildeInPath">-stringByExpandingTildeInPath</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByPaddingToLength$withString$startingAtIndex$">-stringByPaddingToLength:withString:startingAtIndex:</a></li>
+      <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByReplacingCharactersInRange$withString$">-stringByReplacingCharactersInRange:withString:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByReplacingOccurrencesOfString$withString$">-stringByReplacingOccurrencesOfString:withString:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByReplacingOccurrencesOfString$withString$options$range$">-stringByReplacingOccurrencesOfString:withString:options:range:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString-stringByReplacingPercentEscapesUsingEncoding$">-stringByReplacingPercentEscapesUsingEncoding:</a></li>
@@ -2807,11 +2847,17 @@ Subclasses <strong>must</strong> override this method.<br />
                 <a rel="gsdoc" href="NSPropertyList.html#class$NSPropertyListSerialization">NSPropertyListSerialization</a>
 for more information on what a property list is.    </p>
     <p>
-       
+      
+                
     </p>
     <p>
-If the string cannot be parsed as a normal property list format, this method also tries to parse it as &apos;strings file&apos; format (see the <a rel="gsdoc" href="#method$NSString-propertyListFromStringsFileFormat">-propertyListFromStringsFileFormat</a>
- method).    </p>
+
+                  If the string cannot be parsed as a normal
+                  property list format, this method also tries
+                  to parse it as &apos;strings file&apos; format (see the
+                  <a rel="gsdoc" href="#method$NSString-propertyListFromStringsFileFormat">-propertyListFromStringsFileFormat</a>
+ method).
+                    </p>
     <p>
       
           
@@ -3318,6 +3364,21 @@ If the string cannot be parsed as a normal property list format, this method als
     <hr width="25%" align="left" />
 </div>
 <div class="method">
+    <h3><a name="method$NSString-stringByReplacingCharactersInRange$withString$">stringByReplacingCharactersInRange:&nbsp;withString:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByReplacingCharactersInRange:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSRange">NSRange</a>)aRange<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.5.0</div>
+<br />
+    <div class="desc">
+      
+            Returns a new string where the substring in the
+            given range is replaced <var>by</var> the passed
+            string.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSString-stringByReplacingOccurrencesOfString$withString$">stringByReplacingOccurrencesOfString:&nbsp;withString:&nbsp;</a></h3>
     - (<a rel="gsdoc" href="#class$NSString">NSString</a>*) <b>stringByReplacingOccurrencesOfString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)replace<b> withString:</b> (<a rel="gsdoc" href="#class$NSString">NSString</a>*)by;<br />
     <div class="availability">
@@ -3369,11 +3430,17 @@ If the string cannot be parsed as a normal property list format, this method als
 <br />
     <div class="desc">
       
-            Replaces path string by one in which path
-            components representing symbolic links have been
-            replaced by their referents. <br /> If links
-            cannot be resolved, returns an unmodified copy of
-            the receiver.
+            First calls
+            <a rel="gsdoc" href="#method$NSString-stringByExpandingTildeInPath">
+              -stringByExpandingTildeInPath
+            </a>
+
+            if necessary. <br /> Replaces path string by one in
+            which path components representing symbolic links
+            have been replaced by their referents. <br /> Removes
+            a leading &apos;/private&apos; if the result is valid. <br /> If
+            links cannot be resolved, returns an unmodified copy
+            of the receiver.
           
     </div>
     <hr width="25%" align="left" />
@@ -3590,13 +3657,13 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-writeToURL$atomically$">writeToURL:&nbsp;atomically:&nbsp;</a></h3>
-    - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)anURL<b> atomically:</b> (BOOL)atomically;<br />
+    - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)url<b> atomically:</b> (BOOL)atomically;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
     <div class="desc">
       
-            Writes contents out to <var>anURL</var>, using the
+            Writes contents out to <var>url</var>, using the
             default C string encoding unless this would result
             in information loss, otherwise straight unicode. See
             <a rel="gsdoc" href="NSURLHandle.html#method$NSURLHandle-writeData$">
@@ -3617,13 +3684,13 @@ If the string cannot be parsed as a normal property list format, this method als
 </div>
 <div class="method">
     <h3><a name="method$NSString-writeToURL$atomically$encoding$error$">writeToURL:&nbsp;atomically:&nbsp;encoding:&nbsp;error:&nbsp;</a></h3>
-    - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)anURL<b> atomically:</b> (BOOL)atomically<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)enc<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+    - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)url<b> atomically:</b> (BOOL)atomically<b> encoding:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSStringEncoding">NSStringEncoding</a>)enc<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
     <div class="desc">
       
-            Writes contents out to <var>anURL</var>, using the
+            Writes contents out to <var>url</var>, using the
             default C string encoding unless this would result
             in information loss, otherwise straight unicode. See
             <a rel="gsdoc" href="NSURLHandle.html#method$NSURLHandle-writeData$">

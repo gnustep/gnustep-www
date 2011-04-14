@@ -14,8 +14,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> $Revision: 1.39 $</p>
-    <p><b>Date:</b> $Date: 2010/06/20 06:02:35 $</p>
+    <p><b>Version:</b> $Revision: 1.40 $</p>
+    <p><b>Date:</b> $Date: 2011/04/14 03:03:43 $</p>
     <p><b>Copyright:</b> (C) 2005 Free Software Foundation, Inc.</p>
 
     
@@ -77,7 +77,7 @@
 	      a subminor number (00-99).<br />
 	      Features in the header file are marked as belonging to different
 	      version ranges using the
-	      <a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$GS_API_VERSION">GS_API_VERSION</a>
+	      GS_API_VERSION
 
 	      macro.<br />
 	      NB. This is the <em>native</em> versioning of the library being
@@ -106,7 +106,7 @@
 	      available as the GS_API_MACOSX preprocessor constant.<br />
 	      Features in the header file are marked as belonging to different
 	      version ranges using the
-	      <a rel="gsdoc" href="/brains99/GNUstep/Local.objc1/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$GS_API_VERSION">GS_API_VERSION</a>
+	      GS_API_VERSION
 
 	      macro.<br />
 	      For MacOS-X compatibility, if this constant is not defined
@@ -520,10 +520,12 @@
 		This functionality may have been disabled if the base library
 		was configured/built with the
 		<code>--disable-environment-config-file</code> option.<br />
-		If it is operational, the environment variable overrides the
-		normal path to the gnustep config file used to determine the
-		locations of paths for the gnustep system (see later).<br />
-		This is provided to support the odd situation where you may
+		If it is operational (ie unless you&apos;ve deliberately disabled
+		it), the environment variable overrides the normal path to
+		the gnustep config file used to determine the locations of
+		paths for the gnustep system (see later).<br />
+		This is provided to support situations such as when you
+		install into a sndbox during packaging, or where you may
 		want to simultaneously run applications using different sets
 		of resources but linked to a single copy of the base library,
 		or you want to use an alternative config file for some reason.
@@ -710,47 +712,113 @@
 	    System paths are defined by the following:
 	      </p>
     <dl>
-      <dt>GNUSTEP_SYSTEM_ROOT</dt>
+      <dt>GNUSTEP_SYSTEM_APPS</dt>
       <dd>
-        
-		Obsolete.
-		Used to specify the GNUstep system root directory ... all
-		system libraries, tools, applications, headers, resources
-		in general are located relative to this.
-	      
+        This is where System GUI Applications get installed.<br />
+	    Traditionally it is /usr/GNUstep/System/Applications.
+	    
       </dd>
-      <dt>GNUSTEP_NETWORK_ROOT</dt>
+      <dt>GNUSTEP_SYSTEM_ADMIN_APPS</dt>
       <dd>
-        
-		Obsolete.  Used to specify the GNUstep root directory for local
-		(non-system) resources that are intended to be shared
-		across a local network.  Typically this is an NFS exported
-		directory shared by many machines.  It provides an
-		alternative to GNUSTEP_LOCAL_ROOT but is usually defined
-		to the same value.
-	      
+        This is where System GUI Applications that only the
+	    Administrator can use get installed.<br />
+	    Traditionally it is /usr/GNUstep/System/Applications/Admin.
+	    
       </dd>
-      <dt>GNUSTEP_LOCAL_ROOT</dt>
+      <dt>GNUSTEP_SYSTEM_WEB_APPS</dt>
       <dd>
-        
-		Obsolete.  Used to specify the GNUstep root directory for local
-		(non-system) resources.  Typically all locally produced
-		or contributed software is installed relative to this.
-	      
+        This is where System Web Applications (GSWeb, SOPE) get
+	    installed.<br />
+	    Traditionally it is /usr/GNUstep/System/Library/WebApplications.
+	    
+      </dd>
+      <dt>GNUSTEP_SYSTEM_TOOLS</dt>
+      <dd>
+        This is where System Command-Line Tools get installed.<br />
+	    Traditionally it is /usr/GNUstep/System/Tools.
+	    
+      </dd>
+      <dt>GNUSTEP_SYSTEM_ADMIN_TOOLS</dt>
+      <dd>
+        This is where System Command-Line Tools that only the
+	    Administrator can use get installed.  Important: this
+	    should not be in the PATH of normal users.<br />
+	    Traditionally it is /usr/GNUstep/System/Tools/Admin.
+	    
+      </dd>
+      <dt>GNUSTEP_SYSTEM_LIBRARY</dt>
+      <dd>
+        This is where System resources get installed.
+	    This directory will contain a lot of executable code
+	    since *step traditionally likes to
+	    bundle executables and resources together.<br />
+	    Traditionally it is /usr/GNUstep/System/Library.
+	    
+      </dd>
+      <dt>GNUSTEP_SYSTEM_HEADERS</dt>
+      <dd>
+        This is where System headers get installed.  They are the
+	    library .h headers.<br />
+	    Traditionally it is /usr/GNUstep/System/Library/Headers.
+	    
+      </dd>
+      <dt>GNUSTEP_SYSTEM_LIBRARIES</dt>
+      <dd>
+        This is where System libraries get installed.
+	    By libraries we mean the shared/static object files that
+	    you can link into programs.<br />
+	    Traditionally it is /usr/GNUstep/System/Library/Libraries.
+	    
+      </dd>
+      <dt>GNUSTEP_SYSTEM_DOC</dt>
+      <dd>
+        This is where System documentation get installed.
+	    This is known not to contain any executable, so we keep
+	    it separate.<br />
+	    Traditionally it is /usr/GNUstep/System/Library/Documentation.
+	    
+      </dd>
+      <dt>GNUSTEP_SYSTEM_DOC_MAN</dt>
+      <dd>
+        This is where System man pages get installed.<br />
+	    Traditionally it is
+	    /usr/GNUstep/System/Library/Documentation/man.
+	    
+      </dd>
+      <dt>GNUSTEP_SYSTEM_DOC_INFO</dt>
+      <dd>
+        This is where System info pages get installed.<br />
+	    Traditionally it is
+	    /usr/GNUstep/System/Library/Documentation/info.
+	    
       </dd>
     </dl>
     <p>
 
-	    Paths for each user are defined by the following:
+	    In addition to the above SYSTEM domain paths, there are
+	    corresponding LOCAL, NETWORK, and USER domain paths (with the
+	    same names except for replacing &apos;SYSTEM&apos; with &apos;LOCAL&apos;, &apos;NETWORK&apos;,
+	    or &apos;USER&apos;.<br />
+	    All these paths must be absolute, except for the USER domain
+	    paths which, if not absolute, are considered to be with the
+	    user&apos;s home directory.<br />
+	    NB. as a special case a path may begin with &apos;./&apos; or &apos;../&apos; when
+	    it is to be resolved to an absolute path relative to the
+	    location of the GNUstep configuration file.
+	    So while such paths appear to be relative, they actually produce
+	    absolute locations at runtime since the location of the
+	    configuration file is known.<br />
+	    Finally, for paths in the USER domain only, a limited substitution
+	    into the path is performed at runtime as follows:<br />
+	    &apos;%u&apos; is replaced by the user name<br />
+	    &apos;%i&apos; is replaced by the user ID<br />
+	    &apos;%%&apos; is replaced by a single &apos;%&apos;<br />
+	      </p>
+    <p>
+
+	    Other paths for each user are defined by the following:
 	      </p>
     <dl>
-      <dt>GNUSTEP_USER_DIR</dt>
-      <dd>
-        Obsolete.
-	    Path for user specific GNUstep resources (eg. &apos;GNUstep&apos;).
-	    Relative to the user&apos;s home directory.
-	    
-      </dd>
       <dt>GNUSTEP_USER_CONFIG_FILE</dt>
       <dd>
         Name of user configuration file (eg. &apos;.GNUstep.conf&apos;)
@@ -762,7 +830,7 @@
       <dt>GNUSTEP_USER_DEFAULTS_DIR</dt>
       <dd>
         Name of directory for user defaults files.
-	    Relative to the user&apos;s home directory.<br />
+	    Always relative to the user&apos;s home directory except:<br />
 	    On mswindows this may be set to be &apos;:REGISTRY:&apos; to have defaults
 	    stored in the windows registry rather than in the standard file
 	    format.<br />
@@ -785,18 +853,22 @@
 
 	    All the above values from the configuration file are made
 	    available in the NSUserDefaults system at runtime, in the
-	    GSConfigDomain (along with any defaults provided in the
+	    GSConfigDomain (along with any defaults provided in property
+	    lists in the GlobalDefaults subdirectory or in the
             GlobalDefaults.plist file in the same directory as the
             config file).<br />
-	    In addition, the configuration file may contain the key
-	    <em>GNUSTEP_EXTRA</em> with a value set to be a comma separated
-	    list of extra key names which are to be allowed in the config
-	    file.  This lets you add more key/value pairs to the config
-	    file intended to be seen in the NSUserDefaults system.<br />
-	    However, you must take care that any key names you choose
-	    do not conflict with variable names used with the GNUstep
-	    Makefiles package or your configuration script may cause
-	    problems when building software.
+ 	    The <code>.plist</code> files in the GlobalDefaults
+	    subdirectory are merged into the defaults system in an
+	    unpredictable order, but the values from the
+	    GlobalDefaults.plist are merged in <em>after</em> the
+	    other values and will take precedence.<br />
+	    The global defaults files allow packagers and system
+	    administrators to provide defaults settings for all
+	    users of a particular GNUstep installation.<br />
+	    It is recommended that each software package provides its
+	    own defaults in the GlobalDefaults subdirectory, while the
+	    GlobalDefaults.plist file should be reserved for other
+	    system-wide settings.
 	      </p>
     <p>
 
@@ -806,10 +878,9 @@
 	    can &apos;source&apos; in order to define shell variables).<br />
 	    This configuration file uses the escape sequence and
 	    quoting conventions of the standard bourne shell.<br />
-	    The only Keys permitted are those listed above (plus any
-	    specified in the GNUSTEP_EXTRA list), and all consist of
-	    uppercase letters, digits, and underscores, and must
-	    not begin with a digit.<br />
+	    The only Keys permitted are those listed above,
+	    and all consist of uppercase letters, digits, and underscores,
+	    and must not begin with a digit.<br />
 	    A value may be any quoted string (or an unquoted string
 	    containing no white space).<br />
 	    Lines beginning with a hash &apos;#&apos; are deemed comment lines
@@ -840,11 +911,14 @@
 	    Firstly, variables in the configuration file which define
 	    paths, are expected to by full path specifications, except
 	    for the special case in which they begin with dot-slash (./)
-            or dot-dot-slash (../).
+            or dot-dot-slash (../).<br />
 	    In this case the path from the variable is appended to the
 	    path of the directory containing the configuration file
 	    (or the path specified to contain the configuration file if no
-	    configuration file exists) to form the value used.
+	    configuration file exists) to form the value used.<br />
+	    So, if you configure other paths relative to the configuration
+	    file, you can relocate everything when you move the
+	    configuration file.
 	      </p>
     <p>
 
@@ -853,7 +927,11 @@
 	    the GNUSTEP_CONFIG_FILE environment variable unless that option
 	    was disabled when the base library was configured)
 	    begins with a dot-slash (./) or dot-dot-slash (../) then the path
-            used for that file is made relative to the base library.
+            used for that file is made relative to the base library.<br />
+	    The base library contains code to determine its own location,
+	    so this allows it to locate the configuration file, and by
+	    reading the configuration file it determines where all other
+	    resources are located.
 	      </p>
     <p>
 
@@ -861,25 +939,32 @@
 	    and configure various relative paths in that directory, then
 	    move the directory around wherever you like.
 	      </p>
+
+	      <h3><a name="001001006000">Lock-Down</a></h3>
     <p>
 
 	    If you wish to <em>lock down</em> a production system for
-	    distribution as a relocatable package, so it can be installed
-	    anywhere, but users can&apos;t accidentally change the config file
-	    and mess up paths, you can specify the config file name as
+	    distribution so that users can&apos;t change the config
+	    file and mess up paths, you can specify the config file name as
 	    a path with a trailing slash so that the base library will
 	    <em>not</em> read it, and will use the builtin default values.<br />
-	    To do this, you would configure using the options
-	    <code>--with-config-file=not-used/</code> and
-	    <code>--with-default-file=myConfig</code> where <em>myConfig</em>
-	    is a file containing the paths you want to use relative to the
-	    location the base library gets installed in.<br />
+	    To do this, you would configure using options like
+	    <code>--disable-environment-config-file</code> with
+	    <code>--with-config-file=/not-used/</code> and
+	    <code>--with-default-config=myConfig</code> where <em>myConfig</em>
+	    is a file containing the paths you want to use in the locked down
+	    system.<br />
 	    The paths from that file will be built in to the base library
 	    as defaults, and library will use them rather than attempting
-	    to read a config file at runtime.
+	    to read a config file at runtime.<br />
+	    You can lock down a relocatable system by using this procedure
+	    with &apos;./&apos; as the config file path and relative paths in myConfig...
+	    a user could then move the entire package around, but would not
+	    be able to edit a configuration file to alter the paths within
+	    the pacakge.
 	      </p>
 
-	      <h3><a name="001001006000">.GNUstep.conf files</a></h3>
+	      <h3><a name="001001007000">.GNUstep.conf files</a></h3>
     <p>
 
 	    The user specific configuration file is read after the system
@@ -1054,6 +1139,8 @@
         <li><a rel="gsdoc" href="NSEnumerator.html#protocol$(NSFastEnumeration)">&lt;NSFastEnumeration&gt;</a></li>
         <li><a rel="gsdoc" href="NSLock.html#protocol$(NSLocking)">&lt;NSLocking&gt;</a></li>
         <li><a rel="gsdoc" href="NSObject.html#protocol$(NSMutableCopying)">&lt;NSMutableCopying&gt;</a></li>
+        <li><a rel="gsdoc" href="NSNetServices.html#protocol$(NSNetServiceBrowserDelegate)">&lt;NSNetServiceBrowserDelegate&gt;</a></li>
+        <li><a rel="gsdoc" href="NSNetServices.html#protocol$(NSNetServiceDelegate)">&lt;NSNetServiceDelegate&gt;</a></li>
         <li><a rel="gsdoc" href="NSSerialization.html#protocol$(NSObjCTypeSerializationCallBack)">&lt;NSObjCTypeSerializationCallBack&gt;</a></li>
         <li><a rel="gsdoc" href="NSObject.html#protocol$(NSObject)">&lt;NSObject&gt;</a></li>
         <li><a rel="gsdoc" href="NSURLAuthenticationChallenge.html#protocol$(NSURLAuthenticationChallengeSender)">&lt;NSURLAuthenticationChallengeSender&gt;</a></li>

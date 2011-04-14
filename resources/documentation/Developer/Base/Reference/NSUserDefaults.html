@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 30785</p>
-    <p><b>Date:</b> 2010-06-19 12:07:48 +0100 (Sat, 19 Jun 2010)</p>
+    <p><b>Version:</b> 32515</p>
+    <p><b>Date:</b> 2011-03-09 04:12:30 -0700 (Wed, 09 Mar 2011)</p>
     <p><b>Copyright:</b> (C) 1995-2001 Free Software Foundation, Inc.</p>
 
         <div>
@@ -81,6 +81,18 @@
           
       <dl>
         <dt>
+              <code>GSPrimaryDomain</code>... volatile
+            </dt>
+        <dd>
+          
+              Contains values set at runtime and intended to
+              supercede any values set in other domains. This
+              should be used with great care since it overrides
+              values which may have been set explicitly by the
+              user.
+            
+        </dd>
+        <dt>
               <code>NSArgumentDomain</code>... volatile
             </dt>
         <dd>
@@ -104,7 +116,13 @@
         <dd>
           
               Contains application specific defaults, such as
-              window positions.
+              window positions. This is the domain used by the
+              <a rel="gsdoc" href="#method$NSUserDefaults-setObject$forKey$">
+                -setObject:forKey:
+              </a>
+
+              method and is the domain normally used when
+              setting preferences for an application.
             
         </dd>
         <dt>
@@ -134,13 +152,11 @@
               information compiled in when the base library
               was built. <br /> In addition to this standard
               configuration information, this domain
-              contains all values from the
+              contains all values from property lists store in
+              the GlobalDefaults subdirectory or from the
               GlobalDefaults.plist file stored in
-              the same directory as the system widw GNUstep.conf
-              file. The GlobalDefaults.plist allows packagers and
-              system administrators to provide global defaults
-              settings for all users of a particular GNUstep
-              installation.
+              the same directory as the system wide GNUstep.conf
+              file.
             
         </dd>
         <dt>

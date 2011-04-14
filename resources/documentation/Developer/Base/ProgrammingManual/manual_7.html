@@ -1,207 +1,230 @@
-<HTML>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on January, 1  2008 by texi2html 1.64 -->
-<!-- 
-Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on April 13, 2011 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
-Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
- 
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
-<HEAD>
-<TITLE>Objective-C GNUstep Base Programming Manual: Distributed Objects</TITLE>
+<head>
+<title>Objective-C GNUstep Base Programming Manual: 7. Distributed Objects</title>
 
-<META NAME="description" CONTENT="Objective-C GNUstep Base Programming Manual: Distributed Objects">
-<META NAME="keywords" CONTENT="Objective-C GNUstep Base Programming Manual: Distributed Objects">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.64">
+<meta name="description" content="Objective-C GNUstep Base Programming Manual: 7. Distributed Objects">
+<meta name="keywords" content="Objective-C GNUstep Base Programming Manual: 7. Distributed Objects">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
 
-</HEAD>
 
-<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+</head>
 
-<A NAME="SEC96"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_6.html#SEC95"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC97"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H1> 7. Distributed Objects </H1>
-<!--docid::SEC96::-->
-<P>
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-Until now we have been concentrating on using the Objective-C language
+<a name="Distributed-Objects"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="manual_6.html#Comparison-with-Java" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Object-Interaction" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Distributed-Objects-1"></a>
+<h1 class="chapter">7. Distributed Objects</h1>
+<a name="index-distributed-objects"></a>
+
+<p>Until now we have been concentrating on using the Objective-C language
 to create programs that execute in a single process. But what if you
 want your program to interact with objects in other processes, perhaps
 running on different machines?
-</P><P>
-
-As a simple example, we may have a client process that needs to access a
+</p>
+<p>As a simple example, we may have a client process that needs to access a
 telephone directory stored on a remote server. The client process could
-send a message to the server that contained a person's name, and the
-server could respond by returning that person's number.
-</P><P>
-
-The GNUstep base library provides a powerful set of classes that make
+send a message to the server that contained a person&rsquo;s name, and the
+server could respond by returning that person&rsquo;s number.
+</p>
+<p>The GNUstep base library provides a powerful set of classes that make
 this type of remote messaging not only possible, but easy to program. So
 what do these classes do and how can we use them? To answer that we must
 first look at the way code interacts with objects in a single process,
 and then look at how we can achieve the same interaction with objects
 that exist in different processes.
-</P><P>
+</p>
+<hr size="6">
+<a name="Object-Interaction"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Distributed-Objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-GNUstep-Solution" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">7.1 Object Interaction</h2>
+<a name="index-object-interaction_002c-remote-objects"></a>
 
-<HR SIZE="6">
-<A NAME="SEC97"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> 7.1 Object Interaction </H2>
-<!--docid::SEC97::-->
-<P>
-
-To continue with the example above, if the telephone directory existed
+<p>To continue with the example above, if the telephone directory existed
 in the same process as the code that was accessing it, then a simple
 message would return the wanted telephone number.
-</P><P>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  NSString *wantedNumber = [telephoneDirectory teleNumber: personName];
+</pre></td></tr></table>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *wantedNumber = [telephoneDirectory teleNumber: personName];
-</pre></td></tr></table></P><P>
-
-Now object and method names just hold pointers to memory addresses. The
-code executed at run time in response to the <CODE>teleNumber</CODE> message
+<p>Now object and method names just hold pointers to memory addresses. The
+code executed at run time in response to the <code>teleNumber</code> message
 is located at an address held by the name of the responding method (a
 variable), while data in the telephone directory is located at an
-address held by the <CODE>telephoneDirectory</CODE> variable.
-</P><P>
-
-In a single process these addresses can be accessed by the client code
+address held by the <code>telephoneDirectory</code> variable.
+</p>
+<p>In a single process these addresses can be accessed by the client code
 at run time, but if the telephone directory is located on a remote
 server, then the address of the remote object is not known in the client
-process (the <CODE>telephoneDirectory</CODE> object and its responding method
-are said to exist in a separate 'address space').
-</P><P>
+process (the <code>telephoneDirectory</code> object and its responding method
+are said to exist in a separate &rsquo;address space&rsquo;).
+</p>
+<p>The Objective-C run-time library was not designed for this inter-process
+communication or &rsquo;remote messaging&rsquo;.
+</p>
+<hr size="6">
+<a name="The-GNUstep-Solution"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Object-Interaction" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Code-at-the-Server-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">7.2 The GNUstep Solution</h2>
+<a name="index-distributed-objects-1"></a>
+<a name="index-remote-objects"></a>
+<a name="index-client_002fserver-processes"></a>
+<a name="index-NSConnection-class"></a>
+<a name="index-NSProxy-class"></a>
+<a name="index-NSRunLoop-class"></a>
 
-The Objective-C run-time library was not designed for this inter-process
-communication or 'remote messaging'.
-</P><P>
-
-<HR SIZE="6">
-<A NAME="SEC98"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC97"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC99"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> 7.2 The GNUstep Solution </H2>
-<!--docid::SEC98::-->
-<P>
-
-GNUstep overcomes these limitations by providing you with classes that
-form what is known as a 'distributed objects' architecture that
+<p>GNUstep overcomes these limitations by providing you with classes that
+form what is known as a &rsquo;distributed objects&rsquo; architecture that
 extends the capabilities of the run-time system.
-</P><P>
-
-With the addition of a few lines of code in the client and server
+</p>
+<p>With the addition of a few lines of code in the client and server
 programs, these extensions allow you to send a message to a remote
 process by constructing a simple Objective-C statement. In the telephone
 directory example, the statement to retrieve the telephone number would
 now look something like this:
-</P><P>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  NSString *wantedNumber = [proxyForDirectory teleNumber: personName];
+</pre></td></tr></table>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *wantedNumber = [proxyForDirectory teleNumber: personName];
-</pre></td></tr></table></P><P>
+<p>Compare this to the original statement:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  NSString *wantedNumber = [telephoneDirectory teleNumber: personName];
+</pre></td></tr></table>
 
-Compare this to the original statement:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *wantedNumber = [telephoneDirectory teleNumber: personName];
-</pre></td></tr></table></P><P>
-
-Notice that the only difference between the two statements is the name
-of the object receiving the message, i.e. <CODE>proxyForDirectory</CODE>
-rather than <CODE>telephoneDirectory</CODE>. GNUstep makes it as simple as
+<p>Notice that the only difference between the two statements is the name
+of the object receiving the message, i.e. <code>proxyForDirectory</code>
+rather than <code>telephoneDirectory</code>. GNUstep makes it as simple as
 this to communicate with an object in another process.
-</P><P>
-
-The variable <CODE>proxyForDirectory</CODE> is known as a 'proxy' for the
-remote <CODE>telephoneDirectory</CODE> object. A proxy is simply a substitute
-for the remote object, with an address in the 'address space' of the
+</p>
+<p>The variable <code>proxyForDirectory</code> is known as a &rsquo;proxy&rsquo; for the
+remote <code>telephoneDirectory</code> object. A proxy is simply a substitute
+for the remote object, with an address in the &rsquo;address space&rsquo; of the
 local client process, that receives messages and forwards them on to the
 remote server process in a suitably coded form.
-</P><P>
+</p>
+<p>Let us now take a look at the additional lines of code required to make
+this &rsquo;remote messaging&rsquo; possible.
+</p>
+<hr size="6">
+<a name="Code-at-the-Server-1"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#The-GNUstep-Solution" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Code-at-the-Client-1" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-GNUstep-Solution" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.2.1 Code at the Server</h3>
+<a name="index-distributed-objects_002c-client-code"></a>
 
-Let us now take a look at the additional lines of code required to make
-this 'remote messaging' possible.
-</P><P>
-
-<HR SIZE="6">
-<A NAME="SEC99"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC100"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.2.1 Code at the Server </H3>
-<!--docid::SEC99::-->
-<P>
-
-In order to respond to client messages, the responding server object must be
-set as the 'root object' of an instance of the <CODE>NSConnection</CODE> class, and
-this <CODE>NSConnection</CODE> must be registered with the network by name. Making
-an object available to client processes in this way is known as 'vending' the
-object. The registered name for the <CODE>NSConnection</CODE> is used by the client
+<p>In order to respond to client messages, the responding server object must be
+set as the &rsquo;root object&rsquo; of an instance of the <code>NSConnection</code> class, and
+this <code>NSConnection</code> must be registered with the network by name. Making
+an object available to client processes in this way is known as &rsquo;vending&rsquo; the
+object. The registered name for the <code>NSConnection</code> is used by the client
 when obtaining a proxy for the responding server object over the network.
-</P><P>
-
-The only other code you need to consider is the code that listens for incoming
-messages. This 'runloop', as it is known, is started by sending a <CODE>run</CODE>
-message to an instance of the <CODE>NSRunLoop</CODE> class.  Since an
-<CODE>NSRunLoop</CODE> object is created automatically for each process, there is no
+</p>
+<p>The only other code you need to consider is the code that listens for incoming
+messages. This &rsquo;runloop&rsquo;, as it is known, is started by sending a <code>run</code>
+message to an instance of the <code>NSRunLoop</code> class.  Since an
+<code>NSRunLoop</code> object is created automatically for each process, there is no
 need to create one yourself. Simply get the default runloop, which is returned
-by the <CODE>+currentRunLoop</CODE> class method.
-</P><P>
-
-When the runloop detects an incoming message, the message is passed to the
-root object of the <CODE>NSConnection</CODE>, which performs a method in response to
+by the <code>+currentRunLoop</code> class method.
+</p>
+<p>When the runloop detects an incoming message, the message is passed to the
+root object of the <code>NSConnection</code>, which performs a method in response to
 the message and returns a variable of the appropriate type. The
-<CODE>NSConnection</CODE> manages all inter-process communication, decoding incoming
+<code>NSConnection</code> manages all inter-process communication, decoding incoming
 messages and encoding any returned values.
-</P><P>
-
-The code to vend the <CODE>telephoneDirectory</CODE> object and start the
+</p>
+<p>The code to vend the <code>telephoneDirectory</code> object and start the
 runloop would look something like this:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>/*
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">/*
  * The main() function: Set up the program
  * as a 'Distributed Objects Server'.
  */
@@ -229,10 +252,10 @@ int main(void)
    * Try to register a name for the NSConnection,
    * and report an error if this is not possible.
    */
-  if ([connXion registerName: @"DirectoryServer"] == NO)
+  if ([connXion registerName: @&quot;DirectoryServer&quot;] == NO)
   {
-    NSLog(@"Unable to register as 'DirectoryServer'");
-    NSLog(@"Perhaps another copy of this program is running?");
+    NSLog(@&quot;Unable to register as 'DirectoryServer'&quot;);
+    NSLog(@&quot;Perhaps another copy of this program is running?&quot;);
     exit(1);
   }
 
@@ -243,63 +266,62 @@ int main(void)
   RELEASE(pool);
   return 0;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-These additional lines of code turn a program into a distributed objects
+<p>These additional lines of code turn a program into a distributed objects
 server, ready to respond to incoming client messages.
-</P><P>
+</p>
+<hr size="6">
+<a name="Code-at-the-Client-1"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Code-at-the-Server-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Using-a-Protocol" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-GNUstep-Solution" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.2.2 Code at the Client</h3>
+<a name="index-distributed-objects_002c-client-code-1"></a>
 
-<HR SIZE="6">
-<A NAME="SEC100"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC99"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC101"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC101"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.2.2 Code at the Client </H3>
-<!--docid::SEC100::-->
-<P>
-
-At the client, all you need do is obtain a proxy for the responding
-server object, using the name that was registered for the <CODE>NSConnection</CODE>
+<p>At the client, all you need do is obtain a proxy for the responding
+server object, using the name that was registered for the <code>NSConnection</code>
 at the server.
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  /* Create an instance of the NSAutoreleasePool class */
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  /* Create an instance of the NSAutoreleasePool class */
   CREATE_AUTORELEASE_POOL(pool);
 
   /* Get the proxy */
   id proxy = [NSConnection
-    rootProxyForConnectionWithRegisteredName: <I>registeredServerName</I>];
+    rootProxyForConnectionWithRegisteredName: <i>registeredServerName</i>];
 	
   /* The rest of your program code goes here */
 
   /* Release the pool */
   RELEASE(pool);
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-The code that obtains the proxy automatically creates an NSConnection
+<p>The code that obtains the proxy automatically creates an NSConnection
 object for managing the inter-process communication, so there is no need
 to create one yourself.
-</P><P>
-
-The above example serves to establish a secure connection between processes
+</p>
+<p>The above example serves to establish a secure connection between processes
 which are run by the same person and are both on the same host.
-</P><P>
-
-If you want your connections to work between different host or between
+</p>
+<p>If you want your connections to work between different host or between
 programs being run by different people, you do this slightly differently,
-telling the system that you want to use 'socket' ports, which make TCP/IP
+telling the system that you want to use &rsquo;socket&rsquo; ports, which make TCP/IP
 connections over the network.
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>int main(void)
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">int main(void)
 {
   CREATE_AUTORELEASE_POOL(pool);
 
@@ -324,11 +346,11 @@ connections over the network.
    * Try to register a name for the NSConnection,
    * and report an error if this is not possible.
    */
-  if ([connXion registerName: @"DirectoryServer"
+  if ([connXion registerName: @&quot;DirectoryServer&quot;
     withNameServer: [NSSocketPortNameServer sharedInstance]] == NO)
   {
-    NSLog(@"Unable to register as 'DirectoryServer'");
-    NSLog(@"Perhaps another copy of this program is running?");
+    NSLog(@&quot;Unable to register as 'DirectoryServer'&quot;);
+    NSLog(@&quot;Perhaps another copy of this program is running?&quot;);
     exit(1);
   }
 
@@ -337,158 +359,155 @@ connections over the network.
   RELEASE(pool);
   return 0;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-In the above example, we specify that the socket port name server is used
+<p>In the above example, we specify that the socket port name server is used
 to register the name for the connection ... this makes the connection name
 visible to processes running on other machines.
-</P><P>
-
-The client side code is as follows
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  /* Create an instance of the NSAutoreleasePool class */
+</p>
+<p>The client side code is as follows
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  /* Create an instance of the NSAutoreleasePool class */
   CREATE_AUTORELEASE_POOL(pool);
 
   /* Get the proxy */
   id proxy = [NSConnection
-    rootProxyForConnectionWithRegisteredName: <I>registeredServerName</I>
-    host: <I>hostName</I>
+    rootProxyForConnectionWithRegisteredName: <i>registeredServerName</i>
+    host: <i>hostName</i>
     usingNameServer: [NSSocketPortNameServer sharedInstance]];
 	
   /* The rest of your program code goes here */
 
   /* Release the pool */
   RELEASE(pool);
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-If the <I>hostName</I> in this statement is 'nil'
+<p>If the <i>hostName</i> in this statement is &rsquo;nil&rsquo;
 or an empty string, then only the local host will be searched to find the
-<I>registeredServerName</I>. If <I>hostName</I> is "*", then all hosts on the
+<i>registeredServerName</i>. If <i>hostName</i> is &quot;*&quot;, then all hosts on the
 local network will be searched.
-</P><P>
-
-In the telephone directory example, the code to obtain the proxy from
+</p>
+<p>In the telephone directory example, the code to obtain the proxy from
 any host on the network would be:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  id proxyForDirectory = [NSConnection
-    rootProxyForConnectionWithRegisteredName: @"DirectoryServer"
-    host: @"*"
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  id proxyForDirectory = [NSConnection
+    rootProxyForConnectionWithRegisteredName: @&quot;DirectoryServer&quot;
+    host: @&quot;*&quot;
     usingNameServer: [NSSocketPortNameServer sharedInstance]];
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-With this additional line of code in the client program, you can now
+<p>With this additional line of code in the client program, you can now
 construct a simple Objective-C statement to communicate with the remote
 object.
-</P><P>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  NSString *wantedNumber = [proxyForDirectory teleNumber: personName];
+</pre></td></tr></table>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  NSString *wantedNumber = [proxyForDirectory teleNumber: personName];
-</pre></td></tr></table></P><P>
 
-<HR SIZE="6">
-<A NAME="SEC101"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC100"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC102"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC102"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.2.3 Using a Protocol </H3>
-<!--docid::SEC101::-->
-<P>
+<hr size="6">
+<a name="Using-a-Protocol"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Code-at-the-Client-1" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Complete-Code-for-Telephone-Directory-Application" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-GNUstep-Solution" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.2.3 Using a Protocol</h3>
+<a name="index-protocol-for-distributed-objects"></a>
+<a name="index-distributed-objects_002c-using-a-protocol"></a>
 
-A client process does not need to know the class of a remote server
+<p>A client process does not need to know the class of a remote server
 object to avoid run-time errors, it only needs to know the messages to
 which the remote object responds. This can be determined by the client
 at run-time, by asking the server if it responds to a particular message
 before the message is sent.
-</P><P>
-
-If the methods implemented at the server are stated in a formal
+</p>
+<p>If the methods implemented at the server are stated in a formal
 protocol, then the client can ask the server if it conforms to the
 protocol, reducing the network traffic required for the individual
 message/response requests.
-</P><P>
-
-A further advantage is gained at compile time, when the compiler will
+</p>
+<p>A further advantage is gained at compile time, when the compiler will
 issue a warning if the server fails to implement any method declared in
 the protocol, or if the client contains any message to which the server
 cannot respond.
-</P><P>
-
-The protocol is saved to a header file and then included in both client
-and server programs with the usual compiler <CODE>#include</CODE>
+</p>
+<p>The protocol is saved to a header file and then included in both client
+and server programs with the usual compiler <code>#include</code>
 directive. Only the server program needs to implement the methods
 declared in the protocol. To enable compiler checking in the client
 program, extend the type declaration for the proxy to this protocol, and
 cast the returned proxy object to the same extended type.
-</P><P>
-
-In the telephone directory example, if the declared protocol was
-<CODE>TelephoneDirectory</CODE>, declared in header file
-<CODE>protocolHeader.h</CODE>, then the client code would now look like this:
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  #include "protocolHeader.h";
+</p>
+<p>In the telephone directory example, if the declared protocol was
+<code>TelephoneDirectory</code>, declared in header file
+<code>protocolHeader.h</code>, then the client code would now look like this:
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">  #include &quot;protocolHeader.h&quot;;
 
   /* Extend the type declaration */
-  id&#60;TelephoneDirectory&#62; proxyForDirectory;
+  id&lt;TelephoneDirectory&gt; proxyForDirectory;
 
   /* Cast the returned proxy object to the extended type */
-  proxyForDirectory = (id&#60;TelephoneDirectory&#62;) [NSConnection
-    rootProxyForConnectionWithRegisteredName: @"DirectoryServer"
+  proxyForDirectory = (id&lt;TelephoneDirectory&gt;) [NSConnection
+    rootProxyForConnectionWithRegisteredName: @&quot;DirectoryServer&quot;
     usingNameServer: [NSSocketPortNameServer sharedInstance]];
-</pre></td></tr></table>Since class names and protocol names do not share the same 'address
-space' in a process, the declared protocol and the class of the
+</pre></td></tr></table>
+<p>Since class names and protocol names do not share the same &rsquo;address
+space&rsquo; in a process, the declared protocol and the class of the
 responding server object can share the same name, making code easier to
 understand.
-</P><P>
+</p>
+<p>For example, <code>proxyForDirectory</code> at the client could be a proxy for
+an instance of the <code>TelephoneDirectory</code> class at the server, and
+this class could implement the <code>TelephoneDirectory</code> protocol.
+</p>
 
-For example, <CODE>proxyForDirectory</CODE> at the client could be a proxy for
-an instance of the <CODE>TelephoneDirectory</CODE> class at the server, and
-this class could implement the <CODE>TelephoneDirectory</CODE> protocol.
-</P><P>
+<hr size="6">
+<a name="Complete-Code-for-Telephone-Directory-Application"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Using-a-Protocol" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#GNUstep-Distributed-Objects-Name-Server" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-GNUstep-Solution" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.2.4 Complete Code for Telephone Directory Application</h3>
 
-<HR SIZE="6">
-<A NAME="SEC102"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC101"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC103"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC103"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.2.4 Complete Code for Telephone Directory Application </H3>
-<!--docid::SEC102::-->
-<P>
-
-Here we provide the rest of the code needed for client and server to actually
+<p>Here we provide the rest of the code needed for client and server to actually
 run the above example.
-</P><P>
-
-<B>Code At Server</B>
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
+</p>
+<p><b>Code At Server</b>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;Foundation/Foundation.h&gt;
 
 /* Include the TelephoneDirectory protocol header file */
-#include "TelephoneDirectory.h"
+#include &quot;TelephoneDirectory.h&quot;
 
 /*
  * Declare the TelephoneDirectory class that
  * implements the 'teleNumber' instance method.
  */
-@interface TelephoneDirectory : NSObject &#60;TelephoneDirectory&#62;
+@interface TelephoneDirectory : NSObject &lt;TelephoneDirectory&gt;
 @end
 
 /*
@@ -498,23 +517,23 @@ run the above example.
 @implementation TelephoneDirectory : NSObject
 - (char *) teleNumber: (char *) personName
 {
-  if (strcmp(personName, "Jack") == 0) return " 0123 456";
-  else if (strcmp(personName, "Jill") == 0) return " 0456 789";
-  else return " Number not found";
+  if (strcmp(personName, &quot;Jack&quot;) == 0) return &quot; 0123 456&quot;;
+  else if (strcmp(personName, &quot;Jill&quot;) == 0) return &quot; 0456 789&quot;;
+  else return &quot; Number not found&quot;;
 }
 @end
 
  /* main() function: Set up the program  as a 'Distibuted Objects Server'. */
  /*   [use code from server example above ...] */
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-<B>Code at Client</B>
-</P><P>
+<p><b>Code at Client</b>
+</p>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
+<table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;Foundation/Foundation.h&gt;
 
 /* Include the TelephoneDirectory protocol header file */
-#include "TelephoneDirectory.h"
+#include &quot;TelephoneDirectory.h&quot;
 
 /*
  * The main() function: Get the telephone number for
@@ -524,187 +543,194 @@ int main(int argc, char *argv[])
 {
   char *personName = argv[1];
   char *returnedNumber;
-  id&#60;TelephoneDirectory&#62; proxyForDirectory;
+  id&lt;TelephoneDirectory&gt; proxyForDirectory;
   CREATE_AUTORELEASE_POOL(pool);
 
   /* Acquire the remote reference. */
-  proxyForDirectory = (id&#60;TelephoneDirectory&#62;) [NSConnection
-    rootProxyForConnectionWithRegisteredName: @"DirectoryServer"
-    host: @"*"
+  proxyForDirectory = (id&lt;TelephoneDirectory&gt;) [NSConnection
+    rootProxyForConnectionWithRegisteredName: @&quot;DirectoryServer&quot;
+    host: @&quot;*&quot;
     usingNameServer: [NSSocketPortNameServer sharedInstance]];
 
   if (proxyForDirectory == nil)
-    printf("\n** WARNING: NO CONNECTION TO SERVER **\n");
-  else printf("\n** Connected to server **\n");
+    printf(&quot;\n** WARNING: NO CONNECTION TO SERVER **\n&quot;);
+  else printf(&quot;\n** Connected to server **\n&quot;);
 
   if (argc == 2) // Command line name entered
   {
     returnedNumber = (char *)[proxyForDirectory teleNumber: personName];
-    printf("\n%s%s%s%s%s\n", "** (In client) The telephone number for ",
-           personName, " is:",
-           returnedNumber, "  **");
+    printf(&quot;\n%s%s%s%s%s\n&quot;, &quot;** (In client) The telephone number for &quot;,
+           personName, &quot; is:&quot;,
+           returnedNumber, &quot;  **&quot;);
   }
-  else printf("\n** No name entered **\n");
-  printf("\n%s\n\n", "** End of client program **");
+  else printf(&quot;\n** No name entered **\n&quot;);
+  printf(&quot;\n%s\n\n&quot;, &quot;** End of client program **&quot;);
   RELEASE(pool);
   return 0;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-To get this running, all you need do is create two directories, one for the
+<p>To get this running, all you need do is create two directories, one for the
 client and one for the server. Each directory will hold a makefile, the client
 or server source code, and a copy of the protocol header file. When the files
 compile, first run the server and then the client.  You can try this on the
 same machine, or on two different machines (with GNUstep installed) on the
 same LAN. What happens when you run the client without the server? How would
-you display a "No Server Connection" warning at the client?
-</P><P>
+you display a &quot;No Server Connection&quot; warning at the client?
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC103"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC102"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC104"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC104"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.2.5 GNUstep Distributed Objects Name Server </H3>
-<!--docid::SEC103::-->
-<P>
+<hr size="6">
+<a name="GNUstep-Distributed-Objects-Name-Server"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Complete-Code-for-Telephone-Directory-Application" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Look-Ma_002c-No-Stubs_0021" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-GNUstep-Solution" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.2.5 GNUstep Distributed Objects Name Server</h3>
+<a name="index-gdomap"></a>
+<a name="index-Distributed-Objects-Name-Server_002c-GNUstep"></a>
 
-You might wonder how the client finds the server, or, rather, how it finds the
+<p>You might wonder how the client finds the server, or, rather, how it finds the
 directory the server lists itself in.
-</P><P>
-
-For the default connection type (a connection only usable on the local host
+</p>
+<p>For the default connection type (a connection only usable on the local host
 between processes run by the same person), a private file (or the registry
 on ms-windows) is used to hold the name registration information.
-</P><P>
-
-For connections using socket ports to communicate between hosts,
+</p>
+<p>For connections using socket ports to communicate between hosts,
 an auxiliary process will
-automatically be started on each machine, if it isn't running already, that
+automatically be started on each machine, if it isn&rsquo;t running already, that
 handles this, allowing the server to register and the client to send a query
-behind the scenes.  This <I>GNUstep Distributed Objects Name Server</I> runs as
-'<CODE>gdomap</CODE>' and binds to port 538.  See the manual page or the HTML
-"GNUstep Base Tools" <A HREF="../../Tools/Reference/index.html">documentation</A> for further information.
-</P><P>
+behind the scenes.  This <i>GNUstep Distributed Objects Name Server</i> runs as
+&rsquo;<code>gdomap</code>&rsquo; and binds to port 538.  See the manual page or the HTML
+&ldquo;GNUstep Base Tools&rdquo; <a href="../../Tools/Reference/index.html">documentation</a> for further information.
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC104"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC103"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC98"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.2.6 Look Ma, No Stubs! </H3>
-<!--docid::SEC104::-->
-<P>
+<hr size="6">
+<a name="Look-Ma_002c-No-Stubs_0021"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#GNUstep-Distributed-Objects-Name-Server" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#A-More-Involved-Example" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-GNUstep-Solution" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.2.6 Look Ma, No Stubs!</h3>
 
-One difference you may have noticed in the example we just looked at from
+<p>One difference you may have noticed in the example we just looked at from
 other remote method invocation interfaces such as CORBA and Java RMI was that
-there are <I>no stub classes</I>.  The source of this great boon is described at
-the end of this chapter: <A HREF="manual_7.html#SEC96">Language Support for Distributed Objects</A>.
-</P><P>
+there are <i>no stub classes</i>.  The source of this great boon is described at
+the end of this chapter: <a href="#Distributed-Objects">Language Support for Distributed Objects</a>.
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC105"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC104"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC106"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> 7.3 A More Involved Example </H2>
-<!--docid::SEC105::-->
-<P>
+<hr size="6">
+<a name="A-More-Involved-Example"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Look-Ma_002c-No-Stubs_0021" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Protocol-Adopted-at-Client" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">7.3 A More Involved Example</h2>
+<a name="index-distributed-objects_002c-example-_0028no-error-checking_0029"></a>
+<a name="index-game-server-example"></a>
 
-Now we will look at an example called GameServer that uses distributed objects
+<p>Now we will look at an example called GameServer that uses distributed objects
 in a client/server game.
-</P><P>
-
-Actually the game itself is not implemented, just its distributed support
+</p>
+<p>Actually the game itself is not implemented, just its distributed support
 structure, and while the code to vend an object and connect to a remote
 process is similar to that already shown, the code does show a number of
 additional techniques that can be used in other client/server programs.  Here
 are the requirements we will implement:
-</P><P>
-
-<UL>
-<LI>
+</p>
+<ul>
+<li>
 When the client attempts to join the game, the server checks that the client
 is entitled to join, based on the last time the client played.  The rule is:
 if the client lost the last game, then they cannot re-play for the next 2
 hours; but if the client won the last game, then they can re-play the game at
-any time (a reward for winning).<BR>
-<P>
+any time (a reward for winning).<br>
 
-<LI>
+</li><li>
 The server also makes sure the client is not already connected and playing the
 game (i.e. they cannot play two games at the same time - that would be
-cheating).<BR>
-<P>
+cheating).<br>
 
-<LI>
+</li><li>
 In addition to a proxy for the server being obtained at the client, a proxy
 for the client is received at the server. This allows two-way messaging, where
 the client can send messages to the server and the server can send messages to
 the client (e.g. the state of play may be affected by the actions of other
-players, or by other events at the server).<BR>
-<P>
+players, or by other events at the server).<br>
 
-Two protocols will therefore be required, one for the methods
+<p>Two protocols will therefore be required, one for the methods
 implemented at the server and one for those implemented at the client.
-</UL>
-<P>
+</p></li></ul>
 
-Have a look at the program code in the following sections and added
+<p>Have a look at the program code in the following sections and added
 comments. Can you work out what is happening at the server and client? If you
 have any difficulties then refer to the relevant sections in this manual, or
-to class documentation <A HREF="../Reference/index.html">here</A> or at the Apple
+to class documentation <a href="../Reference/index.html">here</a> or at the Apple
 web site.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC106"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC107"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.3.1 Protocol Adopted at Client </H3>
-<!--docid::SEC106::-->
-<P>
+<hr size="6">
+<a name="Protocol-Adopted-at-Client"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#A-More-Involved-Example" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Protocol-Adopted-at-Server" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#A-More-Involved-Example" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.3.1 Protocol Adopted at Client</h3>
 
-We have chosen <CODE>GameClient</CODE> as the name of both the protocol
+<p>We have chosen <code>GameClient</code> as the name of both the protocol
 adopted at the client and the class of the responding client object. The
 header file declaring this protocol will simply declare the methods that
 the class must implement.
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>@protocol GameClient
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@protocol GameClient
 - (void) clientMessage: (bycopy NSString *)theMessage;
 - (int) clientReply;
 
@@ -712,35 +738,36 @@ the class must implement.
 // reflect the nature of the game.
 
 @end
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-The protocol will be saved as <CODE>GameClient.h</CODE>.
-</P><P>
+<p>The protocol will be saved as <code>GameClient.h</code>.
+</p>
+<hr size="6">
+<a name="Protocol-Adopted-at-Server"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Protocol-Adopted-at-Client" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Code-at-the-Client" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#A-More-Involved-Example" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.3.2 Protocol Adopted at Server</h3>
 
-<HR SIZE="6">
-<A NAME="SEC107"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC106"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC108"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC108"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.3.2 Protocol Adopted at Server </H3>
-<!--docid::SEC107::-->
-<P>
-
-We have chosen <CODE>GameServer</CODE> as the name of both the protocol
+<p>We have chosen <code>GameServer</code> as the name of both the protocol
 adopted at the server and the class of the responding server object. The
 header file declaring this protocol will simply declare the methods that
 the class must implement.
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>@protocol GameServer
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">@protocol GameServer
 - (BOOL) mayJoin: (id)client asPlayer: (bycopy NSString*)name;
 - (int) startGame: (bycopy NSString*)name;
 - (BOOL) endGame: (bycopy NSString*)name;
@@ -749,45 +776,45 @@ the class must implement.
 // reflect the nature of the game.
 
 @end
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-The protocol will be saved as <CODE>GameServer.h</CODE>.
-</P><P>
+<p>The protocol will be saved as <code>GameServer.h</code>.
+</p>
+<hr size="6">
+<a name="Code-at-the-Client"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Protocol-Adopted-at-Server" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Code-at-the-Server" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#A-More-Involved-Example" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.3.3 Code at the Client</h3>
 
-<HR SIZE="6">
-<A NAME="SEC108"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC107"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC109"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC109"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.3.3 Code at the Client </H3>
-<!--docid::SEC108::-->
-<P>
-
-The client code contains the <CODE>main</CODE> function and the
-<CODE>GameClient</CODE> class declaration and implementation.
-</P><P>
-
-The <CODE>main()</CODE> function attempts to connect to the server, while the
-<CODE>GameClient</CODE> class adopts the <CODE>GameClient</CODE> protocol.
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
-#include "GameServer.h"
-#include "GameClient.h"
+<p>The client code contains the <code>main</code> function and the
+<code>GameClient</code> class declaration and implementation.
+</p>
+<p>The <code>main()</code> function attempts to connect to the server, while the
+<code>GameClient</code> class adopts the <code>GameClient</code> protocol.
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;Foundation/Foundation.h&gt;
+#include &quot;GameServer.h&quot;
+#include &quot;GameClient.h&quot;
 
 /*
  * GameClient class declaration:
  * Adopt the GameClient protocol.
  */
-@interface GameClient : NSObject &#60;GameClient&#62;
+@interface GameClient : NSObject &lt;GameClient&gt;
 @end
 
 /*
@@ -821,7 +848,7 @@ The <CODE>main()</CODE> function attempts to connect to the server, while the
 int main(int argc, char **argv)
 {
   CREATE_AUTORELEASE_POOL(pool);
-  id&#60;GameServer&#62; server;
+  id&lt;GameServer&gt; server;
   int result;
   NSString *name;
   id client;
@@ -844,13 +871,13 @@ int main(int argc, char **argv)
    * registered under the name 'JoinGame'. Since the host
    * is '*', we can connect to any server on the local network.
    */
-  server = (id&#60;GameServer&#62;)[NSConnection
-    rootProxyForConnectionWithRegisteredName: @"JoinGame"
-    host: @"*"
+  server = (id&lt;GameServer&gt;)[NSConnection
+    rootProxyForConnectionWithRegisteredName: @&quot;JoinGame&quot;
+    host: @&quot;*&quot;
     usingNameServer: [NSSocketPortNameServer sharedInstance]];
   if (server == nil)
     {
-      printf("\n** No Connection to GameServer **\n");
+      printf(&quot;\n** No Connection to GameServer **\n&quot;);
       result = 1;
     }
 
@@ -875,68 +902,65 @@ int main(int argc, char **argv)
   RELEASE(pool);
   return result;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-To summarise the code at the client:
-</P><P>
-
-<UL>
-<LI>
+<p>To summarise the code at the client:
+</p>
+<ul>
+<li>
 We obtained a proxy for the server and can now communicate with the server
-using the methods declared in the <CODE>GameServer</CODE> protocol.<BR>
-<P>
+using the methods declared in the <code>GameServer</code> protocol.<br>
 
-<LI>
-We passed a <CODE>GameClient</CODE> object and our user-name to the server (the
-<CODE>GameClient</CODE> object is received as a proxy at the server).  The server
+</li><li>
+We passed a <code>GameClient</code> object and our user-name to the server (the
+<code>GameClient</code> object is received as a proxy at the server).  The server
 can now communicate with the client using the methods declared in the
-<CODE>GameClient</CODE> protocol.<BR>
-<P>
+<code>GameClient</code> protocol.<br>
 
-<LI>
+</li><li>
 When the game is in progress, the server can alter the state of the client
 object to reflect the success of the player.
-</UL>
-<P>
+</li></ul>
 
-<HR SIZE="6">
-<A NAME="SEC109"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC108"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC105"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.3.4 Code at the Server </H3>
-<!--docid::SEC109::-->
-<P>
+<hr size="6">
+<a name="Code-at-the-Server"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Code-at-the-Client" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Language-Support-for-Distributed-Objects" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#A-More-Involved-Example" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.3.4 Code at the Server</h3>
 
-The server code contains the <CODE>main</CODE> function and the
-<CODE>GameServer</CODE> class declaration and implementation.
-</P><P>
-
-The <CODE>main()</CODE> function vends the server's root object and starts the
-runloop, while the <CODE>GameServer</CODE> class adopts the <CODE>GameServer</CODE>
+<p>The server code contains the <code>main</code> function and the
+<code>GameServer</code> class declaration and implementation.
+</p>
+<p>The <code>main()</code> function vends the server&rsquo;s root object and starts the
+runloop, while the <code>GameServer</code> class adopts the <code>GameServer</code>
 protocol. The class also implements methods that initialise and
-deallocate the root object's instance variables (dictionaries that hold
+deallocate the root object&rsquo;s instance variables (dictionaries that hold
 player information).
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#include &#60;Foundation/Foundation.h&#62;
-#include "GameServer.h"
-#include "GameClient.h"
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">#include &lt;Foundation/Foundation.h&gt;
+#include &quot;GameServer.h&quot;
+#include &quot;GameClient.h&quot;
 
 /*
  * GameServer class declaration:
  * Adopt the GameServer protocol and declare
  * GameServer instance variables.
  */
-@interface GameServer : NSObject &#60;GameServer&#62;
+@interface GameServer : NSObject &lt;GameServer&gt;
 {
   NSMutableDictionary *delayUntil; // Delays to re-joining GameServer.
   NSMutableDictionary *currentPlayers; // Proxies to each client.
@@ -1004,7 +1028,7 @@ player information).
 
   if (name == nil)
     {
-      NSLog(@"Attempt to join nil user");
+      NSLog(@&quot;Attempt to join nil user&quot;);
       return NO;
     }
 
@@ -1012,7 +1036,7 @@ player information).
   if ([currentPlayers objectForKey: name] != nil)
     {
       /* Inform the client that they cannot join. */
-      aMessage = @"\nSorry, but you are already playing GameServer!\n";
+      aMessage = @&quot;\nSorry, but you are already playing GameServer!\n&quot;;
       [client clientMessage: aMessage];
       return NO;
     }
@@ -1025,24 +1049,24 @@ player information).
    * no restriction or if the time delay has passed;
    * otherwise no, they cannot join.
    */
-  if (delay == nil || [delay timeIntervalSinceNow] &#60;= 0.0)
+  if (delay == nil || [delay timeIntervalSinceNow] &lt;= 0.0)
     {
       /* Remove the old restriction on re-joining the game. */
       [delayUntil removeObjectForKey: name];
 
       /* Add the player to the list of current players. */
       [currentPlayers setObject: client forKey: name];
-      [hasWon setObject: @"NO" forKey: name]; // They've not won yet.
+      [hasWon setObject: @&quot;NO&quot; forKey: name]; // They've not won yet.
 
       /* Inform the client that they have joined the game. */
-      aMessage = @"\nWelcome to GameServer\n";
+      aMessage = @&quot;\nWelcome to GameServer\n&quot;;
       [client clientMessage: aMessage];
       return YES;
     }
   else
     {
       /* Inform the client that they cannot re-join. */
-      aMessage = @"\nSorry, you cannot re-join GameServer yet.\n";
+      aMessage = @&quot;\nSorry, you cannot re-join GameServer yet.\n&quot;;
       [client clientMessage: aMessage];
       return NO;
     }
@@ -1061,13 +1085,13 @@ player information).
 
   client = [currentPlayers objectForKey: name];
 
-  aMessage = @"\nDo you want to win this game? (Y/N <RET>) ... ";
+  aMessage = @&quot;\nDo you want to win this game? (Y/N &lt;RET&gt;) ... &quot;;
   [client clientMessage: aMessage];
 
   reply = [client clientReply];
   if (reply == 'y' || reply == 'Y')
-    [hasWon setObject: @"YES" forKey: name]; // They win.
-  else [hasWon setObject: @"NO" forKey: name]; // They loose.
+    [hasWon setObject: @&quot;YES&quot; forKey: name]; // They win.
+  else [hasWon setObject: @&quot;NO&quot; forKey: name]; // They loose.
   return 0;
 }
 
@@ -1086,7 +1110,7 @@ player information).
 
   if (name == nil)
     {
-      NSLog(@"Attempt to end nil user");
+      NSLog(@&quot;Attempt to end nil user&quot;);
       return NO;
     }
 
@@ -1095,7 +1119,7 @@ player information).
   client = [currentPlayers objectForKey: name];
   yesOrNo = [hasWon objectForKey: name];
 
-  if ([yesOrNo isEqualToString: @"YES"]) // Has player won?
+  if ([yesOrNo isEqualToString: @&quot;YES&quot;]) // Has player won?
     {
       /*
        * Player wins, no time delay to re-joining the game.
@@ -1103,7 +1127,7 @@ player information).
        * a message to the client.
        */
       [delayUntil removeObjectForKey: name];
-      aMessage = @"\nWell played: you can re-join GameServer at any time.\n";
+      aMessage = @&quot;\nWell played: you can re-join GameServer at any time.\n&quot;;
       [client clientMessage: aMessage];
 
     }
@@ -1114,7 +1138,7 @@ player information).
        * and send a message to the client.
        */
       [delayUntil setObject: delay forKey: name];
-      aMessage = @"\nYou lost, but you can re-join GameServer in 2 hours.\n";
+      aMessage = @&quot;\nYou lost, but you can re-join GameServer in 2 hours.\n&quot;;
       [client clientMessage: aMessage];
     }
 
@@ -1141,389 +1165,406 @@ int main(int argc, char** argv)
   port = [NSSocketPort port];
   connXion = [NSConnection connectionWithReceivePort: port sendPort: port];
   [connXion setRootObject: server];
-  [connXion registerName: @"JoinGame"
+  [connXion registerName: @&quot;JoinGame&quot;
     withNameServer: [NSSocketPortNameServer sharedInstance]];
   [[NSRunLoop currentRunLoop] run];
   RELEASE(pool);
   return 0;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-To summarise the code at the server:
-</P><P>
+<p>To summarise the code at the server:
+</p>
+<ul>
+<li>
+We vend the server&rsquo;s root object and start a runloop, allowing clients to
+connect with the server.<br>
 
-<UL>
-<LI>
-We vend the server's root object and start a runloop, allowing clients to
-connect with the server.<BR>
-<P>
-
-<LI>
+</li><li>
 When we receive a proxy for a client object, we communicate with that client
-using methods declared in the <CODE>ClientServer</CODE> protocol.<BR>
-<P>
+using methods declared in the <code>ClientServer</code> protocol.<br>
 
-<LI>
+</li><li>
 We create three dictionary objects, each referenced by player
-name. <CODE>currentUsers</CODE> holds proxies for each of the current players;
-<CODE>delayUntil</CODE> holds times when each player can re-join the game; and
-<CODE>hasWon</CODE> holds a string for each player, which is set to "YES" if the
-player wins.<BR>
-<P>
+name. <code>currentUsers</code> holds proxies for each of the current players;
+<code>delayUntil</code> holds times when each player can re-join the game; and
+<code>hasWon</code> holds a string for each player, which is set to &quot;YES&quot; if the
+player wins.<br>
 
-<LI>
+</li><li>
 When the game is in progress, the server can alter the state of each client
 object to reflect the success of each player.
-</UL>
-<P>
+</li></ul>
 
-I hope you managed to understand most of the code in this example. If
+<p>I hope you managed to understand most of the code in this example. If
 you are reading the on-screen version, then you can copy and paste the
 code to suitably named files, create makefiles, and then make and run
 each program. What message is displayed if you immediately try to
 re-join a game after losing? And after winning?
-</P><P>
-
-<I>Exercise: Modify the server code so that the server records the
+</p>
+<p><i>Exercise: Modify the server code so that the server records the
 number of wins for each player, and displays this information at both
-the start and end of each game.</I>
-</P><P>
+the start and end of each game.</i>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC110"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC109"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC111"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> 7.4 Language Support for Distributed Objects </H2>
-<!--docid::SEC110::-->
-<P>
+<hr size="6">
+<a name="Language-Support-for-Distributed-Objects"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Code-at-the-Server" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Protocol-Type-Qualifiers" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">7.4 Language Support for Distributed Objects</h2>
 
-Objective-C provides special 'type' qualifiers that can be used in a
+<p>Objective-C provides special &rsquo;type&rsquo; qualifiers that can be used in a
 protocol to control the way that message arguments are passed between
 remote processes, while at run time, the run-time system transparently
-uses what is known as 'forward invocation' to forward messages to a
-remote process.  (See <A HREF="manual_5.html#SEC72">Forwarding</A>.)
-</P><P>
+uses what is known as &rsquo;forward invocation&rsquo; to forward messages to a
+remote process.  (See <a href="manual_5.html#Advanced-Messaging">Forwarding</a>.)
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC111"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC112"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.4.1 Protocol Type Qualifiers </H3>
-<!--docid::SEC111::-->
-<P>
+<hr size="6">
+<a name="Protocol-Type-Qualifiers"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Language-Support-for-Distributed-Objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Message-Forwarding" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Language-Support-for-Distributed-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.4.1 Protocol Type Qualifiers</h3>
+<a name="index-protocol-type-qualifiers"></a>
+<a name="index-in_002c-out_002c-and-inout-type-qualifiers"></a>
+<a name="index-out_002c-type-qualifier"></a>
+<a name="index-oneway_002c-type-qualifier"></a>
+<a name="index-bycopy-and-byref-type-qualifiers"></a>
 
-When message arguments are passed by value then the receiving method can
+<p>When message arguments are passed by value then the receiving method can
 only alter the copy it receives, and not the value of the original
 variable. When an argument is passed by reference (as a pointer), the
 receiving method has access to the original variable and can alter that
-variable's data. In this case the argument is effectively passed 'in' to
-the method, and then passed 'out' of the method (on method return).
-</P><P>
-
-When an argument is passed by reference to a remote object, the network
+variable&rsquo;s data. In this case the argument is effectively passed &rsquo;in&rsquo; to
+the method, and then passed &rsquo;out&rsquo; of the method (on method return).
+</p>
+<p>When an argument is passed by reference to a remote object, the network
 must handle this two-way traffic, whether or not the remote object
 modifies the received argument.
-</P><P>
-
-Type qualifiers can be used in a protocol to control the way these
+</p>
+<p>Type qualifiers can be used in a protocol to control the way these
 messages are handled, and to indicate whether or not the sending process
 will wait for the remote process to return.
-</P><P>
-
-<UL>
-<LI>The <B>oneway</B> qualifier is used in conjunction with a
-<CODE>void</CODE> return type to inform the run-time system that the sending
+</p>
+<ul>
+<li>  The <b>oneway</b> qualifier is used in conjunction with a
+<code>void</code> return type to inform the run-time system that the sending
 process does not need to wait for the receiving method to return (known
-as 'asynchronous' messaging). The protocol declaration for the receiving
-method would look something like this:<BR><BR>
-<P>
+as &rsquo;asynchronous&rsquo; messaging). The protocol declaration for the receiving
+method would look something like this:<br><br>
 
-<CODE>- (<B>oneway</B> void)noWaitForReply;</CODE><BR><BR>
-</P><P>
-
-<LI>The <B>in, out </B> and <B>inout</B> qualifiers can be used with pointer
+<p><code>- (<b>oneway</b> void)noWaitForReply;</code><br><br>
+</p>
+</li><li> The <b>in, out </b> and <b>inout</b> qualifiers can be used with pointer
 arguments to control the direction in which an argument is passed. The
 protocol declaration for the receiving methods would look something like
-this:<BR>
-<P>
+this:<br>
 
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>/*
- * The value that 'number' points to will be passed <B>in</B> to the remote process.
+<table><tr><td>&nbsp;</td><td><pre class="example">/*
+ * The value that 'number' points to will be passed <b>in</b> to the remote process.
  * (No need to return the argument's value from the remote process.)
  */
-<CODE>- setValue: (<B>in</B> int *)number;</CODE>
+<code>- setValue: (<b>in</b> int *)number;</code>
 
 /*
- * The value that 'number' points to will be passed <B>out</B> of the remote process.
+ * The value that 'number' points to will be passed <b>out</b> of the remote process.
  * (No need to send the argument's value to the remote process.)
  */
-<CODE>- getValue: (<B>out</B> int *)number;</CODE>
+<code>- getValue: (<b>out</b> int *)number;</code>
 
 /*
- * The value that 'number' points to is first passed <B>in</B> to the remote
- * process, but will eventually be the value that is passed <B>out</B> of the
+ * The value that 'number' points to is first passed <b>in</b> to the remote
+ * process, but will eventually be the value that is passed <b>out</b> of the
  * remote process. (Send and return the argument's value.)
  */
-<CODE>- changeValue: (<B>inout</B> int *)number;</CODE>
-</pre></td></tr></table></P><P>
+<code>- changeValue: (<b>inout</b> int *)number;</code>
+</pre></td></tr></table>
 
-Passing of arguments by reference is very restricted in Objective-C.
+<p>Passing of arguments by reference is very restricted in Objective-C.
 it applies only to pointers to C data types, not to objects, and except
-for the special case of a pointer to a nul terminated C string (<B>char*</B>)
+for the special case of a pointer to a nul terminated C string (<b>char*</b>)
 the pointer is assumed to refer to a single data item of the specified
 type.
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>/*
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">/*
  * A method passing an unsigned short integer by reference.
  */
-<CODE>- updateCounter: (<B>inout</B> unsigned shortn *)value;</CODE>
+<code>- updateCounter: (<b>inout</b> unsigned shortn *)value;</code>
 
 /*
  * A method passing a structure by reference.
  */
-<CODE>- updateState: (<B>inout</B> struct stateInfo *)value;</CODE>
+<code>- updateState: (<b>inout</b> struct stateInfo *)value;</code>
 
 /*
  * As a special case, a char (or equivalent typedef) passed by reference
  * is assumed to be a nul terminated string ... there is no way to pass
  * a single character by reference:
  */
-<CODE>- updateBuffer: (<B>inout</B> char *)str;</CODE>
+<code>- updateBuffer: (<b>inout</b> char *)str;</code>
 
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-<LI>The <B>bycopy</B> and <B>byref</B> qualifiers can be used in a protocol
-when the argument or return type is an object.<BR><BR>
-<P>
+</li><li> The <b>bycopy</b> and <b>byref</b> qualifiers can be used in a protocol
+when the argument or return type is an object.<br><br>
 
-An object is normally passed by reference and received in the remote
+<p>An object is normally passed by reference and received in the remote
 process as a proxy. When an object is passed by copy, then a copy of
 the object will be received in the remote process, allowing the remote
 process to directly interact with the copy. Protocol declarations would
-look something like this:<BR>
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>/*
+look something like this:<br>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">/*
  * Copy of object will be received in the remote process.
  */
-- sortNames: (<B>bycopy</B> id)listOfNames;
+- sortNames: (<b>bycopy</b> id)listOfNames;
 
 /*
  * Copy of object will be returned by the remote process.
  */
-- (<B>bycopy</B> id)returnNames;
-</pre></td></tr></table></P><P>
+- (<b>bycopy</b> id)returnNames;
+</pre></td></tr></table>
 
-By default, large objects are normally sent <B>byref</B>, while small
-objects like <CODE>NSStrings</CODE> are normally sent <B>bycopy</B>, but you
+<p>By default, large objects are normally sent <b>byref</b>, while small
+objects like <code>NSStrings</code> are normally sent <b>bycopy</b>, but you
 cannot rely on these defaults being adopted and should explicitly state
-the qualifier in the protocol.<BR><BR>
-</P><P>
+the qualifier in the protocol.<br><br>
+</p>
 
-The <B>bycopy</B> qualifier can also be used in conjunction with the
-<B>out</B> qualifier, to indicate that an object will be passed <B>out</B> of
+<p>The <b>bycopy</b> qualifier can also be used in conjunction with the
+<b>out</b> qualifier, to indicate that an object will be passed <b>out</b> of
 the remote process by copy rather than by proxy (no need to send the
-object).<BR>
-</P><P>
-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>/*
+object).<br>
+</p>
+<table><tr><td>&nbsp;</td><td><pre class="example">/*
  * The object will not be received in the remote process, but the object
- * will be returned <B>bycopy</B>.
+ * will be returned <b>bycopy</b>.
  */
-- sortAndReturn: (<B>bycopy out</B> id *)listOfNames;
-</pre></td></tr></table></P><P>
+- sortAndReturn: (<b>bycopy out</b> id *)listOfNames;
+</pre></td></tr></table>
 
-You should be aware that some classes ignore the <B>bycopy</B> qualifier
-and the object will be sent by reference. The <B>bycopy</B> qualifier will
+<p>You should be aware that some classes ignore the <b>bycopy</b> qualifier
+and the object will be sent by reference. The <b>bycopy</b> qualifier will
 also be ignored if the remote process does not have the class of the
-object in its address space, since an object's instance variables are
-accessed through the object's methods.<BR><BR>
-</P><P>
-
-When a copy of an object is sent to a remote process, only the object's
-instance variables are sent and received (an object's methods exist in
-the address space of the object's class, not in the address space of the
+object in its address space, since an object&rsquo;s instance variables are
+accessed through the object&rsquo;s methods.<br><br>
+</p>
+<p>When a copy of an object is sent to a remote process, only the object&rsquo;s
+instance variables are sent and received (an object&rsquo;s methods exist in
+the address space of the object&rsquo;s class, not in the address space of the
 individual object).
-</P><P>
+</p>
+</li></ul>
 
-</UL>
-<P>
+<hr size="6">
+<a name="Message-Forwarding"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Protocol-Type-Qualifiers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Error-Checking" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Language-Support-for-Distributed-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.4.2 Message Forwarding</h3>
+<a name="index-message-forwarding_002c-distributed-objects"></a>
+<a name="index-forward-invocation_002c-distributed-objects"></a>
 
-<HR SIZE="6">
-<A NAME="SEC112"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC111"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC110"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.4.2 Message Forwarding </H3>
-<!--docid::SEC112::-->
-<P>
-
-If you have used other remote invocation mechanisms such as CORBA or Java
+<p>If you have used other remote invocation mechanisms such as CORBA or Java
 RMI, you may have noticed a big difference from these in the GNUstep
-Distributed Object paradigm -- there are no "stub" classes, either on the
+Distributed Object paradigm &ndash; there are no &ldquo;stub&rdquo; classes, either on the
 client or the server.  This tremendously simplifies the use of remote
 invocation and is possible due to the Objective-C message-forwarding facility
-(<A HREF="manual_5.html#SEC72">Forwarding</A>).
-</P><P>
-
-In GNUstep, there are proxies on the client and server side that handle
+(<a href="manual_5.html#Advanced-Messaging">Forwarding</a>).
+</p>
+<p>In GNUstep, there are proxies on the client and server side that handle
 network communications and serialization/deserialization of arguments and
 return values just as in CORBA and RMI, but when it comes to responding to the
 client and server protocol method calls themselves, they are intercepted
-through the use of the <CODE>forwardInvocation:</CODE> method, where they can be
+through the use of the <code>forwardInvocation:</code> method, where they can be
 passed on to the registered client and server objects through the ordinary
 Objective-C message sending mechanism.
-</P><P>
+</p>
 
-<HR SIZE="6">
-<A NAME="SEC113"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC112"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC114"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> 7.5 Error Checking </H2>
-<!--docid::SEC113::-->
-<P>
+<hr size="6">
+<a name="Error-Checking"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Message-Forwarding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Vending-the-Server-Object" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">7.5 Error Checking</h2>
+<a name="index-error-checking_002c-distributed-objects"></a>
+<a name="index-distributed-objects_002c-error-checking"></a>
 
-When dealing with distributed objects your code must be able to handle
+<p>When dealing with distributed objects your code must be able to handle
 the following situations: failure to vend the server object, exceptions
 raised at run-time, and failure of the network connection.
-</P><P>
-
-<HR SIZE="6">
-<A NAME="SEC114"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC115"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.5.1 Vending the Server Object </H3>
-<!--docid::SEC114::-->
-When vending the server object, your code must be able to handle the
+</p>
+<hr size="6">
+<a name="Vending-the-Server-Object"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Error-Checking" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Catching-Exceptions" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Error-Checking" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.5.1 Vending the Server Object</h3>
+<p>When vending the server object, your code must be able to handle the
 situation in which the network does not accept the proposed registered
 name for the server.
-<P>
-
-<HR SIZE="6">
-<A NAME="SEC115"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC114"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC116"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC116"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.5.2 Catching Exceptions </H3>
-<!--docid::SEC115::-->
-There are two situations to consider.
-<UL>
-<LI>An <CODE>NSPortTimeoutException</CODE> is raised.<BR><BR>
+</p>
+<hr size="6">
+<a name="Catching-Exceptions"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Vending-the-Server-Object" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-Connection-Fails" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Error-Checking" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.5.2 Catching Exceptions</h3>
+<p>There are two situations to consider.
+</p><ul>
+<li> An <code>NSPortTimeoutException</code> is raised.<br><br>
 This exception is raised if a message takes too long to arrive at the
 remote process, or if a reply takes too long to return. This will happen
 if the remote process is busy, has hung, or if there is a problem with
 the network. The best way to handle the exception is to close the
-connection to the remote process.<BR><BR>
-<P>
+connection to the remote process.<br><br>
 
-<LI>An exception is raised in the remote process while the remote
-process is executing a method.<BR><BR>
+</li><li> An exception is raised in the remote process while the remote
+process is executing a method.<br><br>
 In most cases you can deal directly with these exceptions in the process
 in which they were raised; i.e. without having to consider the network
 connection itself.
-</UL>
-<P>
+</li></ul>
 
-<HR SIZE="6">
-<A NAME="SEC116"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC115"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC113"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H3> 7.5.3 The Connection Fails </H3>
-<!--docid::SEC116::-->
-You can register an observer object to receive a notification, in the
-form of a <CODE>connectionDidDie:</CODE> message, when a registered connection
-fails. The argument to this message will be an <CODE>NSNotification</CODE>
+<hr size="6">
+<a name="The-Connection-Fails"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Catching-Exceptions" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Error-Checking" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h3 class="subsection">7.5.3 The Connection Fails</h3>
+<p>You can register an observer object to receive a notification, in the
+form of a <code>connectionDidDie:</code> message, when a registered connection
+fails. The argument to this message will be an <code>NSNotification</code>
 object that returns the failed connection when it receives an
-<CODE>object</CODE> message.  See <A HREF="manual_8.html#SEC117">Event-Based Communications</A>
+<code>object</code> message.  See <a href="manual_8.html#Base-Library">Event-Based Communications</a>
 for more information on notifications.
-<P>
-
-To receive this 'notification' the observer must implement the
-<CODE>connectionDidDie:</CODE> method, but can be an instance of any class. The
+</p>
+<p>To receive this &rsquo;notification&rsquo; the observer must implement the
+<code>connectionDidDie:</code> method, but can be an instance of any class. The
 observer can then handle the failure gracefully, by releasing any
 references to the failed connection and releasing proxies that used the
 connection. Registering an object to receive this notification is
-described in more detail in the <CODE>NSConnection</CODE> class documentation.
-</P><P>
+described in more detail in the <code>NSConnection</code> class documentation.
+</p>
 
-<A NAME="Base Library"></A>
-<HR SIZE="6">
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_7.html#SEC96"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_8.html#SEC117"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_15.html#SEC172">Index</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="manual_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<BR>  
-<FONT SIZE="-1">
-This document was generated
-by <I>Adam Fedor</I> on <I>January, 1  2008</I>
-using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
-"><I>texi2html</I></A>
 
-</BODY>
-</HTML>
+
+
+
+
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_8.html#Base-Library" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>root</em> on <em>April 13, 2011</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+ </font>
+ <br>
+
+</p>
+</body>
+</html>
