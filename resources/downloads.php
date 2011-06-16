@@ -268,7 +268,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">WebServices</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/WebServices-0.4.0.tar.gz")?>">0.4.0</a></td>
+<td class="stab"><a href="<?php download("libs/WebServices-0.5.0.tar.gz")?>">0.5.0</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/webservices/trunk/">from svn</a></td>
 <td>Classes for building web services (partial)</td>
 </tr>
