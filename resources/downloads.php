@@ -252,7 +252,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">SQLClient</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/SQLClient-1.5.1.tar.gz")?>">1.5.1</a></td>
+<td class="stab"><a href="<?php download("libs/SQLClient-1.5.2.tar.gz")?>">1.5.2</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/sqlclient/trunk/">from svn</a></td>
 <td>Simple OO Interface to SQL databases</td>
 </tr>
@@ -588,8 +588,8 @@ download the <i>Recommended version</i>.</p>
 
 <tr>
 <td class="src">libobjc</td>
-<td class="req">ONLY MinGW/Cygwin or gcc2</td>
-<td class="stab"><a href="<?php download("libs/gnustep-objc-1.6.0.tar.gz")?>">1.6.0</a></td>
+<td class="req">Required for MinGW/Cygwin, recommended pre gcc4.6</td>
+<td class="stab"><a href="<?php download("libs/gnustep-objc-1.7.2.tar.gz")?>">1.7.2</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Updated libobjc for some systems.</td>
 </tr>
