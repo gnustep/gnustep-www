@@ -125,7 +125,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td class="src">GNUstep Startup</td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-startup-0.26.1.tar.gz")?>">0.26.1</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-startup-0.26.2.tar.gz")?>">0.26.2</a></td>
 <td class="unst">none</td>
 <td>Easy Install Core Packages</td>
 </tr>
