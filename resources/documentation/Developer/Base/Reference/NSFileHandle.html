@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 32173</p>
-    <p><b>Date:</b> 2011-02-14 23:25:54 -0700 (Mon, 14 Feb 2011)</p>
+    <p><b>Version:</b> 33535</p>
+    <p><b>Date:</b> 2011-07-12 05:40:15 -0600 (Tue, 12 Jul 2011)</p>
     <p><b>Copyright:</b> (C) 1997 Free Software Foundation, Inc.</p>
 
         <div>
@@ -92,6 +92,8 @@
     </div>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/NSFileHandle+GNUstepBase.html#method$NSFileHandle(GNUstepBase)+fileHandleAsServerAtAddress$service$protocol$">+fileHandleAsServerAtAddress:service:protocol:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/NSFileHandle+GNUstepBase.html#method$NSFileHandle(GNUstepBase)-socketAddress">-socketAddress</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientAtAddress$service$protocol$">+fileHandleAsClientAtAddress:service:protocol:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientInBackgroundAtAddress$service$protocol$">+fileHandleAsClientInBackgroundAtAddress:service:protocol:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientInBackgroundAtAddress$service$protocol$forModes$">+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:</a></li>
@@ -112,6 +114,7 @@
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslAccept">-sslAccept</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslConnect">-sslConnect</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslDisconnect">-sslDisconnect</a></li>
+      <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslHandshakeEstablished$outgoing$">-sslHandshakeEstablished:outgoing:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslSetCertificate$privateKey$PEMpasswd$">-sslSetCertificate:privateKey:PEMpasswd:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle+fileHandleForReadingAtPath$">+fileHandleForReadingAtPath:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle+fileHandleForUpdatingAtPath$">+fileHandleForUpdatingAtPath:</a></li>
@@ -1217,6 +1220,7 @@ This is a designated initialiser for the class.<br />
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslAccept">-sslAccept</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslConnect">-sslConnect</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslDisconnect">-sslDisconnect</a></li>
+      <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslHandshakeEstablished$outgoing$">-sslHandshakeEstablished:outgoing:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepOpenSSL)-sslSetCertificate$privateKey$PEMpasswd$">-sslSetCertificate:privateKey:PEMpasswd:</a></li>
     </ul>
     <hr width="50%" align="left" />
@@ -1245,8 +1249,8 @@ An empty method provided for subclasses to override.<br />
       
             Establishes an SSL connection from the system
             that the handle is talking to. <br /> This is
-            implented by an SSL handling subclass. <br /> The
-            default implementation just returns <code>NO</code>
+            implemented by an SSL handling subclass. <br />
+            The default implementation just returns <code>NO</code>
             .
           
     </div>
@@ -1263,8 +1267,8 @@ An empty method provided for subclasses to override.<br />
       
             Establishes an SSL connection to the system
             that the handle is talking to. <br /> This is
-            implented by an SSL handling subclass. <br /> The
-            default implementation just returns <code>NO</code>
+            implemented by an SSL handling subclass. <br />
+            The default implementation just returns <code>NO</code>
             .
           
     </div>
@@ -1286,6 +1290,27 @@ An empty method provided for subclasses to override.<br />
     <hr width="25%" align="left" />
 </div>
 <div class="method">
+    <h3><a name="method$NSFileHandle(GNUstepOpenSSL)-sslHandshakeEstablished$outgoing$">sslHandshakeEstablished:&nbsp;outgoing:&nbsp;</a></h3>
+    - (BOOL) <b>sslHandshakeEstablished:</b> (BOOL*)result<b> outgoing:</b> (BOOL)isOutgoing;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+An empty method provided for subclasses to override.<br />
+    <div class="desc">
+      
+            Make a non-blocking handshake attempt. Calls to this
+            method should be repeated until the method returns
+            <code>YES</code> indicating that the handshake
+            completed. If the method returns
+            <code>YES</code> indicating completion of the
+            handshake, the <var>result</var> indicates
+            whether the handshake succeeded in establishing a
+            connection or not. <br />
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSFileHandle(GNUstepOpenSSL)-sslSetCertificate$privateKey$PEMpasswd$">sslSetCertificate:&nbsp;privateKey:&nbsp;PEMpasswd:&nbsp;</a></h3>
     - (void) <b>sslSetCertificate:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)certFile<b> privateKey:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)privateKey<b> PEMpasswd:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)PEMpasswd;<br />
     <div class="availability">
@@ -1294,7 +1319,18 @@ An empty method provided for subclasses to override.<br />
 An empty method provided for subclasses to override.<br />
     <div class="desc">
       
-            Sets the certificate to be used to identify this
+            Sets certification data for the SSL connection. <br />
+            The value of <var>certFile</var> is the path to a file
+            containing a PEM encoded certificate for this
+            host (optionally followed by other PEM encoded
+            certificates in a chain leading to a root
+            certificate authority). <br /> The value of
+            privatekey is the path of a file containing a
+            PEM encoded key used to establish handshakes using the
+            host certificate. <br /> The value of
+            <var>PEMpasswd</var> is a string used as the password
+            to access the content of the key file. <br /> Sets the
+            certificate chain to be used to identify this
             process to the server at the opposite end of the
             network connection.
           

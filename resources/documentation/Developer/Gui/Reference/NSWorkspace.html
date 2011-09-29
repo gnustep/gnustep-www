@@ -45,7 +45,7 @@
           <h1><a name="001000000000">
         Software documentation for the NSWorkspace class
       </a></h1>
-    <h2><a name="class$NSWorkspace">NSWorkspace</a> : NSObject</h2>
+    <h2><a name="class$NSWorkspace">NSWorkspace</a> : <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
     <blockquote class="declared">
       <dl>
         <dt><b>Declared in:</b></dt>
@@ -280,10 +280,12 @@
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace(GNUstep)-setBestApp$inRole$forScheme$">-setBestApp:inRole:forScheme:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace(GNUstep)-setBestIcon$forExtension$">-setBestIcon:forExtension:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace+sharedWorkspace">+sharedWorkspace</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-absolutePathForAppBundleWithIdentifier$">-absolutePathForAppBundleWithIdentifier:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-activeApplication">-activeApplication</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-checkForRemovableMedia">-checkForRemovableMedia</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-extendPowerOffBy$">-extendPowerOffBy:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-fileSystemChanged">-fileSystemChanged</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-filenameExtension$isValidForType$">-filenameExtension:isValidForType:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-findApplications">-findApplications</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-fullPathForApplication$">-fullPathForApplication:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-getFileSystemInfoForPath$isRemovable$isWritable$isUnmountable$description$type$">-getFileSystemInfoForPath:isRemovable:isWritable:isUnmountable:description:type:</a></li>
@@ -297,6 +299,7 @@
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-launchApplication$">-launchApplication:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-launchApplication$showIcon$autolaunch$">-launchApplication:showIcon:autolaunch:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-launchedApplications">-launchedApplications</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-localizedDescriptionForType$">-localizedDescriptionForType:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-mountNewRemovableMedia">-mountNewRemovableMedia</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-mountedLocalVolumePaths">-mountedLocalVolumePaths</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-mountedRemovableMedia">-mountedRemovableMedia</a></li>
@@ -310,9 +313,14 @@
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-openFile$withApplication$andDeactivate$">-openFile:withApplication:andDeactivate:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-openTempFile$">-openTempFile:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-openURL$">-openURL:</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-openURLs$withAppBundleIdentifier$options$additionalEventParamDescriptor$launchIdentifiers$">-openURLs:withAppBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifiers:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-performFileOperation$source$destination$files$tag$">-performFileOperation:source:destination:files:tag:</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-preferredFilenameExtensionForType$">-preferredFilenameExtensionForType:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-selectFile$inFileViewerRootedAtPath$">-selectFile:inFileViewerRootedAtPath:</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-setIcon$forFile$options$">-setIcon:forFile:options:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-slideImage$from$to$">-slideImage:from:to:</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-type$conformsToType$">-type:conformsToType:</a></li>
+      <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-typeOfFile$error$">-typeOfFile:error:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-unmountAndEjectDeviceAtPath$">-unmountAndEjectDeviceAtPath:</a></li>
       <li><a rel="gsdoc" href="NSWorkspace.html#method$NSWorkspace-userDefaultsChanged">-userDefaultsChanged</a></li>
     </ul>
@@ -331,10 +339,23 @@
     <hr width="25%" align="left" />
 </div>
 <div class="method">
-    <h3><a name="method$NSWorkspace-activeApplication">activeApplication&nbsp;</a></h3>
-    - (NSDictionary*) <b>activeApplication</b>;<br />
+    <h3><a name="method$NSWorkspace-absolutePathForAppBundleWithIdentifier$">absolutePathForAppBundleWithIdentifier:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>absolutePathForAppBundleWithIdentifier:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)bundleIdentifier;<br />
     <div class="availability">
-<b>Availability:</b> MacOS-X 10.0.0</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSWorkspace-activeApplication">activeApplication&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>activeApplication</b>;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
       
@@ -389,6 +410,19 @@
     <hr width="25%" align="left" />
 </div>
 <div class="method">
+    <h3><a name="method$NSWorkspace-filenameExtension$isValidForType$">filenameExtension:&nbsp;isValidForType:&nbsp;</a></h3>
+    - (BOOL) <b>filenameExtension:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)filenameExtension<b> isValidForType:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)typeName;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSWorkspace-findApplications">findApplications&nbsp;</a></h3>
     - (void) <b>findApplications</b>;<br />
     <div class="availability">
@@ -405,7 +439,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-fullPathForApplication$">fullPathForApplication:&nbsp;</a></h3>
-    - (NSString*) <b>fullPathForApplication:</b> (NSString*)appName;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fullPathForApplication:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -430,7 +464,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-getFileSystemInfoForPath$isRemovable$isWritable$isUnmountable$description$type$">getFileSystemInfoForPath:&nbsp;isRemovable:&nbsp;isWritable:&nbsp;isUnmountable:&nbsp;description:&nbsp;type:&nbsp;</a></h3>
-    - (BOOL) <b>getFileSystemInfoForPath:</b> (NSString*)fullPath<b> isRemovable:</b> (BOOL*)removableFlag<b> isWritable:</b> (BOOL*)writableFlag<b> isUnmountable:</b> (BOOL*)unmountableFlag<b> description:</b> (NSString**)description<b> type:</b> (NSString**)fileSystemType;<br />
+    - (BOOL) <b>getFileSystemInfoForPath:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath<b> isRemovable:</b> (BOOL*)removableFlag<b> isWritable:</b> (BOOL*)writableFlag<b> isUnmountable:</b> (BOOL*)unmountableFlag<b> description:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>**)description<b> type:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>**)fileSystemType;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -443,7 +477,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-getInfoForFile$application$type$">getInfoForFile:&nbsp;application:&nbsp;type:&nbsp;</a></h3>
-    - (BOOL) <b>getInfoForFile:</b> (NSString*)fullPath<b> application:</b> (NSString**)appName<b> type:</b> (NSString**)type;<br />
+    - (BOOL) <b>getInfoForFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath<b> application:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>**)appName<b> type:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>**)type;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -505,7 +539,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-iconForFile$">iconForFile:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>iconForFile:</b> (NSString*)fullPath;<br />
+    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>iconForFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -518,7 +552,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-iconForFileType$">iconForFileType:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>iconForFileType:</b> (NSString*)fileType;<br />
+    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>iconForFileType:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileType;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -531,7 +565,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-iconForFiles$">iconForFiles:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>iconForFiles:</b> (NSArray*)pathArray;<br />
+    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>iconForFiles:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*)pathArray;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -544,7 +578,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-isFilePackageAtPath$">isFilePackageAtPath:&nbsp;</a></h3>
-    - (BOOL) <b>isFilePackageAtPath:</b> (NSString*)fullPath;<br />
+    - (BOOL) <b>isFilePackageAtPath:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
@@ -557,7 +591,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-launchAppWithBundleIdentifier$options$additionalEventParamDescriptor$launchIdentifier$">launchAppWithBundleIdentifier:&nbsp;options:&nbsp;additionalEventParamDescriptor:&nbsp;launchIdentifier:&nbsp;</a></h3>
-    - (BOOL) <b>launchAppWithBundleIdentifier:</b> (NSString*)bundleIdentifier<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSWorkspaceLaunchOptions">NSWorkspaceLaunchOptions</a>)options<b> additionalEventParamDescriptor:</b> (NSAppleEventDescriptor*)descriptor<b> launchIdentifier:</b> (NSNumber**)identifier;<br />
+    - (BOOL) <b>launchAppWithBundleIdentifier:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)bundleIdentifier<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSWorkspaceLaunchOptions">NSWorkspaceLaunchOptions</a>)options<b> additionalEventParamDescriptor:</b> (NSAppleEventDescriptor*)descriptor<b> launchIdentifier:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSValue.html#class$NSNumber">NSNumber</a>**)identifier;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -570,7 +604,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-launchApplication$">launchApplication:&nbsp;</a></h3>
-    - (BOOL) <b>launchApplication:</b> (NSString*)appName;<br />
+    - (BOOL) <b>launchApplication:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -585,7 +619,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-launchApplication$showIcon$autolaunch$">launchApplication:&nbsp;showIcon:&nbsp;autolaunch:&nbsp;</a></h3>
-    - (BOOL) <b>launchApplication:</b> (NSString*)appName<b> showIcon:</b> (BOOL)showIcon<b> autolaunch:</b> (BOOL)autolaunch;<br />
+    - (BOOL) <b>launchApplication:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName<b> showIcon:</b> (BOOL)showIcon<b> autolaunch:</b> (BOOL)autolaunch;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -657,7 +691,7 @@
 
               Once an application has fully started up, you should
               be able to connect to it using
-              [NSConnection +rootProxyForConnectionWithRegisteredName:host:]
+              <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSConnection.html#method$NSConnection+rootProxyForConnectionWithRegisteredName$host$">[NSConnection +rootProxyForConnectionWithRegisteredName:host:]</a>
  passing the application name (normally the filesystem name excluding path and file extension) and an empty host name. This will let you communicate with the the <a rel="gsdoc" href="NSApplication.html#method$NSApplication-delegate">[NSApplication -delegate]</a>
  of the launched application, and you can generally use this as a test of whether an application is running correctly.
                 </p>
@@ -669,9 +703,9 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-launchedApplications">launchedApplications&nbsp;</a></h3>
-    - (NSArray*) <b>launchedApplications</b>;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>launchedApplications</b>;<br />
     <div class="availability">
-<b>Availability:</b> MacOS-X 10.0.0</div>
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
       
@@ -684,8 +718,21 @@
     <hr width="25%" align="left" />
 </div>
 <div class="method">
+    <h3><a name="method$NSWorkspace-localizedDescriptionForType$">localizedDescriptionForType:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>localizedDescriptionForType:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)typeName;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSWorkspace-mountNewRemovableMedia">mountNewRemovableMedia&nbsp;</a></h3>
-    - (NSArray*) <b>mountNewRemovableMedia</b>;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>mountNewRemovableMedia</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -698,7 +745,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-mountedLocalVolumePaths">mountedLocalVolumePaths&nbsp;</a></h3>
-    - (NSArray*) <b>mountedLocalVolumePaths</b>;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>mountedLocalVolumePaths</b>;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
@@ -711,7 +758,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-mountedRemovableMedia">mountedRemovableMedia&nbsp;</a></h3>
-    - (NSArray*) <b>mountedRemovableMedia</b>;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>mountedRemovableMedia</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -737,7 +784,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-noteFileSystemChanged$">noteFileSystemChanged:&nbsp;</a></h3>
-    - (void) <b>noteFileSystemChanged:</b> (NSString*)path;<br />
+    - (void) <b>noteFileSystemChanged:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)path;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
@@ -764,7 +811,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-notificationCenter">notificationCenter&nbsp;</a></h3>
-    - (NSNotificationCenter*) <b>notificationCenter</b>;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSNotification.html#class$NSNotificationCenter">NSNotificationCenter</a>*) <b>notificationCenter</b>;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -777,7 +824,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-openFile$">openFile:&nbsp;</a></h3>
-    - (BOOL) <b>openFile:</b> (NSString*)fullPath;<br />
+    - (BOOL) <b>openFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -790,7 +837,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-openFile$fromImage$at$inView$">openFile:&nbsp;fromImage:&nbsp;at:&nbsp;inView:&nbsp;</a></h3>
-    - (BOOL) <b>openFile:</b> (NSString*)fullPath<b> fromImage:</b> (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*)anImage<b> at:</b> (NSPoint)point<b> inView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)aView;<br />
+    - (BOOL) <b>openFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath<b> fromImage:</b> (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*)anImage<b> at:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>)point<b> inView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)aView;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -803,7 +850,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-openFile$withApplication$">openFile:&nbsp;withApplication:&nbsp;</a></h3>
-    - (BOOL) <b>openFile:</b> (NSString*)fullPath<b> withApplication:</b> (NSString*)appName;<br />
+    - (BOOL) <b>openFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath<b> withApplication:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -816,7 +863,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-openFile$withApplication$andDeactivate$">openFile:&nbsp;withApplication:&nbsp;andDeactivate:&nbsp;</a></h3>
-    - (BOOL) <b>openFile:</b> (NSString*)fullPath<b> withApplication:</b> (NSString*)appName<b> andDeactivate:</b> (BOOL)flag;<br />
+    - (BOOL) <b>openFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath<b> withApplication:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName<b> andDeactivate:</b> (BOOL)flag;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -829,7 +876,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-openTempFile$">openTempFile:&nbsp;</a></h3>
-    - (BOOL) <b>openTempFile:</b> (NSString*)fullPath;<br />
+    - (BOOL) <b>openTempFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -842,7 +889,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-openURL$">openURL:&nbsp;</a></h3>
-    - (BOOL) <b>openURL:</b> (NSURL*)url;<br />
+    - (BOOL) <b>openURL:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url;<br />
     <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
@@ -854,10 +901,36 @@
     <hr width="25%" align="left" />
 </div>
 <div class="method">
+    <h3><a name="method$NSWorkspace-openURLs$withAppBundleIdentifier$options$additionalEventParamDescriptor$launchIdentifiers$">openURLs:&nbsp;withAppBundleIdentifier:&nbsp;options:&nbsp;additionalEventParamDescriptor:&nbsp;launchIdentifiers:&nbsp;</a></h3>
+    - (BOOL) <b>openURLs:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*)urls<b> withAppBundleIdentifier:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)bundleIdentifier<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSWorkspaceLaunchOptions">NSWorkspaceLaunchOptions</a>)options<b> additionalEventParamDescriptor:</b> (NSAppleEventDescriptor*)descriptor<b> launchIdentifiers:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>**)identifiers;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSWorkspace-performFileOperation$source$destination$files$tag$">performFileOperation:&nbsp;source:&nbsp;destination:&nbsp;files:&nbsp;tag:&nbsp;</a></h3>
-    - (BOOL) <b>performFileOperation:</b> (NSString*)operation<b> source:</b> (NSString*)source<b> destination:</b> (NSString*)destination<b> files:</b> (NSArray*)files<b> tag:</b> (int*)tag;<br />
+    - (BOOL) <b>performFileOperation:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)operation<b> source:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)source<b> destination:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)destination<b> files:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*)files<b> tag:</b> (int*)tag;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSWorkspace-preferredFilenameExtensionForType$">preferredFilenameExtensionForType:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>preferredFilenameExtensionForType:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)typeName;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
     <div class="desc">
       
@@ -868,7 +941,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace-selectFile$inFileViewerRootedAtPath$">selectFile:&nbsp;inFileViewerRootedAtPath:&nbsp;</a></h3>
-    - (BOOL) <b>selectFile:</b> (NSString*)fullPath<b> inFileViewerRootedAtPath:</b> (NSString*)rootFullpath;<br />
+    - (BOOL) <b>selectFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath<b> inFileViewerRootedAtPath:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)rootFullpath;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -880,8 +953,21 @@
     <hr width="25%" align="left" />
 </div>
 <div class="method">
+    <h3><a name="method$NSWorkspace-setIcon$forFile$options$">setIcon:&nbsp;forFile:&nbsp;options:&nbsp;</a></h3>
+    - (BOOL) <b>setIcon:</b> (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*)image<b> forFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullPath<b> options:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSWorkspaceIconCreationOptions">NSWorkspaceIconCreationOptions</a>)options;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSWorkspace-slideImage$from$to$">slideImage:&nbsp;from:&nbsp;to:&nbsp;</a></h3>
-    - (void) <b>slideImage:</b> (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*)image<b> from:</b> (NSPoint)fromPoint<b> to:</b> (NSPoint)toPoint;<br />
+    - (void) <b>slideImage:</b> (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*)image<b> from:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>)fromPoint<b> to:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSPoint">NSPoint</a>)toPoint;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -894,8 +980,34 @@
     <hr width="25%" align="left" />
 </div>
 <div class="method">
+    <h3><a name="method$NSWorkspace-type$conformsToType$">type:&nbsp;conformsToType:&nbsp;</a></h3>
+    - (BOOL) <b>type:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)firstTypeName<b> conformsToType:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)secondTypeName;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSWorkspace-typeOfFile$error$">typeOfFile:&nbsp;error:&nbsp;</a></h3>
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>typeOfFile:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)absoluteFilePath<b> error:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)outError;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            <em>Description forthcoming.</em>
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
     <h3><a name="method$NSWorkspace-unmountAndEjectDeviceAtPath$">unmountAndEjectDeviceAtPath:&nbsp;</a></h3>
-    - (BOOL) <b>unmountAndEjectDeviceAtPath:</b> (NSString*)path;<br />
+    - (BOOL) <b>unmountAndEjectDeviceAtPath:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)path;<br />
     <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -1035,7 +1147,7 @@
     <hr width="50%" align="left" />
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-appIconForApp$">appIconForApp:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>appIconForApp:</b> (NSString*)appName;<br />
+    - (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*) <b>appIconForApp:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1050,7 +1162,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-bundleForApp$">bundleForApp:&nbsp;</a></h3>
-    - (NSBundle*) <b>bundleForApp:</b> (NSString*)appName;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSBundle.html#class$NSBundle">NSBundle</a>*) <b>bundleForApp:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1068,7 +1180,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-getBestAppInRole$forExtension$">getBestAppInRole:&nbsp;forExtension:&nbsp;</a></h3>
-    - (NSString*) <b>getBestAppInRole:</b> (NSString*)role<b> forExtension:</b> (NSString*)ext;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>getBestAppInRole:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)role<b> forExtension:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)ext;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1086,7 +1198,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-getBestAppInRole$forScheme$">getBestAppInRole:&nbsp;forScheme:&nbsp;</a></h3>
-    - (NSString*) <b>getBestAppInRole:</b> (NSString*)role<b> forScheme:</b> (NSString*)scheme;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>getBestAppInRole:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)role<b> forScheme:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)scheme;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1104,7 +1216,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-getBestIconForExtension$">getBestIconForExtension:&nbsp;</a></h3>
-    - (NSString*) <b>getBestIconForExtension:</b> (NSString*)ext;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>getBestIconForExtension:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)ext;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1122,7 +1234,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-infoForExtension$">infoForExtension:&nbsp;</a></h3>
-    - (NSDictionary*) <b>infoForExtension:</b> (NSString*)ext;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>infoForExtension:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)ext;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1140,7 +1252,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-infoForScheme$">infoForScheme:&nbsp;</a></h3>
-    - (NSDictionary*) <b>infoForScheme:</b> (NSString*)scheme;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>infoForScheme:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)scheme;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1158,7 +1270,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-locateApplicationBinary$">locateApplicationBinary:&nbsp;</a></h3>
-    - (NSString*) <b>locateApplicationBinary:</b> (NSString*)appName;<br />
+    - (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>locateApplicationBinary:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1173,7 +1285,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-setBestApp$inRole$forExtension$">setBestApp:&nbsp;inRole:&nbsp;forExtension:&nbsp;</a></h3>
-    - (void) <b>setBestApp:</b> (NSString*)appName<b> inRole:</b> (NSString*)role<b> forExtension:</b> (NSString*)ext;<br />
+    - (void) <b>setBestApp:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName<b> inRole:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)role<b> forExtension:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)ext;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1187,7 +1299,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-setBestApp$inRole$forScheme$">setBestApp:&nbsp;inRole:&nbsp;forScheme:&nbsp;</a></h3>
-    - (void) <b>setBestApp:</b> (NSString*)appName<b> inRole:</b> (NSString*)role<b> forScheme:</b> (NSString*)scheme;<br />
+    - (void) <b>setBestApp:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)appName<b> inRole:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)role<b> forScheme:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)scheme;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
@@ -1201,7 +1313,7 @@
 </div>
 <div class="method">
     <h3><a name="method$NSWorkspace(GNUstep)-setBestIcon$forExtension$">setBestIcon:&nbsp;forExtension:&nbsp;</a></h3>
-    - (void) <b>setBestIcon:</b> (NSString*)iconPath<b> forExtension:</b> (NSString*)ext;<br />
+    - (void) <b>setBestIcon:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)iconPath<b> forExtension:</b> (<a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)ext;<br />
     <div class="availability">
 <b>Availability:</b> Not in OpenStep/MacOS-X</div>
 <br />
