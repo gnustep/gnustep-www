@@ -252,7 +252,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">SQLClient</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/SQLClient-1.5.2.tar.gz")?>">1.5.2</a></td>
+<td class="stab"><a href="<?php download("libs/SQLClient-1.5.3.tar.gz")?>">1.5.3</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/sqlclient/trunk/">from svn</a></td>
 <td>Simple OO Interface to SQL databases</td>
 </tr>
