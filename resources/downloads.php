@@ -141,7 +141,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td class="src">GNUstep Make</td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-make-2.6.1.tar.gz")?>">2.6.1</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-make-2.6.2.tar.gz")?>">2.6.2</a></td>
 <td class="unst">-</td>
 <td>Makefile Package</td>
 </tr>
@@ -149,7 +149,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td class="src">GNUstep Base</td>
 <td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-base-1.23.0.tar.gz")?>">1.23.0</a></td>
+<td class="stab"><a href="<?php download("core/gnustep-base-1.24.0.tar.gz")?>">1.24.0</a></td>
 <td class="unst">-</a></td>
 <td>Foundation</td>
 </tr>
