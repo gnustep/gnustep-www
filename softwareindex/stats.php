@@ -72,7 +72,7 @@ echo "<tr><td>Total users: </td><th align=right>".$row['sum']."</b></tr>\n";
 </table>
 </tr>
 <tr><td>
-<?
+<?php
 
 echo "<b>Pending changes/approvals</b><p>\n";
 $query="select distinct DATE_FORMAT(`when`, '%e %b %Y %H:%i:%s') as upd, ${DB_TABLE}.id as app, name, version from ${DB_TABLE}_changerequest, ${DB_TABLE} where appid=id order by `when` asc";

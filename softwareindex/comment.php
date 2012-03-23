@@ -17,8 +17,39 @@ else
 {
 	if($_GET['cmd'] == "all")
 		{ // show all comments
-			// FIXME
-		echo "Show all comments, your own first, ordered by date descending";
+			echo "Please click on subject to show full message.<p>";
+			$query="select *, DATE_FORMAT(date, '%e %b %Y') as posted from ${DB_TABLE}_comment";
+			$query.=" order by date desc";
+		$result=query($query);
+			$rownum=0;
+		echo "<table width=\"95%\" cellspacing=0>";
+		while($row=mysql_fetch_array($result))
+			{
+			$rownum++;
+			if($rownum % 2 == 0)
+				echo "<tr class=\"listing\">";
+			else
+				echo "<tr class=\"mlisting\">";
+			echo "<td width=10%>";
+			// make entries clickable -> link to specific comment
+			echo htmlentities($row['posted']);
+			echo "</td>";
+			echo "<td width=10%>";
+			echo htmlentities($row['appid']);
+			echo " ";
+			echo htmlentities($row['version']);
+			echo "</td>";
+			echo "<td width=15%>";
+			// protect against simple harvesting by replacing @ and . with &#64; etc.
+			echo htmlentities($row['from']);
+			echo "</td>";
+			echo "<td width>";
+			echo htmlentities($row['subject']);
+			echo "</td>";
+			echo "</tr>\n";
+			}
+		mysql_free_result($result);
+		echo "</table>\n";
 		include "include/footer.inc.php";
 		exit;
 		}
@@ -61,11 +92,11 @@ else
 	<tbody>
 	<tr>
 	<td><B>Subject:</B></TD>
-	<td><INPUT size="80" value="<?echo htmlentities($_POST['subject']);?>" name="subject"></td>
+	<td><INPUT size="80" value="<?php echo htmlentities($_POST['subject']);?>" name="subject"></td>
 	</tr>
 	<tr>
 	<td><B>Body:</B></TD>
-	<td><textarea rows="12" cols="55" name="body"><?echo $_POST['body'];?></textarea></td>
+	<td><textarea rows="12" cols="55" name="body"><?php echo $_POST['body'];?></textarea></td>
 	</tr>
 	<tr>
 	<td colSpan=2><INPUT type="submit" value="Add" name="submit"> </td>

@@ -31,14 +31,24 @@ if(manage() && $_GET['cmd'] == "approve")
 	echo "app=$app<br>";
 	echo "field=$field<br>";
  */
+	$subject="[ANN]: $appname - $version updated in SWI";
+	$body="Dear subscriber of the $TITLE,\n\n";
+	$body .= "there are updates for the project $appid.";
+	
+	$body .= "wesentliche Inhalte zitieren";
+	
+	$body .= "The changes are:\n";
 	if($field)
 		$query="select * from ${DB_TABLE}_changerequest where number=$number and field=".quote($field); // approve specific change
 	else
 		$query="select * from ${DB_TABLE}_changerequest where appid=$app order by `when` asc";	// process latest first
 	$result=query($query);
 	while($record=mysql_fetch_array($result))
-		{ // get change request
-		$field=$record['field'];
+		{ // get change request(s)
+			$field=$record['field'];
+			$new=$record['newvalue'];
+		// get old value
+		$body .= "$old -> $new\n";
 		$query="update ${DB_TABLE} set `$field`=".quote($record['newvalue'])." where id=$app";
 //			echo $query;
 		query($query);
@@ -50,7 +60,14 @@ if(manage() && $_GET['cmd'] == "approve")
 //		if($field != "replacedby")
 			query("update ${DB_TABLE} set updated=now() where id=$app");
 		}
+	// notify all subscribers of this app
 	mysql_free_result($result);
+	$query="select email from ${DB_TABLE}_subscription where (appid = 0 or appid=$app)";
+	$result=query($query);
+	while($record=mysql_fetch_array($result))
+		{
+			// send mail
+		}
 }
 
 $field=$_GET['field'];

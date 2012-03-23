@@ -59,6 +59,8 @@ while($row=mysql_fetch_array($result))
 	echo "</tr>\n";
 }
 mysql_free_result($result);
+echo "</table>";
+
 if($rownum == 0)
 	echo "Nothing found.";
 }

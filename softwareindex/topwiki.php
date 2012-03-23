@@ -29,8 +29,8 @@ function module_topten($argv)
 	else
 		{
 		$DB_TABLE="swi_qs";
-		$DB_DATABASE="DB149657";	// on server
-		$DB_USER="U149657";
+		$DB_DATABASE="quantumstep";	// on server
+		$DB_USER="root";
 		}
 //	echo "swi=$DB_DATABASE<br>";
 //	echo "wiki=$DATABASE<br>";

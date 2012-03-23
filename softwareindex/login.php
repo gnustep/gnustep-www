@@ -31,7 +31,46 @@ if($_GET['cmd'] == "approve" && $_GET['email'] && $_GET['code'])
 //	exit;
 }
 
-if($_GET['cmd'] == "create")
+if($_GET['cmd'] == "reallyunregister" && $_GET['email'] && $_GET['code'])
+	{
+	$email=$_GET['email'];
+	$code=$_GET['code'];
+	if($code == md5("SWI".$email.$DB_PASSWORD))
+		{
+		disableuser($email);
+		include "include/header2.inc.php";
+		echo "<b>Your account has been permanently deleted. If you ever want to come back, please register again.</b>";
+		include "include/footer.inc.php";
+		exit;		
+		}
+	}
+
+else if($_GET['cmd'] == "unregister" && $_GET['email'] && $_GET['code'])
+	{
+	$email=$_GET['email'];
+	$code=$_GET['code'];
+	if($code == md5("SWI".$email.$DB_PASSWORD))
+		{
+		disableuser($email);
+		include "include/header2.inc.php";
+		if(manage())
+			{
+			echo "<b>Manager accounts can't be deleted this way.<b>";
+			}
+		else
+			{
+			echo "<b>You have choosen to permanently delete your account. Please confirm.</b>";
+			echo "<p>";
+			echo "<a href=\"login.php?cmd=reallyunregister&amp;email=".rawurlencode($_POST['email'])."&amp;code=".rawurlencode($code)."\">Yes, I confirm to be unregistered</a>.";
+			echo "<p>";
+			echo "<a href=\"login.php\">No, I want to keep my account</a>.";
+			}
+		include "include/footer.inc.php";
+		exit;		
+		}
+	}
+	
+else if($_GET['cmd'] == "create")
 {
 	$dest=$_POST['email'];
 	// look if already defined!!! - or we can overwrite an existing record
@@ -58,12 +97,33 @@ if($_GET['cmd'] == "create")
 		}	
 }
 
+if(isloggedin())
+	{
+	dologout();
+	include "include/header2.inc.php";
+	if(!manage())
+		{
+		$code=md5("SWI".$_POST['email'].$DB_PASSWORD);
+		echo "<b>You are already logged in.</b>";
+		echo "<a href=\"login.php?cmd=unregister&amp;email=".rawurlencode($_POST['email'])."&amp;code=".rawurlencode($code)."\">[Unregister]</a>";
+		}
+	else
+		echo "<b>You are already logged in as Manager.</b>";
+	include "include/footer.inc.php";
+	exit;
+	}
+	
+	
 if($_GET['cmd'] == "login" && $_POST['email'] && $_POST['passcode'])
 {
 	if(dologin($_POST['email'], $_POST['passcode']))
 		{
 		include "include/header2.inc.php";
+		$code=md5("SWI".$_POST['email'].$DB_PASSWORD);
+		echo "<a href=\"login.php?cmd=unregister&amp;email=".rawurlencode($_POST['email'])."&amp;code=".rawurlencode($code)."\">[Unregister]</a>";
+		echo "<p>";
 		echo "<b>Successsfully logged in for approx. 1 hour.</b>";
+
 		include "include/footer.inc.php";
 		exit;
 		}
@@ -93,7 +153,7 @@ if($_GET['cmd'] == "login" && $_POST['email'] && $_POST['passcode'])
 	<tbody>
 	<tr>
 	<td><B>E-Mail:</B></TD>
-	<td><INPUT size="30" value="<?echo htmlentities($_POST['email']);?>" name="email"></td>
+	<td><INPUT size="30" value="<?php echo htmlentities($_POST['email']);?>" name="email"></td>
 	</tr>
 	<tr>
 	<td><B>Password:</B></TD>

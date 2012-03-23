@@ -103,6 +103,14 @@ function enableuser($user, $code)
 	query($query);
 }
 
+function disableuser($user)
+{
+	global $DB_TABLE;
+	$query="delete from ${DB_TABLE}_users where email=".quote($user);
+	//	echo $query;
+	query($query);
+}
+	
 function isloggedin()
 {
 	global $login_user;
