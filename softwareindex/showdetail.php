@@ -173,7 +173,7 @@ function checklink($url)
 		$query="update ${DB_TABLE}_links set timestamp=".quote(time()).", result=".quote($result)." where url=".quote($url);
 	else
 		$query="insert into ${DB_TABLE}_links set timestamp=".quote(time()).", result=".quote($result).", url=".quote($url);
-	echo $query;
+//	echo $query;
 	query($query);
 
 	return $result;
