@@ -132,7 +132,7 @@ if($_GET['cmd'] == "login" && $_POST['email'] && $_POST['passcode'])
 		`url` text NOT NULL,
 		`timestamp` int(11) NOT NULL,
 		`result` text NOT NULL
-		) ENGINE=MyISAM DEFAULT CHARSET=latin1;";
+		);";
 		$result=query($query);
 		echo "database created";
 		echo " $result";
