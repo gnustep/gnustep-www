@@ -278,7 +278,7 @@ function description($id, $row)
 			<?php 
 				echo htmlentities($row['summary']);
 			if($row['author'])
-				echo " - by ".htmlentities($row['author']);
+				echo " - by "."<a href=\"search.php?q=".rawurlencode($row['author'])."\">".htmlentities($row['author'])."<a>";
 			?>
 			</td>
 		</tr>
