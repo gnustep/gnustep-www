@@ -201,6 +201,14 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
+<td class="src">GNUstep CoreBase</td>
+<td class="req">Optional</td>
+<td class="stab"><a href="<?php download("libs/gnustep-corebase-0.1.tar.gz")?>">0.1</a></td>
+<td class="unst"><div class="cent">from svn</div></td>
+<td>Core Foundation</td>
+</tr>
+
+<tr>
 <td class="src"><a href="http://www.gnustep.it/Renaissance/index.html">Renaissance</a></td>
 <td class="req">Optional</td>
 <td class="stab"><div class="cent">-</div></td>
