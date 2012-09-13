@@ -79,7 +79,7 @@ function title($row)
 
 function checklink($url)
 {
-	global ${DB_TABLE};
+	global $DB_TABLE;
 //	return "";	// experimental
 
 	// we should wipe out older records so that the table does not grow infinitely
@@ -252,8 +252,8 @@ function details($id, $row)
 											echo "</a>";
 											$first=false;
 										}
-									if(!first)
-										; // no category specified...
+										if(!$first)
+											; // no category specified...
 									?>
 										</td>
 										</tr>
