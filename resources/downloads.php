@@ -235,7 +235,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="http://www.gnustep.it/jigs/">JIGS</a></td>
 <td class="req">Optional</td>
-<td class="stab"><a href="http://www.gnustep.it/jigs/Download/">1.5.5
+<td class="stab"><a href="http://www.gnustep.it/jigs/Download.html">1.5.5
 </a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Java bridge</td>
