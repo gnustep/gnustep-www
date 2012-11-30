@@ -308,7 +308,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">EnterpriseControlConfigurationLogging</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/EnterpriseControlConfigurationLogging-1.0.0.tar.gz")?>">1.0.0</a></td>
+<td class="stab"><a href="<?php download("libs/EnterpriseControlConfigurationLogging-1.0.1.tar.gz")?>">1.0.1</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/ec/trunk/">from svn</a></td>
 <td>Classes for building and administering 24*7 server processes for large scale software systemd.</td>
 </tr>
