@@ -415,7 +415,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src"><a href="../experience/GWorkspace.html">GWorkspace</a></td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("usr-apps/gworkspace-0.9.1.tar.gz")?>">0.9.1</a></td>
+<td class="stab"><a href="<?php download("usr-apps/gworkspace-0.9.2.tar.gz")?>">0.9.2</a></td>
 <td class="unst">-</td>
 <td>File manager for GNUstep</td>
 </tr>
