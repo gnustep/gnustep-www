@@ -60,8 +60,6 @@ function title($row)
 						else
 							echo " <font color=\"red\">updates available</font>";	// current is not first
 					}
-//				if($row['replacedby'])
-//					echo " <a href=showdetail.php?app=".$row['replacedby']."><font color=\"red\">update available</font></a>";
 				?>
 			</span>
 	</td>
@@ -504,8 +502,16 @@ if($_GET['cmd'] == "disapprove")
 		<td>Reason:</td><td><INPUT size="30" value="" name="comment"></input></td>
 		</tr>
 		<TR>
-		<TD><IMG src="images/submit-number.png"> </TD>
 		<TD>
+		<?php
+			$number=341517;
+			$key=imagecode($number);
+			$imagepath="images/submit-number.png?no=$key";
+			// create image for number and store
+			echo "<Input value=\"$key\" name=\"cone\" type=\"hidden\">";
+			echo "<IMG src=\"$imagepath\">";
+		?>
+		</td><td>
 		<INPUT size="7" name="image"> (Please retype the number you see on the left after subtracting two)</TD></TR>
 		</TABLE>
 		<INPUT type="submit" value="Submit" name="submit"> 
@@ -515,12 +521,16 @@ if($_GET['cmd'] == "disapprove")
 else if($_GET['cmd'] == "disapprove-ok")
 {
 	if(!$_POST['comment'])
-		echo "<b>Please specify a comment</b>";
-	// show request again
+		{
+		echo "<b>Please specify a comment.</b>";
+		}
+	else if(imagecode($_POST['image']) != "".$_POST['cone']."")
+		{
+		echo "<b>Please type in the correct code.</b>";
+		}
 	else
 		{
 		requestchange($id, 'approved', 0, $_POST['comment']);
-		// search all entries which point to us with a replacedby record and request its removal or replace it by our own replacedby value
 		echo "<b>Disapproval requested.</b>";
 		}
 }
