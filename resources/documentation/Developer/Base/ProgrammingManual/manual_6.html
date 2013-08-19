@@ -1,13 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
-<!-- Created on September 29, 2011 by texi2html 1.82
-texi2html was written by: 
-            Lionel Cons <Lionel.Cons@cern.ch> (original author)
+<!-- Created on July, 26 2013 by texi2html 1.76 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people.
-Send bugs and suggestions to <texi2html-bug@nongnu.org>
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
 -->
 <head>
 <title>Objective-C GNUstep Base Programming Manual: 6. Exception Handling, Logging, and Assertions</title>
@@ -16,12 +17,11 @@ Send bugs and suggestions to <texi2html-bug@nongnu.org>
 <meta name="keywords" content="Objective-C GNUstep Base Programming Manual: 6. Exception Handling, Logging, and Assertions">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="texi2html 1.82">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Generator" content="texi2html 1.76">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
-blockquote.smallquotation {font-size: smaller}
 pre.display {font-family: serif}
 pre.format {font-family: serif}
 pre.menu-comment {font-family: serif}
@@ -30,7 +30,6 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
@@ -42,27 +41,24 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Exception-Handling"></a>
+<a name="SEC80"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="manual_5.html#Implementations" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exceptions" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="manual_5.html#SEC79" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC81" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual_5.html#Advanced-Messaging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual_5.html#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Exception-Handling_002c-Logging_002c-and-Assertions"></a>
-<h1 class="chapter">6. Exception Handling, Logging, and Assertions</h1>
-<a name="index-exception-facilities"></a>
-<a name="index-logging-facilities"></a>
-<a name="index-assertion-facilities"></a>
+<h1 class="chapter"> 6. Exception Handling, Logging, and Assertions </h1>
 
 <p>No matter how well a program is designed, if it has to interact with a user or
 other aspect of the outside world in any way, the code is bound to
@@ -93,30 +89,24 @@ include <code>Foundation/NSException.h</code>.
 </p>
 
 <hr size="6">
-<a name="Exceptions"></a>
+<a name="SEC81"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Exception-Handling" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Catching-and-Handling-Exceptions" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC80" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC82" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">6.1 Exceptions</h2>
-<a name="index-exceptions"></a>
-<a name="index-NSException-class"></a>
-<a name="index-NS_005fDURING-macro"></a>
-<a name="index-NS_005fHANDLER-macro"></a>
-<a name="index-NS_005fENDHANDLER-macro"></a>
-<a name="index-NSUncaughtExceptionHandler"></a>
+<h2 class="section"> 6.1 Exceptions </h2>
 
 <p>GNUstep exception handling provides for two things:
 </p>
@@ -134,24 +124,24 @@ make a better decision as to how to react.
 
 
 <hr size="6">
-<a name="Catching-and-Handling-Exceptions"></a>
+<a name="SEC82"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Exceptions" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Passing-Exceptions-Up-the-Call-Stack" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC81" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC83" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exceptions" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC81" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.1.1 Catching and Handling Exceptions</h3>
+<h3 class="subsection"> 6.1.1 Catching and Handling Exceptions </h3>
 
 <p>GNUstep exception handling is implemented through the macros <code>NS_DURING</code>,
 <code>NS_HANDLER</code>, and <code>NS_ENDHANDLER</code> in conjunction with the
@@ -168,7 +158,6 @@ NS_HANDLER
 NS_ENDHANDLER
   // back to normal code...
 </pre></td></tr></table>
-
 <p>For instance:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">- (DataTree *) readDataFile: (String *)filename
@@ -202,7 +191,6 @@ NS_ENDHANDLER
   return [[DataTree alloc] initFromParseTree: parse];
 }
 </pre></td></tr></table>
-
 <p>Here, a file is parsed, with the possibility of at least two different errors:
 not finding the file and the file being misformatted.  If a problem does
 occur, the code in the <code>NS_HANDLER</code> block is jumped to.  Information on
@@ -215,10 +203,10 @@ is returned.
 <p>If the file is found but the parse simply produces a nil parse tree, the
 <code>NS_VALUERETURN</code> macro is used to return nil to the
 <code>readDataFile:</code> caller.  Note that it is <i>not</i> allowed to simply write
-&ldquo;<code>return nil;</code>&rdquo; inside the NS_DURING block, owing to the nature of the
+&quot;<code>return nil;</code>&quot; inside the NS_DURING block, owing to the nature of the
 behind-the-scenes C constructs implementing the mechanism (the <code>setjmp()</code>
 and <code>longjmp()</code> functions).  If you are in a void function not returning
-a value, you may use simply &ldquo;<code>NS_VOIDRETURN</code>&rdquo; instead.
+a value, you may use simply &quot;<code>NS_VOIDRETURN</code>&quot; instead.
 </p>
 <p>Finally, notice
 that in the third case above the handler does not recognize the exception
@@ -227,24 +215,24 @@ the exception object.
 </p>
 
 <hr size="6">
-<a name="Passing-Exceptions-Up-the-Call-Stack"></a>
+<a name="SEC83"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Catching-and-Handling-Exceptions" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Where-do-Exceptions-Originate_003f" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC82" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC84" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exceptions" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC81" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.1.2 Passing Exceptions Up the Call Stack</h3>
+<h3 class="subsection"> 6.1.2 Passing Exceptions Up the Call Stack </h3>
 
 <p>If the caller of <code>-readDataFile:</code> has enclosed the call inside its own
 <code>NS_DURING</code> &hellip; <code>NS_HANDLER</code> &hellip; <code>NS_ENDHANDLER</code> block,
@@ -257,37 +245,36 @@ get a chance to react, but the exception would be passed up to the caller of
 <i>this</i> code.  This is repeated until the top control level is reached, and
 then as a last resort <code>NSUncaughtExceptionHandler</code> is called.  This is a
 built-in function that will print an error message to the console and exit
-the program immediately.  If you don&rsquo;t want this to happen it is possible to
+the program immediately.  If you don't want this to happen it is possible to
 override this function by calling
 <code>NSSetUncaughtExceptionHandler(fn_ptr)</code>.  Here, <code>fn_ptr</code> should be
 the name of a function with this signature (defined in <code>NSException.h</code>):
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">void NSUncaughtExceptionHandler(NSException *exception);
 </pre></td></tr></table>
-
 <p>One possibility would be to use this to save files or any other unsaved state
 before an application exits because of an unexpected error.
 </p>
 
 <hr size="6">
-<a name="Where-do-Exceptions-Originate_003f"></a>
+<a name="SEC84"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Passing-Exceptions-Up-the-Call-Stack" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Creating-Exceptions" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC83" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC85" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exceptions" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC81" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.1.3 Where do Exceptions Originate?</h3>
+<h3 class="subsection"> 6.1.3 Where do Exceptions Originate? </h3>
 
 <p>You may be wondering at this point where exceptions come from in the first
 place.  There are two main possibilities.  The first is from the Base library;
@@ -302,28 +289,28 @@ need to check <code>errno</code> yourself in standard C fashion.
 messaging.  If a message is sent to <code>nil</code>, it is silently ignored
 without error.  If a message is sent to an object that does not implement it,
 the <code>forwardInvocation</code> method is called instead, as discussed in
-<a href="manual_5.html#Advanced-Messaging">Advanced Messaging</a>.
+<a href="manual_5.html#SEC72">Advanced Messaging</a>.
 </p>
 
 <hr size="6">
-<a name="Creating-Exceptions"></a>
+<a name="SEC85"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Where-do-Exceptions-Originate_003f" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#When-to-Use-Exceptions" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC84" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC86" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exceptions" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC81" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.1.4 Creating Exceptions</h3>
+<h3 class="subsection"> 6.1.4 Creating Exceptions </h3>
 
 <p>If you want to explicitly create an exception for passing a particular error
 condition upwards to calling code, you may simply create an
@@ -336,7 +323,6 @@ condition upwards to calling code, you may simply create an
 [myException raise];
  // code in block after here is unreachable..
 </pre></td></tr></table>
-
 <p>The <code>userInfo</code> argument here is a <code>NSDictionary</code> of key-value pairs
 containing application-specific additional information about the error.  You
 may use this to pass arbitrary arguments within your application.  (Because
@@ -349,9 +335,8 @@ this is a convenience for developers, it should have been called
 <table><tr><td>&nbsp;</td><td><pre class="example">[NSException raise: @&quot;My Exception&quot;
             format: @&quot;Parse error occurred at line %d.&quot;,lineNumber];
 </pre></td></tr></table>
-
 <p>Here, the <code>format</code> argument takes a printf-like format analogous to
-<code>[NSString -stringWithFormat:]</code> discussed <a href="manual_2.html#Objective_002dC">Strings in GNUstep</a>.  In general, you should not use arbitrary names for
+<code>[NSString -stringWithFormat:]</code> discussed <a href="manual_2.html#SEC12">Strings in GNUstep</a>.  In general, you should not use arbitrary names for
 exceptions as shown here but constants that will be recognized throughout your
 application.  In fact, GNUstep defines some standard constants for this
 purpose in <code>NSException.h</code>:
@@ -402,28 +387,28 @@ purpose in <code>NSException.h</code>:
 
 
 <hr size="6">
-<a name="When-to-Use-Exceptions"></a>
+<a name="SEC86"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Creating-Exceptions" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Logging" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC85" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exceptions" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC81" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.1.5 When to Use Exceptions</h3>
+<h3 class="subsection"> 6.1.5 When to Use Exceptions </h3>
 
 <p>As might be evident from the <code>-readDataFile:</code> example above, if a
 certain exception can be anticipated, it can also be checked for, so you
-don&rsquo;t necessarily need the exception mechanism.  You may want to use
+don't necessarily need the exception mechanism.  You may want to use
 exceptions anyway if it simplifies the code paths.  It is also good practice
 to catch exceptions when it can be seen that an unexpected problem might
 arise, as any time file, network, or database operations are undertaken, for
@@ -436,72 +421,65 @@ the standard C mechanism of returning a value that will hopefully be
 recognized as invalid, and perhaps using an <code>errno</code>-like strategy where
 the caller knows to examine the value of a certain global variable.  This is
 inelegant, difficult to enforce, and leads to the need, with void methods, to
-document that &ldquo;the caller should check <code>errno</code> to see if any problems
-arose&rdquo;.
+document that &quot;the caller should check <code>errno</code> to see if any problems
+arose&quot;.
 </p>
 
 <hr size="6">
-<a name="Logging"></a>
+<a name="SEC87"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#When-to-Use-Exceptions" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#NSLog" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC86" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC88" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">6.2 Logging</h2>
-<a name="index-logging"></a>
-<a name="index-NSLog-function"></a>
-<a name="index-NSDebugLog-function"></a>
-<a name="index-NSWarnLog-function"></a>
-<a name="index-profiling-facilities"></a>
+<h2 class="section"> 6.2 Logging </h2>
 
 <p>GNUstep provides several distinct logging facilities best suited for different
 purposes.
 </p>
 <hr size="6">
-<a name="NSLog"></a>
+<a name="SEC88"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Logging" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#NSDebugLog_002c-NSWarnLog" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC87" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC89" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Logging" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.2.1 NSLog</h3>
+<h3 class="subsection"> 6.2.1 NSLog </h3>
 
 <p>The simplest of these is the <code>NSLog(NSString *format, ...)</code>  function.
 For example:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">NSLog(@&quot;Error occurred reading file at line %d.&quot;, lineNumber);
 </pre></td></tr></table>
-
 <p>This would produce, on the console (stderr) of the application calling it,
 something like:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">2004-05-08 22:46:14.294 SomeApp[15495] Error occurred reading file at line 20.
 </pre></td></tr></table>
-
 <p>The behavior of this function may be controlled in two ways.  First, the user
-default <code>GSLogSyslog</code> can be set to &ldquo;<code>YES</code>&rdquo;, which will send
+default <code>GSLogSyslog</code> can be set to &quot;<code>YES</code>&quot;, which will send
 these messages to the syslog on systems that support that (Unix variants).
 Second, the function GNUstep uses to write the log messages can be
 overridden, or the file descriptor the existing function writes to can be
@@ -518,9 +496,8 @@ _NSLog_printf_handler = &lt;functionName&gt;;
 
 [logLock unlock];
 </pre></td></tr></table>
-
 <p>Due to locking mechanisms used by the logging facility, you should protect
-these changes using the lock provided by <code>GSLogLock()</code> (see <a href="manual_8.html#Base-Library">Threads and Run Control</a> on locking).
+these changes using the lock provided by <code>GSLogLock()</code> (see <a href="manual_8.html#SEC117">Threads and Run Control</a> on locking).
 </p>
 <p>The <code>NSLog</code> function was defined in OpenStep and is also available in Mac
 OS X Cocoa, although the overrides described above may not be.  The next set of
@@ -528,24 +505,24 @@ logging facilities to be described are only available under GNUstep.
 </p>
 
 <hr size="6">
-<a name="NSDebugLog_002c-NSWarnLog"></a>
+<a name="SEC89"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#NSLog" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Last-Resorts_003a-GSPrintf-and-fprintf" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC88" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC90" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Logging" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.2.2 NSDebugLog, NSWarnLog</h3>
+<h3 class="subsection"> 6.2.2 NSDebugLog, NSWarnLog </h3>
 
 <p>The facilities provided by the <code>NSDebugLog</code> and <code>NSWarnLog</code> families
 of functions support source code method name and line-number reporting and
@@ -564,15 +541,14 @@ like this:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">NSDebugLLog(@&quot;ParseError&quot;, @&quot;Error parsing file at line %d.&quot;, lineNumber);
 </pre></td></tr></table>
-
-<p>Here, the first argument to <code>NSDebugLog</code>, &ldquo;<code>ParseError</code>&rdquo;, is a
+<p>Here, the first argument to <code>NSDebugLog</code>, &quot;<code>ParseError</code>&quot;, is a
 string <i>key</i> that specifies the category of message.  The message will only
 actually be logged (through a call to <code>NSLog()</code>) if this key is in the
 set of active debug categories maintained by the <code>NSProcessInfo</code> object
 for the application.  Normally, this list is empty.  There are
 three ways for string keys to make it onto this list:
 </p>
-<ul>
+<ul class="toc">
 <li>
 Provide one or more startup arguments of the form <code>--GNU-Debug=&lt;key&gt;</code> to
 the program.  These are processed by GNUstep and removed from the argument
@@ -587,12 +563,12 @@ called before this will take effect (to read in the defaults initially).
 </li></ul>
 
 <p>While any string can be used as a debug key, conventionally three types of
-keys are commonly used.  The first type expresses a &ldquo;level of importance&rdquo;
-for the message, for example, &ldquo;Debug&rdquo;, &ldquo;Info&rdquo;, &ldquo;Warn&rdquo;, or &ldquo;Error&rdquo;.
+keys are commonly used.  The first type expresses a &quot;level of importance&quot;
+for the message, for example, &quot;Debug&quot;, &quot;Info&quot;, &quot;Warn&quot;, or &quot;Error&quot;.
 The second type of key that is used is class name.  The GNUstep Base classes
 used this approach.  For example if you want to activate debug messages for
-the <code>NSBundle</code>&rdquo; class, simply add &rsquo;<code>NSBundle</code>&rsquo; to the list of keys.
-The third category of key is the default key, &rsquo;<code>dflt</code>&rsquo;.  This key can be
+the <code>NSBundle</code>&quot; class, simply add '<code>NSBundle</code>' to the list of keys.
+The third category of key is the default key, '<code>dflt</code>'.  This key can be
 used whenever the specificity of the other key types is not required.  Note
 that it still needs to be turned on like any other logging key before
 messasges will actually be logged.
@@ -605,21 +581,21 @@ behaviors:
 <dd><p>Basic debug log function already discussed.
 </p></dd>
 <dt> <code>NSDebugLog(format, args,...)</code></dt>
-<dd><p>Equivalent to <code>NSDebugLLog</code> with key &ldquo;dflt&rdquo; (for default).
+<dd><p>Equivalent to <code>NSDebugLLog</code> with key &quot;dflt&quot; (for default).
 </p></dd>
 <dt> <code>NSDebugMLLog(level, format, args,...)</code></dt>
 <dd><p>Equivalent to <code>NSDebugLLog</code> but includes information on which method the
 logging call was made from in the message.
 </p></dd>
 <dt> <code>NSDebugMLog(format, args,...)</code></dt>
-<dd><p>Same, but use &rsquo;dflt&rsquo; log key.
+<dd><p>Same, but use 'dflt' log key.
 </p></dd>
 <dt> <code>NSDebugFLLog(level, format, args,...)</code></dt>
 <dd><p>As <code>NSDebugMLLog</code> but includes information on a function rather than a
 method.
 </p></dd>
 <dt> <code>NSDebugFLog(format, args,...)</code></dt>
-<dd><p>As previous but using &rsquo;dflt&rsquo; log key.
+<dd><p>As previous but using 'dflt' log key.
 </p></dd>
 </dl>
 
@@ -633,8 +609,8 @@ test.  Thus, they can be left in production code.
 <code>NSDebug</code> functions except that they do not take a key.  Instead, warning
 messages are shown by default unless they are disabled at compile time by
 setting <code>'warn = no'</code> or undefining <code>GSWARN</code>, or at runtime by
-<i>adding</i> &ldquo;<code>NoWarn</code>&rdquo; to <code>[NSProcessInfo debugSet]</code>.
-(Command-line argument <code>--GNU-Debug=NoWarn</code> and adding &ldquo;NoWarn&rdquo; to the
+<i>adding</i> &quot;<code>NoWarn</code>&quot; to <code>[NSProcessInfo debugSet]</code>.
+(Command-line argument <code>--GNU-Debug=NoWarn</code> and adding &quot;NoWarn&quot; to the
 <code>GNU-Debug</code> user default will also work.)  <code>NSWarnLog()</code>,
 <code>NSWarnLLog()</code>, <code>NSWarnMLLog</code>, <code>NSWarnMLog</code>,
 <code>NSWarnFLLog</code>, and <code>NSWarnFLog</code> are all similar to their
@@ -642,24 +618,24 @@ setting <code>'warn = no'</code> or undefining <code>GSWARN</code>, or at runtim
 </p>
 
 <hr size="6">
-<a name="Last-Resorts_003a-GSPrintf-and-fprintf"></a>
+<a name="SEC90"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#NSDebugLog_002c-NSWarnLog" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Profiling-Facilities" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC89" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC91" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Logging" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.2.3 Last Resorts: GSPrintf and fprintf</h3>
+<h3 class="subsection"> 6.2.3 Last Resorts: GSPrintf and fprintf </h3>
 
 <p>Both the <code>NSDebugLog</code> and the simpler <code>NSLog</code> facilities utilize a
 fair amount of machinery - they provide locking and timestamping for example.
@@ -671,69 +647,64 @@ writes it to a given file:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">GSPrintf(stderr, &quot;Error at line %d.&quot;, n);
 </pre></td></tr></table>
-
 <p>If even this might be too much (it uses the <code>NSString</code> and <code>NSData</code>
 classes), you can always use the C function <code>fprintf()</code>:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">fprintf(stderr, &quot;Error at line %d.&quot;, n);
 </pre></td></tr></table>
-
 <p>Except under extreme circumstances, the preferred logging approach is either
 <code>NSDebugLog</code>/<code>NSWarnLog</code>, due the the compile- and run-time
 configurability they offer, or <code>NSLog</code>.
 </p>
 
 <hr size="6">
-<a name="Profiling-Facilities"></a>
+<a name="SEC91"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Last-Resorts_003a-GSPrintf-and-fprintf" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Assertions" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC90" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC92" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Logging" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC87" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.2.4 Profiling Facilities</h3>
+<h3 class="subsection"> 6.2.4 Profiling Facilities </h3>
 
 <p>GNUstep supports optional programmatic access to object allocation
 statistics.  To initiate collection of statistics, call the function
 <code>GSDebugAllocationActive(BOOL active)</code> with an argument of
-&ldquo;<code>YES</code>&rdquo;.  To turn it off, call it with &ldquo;<code>NO</code>&rdquo;.  The overhead
+&quot;<code>YES</code>&quot;.  To turn it off, call it with &quot;<code>NO</code>&quot;.  The overhead
 of statistics collection is only incurred when it is active.  To access the
 statistics, use the set of <code>GSDebugAllocation...()</code> functions defined in
 <code>NSDebug.h</code>.
 </p>
 
 <hr size="6">
-<a name="Assertions"></a>
+<a name="SEC92"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Profiling-Facilities" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Assertions-and-their-Handling" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC91" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC93" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">6.3 Assertions</h2>
-<a name="index-assertions"></a>
-<a name="index-NSAssert-macro"></a>
-<a name="index-NSAssertionHandler-class"></a>
+<h2 class="section"> 6.3 Assertions </h2>
 
 <p>Assertions provide a way for the developer to state that certain conditions
 must hold at a certain point in source code execution.  If the conditions do
@@ -743,30 +714,30 @@ illegal inputs that may lead to worse problems later.
 </p>
 <p>The use of assertions is generally accepted to be an efficient means of
 improving code quality, for, like unit testing, they can help rapidly uncover
-a developer&rsquo;s implicit or mistaken assumptions about program behavior.
+a developer's implicit or mistaken assumptions about program behavior.
 However this is only true to the extent that you carefully design the nature
 and placement of your assertions.  There is an excellent discussion of this
-issue bundled in the documentation with Sun&rsquo;s Java distribution.
+issue bundled in the documentation with Sun's Java distribution.
 </p>
 <hr size="6">
-<a name="Assertions-and-their-Handling"></a>
+<a name="SEC93"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Assertions" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Custom-Assertion-Handling" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC92" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC94" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Assertions" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC92" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.3.1 Assertions and their Handling</h3>
+<h3 class="subsection"> 6.3.1 Assertions and their Handling </h3>
 
 <p>Assertions allow the developer to establish that certain conditions hold
 before undertaking an operation.  In GNUstep, the standard means to make an
@@ -775,13 +746,11 @@ general form of these macros is:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">NSAssert(&lt;boolean test&gt;, &lt;formatString&gt;, &lt;argumentsToFormat&gt;);
 </pre></td></tr></table>
-
 <p>For instance:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">NSAssert1(x == 10, &quot;X should have been 10, but it was %d.&quot;, x);
 </pre></td></tr></table>
-
-<p>If the test &rsquo;<code>x == 10</code>&rsquo; evaluates to <code>true</code>, <code>NSLog()</code> is
+<p>If the test '<code>x == 10</code>' evaluates to <code>true</code>, <code>NSLog()</code> is
 called with information on the method and line number of the failure, together
 with the format string and argument.  The resulting console message will look
 like this:
@@ -789,9 +758,8 @@ like this:
 <table><tr><td>&nbsp;</td><td><pre class="example">Foo.m:126  Assertion failed in Foo(instance), method Bar.  X should have been
 10, but it was 5.
 </pre></td></tr></table>
-
 <p>After this is logged, an exception is raised of type
-&rsquo;<code>NSInternalInconsistencyException</code>&rsquo;, with this string as its
+'<code>NSInternalInconsistencyException</code>', with this string as its
 description.
 </p>
 <p>In order to provide the method and line number information, the
@@ -810,24 +778,24 @@ NS_BLOCK_ASSERTIONS</code> before you include <code>NSException.h</code>.
 </p>
 
 <hr size="6">
-<a name="Custom-Assertion-Handling"></a>
+<a name="SEC94"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Assertions-and-their-Handling" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Comparison-with-Java" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC93" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC95" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Assertions" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC92" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection">6.3.2 Custom Assertion Handling</h3>
+<h3 class="subsection"> 6.3.2 Custom Assertion Handling </h3>
 
 <p>The aforementioned behavior of logging an assertion failure and raising an
 exception can be overridden if desired.  You need to create a subclass of
@@ -837,47 +805,43 @@ you wish the handler to be used.  This is done by calling:
 <table><tr><td>&nbsp;</td><td><pre class="example">[[[NSThread currentThread] threadDictionary]
     setObject:myAssertionHandlerInstance forKey:N"SAssertionHandler&quot;];
 </pre></td></tr></table>
-
-<p>See <a href="manual_8.html#Base-Library">Threads and Run Control</a> for more information on what
+<p>See <a href="manual_8.html#SEC117">Threads and Run Control</a> for more information on what
 this is doing.
 </p>
 
 <hr size="6">
-<a name="Comparison-with-Java"></a>
+<a name="SEC95"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Custom-Assertion-Handling" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC94" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#Exception-Handling" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#SEC80" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section">6.4 Comparison with Java</h2>
-<a name="index-exception-handling_002c-compared-with-Java"></a>
-<a name="index-logging_002c-compared-with-Java"></a>
-<a name="index-assertion-handling_002c-compared-with-Java"></a>
+<h2 class="section"> 6.4 Comparison with Java </h2>
 
-<p>GNUstep&rsquo;s exception handling facilities are, modulo syntax, equivalent to
+<p>GNUstep's exception handling facilities are, modulo syntax, equivalent to
 those in Java in all but three respects:
 </p>
-<ul>
+<ul class="toc">
 <li>
-There is no provision for a &ldquo;finally&rdquo; block executed after either the main
+There is no provision for a &quot;finally&quot; block executed after either the main
 code or the exception handler code.
 </li><li>
 You cannot declare the exception types that could be raised by a method in its
 signature.  In Java this is possible and the compiler uses this to enforce
 that a caller should catch exceptions if they might be generated by a method.
 </li><li>
-Correspondingly, there is no support in the <a href="manual_9.html#GSDoc">documentation system</a>
+Correspondingly, there is no support in the <a href="manual_9.html#SEC145">documentation system</a>
 for documenting exceptions potentially raised by a method.  (This will
 hopefully be rectified soon.)
 </li></ul>
@@ -892,23 +856,24 @@ Java/JDK 1.4 since you can override the assertion handler.
 
 
 
+
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#Exception-Handling" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#SEC80" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated by <em>root</em> on <em>September 29, 2011</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+  This document was generated by <em>Richard Frith-Macdonald</em> on <em>July, 26 2013</em> using <a href="http://texi2html.cvshome.org/"><em>texi2html 1.76</em></a>.
  </font>
  <br>
 

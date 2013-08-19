@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 33337</p>
-    <p><b>Date:</b> 2011-06-18 01:09:28 -0600 (Sat, 18 Jun 2011)</p>
+    <p><b>Version:</b> 36535</p>
+    <p><b>Date:</b> 2013-04-15 07:04:40 +0100 (Mon, 15 Apr 2013)</p>
     <p><b>Copyright:</b> (C) 1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -74,9 +74,9 @@
     </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/NSURL+GNUstepBase.html#method$NSURL(GNUstepBase)-fullPath">-fullPath</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSPasteboard.html#method$NSURL(NSPasteboard)+URLFromPasteboard$">+URLFromPasteboard:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSPasteboard.html#method$NSURL(NSPasteboard)-writeToPasteboard$">-writeToPasteboard:</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSURL+GNUstepBase.html#method$NSURL(GNUstepBase)-fullPath">-fullPath</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSURL+GNUstepBase.html#method$NSURL(GNUstepBase)-pathWithEscapes">-pathWithEscapes</a></li>
+      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSURL+GNUstepBase.html#method$NSURL(GNUstepBaseAdditions)-initWithScheme$user$password$host$port$fullPath$parameterString$query$fragment$">-initWithScheme:user:password:host:port:fullPath:parameterString:query:fragment:</a></li>
       <li><a rel="gsdoc" href="NSURL.html#method$NSURL+URLWithString$">+URLWithString:</a></li>
       <li><a rel="gsdoc" href="NSURL.html#method$NSURL+URLWithString$relativeToURL$">+URLWithString:relativeToURL:</a></li>
       <li><a rel="gsdoc" href="NSURL.html#method$NSURL+fileURLWithPath$">+fileURLWithPath:</a></li>
@@ -205,7 +205,7 @@
       
             Returns a URL formed by adding a path component to
             the path of the receiver. <br /> See
-            <a rel="gsdoc" href="NSString.html#method$NSString-stringByAppendingPathComponent$">[NSString -stringByAppendingPathComponent:]</a>
+            [NSString -stringByAppendingPathComponent:]
 .
           
     </div>
@@ -221,7 +221,7 @@
       
             Returns a URL formed by adding a path extension to
             the path of the receiver. <br /> See
-            <a rel="gsdoc" href="NSString.html#method$NSString-stringByAppendingPathExtension$">[NSString -stringByAppendingPathExtension:]</a>
+            [NSString -stringByAppendingPathExtension:]
 .
           
     </div>
@@ -237,7 +237,7 @@
       
             Returns a URL formed by removing a path component
             from the path of the receiver. <br /> See
-            <a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingLastPathComponent">[NSString -stringByDeletingLastPathComponent]</a>
+            [NSString -stringByDeletingLastPathComponent]
 .
           
     </div>
@@ -253,7 +253,7 @@
       
             Returns a URL formed by removing an extension from
             the path of the receiver. <br /> See
-            <a rel="gsdoc" href="NSString.html#method$NSString-stringByDeletingPathExtension">[NSString -stringByDeletingPathExtension]</a>
+            [NSString -stringByDeletingPathExtension]
 .
           
     </div>
@@ -269,7 +269,7 @@
       
             Returns self unless the receiver is a file URL, in
             which case it returns a URL formed by calling
-            <a rel="gsdoc" href="NSString.html#method$NSString-stringByResolvingSymlinksInPath">[NSString -stringByResolvingSymlinksInPath]</a>
+            [NSString -stringByResolvingSymlinksInPath]
 .
           
     </div>
@@ -285,7 +285,7 @@
       
             Returns self unless the receiver is a file URL, in
             which case it returns a URL formed by calling
-            <a rel="gsdoc" href="NSString.html#method$NSString-stringByStandardizingPath">[NSString -stringByStandardizingPath]</a>
+            [NSString -stringByStandardizingPath]
 .
           
     </div>
@@ -414,10 +414,12 @@
       
             Initialise as a file URL with the specified path
             (which must be a valid path on the local
-            filesystem). <br /> Converts relative paths to
-            absolute ones. <br /> Appends a trailing slash to
-            the path when necessary if it specifies a directory.
-            <br /> Calls
+            filesystem). <br /> Raises
+            NSInvalidArgumentException if
+            <var>aPath</var> is <code>nil</code>. <br /> Converts
+            relative paths to absolute ones. <br /> Appends a
+            trailing slash to the path when necessary if it
+            specifies a directory. <br /> Calls
             <a rel="gsdoc" href="#method$NSURL-initWithScheme$host$path$">
               -initWithScheme:host:path:
             </a>
@@ -436,10 +438,12 @@
       
             Initialise as a file URL with the specified path
             (which must be a valid path on the local
-            filesystem). <br /> Converts relative paths to
-            absolute ones. <br /> Appends a trailing slash to
-            the path when necessary if it specifies a directory.
-            <br /> Calls
+            filesystem). <br /> Raises
+            NSInvalidArgumentException if
+            <var>aPath</var> is <code>nil</code>. <br /> Converts
+            relative paths to absolute ones. <br /> Appends a
+            trailing slash to the path when necessary if it
+            specifies a directory. <br /> Calls
             <a rel="gsdoc" href="#method$NSURL-initWithScheme$host$path$">
               -initWithScheme:host:path:
             </a>
@@ -666,9 +670,9 @@ This is a designated initialiser for the class.<br />
       
             Returns thepath components of the receiver. <br />
             See
-            <a rel="gsdoc" href="NSString.html#method$NSString-pathComponents">
+            
               [NSString -pathComponents]
-            </a>
+            
 
             .
           
@@ -686,9 +690,9 @@ This is a designated initialiser for the class.<br />
             Returns the file extension (text after the
             rightmost dot in the path) of the receiver.
             <br /> see
-            <a rel="gsdoc" href="NSString.html#method$NSString-pathExtension">
+            
               [NSString -pathExtension]
-            </a>
+            
 
             .
           

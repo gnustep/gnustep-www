@@ -19,8 +19,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 33143</p>
-    <p><b>Date:</b> 2011-05-27 05:48:44 -0600 (Fri, 27 May 2011)</p>
+    <p><b>Version:</b> 36862</p>
+    <p><b>Date:</b> 2013-07-10 08:09:03 +0100 (Wed, 10 Jul 2013)</p>
     <p><b>Copyright:</b> (C) 1996-1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -100,7 +100,7 @@
 
               or +new), however unless you are using the AppKit and
               the
-              <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/Gui/Reference/NSApplication.html#class$NSApplication">NSApplication</a>
+              NSApplication
 
                 class, the run loop will not be started unless
                 you explicitly send it a
@@ -325,7 +325,8 @@
 <br />
     <div class="desc">
       
-          <em>Description forthcoming.</em>
+          This informal protocol defiens optional methods of the
+          run loop watcher.
         
     </div>
     <b>Method summary</b>
@@ -341,7 +342,11 @@
 <br />
     <div class="desc">
       
-            <em>Description forthcoming.</em>
+            Called by the run loop to find out whether it needs
+            to block to wait for events for this watcher. The
+            <var>shouldTrigger</var> flag is used to inform the
+            run loop if tit should immediately trigger a received
+            event for the watcher.
           
     </div>
     <hr width="25%" align="left" />
@@ -364,7 +369,14 @@
 <br />
     <div class="desc">
       
-          <em>Description forthcoming.</em>
+          The run loop watcher API was originally intended to
+          perform two tasks... 1. provide the most efficient
+          API reasonably possible to integrate unix networking code
+          into the runloop. 2. provide a standard mechanism to
+          allow people to contribute code to add new I/O
+          mechanisms to GNUstep (OpenStep didn&apos;t allow
+          this). It succeeded in 1, and partially succeeded in 2
+          (adding support for the win32 API).
         
     </div>
     <b>Method summary</b>
@@ -381,7 +393,18 @@
 <br />
     <div class="desc">
       
-            <em>Description forthcoming.</em>
+            Adds a <var>watcher</var> to the receiver... the
+            <var>watcher</var> is used to monitor events of the
+            specified <var>type</var> which are associted
+            with the event handle <var>data</var> and it operates
+            in the specified run loop modes. <br /> The
+            <var>watcher</var> remains in place until a
+            corresponding call to
+            <a rel="gsdoc" href="#method$NSRunLoop(GNUstepExtensions)-removeEvent$type$forMode$all$">
+              -removeEvent:type:forMode:all:
+            </a>
+
+            is made.
           
     </div>
     <hr width="25%" align="left" />
@@ -394,7 +417,17 @@
 <br />
     <div class="desc">
       
-            <em>Description forthcoming.</em>
+            Removes a watcher from the receiver... the watcher
+            must have been previously added using
+            <a rel="gsdoc" href="#method$NSRunLoop(GNUstepExtensions)-addEvent$type$watcher$forMode$">
+              -addEvent:type:watcher:forMode:
+            </a>
+
+            <br /> This method mirrors exactly one addition of a
+            watcher unless <var>removeAll</var> is
+            <code>YES</code>, in which case it removes all
+            additions of watchers matching the other
+            paramters.
           
     </div>
     <hr width="25%" align="left" />
@@ -461,9 +494,9 @@
             up match those supplied. <br /> Matching of the
             <var>argument</var> may be either by pointer equality
             or by use of the
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-isEqual$">
+            
               [NSObject -isEqual:]
-            </a>
+            
 
             method.
           
@@ -554,7 +587,11 @@
 <br />
     <div class="desc">
       
-          <em>Description forthcoming.</em>
+          This protocol defines the mandatory interface a run loop
+          watcher must provide in order for it to be notified
+          of events occurring in the loop it is watching. <br />
+          Optional methods are documented in the
+          NSObject(RunLoopEvents) category.
         
     </div>
     <b>Method summary</b>
@@ -570,7 +607,22 @@
 <br />
     <div class="desc">
       
-            <em>Description forthcoming.</em>
+            This is the message sent back to a watcher when an
+            event is observed by the run loop. <br /> The &apos;data&apos;,
+            &apos;type&apos; and &apos;mode&apos; arguments are the same as the
+            arguments passed to the
+            <a rel="gsdoc" href="#method$NSRunLoop(GNUstepExtensions)-addEvent$type$watcher$forMode$">
+              -addEvent:type:watcher:forMode:
+            </a>
+
+            method. <br /> The &apos;extra&apos; argument varies. For an
+            ET_TRIGGER event, it is the same as the &apos;data&apos;
+            argument. For other events on unix it is the file
+            descriptor associated with the event (which may
+            be the same as the &apos;data&apos; argument, but is not in the
+            case of ET_RPORT). <br /> For windows it will be the
+            handle or the windows message assciated with the
+            event.
           
     </div>
     <hr width="25%" align="left" />

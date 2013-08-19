@@ -22,8 +22,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 33660</p>
-    <p><b>Date:</b> 2011-07-31 09:31:39 -0600 (Sun, 31 Jul 2011)</p>
+    <p><b>Version:</b> 36647</p>
+    <p><b>Date:</b> 2013-05-17 19:38:19 +0100 (Fri, 17 May 2013)</p>
     <p><b>Copyright:</b> (C) 
       1995, 1996, 1997, 1998 Free Software Foundation, Inc.
     </p>
@@ -81,6 +81,7 @@
       <li><a rel="gsdoc" href="NSDate.html#method$NSDate+timeIntervalSinceReferenceDate">+timeIntervalSinceReferenceDate</a></li>
       <li><a rel="gsdoc" href="NSDate.html#method$NSDate-addTimeInterval$">-addTimeInterval:</a></li>
       <li><a rel="gsdoc" href="NSDate.html#method$NSDate-compare$">-compare:</a></li>
+      <li><a rel="gsdoc" href="NSDate.html#method$NSDate-dateByAddingTimeInterval$">-dateByAddingTimeInterval:</a></li>
       <li><a rel="gsdoc" href="NSDate.html#method$NSDate-dateWithCalendarFormat$timeZone$">-dateWithCalendarFormat:timeZone:</a></li>
       <li><a rel="gsdoc" href="NSDate.html#method$NSDate-description">-description</a></li>
       <li><a rel="gsdoc" href="NSDate.html#method$NSDate-descriptionWithCalendarFormat$timeZone$locale$">-descriptionWithCalendarFormat:timeZone:locale:</a></li>
@@ -341,9 +342,7 @@
 <br />
     <div class="desc">
       
-            Returns an autoreleased NSDate instance whose value
-            if offset from that of the receiver by
-            <var>seconds</var>.
+            <em>Description forthcoming.</em>
           
     </div>
     <hr width="25%" align="left" />
@@ -361,6 +360,21 @@
             NSOrderedAscending if the receiver is
             earlier than <var>otherDate</var>, Otherwise,
             returns NSOrderedSame.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSDate-dateByAddingTimeInterval$">dateByAddingTimeInterval:&nbsp;</a></h3>
+    - (id) <b>dateByAddingTimeInterval:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSTimeInterval">NSTimeInterval</a>)ti;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.6.0</div>
+<br />
+    <div class="desc">
+      
+            Returns an autoreleased NSDate instance whose value
+            is offset from that of the receiver by the specified
+            interval.
           
     </div>
     <hr width="25%" align="left" />
@@ -582,7 +596,10 @@ This is a designated initialiser for the class.<br />
             value and that of the <var>otherDate</var> argument.
             If <var>otherDate</var> is earlier than the receiver,
             the returned value will be positive, if it is later it
-            will be negative.
+            will be negative. <br /> For current (2011) OSX
+            compatibility, this method returns NaN if
+            <var>otherDate</var> is <code>nil</code>... do not
+            write code depending on that behavior.
           
     </div>
     <hr width="25%" align="left" />

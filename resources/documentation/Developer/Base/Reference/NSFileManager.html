@@ -25,8 +25,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 33143</p>
-    <p><b>Date:</b> 2011-05-27 05:48:44 -0600 (Fri, 27 May 2011)</p>
+    <p><b>Version:</b> 36810</p>
+    <p><b>Date:</b> 2013-07-03 07:46:41 +0100 (Wed, 03 Jul 2013)</p>
     <p><b>Copyright:</b> (C) 1997,1999-2005 Free Software Foundation, Inc.</p>
 
         <div>
@@ -442,10 +442,13 @@
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-componentsToDisplayForPath$">-componentsToDisplayForPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-contentsAtPath$">-contentsAtPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-contentsEqualAtPath$andPath$">-contentsEqualAtPath:andPath:</a></li>
+    <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-contentsOfDirectoryAtPath$error$">-contentsOfDirectoryAtPath:error:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-copyItemAtPath$toPath$error$">-copyItemAtPath:toPath:error:</a></li>
+    <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-copyItemAtURL$toURL$error$">-copyItemAtURL:toURL:error:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-copyPath$toPath$handler$">-copyPath:toPath:handler:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-createDirectoryAtPath$attributes$">-createDirectoryAtPath:attributes:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-createDirectoryAtPath$withIntermediateDirectories$attributes$error$">-createDirectoryAtPath:withIntermediateDirectories:attributes:error:</a></li>
+    <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-createDirectoryAtURL$withIntermediateDirectories$attributes$error$">-createDirectoryAtURL:withIntermediateDirectories:attributes:error:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-createFileAtPath$contents$attributes$">-createFileAtPath:contents:attributes:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-createSymbolicLinkAtPath$pathContent$">-createSymbolicLinkAtPath:pathContent:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-currentDirectoryPath">-currentDirectoryPath</a></li>
@@ -463,9 +466,12 @@
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-isWritableFileAtPath$">-isWritableFileAtPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-linkPath$toPath$handler$">-linkPath:toPath:handler:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-moveItemAtPath$toPath$error$">-moveItemAtPath:toPath:error:</a></li>
+    <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-moveItemAtURL$toURL$error$">-moveItemAtURL:toURL:error:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-movePath$toPath$handler$">-movePath:toPath:handler:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-pathContentOfSymbolicLinkAtPath$">-pathContentOfSymbolicLinkAtPath:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-removeFileAtPath$handler$">-removeFileAtPath:handler:</a></li>
+    <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-removeItemAtPath$error$">-removeItemAtPath:error:</a></li>
+    <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-removeItemAtURL$error$">-removeItemAtURL:error:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-stringWithFileSystemRepresentation$length$">-stringWithFileSystemRepresentation:length:</a></li>
     <li><a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-subpathsAtPath$">-subpathsAtPath:</a></li>
   </ul>
@@ -488,7 +494,7 @@
   <h3><a name="method$NSFileManager-attributesOfItemAtPath$error$">attributesOfItemAtPath:&nbsp;error:&nbsp;</a></h3>
   - (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>attributesOfItemAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
   <div class="availability">
-<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<b>Availability:</b> MacOS-X 10.5.0</div>
 <br />
   <div class="desc">
     
@@ -776,9 +782,9 @@
             should work with two arrays... one returned by this
             method (for display to the user), and a parallel one
             returned by
-            <a rel="gsdoc" href="NSString.html#method$NSString-pathComponents">
+            
               [NSString -pathComponents]
-            </a>
+            
 
             (for <var>path</var> manipulation).
           
@@ -823,14 +829,59 @@
   <hr width="25%" align="left" />
 </div>
 <div class="method">
-  <h3><a name="method$NSFileManager-copyItemAtPath$toPath$error$">copyItemAtPath:&nbsp;toPath:&nbsp;error:&nbsp;</a></h3>
-  - (BOOL) <b>copyItemAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)src<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)dst<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <h3><a name="method$NSFileManager-contentsOfDirectoryAtPath$error$">contentsOfDirectoryAtPath:&nbsp;error:&nbsp;</a></h3>
+  - (<a rel="gsdoc" href="NSArray.html#class$NSArray">NSArray</a>*) <b>contentsOfDirectoryAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
   <div class="availability">
-<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<b>Availability:</b> MacOS-X 10.5.0</div>
 <br />
   <div class="desc">
     
-            <em>Description forthcoming.</em>
+            Returns an array of the contents of the specified
+            directory. <br /> The listing does
+            <strong>not</strong> recursively list
+            subdirectories. <br /> The special files
+            &apos;.&apos; and &apos;..&apos; are not listed. <br /> Indicates an
+            <var>error</var> by returning <code>nil</code> (eg.
+            if <var>path</var> is not a directory or it can&apos;t be
+            read for some reason).
+          
+  </div>
+  <hr width="25%" align="left" />
+</div>
+<div class="method">
+  <h3><a name="method$NSFileManager-copyItemAtPath$toPath$error$">copyItemAtPath:&nbsp;toPath:&nbsp;error:&nbsp;</a></h3>
+  - (BOOL) <b>copyItemAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)src<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)dst<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <div class="availability">
+<b>Availability:</b> MacOS-X 10.5.0</div>
+<br />
+  <div class="desc">
+    
+            Copies the item specified by the <var>src</var> path
+            to the location specified by the <var>dst</var> path. If
+            the <var>src</var> is a directory, it is copied
+            recursively with all of its contents. <br />
+            Errors are returned in the <var>error</var>
+            variable. Returns <code>YES</code> on success,
+            <code>NO</code> otherwise.
+          
+  </div>
+  <hr width="25%" align="left" />
+</div>
+<div class="method">
+  <h3><a name="method$NSFileManager-copyItemAtURL$toURL$error$">copyItemAtURL:&nbsp;toURL:&nbsp;error:&nbsp;</a></h3>
+  - (BOOL) <b>copyItemAtURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)src<b> toURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)dst<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <div class="availability">
+<b>Availability:</b> MacOS-X 10.5.0</div>
+<br />
+  <div class="desc">
+    
+            Copies the a file or directory specified by the
+            <var>src</var> URL to the location specified by the
+            <var>dst</var> URL. If the <var>src</var> is a
+            directory, it is copied recursively with all of
+            its contents. <br /> Errors are returned in the
+            <var>error</var> variable. Returns <code>YES</code>
+            on success, <code>NO</code> otherwise.
           
   </div>
   <hr width="25%" align="left" />
@@ -862,10 +913,11 @@
   <div class="desc">
     
             Creates a new directory, and sets its
-            <var>attributes</var> as specified. <br /> Creates
-            other directories in the <var>path</var> as
-            necessary. <br /> Returns <code>YES</code> on
-            success, <code>NO</code> on failure.
+            <var>attributes</var> as specified. <br /> Fails if
+            directories in the <var>path</var> are missing.
+            <br /> Returns <code>YES</code> if the directory was
+            created (or already exists), <code>NO</code>
+            otherwise.
           
   </div>
   <hr width="25%" align="left" />
@@ -879,15 +931,36 @@
   <div class="desc">
     
             Creates a new directory and all intermediate
-            directories if <var>flag</var> is
-            <code>YES</code>, creates only the last directory in
+            directories. if <var>flag</var> is
+            <code>YES</code>. Creates only the last directory in
             the <var>path</var> if <var>flag</var> is
-            <code>NO</code>. The directory is created with the
-            <var>attributes</var> specified in
+            <code>NO</code>. <br /> The directory is created
+            with the <var>attributes</var> specified in
             <var>attributes</var> and any <var>error</var> is
             returned in <var>error</var>. <br /> returns
             <code>YES</code> on success, <code>NO</code> on
             failure.
+          
+  </div>
+  <hr width="25%" align="left" />
+</div>
+<div class="method">
+  <h3><a name="method$NSFileManager-createDirectoryAtURL$withIntermediateDirectories$attributes$error$">createDirectoryAtURL:&nbsp;withIntermediateDirectories:&nbsp;attributes:&nbsp;error:&nbsp;</a></h3>
+  - (BOOL) <b>createDirectoryAtURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)url<b> withIntermediateDirectories:</b> (BOOL)flag<b> attributes:</b> (<a rel="gsdoc" href="NSDictionary.html#class$NSDictionary">NSDictionary</a>*)attributes<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <div class="availability">
+<b>Availability:</b> MacOS-X 10.0.0</div>
+<br />
+  <div class="desc">
+    
+            Creates a new directory and all intermediate
+            directories in the file URL if <var>flag</var>
+            is <code>YES</code>. Creates only the last directory in
+            the URL if <var>flag</var> is <code>NO</code>. <br />
+            The directory is created with the <var>attributes</var>
+            specified in <var>attributes</var> and any
+            <var>error</var> is returned in <var>error</var>.
+            <br /> returns <code>YES</code> on success,
+            <code>NO</code> on failure.
           
   </div>
   <hr width="25%" align="left" />
@@ -973,7 +1046,7 @@
             method may return filenames with the extension
             removed. <br /> The default operation is to return
             the result of calling
-            <a rel="gsdoc" href="NSString.html#method$NSString-lastPathComponent">[NSString -lastPathComponent]</a>
+            [NSString -lastPathComponent]
  on the <var>path</var>.
           
   </div>
@@ -1490,11 +1563,32 @@
   <h3><a name="method$NSFileManager-moveItemAtPath$toPath$error$">moveItemAtPath:&nbsp;toPath:&nbsp;error:&nbsp;</a></h3>
   - (BOOL) <b>moveItemAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)src<b> toPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)dst<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
   <div class="availability">
-<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<b>Availability:</b> MacOS-X 10.5.0</div>
 <br />
   <div class="desc">
     
-            <em>Description forthcoming.</em>
+            Moves a file or directory specified by <var>src</var>
+            to its destination specified by <var>dst</var>, errors
+            are returned in <var>error</var>. <br /> Returns
+            <code>YES</code> on success, <code>NO</code>
+            otherwise.
+          
+  </div>
+  <hr width="25%" align="left" />
+</div>
+<div class="method">
+  <h3><a name="method$NSFileManager-moveItemAtURL$toURL$error$">moveItemAtURL:&nbsp;toURL:&nbsp;error:&nbsp;</a></h3>
+  - (BOOL) <b>moveItemAtURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)src<b> toURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)dst<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <div class="availability">
+<b>Availability:</b> MacOS-X 10.5.0</div>
+<br />
+  <div class="desc">
+    
+            Moves a file or directory specified by <var>src</var>
+            to its destination specified by <var>dst</var>, errors
+            are returned in <var>error</var>. <br /> Returns
+            <code>YES</code> on success, <code>NO</code>
+            otherwise.
           
   </div>
   <hr width="25%" align="left" />
@@ -1545,6 +1639,40 @@
             <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$willProcessPath$">[NSObject(NSFileManagerHandler) -fileManager:willProcessPath:]</a>
  and <a rel="gsdoc" href="#method$NSObject(NSFileManagerHandler)-fileManager$shouldProceedAfterError$">[NSObject(NSFileManagerHandler) -fileManager:shouldProceedAfterError:]</a>
  messages.
+          
+  </div>
+  <hr width="25%" align="left" />
+</div>
+<div class="method">
+  <h3><a name="method$NSFileManager-removeItemAtPath$error$">removeItemAtPath:&nbsp;error:&nbsp;</a></h3>
+  - (BOOL) <b>removeItemAtPath:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)path<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <div class="availability">
+<b>Availability:</b> MacOS-X 10.5.0</div>
+<br />
+  <div class="desc">
+    
+            Removes the file or directory specified by the
+            <var>path</var> to be removed. If the <var>path</var>
+            points to a directory, the directory is deleted
+            recursively. <br /> Returns <code>YES</code>
+            on success, otherwise <code>NO</code>.
+          
+  </div>
+  <hr width="25%" align="left" />
+</div>
+<div class="method">
+  <h3><a name="method$NSFileManager-removeItemAtURL$error$">removeItemAtURL:&nbsp;error:&nbsp;</a></h3>
+  - (BOOL) <b>removeItemAtURL:</b> (<a rel="gsdoc" href="NSURL.html#class$NSURL">NSURL</a>*)url<b> error:</b> (<a rel="gsdoc" href="NSError.html#class$NSError">NSError</a>**)error;<br />
+  <div class="availability">
+<b>Availability:</b> MacOS-X 10.5.0</div>
+<br />
+  <div class="desc">
+    
+            Removes the file or directory specified by the
+            <var>url</var> to be removed. If the <var>url</var>
+            points to a directory, the directory is deleted
+            recursively. <br /> Returns <code>YES</code>
+            on success, otherwise <code>NO</code>.
           
   </div>
   <hr width="25%" align="left" />

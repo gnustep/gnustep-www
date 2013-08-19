@@ -123,6 +123,7 @@
         <li><a rel="gsdoc" href="Functions.html#function$NSAllMapTableValues">NSAllMapTableValues</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSAllocateCollectable">NSAllocateCollectable</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSAllocateMemoryPages">NSAllocateMemoryPages</a></li>
+        <li><a rel="gsdoc" href="Functions.html#function$NSAllocateObject">NSAllocateObject</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSClassFromString">NSClassFromString</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSCompareHashTables">NSCompareHashTables</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSCompareMapTables">NSCompareMapTables</a></li>
@@ -193,10 +194,8 @@
         <li><a rel="gsdoc" href="Functions.html#function$NSIntersectsRect">NSIntersectsRect</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSIsEmptyRect">NSIsEmptyRect</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSLocationInRange">NSLocationInRange</a></li>
-        <li><a rel="gsdoc" href="Functions.html#function$NSLog">NSLog</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSLogPageSize">NSLogPageSize</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSLog_printf_handler">NSLog_printf_handler</a></li>
-        <li><a rel="gsdoc" href="Functions.html#function$NSLogv">NSLogv</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSMakePoint">NSMakePoint</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSMakeRange">NSMakeRange</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSMakeRect">NSMakeRect</a></li>
@@ -811,7 +810,7 @@
     <div class="desc">
       
           Used internally by
-          <a rel="gsdoc" href="Functions.html#function$NSAllocateObject">
+          <a rel="gsdoc" href="#function$NSAllocateObject">
             NSAllocateObject()
           </a>
 
@@ -960,9 +959,9 @@
           Returns an array containing all the allocated objects
           of a certain class which have been recorded. Presumably,
           you will immediately call
-          <a rel="gsdoc" href="NSObject.html#method$NSObject-description">
+          
             [NSObject -description]
-          </a>
+          
 
           on them to find out the objects you are leaking. Warning -
           the objects are put in an array, so until the array is
@@ -972,7 +971,7 @@
           recorded... to start the recording, you need to
           invoke
           <a rel="gsdoc" href="#function$GSDebugAllocationActiveRecordingObjects">GSDebugAllocationActiveRecordingObjects()</a>
-. Presumably, you will immediately call <a rel="gsdoc" href="NSObject.html#method$NSObject-description">[NSObject -description]</a>
+. Presumably, you will immediately call [NSObject -description]
  on them to find out the objects you are leaking. The objects are returned in an array, so until the array is autoreleased, the objects are not released.
         
     </div>
@@ -1029,14 +1028,14 @@
           <br /> The <var>tag</var> is retained while it is
           associated with the <var>object</var>. <br /> See
           also the
-          <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSDebugFRLog">
+          
             NSDebugFRLog()
-          </a>
+          
 
           and
-          <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSDebugMRLog">
+          
             NSDebugMRLog()
-          </a>
+          
 
           macros. <br /> This function associates the supplied
           <var>tag</var> with a recorded <var>object</var> and
@@ -2361,9 +2360,9 @@
     <div class="desc">
       
           Returns the lock used to protect the GNUstep
-          <a rel="gsdoc" href="#function$NSLogv">
+          
             NSLogv()
-          </a>
+          
 
           implementation. Use this to protect changes
           to
@@ -2412,68 +2411,6 @@
         
     </div>
     <hr width="25%" align="left" />
-    <h3><a name="function$NSLog">NSLog</a></h3>
-    void NSLog(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>format</b><b>,...</b>);<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-          
-    </p>
-    <p>
-
-            Provides the standard OpenStep logging facility.
-            For details see the lower level
-            <a rel="gsdoc" href="#function$NSLogv">
-              NSLogv()
-            </a>
-
-            function (which this function uses).
-              </p>
-    <p>
-      
-          
-    </p>
-    <p>
-
-            GNUstep provides powerful alternatives for logging
-            ... see
-            <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSDebugLog">
-              NSDebugLog()
-            </a>
-
-            , <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSWarnLog">NSWarnLog()</a>
-
-            and <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#function$GSPrintf">GSPrintf()</a>
-
-            for example. We recommend the use of
-            <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSDebugLog">
-              NSDebugLog()
-            </a>
-
-            and its relatives for debug purposes, and
-            <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#function$GSPrintf">
-              GSPrintf()
-            </a>
-
-            for general log messages, with
-            <a rel="gsdoc" href="#function$NSLog">
-              NSLog()
-            </a>
-
-            being reserved for reporting possible/likely errors.
-            <a rel="gsdoc" href="/usr/GNUstep/System/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#function$GSPrintf">
-              GSPrintf()
-            </a>
-
-            is declared in GSObjCRuntime.h.
-              </p>
-    <p>
-      
-        
-    </div>
-    <hr width="25%" align="left" />
     <h3><a name="function$NSLog_printf_handler">NSLog_printf_handler</a></h3>
     void NSLog_printf_handler(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>message</b>);<br />
     <div class="availability">
@@ -2485,71 +2422,6 @@
           but just in case someone wants them to go somewhere else,
           they can implement a function like this and assign a
           pointer to it to _NSLog_printf_handler.
-        
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="function$NSLogv">NSLogv</a></h3>
-    void NSLogv(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>format</b>, va_list <b>args</b>);<br />
-    <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-          The core logging function...
-          
-    </p>
-    <p>
-
-            The function generates a standard log entry by
-            prepending process ID and date/time information
-            to your message, and ensuring that a newline is present
-            at the end of the message.
-              </p>
-    <p>
-      
-          
-    </p>
-    <p>
-
-            In GNUstep, the GSLogThread user default may be set to
-            <code>YES</code> in order to instruct this function
-            to include the internal ID of the current thread after
-            the process ID. This can help you to track the behavior
-            of a multi-threaded program.
-              </p>
-    <p>
-      
-          
-    </p>
-    <p>
-
-            The resulting message is then passed to a handler
-            function to perform actual output. Locking is
-            performed around the call to the function
-            actually writing the message out, to ensure that
-            logging is thread-safe. However, the actual
-            creation of the message written is only as safe as
-            the
-            <a rel="gsdoc" href="NSObject.html#method$NSObject-description">
-              [NSObject -description]
-            </a>
-
-            methods of the arguments you supply.
-              </p>
-    <p>
-      
-          
-    </p>
-    <p>
-
-            The function to write the data is pointed to by
-            <a rel="gsdoc" href="TypesAndConstants.html#variable$_NSLog_printf_handler">
-              _NSLog_printf_handler
-            </a>
-
-              </p>
-    <p>
-      
         
     </div>
     <hr width="25%" align="left" />
@@ -2626,6 +2498,27 @@
           <h1><a name="014000000000">NSObject functions</a></h1>
     <p>
     </p>
+    <h3><a name="function$NSAllocateObject">NSAllocateObject</a></h3>
+    id NSAllocateObject(Class <b>aClass</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a> <b>extraBytes</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+          Used to allocate memory to hold an object, and
+          initialise the class of the object to be
+          <var>aClass</var> etc. The allocated memory will be
+          <var>extraBytes</var> larger than the space actually
+          needed to hold the instance variables of the object.
+          <br /> This function is used by the
+          <a rel="gsdoc" href="NSObject.html#method$NSObject+allocWithZone$">
+            [NSObject +allocWithZone:]
+          </a>
+
+          method.
+        
+    </div>
+    <hr width="25%" align="left" />
     <h3><a name="function$NSCopyObject">NSCopyObject</a></h3>
     <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>* NSCopyObject(<a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a>* <b>anObject</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a> <b>extraBytes</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSZone">NSZone</a>* <b>zone</b>);<br />
     <div class="availability">
@@ -3339,9 +3232,9 @@
     <div class="desc">
       
           Called during
-          <a rel="gsdoc" href="NSObject.html#method$NSObject+initialize">
+          
             +initialize
-          </a>
+          
 
           to tell the class that instances created in future should
           have the specified instance variable as a weak pointer
@@ -3375,7 +3268,7 @@
     <h3><a name="function$NSAllocateCollectable">NSAllocateCollectable</a></h3>
     void* NSAllocateCollectable(<a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a> <b>size</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a> <b>options</b>);<br />
     <div class="availability">
-<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
     <div class="desc">
       
@@ -3531,7 +3424,7 @@
     <h3><a name="function$NSReallocateCollectable">NSReallocateCollectable</a></h3>
     void* NSReallocateCollectable(void* <b>ptr</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a> <b>size</b>, <a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a> <b>options</b>);<br />
     <div class="availability">
-<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
     <div class="desc">
       
