@@ -284,7 +284,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">Performance</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/Performance-0.3.2.tar.gz")?>">0.3.2</a></td>
+<td class="stab"><a href="<?php download("libs/Performance-0.4.0.tar.gz")?>">0.4.0</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/performance/trunk/">from svn</a></td>
 <td>Performance improvement and measuring classes</td>
 </tr>
