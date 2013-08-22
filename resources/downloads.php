@@ -378,7 +378,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">Examples</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("core/gnustep-examples-1.3.0.tar.gz")?>">1.3.0</a></td>
+<td class="stab"><a href="<?php download("usr-apps/gnustep-examples-1.4.0.tar.gz")?>">1.4.0</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>GUI examples</td>
 </tr>
