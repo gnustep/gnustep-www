@@ -261,7 +261,10 @@
           <a href="#079000000000">NSRange variables</a>
         </li>
         <li>
-          <a href="#080000000000">NSZone variables</a>
+          <a href="#080000000000">NSString variables</a>
+        </li>
+        <li>
+          <a href="#081000000000">NSZone variables</a>
         </li>
       </ol>
       <hr width="50%" align="left" />
@@ -347,6 +350,7 @@
       <ul>
         <li><a rel="gsdoc" href="TypesAndConstants.html#variable$NSDeallocateZombies">NSDeallocateZombies</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#variable$NSZombieEnabled">NSZombieEnabled</a></li>
+        <li><a rel="gsdoc" href="TypesAndConstants.html#variable$_NSConstantStringClassReference">_NSConstantStringClassReference</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#variable$_NSLogDescriptor">_NSLogDescriptor</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#variable$_NSLog_printf_handler">_NSLog_printf_handler</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#variable$gnustep_global_lock">gnustep_global_lock</a></li>
@@ -384,6 +388,7 @@
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$NSArgumentDomain">NSArgumentDomain</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$NSAssertionHandlerKey">NSAssertionHandlerKey</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$NSBundleDidLoadNotification">NSBundleDidLoadNotification</a></li>
+        <li><a rel="gsdoc" href="TypesAndConstants.html#constant$NSCharacterConversionException">NSCharacterConversionException</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$NSClassDescriptionNeededForClassNotification">NSClassDescriptionNeededForClassNotification</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$NSCocoaErrorDomain">NSCocoaErrorDomain</a></li>
         <li><a rel="gsdoc" href="TypesAndConstants.html#constant$NSConnectionDidDieNotification">NSConnectionDidDieNotification</a></li>
@@ -1106,6 +1111,17 @@
     <div class="desc">
       
           <em>Description forthcoming.</em>
+        
+    </div>
+    <hr width="25%" align="left" />
+    <h3><a name="constant$NSCharacterConversionException">NSCharacterConversionException</a></h3>
+    NSString* const NSCharacterConversionException;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+          An exception when character set conversion fails.
         
     </div>
     <hr width="25%" align="left" />
@@ -5202,9 +5218,9 @@
             the isa pointer is modified to be that of the NSZombie
             class. When messages are sent to the object, instead
             of crashing, NSZombie will use
-            
+            <a rel="gsdoc" href="Functions.html#function$NSLog">
               NSLog()
-            
+            </a>
 
             to produce an error message. By default the memory used
             by the object will not really be freed, so error
@@ -5313,9 +5329,9 @@
     <div class="desc">
       
           A variable holding the file descriptor to which
-          
+          <a rel="gsdoc" href="Functions.html#function$NSLogv">
             NSLogv()
-          
+          </a>
 
           messages are written by default. GNUstep initialises
           this to stderr. <br /> You may change this, but for
@@ -5359,9 +5375,9 @@
     <p>
 
             Calls from
-            
+            <a rel="gsdoc" href="Functions.html#function$NSLogv">
               NSLogv()
-            
+            </a>
 
             to the function pointed to by this variable are
             protected by a lock, and should therefore be
@@ -5460,7 +5476,23 @@
     </div>
     <hr width="25%" align="left" />
 
-          <h1><a name="080000000000">NSZone variables</a></h1>
+          <h1><a name="080000000000">NSString variables</a></h1>
+    <p>
+    </p>
+    <h3><a name="variable$_NSConstantStringClassReference">_NSConstantStringClassReference</a></h3>
+    struct objc_class _NSConstantStringClassReference;<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+          For internal use with NeXT runtime; needed, until Apple
+          Radar 2870817 is fixed.
+        
+    </div>
+    <hr width="25%" align="left" />
+
+          <h1><a name="081000000000">NSZone variables</a></h1>
     <p>
     </p>
     <h3><a name="variable$struct NSZoneStats">struct NSZoneStats</a></h3>

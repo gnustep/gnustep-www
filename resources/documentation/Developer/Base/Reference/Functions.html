@@ -194,8 +194,10 @@
         <li><a rel="gsdoc" href="Functions.html#function$NSIntersectsRect">NSIntersectsRect</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSIsEmptyRect">NSIsEmptyRect</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSLocationInRange">NSLocationInRange</a></li>
+        <li><a rel="gsdoc" href="Functions.html#function$NSLog">NSLog</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSLogPageSize">NSLogPageSize</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSLog_printf_handler">NSLog_printf_handler</a></li>
+        <li><a rel="gsdoc" href="Functions.html#function$NSLogv">NSLogv</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSMakePoint">NSMakePoint</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSMakeRange">NSMakeRange</a></li>
         <li><a rel="gsdoc" href="Functions.html#function$NSMakeRect">NSMakeRect</a></li>
@@ -1028,14 +1030,14 @@
           <br /> The <var>tag</var> is retained while it is
           associated with the <var>object</var>. <br /> See
           also the
-          
+          <a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSDebugFRLog">
             NSDebugFRLog()
-          
+          </a>
 
           and
-          
+          <a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSDebugMRLog">
             NSDebugMRLog()
-          
+          </a>
 
           macros. <br /> This function associates the supplied
           <var>tag</var> with a recorded <var>object</var> and
@@ -2360,9 +2362,9 @@
     <div class="desc">
       
           Returns the lock used to protect the GNUstep
-          
+          <a rel="gsdoc" href="#function$NSLogv">
             NSLogv()
-          
+          </a>
 
           implementation. Use this to protect changes
           to
@@ -2411,6 +2413,68 @@
         
     </div>
     <hr width="25%" align="left" />
+    <h3><a name="function$NSLog">NSLog</a></h3>
+    void NSLog(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>format</b><b>,...</b>);<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+          
+    </p>
+    <p>
+
+            Provides the standard OpenStep logging facility.
+            For details see the lower level
+            <a rel="gsdoc" href="#function$NSLogv">
+              NSLogv()
+            </a>
+
+            function (which this function uses).
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            GNUstep provides powerful alternatives for logging
+            ... see
+            <a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSDebugLog">
+              NSDebugLog()
+            </a>
+
+            , <a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSWarnLog">NSWarnLog()</a>
+
+            and <a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#function$GSPrintf">GSPrintf()</a>
+
+            for example. We recommend the use of
+            <a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#macro$NSDebugLog">
+              NSDebugLog()
+            </a>
+
+            and its relatives for debug purposes, and
+            <a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#function$GSPrintf">
+              GSPrintf()
+            </a>
+
+            for general log messages, with
+            <a rel="gsdoc" href="#function$NSLog">
+              NSLog()
+            </a>
+
+            being reserved for reporting possible/likely errors.
+            <a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/Functions.html#function$GSPrintf">
+              GSPrintf()
+            </a>
+
+            is declared in GSObjCRuntime.h.
+              </p>
+    <p>
+      
+        
+    </div>
+    <hr width="25%" align="left" />
     <h3><a name="function$NSLog_printf_handler">NSLog_printf_handler</a></h3>
     void NSLog_printf_handler(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>message</b>);<br />
     <div class="availability">
@@ -2422,6 +2486,71 @@
           but just in case someone wants them to go somewhere else,
           they can implement a function like this and assign a
           pointer to it to _NSLog_printf_handler.
+        
+    </div>
+    <hr width="25%" align="left" />
+    <h3><a name="function$NSLogv">NSLogv</a></h3>
+    void NSLogv(<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>* <b>format</b>, va_list <b>args</b>);<br />
+    <div class="availability">
+<b>Availability:</b> OpenStep</div>
+<br />
+    <div class="desc">
+      
+          The core logging function...
+          
+    </p>
+    <p>
+
+            The function generates a standard log entry by
+            prepending process ID and date/time information
+            to your message, and ensuring that a newline is present
+            at the end of the message.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            In GNUstep, the GSLogThread user default may be set to
+            <code>YES</code> in order to instruct this function
+            to include the internal ID of the current thread after
+            the process ID. This can help you to track the behavior
+            of a multi-threaded program.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The resulting message is then passed to a handler
+            function to perform actual output. Locking is
+            performed around the call to the function
+            actually writing the message out, to ensure that
+            logging is thread-safe. However, the actual
+            creation of the message written is only as safe as
+            the
+            
+              [NSObject -description]
+            
+
+            methods of the arguments you supply.
+              </p>
+    <p>
+      
+          
+    </p>
+    <p>
+
+            The function to write the data is pointed to by
+            <a rel="gsdoc" href="TypesAndConstants.html#variable$_NSLog_printf_handler">
+              _NSLog_printf_handler
+            </a>
+
+              </p>
+    <p>
+      
         
     </div>
     <hr width="25%" align="left" />
