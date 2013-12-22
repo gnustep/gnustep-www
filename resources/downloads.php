@@ -606,7 +606,7 @@ download the <i>Recommended version</i>.</p>
 <tr>
 <td class="src">libobjc2</td>
 <td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("http://download.gna.org/gnustep/libobjc2-1.8.tar.bz2")?>">1.8</a></td>
+<td class="stab"><a href="<?php download("http://download.gna.org/gnustep/libobjc2-1.7.tar.bz2")?>">1.7</a></td>
 <td class="unst"><div class="cent">-</div></td>
 <td>Modern ObjectiveC-2.0 support</td>
 </tr>
