@@ -604,6 +604,14 @@ download the <i>Recommended version</i>.</p>
 </tr>
 
 <tr>
+<td class="src">libobjc2</td>
+<td class="req">Recommended</td>
+<td class="stab"><a href="<?php download("http://download.gna.org/gnustep/libobjc2-1.8.tar.bz2")?>">1.8</a></td>
+<td class="unst"><div class="cent">-</div></td>
+<td>Modern ObjectiveC-2.0 support</td>
+</tr>
+
+<tr>
 <td class="src">libobjc</td>
 <td class="req">Required for MinGW/Cygwin, recommended pre gcc4.6</td>
 <td class="stab"><a href="<?php download("libs/gnustep-objc-1.7.2.tar.gz")?>">1.7.2</a></td>
