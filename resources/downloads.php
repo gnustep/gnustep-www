@@ -508,8 +508,16 @@ download the <i>Recommended version</i>.</p>
 </tr>
 
 <tr>
+<td class="src">clang</td>
+<td class="req">Recommended</td>
+<td class="stab"><a href="http://llvm.org/releases/download.html#3.3">3.3</a></ztd>
+<td class="unst"><a href="http://clang.llvm.org/get_started.html"><i>current</i></a></td>
+<td>Objective-C Compiler supporting modern 2.0 runtime</td>
+</tr>
+
+<tr>
 <td class="src">gcc</td>
-<td class="req">Required</td>
+<td class="req">Optional</td>
 <td class="stab"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-2.95.3.tar.gz">2.95.3</a></td>
 <td class="unst"><a href="http://gcc.gnu.org"><i>current</i></a></td>
 <td>GNU C &amp; Objective-C Compiler</td>
