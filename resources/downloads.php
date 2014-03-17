@@ -268,7 +268,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">WebServer</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/WebServer-1.4.6.tar.gz")?>">1.4.6</a></td>
+<td class="stab"><a href="<?php download("libs/WebServer-1.5.0.tar.gz")?>">1.5.0</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/webserver/trunk/">from svn</a></td>
 <td>Simple web server for applications</td>
 </tr>
