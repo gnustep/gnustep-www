@@ -260,15 +260,15 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">SQLClient</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/SQLClient-1.7.0.tar.gz")?>">1.7.0</a></td>
+<td class="stab"><a href="<?php download("libs/SQLClient-1.7.1.tar.gz")?>">1.7.1</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/sqlclient/trunk/">from svn</a></td>
-<td>Simple OO Interface to SQL databases</td>
+<td>Simple Objective-C Interface to SQL databases</td>
 </tr>
 
 <tr>
 <td class="src">WebServer</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/WebServer-1.5.0.tar.gz")?>">1.5.0</a></td>
+<td class="stab"><a href="<?php download("libs/WebServer-1.5.1.tar.gz")?>">1.5.1</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/webserver/trunk/">from svn</a></td>
 <td>Simple web server for applications</td>
 </tr>
@@ -276,7 +276,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">WebServices</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/WebServices-0.5.10.tar.gz")?>">0.5.10</a></td>
+<td class="stab"><a href="<?php download("libs/WebServices-0.6.0.tar.gz")?>">0.6.0</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/webservices/trunk/">from svn</a></td>
 <td>Classes for building web services (partial)</td>
 </tr>
@@ -284,7 +284,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">Performance</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/Performance-0.4.0.tar.gz")?>">0.4.0</a></td>
+<td class="stab"><a href="<?php download("libs/Performance-0.5.0.tar.gz")?>">0.5.0</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/performance/trunk/">from svn</a></td>
 <td>Performance improvement and measuring classes</td>
 </tr>
@@ -308,7 +308,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">EnterpriseControlConfigurationLogging</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/EnterpriseControlConfigurationLogging-1.0.1.tar.gz")?>">1.0.1</a></td>
+<td class="stab"><a href="<?php download("libs/EnterpriseControlConfigurationLogging-1.1.0.tar.gz")?>">1.1.0</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/ec/trunk/">from svn</a></td>
 <td>Classes for building and administering 24*7 server processes for large scale software systemd.</td>
 </tr>
