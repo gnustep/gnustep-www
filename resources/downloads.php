@@ -260,7 +260,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td class="src">SQLClient</td>
 <td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/SQLClient-1.7.1.tar.gz")?>">1.7.1</a></td>
+<td class="stab"><a href="<?php download("libs/SQLClient-1.7.2.tar.gz")?>">1.7.2</a></td>
 <td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/sqlclient/trunk/">from svn</a></td>
 <td>Simple Objective-C Interface to SQL databases</td>
 </tr>
