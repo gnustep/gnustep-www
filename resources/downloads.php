@@ -92,11 +92,8 @@ function download($link) {
 
 ?>
 
-</head>
 
-<body>
-
-<h1>GNUstep Downloads</h1>
+<h1 class="page-header">GNUstep Downloads</h1>
 
 <p>We recommend that you check the software versions currently
 installed on your system. The <a href="#core">GNUstep Startup</a>
@@ -118,7 +115,7 @@ the version number in the appropriate column.</p>
 
 
 
-<h2 id="core">GNUstep Core</h2>
+<h2 class="page-header">GNUstep Core</h2>
 
 <p>All GNUstep users should install the following items. Choose either the
 GNUstep Startup package, which combines all four core packages (plus ffcall) 
@@ -177,7 +174,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <td>GNUstep Base</td>
 <td>Required</td>
 <td><a href="<?php download("core/gnustep-base-1.24.6.tar.gz")?>">1.24.6</a></td>
-<td>-</a></td>
+<td>-</td>
 <td>Foundation</td>
 </tr>
 
@@ -185,7 +182,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <td>GNUstep GUI</td>
 <td>Required</td>
 <td><a href="<?php download("core/gnustep-gui-0.24.0.tar.gz")?>">0.24.0</a></td>
-<td>-</a></td>
+<td>-</td>
 <td>Graphical user interface class library</td>
 </tr>
 
@@ -193,7 +190,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <td>GNUstep Backend</td>
 <td>Required</td>
 <td><a href="<?php download("core/gnustep-back-0.24.0.tar.gz")?>">0.24.0</a></td>
-<td>-</a></td>
+<td>-</td>
 <td>Generic back-end</td>
 </tr>
 
@@ -203,7 +200,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 
 </div> <!-- table-responsive -->
 
-<h2 id="libs">Extra Libraries/Tools</h2>
+<h2 class="page-header">Extra Libraries/Tools</h2>
 
 <p>These libraries and tools offer additional capabilities. Some
 packages and applications may require you to install these libraries
@@ -550,7 +547,7 @@ download the <i>Recommended version</i>.</p>
 <tr>
 <td>clang</td>
 <td>Recommended</td>
-<td><a href="http://llvm.org/releases/download.html#3.3">3.3</a></ztd>
+<td><a href="http://llvm.org/releases/download.html#3.3">3.3</a></td>
 <td><a href="http://clang.llvm.org/get_started.html"><i>current</i></a></td>
 <td>Objective-C Compiler supporting modern 2.0 runtime</td>
 </tr>
