@@ -126,12 +126,15 @@ or download and install the four core packages separately.
 <small>(see <a href="../experience/documentation.html">Installation Docs</a>
 or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">Building GNUstep</a></i> in Build Guide)</small></p>
 
-<table border=0 width="100%" cellpadding=3 cellspacing=0>
 
-<col class="src">
-<col class="req">
-<col class="ver">
-<col class="ver">
+<div class="table-responsive">
+<table width="100%" class="table table-condensed">
+
+
+<col>
+<col>
+<col>
+<col>
 <col class="note">
 
 <thead>
@@ -147,50 +150,50 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tbody>
 
 <tr>
-<td class="src">GNUstep Startup</td>
-<td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-startup-0.32.0.tar.gz")?>">0.32.0</a></td>
-<td class="unst">none</td>
+<td>GNUstep Startup</td>
+<td>Required</td>
+<td><a href="<?php download("core/gnustep-startup-0.32.0.tar.gz")?>">0.32.0</a></td>
+<td>none</td>
 <td>Easy Install Core Packages</td>
 </tr>
 
 <tr>
-<td class="src"></td>
-<td class="req"></td>
-<td class="stab"</td>
-<td class="unst"></td>
+<td></td>
+<td></td>
+<td</td>
+<td></td>
 <td></td>
 </tr>
 
 <tr>
-<td class="src">GNUstep Make</td>
-<td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-make-2.6.6.tar.gz")?>">2.6.6</a></td>
-<td class="unst">-</td>
+<td>GNUstep Make</td>
+<td>Required</td>
+<td><a href="<?php download("core/gnustep-make-2.6.6.tar.gz")?>">2.6.6</a></td>
+<td>-</td>
 <td>Makefile Package</td>
 </tr>
 
 <tr>
-<td class="src">GNUstep Base</td>
-<td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-base-1.24.6.tar.gz")?>">1.24.6</a></td>
-<td class="unst">-</a></td>
+<td>GNUstep Base</td>
+<td>Required</td>
+<td><a href="<?php download("core/gnustep-base-1.24.6.tar.gz")?>">1.24.6</a></td>
+<td>-</a></td>
 <td>Foundation</td>
 </tr>
 
 <tr>
-<td class="src">GNUstep GUI</td>
-<td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-gui-0.24.0.tar.gz")?>">0.24.0</a></td>
-<td class="unst">-</a></td>
+<td>GNUstep GUI</td>
+<td>Required</td>
+<td><a href="<?php download("core/gnustep-gui-0.24.0.tar.gz")?>">0.24.0</a></td>
+<td>-</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
 <tr>
-<td class="src">GNUstep Backend</td>
-<td class="req">Required</td>
-<td class="stab"><a href="<?php download("core/gnustep-back-0.24.0.tar.gz")?>">0.24.0</a></td>
-<td class="unst">-</a></td>
+<td>GNUstep Backend</td>
+<td>Required</td>
+<td><a href="<?php download("core/gnustep-back-0.24.0.tar.gz")?>">0.24.0</a></td>
+<td>-</a></td>
 <td>Generic back-end</td>
 </tr>
 
@@ -198,18 +201,22 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 
 </table>
 
+</div> <!-- table-responsive -->
+
 <h2 id="libs">Extra Libraries/Tools</h2>
 
 <p>These libraries and tools offer additional capabilities. Some
 packages and applications may require you to install these libraries
 </p>
 
-<table border=0 width="100%" cellpadding=3 cellspacing=0>
 
-<col class="src">
-<col class="req">
-<col class="ver">
-<col class="ver">
+<div class="table-responsive">
+<table width="100%" class="table table-condensed">
+
+<col>
+<col>
+<col>
+<col>
 <col class="note">
 
 <thead>
@@ -225,115 +232,115 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
-<td class="src">GNUstep CoreBase</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/gnustep-corebase-0.1.tar.gz")?>">0.1</a></td>
-<td class="unst"><div class="cent">from svn</div></td>
+<td>GNUstep CoreBase</td>
+<td>Optional</td>
+<td><a href="<?php download("libs/gnustep-corebase-0.1.tar.gz")?>">0.1</a></td>
+<td><div class="cent">from svn</div></td>
 <td>Core Foundation</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.it/Renaissance/index.html">Renaissance</a></td>
-<td class="req">Optional</td>
-<td class="stab"><div class="cent">-</div></td>
-<td class="unst"><div class="cent">from svn</div></td>
+<td><a href="http://www.gnustep.it/Renaissance/index.html">Renaissance</a></td>
+<td>Optional</td>
+<td><div class="cent">-</div></td>
+<td><div class="cent">from svn</div></td>
 <td>Multi-platform UI layout</td>
 </tr>
 
 <tr>
-<td class="src">GNUstep Guile</td>
-<td class="req">Unsupported</td>
-<td class="stab"><a href="<?php download("libs/gnustep-guile-1.1.4.tar.gz")?>">1.1.4</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td>GNUstep Guile</td>
+<td>Unsupported</td>
+<td><a href="<?php download("libs/gnustep-guile-1.1.4.tar.gz")?>">1.1.4</a></td>
+<td><div class="cent">-</div></td>
 <td>Requires OLD versions of GNUstep and Guile to build/run</td>
 </tr>
 
 <tr>
-<td class="src">StepTalk</td>
-<td class="req">Unsupported</td>
-<td class="stab"><a href="<?php download("libs/StepTalk-0.10.0.tar.gz")?>">0.10.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td>StepTalk</td>
+<td>Unsupported</td>
+<td><a href="<?php download("libs/StepTalk-0.10.0.tar.gz")?>">0.10.0</a></td>
+<td><div class="cent">-</div></td>
 <td>Scripting language support</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.it/jigs/">JIGS</a></td>
-<td class="req">Optional</td>
-<td class="stab"><a href="http://www.gnustep.it/jigs/Download.html">1.5.5
+<td><a href="http://www.gnustep.it/jigs/">JIGS</a></td>
+<td>Optional</td>
+<td><a href="http://www.gnustep.it/jigs/Download.html">1.5.5
 </a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td><div class="cent">-</div></td>
 <td>Java bridge</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.org/experience/RIGS.html">RIGS</a></td>
-<td class="req">Unsupported</td>
-<td class="stab"><a href="<?php download("libs/rigs-0.2.2.tar.gz")?>">0.2.2</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td><a href="http://www.gnustep.org/experience/RIGS.html">RIGS</a></td>
+<td>Unsupported</td>
+<td><a href="<?php download("libs/rigs-0.2.2.tar.gz")?>">0.2.2</a></td>
+<td><div class="cent">-</div></td>
 <td>Ruby bridge</td>
 </tr>
 
 <tr>
-<td class="src">gdl2</td>
-<td class="req">Optional</td>
-<td class="stab"><div class="cent">-</div></td>
-<td class="unst"><a href="<?php download("libs/gnustep-dl2-0.10.1.tar.gz")?>">0.10.1</a></td>
+<td>gdl2</td>
+<td>Optional</td>
+<td><div class="cent">-</div></td>
+<td><a href="<?php download("libs/gnustep-dl2-0.10.1.tar.gz")?>">0.10.1</a></td>
 <td>Database Support Library</td>
 </tr>
 
 <tr>
-<td class="src">SQLClient</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/SQLClient-1.7.3.tar.gz")?>">1.7.3</a></td>
-<td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/sqlclient/trunk/">from svn</a></td>
+<td>SQLClient</td>
+<td>Optional</td>
+<td><a href="<?php download("libs/SQLClient-1.7.3.tar.gz")?>">1.7.3</a></td>
+<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/sqlclient/trunk/">from svn</a></td>
 <td>Simple Objective-C Interface to SQL databases</td>
 </tr>
 
 <tr>
-<td class="src">WebServer</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/WebServer-1.5.1.tar.gz")?>">1.5.1</a></td>
-<td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/webserver/trunk/">from svn</a></td>
+<td>WebServer</td>
+<td>Optional</td>
+<td><a href="<?php download("libs/WebServer-1.5.1.tar.gz")?>">1.5.1</a></td>
+<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/webserver/trunk/">from svn</a></td>
 <td>Simple web server for applications</td>
 </tr>
 
 <tr>
-<td class="src">WebServices</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/WebServices-0.6.3.tar.gz")?>">0.6.3</a></td>
-<td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/webservices/trunk/">from svn</a></td>
+<td>WebServices</td>
+<td>Optional</td>
+<td><a href="<?php download("libs/WebServices-0.6.3.tar.gz")?>">0.6.3</a></td>
+<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/webservices/trunk/">from svn</a></td>
 <td>Classes for building web services (partial)</td>
 </tr>
 
 <tr>
-<td class="src">Performance</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/Performance-0.5.0.tar.gz")?>">0.5.0</a></td>
-<td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/performance/trunk/">from svn</a></td>
+<td>Performance</td>
+<td>Optional</td>
+<td><a href="<?php download("libs/Performance-0.5.0.tar.gz")?>">0.5.0</a></td>
+<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/performance/trunk/">from svn</a></td>
 <td>Performance improvement and measuring classes</td>
 </tr>
 
 <tr>
-<td class="src">Pantomime</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0.tar.gz?rid=77">1.1.0</a></td>
-<td class="unst"><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.2.0pre3.tar.gz?rid=77">1.2.0pre3</a></td>
+<td>Pantomime</td>
+<td>Optional</td>
+<td><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0.tar.gz?rid=77">1.1.0</a></td>
+<td><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.2.0pre3.tar.gz?rid=77">1.2.0pre3</a></td>
 <td>GNUMail framework - see also <a href="http://www.collaboration-world.com/pantomime">description</a></td>
 </tr>
 
 <tr>
-<td class="src">PPDs</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/gnustep-ppd-1.0.0.tar.gz")?>">1.0.0</a></td>
-<td class="unst">-</td>
+<td>PPDs</td>
+<td>Optional</td>
+<td><a href="<?php download("libs/gnustep-ppd-1.0.0.tar.gz")?>">1.0.0</a></td>
+<td>-</td>
 <td>Printer PPDs formerly in gnustep-gui</td>
 </tr>
 
 <tr>
-<td class="src">EnterpriseControlConfigurationLogging</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("libs/EnterpriseControlConfigurationLogging-1.1.3.tar.gz")?>">1.1.3</a></td>
-<td class="unst"><a href="http://svn.gna.org/viewcvs/gnustep/libs/ec/trunk/">from svn</a></td>
+<td>EnterpriseControlConfigurationLogging</td>
+<td>Optional</td>
+<td><a href="<?php download("libs/EnterpriseControlConfigurationLogging-1.1.3.tar.gz")?>">1.1.3</a></td>
+<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/ec/trunk/">from svn</a></td>
 <td>Classes for building and administering 24*7 server processes for large scale software systemd.</td>
 </tr>
 
@@ -341,17 +348,20 @@ packages and applications may require you to install these libraries
 </tbody>
 
 </table>
+</div> <!-- table-responsive -->
+
 
 <h2 id="dev">GNUstep Development Tools</h2>
 
 <p>If you intend to develop software for GNUstep, or to port software to GNUstep from another environment, you should install the development tools that are relevant to you from the following list:</p>
 
-<table border=0 width="100%" cellpadding=3 cellspacing=0>
+<div class="table-responsive">
+<table width="100%" class="table table-condensed">
 
-<col class="src">
-<col class="req">
-<col class="ver">
-<col class="ver">
+<col>
+<col>
+<col>
+<col>
 <col class="note">
 
 <thead>
@@ -367,43 +377,43 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.org/experience/Gorm.html">Gorm</a></td>
-<td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("dev-apps/gorm-1.2.18.tar.gz")?>">1.2.18</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td><a href="http://www.gnustep.org/experience/Gorm.html">Gorm</a></td>
+<td>Recommended</td>
+<td><a href="<?php download("dev-apps/gorm-1.2.18.tar.gz")?>">1.2.18</a></td>
+<td><div class="cent">-</div></td>
 <td>Graphical interface builder</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.org/experience/ProjectCenter.html">Project Center</a></td>
-<td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("dev-apps/ProjectCenter-0.6.1.tar.gz")?>">0.6.1
+<td><a href="http://www.gnustep.org/experience/ProjectCenter.html">Project Center</a></td>
+<td>Recommended</td>
+<td><a href="<?php download("dev-apps/ProjectCenter-0.6.1.tar.gz")?>">0.6.1
 </a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td><div class="cent">-</div></td>
 <td>Project developer</td>
 </tr>
 
 <tr>
-<td class="src">nib2gmodel</td>
-<td class="req">Obsolete</td>
-<td class="stab"><a href="<?php download("dev-apps/nib2gmodel-0.11.0.tar.gz")?>">0.11.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td>nib2gmodel</td>
+<td>Obsolete</td>
+<td><a href="<?php download("dev-apps/nib2gmodel-0.11.0.tar.gz")?>">0.11.0</a></td>
+<td><div class="cent">-</div></td>
 <td>Converts older (pre-10.2 nibs) </td>
 </tr>
 
 <tr>
-<td class="src">OpenStep 2GNU Converter</td>
-<td class="req">Obsolete</td>
-<td class="stab"><a href="<?php download("contrib/Openstep2GNUConverter-20000717.tar.gz")?>">20000717</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td>OpenStep 2GNU Converter</td>
+<td>Obsolete</td>
+<td><a href="<?php download("contrib/Openstep2GNUConverter-20000717.tar.gz")?>">20000717</a></td>
+<td><div class="cent">-</div></td>
 <td>Older PB Project converter</td>
 </tr>
 
 <tr>
-<td class="src">Examples</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("usr-apps/gnustep-examples-1.4.0.tar.gz")?>">1.4.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td>Examples</td>
+<td>Optional</td>
+<td><a href="<?php download("usr-apps/gnustep-examples-1.4.0.tar.gz")?>">1.4.0</a></td>
+<td><div class="cent">-</div></td>
 <td>GUI examples</td>
 </tr>
 
@@ -411,18 +421,21 @@ packages and applications may require you to install these libraries
 
 </table>
 
+</div> <!-- table-responsive -->
+
 <h2 id="user">GNUstep User Environment</h2>
 
 <p>If you intend to use GNUstep to manage files, run applications and so on, please install the items you require from the following list:
 </p>
 
-<table border=0 width="100%" cellpadding=3 cellspacing=0>
+<div class="table-responsive">
+<table width="100%" class="table table-condensed">
 
-<col class="src">
-<col class="req">
-<col class="ver">
-<col class="ver">
-<col class="note">
+<col>
+<col>
+<col>
+<col>
+<col>
 
 <thead>
 <tr>
@@ -437,48 +450,50 @@ packages and applications may require you to install these libraries
 <tbody>
 
 <tr>
-<td class="src"><a href="../experience/GWorkspace.html">GWorkspace</a></td>
-<td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("usr-apps/gworkspace-0.9.2.tar.gz")?>">0.9.2</a></td>
-<td class="unst">-</td>
+<td><a href="../experience/GWorkspace.html">GWorkspace</a></td>
+<td>Recommended</td>
+<td><a href="<?php download("usr-apps/gworkspace-0.9.2.tar.gz")?>">0.9.2</a></td>
+<td>-</td>
 <td>File manager for GNUstep</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.it/enrico/gworkspace/">RPM Inspector</a></td>
-<td class="req">Optional</td>
-<td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/RpmViewer.tar.gz">RPM Viewer</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td><a href="http://www.gnustep.it/enrico/gworkspace/">RPM Inspector</a></td>
+<td>Optional</td>
+<td><a href="http://www.gnustep.it/enrico/gworkspace/RpmViewer.tar.gz">RPM Viewer</a></td>
+<td><div class="cent">-</div></td>
 <td>GWorkspace inspector for RPM packages</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.it/enrico/gworkspace/">App Wrappers</a></td>
-<td class="req">Optional</td>
-<td class="stab"><a href="http://www.gnustep.it/enrico/gworkspace/wrappers.tar.gz">Wrappers</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td><a href="http://www.gnustep.it/enrico/gworkspace/">App Wrappers</a></td>
+<td>Optional</td>
+<td><a href="http://www.gnustep.it/enrico/gworkspace/wrappers.tar.gz">Wrappers</a></td>
+<td><div class="cent">-</div></td>
 <td>Additional GWorkspace wrappers</td>
 </tr>
 
 <tr>
-<td class="src">GNUMail</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="http://www.collaboration-world.com/cgi-bin/project/release.cgi?pid=2">1.1.0pre2</a></td>
-<td class="unst">-</td>
+<td>GNUMail</td>
+<td>Optional</td>
+<td><a href="http://www.collaboration-world.com/cgi-bin/project/release.cgi?pid=2">1.1.0pre2</a></td>
+<td>-</td>
 <td>GNU Mail - see also <a href="http://www.collaboration-world.com/gnumail">description</a></td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://www.gnustep.org/experience/apps.html">GNUstep Apps</a></td>
-<td class="req">Optional</td>
-<td class="stab"><a href="<?php download("usr-apps/")?>">Various</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td><a href="http://www.gnustep.org/experience/apps.html">GNUstep Apps</a></td>
+<td>Optional</td>
+<td><a href="<?php download("usr-apps/")?>">Various</a></td>
+<td><div class="cent">-</div></td>
 <td>Other User Applications</td>
 </tr>
 
 </tbody>
 
 </table>
+
+</div> <!-- table-responsive -->
 
 <h2 id="pre">Pre-requisites</h2>
 
@@ -487,13 +502,14 @@ each of the following (where needed) on you system, before you install
 GNUstep. If you need to obtain the software, we suggest that you
 download the <i>Recommended version</i>.</p>
 
-<table border=0 width="100%" cellpadding=3 cellspacing=0>
+<div class="table-responsive">
+<table width="100%" class="table table-condensed">
 
-<col class="src">
-<col class="req">
-<col class="ver">
-<col class="ver">
-<col class="note">
+<col>
+<col>
+<col>
+<col>
+<col>
 
 <thead>
 <tr>
@@ -508,152 +524,154 @@ download the <i>Recommended version</i>.</p>
 <tbody>
 
 <tr>
-<td class="src">make</td>
-<td class="req">Required</td>
-<td class="stab">3.75</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/gnu/make/"><i>current</i></a></td>
+<td>make</td>
+<td>Required</td>
+<td>3.75</td>
+<td><a href="ftp://ftp.gnu.org/gnu/make/"><i>current</i></a></td>
 <td>GNU make</td>
 </tr>
 
 <tr>
-<td class="src">binutils</td>
-<td class="req">Depends on OS</td>
-<td class="stab">2.9.6</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/gnu/binutils/"><i>current</i></a></td>
+<td>binutils</td>
+<td>Depends on OS</td>
+<td>2.9.6</td>
+<td><a href="ftp://ftp.gnu.org/gnu/binutils/"><i>current</i></a></td>
 <td>GNU binutils</td>
 </tr>
 
 <tr>
-<td class="src">iconv</td>
-<td class="req">If no glibc</td>
-<td class="stab">1.7</td>
-<td class="unst"><a href="ftp://ftp.ilog.fr/pub/Users/haible/gnu"><i>current</i></a></td>
+<td>iconv</td>
+<td>If no glibc</td>
+<td>1.7</td>
+<td><a href="ftp://ftp.ilog.fr/pub/Users/haible/gnu"><i>current</i></a></td>
 <td>Convert file encoding</td>
 </tr>
 
 <tr>
-<td class="src">clang</td>
-<td class="req">Recommended</td>
-<td class="stab"><a href="http://llvm.org/releases/download.html#3.3">3.3</a></ztd>
-<td class="unst"><a href="http://clang.llvm.org/get_started.html"><i>current</i></a></td>
+<td>clang</td>
+<td>Recommended</td>
+<td><a href="http://llvm.org/releases/download.html#3.3">3.3</a></ztd>
+<td><a href="http://clang.llvm.org/get_started.html"><i>current</i></a></td>
 <td>Objective-C Compiler supporting modern 2.0 runtime</td>
 </tr>
 
 <tr>
-<td class="src">gcc</td>
-<td class="req">Optional</td>
-<td class="stab"><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-2.95.3.tar.gz">2.95.3</a></td>
-<td class="unst"><a href="http://gcc.gnu.org"><i>current</i></a></td>
+<td>gcc</td>
+<td>Optional</td>
+<td><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-2.95.3.tar.gz">2.95.3</a></td>
+<td><a href="http://gcc.gnu.org"><i>current</i></a></td>
 <td>GNU C &amp; Objective-C Compiler</td>
 </tr>
 
-<td class="src">libffi</td>
-<td class="req">Required</td>
-<td class="stab"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
-<td class="unst"><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.13.tar.gz">3.0.13</a></td>
+<td>libffi</td>
+<td>Required</td>
+<td><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
+<td><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.13.tar.gz">3.0.13</a></td>
 <td>Message forwarding</td>
 </tr>
 
 <tr>
-<td class="src">ffcall</td>
-<td class="req">Optional</td>
-<td class="stab">1.8</td>
-<td class="unst"><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
+<td>ffcall</td>
+<td>Optional</td>
+<td>1.8</td>
+<td><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
 <td>Possible alternative to libffi</td>
 </tr>
 
 <tr>
 <tr>
-<td class="src">gmp</td>
-<td class="req">Optional</td>
-<td class="stab">3.1.1</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/gmp"><i>current</i></a></td>
+<td>gmp</td>
+<td>Optional</td>
+<td>3.1.1</td>
+<td><a href="ftp://ftp.gnu.org/pub/gnu/gmp"><i>current</i></a></td>
 <td>Arbitrary precision arithmetic</td>
 </tr>
 
 <tr>
-<td class="src">guile</td>
-<td class="req">For guile scripting</td>
-<td class="stab">1.4</td>
-<td class="unst"><a href="ftp://ftp.gnu.org/pub/gnu/guile"><i>current</i></a></td>
+<td>guile</td>
+<td>For guile scripting</td>
+<td>1.4</td>
+<td><a href="ftp://ftp.gnu.org/pub/gnu/guile"><i>current</i></a></td>
 <td><i>Scheme</i> language interpreter</td>
 </tr>
 
 <tr>
-<td class="src">openssl</td>
-<td class="req">Recommended</td>
-<td class="stab">0.9.6b</td>
-<td class="unst"><a href="http://www.openssl.org/source"><i>current</i></a></td>
+<td>openssl</td>
+<td>Recommended</td>
+<td>0.9.6b</td>
+<td><a href="http://www.openssl.org/source"><i>current</i></a></td>
 <td>SSL and TSL support</td>
 </tr>
 
 <tr>
-<td class="src">libtiff</td>
-<td class="req">Required</td>
-<td class="stab">3.4036</td>
-<td class="unst"><a href="ftp://ftp.remotesensing.org/pub/libtiff"><i>current</i></a></td>
+<td>libtiff</td>
+<td>Required</td>
+<td>3.4036</td>
+<td><a href="ftp://ftp.remotesensing.org/pub/libtiff"><i>current</i></a></td>
 <td>TIFF image support</td>
 </tr>
 
 <tr>
-<td class="src">libpng</td>
-<td class="req">Recommended</td>
-<td class="stab">-</td>
-<td class="unst">-</td>
+<td>libpng</td>
+<td>Recommended</td>
+<td>-</td>
+<td>-</td>
 <td>PNG image support</td>
 </tr>
 
 <tr>
-<td class="src">libjpeg</td>
-<td class="req">Recommended</td>
-<td class="stab">-</td>
-<td class="unst">-</td>
+<td>libjpeg</td>
+<td>Recommended</td>
+<td>-</td>
+<td>-</td>
 <td>JPEG image support</td>
 </tr>
 
 <tr>
-<td class="src">libxml</td>
-<td class="req">Required</td>
-<td class="stab">2.3.0</td>
-<td class="unst"><a href="ftp://ftp.gnome.org/pub/GNOME/sources/libxml2"><i>current</i></a></td>
+<td>libxml</td>
+<td>Required</td>
+<td>2.3.0</td>
+<td><a href="ftp://ftp.gnome.org/pub/GNOME/sources/libxml2"><i>current</i></a></td>
 <td>For XML property lists and docs</td>
 </tr>
 
 <tr>
-<td class="src"><a href="http://68k.org/~michael/audiofile/">audiofile</a></td>
-<td class="req">Recommended</td>
-<td class="stab">0.2.3</td>
-<td class="unst"><a href="http://www.68k.org/~michael/audiofile/audiofile-0.2.6.tar.gz"><i>current</i></a></td>
+<td><a href="http://68k.org/~michael/audiofile/">audiofile</a></td>
+<td>Recommended</td>
+<td>0.2.3</td>
+<td><a href="http://www.68k.org/~michael/audiofile/audiofile-0.2.6.tar.gz"><i>current</i></a></td>
 <td>Program interface to digital audio formats</td>
 </tr>
 
 <tr>
-<td class="src">WindowMaker</td>
-<td class="req">Recommended</td>
-<td class="stab"><a href="http://windowmaker.info/pub/source/release/WindowMaker-0.92.0.tar.bz2">0.92.0</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td>WindowMaker</td>
+<td>Recommended</td>
+<td><a href="http://windowmaker.info/pub/source/release/WindowMaker-0.92.0.tar.bz2">0.92.0</a></td>
+<td><div class="cent">-</div></td>
 <td>Window manager &amp; desktop</td>
 </tr>
 
 <tr>
-<td class="src">libobjc2</td>
-<td class="req">Recommended</td>
-<td class="stab"><a href="<?php download("http://download.gna.org/gnustep/libobjc2-1.7.tar.bz2")?>">1.7</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td>libobjc2</td>
+<td>Recommended</td>
+<td><a href="<?php download("http://download.gna.org/gnustep/libobjc2-1.7.tar.bz2")?>">1.7</a></td>
+<td><div class="cent">-</div></td>
 <td>Modern ObjectiveC-2.0 support</td>
 </tr>
 
 <tr>
-<td class="src">libobjc</td>
-<td class="req">Required for MinGW/Cygwin, recommended pre gcc4.6</td>
-<td class="stab"><a href="<?php download("libs/gnustep-objc-1.7.2.tar.gz")?>">1.7.2</a></td>
-<td class="unst"><div class="cent">-</div></td>
+<td>libobjc</td>
+<td>Required for MinGW/Cygwin, recommended pre gcc4.6</td>
+<td><a href="<?php download("libs/gnustep-objc-1.7.2.tar.gz")?>">1.7.2</a></td>
+<td><div class="cent">-</div></td>
 <td>Updated libobjc for some systems.</td>
 </tr>
 
 </tbody>
 
 </table>
+
+</div> <!-- table-responsive -->
 
 <p class="cont"><span class="cont">Contact: <a href="mailto:webmasters@gnustep.org">webmasters@gnustep.org</a></span></p>
 
