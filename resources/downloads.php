@@ -560,6 +560,7 @@ download the <i>Recommended version</i>.</p>
 <td>GNU C &amp; Objective-C Compiler</td>
 </tr>
 
+<tr>
 <td>libffi</td>
 <td>Required</td>
 <td><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
@@ -575,7 +576,6 @@ download the <i>Recommended version</i>.</p>
 <td>Possible alternative to libffi</td>
 </tr>
 
-<tr>
 <tr>
 <td>gmp</td>
 <td>Optional</td>
