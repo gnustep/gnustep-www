@@ -173,7 +173,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td>GNUstep Base</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-base-1.24.6.tar.gz")?>">1.24.6</a></td>
+<td><a href="<?php download("core/gnustep-base-1.24.7.tar.gz")?>">1.24.7</a></td>
 <td>-</td>
 <td>Foundation</td>
 </tr>
