@@ -157,7 +157,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td></td>
 <td></td>
-<td</td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -384,7 +384,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td><a href="http://www.gnustep.org/experience/ProjectCenter.html">Project Center</a></td>
 <td>Recommended</td>
-<td><a href="<?php download("dev-apps/ProjectCenter-0.6.1.tar.gz")?>">0.6.1
+<td><a href="<?php download("dev-apps/ProjectCenter-0.6.2.tar.gz")?>">0.6.2
 </a></td>
 <td><div class="cent">-</div></td>
 <td>Project developer</td>
