@@ -288,7 +288,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td>SQLClient</td>
 <td>Optional</td>
-<td><a href="<?php download("libs/SQLClient-1.7.3.tar.gz")?>">1.7.3</a></td>
+<td><a href="<?php download("libs/SQLClient-1.8.1.tar.gz")?>">1.8.1</a></td>
 <td><a href="http://svn.gna.org/viewcvs/gnustep/libs/sqlclient/trunk/">from svn</a></td>
 <td>Simple Objective-C Interface to SQL databases</td>
 </tr>
@@ -296,7 +296,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td>WebServer</td>
 <td>Optional</td>
-<td><a href="<?php download("libs/WebServer-1.5.1.tar.gz")?>">1.5.1</a></td>
+<td><a href="<?php download("libs/WebServer-1.5.3.tar.gz")?>">1.5.3</a></td>
 <td><a href="http://svn.gna.org/viewcvs/gnustep/libs/webserver/trunk/">from svn</a></td>
 <td>Simple web server for applications</td>
 </tr>
@@ -304,7 +304,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td>WebServices</td>
 <td>Optional</td>
-<td><a href="<?php download("libs/WebServices-0.6.3.tar.gz")?>">0.6.3</a></td>
+<td><a href="<?php download("libs/WebServices-0.7.2.tar.gz")?>">0.7.2</a></td>
 <td><a href="http://svn.gna.org/viewcvs/gnustep/libs/webservices/trunk/">from svn</a></td>
 <td>Classes for building web services (partial)</td>
 </tr>
