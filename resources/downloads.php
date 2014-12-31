@@ -449,7 +449,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td><a href="../experience/GWorkspace.html">GWorkspace</a></td>
 <td>Recommended</td>
-<td><a href="<?php download("usr-apps/gworkspace-0.9.2.tar.gz")?>">0.9.2</a></td>
+<td><a href="<?php download("usr-apps/gworkspace-0.9.3.tar.gz")?>">0.9.3</a></td>
 <td>-</td>
 <td>File manager for GNUstep</td>
 </tr>
@@ -555,7 +555,7 @@ download the <i>Recommended version</i>.</p>
 <tr>
 <td>gcc</td>
 <td>Optional</td>
-<td><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-2.95.3.tar.gz">2.95.3</a></td>
+<td><a href="ftp://ftp.gnu.org/pub/gnu/gcc/gcc-3.2.3.tar.gz">3.2.3</a></td>
 <td><a href="http://gcc.gnu.org"><i>current</i></a></td>
 <td>GNU C &amp; Objective-C Compiler</td>
 </tr>
@@ -564,15 +564,15 @@ download the <i>Recommended version</i>.</p>
 <td>libffi</td>
 <td>Required</td>
 <td><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.9.tar.gz">3.0.9</a></td>
-<td><a href="ftp://sourceware.org/pub/libffi/libffi-3.0.13.tar.gz">3.0.13</a></td>
+<td><a href="ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz">3.2.1</a></td>
 <td>Message forwarding</td>
 </tr>
 
 <tr>
 <td>ffcall</td>
 <td>Optional</td>
-<td>1.8</td>
-<td><a href="ftp://ftp.santafe.edu/pub/gnu/ffcall-1.10.tar.gz">1.10</a></td>
+<td>1.10</td>
+<td><a href="http://www.haible.de/bruno/gnu/ffcall-1.10.tar.gz">1.10</a></td>
 <td>Possible alternative to libffi</td>
 </tr>
 
