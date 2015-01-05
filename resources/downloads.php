@@ -321,7 +321,7 @@ packages and applications may require you to install these libraries
 <td>Pantomime</td>
 <td>Optional</td>
 <td><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0.tar.gz?rid=77">1.1.0</a></td>
-<td><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.2.0pre3.tar.gz?rid=77">1.2.0pre3</a></td>
+<td><a href="http://download.gna.org/gnustep-nonfsf/Pantomime-1.2.2.tar.gz">1.2.2</a></td>
 <td>GNUMail framework - see also <a href="http://www.collaboration-world.com/pantomime">description</a></td>
 </tr>
 
@@ -474,7 +474,7 @@ packages and applications may require you to install these libraries
 <td>GNUMail</td>
 <td>Optional</td>
 <td><a href="http://www.collaboration-world.com/cgi-bin/project/release.cgi?pid=2">1.1.0pre2</a></td>
-<td>-</td>
+<td><a href="http://download.gna.org/gnustep-nonfsf/GNUMail-1.2.2.tar.gz">1.2.2</td>
 <td>GNU Mail - see also <a href="http://www.collaboration-world.com/gnumail">description</a></td>
 </tr>
 
