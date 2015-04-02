@@ -318,14 +318,6 @@ packages and applications may require you to install these libraries
 </tr>
 
 <tr>
-<td>Pantomime</td>
-<td>Optional</td>
-<td><a href="http://www.collaboration-world.com/cgi-bin/collaboration-world/project/download.cgi/Pantomime-1.1.0.tar.gz?rid=77">1.1.0</a></td>
-<td><a href="http://download.gna.org/gnustep-nonfsf/Pantomime-1.2.2.tar.gz">1.2.2</a></td>
-<td>GNUMail framework - see also <a href="http://www.collaboration-world.com/pantomime">description</a></td>
-</tr>
-
-<tr>
 <td>PPDs</td>
 <td>Optional</td>
 <td><a href="<?php download("libs/gnustep-ppd-1.0.0.tar.gz")?>">1.0.0</a></td>
@@ -452,30 +444,6 @@ packages and applications may require you to install these libraries
 <td><a href="<?php download("usr-apps/gworkspace-0.9.3.tar.gz")?>">0.9.3</a></td>
 <td>-</td>
 <td>File manager for GNUstep</td>
-</tr>
-
-<tr>
-<td><a href="http://www.gnustep.it/enrico/gworkspace/">RPM Inspector</a></td>
-<td>Optional</td>
-<td><a href="http://www.gnustep.it/enrico/gworkspace/RpmViewer.tar.gz">RPM Viewer</a></td>
-<td><div class="cent">-</div></td>
-<td>GWorkspace inspector for RPM packages</td>
-</tr>
-
-<tr>
-<td><a href="http://www.gnustep.it/enrico/gworkspace/">App Wrappers</a></td>
-<td>Optional</td>
-<td><a href="http://www.gnustep.it/enrico/gworkspace/wrappers.tar.gz">Wrappers</a></td>
-<td><div class="cent">-</div></td>
-<td>Additional GWorkspace wrappers</td>
-</tr>
-
-<tr>
-<td>GNUMail</td>
-<td>Optional</td>
-<td><a href="http://www.collaboration-world.com/cgi-bin/project/release.cgi?pid=2">1.1.0pre2</a></td>
-<td><a href="http://download.gna.org/gnustep-nonfsf/GNUMail-1.2.2.tar.gz">1.2.2</td>
-<td>GNU Mail - see also <a href="http://www.collaboration-world.com/gnumail">description</a></td>
 </tr>
 
 <tr>
@@ -651,7 +619,7 @@ download the <i>Recommended version</i>.</p>
 <tr>
 <td>libobjc2</td>
 <td>Recommended</td>
-<td><a href="<?php download("http://download.gna.org/gnustep/libobjc2-1.7.tar.bz2")?>">1.7</a></td>
+<td><a href="http://download.gna.org/gnustep/libobjc2-1.7.tar.bz2">1.7</a></td>
 <td><div class="cent">-</div></td>
 <td>Modern ObjectiveC-2.0 support</td>
 </tr>
