@@ -22,8 +22,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 29753</p>
-    <p><b>Date:</b> 2010-02-25 18:49:31 +0000 (Thu, 25 Feb 2010)</p>
+    <p><b>Version:</b> 37003</p>
+    <p><b>Date:</b> 2013-08-22 16:44:54 +0100 (Thu, 22 Aug 2013)</p>
     <p><b>Copyright:</b> (C) 1996,1999 Free Software Foundation, Inc.</p>
 
         <div>
@@ -235,6 +235,7 @@ for interprocess communications on the same machine.    </p>
     <ul>
       <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter+defaultCenter">+defaultCenter</a></li>
       <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-addObserver$selector$name$object$">-addObserver:selector:name:object:</a></li>
+      <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-addObserverForName$object$queue$usingBlock$">-addObserverForName:object:queue:usingBlock:</a></li>
       <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-postNotification$">-postNotification:</a></li>
       <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-postNotificationName$object$">-postNotificationName:object:</a></li>
       <li><a rel="gsdoc" href="NSNotification.html#method$NSNotificationCenter-postNotificationName$object$userInfo$">-postNotificationName:object:userInfo:</a></li>
@@ -317,6 +318,57 @@ for interprocess communications on the same machine.    </p>
               notification, however removing an
               <var>observer</var> will remove <em>all</em> of the
               multiple registrations.
+                </p>
+    <p>
+      
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
+<div class="method">
+    <h3><a name="method$NSNotificationCenter-addObserverForName$object$queue$usingBlock$">addObserverForName:&nbsp;object:&nbsp;queue:&nbsp;usingBlock:&nbsp;</a></h3>
+    - (id) <b>addObserverForName:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)name<b> object:</b> (id)object<b> queue:</b> (NSOperationQueue*)queue<b> usingBlock:</b> (GSNotificationBlock)block;<br />
+    <div class="availability">
+<b>Availability:</b> MacOS-X 10.6.0</div>
+<br />
+    <div class="desc">
+      
+            
+    </p>
+    <p>
+
+              Returns a new observer added to the notification
+              center, in order to observe the given
+              notification <var>name</var> posted by an
+              <var>object</var> or any <var>object</var> (if the
+              <var>object</var> argument is <code>nil</code>).
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              For the <var>name</var> and <var>object</var>
+              arguments, the constraints and behavior
+              described in
+              -addObserver:name:selector:object:
+ remain valid.
+                </p>
+    <p>
+      
+            
+    </p>
+    <p>
+
+              For each notification received by the center, the
+              observer will execute the notification
+              <var>block</var>. If the <var>queue</var> is not
+              <code>nil</code>, the notification
+              <var>block</var> is wrapped in a NSOperation and
+              scheduled in the <var>queue</var>, otherwise
+              the <var>block</var> is executed immediately in the
+              posting thread.
                 </p>
     <p>
       

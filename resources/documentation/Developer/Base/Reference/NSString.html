@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 36781</p>
-    <p><b>Date:</b> 2013-07-01 08:08:55 +0100 (Mon, 01 Jul 2013)</p>
+    <p><b>Version:</b> 37757</p>
+    <p><b>Date:</b> 2014-03-19 08:26:48 +0000 (Wed, 19 Mar 2014)</p>
     <p><b>Copyright:</b> (C) 1995-2012 Free Software Foundation, Inc.</p>
 
         <div>
@@ -73,26 +73,32 @@
         in portable and tolerant manner: <br /> Paths are read in
         literally so they can be in the native format
         provided by the operating system or in a non-native
-        format. <br /> Paths are written out using the native
-        format of the system the application is running on (eg
-        on windows slashes are converted to backslashes). <br /> The
-        path handling methods accept either a forward or backward
-        slash as a path separator when parsing any path. <br />
-        Unless operating in &apos;unix&apos; mode, a leading letter
-        followed by a colon is considered the start of a
-        windows style path (the drive specifier), and a path
-        beginning with something of the form &apos;//host/share/&apos;
-        is considered the start of a UNC style path. <br /> The path
-        handling methods add forward slashes when building new
-        paths internally or when standardising paths, so those
-        path strings provide a portable representation (as
-        <strong>long</strong> as they are relative paths, not
-        including system specific roots). <br /> An important
-        case to note is that on windows a path which looks at
-        first glance like an absolute path may actually be a
-        relative one. <br /> &apos;C:file&apos; is a relative path
-        because it specifies a file on the C drive but does not
-        say what directory it is in.
+        format. See
+        <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-stringWithFileSystemRepresentation$length$">[NSFileManager -stringWithFileSystemRepresentation:length:]</a>
+. <br /> Paths are written out using the native format of the system the application is running on (eg on windows slashes are converted to backslashes). See <a rel="gsdoc" href="NSFileManager.html#method$NSFileManager-fileSystemRepresentationWithPath$">[NSFileManager -fileSystemRepresentationWithPath:]</a>
+. <br /> The path handling methods accept either a forward or backward slash as a path separator when parsing any path. <br /> Unless operating in &apos;unix&apos; mode, a leading letter followed by a colon is considered the start of a windows style path (the drive specifier), and a path beginning with something of the form &apos;//host/share/&apos; is considered the start of a UNC style path. <br /> The path handling methods add forward slashes when building new paths internally or when standardising paths, so those path strings provide a portable representation (as <strong>long</strong> as they are relative paths, not including system specific roots). <br /> An important case to note is that on windows a path which looks at first glance like an absolute path may actually be a relative one. <br /> &apos;C:file&apos; is a relative path because it specifies a file on the C drive but does not say what directory it is in. <br /> Similarly, &apos;/dir/file&apos; is a relative path because it specifies the full location fo a file on a drive, but does not specify which drive it is on.
+          </p>
+    <p>
+
+        As a consequence of this path handling, you are able to work
+        completely portably using relative paths (adding
+        components, extensions and relative paths to a pth,
+        or removing components, extensions and relative paths from a
+        path etc), and when you save paths as strings in files
+        which may be transferred to another platform, you should
+        save a relative path. <br /> When you need to know
+        absolute paths of various points in the filesystem,
+        you can use various path utility functions to obtain those
+        absolute paths. For instance, instead of saving an
+        absolute path to a file, you might want to save a path
+        relative to a user&apos;s home directory. You could do that
+        by calling
+        <a rel="gsdoc" href="Functions.html#function$NSHomeDirectory">
+          NSHomeDirectory()
+        </a>
+
+        to get the home directory, and only saving the part of the
+        full path after that prefix.
           </p>
 
           <h1><a name="002000000000">
@@ -118,13 +124,13 @@
     </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-deletePrefix$">-deletePrefix:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-deleteSuffix$">-deleteSuffix:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-immutableProxy">-immutableProxy</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-replaceString$withString$">-replaceString:withString:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-trimLeadSpaces">-trimLeadSpaces</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-trimSpaces">-trimSpaces</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-trimTailSpaces">-trimTailSpaces</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-deletePrefix$">-deletePrefix:</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-deleteSuffix$">-deleteSuffix:</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-immutableProxy">-immutableProxy</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-replaceString$withString$">-replaceString:withString:</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-trimLeadSpaces">-trimLeadSpaces</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-trimSpaces">-trimSpaces</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSMutableString+GNUstepBase.html#method$NSMutableString(GNUstepBase)-trimTailSpaces">-trimTailSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+string">+string</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithCString$">+stringWithCString:</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSMutableString+stringWithCString$length$">+stringWithCString:length:</a></li>
@@ -505,18 +511,18 @@ subclass represents a modifiable string. Both are implemented as part of a class
     </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)+stringWithFormat$arguments$">+stringWithFormat:arguments:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByDeletingPrefix$">-stringByDeletingPrefix:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByDeletingSuffix$">-stringByDeletingSuffix:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByReplacingString$withString$">-stringByReplacingString:withString:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-substringFromRange$">-substringFromRange:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByEscapingXML">-stringByEscapingXML</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByUnescapingXML">-stringByUnescapingXML</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/WebServices/GWSCoder.html#method$NSString(JSON)-JSONPropertyList">-JSONPropertyList</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Libraries/CoreComponents/SMSUtils.html#method$NSString(ReducingSpaces)-stringByReducingSpaces">-stringByReducingSpaces</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)+stringWithFormat$arguments$">+stringWithFormat:arguments:</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByDeletingPrefix$">-stringByDeletingPrefix:</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByDeletingSuffix$">-stringByDeletingSuffix:</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByReplacingString$withString$">-stringByReplacingString:withString:</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByTrimmingLeadSpaces">-stringByTrimmingLeadSpaces</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByTrimmingSpaces">-stringByTrimmingSpaces</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-stringByTrimmingTailSpaces">-stringByTrimmingTailSpaces</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSString+GNUstepBase.html#method$NSString(GNUstepBase)-substringFromRange$">-substringFromRange:</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByEscapingXML">-stringByEscapingXML</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/GSXML.html#method$NSString(GSXML)-stringByUnescapingXML">-stringByUnescapingXML</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/WebServices/GWSCoder.html#method$NSString(JSON)-JSONPropertyList">-JSONPropertyList</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Libraries/CoreComponents/SMSUtils.html#method$NSString(ReducingSpaces)-stringByReducingSpaces">-stringByReducingSpaces</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+availableStringEncodings">+availableStringEncodings</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+constantStringClass">+constantStringClass</a></li>
       <li><a rel="gsdoc" href="NSString.html#method$NSString+defaultCStringEncoding">+defaultCStringEncoding</a></li>

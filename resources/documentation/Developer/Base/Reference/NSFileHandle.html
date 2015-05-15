@@ -16,8 +16,8 @@
       <dd>
       </dd>
     </dl>
-    <p><b>Version:</b> 35847</p>
-    <p><b>Date:</b> 2012-12-05 10:13:10 +0000 (Wed, 05 Dec 2012)</p>
+    <p><b>Version:</b> 38386</p>
+    <p><b>Date:</b> 2015-03-08 09:22:11 +0000 (Sun, 08 Mar 2015)</p>
     <p><b>Copyright:</b> (C) 1997 Free Software Foundation, Inc.</p>
 
         <div>
@@ -91,8 +91,8 @@
     </div>
     <b>Method summary</b>
     <ul>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSFileHandle+GNUstepBase.html#method$NSFileHandle(GNUstepBase)+fileHandleAsServerAtAddress$service$protocol$">+fileHandleAsServerAtAddress:service:protocol:</a></li>
-      <li><a rel="gsdoc" href="/usr/GNUstep/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSFileHandle+GNUstepBase.html#method$NSFileHandle(GNUstepBase)-socketAddress">-socketAddress</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSFileHandle+GNUstepBase.html#method$NSFileHandle(GNUstepBase)+fileHandleAsServerAtAddress$service$protocol$">+fileHandleAsServerAtAddress:service:protocol:</a></li>
+      <li><a rel="gsdoc" href="/home/brains99/Install/Dragon/Local/Library/Documentation/Developer/BaseAdditions/Reference/NSFileHandle+GNUstepBase.html#method$NSFileHandle(GNUstepBase)-socketAddress">-socketAddress</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientAtAddress$service$protocol$">+fileHandleAsClientAtAddress:service:protocol:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientInBackgroundAtAddress$service$protocol$">+fileHandleAsClientInBackgroundAtAddress:service:protocol:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepExtensions)+fileHandleAsClientInBackgroundAtAddress$service$protocol$forModes$">+fileHandleAsClientInBackgroundAtAddress:service:protocol:forModes:</a></li>
@@ -109,6 +109,7 @@
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepExtensions)-writeInBackgroundAndNotify$">-writeInBackgroundAndNotify:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepExtensions)-writeInBackgroundAndNotify$forModes$">-writeInBackgroundAndNotify:forModes:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepExtensions)-writeInProgress">-writeInProgress</a></li>
+      <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepTLS)+setData$forTLSFile$">+setData:forTLSFile:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepTLS)+sslClass">+sslClass</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepTLS)-sslAccept">-sslAccept</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepTLS)-sslConnect">-sslConnect</a></li>
@@ -1215,6 +1216,7 @@ This is a designated initialiser for the class.<br />
     </div>
     <b>Method summary</b>
     <ul>
+      <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepTLS)+setData$forTLSFile$">+setData:forTLSFile:</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepTLS)+sslClass">+sslClass</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepTLS)-sslAccept">-sslAccept</a></li>
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepTLS)-sslConnect">-sslConnect</a></li>
@@ -1224,6 +1226,26 @@ This is a designated initialiser for the class.<br />
       <li><a rel="gsdoc" href="NSFileHandle.html#method$NSFileHandle(GNUstepTLS)-sslSetOptions$">-sslSetOptions:</a></li>
     </ul>
     <hr width="50%" align="left" />
+<div class="method">
+    <h3><a name="method$NSFileHandle(GNUstepTLS)+setData$forTLSFile$">setData:&nbsp;forTLSFile:&nbsp;</a></h3>
+    + (void) <b>setData:</b> (<a rel="gsdoc" href="NSData.html#class$NSData">NSData</a>*)data<b> forTLSFile:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)fileName;<br />
+    <div class="availability">
+<b>Availability:</b> Not in OpenStep/MacOS-X</div>
+<br />
+    <div class="desc">
+      
+            Sets the known (cached) <var>data</var> content for
+            the specified file name. <br /> Calling this with a
+            <code>nil</code> <var>data</var> object will remove
+            any existing value from the cache. <br /> You may use
+            this method to control what <var>data</var> is used
+            for specified file names when those file names are used
+            as a result of SSL/TLS options being set for a file
+            handle or stream.
+          
+    </div>
+    <hr width="25%" align="left" />
+</div>
 <div class="method">
     <h3><a name="method$NSFileHandle(GNUstepTLS)+sslClass">sslClass&nbsp;</a></h3>
     + (Class) <b>sslClass</b>;<br />
@@ -1337,9 +1359,11 @@ An empty method provided for subclasses to override.<br />
             Sets <var>options</var> to be used to configure this
             channel before the handshake. <br /> Returns
             <code>nil</code> on success, or an error message if
-            some <var>options</var> could not be set. <br />
-            Expects key value pairs with the follwiing
-            names/meanings:
+            some <var>options</var> could not be set. <br /> You
+            may use the same <var>options</var> as property
+            settings with the GNUstep implementation of
+            NSStream. <br /> Expects key value pairs with the
+            follwing names/meanings:
             
       <dl>
         <dt>GSTLSCAFile</dt>
