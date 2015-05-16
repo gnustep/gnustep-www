@@ -181,7 +181,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td>GNUstep GUI</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-gui-0.24.0.tar.gz")?>">0.24.0</a></td>
+<td><a href="<?php download("core/gnustep-gui-0.24.1.tar.gz")?>">0.24.1</a></td>
 <td>-</td>
 <td>Graphical user interface class library</td>
 </tr>
@@ -189,7 +189,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td>GNUstep Backend</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-back-0.24.0.tar.gz")?>">0.24.0</a></td>
+<td><a href="<?php download("core/gnustep-back-0.24.1.tar.gz")?>">0.24.1</a></td>
 <td>-</td>
 <td>Generic back-end</td>
 </tr>
