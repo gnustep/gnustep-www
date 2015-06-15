@@ -147,14 +147,6 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tbody>
 
 <tr>
-<td>GNUstep Startup</td>
-<td>Required</td>
-<td><a href="<?php download("core/gnustep-startup-0.32.0.tar.gz")?>">0.32.0</a></td>
-<td>none</td>
-<td>Easy Install Core Packages</td>
-</tr>
-
-<tr>
 <td></td>
 <td></td>
 <td></td>
