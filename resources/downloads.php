@@ -96,8 +96,7 @@ function download($link) {
 <h1 class="page-header">GNUstep Downloads</h1>
 
 <p>We recommend that you check the software versions currently
-installed on your system. The <a href="#core">GNUstep Startup</a>
-package will do this for you automatically.  Then consult the
+installed on your system.  Consult the
 following tables to determine which items need installing or updating.
 To download the recommended version of any item of software, click on
 the version number in the appropriate column.</p>
@@ -117,9 +116,7 @@ the version number in the appropriate column.</p>
 
 <h2 class="page-header">GNUstep Core</h2>
 
-<p>All GNUstep users should install the following items. Choose either the
-GNUstep Startup package, which combines all four core packages (plus ffcall) 
-or download and install the four core packages separately.
+<p>All GNUstep users should install the following items. 
 <small>(see <a href="../experience/documentation.html">Installation Docs</a>
 or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/index.html#BUILDING.GNUSTEP">Building GNUstep</a></i> in Build Guide)</small></p>
 
