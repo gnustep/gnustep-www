@@ -1,120 +1,157 @@
-<HTML>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on January, 1  2008 by texi2html 1.64 -->
-<!-- 
-Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- C 2005-2006 Christopher Armstrong.
+
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2, as published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled "GNU Free Documentation License".
+
+This documentation is provided on an "AS IS" BASIS, WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND USEFULNESS
+OF THE DOCUMENTATION IS WITH YOU (THE LICENSEE). IN NO EVENT WILL THE COPYRIGHT
+HOLDERS BE LIABLE FOR DAMAGES, INCLUDING ANY DIRECT, INDIRECT,
+SPECIAL, GENERAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF
+THE USE OR INABILITY TO USE THIS DOCUMENTATION (INCLUDING BUT NOT
+LIMITED TO LOSS OF DATA, USE, OR PROFITS; PROCUREMENT OF SUBSTITUTE
+GOODS AND SERVICES; OR BUSINESS INTERUPTION) HOWEVER CAUSED, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ -->
+<!-- Created on December 24, 2013 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
-Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
- 
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
-<HEAD>
-<TITLE>Using the GNUstep AppKit 0.1: outlineviews</TITLE>
+<head>
+<title>Using the GNUstep AppKit 0.1: 10. Outline Views</title>
 
-<META NAME="description" CONTENT="Using the GNUstep AppKit 0.1: outlineviews">
-<META NAME="keywords" CONTENT="Using the GNUstep AppKit 0.1: outlineviews">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.64">
+<meta name="description" content="Using the GNUstep AppKit 0.1: 10. Outline Views">
+<meta name="keywords" content="Using the GNUstep AppKit 0.1: 10. Outline Views">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
 
-</HEAD>
 
-<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+</head>
 
-<A NAME="SEC66"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC65"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_10.html#SEC67"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_9.html#SEC61"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_11.html#SEC68"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H1> 10. Outline Views </H1>
-<!--docid::SEC66::-->
-<P>
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-An <EM>outline view</EM> is a specialised form of table view designed for displaying hierachical data in a tree like format. It looks alot like a Windows' TreeView Control, but operates differently, provides much more powerful functionality and it is less tedious to programme.
-</P><P>
+<a name="outlineviews"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="AppKit_9.html#Notifications" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Using-a-Data-Source" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="AppKit_9.html#tableview" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="AppKit.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="AppKit_11.html#matrix" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="AppKit.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="AppKit_16.html#conceptindex" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="AppKit_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Outline-Views"></a>
+<h1 class="chapter">10. Outline Views</h1>
 
-The node's in the outline view can be collapsed and expanded and display a list of sub-nodes. This makes the outline view hierachical.
-</P><P>
+<p>An <em>outline view</em> is a specialised form of table view designed for displaying hierachical data in a tree like format. It looks alot like a Windows&rsquo; TreeView Control, but operates differently, provides much more powerful functionality and it is less tedious to programme.
+</p>
+<p>The node&rsquo;s in the outline view can be collapsed and expanded and display a list of sub-nodes. This makes the outline view hierachical.
+</p>
+<p>It uses the <code>NSOutlineView</code> class, which inherits from <code>NSTableView</code>. This means that most of the behaviour that applies to tableviews also applies to outline views, such as changing columns/rows and their display, etc. It extends the tableview with a hierachial layout for data, in which nodes can be expanded and contracted.
+</p>
+<p>Like the table view, the outline view control uses a data source object to get it&rsquo;s data, as well as a delegate to modify it&rsquo;s behaviour. These are objects implementing the informal protocols <code>NSOutlineViewDataSource</code> and <code>NSOutlineViewDelegate</code>. Although a delegate object is optional, outline views require a data source object.
+</p>
+<p>See the <cite>GNUstep GUI Reference</cite> for more information about outline views (including class documentation).
+</p>
+<hr size="6">
+<a name="Using-a-Data-Source"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#outlineviews" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="AppKit_11.html#matrix" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#outlineviews" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#outlineviews" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="AppKit_11.html#matrix" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="AppKit.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="AppKit_16.html#conceptindex" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="AppKit_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<h2 class="section">10.1 Using a Data Source</h2>
 
-It uses the <CODE>NSOutlineView</CODE> class, which inherits from <CODE>NSTableView</CODE>. This means that most of the behaviour that applies to tableviews also applies to outline views, such as changing columns/rows and their display, etc. It extends the tableview with a hierachial layout for data, in which nodes can be expanded and contracted.
-</P><P>
+<p>The data source for an outline view implements the <code>NSOutlineViewDataSource</code> informal protocol. Some of it&rsquo;s methods are compulsory; some are not.
+</p>
+<p>Note that a parameter in many of the delegate&rsquo;s methods is an untyped object <var>item</var>. This object is supplied by you, and the outline view passes it back to your delegate as a representation of a node or leaf row.
+</p>
+<p>The outline view requires you implement the following methods:
+</p><dl compact="compact">
+<dt> <code>-(id) outlineView:(NSOutlineView*)outlineView child:(int)index ofItem:(id)item</code></dt>
+<dd><p>Returns the item that is the child of <var>item</var> at <var>index</var>. A <code>nil</code> item means that you should return the children of the root item.
+</p>
+</dd>
+<dt> <code>-(BOOL) outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item</code></dt>
+<dd><p>Returns whether <var>item</var> is expandable.
+</p>
+</dd>
+<dt> <code>-(int) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item</code></dt>
+<dd><p>Returns the number of child items of <var>item</var>.
+</p>
+</dd>
+<dt> <code>-(id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn: (NSTableColumn*)tableColumn byItem:(id)item</code></dt>
+<dd><p>Returns the data object for <var>item</var> in <var>tableColumn</var> of the table view.
+</p></dd>
+</dl>
 
-Like the table view, the outline view control uses a data source object to get it's data, as well as a delegate to modify it's behaviour. These are objects implementing the informal protocols <CODE>NSOutlineViewDataSource</CODE> and <CODE>NSOutlineViewDelegate</CODE>. Although a delegate object is optional, outline views require a data source object.
-</P><P>
+<p>Full defintions of these (and optional methods) can be found in the <cite>GNUstep GUI Manual</cite>.
+</p>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="#outlineviews" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="AppKit_11.html#matrix" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="AppKit.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[<a href="AppKit_16.html#conceptindex" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="AppKit_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>Adam Fedor</em> on <em>December 24, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+ </font>
+ <br>
 
-See the <CITE>GNUstep GUI Reference</CITE> for more information about outline views (including class documentation).
-</P><P>
-
-<HR SIZE="6">
-<A NAME="SEC67"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_10.html#SEC66"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_11.html#SEC68"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> 10.1 Using a Data Source </H2>
-<!--docid::SEC67::-->
-<P>
-
-The data source for an outline view implements the <CODE>NSOutlineViewDataSource</CODE> informal protocol. Some of it's methods are compulsory; some are not.
-</P><P>
-
-Note that a parameter in many of the delegate's methods is an untyped object <VAR>item</VAR>. This object is supplied by you, and the outline view passes it back to your delegate as a representation of a node or leaf row.
-</P><P>
-
-The outline view requires you implement the following methods:
-<DL COMPACT>
-<DT><CODE>-(id) outlineView:(NSOutlineView*)outlineView child:(int)index ofItem:(id)item</CODE>
-<DD>Returns the item that is the child of <VAR>item</VAR> at <VAR>index</VAR>. A <CODE>nil</CODE> item means that you should return the children of the root item.
-<P>
-
-<DT><CODE>-(BOOL) outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item</CODE>
-<DD>Returns whether <VAR>item</VAR> is expandable.
-<P>
-
-<DT><CODE>-(int) outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item</CODE>
-<DD>Returns the number of child items of <VAR>item</VAR>.
-<P>
-
-<DT><CODE>-(id) outlineView:(NSOutlineView*)outlineView objectValueForTableColumn: (NSTableColumn*)tableColumn byItem:(id)item</CODE>
-<DD>Returns the data object for <VAR>item</VAR> in <VAR>tableColumn</VAR> of the table view.
-</DL>
-<P>
-
-Full defintions of these (and optional methods) can be found in the <CITE>GNUstep GUI Manual</CITE>.
-</P><P>
-
-<A NAME="matrix"></A>
-<HR SIZE="6">
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[ &lt;&lt; ]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[ &gt;&gt; ]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="AppKit_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<BR>  
-<FONT SIZE="-1">
-This document was generated
-by <I>Adam Fedor</I> on <I>January, 1  2008</I>
-using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
-"><I>texi2html</I></A>
-
-</BODY>
-</HTML>
+</p>
+</body>
+</html>

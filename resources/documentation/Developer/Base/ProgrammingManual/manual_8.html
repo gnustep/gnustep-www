@@ -1,14 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
-<!-- Created on July, 26 2013 by texi2html 1.76 -->
-<!--
-Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+<!-- Created on December 24, 2013 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
-
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
 <title>Objective-C GNUstep Base Programming Manual: 8. Base Library</title>
@@ -17,11 +16,12 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="keywords" content="Objective-C GNUstep Base Programming Manual: 8. Base Library">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="texi2html 1.76">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
 pre.display {font-family: serif}
 pre.format {font-family: serif}
 pre.menu-comment {font-family: serif}
@@ -30,6 +30,7 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
@@ -41,37 +42,38 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Base-Library"></a>
-<a name="SEC117"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="manual_7.html#SEC116" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC118" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="manual_7.html#The-Connection-Fails" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Copying_002c-Comparing_002c-Hashing-Objects" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual_7.html#SEC96" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual_7.html#Distributed-Objects" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 8. Base Library </h1>
+<a name="Base-Library-1"></a>
+<h1 class="chapter">8. Base Library</h1>
+<a name="index-base-library"></a>
 
 <p>The GNUstep Base library is an implementation of the OpenStep <i>Foundation</i>,
 a nongraphical API supporting for data management, network and file
 interaction, date and time handling, and more.  Much of the API consists of
-classes with defined methods, but unlike many &quot;class libraries&quot; it also
+classes with defined methods, but unlike many &ldquo;class libraries&rdquo; it also
 includes functions and macros when these are more appropriate to the
 functionality.
 </p>
 <p>Note that many other APIs developed subsequently to OpenStep are also called
-&quot;Foundation&quot; - the Java standard classes and the Microsoft Windows C++
+&ldquo;Foundation&rdquo; &ndash; the Java standard classes and the Microsoft Windows C++
 class library are two prominent examples.  In OpenStep, however, the term only
 applies to a non-graphical library; the graphical component is referred to as
-the <i>Application Kit</i>, or &quot;AppKit&quot; for short.
+the <i>Application Kit</i>, or &ldquo;AppKit&rdquo; for short.
 </p>
 <p>Although the OpenStep API underwent several refactorings subsequent to its
 first release as part of NeXTstep, deprecated and superseded classes and
@@ -90,8 +92,8 @@ XML parsing facilities, for example, are provided as part of this library.
 specially marked in the documentation and can even be excluded at compile time
 (a warning will be generated if you try to use them) if you are writing code
 intended to be ported to OpenStep or Cocoa compliant systems.  In addition,
-Cocoa has made additions to OpenStep and these are marked as &quot;MacOS-X&quot;.  For
-information on how to set compile flags, see <a href="manual_13.html#SEC162">GNUstep Compliance to Standards</a>.
+Cocoa has made additions to OpenStep and these are marked as &ldquo;MacOS-X&rdquo;.  For
+information on how to set compile flags, see <a href="manual_13.html#Compliance-to-Standards">GNUstep Compliance to Standards</a>.
 </p>
 <p>In deciding whether to use a given API, you need to weigh the likelihood you
 will need to port the application to a platform where it will not be
@@ -100,7 +102,7 @@ the API.  If you are aiming for full portability from the start (only a
 recompile needed), then you should of course avoid APIs that will not be
 available.  However in other cases it can be better to use whichever APIs are
 best suited initially so that early development and debugging will be as
-efficient as possible - as long as major redesign would not be required to
+efficient as possible &ndash; as long as major redesign would not be required to
 later avoid these APIs.
 </p>
 <p>Below, the Base and Base Additions APIs are covered in overview fashion,
@@ -113,24 +115,24 @@ browser window for reference.
 </p>
 
 <hr size="6">
-<a name="SEC118"></a>
+<a name="Copying_002c-Comparing_002c-Hashing-Objects"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC117" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC119" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Base-Library" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Object-Containers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.1 Copying, Comparing, Hashing Objects </h2>
+<h2 class="section">8.1 Copying, Comparing, Hashing Objects</h2>
 
 <p>Often in object-oriented code you need to make a duplicate copy of an existing
 object.  The <code>NSObject</code> method <code>-(id) copy</code> provides a standard
@@ -165,9 +167,10 @@ compare objects with one another:
     // do something ...
   }
 </pre></td></tr></table>
+
 <p>The default implementation returns <code>YES</code> only if the two objects being
 compared are the exact same object (which is the same as the result that would
-be returned using '<code>==</code>' to perform the comparison).  Sometimes it is
+be returned using &rsquo;<code>==</code>&rsquo; to perform the comparison).  Sometimes it is
 useful to have two objects to be equal if their internal state is the same, as
 reflected in instance variables, for example.  In this case, you can override
 <code>isEqual</code> in your class to perform such a comparison.
@@ -175,7 +178,7 @@ reflected in instance variables, for example.  In this case, you can override
 <p>The <code>-(unsigned int)hash</code> method is useful for indexing objects, and
 should return the same value for two objects of the same class that
 <code>isEqual</code> each other.  The same reasoning applies as for the
-<code>isEqual</code> method - if you want this to depend on internal state rather
+<code>isEqual</code> method &ndash; if you want this to depend on internal state rather
 than the identity of the object itself, override it.  The default <code>hash</code>
 value is based on the memory address occupied by the object.
 </p>
@@ -188,7 +191,7 @@ reason.
 </p>
 <p>The <code>-(NSString *) description</code> method in <code>NSObject</code> returns a
 short description of the object, often used for debugging.  The default
-implementation lists the object's class and memory location.  If you want
+implementation lists the object&rsquo;s class and memory location.  If you want
 other information you can override it.
 </p>
 <p>The methods discussed in this section are all very similar to counterparts in
@@ -197,24 +200,24 @@ Java: the <code>equals</code> and <code>hashCode</code> methods, and the
 </p>
 
 <hr size="6">
-<a name="SEC119"></a>
+<a name="Object-Containers"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC118" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC120" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Copying_002c-Comparing_002c-Hashing-Objects" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Data-and-Number-Containers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.2 Object Containers </h2>
+<h2 class="section">8.2 Object Containers</h2>
 
 <p>GNUstep defines three major utility classes for holding collections of other
 objects.  <code>NSArray</code> is an ordered collection of objects, each of which
@@ -224,17 +227,17 @@ collection of unique objects (according to <code>isEqual</code> and/or <code>has
 form a set (and must be unique), however there are no restrictions on the
 collection of values.  The <code>-hash</code> and <code>-isEqual</code> <code>NSObject</code>
 methods discussed above are used by collection instances to organize their
-members.  All collections <code>retain</code> their members (see <a href="manual_3.html#SEC38">Working with Objects</a>).
+members.  All collections <code>retain</code> their members (see <a href="manual_3.html#Objects">Working with Objects</a>).
 </p>
 <p>Unlike container APIs in some other languages, notably Java, instances of
-these GNUstep classes are all <i>immutable</i> - once created, you cannot add or
+these GNUstep classes are all <i>immutable</i> &ndash; once created, you cannot add or
 remove from them.  If you need the ability to make changes (often the case),
 use the mutable classes <code>NSMutableArray</code>, <code>NSMutableSet</code>, and
 <code>NSMutableDictionary</code>.  The <code>-mutableCopy</code> method mentioned in the
 previous section will return the mutable version of a container regardless of
 whether the original was mutable or not.  Likewise, the <code>-copy</code> method
 returns an immutable version.  You should generally use immutable variants of
-objects when you don't need to modify them, because their implementations are
+objects when you don&rsquo;t need to modify them, because their implementations are
 more efficient.  Often it is worthwhile to convert a mutable object that has
 just been built into an immutable one if it is going to be heavily accessed.
 </p>
@@ -271,24 +274,24 @@ functions dealing with <code>NSMapTables</code>.
 </p>
 
 <hr size="6">
-<a name="SEC120"></a>
+<a name="Data-and-Number-Containers"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC119" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC121" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Object-Containers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NSData" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.3 Data and Number Containers </h2>
+<h2 class="section">8.3 Data and Number Containers</h2>
 
 <p>The data containers discussed in the previous section, with the exception of
 <code>NSHashTable</code> and <code>NSMapTable</code>, can store objects, but not primitive
@@ -297,24 +300,24 @@ are not always appropriate for a given task.  For this case, GNUstep offers
 two alternatives.
 </p>
 <hr size="6">
-<a name="SEC121"></a>
+<a name="NSData"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC120" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC122" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Data-and-Number-Containers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NSValue" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Data-and-Number-Containers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.3.1 NSData </h3>
+<h3 class="subsection">8.3.1 NSData</h3>
 
 <p>The <code>NSData</code> and <code>NSMutableData</code> classes manage a buffer of bytes as
 an object.  The contents of the buffer can be anything that can be stored in
@@ -324,24 +327,24 @@ management for the buffer, growing it as needed and freeing it when they are
 released.
 </p>
 <hr size="6">
-<a name="SEC122"></a>
+<a name="NSValue"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC121" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC123" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#NSData" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NSNumber" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Data-and-Number-Containers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.3.2 NSValue </h3>
+<h3 class="subsection">8.3.2 NSValue</h3>
 
 <p>The <code>NSValue</code> class can wrap a single primitive value as an object so it
 can be used in the containers and other places where an object reference is
@@ -356,6 +359,7 @@ NSValue *theValue = [NSValue value: &amp;n withObjCType: @encode(int)];
   // ...
 int *m = (int *) [theValue pointerValue];
 </pre></td></tr></table>
+
 <p>Here, <code>@encode</code> is a compile-time operator that converts the data type
 into a string (char *) code used at runtime to refer to the type.  Object ids
 can also be stored within <code>NSValue</code>s if desired.  Note that in the above
@@ -373,28 +377,29 @@ NSNumber *theNumber = [NSNumber numberWithInt: n];
 int m = [theNumber intValue];
 float f = [theNumber floatValue];  // this is also valid
 </pre></td></tr></table>
-<p>Notice that <code><i>n</i></code>'s value is used in the initialization, not a pointer
+
+<p>Notice that <code><i>n</i></code>&rsquo;s value is used in the initialization, not a pointer
 to it.
 </p>
 <hr size="6">
-<a name="SEC123"></a>
+<a name="NSNumber"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC122" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC124" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#NSValue" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NSRange_002c-NSPoint_002c-NSSize_002c-NSRect" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Data-and-Number-Containers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.3.3 NSNumber </h3>
+<h3 class="subsection">8.3.3 NSNumber</h3>
 
 <p><code>NSNumber</code> has a subclass called <code>NSDecimalNumber</code> that implements
 a number of methods for performing decimal arithmetic to much higher
@@ -413,28 +418,29 @@ called <code>NSDecimal</code>:
   unsigned char  cMantissa[2*NSDecimalMaxDigit];
 }
 </pre></td></tr></table>
+
 <p>Instances can be initialized using the <code>NSDecimalFromString(NSString *)</code>
 function.
 </p>
 <hr size="6">
-<a name="SEC124"></a>
+<a name="NSRange_002c-NSPoint_002c-NSSize_002c-NSRect"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC123" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC125" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#NSNumber" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Date_002fTime-Facilities" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC120" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Data-and-Number-Containers" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.3.4 NSRange, NSPoint, NSSize, NSRect </h3>
+<h3 class="subsection">8.3.4 NSRange, NSPoint, NSSize, NSRect</h3>
 
 <p>There are also a few types (not classes) for representing common composite
 structures.  <code>NSRange</code> represents an integer interval.  <code>NSPoint</code>
@@ -445,24 +451,24 @@ for handling rectangles and points.
 </p>
 
 <hr size="6">
-<a name="SEC125"></a>
+<a name="Date_002fTime-Facilities"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC124" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC126" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#NSRange_002c-NSPoint_002c-NSSize_002c-NSRect" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#String-Manipulation-and-Text-Processing" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.4 Date/Time Facilities </h2>
+<h2 class="section">8.4 Date/Time Facilities</h2>
 
 <p>GNUstep contains the <code>NSDate</code> class and the <code>NSCalendarDate</code>
 classes for representing and handling dates and times.  <code>NSDate</code> has
@@ -473,48 +479,48 @@ zone information.
 </p>
 
 <hr size="6">
-<a name="SEC126"></a>
+<a name="String-Manipulation-and-Text-Processing"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC125" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC127" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Date_002fTime-Facilities" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#NSScanner-and-Character-Sets" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.5 String Manipulation and Text Processing </h2>
+<h2 class="section">8.5 String Manipulation and Text Processing</h2>
 
 <p>Basic string handling in the GNUstep Base library was covered in
-<a href="manual_2.html#SEC12">Strings in GNUstep</a>.  Here, we introduce a number of
+<a href="manual_2.html#Objective_002dC">Strings in GNUstep</a>.  Here, we introduce a number of
 additional string and text processing facilities provided by GNUstep.
 </p>
 <hr size="6">
-<a name="SEC127"></a>
+<a name="NSScanner-and-Character-Sets"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC126" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC128" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#String-Manipulation-and-Text-Processing" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Attributed-Strings" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC126" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#String-Manipulation-and-Text-Processing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.5.1 NSScanner and Character Sets </h3>
+<h3 class="subsection">8.5.1 NSScanner and Character Sets</h3>
 
 <p>The <code>NSScanner</code> class can be thought of as providing a combination of the
 capabilities of the C <code>sscanf()</code> function and the Java
@@ -527,24 +533,24 @@ subclasses <code>NSMutableCharacterSet</code>, <code>NSBitmapCharSet</code>, and
 sets of unicode characters.
 </p>
 <hr size="6">
-<a name="SEC128"></a>
+<a name="Attributed-Strings"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC127" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC129" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#NSScanner-and-Character-Sets" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Formatters" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC126" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#String-Manipulation-and-Text-Processing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.5.2 Attributed Strings </h3>
+<h3 class="subsection">8.5.2 Attributed Strings</h3>
 
 <p><i>Attributed strings</i> are strings that support the association of
 <i>attributes</i> with ranges of characters within the string.  Attributes are
@@ -556,24 +562,24 @@ specific attributes.  The classes <code>NSAttributedString</code> and
 subclasses of <code>NSString</code>, though they bundle an instance of one.
 </p>
 <hr size="6">
-<a name="SEC129"></a>
+<a name="Formatters"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC128" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC130" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Attributed-Strings" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#File-Handling" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC126" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#String-Manipulation-and-Text-Processing" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.5.3 Formatters </h3>
+<h3 class="subsection">8.5.3 Formatters</h3>
 
 <p><i>Formatters</i> are classes providing support for converting complex values
 into text strings.  They also provide some support for user editing of strings
@@ -586,24 +592,24 @@ classes can be customized for specific display needs.
 </p>
 
 <hr size="6">
-<a name="SEC130"></a>
+<a name="File-Handling"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC129" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC131" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Formatters" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Persistence-and-Serialization" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.6 File Handling </h2>
+<h2 class="section">8.6 File Handling</h2>
 
 <p>A number of convenience facilities are provided for platform-independent
 access to the file system.  The most generally useful is the
@@ -614,7 +620,7 @@ addition to simply listing directories, you may obtain an
 <code>NSEnumerator</code> which provides a full listing of all the files beneath a
 directory and its subdirectories.
 </p>
-<p>If you need to work with path names but don't need the full
+<p>If you need to work with path names but don&rsquo;t need the full
 <code>NSFileManager</code> capabilities, <code>NSString</code> provides a number of
 path-related methods, such as <code>-stringByAppendingPathComponent:</code> and
 <code>-lastPathComponent</code>.  You should use these instead of working directly
@@ -637,27 +643,27 @@ functions, including <code>NSTemporaryDirectory()</code> and
 </p>
 
 <hr size="6">
-<a name="SEC131"></a>
+<a name="Persistence-and-Serialization"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC130" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC132" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#File-Handling" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Property-List-Serialization" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.7 Persistence and Serialization </h2>
+<h2 class="section">8.7 Persistence and Serialization</h2>
 
 <p>GNUstep provides robust facilities for persisting objects to disk or sending
-them over a network connection (to implement <a href="manual_7.html#SEC96">Distributed Objects</a>).  One class of facilities is referred to as <i>property
+them over a network connection (to implement <a href="manual_7.html#Distributed-Objects">Distributed Objects</a>).  One class of facilities is referred to as <i>property
 list serialization</i>, and is only usually used for <code>NSDictionary</code> and
 <code>NSArray</code> container objects, and <code>NSNumber</code>, <code>NSData</code>,
 <code>NSString</code>, and <code>NSDate</code> member objects.  It utilizes primarily
@@ -675,27 +681,27 @@ reloaded object graph is guaranteed to be the same as the saved one.  On the
 other hand, the classes for these objects must be available at load time.
 </p>
 <hr size="6">
-<a name="SEC132"></a>
+<a name="Property-List-Serialization"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC131" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC133" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Persistence-and-Serialization" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Archives" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC131" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Persistence-and-Serialization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.7.1 Property List Serialization </h3>
+<h3 class="subsection">8.7.1 Property List Serialization</h3>
 
 <p>Serialized property list representations (sometimes referred to as
-&quot;<i>plists</i>&quot;) are typically saved and restored using methods in collection
+&ldquo;<i>plists</i>&rdquo;) are typically saved and restored using methods in collection
 classes.  For example the <code>NSDictionary</code> class has
 <code>-writeToFile:atomically:</code> to save, <code>+dictionaryWithContentsOfFile</code>
 to restore, and <code>NSArray</code> has similar methods.  Alternatively, if you
@@ -706,34 +712,34 @@ deprecated in Mac OS X and are not really needed in GNUstep either, so should
 not be used.)
 </p>
 <p>Serialized property lists can actually be written in one of three different
-formats - plain text, XML, and binary.  Interconversion amongst these is
+formats &ndash; plain text, XML, and binary.  Interconversion amongst these is
 possible using the <code>pldes</code> and <code>plser</code> command-line tools (see the
 <a href="../../Tools/Reference/index.html">tools reference</a>).
 </p>
 <hr size="6">
-<a name="SEC133"></a>
+<a name="Archives"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC132" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC134" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Property-List-Serialization" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Utility" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC131" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Persistence-and-Serialization" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.7.2 Archives </h3>
+<h3 class="subsection">8.7.2 Archives</h3>
 
 <p>Archiving utilizes a binary format that is cross-platform between GNUstep
 implementations, though not between GNUstep and Mac OS X Cocoa.  Archiving,
 like serialization in Java, is used both for saving/restoring objects on disk
-and for interprocess communications with <a href="manual_7.html#SEC96">Distributed Objects</a>.  For an object to be archivable, it must adopt the <code>NSCoding</code>
+and for interprocess communications with <a href="manual_7.html#Distributed-Objects">Distributed Objects</a>.  For an object to be archivable, it must adopt the <code>NSCoding</code>
 protocol.  The coding process itself is managed by instances of the
 <code>NSCoder</code> class and its subclasses:
 </p>
@@ -750,7 +756,7 @@ individual-object basis and provide more robust integrity in the face of
 class changes.
 </p></dd>
 <dt> <code>NSPortCoder</code></dt>
-<dd><p>Used for <a href="manual_7.html#SEC96">Distributed Objects</a>.
+<dd><p>Used for <a href="manual_7.html#Distributed-Objects">Distributed Objects</a>.
 </p></dd>
 </dl>
 
@@ -759,7 +765,7 @@ convenience methods in an <code>NSCoder</code> subclass:
 </p>
 <dl compact="compact">
 <dt> <code>+ (BOOL) archiveRootObject: (id)object toFile: (NSString *)file</code></dt>
-<dd><p>Save object and graph below it to file.  '<code>YES</code>' returned on success.
+<dd><p>Save object and graph below it to file.  &rsquo;<code>YES</code>&rsquo; returned on success.
 Both <code>NSArchiver</code> and <code>NSKeyedArchiver</code> support.
 </p></dd>
 <dt> <code>+ (NSData *) archivedDataWithRootObject: (id)object</code></dt>
@@ -864,10 +870,11 @@ State      *state;
 
 @end
 </pre></td></tr></table>
+
 <p>The primary wrinkle to notice here is the check to <code>[coder
 allowsKeyedCoding]</code>.  The object encodes and decodes its instance variables
-using keys if this returns '<code>YES</code>'.  Keys must be unique within a single
-inheritance hierarchy - that is, a class may not use keys the same as its
+using keys if this returns &rsquo;<code>YES</code>&rsquo;.  Keys must be unique within a single
+inheritance hierarchy &ndash; that is, a class may not use keys the same as its
 superclass or any of its ancestors or sibling classes.
 </p>
 <p>Keyed archiving provides robustness against class changes and is therefore to
@@ -894,26 +901,26 @@ written rather than the full object.
 </p>
 
 <hr size="6">
-<a name="SEC134"></a>
+<a name="Utility"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC133" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC135" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Archives" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Notifications" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.8 Utility </h2>
+<h2 class="section">8.8 Utility</h2>
 
-<p>The GNUstep Base library provides a number of utility classes that don't fall
+<p>The GNUstep Base library provides a number of utility classes that don&rsquo;t fall
 under any other function category.
 </p>
 <p>The <code>NSUserDefaults</code> class provides access to a number of system- and
@@ -927,7 +934,7 @@ settings for particular keys using the
 </p>
 <p>The <code>NSProcessInfo</code> class provides access to certain information about
 the system environment such as the operating system and host name.  It also
-provides support for process logging (see <a href="manual_6.html#SEC80">Logging</a>).  You obtain an instance through sending <code>[NSProcessInfo
+provides support for process logging (see <a href="manual_6.html#Exception-Handling">Logging</a>).  You obtain an instance through sending <code>[NSProcessInfo
 processInfo]</code>.
 </p>
 <p>The <code>NSUndoManager</code> class provides a general mechanism for supporting
@@ -951,6 +958,7 @@ id narrowObject = [NSProtocolChecker protocolCheckerWithTarget: versatileObject
                                      protocol: @protocol(SomeSpecificProtocol)];
 return narrowObject;
 </pre></td></tr></table>
+
 <p>This is often used in conjunction with distributed objects to expose only a
 subset of an objects methods to remote processes.  The <code>NSProxy</code> class
 is another class used in conjunction with distributed objects.  It implements
@@ -961,39 +969,39 @@ here, you can make an <code>NSProxy</code> subclass instance act like an instanc
 of any class of your choosing.
 </p>
 <p>The <code>NSBundle</code> class provides support for run-time dynamic loading of
-libraries and application resources, usually termed &quot;Bundles&quot;.  A bundle
+libraries and application resources, usually termed &ldquo;Bundles&rdquo;.  A bundle
 consists of a top-level directory containing subdirectories that may include
-images, text files, and executable binaries or shared libraries.  The &quot;.app&quot;
+images, text files, and executable binaries or shared libraries.  The &ldquo;.app&rdquo;
 directory holding a NeXTstep/OpenStep/GNUstep/Cocoa application is actually a
-bundle, as are the &quot;Frameworks&quot; containing shared libraries together with
-other resources.  Bundles and frameworks are covered in <a href="manual_10.html#SEC150">Application Resources: Bundles and Frameworks</a>.
+bundle, as are the &ldquo;Frameworks&rdquo; containing shared libraries together with
+other resources.  Bundles and frameworks are covered in <a href="manual_10.html#Bundles-and-Frameworks">Application Resources: Bundles and Frameworks</a>.
 </p>
 
 <hr size="6">
-<a name="SEC135"></a>
+<a name="Notifications"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC134" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC136" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Utility" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Networking-and-RPC" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.9 Notifications </h2>
+<h2 class="section">8.9 Notifications</h2>
 
 <p>GNUstep provides a framework for sending messages between objects within a
 process called <i>notifications</i>.  Objects register with an
 <code>NSNotificationCenter</code> to be informed whenever other objects post
 <code>NSNotification</code>s to it matching certain criteria.  The notification
-center processes notifications synchronously - that is, control is only
+center processes notifications synchronously &ndash; that is, control is only
 returned to the notification poster once every recipient of the notification
 has received it and processed it.  Asynchronous processing is possible using
 an <code>NSNotificationQueue</code>.  This returns immediately when a notification
@@ -1023,48 +1031,48 @@ representing mouse and keyboard actions.
 </p>
 
 <hr size="6">
-<a name="SEC136"></a>
+<a name="Networking-and-RPC"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC135" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC137" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Notifications" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Basic-Networking" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.10 Networking and RPC </h2>
+<h2 class="section">8.10 Networking and RPC</h2>
 
 <p>GNUstep provides some general network-related functionality, as well as
-classes supporting <a href="manual_7.html#SEC96">distributed objects</a> and related
+classes supporting <a href="manual_7.html#Distributed-Objects">distributed objects</a> and related
 forms of inter-process communication.
 </p>
 <hr size="6">
-<a name="SEC137"></a>
+<a name="Basic-Networking"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC136" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC138" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Networking-and-RPC" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Remote-Process-Communications" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC136" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Networking-and-RPC" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.10.1 Basic Networking </h3>
+<h3 class="subsection">8.10.1 Basic Networking</h3>
 
 <p>GNUstep provides the following classes handling basic network communications:
 </p>
@@ -1098,26 +1106,26 @@ process.  Obtain an instance through <code>NSURL -URLHandleUsingCache:</code>.
 </dl>
 
 <hr size="6">
-<a name="SEC138"></a>
+<a name="Remote-Process-Communications"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC137" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC139" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Basic-Networking" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Threads-and-Run-Control" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC136" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Networking-and-RPC" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.10.2 Remote Process Communications </h3>
+<h3 class="subsection">8.10.2 Remote Process Communications</h3>
 
-<p>GNUstep provides a number of classes supporting <a href="manual_7.html#SEC96">distributed objects</a> and related forms of inter-process communication.  In
+<p>GNUstep provides a number of classes supporting <a href="manual_7.html#Distributed-Objects">distributed objects</a> and related forms of inter-process communication.  In
 most cases, you only need to know about the <code>NSConnection</code> class, but if
 you require additional control over distributed objects, or if you wish to
 use alternative forms of communications such as simple messaging, you may use
@@ -1159,50 +1167,50 @@ objects.
 
 
 <hr size="6">
-<a name="SEC139"></a>
+<a name="Threads-and-Run-Control"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC138" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC140" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Remote-Process-Communications" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Run-Loops-and-Timers" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.11 Threads and Run Control </h2>
+<h2 class="section">8.11 Threads and Run Control</h2>
 
-<p>A GNUstep program may initiate independent processing in two ways - it can
+<p>A GNUstep program may initiate independent processing in two ways &ndash; it can
 start up a separate process, referred to as a <i>task</i>, much like a <i>fork</i>
 in Unix, or it may spawn multiple <i>threads</i> within a single process.
 Threads share data, tasks do not.  Before discussing tasks and threads, we
 first describe the <i>run loop</i> in GNUstep programs.
 </p>
 <hr size="6">
-<a name="SEC140"></a>
+<a name="Run-Loops-and-Timers"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC139" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC141" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Threads-and-Run-Control" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Tasks-and-Pipes" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC139" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Threads-and-Run-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.11.1 Run Loops and Timers </h3>
+<h3 class="subsection">8.11.1 Run Loops and Timers</h3>
 
 <p><code>NSRunLoop</code> instances handle various utility tasks that must be performed
 repetitively in an application, such as processing input events, listening for
@@ -1224,24 +1232,24 @@ the current thread (using the <code>-addTimer:forMode:</code> method), or you ca
 create it without adding it then add it to a run loop of your choosing later.
 </p>
 <hr size="6">
-<a name="SEC141"></a>
+<a name="Tasks-and-Pipes"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC140" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC142" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Run-Loops-and-Timers" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Threads-and-Locks" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC139" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Threads-and-Run-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.11.2 Tasks and Pipes </h3>
+<h3 class="subsection">8.11.2 Tasks and Pipes</h3>
 
 <p>You can run another program as a subprocess using an <code>NSTask</code> instance,
 and communicate with it using <code>NSPipe</code> instances.  The following code
@@ -1263,31 +1271,32 @@ while ((inData = [readHandle availableData]) &amp;&amp; [inData length])
   }
 [task release];
 </pre></td></tr></table>
+
 <p>Here, we just assume the task has exited when it has finished sending output.
 If this might not be the case, you can register an observer for
-<a href="#SEC117">Notifications</a> named
+<a href="#Base-Library">Notifications</a> named
 <code>NSTaskDidTerminateNotification</code>.
 </p>
 
 <hr size="6">
-<a name="SEC142"></a>
+<a name="Threads-and-Locks"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC141" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC143" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Tasks-and-Pipes" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Using-NSConnection-to-Communicate-Between-Threads" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC139" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Threads-and-Run-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.11.3 Threads and Locks </h3>
+<h3 class="subsection">8.11.3 Threads and Locks</h3>
 
 <p><i>Threads</i> provide a way for applications to execute multiple tasks in
 parallel.  Unlike separate processes, all threads of a program share the same
@@ -1297,9 +1306,9 @@ memory space, and therefore may access the same objects and variables.
 <code>NSThread</code> and <code>NSLock</code> classes and subclasses.  <code>NSThread
 +detachNewThreadSelector:toTarget:withObject:</code> allows you to initiate a new
 thread and cause a message to be sent to an object on that thread.  The thread
-can either run in a &quot;one-shot&quot; manner or it can sit in loop mode (starting
+can either run in a &ldquo;one-shot&rdquo; manner or it can sit in loop mode (starting
 up its own instance of the <code>NSRunLoop</code> class) and communicate with other
-threads using part of the <a href="manual_7.html#SEC96">distributed objects</a>
+threads using part of the <a href="manual_7.html#Distributed-Objects">distributed objects</a>
 framework.  Each thread has a dictionary (accessed through
 <code>-threadDictionary</code> that allows for storage of thread-local variables.
 </p>
@@ -1323,7 +1332,8 @@ if (myArray == nil)
   }
 [myLock unlock];
 </pre></td></tr></table>
-<p>This code protects '<code>myArray</code>' from accidentally being initialized twice
+
+<p>This code protects &rsquo;<code>myArray</code>&rsquo; from accidentally being initialized twice
 if two separate threads happen to detect it is <code>nil</code> around the same
 time.  When the <code>lock</code> method is called, the thread doing so is said to
 <i>acquire</i> the lock.  No other thread may subsequently acquire the lock
@@ -1352,7 +1362,7 @@ The <code>-lockWhenCondition:(int)value</code> and related methods request the l
 only if the condition is equal to that passed in.  The condition may be
 changed using the <code>unlockWithCondition:(int)value</code> method.  This
 mechanism is useful for, e.g., a producer-consumer situation, where the
-producer can &quot;tell&quot; the consumer that data is available by setting the
+producer can &ldquo;tell&rdquo; the consumer that data is available by setting the
 condition appropriately when it releases the lock it acquired for adding data.
 </p>
 <p>Finally, the <code>NSDistributedLock</code> class does not adopt the
@@ -1368,29 +1378,29 @@ also use the <code>GSLazyLock</code> and <code>GSLazyRecursiveLock</code> classe
 next section) which handle this automatically.
 </p>
 <hr size="6">
-<a name="SEC143"></a>
+<a name="Using-NSConnection-to-Communicate-Between-Threads"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC142" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC144" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Threads-and-Locks" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#GNUstep-Additions" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC139" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Threads-and-Run-Control" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 8.11.4 Using <code>NSConnection</code> to Communicate Between Threads </h3>
+<h3 class="subsection">8.11.4 Using <code>NSConnection</code> to Communicate Between Threads</h3>
 
 <p>You can use the distributed objects framework to communicate between threads.
 This can help avoid creating threads repeatedly for the same operation, for
 example.  While you can go through the full process of registering a server
-object by name as described in <a href="manual_7.html#SEC96">distributed objects</a>, a lighter weight approach is to create <code>NSConnection</code>s
+object by name as described in <a href="manual_7.html#Distributed-Objects">distributed objects</a>, a lighter weight approach is to create <code>NSConnection</code>s
 manually:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">  // code in Master...
@@ -1435,29 +1445,30 @@ manually:
 
 </pre></td></tr></table>
 
+
 <hr size="6">
-<a name="SEC144"></a>
+<a name="GNUstep-Additions"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC143" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Using-NSConnection-to-Communicate-Between-Threads" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC117" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Base-Library" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 8.12 GNUstep Additions </h2>
+<h2 class="section">8.12 GNUstep Additions</h2>
 
 <p>The <a href="../../BaseAdditions/Reference/index.html">Base Additions</a> library
-consists of a number of classes, all beginning with '<code>GC</code>' or
-'<code>GS</code>', that are not specified in OpenStep or Cocoa but have been deemed
+consists of a number of classes, all beginning with &rsquo;<code>GC</code>&rsquo; or
+&rsquo;<code>GS</code>&rsquo;, that are not specified in OpenStep or Cocoa but have been deemed
 to be of general utility by the GNUstep developers.  The library is designed
 so that it can be built and installed on a system, such as OS X, where GNUstep
 is not available but an alternate Foundation implementation is.
@@ -1468,7 +1479,7 @@ is not available but an alternate Foundation implementation is.
 <dt> <code>GCxxx</code></dt>
 <dd><p>These are classes that are substituted (behind the scenes) for certain
 Foundation classes if the Base library is compiled with garbage collection
-enabled.  (See <a href="manual_3.html#SEC38">Memory Management</a>.)
+enabled.  (See <a href="manual_3.html#Objects">Memory Management</a>.)
 </p>
 </dd>
 <dt> <code>GSXMLxxx</code></dt>
@@ -1487,8 +1498,8 @@ the most part protect you from the frequent API changes in that library.
 </p>
 </dd>
 <dt> <code>GSLazyXxx</code></dt>
-<dd><p>Classes implementing &quot;lazy&quot; locking that do not actually attempt any locking
-unless running in a multithreaded application.  See <a href="#SEC117">Threads and Run Control</a>.
+<dd><p>Classes implementing &ldquo;lazy&rdquo; locking that do not actually attempt any locking
+unless running in a multithreaded application.  See <a href="#Base-Library">Threads and Run Control</a>.
 </p></dd>
 </dl>
 
@@ -1499,24 +1510,23 @@ further information.
 
 
 
-
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC117" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="manual_9.html#SEC145" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Base-Library" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_9.html#GSDoc" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated by <em>Richard Frith-Macdonald</em> on <em>July, 26 2013</em> using <a href="http://texi2html.cvshome.org/"><em>texi2html 1.76</em></a>.
+  This document was generated by <em>Adam Fedor</em> on <em>December 24, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
  </font>
  <br>
 

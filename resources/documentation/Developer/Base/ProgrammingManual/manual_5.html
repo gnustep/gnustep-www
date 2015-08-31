@@ -1,14 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
 <html>
-<!-- Created on July, 26 2013 by texi2html 1.76 -->
-<!--
-Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+<!-- Created on December 24, 2013 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Many creative people <dev@texi2html.cvshome.org>
-Send bugs and suggestions to <users@texi2html.cvshome.org>
-
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
 <head>
 <title>Objective-C GNUstep Base Programming Manual: 5. Advanced Messaging</title>
@@ -17,11 +16,12 @@ Send bugs and suggestions to <users@texi2html.cvshome.org>
 <meta name="keywords" content="Objective-C GNUstep Base Programming Manual: 5. Advanced Messaging">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
-<meta name="Generator" content="texi2html 1.76">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
 pre.display {font-family: serif}
 pre.format {font-family: serif}
 pre.menu-comment {font-family: serif}
@@ -30,6 +30,7 @@ pre.smalldisplay {font-family: serif; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: serif; font-size: smaller}
 pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
 span.sansserif {font-family:sans-serif; font-weight:normal;}
 ul.toc {list-style: none}
 -->
@@ -41,24 +42,26 @@ ul.toc {list-style: none}
 <body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
 <a name="Advanced-Messaging"></a>
-<a name="SEC72"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="manual_4.html#SEC71" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC73" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="manual_4.html#Simulating-Class-Variables" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#How-Messaging-Works" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual_4.html#SEC51" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual_4.html#Classes" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h1 class="chapter"> 5. Advanced Messaging </h1>
+<a name="Advanced-Messaging-1"></a>
+<h1 class="chapter">5. Advanced Messaging</h1>
+<a name="index-advanced-messaging"></a>
+<a name="index-messaging_002c-advanced-techniques"></a>
 
 <p>Objective-C provides some additional possibilities for message routing besides
 the capabilities described so far (inheritance and categories).  One of the
@@ -71,24 +74,24 @@ many times.
 </p>
 
 <hr size="6">
-<a name="SEC73"></a>
+<a name="How-Messaging-Works"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC72" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC74" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Selectors" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.1 How Messaging Works </h2>
+<h2 class="section">5.1 How Messaging Works</h2>
 <p>Sending an Objective-C message requires three types of information:
 </p>
 <ul>
@@ -106,13 +109,13 @@ The message <b>arguments</b> - once the implementation has been found, these are
 simply passed to the method on the stack as in an ordinary function call.
 </li></ul>
 
-<p>In the message '<code>[taskArray insertObject: anObj atIndex: i]</code>', the
-receiver is &quot;<code>taskArray</code>&quot;, the selector is
-&quot;<code>insertObject:atIndex:</code>&quot;, and the arguments are &quot;<code>anObj</code>&quot; and
-&quot;<code>i</code>&quot;.  Notice that the selector includes the argument titles and both
+<p>In the message &rsquo;<code>[taskArray insertObject: anObj atIndex: i]</code>&rsquo;, the
+receiver is &ldquo;<code>taskArray</code>&rdquo;, the selector is
+&ldquo;<code>insertObject:atIndex:</code>&rdquo;, and the arguments are &ldquo;<code>anObj</code>&rdquo; and
+&ldquo;<code>i</code>&rdquo;.  Notice that the selector includes the argument titles and both
 colons, but not the argument names.  In other words, this method might have
-been declared as '<code>- (void) insertObject: (id)anObject atIndex:
-(unsigned)index;</code>', but the &quot;<code>anObject</code>&quot; and &quot;<code>index</code>&quot; are just
+been declared as &rsquo;<code>- (void) insertObject: (id)anObject atIndex:
+(unsigned)index;</code>&rsquo;, but the &ldquo;<code>anObject</code>&rdquo; and &ldquo;<code>index</code>&rdquo; are just
 used for tracking the arguments within the method implementation code and not
 for looking up the method itself.
 </p>
@@ -126,7 +129,7 @@ to look up its class.
 
 </li><li>
 The class representation is searched for a method implementation matching the
-<b>selector</b> (<code>insertObject:atIndex:</code>).  If it is not found, the class's
+<b>selector</b> (<code>insertObject:atIndex:</code>).  If it is not found, the class&rsquo;s
 superclass is searched, and recursively its superclass, until an
 implementation is found.
 
@@ -151,29 +154,30 @@ selectors and implementations in greater detail.
 </p>
 
 <hr size="6">
-<a name="SEC74"></a>
+<a name="Selectors"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC73" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC75" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#How-Messaging-Works" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#The-Target_002dAction-Paradigm" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.2 Selectors </h2>
+<h2 class="section">5.2 Selectors</h2>
 
 <p>So far we have been using the following syntax to send messages to objects:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">[myArray removeObjectIdenticalTo: anObject];
 </pre></td></tr></table>
+
 <p>The example sends the message named <code>removeObjectIdenticalTo:</code> to
 <code>myArray</code> with the argument <code>anObject</code>.
 </p>
@@ -182,6 +186,7 @@ selectors and implementations in greater detail.
 <table><tr><td>&nbsp;</td><td><pre class="example">SEL removalSelector = @selector(removeObjectIdenticalTo:);
 [myArray performSelector: removalSelector withObject: anObject];
 </pre></td></tr></table>
+
 <p>Here, the first line obtains the desired method selector in the form of a
 compiled representation (not the full ASCII name), and the second line sends
 the message as before, but now in an explicit form.  Since the message that is
@@ -190,24 +195,24 @@ support more flexible runtime functioning.
 </p>
 
 <hr size="6">
-<a name="SEC75"></a>
+<a name="The-Target_002dAction-Paradigm"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC74" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC76" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Selectors" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Obtaining-Selectors" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC74" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Selectors" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 5.2.1 The Target-Action Paradigm </h3>
+<h3 class="subsection">5.2.1 The Target-Action Paradigm</h3>
 
 <p>One conventional way of using selectors is called the <i>target-action</i>
 paradigm, and provides a means for, among other things, binding elements of a
@@ -233,16 +238,18 @@ argument.
   return [target performSelector: action withObject: self];
 }
 </pre></td></tr></table>
+
 <p>As an example, consider a graphical button widget that you wish to execute
 some method in your application when pressed.
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">  [button setTarget: bigMachine]
   [button setAction: @selector(startUp:)];
 </pre></td></tr></table>
+
 <p>Here, <code>button</code> stores the given target and action in instance variables,
 then when it is pressed, it internally calls a method like
-<code>performAction</code> shown above, and sends the message &quot;<code>[bigMachine
-startUp: button]</code>&quot;.
+<code>performAction</code> shown above, and sends the message &ldquo;<code>[bigMachine
+startUp: button]</code>&rdquo;.
 </p>
 <p>If you are used to programming with events and listeners in Java, the
 target-action paradigm provides a lighter-weight alternative for the most
@@ -256,24 +263,24 @@ only needed in the minority of cases.
 </p>
 
 <hr size="6">
-<a name="SEC76"></a>
+<a name="Obtaining-Selectors"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC75" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC77" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#The-Target_002dAction-Paradigm" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Avoiding-Messaging-Errors-when-an-Implementation-is-Not-Found" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC74" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Selectors" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 5.2.2 Obtaining Selectors </h3>
+<h3 class="subsection">5.2.2 Obtaining Selectors</h3>
 
 <p>In addition to using the compile-time <code>@selector</code> operator, there are a
 couple of other ways of obtaining selectors.
@@ -288,10 +295,12 @@ the variable <code>_cmd</code>:
     // ...
 }
 </pre></td></tr></table>
+
 </li><li>
 At any point, you can use the <code>NSSelectorFromString()</code> function -
 <table><tr><td>&nbsp;</td><td><pre class="example">  SEL  mySelector = NSSelectorFromString(@&quot;removeObjectIdenticalTo:&quot;);
 </pre></td></tr></table>
+
 <p>In reality, you would never use <code>NSSelectorFromString</code> for a constant
 string as shown; <code>@selector</code> would do and is more efficient, since is a
 compile-time operator.  Its chief utility lies in the case where the selector
@@ -309,24 +318,24 @@ pointer equality test will not do.
 </p>
 
 <hr size="6">
-<a name="SEC77"></a>
+<a name="Avoiding-Messaging-Errors-when-an-Implementation-is-Not-Found"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC76" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC78" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Obtaining-Selectors" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Forwarding" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC74" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Selectors" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h3 class="subsection"> 5.2.3 Avoiding Messaging Errors when an Implementation is Not Found </h3>
+<h3 class="subsection">5.2.3 Avoiding Messaging Errors when an Implementation is Not Found</h3>
 
 <p>Using <b>typed</b> objects as shown below, the compiler would forewarn
 you if the <code>anObject</code> was unable to respond to the <code>alert:</code>
@@ -338,8 +347,9 @@ anObject = [[SomeClass alloc] init];	// build and initialize the object
 [anObject alert: additionalObject];	// compiler warns if 'alert:' not
                                         // defined in SomeClass or a superclass
 </pre></td></tr></table>
+
 <p>However at times the compiler will not forewarn you that a message will
-attempt to invoke a method that is not in the <b>receiver's</b> repertoire. For
+attempt to invoke a method that is not in the <b>receiver&rsquo;s</b> repertoire. For
 instance, consider the code below where <code>anObject</code> is not known to
 implement the <code>alert:</code> message:
 </p>
@@ -349,8 +359,9 @@ implement the <code>alert:</code> message:
   [anObject alert: additionalObject];	// compiler cannot check whether
                                         // 'alert' is defined
 </pre></td></tr></table>
+
 <p>In this case, the compiler will not issue a warning, because it only knows
-that <code>anObject</code> is of type <code>id</code> &hellip; so it doesn't know what
+that <code>anObject</code> is of type <code>id</code> &hellip; so it doesn&rsquo;t know what
 methods the object implements.
 </p>
 <p>At runtime, if the Objective-C runtime library fails to find a <b>method
@@ -369,29 +380,31 @@ else
     // Do something else if the object can't be alerted
   }
 </pre></td></tr></table>
+
 <p>The second way is for the object the message was sent to to <i>forward</i> it
 somewhere else.
 </p>
 
 <hr size="6">
-<a name="SEC78"></a>
+<a name="Forwarding"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC77" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC79" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Avoiding-Messaging-Errors-when-an-Implementation-is-Not-Found" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Implementations" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.3 Forwarding </h2>
+<h2 class="section">5.3 Forwarding</h2>
+<a name="index-forwarding"></a>
 
 <p>What actually happens when the GNU Objective-C runtime is unable to find a
 method implementation associated with an object for a given selector is that
@@ -410,6 +423,7 @@ that the other object can deal with it.
     return [self doesNotRecognizeSelector: [invocation selector]];
 }
 </pre></td></tr></table>
+
 <ul>
 <li>
 <b><code>invocation</code></b> is an instance of the special <code>NSInvocation</code> class
@@ -451,29 +465,29 @@ fulfill functions of another.
 </p>
 
 <hr size="6">
-<a name="SEC79"></a>
+<a name="Implementations"></a>
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC78" title="Previous section in reading order"> &lt; </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next section in reading order"> &gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Forwarding" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="#SEC72" title="Up section"> Up </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
-<td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<h2 class="section"> 5.4 Implementations </h2>
+<h2 class="section">5.4 Implementations</h2>
 
 <p>Recall that when a message is sent, the runtime system searches for a method
 implementation associated with the recipient object for the specified
 selector.  (Behind the scenes this is carried out by a function
-&quot;<code>objc_msgSend()</code>&quot;.)  This may necessitate searches across multiple
+&ldquo;<code>objc_msgSend()</code>&rdquo;.)  This may necessitate searches across multiple
 superclass objects traversing upwards in the inheritance hierarchy, and takes
 time.  Once the runtime finds an implementation for a class, it will cache the
 information, saving time on future calls.  However, even just checking and
@@ -488,12 +502,13 @@ IMP  getObjImp = [taskArray methodForSelector: getObjSelector];
   // call the implementation as a function
 id obj = (getObjImp)( taskArray, getObjSelector, i );
 </pre></td></tr></table>
-<p>Here, we ask the runtime system to find the '<code>taskArray</code>' object's
-implementation of '<code>getObjectAtIndex</code>'.  The runtime system will use the
+
+<p>Here, we ask the runtime system to find the &rsquo;<code>taskArray</code>&rsquo; object&rsquo;s
+implementation of &rsquo;<code>getObjectAtIndex</code>&rsquo;.  The runtime system will use the
 same algorithm as if you were performing a method call to look up this code,
 and then returns a function pointer to it.  In the next line, this pointer is
 used to call the function in the usual C fashion.  Notice that the signature
-includes both the object and the selector - recall that these are the two
+includes both the object and the selector &ndash; recall that these are the two
 implicit arguments, <code>self</code> and <code>_cmd</code>, that every method
 implementation receives.  The actual type definition for <code>IMP</code> allows
 for a variable number of additional arguments, which are the explicit
@@ -501,11 +516,12 @@ arguments to the method call:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">typedef id (*IMP)(id, SEL, ...);
 </pre></td></tr></table>
+
 <p>The return type of <code>IMP</code> is <code>id</code>.  However, not all methods return
 <code>id</code>; for these others you can still get the implementation, but you
 cannot use an <code>IMP</code> variable and instead must cast it yourself.  For
 example, here is such a cast for a method taking a double and returning
-'<code>double</code>':
+&rsquo;<code>double</code>&rsquo;:
 </p>
 <table><tr><td>&nbsp;</td><td><pre class="example">double (*squareFunc)( id, SEL, double );
 double result;
@@ -515,10 +531,11 @@ squareFunc = (double (*)( id, SEL, double ))
 
 result = squareFunc(mathObj, @selector(squareOf:), 4);
 </pre></td></tr></table>
+
 <p>You need to declare such a function pointer type for any method that returns
 something besides <code>id</code> or <code>int</code>.  It is not necessary to declare the
 argument list (<code>double</code>) as we did above; the first line could have been
-&quot;<code>double (*squareFunc)( id, SEL, <b>...</b> )</code>&quot; instead.
+&ldquo;<code>double (*squareFunc)( id, SEL, <b>...</b> )</code>&rdquo; instead.
 </p>
 <p>An excellent exposition of the amount of time saved in using
 <code>methodForSelector</code> and other details of the innards of Objective-C and
@@ -542,24 +559,23 @@ then dropped afterwards.
 
 
 
-
 <hr size="6">
 <table cellpadding="1" cellspacing="1" border="0">
-<tr><td valign="middle" align="left">[<a href="#SEC72" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
-<td valign="middle" align="left">[<a href="manual_6.html#SEC80" title="Next chapter"> &gt;&gt; </a>]</td>
+<tr><td valign="middle" align="left">[<a href="#Advanced-Messaging" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="manual_6.html#Exception-Handling" title="Next chapter"> &gt;&gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
 <td valign="middle" align="left"> &nbsp; </td>
-<td valign="middle" align="left">[<a href="manual.html#SEC_Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[<a href="manual.html#Top" title="Cover (top) of document">Top</a>]</td>
 <td valign="middle" align="left">[<a href="manual_toc.html#SEC_Contents" title="Table of contents">Contents</a>]</td>
-<td valign="middle" align="left">[<a href="manual_15.html#SEC172" title="Index">Index</a>]</td>
+<td valign="middle" align="left">[<a href="manual_15.html#Concept-Index" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="manual_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
 <p>
  <font size="-1">
-  This document was generated by <em>Richard Frith-Macdonald</em> on <em>July, 26 2013</em> using <a href="http://texi2html.cvshome.org/"><em>texi2html 1.76</em></a>.
+  This document was generated by <em>Adam Fedor</em> on <em>December 24, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
  </font>
  <br>
 

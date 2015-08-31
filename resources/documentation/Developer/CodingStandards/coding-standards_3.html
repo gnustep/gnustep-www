@@ -1,209 +1,236 @@
-<HTML>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- Created on January, 1  2008 by texi2html 1.64 -->
-<!-- 
-Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/loose.dtd">
+<html>
+<!-- Created on December 24, 2013 by texi2html 1.82
+texi2html was written by: 
+            Lionel Cons <Lionel.Cons@cern.ch> (original author)
             Karl Berry  <karl@freefriends.org>
             Olaf Bachmann <obachman@mathematik.uni-kl.de>
             and many others.
-Maintained by: Olaf Bachmann <obachman@mathematik.uni-kl.de>
-Send bugs and suggestions to <texi2html@mathematik.uni-kl.de>
- 
+Maintained by: Many creative people.
+Send bugs and suggestions to <texi2html-bug@nongnu.org>
 -->
-<HEAD>
-<TITLE>Coding Standards for GNUstep Libraries: Coding Style</TITLE>
+<head>
+<title>Coding Standards for GNUstep Libraries: 3. Coding Style</title>
 
-<META NAME="description" CONTENT="Coding Standards for GNUstep Libraries: Coding Style">
-<META NAME="keywords" CONTENT="Coding Standards for GNUstep Libraries: Coding Style">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-<META NAME="Generator" CONTENT="texi2html 1.64">
+<meta name="description" content="Coding Standards for GNUstep Libraries: 3. Coding Style">
+<meta name="keywords" content="Coding Standards for GNUstep Libraries: 3. Coding Style">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2html 1.82">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+pre.display {font-family: serif}
+pre.format {font-family: serif}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: serif; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: serif; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.roman {font-family:serif; font-weight:normal;}
+span.sansserif {font-family:sans-serif; font-weight:normal;}
+ul.toc {list-style: none}
+-->
+</style>
 
-</HEAD>
 
-<BODY LANG="" BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+</head>
 
-<A NAME="SEC3"></A>
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_2.html#SEC2"> &lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_4.html#SEC4"> &gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_2.html#SEC2"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards.html#SEC_Top"> Up </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_4.html#SEC4"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<H2> 1.2 Coding Style </H2>
-<!--docid::SEC3::-->
-<P>
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 
-The point is not what style is 'better' in the abstract -- it's what
+<a name="Coding-Style"></a>
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="coding-standards_2.html#ChangeLog-Entries" title="Previous section in reading order"> &lt; </a>]</td>
+<td valign="middle" align="left">[<a href="coding-standards_4.html#ObjectiveC" title="Next section in reading order"> &gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="coding-standards_2.html#ChangeLog-Entries" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="coding-standards.html#Top" title="Up section"> Up </a>]</td>
+<td valign="middle" align="left">[<a href="coding-standards_4.html#ObjectiveC" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="coding-standards.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="coding-standards_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<a name="Coding-Style-1"></a>
+<h2 class="section">3. Coding Style</h2>
+
+<p>The point is not what style is &rsquo;better&rsquo; in the abstract &ndash; it&rsquo;s what
 style is standard and readily usable by all the people wanting to
 use/work on GNUstep.  A reasonably good consistent style is better for
 collaborative work than a collection of styles irrespective of their
-individual merits.  If you commit changes that don't conform to the
+individual merits.  If you commit changes that don&rsquo;t conform to the
 project standards, that just means that someone else will have a tedious
 time making the necessary corrections (or removing your changes).
-</P><P>
-
-The GNUstep coding standards are essentially the same as the GNU coding 
-standards (<A HREF="http://www.gnu.org/prep/standards_toc.html">http://www.gnu.org/prep/standards_toc.html</A>), but here
+</p>
+<p>The GNUstep coding standards are essentially the same as the GNU coding 
+standards (<a href="http://www.gnu.org/prep/standards_toc.html">http://www.gnu.org/prep/standards_toc.html</a>), but here
 is a summary of the essentials.
-</P><P>
-
-White space should be used for clarity throughout.  In particular,
+</p>
+<p>White space should be used for clarity throughout.  In particular,
 variable declarations should be separated from code by a blank line and
 function/method implementations should be separated by a blank line.
-</P><P>
-
-Tabs should not be used (use spaces instead). If you do use them
-(please don't) they really, really, must be for tab-stops at the
+</p>
+<p>Tabs should not be used (use spaces instead). If you do use them
+(please don&rsquo;t) they really, really, must be for tab-stops at the
 standard intervals of 8 spaces.
-</P><P>
-
-All binary operators should be surrounded by white space with the
+</p>
+<p>All binary operators should be surrounded by white space with the
 exception of the comma (only a trailing white space), and the
-<CODE>.</CODE> and <CODE>-&#62;</CODE> structure member references (no space).
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>x = y + z;
+<code>.</code> and <code>-&gt;</code> structure member references (no space).
+</p><table><tr><td>&nbsp;</td><td><pre class="example">x = y + z;
 x += 2;
-x = ptr-&#62;field;
+x = ptr-&gt;field;
 x = record.member;
 x++, y++;
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-Brackets should have space only before the leading bracket and after
+<p>Brackets should have space only before the leading bracket and after
 the trailing bracket (as in this example), though there are odd occasions
 where those spaces might be omitted ((eg. when brackets are doubled)).
 This applies to square brackets too.
-</P><P>
-
-Where round brackets are used for type-casts or at the end of a statement,
+</p>
+<p>Where round brackets are used to enclose function or macro paramters, there
+is no space between the function romacro name and the opening bracket, and
+where round brackets are used for type-casts or at the end of a statement,
 there is normally no space between the closing bracket and the following
 expression or semicolon-
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>a = (int)b;
+</p><table><tr><td>&nbsp;</td><td><pre class="example">a = (int)b;
 - (void) methodWithArg1: (int)arg1 andArg2: (float)arg2;
-a = foo (ax, y, z);
-</pre></td></tr></table></P><P>
+a = foo(ax, y, z);
+</pre></td></tr></table>
 
-The placement of curly brackets is part of the indentation rules. the
-correct GNU style is
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  if (...)
+<p>The placement of curly brackets is part of the indentation rules. the
+correct GNU style is to indent by two spaces
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  if (...)
     {
       ...
     }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-For function implementations, the function names must begin on column zero
+<p>For function implementations, the function names must begin on column zero
 (types on the preceding line).  For function predeclaration, the types and
 the name should appear on the same line if possible.
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>static int myFunction(int a, int b);
+</p><table><tr><td>&nbsp;</td><td><pre class="example">static int myFunction(int a, int b);
 
 static int
 myFunction(int a, int b)
 {
   return a + b;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-The curly brackets enclosing function and method implementations should be
+<p>The curly brackets enclosing function and method implementations should be
 based in column 0.  Indentation is in steps of two spaces.
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>int
+</p><table><tr><td>&nbsp;</td><td><pre class="example">int
 myMax(int a, int b)
 {
-  if (a &#60; b)
+  if (a &lt; b)
     {
       return b;
     }
   return a;
 }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-Lines longer than 80 columns must be split up, if possible with the
+<p>Lines longer than 80 columns must be split up, if possible with the
 line wrap occurring immediately before an operator.  The wrapped lines
 are indented by two spaces form the original.
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  if ((conditionalTestVariable1 &#62; conditionaltestVariable2)
-    &#38;&#38; (conditionalTestvariable3 &#62; conditionalTestvariable4))
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  if ((conditionalTestVariable1 &gt; conditionaltestVariable2)
+    &amp;&amp; (conditionalTestvariable3 &gt; conditionalTestvariable4))
     {
       // Do something here.
     }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-Some things the standards seem to think are 'should' rather than 'must':
-</P><P>
-
-Multiline comments should use <CODE>/* ... */</CODE> while single line
-comments may use <CODE>//</CODE>.
-</P><P>
-
-In a C/ObjC variable declaration, the <SAMP>`*'</SAMP> refers to the variable,
+<p>Some things the standards seem to think are &rsquo;should&rsquo; rather than &rsquo;must&rsquo;:
+</p>
+<p>Multiline comments should use <code>/* ... */</code> while single line
+comments may use <code>//</code>.
+</p>
+<p>In a C/ObjC variable declaration, the &lsquo;<samp>*</samp>&rsquo; refers to the variable,
 not to the type, so you write
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  char	*foo;
-</pre></td></tr></table>not
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  char*	foo;
-</pre></td></tr></table></P><P>
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  char	*foo;
+</pre></td></tr></table>
+<p>not
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  char*	foo;
+</pre></td></tr></table>
 
-Using the latter approach encourages newbie programmers to thing they can
+<p>Using the latter approach encourages newbie programmers to thing they can
 declare two pointer variables by writing
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  char*	foo,bar;
-</pre></td></tr></table>when of course they need
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  char	*foo, *bar;
-</pre></td></tr></table>or (in my opinion better)
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  char	*foo;
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  char*	foo,bar;
+</pre></td></tr></table>
+<p>when of course they need
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  char	*foo, *bar;
+</pre></td></tr></table>
+<p>or (in my opinion better)
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  char	*foo;
   char	*bar;
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-An exception to the indentation rules for Objective-C: We normally don't
+
+<p>An exception to the indentation rules for Objective-C: We normally don&rsquo;t
 break long methods by indenting subsequent lines by two spaces, but make the
 parts of the method line up instead.
 The way to do this is indent so the colons line up.
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  [receiver doSomethingWith: firstArg
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  [receiver doSomethingWith: firstArg
                         and: secondArg
                        also: thirdArg];
-</pre></td></tr></table>That's the style used mostly in the GNUstep code - and therefore the one I
+</pre></td></tr></table>
+<p>That&rsquo;s the style used mostly in the GNUstep code - and therefore the one I
 try to keep to, however, the standard two space indentation is also acceptable
 (and sometimes necessary to prevent the text exceeding the 80 character line
 length limit).
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  [receiver doSomethingWith: firstArg
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  [receiver doSomethingWith: firstArg
     and: secondArg
     also: thirdArg];
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-My own preference (not part of the standard in any way) is to
-generally use curly brackets for control constructs, event where only one line
+<p>My own preference (not part of the standard in any way) is to
+generally use curly brackets for control constructs, even where only one line
 of code is involved
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>  if (a)
+</p><table><tr><td>&nbsp;</td><td><pre class="example">  if (a)
     {
       x = y;
     }
-</pre></td></tr></table></P><P>
+</pre></td></tr></table>
 
-Where using conditional compilation you should comment the #else and #endif
+<p>Where using conditional compilation you should comment the #else and #endif
 with the condition expression used in the #if line, to make it easy to find
 the matching lines.
-<TABLE><tr><td>&nbsp;</td><td class=example><pre>#if condition
+</p><table><tr><td>&nbsp;</td><td><pre class="example">#if condition
 // some code here
 #else /* not condition */
 #endif /* condition */
 
+</pre></td></tr></table>
 
-</pre></td></tr></table><A NAME="Memory Management"></A>
-<HR SIZE="6">
-<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
-<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_2.html#SEC2"> &lt;&lt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_4.html#SEC4"> &gt;&gt; </A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards.html#SEC_Top">Top</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_toc.html#SEC_Contents">Contents</A>]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
-<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="coding-standards_abt.html#SEC_About"> ? </A>]</TD>
-</TR></TABLE>
-<BR>  
-<FONT SIZE="-1">
-This document was generated
-by <I>Adam Fedor</I> on <I>January, 1  2008</I>
-using <A HREF="http://www.mathematik.uni-kl.de/~obachman/Texi2html
-"><I>texi2html</I></A>
+<hr size="6">
+<table cellpadding="1" cellspacing="1" border="0">
+<tr><td valign="middle" align="left">[<a href="coding-standards_2.html#ChangeLog-Entries" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
+<td valign="middle" align="left">[<a href="coding-standards_4.html#ObjectiveC" title="Next chapter"> &gt;&gt; </a>]</td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left"> &nbsp; </td>
+<td valign="middle" align="left">[<a href="coding-standards.html#Top" title="Cover (top) of document">Top</a>]</td>
+<td valign="middle" align="left">[Contents]</td>
+<td valign="middle" align="left">[Index]</td>
+<td valign="middle" align="left">[<a href="coding-standards_abt.html#SEC_About" title="About (help)"> ? </a>]</td>
+</tr></table>
+<p>
+ <font size="-1">
+  This document was generated by <em>Adam Fedor</em> on <em>December 24, 2013</em> using <a href="http://www.nongnu.org/texi2html/"><em>texi2html 1.82</em></a>.
+ </font>
+ <br>
 
-</BODY>
-</HTML>
+</p>
+</body>
+</html>
