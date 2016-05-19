@@ -293,7 +293,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td>WebServices</td>
 <td>Optional</td>
-<td><a href="<?php download("libs/WebServices-0.7.2.tar.gz")?>">0.7.2</a></td>
+<td><a href="<?php download("libs/WebServices-0.7.3.tar.gz")?>">0.7.3</a></td>
 <td><a href="http://svn.gna.org/viewcvs/gnustep/libs/webservices/trunk/">from svn</a></td>
 <td>Classes for building web services (partial)</td>
 </tr>
