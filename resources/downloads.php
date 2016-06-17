@@ -170,7 +170,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td>GNUstep GUI</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-gui-0.24.1.tar.gz")?>">0.24.1</a></td>
+<td><a href="<?php download("core/gnustep-gui-0.25.0.tar.gz")?>">0.25.0</a></td>
 <td>-</td>
 <td>Graphical user interface class library</td>
 </tr>
@@ -178,7 +178,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td>GNUstep Backend</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-back-0.24.1.tar.gz")?>">0.24.1</a></td>
+<td><a href="<?php download("core/gnustep-back-0.25.0.tar.gz")?>">0.25.0</a></td>
 <td>-</td>
 <td>Generic back-end</td>
 </tr>
@@ -480,7 +480,7 @@ download the <i>Recommended version</i>.</p>
 <tr>
 <td>make</td>
 <td>Required</td>
-<td>3.75</td>
+<td>3.81</td>
 <td><a href="ftp://ftp.gnu.org/gnu/make/"><i>current</i></a></td>
 <td>GNU make</td>
 </tr>
