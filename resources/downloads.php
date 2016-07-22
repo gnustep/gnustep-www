@@ -406,14 +406,12 @@ packages and applications may require you to install these libraries
 <col>
 <col>
 <col>
-<col>
 
 <thead>
 <tr>
 <th>Sources</th>
 <th>Required?</th>
-<th>Stable</th>
-<th>Unstable</th>
+<th>Version</th>
 <th>Notes</th>
 </tr>
 </thead>
@@ -424,7 +422,6 @@ packages and applications may require you to install these libraries
 <td><a href="../experience/GWorkspace.html">GWorkspace</a></td>
 <td>Recommended</td>
 <td><a href="<?php download("usr-apps/gworkspace-0.9.4.tar.gz")?>">0.9.4</a></td>
-<td>-</td>
 <td>File manager for GNUstep</td>
 </tr>
 
@@ -432,7 +429,6 @@ packages and applications may require you to install these libraries
 <td><a href="http://www.gnustep.org/experience/apps.html">GNUstep Apps</a></td>
 <td>Optional</td>
 <td><a href="<?php download("usr-apps/")?>">Various</a></td>
-<td><div class="cent">-</div></td>
 <td>Other User Applications</td>
 </tr>
 
