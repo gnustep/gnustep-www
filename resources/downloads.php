@@ -128,34 +128,24 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <col>
 <col>
 <col>
-<col>
 <col class="note">
 
 <thead>
 <tr>
 <th>Sources</th>
 <th>Required?</th>
-<th>Stable</th>
-<th>Unstable</th>
+<th>Version</th>
 <th>Notes</th>
 </tr>
 </thead>
 
 <tbody>
 
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 
 <tr>
 <td>GNUstep Make</td>
 <td>Required</td>
 <td><a href="<?php download("core/gnustep-make-2.6.8.tar.gz")?>">2.6.8</a></td>
-<td>-</td>
 <td>Makefile Package</td>
 </tr>
 
@@ -163,7 +153,6 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <td>GNUstep Base</td>
 <td>Required</td>
 <td><a href="<?php download("core/gnustep-base-1.24.9.tar.gz")?>">1.24.9</a></td>
-<td>-</td>
 <td>Foundation</td>
 </tr>
 
@@ -171,7 +160,6 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <td>GNUstep GUI</td>
 <td>Required</td>
 <td><a href="<?php download("core/gnustep-gui-0.25.0.tar.gz")?>">0.25.0</a></td>
-<td>-</td>
 <td>Graphical user interface class library</td>
 </tr>
 
@@ -179,7 +167,6 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <td>GNUstep Backend</td>
 <td>Required</td>
 <td><a href="<?php download("core/gnustep-back-0.25.0.tar.gz")?>">0.25.0</a></td>
-<td>-</td>
 <td>Generic back-end</td>
 </tr>
 
