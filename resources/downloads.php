@@ -339,15 +339,13 @@ packages and applications may require you to install these libraries
 <col>
 <col>
 <col>
-<col>
 <col class="note">
 
 <thead>
 <tr>
 <th>Sources</th>
 <th>Required?</th>
-<th>Stable</th>
-<th>Unstable</th>
+<th>Version</th>
 <th>Notes</th>
 </tr>
 </thead>
@@ -358,7 +356,6 @@ packages and applications may require you to install these libraries
 <td><a href="http://www.gnustep.org/experience/Gorm.html">Gorm</a></td>
 <td>Recommended</td>
 <td><a href="<?php download("dev-apps/gorm-1.2.23.tar.gz")?>">1.2.23</a></td>
-<td><div class="cent">-</div></td>
 <td>Graphical interface builder</td>
 </tr>
 
@@ -367,7 +364,6 @@ packages and applications may require you to install these libraries
 <td>Recommended</td>
 <td><a href="<?php download("dev-apps/ProjectCenter-0.6.2.tar.gz")?>">0.6.2
 </a></td>
-<td><div class="cent">-</div></td>
 <td>Project developer</td>
 </tr>
 
@@ -375,7 +371,6 @@ packages and applications may require you to install these libraries
 <td>nib2gmodel</td>
 <td>Obsolete</td>
 <td><a href="<?php download("dev-apps/nib2gmodel-0.11.0.tar.gz")?>">0.11.0</a></td>
-<td><div class="cent">-</div></td>
 <td>Converts older (pre-10.2 nibs) </td>
 </tr>
 
@@ -383,7 +378,6 @@ packages and applications may require you to install these libraries
 <td>OpenStep 2GNU Converter</td>
 <td>Obsolete</td>
 <td><a href="<?php download("contrib/Openstep2GNUConverter-20000717.tar.gz")?>">20000717</a></td>
-<td><div class="cent">-</div></td>
 <td>Older PB Project converter</td>
 </tr>
 
@@ -391,7 +385,6 @@ packages and applications may require you to install these libraries
 <td>Examples</td>
 <td>Optional</td>
 <td><a href="<?php download("usr-apps/gnustep-examples-1.4.0.tar.gz")?>">1.4.0</a></td>
-<td><div class="cent">-</div></td>
 <td>GUI examples</td>
 </tr>
 
