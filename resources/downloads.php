@@ -159,14 +159,14 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td>GNUstep GUI</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-gui-0.25.0.tar.gz")?>">0.25.0</a></td>
+<td><a href="<?php download("core/gnustep-gui-0.25.1.tar.gz")?>">0.25.1</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
 <tr>
 <td>GNUstep Backend</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-back-0.25.0.tar.gz")?>">0.25.0</a></td>
+<td><a href="<?php download("core/gnustep-back-0.25.1.tar.gz")?>">0.25.1</a></td>
 <td>Generic back-end</td>
 </tr>
 
