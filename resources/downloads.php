@@ -145,14 +145,14 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td>GNUstep Make</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-make-2.6.8.tar.gz")?>">2.6.8</a></td>
+<td><a href="<?php download("core/gnustep-make-2.7.0.tar.gz")?>">2.7.0</a></td>
 <td>Makefile Package</td>
 </tr>
 
 <tr>
 <td>GNUstep Base</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-base-1.24.9.tar.gz")?>">1.24.9</a></td>
+<td><a href="<?php download("core/gnustep-base-1.25.0.tar.gz")?>">1.25.0</a></td>
 <td>Foundation</td>
 </tr>
 
