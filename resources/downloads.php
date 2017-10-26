@@ -584,8 +584,8 @@ download the <i>Recommended version</i>.</p>
 <tr>
 <td>libobjc2</td>
 <td>Recommended</td>
-<td><a href="http://download.gna.org/gnustep/libobjc2-1.7.tar.bz2">1.7</a></td>
-<td><div class="cent">-</div></td>
+<td><a href="<?php download("libs/libobjc2-1.7.tar.bz2")?>">1.7</a></td>
+<td><a href="<?php download("libs/libobjc2-1.8.1.tar.bz2")?>">1.8.1</a></td>
 <td>Modern ObjectiveC-2.0 support</td>
 </tr>
 
