@@ -208,6 +208,7 @@ packages and applications may require you to install these libraries
 <td>GNUstep CoreBase</td>
 <td>Optional</td>
 <td><a href="<?php download("libs/gnustep-corebase-0.1.tar.gz")?>">0.1</a></td>
+<td><a href="https://github.com/gnustep/libs-corebase/">from git</a></td>
 <td><div class="cent">from svn</div></td>
 <td>Core Foundation</td>
 </tr>
@@ -216,7 +217,7 @@ packages and applications may require you to install these libraries
 <td><a href="http://www.gnustep.it/Renaissance/index.html">Renaissance</a></td>
 <td>Optional</td>
 <td><div class="cent">-</div></td>
-<td><div class="cent">from svn</div></td>
+<td><a href="https://github.com/gnustep/libs-renaissance/">from git</a></td>
 <td>Multi-platform UI layout</td>
 </tr>
 
@@ -224,6 +225,7 @@ packages and applications may require you to install these libraries
 <td>GNUstep Guile</td>
 <td>Unsupported</td>
 <td><a href="<?php download("libs/gnustep-guile-1.1.4.tar.gz")?>">1.1.4</a></td>
+
 <td><div class="cent">-</div></td>
 <td>Requires OLD versions of GNUstep and Guile to build/run</td>
 </tr>
@@ -265,7 +267,7 @@ packages and applications may require you to install these libraries
 <td>SQLClient</td>
 <td>Optional</td>
 <td><a href="<?php download("libs/SQLClient-1.8.1.tar.gz")?>">1.8.1</a></td>
-<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/sqlclient/trunk/">from svn</a></td>
+<td><a href="https://github.com/gnustep/libs-sqlclient/">from git</a></td>
 <td>Simple Objective-C Interface to SQL databases</td>
 </tr>
 
@@ -273,7 +275,7 @@ packages and applications may require you to install these libraries
 <td>WebServer</td>
 <td>Optional</td>
 <td><a href="<?php download("libs/WebServer-1.5.5.tar.gz")?>">1.5.5</a></td>
-<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/webserver/trunk/">from svn</a></td>
+<td><a href="https://github.com/gnustep/libs-webserver/">from git</a></td>
 <td>Simple web server for applications</td>
 </tr>
 
@@ -281,7 +283,7 @@ packages and applications may require you to install these libraries
 <td>WebServices</td>
 <td>Optional</td>
 <td><a href="<?php download("libs/WebServices-0.7.3.tar.gz")?>">0.7.3</a></td>
-<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/webservices/trunk/">from svn</a></td>
+<td><a href="https://github.com/gnustep/libs-webservices/">from git</a></td>
 <td>Classes for building web services (partial)</td>
 </tr>
 
@@ -289,7 +291,7 @@ packages and applications may require you to install these libraries
 <td>Performance</td>
 <td>Optional</td>
 <td><a href="<?php download("libs/Performance-0.5.0.tar.gz")?>">0.5.0</a></td>
-<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/performance/trunk/">from svn</a></td>
+<td><a href="https://github.com/gnustep/libs-performance/">from git</a></td>
 <td>Performance improvement and measuring classes</td>
 </tr>
 
@@ -305,7 +307,7 @@ packages and applications may require you to install these libraries
 <td>EnterpriseControlConfigurationLogging</td>
 <td>Optional</td>
 <td><a href="<?php download("libs/EnterpriseControlConfigurationLogging-1.1.3.tar.gz")?>">1.1.3</a></td>
-<td><a href="http://svn.gna.org/viewcvs/gnustep/libs/ec/trunk/">from svn</a></td>
+<td><a href="https://github.com/gnustep/libs-ec/">from git</a></td>
 <td>Classes for building and administering 24*7 server processes for large scale software systemd.</td>
 </tr>
 
@@ -585,7 +587,7 @@ download the <i>Recommended version</i>.</p>
 <td>libobjc2</td>
 <td>Recommended</td>
 <td><a href="<?php download("libs/libobjc2-1.7.tar.bz2")?>">1.7</a></td>
-<td><a href="<?php download("libs/libobjc2-1.8.1.tar.bz2")?>">1.8.1</a></td>
+<td><a href="<?php download("libs/libobjc2-1.8.1.tar.gz")?>">1.8.1</a></td>
 <td>Modern ObjectiveC-2.0 support</td>
 </tr>
 
