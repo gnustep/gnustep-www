@@ -145,7 +145,7 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td>GNUstep Make</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-make-2.9.0.tar.gz")?>">2.7.0</a></td>
+<td><a href="<?php download("core/gnustep-make-2.9.0.tar.gz")?>">2.9.0</a></td>
 <td>Makefile Package</td>
 </tr>
 
