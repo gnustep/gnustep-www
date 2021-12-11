@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>7 A modified client which accesses both local and remote files</TITLE>
+<META NAME="description" CONTENT="7 A modified client which accesses both local and remote files">
+<META NAME="keywords" CONTENT="DistributedObjects">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="DistributedObjects.css">
+
+<LINK REL="next" HREF="node10.html">
+<LINK REL="previous" HREF="node8.html">
+<LINK REL="up" HREF="DistributedObjects.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html109"
+  HREF="node10.html">8 Error checking -</A> </B>
+<B>Up: <A NAME="tex2html107"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A>  </B>
+<B> Previous: <A NAME="tex2html101"
+  HREF="node8.html">6 Putting them together</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00070000000000000000">
+7 A modified client which accesses both local and remote files</A>
+</H1>
+The previous sections introduced you to the black magic of DO: we
+replaced a local object with a remote one, and we still called a
+method of the object in the usual way.  We didn't need to use a
+special syntax to send messages to the remote object: we just did as
+if it still were our old little object in the local process; the
+language and the libraries managed silently all the rest.  Now we want
+to push it even further: we do the replacement at execution time.
+
+<P>
+We want to extend the client so that it can access both local and
+remote files; it will decide what to do depending on the command line
+arguments which are used to call it.  When called with a single
+argument, for example <TT>README</TT>,
+<PRE>
+Client README
+</PRE>
+it will display the file <TT>README</TT> from the local machine; when
+called with a filename and a host name, for example <TT>README</TT> and
+<TT>didone.gnustep.it</TT>,
+<PRE>
+Client README didone.gnustep.it
+</PRE>
+it will display the file <TT>README</TT> fetched from the server
+running on the host called <TT>didone.gnustep.it</TT>.
+
+<P>
+The server is the same; we only change the client.  We declare the
+usual <TT>FileReader</TT> protocol because we now want to have a
+<TT>reader</TT> object which might be local or remote, and the only
+thing we know is that we can send the <TT>getFile:</TT> message to it,
+which is expressed in Objective-C by saying that the <TT>reader</TT>
+object conforms to the <TT>FileReader</TT> protocol.
+
+<P>
+Then, we implement a <TT>LocalFileReader</TT> class, which reads a
+file (from the local machine).  I called it <TT>LocalFileReader</TT>
+rather than <TT>FileReader</TT> to avoid confusion, but technically
+there is nothing preventing you from calling it <TT>FileReader</TT>.
+It is the usual class, which implements the facility of reading a
+local file.  But the class declaration has an interesting
+modification:
+<PRE>
+@interface LocalFileReader : NSObject &lt;FileReader&gt;
+- (NSString *)getFile: (NSString *)fileName;
+@end
+</PRE>
+in this declaration, <TT>LocalFileReader</TT> inherits from
+<TT>NSObject</TT>, and conforms to the <TT>FileReader</TT> protocol.
+We declare that the class implements the protocol because that allows
+us to cast any <TT>LocalFileReader</TT> object to <TT>id
+  &lt;FileReader&gt;</TT>.
+
+<P>
+When the client is run, it examines its arguments to decide whether it
+needs to create a local or a remote <TT>reader</TT> object:
+
+<P>
+<PRE>
+/* Get program arguments */
+args = [[NSProcessInfo processInfo] arguments];
+  
+/* If there is a second argument, read it as a hostname 
+   to fetch files from */
+if ([args count] &gt; 2)
+  {
+    NSString *host = [args objectAtIndex: 2];
+
+    /* Create our remote FileReader object */
+    reader = (id &lt;FileReader&gt;)
+      [NSConnection
+        rootProxyForConnectionWithRegisteredName: @"FileReader" 
+        host: host];
+      
+    if (reader == nil)
+      {
+        NSLog (@"Error: could not connect to server on host %@",
+               host);
+        exit (1);
+      }
+  }
+else /* No second argument - read local file */
+  {
+    reader = [LocalFileReader new];
+  }
+</PRE>
+and that's it; the code which follows is the usual one.  Notice how
+both the remote and the local object conform to the
+<TT>FileReader</TT> protocol, which makes it possible for the code to
+contact the local and the remote object in an opaque way.
+
+<P>
+The full client source code is:
+<PRE>
+#include &lt;Foundation/Foundation.h&gt;
+
+
+/* This tells us how the reader object behaves */
+
+@protocol FileReader
+- (NSString *)getFile: (NSString *)fileName;
+@end
+
+/* A local file reader conforms to the FileReader protocol 
+   and reads files locally */
+@interface LocalFileReader : NSObject &lt;FileReader&gt;
+- (NSString *)getFile: (NSString *)fileName;
+@end
+
+@implementation LocalFileReader
+- (NSString *)getFile: (NSString *)fileName
+{
+  return [NSString stringWithContentsOfFile: fileName];  
+}
+@end
+
+
+int 
+main (void)
+{
+  NSAutoreleasePool *pool;
+  NSArray *args;
+  int count;
+  id &lt;FileReader&gt; reader;
+  NSString *filename;
+  NSString *file;
+
+  pool = [NSAutoreleasePool new];
+  
+  /* Get program arguments */
+  args = [[NSProcessInfo processInfo] arguments];
+  
+  /* If there is a second argument, read it as a hostname 
+     to fetch files from */
+  if ([args count] &gt; 2)
+    {
+      NSString *host = [args objectAtIndex: 2];
+
+      /* Create our remote FileReader object */
+      reader = (id &lt;FileReader&gt;)
+        [NSConnection
+          rootProxyForConnectionWithRegisteredName: 
+                @"FileReader" 
+          host: host];
+      
+      if (reader == nil)
+        {
+          NSLog 
+            (@"Error: could not connect to server on host %@",
+             host);
+          exit (1);
+        }
+    }
+  else /* Local file */
+    {
+      reader = [LocalFileReader new];
+    }
+
+  /* From now on the code is the same, whether reader is 
+     in the local process or in a remote one */
+
+  /* the first string in args is the program name; 
+     get the second one if any */
+  if ([args count] == 1)
+    {
+      NSLog (@"Error: you should specify a filename");
+      exit (1);
+    }
+  
+  filename = [args objectAtIndex: 1];
+
+  /* Ask the reader object to get the file */
+  file = [reader getFile: filename];
+
+  /* If the reader object could get the file, show it */
+  if (file != nil)
+    {
+      printf ("%s\n", [file lossyCString]);
+    }
+  else
+    {
+      NSLog (@"Error: could not read file `%@'", filename);
+      exit (1);
+     }
+
+  return 0;
+}
+</PRE>
+NB: If you play with this client, and if you want to pass an empty string
+as host name to have it look on the local host, make sure you quote
+the empty string:
+<PRE>
+./obj/Client Client.m ''
+</PRE>
+
+<P>
+At this point we probably need to say a few words about why and how
+this magic is possible.  In other words, it's time for a bit of sane
+religious praise of our beloved Objective-C language <TT>:-)</TT>.
+
+<P>
+The whole magic is in the method invocation
+<PRE>
+file = [reader getFile: filename];
+</PRE>
+which invokes the method <TT>getFile:</TT> of the object
+<TT>reader</TT>, no matter if <TT>reader</TT> is a local or a remote
+object; the type of the <TT>reader</TT> object is determined only at
+execution time, depending on the command line arguments which were
+passed to the tool.  The example is impressive because it shows that
+the language allows you to replace <I>any</I> local object in your
+application with a remote object at execution time, without
+recompiling or restarting your code, and everything will still work,
+assuming of course that the remote object can respond to the methods
+the local object could.  This is possible because Objective-C provides
+<TT>dynamic binding</TT> of method invocations, which means that the
+method invocation is bound to the method implementation only at
+runtime.  This allows many powerful object oriented designs which
+wouldn't be possible otherwise (Distributed Objects are an example of
+such a design); typically designs in which objects are dynamically and
+cleanly replaced with other objects at runtime, or designs in which an
+object encapsulates some functionality, but the actual class or
+implementation of the object is not known till execution time.
+
+<P>
+Objective-C is the fastest language available which supports this kind
+of advanced object oriented designs; Objective-C code is normally as
+fast as C because it <I>is</I> C code, except in method invocations
+(which C doesn't have) which on average take three times more than the
+time required by a function invocation.  It's practically impossible
+for a fully object oriented language to go faster than that;
+Objective-C performs nearly as fast as C++, but yet provides you with
+dynamic binding and many other very advanced and flexible object
+oriented features (such as categories, or access to the runtime
+internals) which C++ doesn't provide.  Some of these features are
+missing even in Java.
+
+<P>
+<HR><B> Next: <A NAME="tex2html109"
+  HREF="node10.html">8 Error checking -</A> </B>
+<B>Up: <A NAME="tex2html107"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A> </B>
+<B> Previous: <A NAME="tex2html101"
+  HREF="node8.html">6 Putting them together</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2011-02-09
+</ADDRESS>
+</BODY>
+</HTML>

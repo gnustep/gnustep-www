@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>6.1 Why do subprojects exist ?</TITLE>
+<META NAME="description" CONTENT="6.1 Why do subprojects exist ?">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="next" HREF="node17.html">
+<LINK REL="previous" HREF="node15.html">
+<LINK REL="up" HREF="node15.html">
+<LINK REL="next" HREF="node17.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html190"
+  HREF="node17.html">6.2 Most of the</A> </B>
+<B>Up: <A NAME="tex2html188"
+  HREF="node15.html">6 Subprojects</A>  </B>
+<B> Previous: <A NAME="tex2html182"
+  HREF="node15.html">6 Subprojects</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00061000000000000000">
+6.1 Why do subprojects exist ?</A>
+</H2>
+Before version 2.4.0, gnustep-make did not support having source files
+in subdirectories.  For example, you couldn't write:
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = HelloWorld
+HelloWorld_OBJC_FILES = Subdirectory/HelloWorld.m
+
+include $(GNUSTEP_MAKEFILES)/tool.make
+</PRE>
+
+<P>
+This works if you use gnustep-make 2.4.0 (or later); but wouldn't work
+with previous versions of gnustep-make, because HelloWorld.m is in a
+subdirectory.  So, people who wanted to organize their source files in
+different subdirectories had to use ``subprojects''.  You created a
+GNUmakefile in each of the subdirectories (which would build using
+subproject.make), then specifies that the tool had some subprojects.
+So, the tool's GNUmakefile would have been -
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = HelloWorld
+HelloWorld_SUBPROJECTS = Subdirectory
+
+include $(GNUSTEP_MAKEFILES)/tool.make
+</PRE>
+
+<P>
+and in the subdirectory you'd have had a GNUmakefile such as the
+following one -
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+SUBPROJECT_NAME = Subdirectory
+Subdirectory_OBJC_FILES = HelloWorld.m
+
+include $(GNUSTEP_MAKEFILES)/subproject.make
+</PRE>
+
+<P>
+You'll appreciate how easier it is to specify source files in
+subdirectories directly in the tool's GNUmakefile (as allowed by
+gnustep-make 2.4.0), without having to have an additional GNUmakefile
+in each subdirectory.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

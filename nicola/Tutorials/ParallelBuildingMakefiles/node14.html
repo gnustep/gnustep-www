@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>5.3 Backwards compatibility between subdirectories and aggregate.make</TITLE>
+<META NAME="description" CONTENT="5.3 Backwards compatibility between subdirectories and aggregate.make">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="node11.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html167"
+  HREF="node15.html">6 Subprojects</A> </B>
+<B>Up: <A NAME="tex2html165"
+  HREF="node11.html">5 Subdirectories</A>  </B>
+<B> Previous: <A NAME="tex2html161"
+  HREF="node13.html">5.2 Advanced usage of</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00053000000000000000">
+5.3 Backwards compatibility between subdirectories and aggregate.make</A>
+</H2>
+If you need your software to build with gnustep-make &lt; 2.4.0, then you
+can't really use parallel-subdirectories.make or
+serial-subdirectories.make because they weren't available in older
+versions of gnustep-make.  You need to use aggregate.make.
+
+<P>
+aggregate.make will always do a serial build in older versions of
+gnustep-make.  In newer versions, it will do a serial build by
+default, but will do a parallel build if you set 
+
+<P>
+<PRE>
+GNUSTEP_USE_PARALLEL_AGGREGATE = yes
+</PRE>
+
+<P>
+So, here is how to build a set of subdirectories in serial order -
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+SUBPROJECTS = Source Tools
+
+include $(GNUSTEP_MAKEFILES)/aggregate.make
+</PRE>
+
+<P>
+and here is how to build them in parallel oder -
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+SUBPROJECTS = Source Tools
+
+GNUSTEP_USE_PARALLEL_AGGREGATE = yes
+include $(GNUSTEP_MAKEFILES)/aggregate.make
+</PRE>
+
+<P>
+This last example will simply do a parallel build on newer
+gnustep-makes, and a serial build on older ones that don't support it.
+
+<P>
+aggregate.make will be slowly phased out in the following years, so if
+you don't need to support older versions of gnustep-make, you could
+simply use serial-subdirectories.make and
+parallel-subdirectories.make.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>4.2 Instances of different types</TITLE>
+<META NAME="description" CONTENT="4.2 Instances of different types">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="previous" HREF="node9.html">
+<LINK REL="up" HREF="node8.html">
+<LINK REL="next" HREF="node11.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html126"
+  HREF="node11.html">5 Subdirectories</A> </B>
+<B>Up: <A NAME="tex2html124"
+  HREF="node8.html">4 Multiple instances</A>  </B>
+<B> Previous: <A NAME="tex2html120"
+  HREF="node9.html">4.1 Multiple instances of</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00042000000000000000">
+4.2 Instances of different types</A>
+</H2>
+Instances of different types are not built in parallel; they are built
+in the order in which the gnustep-make make fragments (tool.make,
+library.make, etc) are included.
+
+<P>
+This behaviour is backwards-compatible with previous releases of
+gnustep-make and it's important to know about it (later on we'll
+explain how you do a parallel build in this case by moving the
+instances into different subdirectories and using the new
+parallel-subdirectories.make makefile).
+
+<P>
+For example, if your GNUmakefile builds a library and a tool, they
+will be always be built separately and in serial order.  If you
+include tool.make before library.make, the tool will be built first;
+if you include library.make first, the library will be built first.
+
+<P>
+Let's look at a quick example -
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+LIBRARY_NAME = HelloMoon
+HelloMoon_OBJC_FILES = HelloMoon.m HelloMars.m
+
+TOOL_NAME = HelloWorld
+HelloWorld_OBJC_FILES = HelloWorld.m main1.m
+
+include $(GNUSTEP_MAKEFILES)/library.make
+include $(GNUSTEP_MAKEFILES)/tool.make
+</PRE>
+
+<P>
+In this case, the HelloMoon library will be built before the
+HelloWorld tool because library.make is included before tool.make.
+
+<P>
+So, the building in this case will work as follows:
+
+<P>
+<PRE>
+Step 0. Execute before-all:: if it exists
+Step 1. Build HelloMoon
+Step 2. Build HelloWorld
+Step 3. Execute after-all:: if it exists
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

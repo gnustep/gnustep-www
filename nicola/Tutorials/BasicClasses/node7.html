@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>1.6 Reading and Saving Strings to/from Files</TITLE>
+<META NAME="description" CONTENT="1.6 Reading and Saving Strings to/from Files">
+<META NAME="keywords" CONTENT="BasicClasses">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="BasicClasses.css">
+
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="node1.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html110"
+  HREF="node8.html">2 NSArray</A> </B>
+<B>Up: <A NAME="tex2html108"
+  HREF="node1.html">1 NSString</A>  </B>
+<B> Previous: <A NAME="tex2html104"
+  HREF="node6.html">1.5 NSMutableString</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00016000000000000000">
+1.6 Reading and Saving Strings to/from Files</A>
+</H2>
+We don't have the time to describe all the string-related features of
+the GNUstep base library; but it's useful to have at least a quick
+look at how easy is writing/reading strings to/from files.
+
+<P>
+If you need to write the contents of a string into a file, you can use
+the method <TT>-writeToFile:atomically:</TT>, as shown in the
+following example:
+<PRE>
+#include &lt;Foundation/Foundation.h&gt;
+
+int
+main (void)
+{
+  NSAutoreleasePool *pool = [NSAutoreleasePool new];
+  NSString *name = @"This string was created by GNUstep";
+
+  if ([name writeToFile: @"/home/nico/testing" atomically: YES])
+    {
+      NSLog (@"Success");
+    }
+  else 
+    {
+      NSLog (@"Failure");
+    }
+  return 0;
+}
+</PRE>
+<TT>writeToFile:atomically</TT> returns <TT>YES</TT> upon success, 
+and <TT>NO</TT> upon failure.  If the atomically flag is <TT>YES</TT>, 
+then the library first writes the string into a file with a temporary 
+name, and, when the writing has been successfully done, renames the 
+file to the specified filename.  This prevents erasing the previous 
+version of filename unless writing has been successful.  Usually, this 
+is a very good feature, which you want to enable.
+
+<P>
+Reading the contents of a file into a string is easy too.  You can
+simply use <TT>+stringWithContentsOfFile:</TT>, as in the following
+example, which reads <TT>@"/home/nicola/test"</TT>:
+<PRE>
+#include &lt;Foundation/Foundation.h&gt;
+
+int
+main (void)
+{
+  NSAutoreleasePool *pool = [NSAutoreleasePool new];
+  NSString *string;
+  NSString *filename = @"/home/nico/test";
+
+  string = [NSString stringWithContentsOfFile: filename];
+  if (string == nil)
+    {
+      NSLog (@"Problem reading file %@", filename);
+      // &lt;missing code: do something to manage the error...&gt;
+      // &lt;exit perhaps ?&gt;
+    }
+
+  /*
+   * &lt;missing code: do something with string...&gt;
+   */
+
+  return 0;
+}
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

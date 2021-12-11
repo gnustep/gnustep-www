@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>1.3 stringWithFormat</TITLE>
+<META NAME="description" CONTENT="1.3 stringWithFormat">
+<META NAME="keywords" CONTENT="BasicClasses">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="BasicClasses.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="node1.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html82"
+  HREF="node5.html">1.4 Converting to and</A> </B>
+<B>Up: <A NAME="tex2html80"
+  HREF="node1.html">1 NSString</A>  </B>
+<B> Previous: <A NAME="tex2html74"
+  HREF="node3.html">1.2 Static Instances</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00013000000000000000">
+1.3 stringWithFormat</A>
+</H2>
+The other main way of creating <TT>NSString</TT>s is by means of the
+class method <TT>+stringWithFormat:</TT>.  This is a method of the
+class <TT>NSString</TT>; it accepts a list of arguments which are
+processed in a way very similar to how the <TT>printf</TT> function of
+the standard C library processes its arguments; the difference is that
+the result of the method is not sent to the standard output, but
+rather it is put in a <TT>NSString</TT> which is then returned as
+return value of the method.
+
+<P>
+Here is an example: 
+<PRE>
+int age = 25;
+NSString *message;
+
+message = [NSString stringWithFormat: @"Your age is %d", age];
+</PRE>
+
+<P>
+<TT>message</TT> will be a <TT>NSString</TT> containing "Your age is 25".
+
+<P>
+A special feature of <TT>stringWithFormat</TT> is that it recognises
+the <TT>%@</TT> conversion specification.  You can use this to 
+specify another <TT>NSString</TT> (in the same way as you would use 
+<TT>%s</TT> to specify another C string): 
+<PRE>
+NSString *first;
+NSString *second;
+
+first = @"Nicola";
+second = [NSString stringWithFormat: @"My name is %@", first];
+</PRE>
+this code will cause the <TT>second</TT> variable to be set to 
+the string <TT>My name is Nicola</TT>. 
+
+<P>
+More generally, you can use the <TT>%@</TT> specification to output a
+description of an object (as returned by the <TT>NSObject</TT>'s
+<TT>-description</TT>).  This is often useful in debugging, as in: 
+<PRE>
+NSObject *obj = [anObject someMethod];
+
+NSLog (@"The method returned: %@", obj);
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

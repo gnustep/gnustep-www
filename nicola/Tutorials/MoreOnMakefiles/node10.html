@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>4 Aggregate projects</TITLE>
+<META NAME="description" CONTENT="4 Aggregate projects">
+<META NAME="keywords" CONTENT="MoreOnMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="MoreOnMakefiles.css">
+
+<LINK REL="next" HREF="node12.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="MoreOnMakefiles.html">
+<LINK REL="next" HREF="node11.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html120"
+  HREF="node11.html">4.1 Serial and parallel</A> </B>
+<B>Up: <A NAME="tex2html118"
+  HREF="MoreOnMakefiles.html">More on GNUstep Makefiles</A>  </B>
+<B> Previous: <A NAME="tex2html112"
+  HREF="node9.html">3.2 Building things of</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">
+4 Aggregate projects</A>
+</H1>
+Up to now, all examples consisted of projects in a single directory,
+using a single GNUmakefile.  Aggregate projects allow you to have a
+number of projects in different directories.
+
+<P>
+As an example, suppose that you are writing a networked game.  Your
+source code might contain two main projects to build: a gui
+application (the game client) and a command line tool (the server).
+Naturally enough, you want to develop and distribute the two
+subprojects together, but they are big enough that you want to keep
+them in separate directories.  This is where GNUstep aggregate
+projects come handy.
+
+<P>
+Imagine that your game is called <TT>MyGame</TT>.  You will have a
+top-level directory
+<PRE>
+MyGame
+</PRE> 
+and two subdirectories
+<PRE>
+MyGame/Server
+MyGame/Client
+</PRE>
+In <TT>MyGame/Server</TT> you keep the source code of your server
+tool, with its own <TT>GNUmakefile</TT>.  In <TT>MyGame/Client</TT>
+you keep the source code of your client application, with its own
+<TT>GNUmakefile</TT>.
+
+<P>
+You can now you add the following <TT>GNUmakefile</TT> in the
+top-level directory:
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+PACKAGE_NAME = MyGame
+
+SUBPROJECTS = Server Client
+
+include $(GNUSTEP_MAKEFILES)/aggregate.make
+</PRE>
+This <TT>GNUmakefile</TT> simply tells to the make package that your
+project consists of two aggregate subprojects, <TT>Server</TT>, and
+<TT>Client</TT>.  Please note that the make package follows the order
+you specify, so in this case <TT>Server</TT> is always compiled before
+<TT>Client</TT> (this could be important if one of your subprojects is
+a library, and another subproject is an application which needs to be
+linked against that library: then, you always want the library to be
+compiled before the application, so the library should come before the
+application in the list of subprojects).
+
+<P>
+In this example, we have two aggregate subprojects, but you can have
+any number of aggregate subprojects.
+
+<P>
+At this point you are ready.  Typing
+<PRE>
+make
+</PRE>
+in the top-level directory will cause the make package to step into
+the <TT>Server</TT> subdirectory, and run <TT>make</TT> there, and
+then step into the <TT>Client</TT> subdirectory, and run <TT>make</TT>
+there.
+
+<P>
+The same will work with all the standard make commands, such as
+<TT>make clean</TT>, <TT>make distclean</TT>, <TT>make install</TT>
+etc.
+
+<P>
+Aggregate subprojects can be nested, so that for example the
+<TT>Server</TT> project could be itself composed of subprojects.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html121"
+  HREF="node11.html">4.1 Serial and parallel subdirectories</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR><B> Next: <A NAME="tex2html120"
+  HREF="node11.html">4.1 Serial and parallel</A> </B>
+<B>Up: <A NAME="tex2html118"
+  HREF="MoreOnMakefiles.html">More on GNUstep Makefiles</A> </B>
+<B> Previous: <A NAME="tex2html112"
+  HREF="node9.html">3.2 Building things of</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

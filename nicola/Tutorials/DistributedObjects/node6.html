@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>5.1 The FileReader protocol</TITLE>
+<META NAME="description" CONTENT="5.1 The FileReader protocol">
+<META NAME="keywords" CONTENT="DistributedObjects">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="DistributedObjects.css">
+
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="node5.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html81"
+  HREF="node7.html">5.2 Accessing the remote</A> </B>
+<B>Up: <A NAME="tex2html79"
+  HREF="node5.html">5 The client</A>  </B>
+<B> Previous: <A NAME="tex2html73"
+  HREF="node5.html">5 The client</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00051000000000000000">
+5.1 The FileReader protocol</A>
+</H2>
+Because the <TT>FileReader</TT> class is not compiled into the client
+(as we moved it into the server), we can't refer to the
+<TT>FileReader</TT> class in the client.  And still, if we need to
+access the remote <TT>FileReader</TT> object, we need a way to declare
+which methods it supports.
+
+<P>
+To manage this situation, we use a <TT>protocol</TT>.  If you know
+Java, this is similar to an <TT>interface</TT> in Java.  A
+<TT>protocol</TT> declares some methods, leaving the implementation
+unspecified.  The language then allows you to declare that a certain
+object <I>conforms</I> to a certain protocol; this means that the
+object implements the methods listed in the protocol.  In our example,
+this allows us to declare that we can send the <TT>getFile:</TT>
+method to the <TT>reader</TT> object, without actually knowing the
+implementation of the method nor actually knowing the class of the
+<TT>reader</TT> object.
+
+<P>
+The declaration of the protocol is as follows:
+<PRE>
+@protocol FileReader
+- (NSString *) getFile: (NSString *)fileName;
+@end
+</PRE>
+This declares the protocol <TT>FileReader</TT> to have a single
+method, <TT>getFile:</TT>.  Objects conform to this protocol if and
+only if they have a <TT>getFile:</TT> method taking a <TT>NSString
+  *</TT> argument, and returning an <TT>NSString *</TT>.
+
+<P>
+The <TT>reader</TT> object, which we used to declare to be of class
+<TT>FileReader</TT>,
+<PRE>
+FileReader *reader;
+</PRE>
+is now declared more generically to conform to the <TT>FileReader</TT>
+protocol:
+<PRE>
+id &lt;FileReader&gt; reader;
+</PRE>
+<TT>id</TT> means a generic object; <TT>&lt;FileReader&gt;</TT> means that
+it must conform to the <TT>FileReader</TT> protocol; in this case this
+simply means that <TT>reader</TT> is an object and you can send the
+message <TT>getFile:</TT> to it.
+
+<P>
+<HR><B> Next: <A NAME="tex2html81"
+  HREF="node7.html">5.2 Accessing the remote</A> </B>
+<B>Up: <A NAME="tex2html79"
+  HREF="node5.html">5 The client</A> </B>
+<B> Previous: <A NAME="tex2html73"
+  HREF="node5.html">5 The client</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2011-02-09
+</ADDRESS>
+</BODY>
+</HTML>

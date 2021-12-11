@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2 A First Tool</TITLE>
+<META NAME="description" CONTENT="2 A First Tool">
+<META NAME="keywords" CONTENT="WritingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="WritingMakefiles.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="WritingMakefiles.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html36"
+  HREF="node3.html">3 Installing the Tool</A> </B>
+<B>Up: <A NAME="tex2html34"
+  HREF="WritingMakefiles.html">Writing GNUstep Makefiles</A>  </B>
+<B> Previous: <A NAME="tex2html28"
+  HREF="node1.html">1 What is it</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000">
+2 A First Tool</A>
+</H1>
+Let's try it out by making a little command line tool using the
+GNUstep make package.  Let's start by creating a directory to hold our
+project.  In this directory, type the following extremely simple
+program in a file called say <TT>source.m</TT>.
+<PRE>
+#import &lt;Foundation/Foundation.h&gt;
+
+int
+main (void)
+{ 
+  NSLog (@"Executing");
+  return 0;
+}
+</PRE>
+The function <TT>NSLog</TT> simply outputs the string to
+<TT>stderr</TT>, flushing the output before continuing.  To compile
+this little program as a command line tool called <TT>LogTest</TT>,
+add in the same directory a file called <TT>GNUmakefile</TT>, with the
+following contents:
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = LogTest
+LogTest_OBJC_FILES = source.m
+
+include $(GNUSTEP_MAKEFILES)/tool.make
+</PRE>
+And that's it.
+At this point, you have all the usual standard GNU make options:
+typically make, make clean, make install, make distclean.  For
+example, typing <TT>make</TT> in the project directory should compile
+our little tool.
+It should create a single executable <TT>LogTest</TT>, and put it in
+the subdirectory ``obj'' of your current directory, that is, in
+<PRE>
+./obj
+</PRE>
+You can try the tool out by typing
+<PRE>
+./obj/LogTest
+</PRE>
+
+<P>
+When you type <TT>make</TT>, the system will check if any changes were
+made to the source code since the last time you compiled, and if so,
+it will rebuild your software.
+
+<P>
+If you want to remove the results of a previous compilation (for
+example, to later force a recompilation with different options) you
+can use the command
+<PRE>
+make clean
+</PRE>
+
+<P>
+<HR><B> Next: <A NAME="tex2html36"
+  HREF="node3.html">3 Installing the Tool</A> </B>
+<B>Up: <A NAME="tex2html34"
+  HREF="WritingMakefiles.html">Writing GNUstep Makefiles</A> </B>
+<B> Previous: <A NAME="tex2html28"
+  HREF="node1.html">1 What is it</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2010-02-14
+</ADDRESS>
+</BODY>
+</HTML>

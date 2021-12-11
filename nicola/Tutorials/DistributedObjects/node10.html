@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>8 Error checking - timeout exceptions</TITLE>
+<META NAME="description" CONTENT="8 Error checking - timeout exceptions">
+<META NAME="keywords" CONTENT="DistributedObjects">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="DistributedObjects.css">
+
+<LINK REL="next" HREF="node11.html">
+<LINK REL="previous" HREF="node9.html">
+<LINK REL="up" HREF="DistributedObjects.html">
+<LINK REL="next" HREF="node11.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html119"
+  HREF="node11.html">9 Error checking -</A> </B>
+<B>Up: <A NAME="tex2html117"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A>  </B>
+<B> Previous: <A NAME="tex2html111"
+  HREF="node9.html">7 A modified client</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00080000000000000000">
+8 Error checking - timeout exceptions</A>
+</H1>
+
+<P>
+Up to now, this tutorial has ignored error checking; but to build
+robust applications, your code needs to be able to manage problems in
+the network connections, both in the server and in the client.
+
+<P>
+In this section we examine the simplest problem: when a problem occurs
+during invocation of a remote method, typically a time-out on the
+network connection, and an exception is raised.  If your client code
+is to use remote objects in a robust way, you need to be prepared to
+catch and manage these exceptions in the relevant sections of code.
+
+<P>
+A timeout means that your client sent the method invocation to the
+server, but it didn't get a response in a reasonable time.  After
+waiting for 15 seconds (FIXME - this was the old default for
+gnustep-base, it's probably changed now), the gnustep base library
+raises a <TT>NSPortTimeOutException</TT>, which you need to catch if
+you want to write robust code.
+
+<P>
+In our example, we need to catch exceptions thrown when getting the
+file from the <TT>FileReader</TT>:
+<PRE>
+NS_DURING
+  {
+    file = [reader getFile: filename];
+  }
+NS_HANDLER
+  {
+    NSLog (@"Got exception while reading file: %@", localException);
+    exit (1);
+  }
+NS_ENDHANDLER
+</PRE>
+this example is not particularly brilliant because the only thing we
+do when we catch the exception is printing out the description of the
+exception and quitting the program - which is the same thing which
+the gnustep-base library does for us if we don't catch the
+exception... but it should give you a clear example of how to catch
+and manage timeouts.
+
+<P>
+<HR><B> Next: <A NAME="tex2html119"
+  HREF="node11.html">9 Error checking -</A> </B>
+<B>Up: <A NAME="tex2html117"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A> </B>
+<B> Previous: <A NAME="tex2html111"
+  HREF="node9.html">7 A modified client</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2011-02-09
+</ADDRESS>
+</BODY>
+</HTML>

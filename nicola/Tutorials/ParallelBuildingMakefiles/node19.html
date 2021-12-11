@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>7 Disabling parallel building</TITLE>
+<META NAME="description" CONTENT="7 Disabling parallel building">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="next" HREF="node20.html">
+<LINK REL="previous" HREF="node15.html">
+<LINK REL="up" HREF="ParallelBuildingMakefiles.html">
+<LINK REL="next" HREF="node20.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html218"
+  HREF="node20.html">About this document ...</A> </B>
+<B>Up: <A NAME="tex2html216"
+  HREF="ParallelBuildingMakefiles.html">Parallel Building with GNUstep</A>  </B>
+<B> Previous: <A NAME="tex2html210"
+  HREF="node18.html">6.3 Subprojects and paralell</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00070000000000000000">
+7 Disabling parallel building</A>
+</H1>
+If parallel building is causing problems, you can always turn it off.
+There are three ways of turning it off:
+
+<P>
+
+<OL>
+<LI>globally, by configuring gnustep-make with ./configure
+  -disable-parallel-building.  This sounds a bit extreme, but it's an
+  option if you want everything to be always built serially.
+</LI>
+<LI>for a specific GNUmakefile, by adding
+<PRE>
+GNUSTEP_MAKE_PARALLEL_BUILDING = no
+</PRE>
+to the GNUmakefile, just before including common.make.  This is
+probably the most useful trick; if for any reason you find a
+GNUmakefile is not working with parallel building and you don't know
+how to fix it, you can disable parallel building in that GNUmakefile
+while still leaving it on for everything else.
+</LI>
+<LI>for a specific compilation run, by simply not using '-j' when
+invoking make. :-)
+</LI>
+</OL>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>9 Error checking - connection died</TITLE>
+<META NAME="description" CONTENT="9 Error checking - connection died">
+<META NAME="keywords" CONTENT="DistributedObjects">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="DistributedObjects.css">
+
+<LINK REL="next" HREF="node12.html">
+<LINK REL="previous" HREF="node10.html">
+<LINK REL="up" HREF="DistributedObjects.html">
+<LINK REL="next" HREF="node12.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html129"
+  HREF="node12.html">10 For further information</A> </B>
+<B>Up: <A NAME="tex2html127"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A>  </B>
+<B> Previous: <A NAME="tex2html121"
+  HREF="node10.html">8 Error checking -</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00090000000000000000">
+9 Error checking - connection died</A>
+</H1>
+
+<P>
+The other typical error which can occur is that a connection dies.  As
+an example, suppose that we had a modified client, in which we get a
+remote <TT>reader</TT> object, and then loop waiting for the user to
+input a filename.  When the user inputs a filename, we ask to the
+remote object to get that file, and we print it out, then we go back
+into the loop waiting for the user to input another filename.
+
+<P>
+In that situation, it might happen that the remote server is up and
+running, but at a certain point, while we are in our loop waiting for
+the user to input a filename, the remote server becomes unavailable
+(for example, because of a hardware crash, or because the network
+connection goes down, or because the server crashed with a
+segmentation fault during some operation).  If the gnustep base
+library detects this problem, it invalidates the proxy to the remote
+object (which in plain words means that the <TT>reader</TT> object is
+no longer useful, and you should no longer use it), and posts the
+<TT>NSConnectionDidDieNotification</TT> notification.  If we are
+observing that notification, we can be informed immediately that this
+problem has occurred, and we might manage it - we might want to exit
+the application immediately, or try to connect to another server, or
+inform the user that because the remote server is down, we will only
+fetch files locally till we can connect to the remote server again, or
+something else.  In any case, the notification gives us an opportunity
+to release our <TT>reader</TT> object - which is no longer useful
+because the connection has died - and, if we want and if we can, to
+take some corrective measures.  Here is the simple code needed to
+observe the notification:
+<PRE>
+ [[NSNotificationCenter defaultCenter]
+    addObserver: myObserver
+       selector: @selector(methodToExecuteWhenTheConnectionDies:)
+          name: NSConnectionDidDieNotification
+        object: [(NSDistantObject *)reader connectionForProxy]];
+</PRE>
+Calling this code after the <TT>reader</TT> object is created will
+cause the <TT>methodToExecuteWhenTheConnectionDies:</TT> of the
+<TT>myObserver</TT> object to be called when the connection to the
+server goes down.
+
+<P>
+Here is an example <TT>Client.m</TT> code which you can use as a
+starting point for playing with dying connections -
+<PRE>
+#include &lt;Foundation/Foundation.h&gt;
+
+
+@protocol FileReader
+- (NSString *)getFile: (NSString *)fileName;
+@end
+
+@interface Observer : NSObject
+- (void)connectionDied: (NSNotification *)not;
+@end
+
+@implementation Observer
+- (void)connectionDied: (NSNotification *)not
+{
+  NSLog (@"Connection to server died! - exiting");
+  exit (1);
+}
+@end
+
+int 
+main (void)
+{
+  NSAutoreleasePool *pool;
+  NSArray *args;
+  int count;
+  id &lt;FileReader&gt; reader;
+  NSString *filename;
+  NSString *file;
+
+  pool = [NSAutoreleasePool new];
+  
+  /* Get program arguments */
+  args = [[NSProcessInfo processInfo] arguments];
+  
+  /* Create our remote FileReader object */
+  reader = (id &lt;FileReader&gt;)
+    [NSConnection
+      rootProxyForConnectionWithRegisteredName: @"FileReader" 
+      host: @""];
+  
+  if (reader == nil)
+    {
+      NSLog (@"Error - could not connect to FileReader Server");
+      exit (1);
+    }
+  else
+    {
+      NSLog (@"Connected");
+    }
+  
+  
+  /* Register Observer -connectionDied: to be informed if the connection
+     to the server dies.  */
+  [[NSNotificationCenter defaultCenter]
+    addObserver: [Observer new]
+    selector: @selector(connectionDied:)
+    name: NSConnectionDidDieNotification
+    object: [(NSDistantObject *)reader connectionForProxy]];
+
+  /* Ok - now we enter the main run loop.  In this example, we just do
+     nothing in the main run loop as I'm too lazy to code it to do
+     something -- but you should imagine that this is a server doing
+     a lot of stuff in the run loop, and using the 'reader' to fetch 
+     files from the remote server when its activity in the run loop
+     requires it.  */
+  [[NSRunLoop currentRunLoop] run];
+
+  return 0;
+}
+</PRE>
+You can play by running the server in an xterm, then running the
+client in another xterm, then killing the server in the first xterm
+(for example by pressing <TT>Control-C</TT>): the client in the second
+xterm should be immediately notified that the connection to the server
+is dead!
+
+<P>
+<HR><B> Next: <A NAME="tex2html129"
+  HREF="node12.html">10 For further information</A> </B>
+<B>Up: <A NAME="tex2html127"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A> </B>
+<B> Previous: <A NAME="tex2html121"
+  HREF="node10.html">8 Error checking -</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2011-02-09
+</ADDRESS>
+</BODY>
+</HTML>

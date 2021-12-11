@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>6.3 Subprojects and paralell building</TITLE>
+<META NAME="description" CONTENT="6.3 Subprojects and paralell building">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="previous" HREF="node17.html">
+<LINK REL="up" HREF="node15.html">
+<LINK REL="next" HREF="node19.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html208"
+  HREF="node19.html">7 Disabling parallel building</A> </B>
+<B>Up: <A NAME="tex2html206"
+  HREF="node15.html">6 Subprojects</A>  </B>
+<B> Previous: <A NAME="tex2html202"
+  HREF="node17.html">6.2 Most of the</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00063000000000000000">
+6.3 Subprojects and paralell building</A>
+</H2>
+If you ever need to use subprojects in a parallel build, you need to
+know that, for backwards-compatibility, subprojects are built in the
+order they are specified, and are built before the rest of the source
+files are compiled.
+
+<P>
+So, in the example above of a tool HelloWorld with a Subdirectory
+subproject, the build flow to build the tool is as follows:
+
+<P>
+<PRE>
+Step 0. Execute before-HelloWorld-all:: if it exists
+Step 1. Build Subdirectory
+Step 2. Build HelloWorld
+Step 3. Execute after-HelloWorld-all:: if it exists
+</PRE>
+
+<P>
+if you had more than one subproject, they would be built in the
+specified order.  Most likely, they are independent though, and should
+be built in parallel.  You can very simply obtain that result by
+getting rid of subprojects altogether and listing all files in the
+tool's GNUmakefile.  This will also get rid of the intermediate
+linking steps for subprojects, speeding up your build even more.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

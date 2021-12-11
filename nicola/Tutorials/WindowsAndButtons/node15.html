@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3.1 A Quick Introduction to Views</TITLE>
+<META NAME="description" CONTENT="3.1 A Quick Introduction to Views">
+<META NAME="keywords" CONTENT="WindowsAndButtons">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="WindowsAndButtons.css">
+
+<LINK REL="next" HREF="node16.html">
+<LINK REL="previous" HREF="node14.html">
+<LINK REL="up" HREF="node14.html">
+<LINK REL="next" HREF="node16.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html185"
+  HREF="node16.html">3.2 Creating a Button</A> </B>
+<B>Up: <A NAME="tex2html183"
+  HREF="node14.html">3 Adding a Button</A>  </B>
+<B> Previous: <A NAME="tex2html177"
+  HREF="node14.html">3 Adding a Button</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00031000000000000000">
+3.1 A Quick Introduction to Views</A>
+</H2>
+<TT>NSView</TT> is a class whose objects represent a rectangular area
+in a window.  Each <TT>NSView</TT> has its own internal coordinate
+system; <TT>NSView</TT> provides a complete framework for managing the
+rectangle represented by the view, its coordinate system, and for
+drawing and getting user events inside the view's rectangle.
+
+<P>
+Any object which can be displayed (and/or can accept user events)
+inside a window (such as a button, a text field, a scroll view, a
+slider, etc) is actually an instance of a subclass of <TT>NSView</TT>.
+The specific subclass (for example, <TT>NSButton</TT>) implements a
+specific way of drawing and managing user events inside the view's
+rectangle.  An unsubclassed <TT>NSView</TT> by default draws nothing
+and reacts to no user events, even if it contains all the machinery
+(ready for subclasses to use) to do both.
+
+<P>
+When you create a window, the library automatically creates an
+<TT>NSView</TT> covering the whole content area of the window.  This
+view is called the window's <I>content view</I>.  You can replace the
+default content view (which is transparent and reacts to no user
+events) with an <TT>NSView</TT> of your choice (which can be an
+instance of a subclass of <TT>NSView</TT>, such as a <TT>NSButton</TT>
+or a <TT>NSScrollView</TT>), but you should not change the rectangle
+it represents, which must always cover the whole window.
+
+<P>
+If you want to have a view which covers only a part of a window, you
+need to add it as a <I>subview</I> of the content view.  We will
+explore subviews in a forth-coming tutorial; in our first example, we
+will go for the simplest possible solution avoiding use of subviews:
+we will create a single <TT>NSButton</TT>, make a window to fit
+exactly our button, and then replace the default window's content view
+with our button.  In this way we'll get a window containing exactly
+our button.  In the next tutorial, we'll learn how to enclose views
+one over the other in a subview tree, so that we can put more things
+in a single window.
+
+<P>
+<HR><B> Next: <A NAME="tex2html185"
+  HREF="node16.html">3.2 Creating a Button</A> </B>
+<B>Up: <A NAME="tex2html183"
+  HREF="node14.html">3 Adding a Button</A> </B>
+<B> Previous: <A NAME="tex2html177"
+  HREF="node14.html">3 Adding a Button</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

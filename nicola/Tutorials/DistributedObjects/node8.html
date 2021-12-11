@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>6 Putting them together</TITLE>
+<META NAME="description" CONTENT="6 Putting them together">
+<META NAME="keywords" CONTENT="DistributedObjects">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="DistributedObjects.css">
+
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="DistributedObjects.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html99"
+  HREF="node9.html">7 A modified client</A> </B>
+<B>Up: <A NAME="tex2html97"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A>  </B>
+<B> Previous: <A NAME="tex2html91"
+  HREF="node7.html">5.2 Accessing the remote</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00060000000000000000">
+6 Putting them together</A>
+</H1>
+For the sake of completeness, here is the <TT>GNUmakefile</TT>:
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = Server Client
+
+Server_OBJC_FILES = Server.m
+Client_OBJC_FILES = Client.m
+
+include $(GNUSTEP_MAKEFILES)/tool.make
+</PRE>
+After you compile the two tools, you have definitely to play with them
+because it's real fun.  Start the server:
+<PRE>
+./obj/Server
+</PRE>
+Now open another shell (on another machine on the same network if you
+are so lucky that you can play on the network), and start the client
+from there:
+<PRE>
+./obj/Client Client.m
+</PRE>
+this should display you the <TT>Client.m</TT> file, as fetched by the
+<TT>Server</TT> program.
+
+<P>
+On my machine it works so simply, immediately and nicely that it is
+even difficult to realize that the client has actually opened a
+network connection to the server, asked for the file, and the server
+has sent it back through the connection!  To get more feeling of what
+is happening,you might want to modify the <TT>FileReader</TT> class in
+the server to display a log each time it sends a file:
+<PRE>
+@implementation FileReader
+- (NSString *)getFile: (NSString *)fileName
+{
+  NSLog (@"A client asked for file %@", fileName);
+  return [NSString stringWithContentsOfFile: fileName];
+}
+@end
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2011-02-09
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2.1 Window Attributes</TITLE>
+<META NAME="description" CONTENT="2.1 Window Attributes">
+<META NAME="keywords" CONTENT="WindowsAndButtons">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="WindowsAndButtons.css">
+
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="node6.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html104"
+  HREF="node8.html">2.2 Creating a Window</A> </B>
+<B>Up: <A NAME="tex2html102"
+  HREF="node6.html">2 Adding a Window</A>  </B>
+<B> Previous: <A NAME="tex2html96"
+  HREF="node6.html">2 Adding a Window</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00021000000000000000">
+2.1 Window Attributes</A>
+</H2>
+Windows are represented in GNUstep by <TT>NSWindow</TT> objects.  We
+are mainly interested in two attributes of a <TT>NSWindow</TT> object:
+
+<OL>
+<LI>its <I>content rect</I>, which is a <TT>NSRect</TT> describing
+  the rectangle covered by the internal area of the window; i.e.,
+  without all the decorations added by the window manager (title bar,
+  border, etc);
+</LI>
+<LI>its <I>style mask</I>, which is an <TT>unsigned int</TT>
+  describing the decorations of the window.  A zero style mask is also
+  known as a <TT>NSBorderlessWindowMask</TT>, and means that the
+  window has no decorations at all.  If the window needs to have
+  decorations, you need to set its style mask to a combination
+  (<TT>OR</TT>) of one or more of the following constants:
+
+<UL>
+<LI><TT>NSTitledWindowMask</TT> = the window has a title bar;
+</LI>
+<LI><TT>NSClosableWindowMask</TT> = the window can be closed by the
+  user (it has a close button);
+</LI>
+<LI><TT>NSMiniaturizableWindowMask</TT> = the window can be
+  miniaturized by the user (it has a miniaturize button);
+</LI>
+<LI><TT>NSResizableWindowMask</TT> = the window can be resized by
+  the user.
+</LI>
+</UL>
+For example, a window which has a title bar, is closable and
+miniaturizable will have a style mask of:
+<PRE>
+unsigned int windowMask = NSTitledWindowMask 
+                          | NSClosableWindowMask 
+                          | NSMiniaturizableWindowMask;
+</PRE>
+where <TT>|</TT> is the C operator for the logical OR.
+</LI>
+</OL>
+
+<P>
+While you might freely change the content rect of your window after
+the window has been created, you can only set the style mask when the
+window is first created.  You can not change the style mask of the
+window after creation.
+
+<P>
+<HR><B> Next: <A NAME="tex2html104"
+  HREF="node8.html">2.2 Creating a Window</A> </B>
+<B>Up: <A NAME="tex2html102"
+  HREF="node6.html">2 Adding a Window</A> </B>
+<B> Previous: <A NAME="tex2html96"
+  HREF="node6.html">2 Adding a Window</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

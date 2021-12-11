@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2.7.2 Second Way - Using objectEnumerator</TITLE>
+<META NAME="description" CONTENT="2.7.2 Second Way - Using objectEnumerator">
+<META NAME="keywords" CONTENT="BasicClasses">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="BasicClasses.css">
+
+<LINK REL="previous" HREF="node16.html">
+<LINK REL="up" HREF="node15.html">
+<LINK REL="next" HREF="node18.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html224"
+  HREF="node18.html">2.8 Searching for an</A> </B>
+<B>Up: <A NAME="tex2html222"
+  HREF="node15.html">2.7 Iterating over Array</A>  </B>
+<B> Previous: <A NAME="tex2html218"
+  HREF="node16.html">2.7.1 First Way -</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00027200000000000000">
+2.7.2 Second Way - Using objectEnumerator</A>
+</H3>
+There is another very important way to iterate over the elements of an
+array, and it is by using the <TT>-objectEnumerator</TT> method.  This
+method returns an object of class <TT>NSEnumerator</TT>, which can be
+used to enumerate the objects in the array.  The only real thing you
+need to know about <TT>NSEnumerator</TT> is that it has a method
+called <TT>-nextObject</TT>.  The first time you invoke it, it returns
+the first object in the array.  The second time you invoke it, it
+returns the second element on the array, and so on till there are no
+more objects in the array; at this point, the <TT>NSEnumerator</TT>
+returns <TT>nil</TT>.  In the following example, the code to describe
+an array is rewritten in this second way:
+<PRE>
+void
+describeArray (NSArray *array)
+{
+  NSEnumerator *enumerator;
+  NSObject *obj;
+
+  enumerator = [array objectEnumerator];
+
+  while ((obj = [enumerator nextObject]) != nil)
+    {
+      NSLog (@"Next Object is: %@", obj);      
+    }
+  }
+}
+</PRE>
+This second way is generally slightly faster than the first one but
+has a very important restriction: you should not modify the array (if
+it is a <TT>NSMutableArray</TT>) while enumerating its elements in
+this way.  Be careful about this problem, because it is easy to forget
+this condition - this would introduce subtle bugs.
+
+<P>
+<HR><B> Next: <A NAME="tex2html224"
+  HREF="node18.html">2.8 Searching for an</A> </B>
+<B>Up: <A NAME="tex2html222"
+  HREF="node15.html">2.7 Iterating over Array</A> </B>
+<B> Previous: <A NAME="tex2html218"
+  HREF="node16.html">2.7.1 First Way -</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

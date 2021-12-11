@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2 A basic program to show files</TITLE>
+<META NAME="description" CONTENT="2 A basic program to show files">
+<META NAME="keywords" CONTENT="DistributedObjects">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="DistributedObjects.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="DistributedObjects.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html39"
+  HREF="node3.html">3 Extending the program</A> </B>
+<B>Up: <A NAME="tex2html37"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A>  </B>
+<B> Previous: <A NAME="tex2html31"
+  HREF="node1.html">1 What are Distributed</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000">
+2 A basic program to show files</A>
+</H1>
+
+<P>
+We start our tutorial with a very basic non-DO program - a command
+line tool which accepts a filename as an argument, reads this file
+from disk, and prints it out to <TT>stdout</TT>.  For example, typing
+<PRE>
+Example Client.m
+</PRE>
+should display the contents of the file <TT>Client.m</TT>.  Once we
+have this basic example in place, in the next sections we'll use DO to
+extend its capabilities.  
+
+<P>
+Our basic tool is the following one:
+<PRE>
+#include &lt;Foundation/Foundation.h&gt;
+
+/* This object does the job of fetching a file from 
+   the hard disk */
+
+@interface FileReader : NSObject
+- (NSString *)getFile: (NSString *)fileName;
+@end
+
+@implementation FileReader
+- (NSString *)getFile: (NSString *)fileName
+{
+  return [NSString stringWithContentsOfFile: fileName];
+}
+@end
+
+
+int 
+main (void)
+{
+  NSAutoreleasePool *pool;
+  NSArray *args;
+  int count;
+  FileReader *reader;
+  NSString *filename;
+  NSString *file;
+
+  pool = [NSAutoreleasePool new];
+
+  /* Create our FileReader object */
+  reader = [FileReader new];
+
+  /* Get program arguments */
+  args = [[NSProcessInfo processInfo] arguments];
+
+  /* the first string in args is the program name; 
+     get the second one if any */
+  if ([args count] == 1)
+    {
+      NSLog (@"Error: you should specify a filename");
+      exit (1);
+    }
+  
+  filename = [args objectAtIndex: 1];
+
+  /* Ask the reader object to get the file */
+  file = [reader getFile: filename];
+
+  /* If the reader object could get the file, show it */
+  if (file != nil)
+    {
+      printf ("%s\n", [file lossyCString]);
+    }
+  else
+    {
+      NSLog (@"Error: could not read file `%@'", filename);
+      exit (1);
+    }
+
+  return 0;
+}
+</PRE>
+To compile the program, you need a <TT>GNUmakefile</TT>, such as the
+following one:
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = Example
+Example_OBJC_FILES = example.m
+
+include $(GNUSTEP_MAKEFILES)/tool.make
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2011-02-09
+</ADDRESS>
+</BODY>
+</HTML>

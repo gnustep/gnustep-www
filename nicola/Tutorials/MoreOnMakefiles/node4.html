@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2.2 Linking your app or tool against a GNUstep library</TITLE>
+<META NAME="description" CONTENT="2.2 Linking your app or tool against a GNUstep library">
+<META NAME="keywords" CONTENT="MoreOnMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="MoreOnMakefiles.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="node2.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html62"
+  HREF="node5.html">2.3 Linking against an</A> </B>
+<B>Up: <A NAME="tex2html60"
+  HREF="node2.html">2 Libraries</A>  </B>
+<B> Previous: <A NAME="tex2html54"
+  HREF="node3.html">2.1 Compiling A Library</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00022000000000000000">
+2.2 Linking your app or tool against a GNUstep library</A>
+</H2>
+In our first example, we want to write a tiny tool which uses our 
+<TT>libHelloWorld</TT>.  The tool source code is in the file 
+<TT>main.m</TT>, which is the following:
+<PRE>
+#include &lt;Foundation/Foundation.h&gt;
+#include &lt;HelloWorld/HelloWorld.h&gt;
+
+int main (void)
+{
+  [HelloWorld printMessage];
+
+  return 0;
+}
+</PRE>
+(We invoke the <TT>printMessage</TT> method of the <TT>HelloWorld</TT> 
+class, then exit.).
+
+<P>
+We write our usual GNUmakefile (but including GNUmakefile.preamble): 
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = HelloWorldTest
+HelloWorldTest_OBJC_FILES = main.m
+
+include GNUmakefile.preamble
+include $(GNUSTEP_MAKEFILES)/tool.make
+</PRE>
+
+<P>
+Then, here is the GNUmakefile.preamble, in which we tell the make
+package about the library we want to link against:
+<PRE>
+HelloWorldTest_TOOL_LIBS += -lHelloWorld
+</PRE>
+
+<P>
+If you have correctly installed the library <TT>HelloWorld</TT>, 
+this is all you need to do.  If you needed to link against more than 
+one library, you would simply put them on the same line, as in: 
+<PRE>
+HelloWorldTest_TOOL_LIBS += -lHelloWorld -lHelloMoon
+</PRE>
+which links against the two libraries <TT>HelloWorld</TT> and 
+<TT>HelloMoon</TT>.
+
+<P>
+If <TT>HelloWorld</TT> were an application, you would need to use 
+<PRE>
+HelloWorldTest_GUI_LIBS += -lHelloWorld
+</PRE>
+(the difference is <TT>GUI</TT> instead of <TT>TOOL</TT>).
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

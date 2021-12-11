@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>4 Property Lists</TITLE>
+<META NAME="description" CONTENT="4 Property Lists">
+<META NAME="keywords" CONTENT="BasicClasses">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="BasicClasses.css">
+
+<LINK REL="next" HREF="node30.html">
+<LINK REL="previous" HREF="node23.html">
+<LINK REL="up" HREF="BasicClasses.html">
+<LINK REL="next" HREF="node30.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html346"
+  HREF="node30.html">About this document ...</A> </B>
+<B>Up: <A NAME="tex2html344"
+  HREF="BasicClasses.html">Basic GNUstep Base Library</A>  </B>
+<B> Previous: <A NAME="tex2html338"
+  HREF="node28.html">3.5 NSMutableDictionary</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">
+4 Property Lists</A>
+</H1>
+As promised, in this last section we are going to have a quick look at
+a very interesting feature of GNUstep: the support for property lists.
+
+<P>
+As we saw, it is very easy to save/read a string to/from a file.
+GNUstep goes well beyond this.  You can save/read any object to/from a
+file, using the archiving/dearchiving facilities; these facilities are
+great, but save/read objects in a binary format.  For arrays and
+dictionaries containing only strings, GNUstep provides other
+facilities (the ones we are interested on here) to save/read them from
+files in a human-readable (and human-modifiable) format, called a
+<I>property list</I>.  Actually, the set of objects which you can save
+and read in this way is much more general:
+
+<OL>
+<LI>Any string can be saved/read as a property list.
+</LI>
+<LI>Any array or dictionary containing only objects which can be
+saved/read as a property list can be also saved/read as a property
+list.
+</LI>
+</OL>
+In practice, any array or dictionary which contains other arrays and
+dictionaries can be saved/read provided that in the end all the
+'final' objects are strings.
+
+<P>
+To save or read a dictionary or an array of the correct type, you
+write or read them to/from file in the same way as you do with
+strings, that is, you use the method <TT>-writeToFile:atomically:</TT>
+to write them to files, and the method
+<TT>+dictionaryWithContentsOfFile:</TT> (for dictionaries) or
+the method <TT>+arrayWithContentsOfFile:</TT> (for arrays) 
+to read them from files.
+
+<P>
+For example, the following code creates a dictionary which 
+is used to store, for each person, some info; then it saves 
+it to a file in the form of a property list: 
+<PRE>
+#include &lt;Foundation/Foundation.h&gt;
+
+int 
+main (void)
+{
+  NSAutoreleasePool *pool = [NSAutoreleasePool new];
+  NSMutableDictionary *dict;
+  NSDictionary *dict2;
+
+  dict = [NSMutableDictionary new];
+  AUTORELEASE (dict);
+
+  dict2 = [NSDictionary dictionaryWithObjectsAndKeys: 
+             @"Nicola", @"Name",
+             @"Pero", @"Surname",
+             @"n.pero@mi.flashnet.it", @"Email", nil];
+  [dict setObject: dict2  forKey: @"Nicola"];
+
+  dict2 = [NSDictionary dictionaryWithObjectsAndKeys: 
+             @"Ettore", @"Name",
+             @"Perazzoli", @"Surname",
+             @"ettore@helixcode.com", @"Email", nil];
+  [dict setObject: dict2  forKey: @"Ettore"];
+
+  dict2 = [NSDictionary dictionaryWithObjectsAndKeys: 
+             @"Richard", @"Name",
+             @"Frith-Macdonald", @"Surname",
+             @"richard@brainstorm.co.uk", @"Email", nil];
+  [dict setObject: dict2  forKey: @"Richard"];
+
+  if ([dict writeToFile: @"/home/nico/testing" atomically: YES])
+    {
+      NSLog (@"Success");
+    }
+  else
+    {
+      NSLog (@"Failure");
+    }
+
+  return 0;
+}
+</PRE>
+I tried it on my machine (I encourage you to do the same on yours) 
+and it wrote the following into my <TT>/home/nico/testing</TT> file: 
+<PRE>
+{
+    Ettore = {
+        Email = "ettore@helixcode.com";
+        Name = Ettore;
+        Surname = Perazzoli;
+    };
+    Nicola = {
+        Email = "n.pero@mi.flashnet.it";
+        Name = Nicola;
+        Surname = Pero;
+    };
+    Richard = {
+        Email = "richard@brainstorm.co.uk";
+        Name = Richard;
+        Surname = "Frith-Macdonald";
+    };
+}
+</PRE>
+As you see, it is a very simple format, and very nice to read and edit
+manually.  The " (speech-marks) are used whenever a string contains
+spaces or special characters; they are omitted for simple strings.
+Dictionaries are saved as in 
+<PRE>
+{
+  Email = "richard@brainstorm.co.uk";
+  Name = Richard;
+  Surname = "Frith-Macdonald";
+}
+</PRE>
+(Note that they use curly brackets, and each key/value pairs is followed 
+by a <TT>;</TT> (semicolon), even the last one).  
+Arrays (not shown in the previous example) are saved as in 
+<PRE>
+(
+ "Nicola Pero", 
+ "Ettore Perazzoli", 
+ "Richard Frith-Macdonald"
+)
+</PRE>
+(they use round brackets, and each entry is followed by a comma, except 
+the last one).
+You can find other examples of this format by looking inside 
+your <TT>&nbsp;/GNUstep</TT> directory.
+
+<P>
+One of the advantages of this format is that it is very general, but
+still very portable and simple.  It is so easy and simple (unless
+<TT>XML</TT>) that you can write a complete parser/unparser for a new
+platform in one or two days.
+
+<P>
+Once you have saved the data to a file in the form of a property list,
+you can easily retrieve it from the same file.  The following code
+retrieves the data from the file <TT>/home/nico/testing</TT>, and
+prints out the <TT>Email</TT> of <TT>Ettore</TT>:
+<PRE>
+#include &lt;Foundation/Foundation.h&gt;
+
+int 
+main (void)
+{
+  NSAutoreleasePool *pool = [NSAutoreleasePool new];
+  NSDictionary *dict;
+  NSDictionary *dict2;
+  NSString *email;
+
+  dict = [NSDictionary dictionaryWithContentsOfFile: 
+                         @"/home/nico/testing"];
+  dict2 = [dict objectForKey: @"Ettore"];
+  email = [dict2 objectForKey: @"Email"];
+
+  NSLog (@"Ettore's Email is: %@", email);
+
+  return 0;
+}
+</PRE><HR><B> Next: <A NAME="tex2html346"
+  HREF="node30.html">About this document ...</A> </B>
+<B>Up: <A NAME="tex2html344"
+  HREF="BasicClasses.html">Basic GNUstep Base Library</A> </B>
+<B> Previous: <A NAME="tex2html338"
+  HREF="node28.html">3.5 NSMutableDictionary</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

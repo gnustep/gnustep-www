@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>8 Preamble and Postamble</TITLE>
+<META NAME="description" CONTENT="8 Preamble and Postamble">
+<META NAME="keywords" CONTENT="WritingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="WritingMakefiles.css">
+
+<LINK REL="next" HREF="node9.html">
+<LINK REL="previous" HREF="node7.html">
+<LINK REL="up" HREF="WritingMakefiles.html">
+<LINK REL="next" HREF="node9.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html96"
+  HREF="node9.html">9 Further Reading</A> </B>
+<B>Up: <A NAME="tex2html94"
+  HREF="WritingMakefiles.html">Writing GNUstep Makefiles</A>  </B>
+<B> Previous: <A NAME="tex2html88"
+  HREF="node7.html">7 Debugging an Application</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00080000000000000000">
+8 Preamble and Postamble</A>
+</H1>
+You may happen to need to pass additional flags to the compiler (in
+order to link with additional libraries, for example) or to be willing
+to perform some additional actions after compilation or installation.
+The standard way of doing this is as follows: add a file called
+<TT>GNUmakefile.preamble</TT> to your project directory.  An example
+of a <TT>GNUmakefile.preamble</TT> is the following:
+<PRE>
+ADDITIONAL_OBJCFLAGS += -Wextra
+</PRE>
+This simply adds the <TT>-Wextra</TT> flag when compiling, which
+causes GCC to print a lot more warnings than it would normally do.  In
+general, you would use a <TT>GNUmakefile.preamble</TT> to add any
+additional flags you need (to tell the compiler/linker to search
+additional directories upon compiling/linking, to link with additional
+libraries, etc).
+
+<P>
+Now, you would want your <TT>GNUmakefile</TT> to include the contents
+of your <TT>GNUmakefile.preamble</TT> before any processing.  This is
+usually done as follows:
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+APP_NAME = PanelTest
+PanelTest_OBJC_FILES = source.m
+
+include GNUmakefile.preamble
+include $(GNUSTEP_MAKEFILES)/application.make
+</PRE>
+
+<P>
+The most important thing to notice is that the
+<TT>GNUmakefile.preamble</TT> is included <I>before</I>
+<TT>application.make</TT>.  That is why is called a preamble.
+
+<P>
+Sometimes you also see people using 
+<PRE>
+-include GNUmakefile.preamble
+</PRE>
+(with a hyphen, <TT>-</TT>, prepended).  The hyphen before
+<TT>include</TT> tells the make tool not to complain if the file
+<TT>GNUmakefile.preamble</TT> is not found.  If you want to make sure
+that the <TT>GNUmakefile.preamble</TT> is included, you should better
+not use the hyphen.
+
+<P>
+If you want to perform any special operation after the GNUmakefile
+package has done its work, you usually put them in a
+<TT>GNUmakefile.postamble</TT> file.  The
+<TT>GNUmakefile.postamble</TT> is included <I>after</I>
+<TT>application.make</TT>; that is why is called a postamble:
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+APP_NAME = PanelTest
+PanelTest_OBJC_FILES = source.m
+
+include GNUmakefile.preamble
+include $(GNUSTEP_MAKEFILES)/application.make
+include GNUmakefile.postamble
+</PRE>
+
+<P>
+Here is a concrete example of a <TT>GNUmakefile.postamble</TT>: 
+<PRE>
+after-install::
+        $(MKINSTALLDIRS) /home/nicola/SpecialTools; \
+        cd $(GNUSTEP_OBJ_DIR); \
+        $(INSTALL) myTool /home/nicola/SpecialTools;
+</PRE>
+(make sure you start each indented line with <TT>TAB</TT>).  This will
+install the tool <TT>myTool</TT> in the directory
+<TT>/home/nicola/SpecialTools</TT> after the standard installation has
+been performed.
+
+<P>
+You rarely need to use <TT>GNUmakefile.postamble</TT>s, and they were
+mentioned mainly to give you a complete picture.
+
+<P>
+<HR><B> Next: <A NAME="tex2html96"
+  HREF="node9.html">9 Further Reading</A> </B>
+<B>Up: <A NAME="tex2html94"
+  HREF="WritingMakefiles.html">Writing GNUstep Makefiles</A> </B>
+<B> Previous: <A NAME="tex2html88"
+  HREF="node7.html">7 Debugging an Application</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2010-02-14
+</ADDRESS>
+</BODY>
+</HTML>

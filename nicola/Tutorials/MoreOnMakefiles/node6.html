@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2.4 Linking a library against another library</TITLE>
+<META NAME="description" CONTENT="2.4 Linking a library against another library">
+<META NAME="keywords" CONTENT="MoreOnMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="MoreOnMakefiles.css">
+
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="node2.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html80"
+  HREF="node7.html">3 Building more than</A> </B>
+<B>Up: <A NAME="tex2html78"
+  HREF="node2.html">2 Libraries</A>  </B>
+<B> Previous: <A NAME="tex2html74"
+  HREF="node5.html">2.3 Linking against an</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00024000000000000000">
+2.4 Linking a library against another library</A>
+</H2>
+You might need to build a shared library (for example called
+libNicola) which depends on another library (for example on
+libHelloWorld), and requiring the other library to be loaded
+automatically whenever your library is.  We say that your library
+(libNicola) depends on the other one (libHelloWorld).
+
+<P>
+This case is quite simple - you write a usual GNUmakefile for your
+library:
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+LIBRARY_NAME = libNicola
+libNicola_OBJC_FILES = two.m
+
+include GNUmakefile.preamble
+include $(GNUSTEP_MAKEFILES)/library.make
+</PRE>
+and add a GNUmakefile.preamble in which you tell the make package that
+this library depends on the library libHelloWorld:
+<PRE>
+libNicola_LIBRARIES_DEPEND_UPON += -lHelloWorld
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

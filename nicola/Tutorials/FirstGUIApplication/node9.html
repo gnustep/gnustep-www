@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3.1.1 Action and Target</TITLE>
+<META NAME="description" CONTENT="3.1.1 Action and Target">
+<META NAME="keywords" CONTENT="FirstGUIApplication">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="FirstGUIApplication.css">
+
+<LINK REL="previous" HREF="node8.html">
+<LINK REL="up" HREF="node8.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html119"
+  HREF="node10.html">3.2 Setting the Application</A> </B>
+<B>Up: <A NAME="tex2html117"
+  HREF="node8.html">3.1 Creating a Menu</A>  </B>
+<B> Previous: <A NAME="tex2html113"
+  HREF="node8.html">3.1 Creating a Menu</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H3><A NAME="SECTION00031100000000000000">
+3.1.1 Action and Target</A>
+</H3>
+A menu item behaves as most controls in the GNUstep gui library: it
+has an <I>action</I> and a <I>target</I>.  The typical example of such
+a control is a button.  Say, for example, that you have created a
+button called <TT>myButton</TT>.  You want something to happen when
+the user clicks on the button - to do it, you need to specify an
+<I>action</I> and a <I>target</I> for the button.  For example, if you
+want the method <TT>terminate:</TT> of <TT>NSApp</TT> (the application
+shared object) to be invoked when the user clicks the button, you do
+as follows:
+<PRE>
+NSButton *myButton;
+id myObject;
+
+// &lt;missing code: create myButton, myObject etc&gt;
+
+[myButton setAction: @selector (terminate:)];
+[myButton setTarget: NSApp];
+</PRE>
+When the user presses <TT>myButton</TT>, the gui library sends the
+<TT>terminate:</TT> message to the object <TT>NSApp</TT>, passing as
+argument <TT>myButton</TT>, executing the equivalent of the following
+code:
+<PRE>
+[NSApp terminate: myButton];
+</PRE>
+This way, when the user clicks the button, the application quits.  
+
+<P>
+The button which was clicked is passed as an argument to the
+<I>action</I> so that the receiving object can determine (if needed)
+which button was actually pressed, so that the same method may be used
+for more than one button.  In our case, <TT>NSApp</TT> simply discards
+the argument of <TT>terminate:</TT>.
+
+<P>
+In brief, the <I>action</I> is the method to be invoked when the user
+clicks on the button; the <I>target</I> is the object on which to
+invoke the method.  <I>action</I> should be a selector for a method
+returning <TT>void</TT> and taking a single argument (of type
+<TT>id</TT>, a generic object).  The button which was clicked is
+passed as an argument to the invocation of <I>action</I> on the
+<I>target</I>.
+
+<P>
+The case of a menu item is completely similar.  When the user selects
+this menu item, the gui library performs the menu item <I>action</I>
+(<TT>terminate:</TT> in this case) on the menu item <I>target</I>.
+The argument passed to <TT>terminate:</TT> is the menu item which was
+selected.
+
+<P>
+Usually, no target is specified for a menu item, as in our code 
+<PRE>  
+[menu addItemWithTitle: @"Quit" 
+      action: @selector (terminate:)
+      keyEquivalent: @"q"];
+</PRE>
+which only specifies that the action is <TT>terminate:</TT>.  When no
+target is specified, the gui library tries to determine an appropriate
+target dynamically at run-time.  For now the only important thing to
+know is that the gui library will try to send the action to certain
+objects (roughly, the objects inside a window which have the input
+focus) and, failing these objects, it will try to send the action to
+<TT>NSApp</TT>, and as a last resort to <TT>NSApp</TT>'s delegate.  In
+our example, we want the action <TT>terminate:</TT> to be sent to
+<TT>NSApp</TT> (thus terminating the application when the user selects
+the <TT>Quit</TT> menu item), so this automatic mechanism works just
+fine for us (actually, you will soon discover that this automatic
+mechanism works fine extremely often).  So, we don't need to set
+explicitly a target for our menu item.
+
+<P>
+<HR><B> Next: <A NAME="tex2html119"
+  HREF="node10.html">3.2 Setting the Application</A> </B>
+<B>Up: <A NAME="tex2html117"
+  HREF="node8.html">3.1 Creating a Menu</A> </B>
+<B> Previous: <A NAME="tex2html113"
+  HREF="node8.html">3.1 Creating a Menu</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>
