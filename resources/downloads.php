@@ -10,11 +10,14 @@
   </head>
 
 <body>
+
+
+
+<div class="container">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
-
     <nav class="navbar navbar-inverse" role="navigation">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -35,18 +38,18 @@
 	    <ul class="dropdown-menu">
 	      <li><a href="../information/aboutGNUstep.html">Introduction</a></li>
 	      <li><a href="../experience/apps.html">Applications</a></li>
-              <li><a href="../resources/sources.html">Download</a></li>
+              <li><a href="../resources/sources.html">Downloads</a></li>
               <li><a href="http://wiki.gnustep.org/index.php/User_Guides">User Guides</a></li>
-              <li><a href="http://wiki.gnustep.org/index.php/Get_Help">Get Help</a></li>
-	      <li></li>
+              <li><a href="http://wiki.gnustep.org/index.php/Get_Help">Mailing Lists &amp; more</a></li>
 	    </ul>
 	  </li>
 	  
 	  <li class="dropdown">
 	    <a href="#" data-toggle="dropdown">Developers<span class="caret"></span></a>
 	    <ul class="dropdown-menu">
-              <li><a href="../experience/DeveloperTools.html">Developer Tools</a></li>
-	      <li><a href="../developers/index.html">Developers</a></li>
+              <li><a href="../experience/DeveloperTools.html">Applications &amp; Tools</a></li>
+	      <li><a href="../developers/documentation.html">Documentation</a></li>
+	      <li><a href="../developers/index.html">Resources</a></li>
 	      <li><a href="http://wiki.gnustep.org/index.php/Blogs">Developer Blogs</a></li>
 	    </ul>
 	    
@@ -54,24 +57,20 @@
 	  <li class="dropdown">
 	    <a href="#" role="button" data-toggle="dropdown">External<span class="caret"></span></a>
 	    <ul class="dropdown-menu">
-	      <li><a href="http://savannah.gnu.org/projects/gnustep/">Project Page</a><br>
+	      <li><a href="https://github.com/gnustep/">GitHub Project</a>
+	      <li><a href="http://savannah.gnu.org/projects/gnustep/">Savannah Project Page</a><br>
               <li><a href="http://wiki.gnustep.org/">Project Wiki</a></li>
 	      <li><a href="../information/gethelp.html">Mailing Lists</a></li>
               <li><a href="http://wiki.gnustep.org/index.php/GNUstepWiki:Site_support">Donations</a></li>
-	      <li><a href="../resources/sites.html">Related Sites...</a></li>
+	      <li><a href="../resources/sites.html">Related Sites...</a></li><br>
+	      <li><a href="http://wiki.gnustep.org/index.php/Report_Bugs">Report Bugs</a></li>
 	    </ul>
 	  </li>
-	  
-	</ul>
 
-        <ul class="nav navbar-nav navbar-right">
-	  <li><a href="http://wiki.gnustep.org/index.php/Report_Bugs">Report Bugs</a></li>
         </ul>
 
       </div>
     </nav>
-
-<div class="container">
 
 <!-- base href trickery doesn't work, please use PHP download() function -->
 
