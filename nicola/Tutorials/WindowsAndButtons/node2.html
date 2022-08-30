@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>1.1 NSPoint</TITLE>
+<META NAME="description" CONTENT="1.1 NSPoint">
+<META NAME="keywords" CONTENT="WindowsAndButtons">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="WindowsAndButtons.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="node1.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html49"
+  HREF="node3.html">1.2 NSSize</A> </B>
+<B>Up: <A NAME="tex2html47"
+  HREF="node1.html">1 Points, Sizes and</A>  </B>
+<B> Previous: <A NAME="tex2html41"
+  HREF="node1.html">1 Points, Sizes and</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00011000000000000000">
+1.1 NSPoint</A>
+</H2>
+A <TT>NSPoint</TT> is defined as a struct with two members, the
+<I>x</I> and <I>y</I> coordinate of the point:
+<PRE>
+typedef struct _NSPoint
+{
+  float x;
+  float y;
+} NSPoint;
+</PRE>
+So, to access the <TT>x</TT> and <TT>y</TT> coordinates of a
+<TT>NSPoint</TT> called <TT>myPoint</TT>, you just do as in
+<TT>myPoint.x</TT> and <TT>myPoint.y</TT>.  Please note that the
+coordinates of a <TT>NSPoint</TT> are floats; so, they might be
+negative and/or fractionary.
+
+<P>
+To create a point with given <TT>x</TT> and <TT>y</TT> coordinates,
+you can use the function (macro) <TT>NSMakePoint ()</TT>, as in the
+following example:
+<PRE>
+NSPoint testPoint;
+
+testPoint = NSMakePoint (10, 20);
+NSLog (@"x coordinate: %f", testPoint.x); // 10
+NSLog (@"y coordinate: %f", testPoint.y); // 20
+</PRE>
+
+<P>
+It might be worth quoting the (predefined) constant
+<TT>NSZeroPoint</TT>, which is a point with zero x coordinate and zero
+y coordinate.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

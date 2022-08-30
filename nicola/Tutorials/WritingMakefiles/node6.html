@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>6 A first App</TITLE>
+<META NAME="description" CONTENT="6 A first App">
+<META NAME="keywords" CONTENT="WritingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="WritingMakefiles.css">
+
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="WritingMakefiles.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html76"
+  HREF="node7.html">7 Debugging an Application</A> </B>
+<B>Up: <A NAME="tex2html74"
+  HREF="WritingMakefiles.html">Writing GNUstep Makefiles</A>  </B>
+<B> Previous: <A NAME="tex2html68"
+  HREF="node5.html">5 Disabling Debugging</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00060000000000000000">
+6 A first App</A>
+</H1>
+Let's try now to compile an application. 
+Modify our source file <TT>source.m</TT> to read 
+<PRE>
+#import &lt;Foundation/Foundation.h&gt;
+#import &lt;AppKit/AppKit.h&gt;
+
+int 
+main (void)
+{
+  NSAutoreleasePool *pool;
+  
+  pool = [NSAutoreleasePool new];
+  
+  [NSApplication sharedApplication];
+  
+  NSRunAlertPanel (@"Test", @"Hello from the GNUstep AppKit", 
+                   nil, nil, nil);
+
+  return 0;
+}
+</PRE>
+(Ignore the autorelease pool code for now - we'll cover autorelease
+pools in detail later).  The line containing
+<TT>sharedApplication</TT> initializes the GNUstep GUI library; then,
+the following line runs an alert panel.  To compile it, we rewrite the
+GNUmakefile as follows:
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+APP_NAME = PanelTest
+PanelTest_OBJC_FILES = source.m
+
+include $(GNUSTEP_MAKEFILES)/application.make
+</PRE>
+And that's it.  To compile, type in <TT>make</TT>.  
+The result is slightly different from a command line tool.  
+When building an application, the application usually has a set of
+resources (images, text files, sound files, bundles, etc) which comes
+with the application.  In the GNUstep framework, these resources are
+stored with the application executable in an 'application directory',
+named after the application, with <TT>app</TT> appended.  In this
+case, after compilation the directory <TT>PanelTest.app</TT> should
+have been created.
+Our executable file is inside this directory; but the correct way to
+run the executable is through the <TT>openapp</TT> tool, in the
+following way:
+<PRE>
+openapp ./PanelTest.app
+</PRE>
+(openapp should be in your path; if it is not, you should check that
+GNUstep is properly installed on your system).
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-02-14
+</ADDRESS>
+</BODY>
+</HTML>

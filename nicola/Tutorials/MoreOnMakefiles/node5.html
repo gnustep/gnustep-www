@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2.3 Linking against an external library</TITLE>
+<META NAME="description" CONTENT="2.3 Linking against an external library">
+<META NAME="keywords" CONTENT="MoreOnMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="MoreOnMakefiles.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="node2.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html72"
+  HREF="node6.html">2.4 Linking a library</A> </B>
+<B>Up: <A NAME="tex2html70"
+  HREF="node2.html">2 Libraries</A>  </B>
+<B> Previous: <A NAME="tex2html64"
+  HREF="node4.html">2.2 Linking your app</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00023000000000000000">
+2.3 Linking against an external library</A>
+</H2>
+If the library you want to link against is not a GNUstep library (ie,
+not managed by the GNUstep make package), for example a C library you
+get from an external source, you need to tell the GNUstep make package
+where the library can be found.  In this case, your GNUmakefile.preamble 
+would look something like the following:
+<PRE>
+HelloWorldTest_TOOL_LIBS    += -lNicola
+HelloWorldTest_INCLUDE_DIRS += -I/opt/nicola/include/
+HelloWorldTest_LIB_DIRS     += -L/opt/nicola/libs/
+</PRE>
+where I am linking against the library <TT>libNicola</TT>, 
+which is in the directory <TT>/opt/nicola/libs/</TT> and whose 
+headers are in <TT>/opt/nicola/include/</TT>.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

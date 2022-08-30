@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3.1 Compiling multiple files</TITLE>
+<META NAME="description" CONTENT="3.1 Compiling multiple files">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="node5.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html88"
+  HREF="node7.html">3.2 Adding before-xxx-all and</A> </B>
+<B>Up: <A NAME="tex2html86"
+  HREF="node5.html">3 Single instance</A>  </B>
+<B> Previous: <A NAME="tex2html80"
+  HREF="node5.html">3 Single instance</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00031000000000000000">
+3.1 Compiling multiple files</A>
+</H2>
+GNUstep make automatically compiles multiple files for the same
+instance in parallel.
+
+<P>
+Let's look at a very simple example: an Objective-C tool composed of
+two source files -
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = HelloWorld
+HelloWorld_OBJC_FILES = HelloWorld.m main.m
+
+include $(GNUSTEP_MAKEFILES)/tool.make
+</PRE>
+
+<P>
+In this case, if you use 'make -j' you will see that the two files are
+compiled in parallel.  So, the process is really composed of two
+steps:
+
+<P>
+<PRE>
+Step 1. Compiling HelloWorld.m and main.m (in parallel)
+Step 2. Linking them together
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

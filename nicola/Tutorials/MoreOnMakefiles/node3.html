@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2.1 Compiling A Library</TITLE>
+<META NAME="description" CONTENT="2.1 Compiling A Library">
+<META NAME="keywords" CONTENT="MoreOnMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="MoreOnMakefiles.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="node2.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html52"
+  HREF="node4.html">2.2 Linking your app</A> </B>
+<B>Up: <A NAME="tex2html50"
+  HREF="node2.html">2 Libraries</A>  </B>
+<B> Previous: <A NAME="tex2html44"
+  HREF="node2.html">2 Libraries</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00021000000000000000">
+2.1 Compiling A Library</A>
+</H2>
+We start with a very simple example of a library.  Our tiny 
+library will contain a single class, called <TT>HelloWorld</TT>, 
+which has a method to print out a nice string.
+
+<P>
+The library has only one header file (called <TT>HelloWorld.h</TT>),
+which is the following:
+<PRE>
+#ifndef _HELLOWORLD_H_
+#define _HELLOWORLD_H_
+
+#include &lt;Foundation/Foundation.h&gt;
+
+@interface HelloWorld : NSObject
++ (void) printMessage;
+@end
+
+#endif /* _HELLOWORLD_H_ */
+</PRE>
+(This header file quite simply says that <TT>HelloWorld</TT> is a
+subclass of <TT>NSObject</TT>, and implements a single class method
+<TT>printMessage</TT> [a <I>class</I> method is what in java would be
+called a <I>static</I> method]; the <TT>#ifdef</TT>s are the
+standard way of protecting a C header file from multiple inclusions).
+
+<P>
+The source code of our class is in the file <TT>HelloWorld.m</TT>, and
+is the following:
+<PRE>
+#include "HelloWorld.h"
+
+@implementation HelloWorld
++ (void) printMessage 
+{
+  printf ("Hello World!\n");
+} 
+@end
+</PRE>
+(This implements the <TT>printMessage</TT> class method for the class
+<TT>HelloWorld</TT>, and all what this method does is printing out
+<TT>Hello World!</TT>.)
+
+<P>
+To compile our library, we create a GNUmakefile as follows: 
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+LIBRARY_NAME = libHelloWorld
+libHelloWorld_HEADER_FILES = HelloWorld.h
+libHelloWorld_HEADER_FILES_INSTALL_DIR = HelloWorld
+libHelloWorld_OBJC_FILES = HelloWorld.m
+
+include $(GNUSTEP_MAKEFILES)/library.make
+</PRE>
+
+<P>
+The main differences with the <TT>GNUmakefile</TT> for a tool or an
+application are that we include <TT>library.make</TT> instead of
+<TT>tool.make</TT> or <TT>application.make</TT>, and that we set the
+<TT>xxx_HEADER_FILES</TT> variable to tell the make system which are
+the library header files.  This is quite important because the header
+files will be installed with the library when the library is
+installed.
+
+<P>
+In order to do things cleanly, each library should install its headers
+in a different directory, so headers from different libraries don't
+get mixed and confused; this is why we specify that our header file
+has to be installed in a <TT>HelloWorld</TT> directory:
+<PRE>
+libHelloWorld_HEADER_FILES_INSTALL_DIR = HelloWorld
+</PRE>
+As a consequence, an application or a tool which needs to use the
+library will include the header file by using
+<PRE>
+#include "HelloWorld/HelloWorld.h"
+</PRE>
+because we have installed it into the <TT>HelloWorld</TT> directory.
+
+<P>
+As usual, to compile type <TT>make</TT> and to install type
+<TT>make install</TT>.
+
+<P>
+<HR><B> Next: <A NAME="tex2html52"
+  HREF="node4.html">2.2 Linking your app</A> </B>
+<B>Up: <A NAME="tex2html50"
+  HREF="node2.html">2 Libraries</A> </B>
+<B> Previous: <A NAME="tex2html44"
+  HREF="node2.html">2 Libraries</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>4.1 Multiple instances of the same type</TITLE>
+<META NAME="description" CONTENT="4.1 Multiple instances of the same type">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="next" HREF="node10.html">
+<LINK REL="previous" HREF="node8.html">
+<LINK REL="up" HREF="node8.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html118"
+  HREF="node10.html">4.2 Instances of different</A> </B>
+<B>Up: <A NAME="tex2html116"
+  HREF="node8.html">4 Multiple instances</A>  </B>
+<B> Previous: <A NAME="tex2html110"
+  HREF="node8.html">4 Multiple instances</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00041000000000000000">
+4.1 Multiple instances of the same type</A>
+</H2>
+Multiple instances of the same type are built in parallel.
+
+<P>
+Let's say that you are building two tools instead of one.  Your
+GNUmakefile might look like the following one:
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+TOOL_NAME = HelloWorld HelloMoon
+HelloWorld_OBJC_FILES = HelloWorld.m main1.m
+HelloMoon_OBJC_FILES = HelloMoon.m main2.m
+
+include $(GNUSTEP_MAKEFILES)/tool.make
+</PRE>
+
+<P>
+When you build this in gnustep-make using 'make -j', the two tools
+will be considered independent and be built in parallel.
+
+<P>
+So, the top-level flow looks as follows:
+
+<P>
+<PRE>
+Step 0. Execute before-all:: if it exists
+Step 1. Build HelloWorld and HelloMoon in parallel
+Step 2. Execute after-all:: if it exists
+</PRE>
+
+<P>
+Building each of the HelloWorld and HelloMoon tools would follow the
+flow described in the previous section, meaning that the compilation
+of the files for each of them will be parallelized too!  If you build
+with 'make -j' (and your CPU can make 4 concurrent flows of
+execution), for example, it is likely that all the 4 files will be
+compiled in parallel.  The two tools are built in parallel, and then
+each of them fires the compilation of their 2 files in parallel.  As a
+result, all of the 4 files are actually built in parallel.  All the
+other stages of building the tools are also done in parallel; for
+example, the tools are linked independently, in parallel.
+
+<P>
+<HR><B> Next: <A NAME="tex2html118"
+  HREF="node10.html">4.2 Instances of different</A> </B>
+<B>Up: <A NAME="tex2html116"
+  HREF="node8.html">4 Multiple instances</A> </B>
+<B> Previous: <A NAME="tex2html110"
+  HREF="node8.html">4 Multiple instances</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

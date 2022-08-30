@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>5.2 Advanced usage of subdirectories</TITLE>
+<META NAME="description" CONTENT="5.2 Advanced usage of subdirectories">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="next" HREF="node14.html">
+<LINK REL="previous" HREF="node12.html">
+<LINK REL="up" HREF="node11.html">
+<LINK REL="next" HREF="node14.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html159"
+  HREF="node14.html">5.3 Backwards compatibility between</A> </B>
+<B>Up: <A NAME="tex2html157"
+  HREF="node11.html">5 Subdirectories</A>  </B>
+<B> Previous: <A NAME="tex2html151"
+  HREF="node12.html">5.1 Examples</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00052000000000000000">
+5.2 Advanced usage of subdirectories</A>
+</H2>
+If you now nest subdirectories at different levels, you can control
+exactly what you want to be built in parallel and what you want to be
+built in serial order.
+
+<P>
+For example, you may have a few frameworks that can be built in
+parallel, followed by a few tools that can be built in parallel, but
+the frameworks always need to be built before the tools.
+
+<P>
+In this case, you could have a Frameworks/ and Tools/ subdirectories,
+built using serial-subdirectories.make so that they are built in that
+order.  Inside Frameworks/ you then have a GNUmakefile that uses
+parallel-subdirectories.make to build a number of frameworks in
+parallel (each of them in its own subdirectory), and similarly in
+Tools/ to build the tools in parallel.
+
+<P>
+The advantage of parallelizing the build of entire directories might
+not be apparent simply because your CPU might not support enough
+concurrency to do more than a few things in parallel.  But if you
+simply organize your directory structure and use
+parallel-subdirectories.make and serial-subdirectories.make in a way
+that makes sense, you'll get the full benefit of more parallel-capable
+CPUs as soon as you get them.  Your build will scale really well when
+you add CPUs and cores.
+
+<P>
+Moreover, when you parallelize building entire directories you not
+only parallelize the compilation steps, but all the other ones;
+linking and even before-all:: and after-all:: rules.
+
+<P>
+For example, if you have in one directory a before-all:: rule which
+takes 10 seconds to run, since it is executed serially it may prevent
+anything else from running for these 10 seconds.  For 10 seconds all
+your other CPUs or cores might be sitting idle.  But if you
+parallelize the build of that directory with the build of another
+directory, even during these 10 seconds, the other CPUs or cores might
+still be busy building things in the other directory.
+
+<P>
+<HR><B> Next: <A NAME="tex2html159"
+  HREF="node14.html">5.3 Backwards compatibility between</A> </B>
+<B>Up: <A NAME="tex2html157"
+  HREF="node11.html">5 Subdirectories</A> </B>
+<B> Previous: <A NAME="tex2html151"
+  HREF="node12.html">5.1 Examples</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

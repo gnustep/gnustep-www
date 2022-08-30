@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3 Extending the program to deal with files on the network</TITLE>
+<META NAME="description" CONTENT="3 Extending the program to deal with files on the network">
+<META NAME="keywords" CONTENT="DistributedObjects">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="DistributedObjects.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="DistributedObjects.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html49"
+  HREF="node4.html">4 The server</A> </B>
+<B>Up: <A NAME="tex2html47"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A>  </B>
+<B> Previous: <A NAME="tex2html41"
+  HREF="node2.html">2 A basic program</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00030000000000000000">
+3 Extending the program to deal with files on the network</A>
+</H1>
+
+<P>
+Now we want to modify our little program to retrieve files from other
+machines on our network, and display them on the local machine.
+
+<P>
+Looking again at the source code of our tool, we see that we have a
+<TT>main</TT> function which parses the command line arguments, and
+then calls the <TT>getFile:</TT> method of a <TT>FileReader</TT>
+object to read the file; then it displays it.  With the help of a bit
+of magic, you could simply run the <TT>FileReader</TT> object on the
+remote machine, and the <TT>main</TT> function on the local machine,
+without changing your code.  The <TT>main</TT> function would parse
+the command line arguments, and then call the <TT>getFile:</TT> method
+of the <TT>FileReader</TT> object (running on the remote machine), and
+the <TT>FileReader</TT> object would read the file and return it to
+the <TT>main</TT> function (which is running on the local machine) as
+the return value of the <TT>getFile:</TT> method; the <TT>main</TT>
+function would print it.
+
+<P>
+GNUstep Distributed Objects allow you to do this kind of magic:
+calling methods of remote objects precisely as if they were normal
+local objects.
+
+<P>
+The design of our modified example will be a server/client design: we
+have a server, and a client.  The server will contain the
+<TT>FileReader</TT> object; the client will connect to the server, and
+send the <TT>getFile:</TT> message to the <TT>FileReader</TT> object
+in the server, getting in return a string containing the file
+contents.
+
+<P>
+<HR><B> Next: <A NAME="tex2html49"
+  HREF="node4.html">4 The server</A> </B>
+<B>Up: <A NAME="tex2html47"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A> </B>
+<B> Previous: <A NAME="tex2html41"
+  HREF="node2.html">2 A basic program</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2011-02-09
+</ADDRESS>
+</BODY>
+</HTML>

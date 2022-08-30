@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2.4 arrayWithObjects</TITLE>
+<META NAME="description" CONTENT="2.4 arrayWithObjects">
+<META NAME="keywords" CONTENT="BasicClasses">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="BasicClasses.css">
+
+<LINK REL="next" HREF="node13.html">
+<LINK REL="previous" HREF="node11.html">
+<LINK REL="up" HREF="node8.html">
+<LINK REL="next" HREF="node13.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html174"
+  HREF="node13.html">2.5 Accessing Objects in</A> </B>
+<B>Up: <A NAME="tex2html172"
+  HREF="node8.html">2 NSArray</A>  </B>
+<B> Previous: <A NAME="tex2html166"
+  HREF="node11.html">2.3 NSArrays are immutable</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00024000000000000000">
+2.4 arrayWithObjects</A>
+</H2>
+To create an <TT>NSArray</TT>, you usually use the class method
+<TT>+arrayWithObjects:</TT>, which takes as arguments 
+a <TT>nil</TT>-terminated list of objects to put in the array:
+<PRE>
+NSArray *names;
+
+names = [NSArray arrayWithObjects: @"Nicola", @"Margherita",
+                                   @"Luciano", @"Silvia", nil];
+</PRE>
+The last element in the list must be <TT>nil</TT>, to mark the end of
+the list.  You can put in the same array objects of different classes:
+<PRE>
+NSArray *objects;
+NSButton *buttonOne;
+NSButton *buttonTwo;
+NSTextField *textField;
+
+buttonOne = AUTORELEASE ([NSButton new]);
+buttonTwo = AUTORELEASE ([NSButton new]);
+textField = AUTORELEASE ([NSTextField new]);
+
+objects = [NSArray arrayWithObjects: buttonOne, buttonTwo, 
+                                     textField, nil];
+</PRE>
+but you can't put <TT>nil</TT> inside an array.  All objects 
+in an array must be valid, not-<TT>nil</TT> objects.
+
+<P>
+When an object is put in an array, the <TT>NSArray</TT> sends to it a
+<TT>-retain</TT> message, to prevent it from being deallocated while
+it is still in the array.  When an object is removed from the array
+(because the array is a <TT>NSMutableArray</TT> so objects can be
+removed from it, or because the array itself is deallocated), it
+is sent a <TT>-release</TT> message.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

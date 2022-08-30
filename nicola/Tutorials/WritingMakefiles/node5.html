@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>5 Disabling Debugging</TITLE>
+<META NAME="description" CONTENT="5 Disabling Debugging">
+<META NAME="keywords" CONTENT="WritingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="WritingMakefiles.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="up" HREF="WritingMakefiles.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html66"
+  HREF="node6.html">6 A first App</A> </B>
+<B>Up: <A NAME="tex2html64"
+  HREF="WritingMakefiles.html">Writing GNUstep Makefiles</A>  </B>
+<B> Previous: <A NAME="tex2html58"
+  HREF="node4.html">4 Enabling Verbose Messages</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00050000000000000000">
+5 Disabling Debugging</A>
+</H1>
+By default, executables are created with debugging enabled.  This
+means that they are created with debugging symbols, i.e., compiled
+with the <TT>-g</TT> option (which is useful for debugging it with gdb), and
+compiled using the <TT>-DDEBUG</TT> compiler flag (which defines the
+preprocessor symbol <TT>DEBUG</TT> during the compilation).
+In this way, you may isolate code to be executed only when compiling
+with the debug option typically as follows:
+<PRE>
+#ifdef DEBUG 
+  /* Code compiled in only when debug=yes */
+#endif
+</PRE>
+To compile this tool with debugging disabled, type:
+<PRE>
+make debug=no
+</PRE>
+Of course, if you have already compiled your tool with debugging
+enabled, you need to do a <TT>make clean</TT> first to remove the
+previous compilation, then type <TT>make debug=no</TT> to compile
+again with debugging disabled.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-02-14
+</ADDRESS>
+</BODY>
+</HTML>

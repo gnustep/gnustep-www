@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>4 The server</TITLE>
+<META NAME="description" CONTENT="4 The server">
+<META NAME="keywords" CONTENT="DistributedObjects">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="DistributedObjects.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="DistributedObjects.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html59"
+  HREF="node5.html">5 The client</A> </B>
+<B>Up: <A NAME="tex2html57"
+  HREF="DistributedObjects.html">GNUstep Distributed Objects</A>  </B>
+<B> Previous: <A NAME="tex2html51"
+  HREF="node3.html">3 Extending the program</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">
+4 The server</A>
+</H1>
+We put the source code for the server in the <TT>Server.m</TT> file.
+Basically, the server consists of the <TT>FileReader</TT> class, plus
+a new <TT>main</TT> function, which creates an instance of
+<TT>FileReader</TT> and <I>vends</I> it to the network, that is, it
+exposes it to the network, allowing other remote processes to call its
+methods via GNUstep Distributed Objects.  Then, the server enters into
+a run-loop waiting for something to happen.
+
+<P>
+The code to vend the object to the network is quite simple: you get
+the <TT>defaultConnection</TT> object:
+<PRE>
+NSConnection *conn = [NSConnection defaultConnection];
+</PRE>
+then you tell the connection which object you want to vend:
+<PRE>
+[conn setRootObject: reader];
+</PRE>
+and finally, you register it on the network with a certain name:
+<PRE>
+if (![conn registerName:@"FileReader"])
+  {
+    NSLog (@"Could not register us as FileReader");
+    exit (1);
+  }
+</PRE>
+the name is quite important - the client needs to know the name of
+the server to establish a connection with it and access the vended
+object (which is the FileReader object in this case).
+
+<P>
+So, here is the full code for the server:
+<PRE>
+#include &lt;Foundation/Foundation.h&gt;
+
+/* This object does the job of fetching a file from 
+   the hard disk */
+
+@interface FileReader : NSObject
+- (NSString *)getFile: (NSString *)fileName;
+@end
+
+@implementation FileReader
+- (NSString *)getFile: (NSString *)fileName
+{
+  return [NSString stringWithContentsOfFile: fileName];
+}
+@end
+
+
+int 
+main (void)
+{
+  NSAutoreleasePool *pool;
+  FileReader *reader;
+  NSConnection *conn;
+  
+  pool = [NSAutoreleasePool new];
+
+  /* Create our FileReader object */
+  reader = [FileReader new];
+
+  /* Get the default connection */
+  conn = [NSConnection defaultConnection];
+
+  /* Make the reader available to other processes */
+  [conn setRootObject: reader];
+
+  /* Register it with name `FileReader' */
+  if (![conn registerName:@"FileReader"]) 
+    {
+      NSLog (@"Could not register us as FileReader");
+      exit (1);
+    }
+  
+  NSLog (@"Server registered - waiting for connections...");
+
+  /* Now enter the run loop waiting forever for clients */
+  [[NSRunLoop currentRunLoop] run];
+  
+  return 0;
+}
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2011-02-09
+</ADDRESS>
+</BODY>
+</HTML>

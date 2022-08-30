@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>1.1 Creating the shared NSApplication instance</TITLE>
+<META NAME="description" CONTENT="1.1 Creating the shared NSApplication instance">
+<META NAME="keywords" CONTENT="FirstGUIApplication">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="FirstGUIApplication.css">
+
+<LINK REL="next" HREF="node3.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="node1.html">
+<LINK REL="next" HREF="node3.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html45"
+  HREF="node3.html">1.2 Setting a delegate</A> </B>
+<B>Up: <A NAME="tex2html43"
+  HREF="node1.html">1 The shared application</A>  </B>
+<B> Previous: <A NAME="tex2html37"
+  HREF="node1.html">1 The shared application</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00011000000000000000">
+1.1 Creating the shared NSApplication instance</A>
+</H2>
+The class <TT>NSApplication</TT>, provided by the GNUstep GUI library,
+represents a gui application.  Each gui application has one (and only
+one) instance of this class, which is shared by all the code; it keeps
+tracks of all the application windows and panels, and manages the
+application's run loop.  You access this shared instance by calling
+the <TT>+sharedApplication</TT> method of <TT>NSApplication</TT>,
+which creates the instance of <TT>NSApplication</TT> representing your
+app the first time it is invoked, and returns the previously created
+instance when called again.  Creating the shared application is very
+important, because when it is first created the gui library
+initializes the gnustep backend; in other words, you need to create
+the shared application object before doing anything at all with the
+gui or backend library.  So, we will start our first gui application
+with the code:
+<PRE>
+NSApplication *myApplication;
+
+myApplication = [NSApplication sharedApplication];
+</PRE>
+An interesting thing to know is that, <I>after</I> you have created an 
+<TT>NSApplication</TT> shared instance for your app, you can access 
+it simply through the global variable <TT>NSApp</TT>.  So, many 
+people simply discard the result of <TT>+sharedApplication</TT>, 
+and start their apps as follows: 
+<PRE>
+/* The following line creates the shared application instance */
+[NSApplication sharedApplication];
+
+/* Then, use NSApp to access NSApplication's shared instance  */
+</PRE>
+
+<P>
+<HR><B> Next: <A NAME="tex2html45"
+  HREF="node3.html">1.2 Setting a delegate</A> </B>
+<B>Up: <A NAME="tex2html43"
+  HREF="node1.html">1 The shared application</A> </B>
+<B> Previous: <A NAME="tex2html37"
+  HREF="node1.html">1 The shared application</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

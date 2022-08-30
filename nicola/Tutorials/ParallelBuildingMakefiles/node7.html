@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3.2 Adding before-xxx-all and after-xxx-all steps</TITLE>
+<META NAME="description" CONTENT="3.2 Adding before-xxx-all and after-xxx-all steps">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="node5.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html96"
+  HREF="node8.html">4 Multiple instances</A> </B>
+<B>Up: <A NAME="tex2html94"
+  HREF="node5.html">3 Single instance</A>  </B>
+<B> Previous: <A NAME="tex2html90"
+  HREF="node6.html">3.1 Compiling multiple files</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00032000000000000000">
+3.2 Adding before-xxx-all and after-xxx-all steps</A>
+</H2>
+If you need to add some custom steps before or after your instance is
+built, you can use before-xxx-all and after-xxx-all rules.  These
+steps will always be executed exactly before and after the compilation
+of your instance.  In other words, the building process for the
+HelloWorld tool is really composed of the following steps:
+<PRE>
+Step 0. Execute before-HelloWorld-all:: if it exists
+Step 1. Compiling HelloWorld.m and main.m (in parallel)
+Step 2. Linking them together
+Step 3. Execute after-HelloWorld-all:: if it exists
+</PRE>
+
+<P>
+For example, let's say that for some reason you need to create a
+header file, HelloWorld.h, which is then included by your Objective-C
+files HelloWorld.m and main.m.  Obviously this needs to happen before
+any compilation takes place.
+
+<P>
+To do so, in your GNUmakefile.postamble you would add the following:
+<PRE>
+before-HelloWorld-all::
+       cp HelloWorld.h.in HelloWorld.h
+</PRE>
+Please note that there should be a TAB character before the 'cp', and
+that if you don't have a GNUmakefile.postamble, you can simply put
+this rule in your GNUmakefile, at the end of it, after all the
+gnustep-make makefiles have been included.
+
+<P>
+In the real world, this would probably be a more complicated rule,
+creating HelloWorld.h from HelloWorld.h.in by using sed or some other
+file editing tool.  But whatever it is, you can simply have your code
+executed before any compilation is done by placing it in a
+before-HelloWorld-all:: rule.
+
+<P>
+Obviously if your tool is called HelloMoon, then you would place your
+code into a before-HelloMoon-all:: rule.
+
+<P>
+This code would always be executed serially, before the tool is
+compiled.
+
+<P>
+<HR><B> Next: <A NAME="tex2html96"
+  HREF="node8.html">4 Multiple instances</A> </B>
+<B>Up: <A NAME="tex2html94"
+  HREF="node5.html">3 Single instance</A> </B>
+<B> Previous: <A NAME="tex2html90"
+  HREF="node6.html">3.1 Compiling multiple files</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

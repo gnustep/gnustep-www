@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2.5 Integrating the window with your application</TITLE>
+<META NAME="description" CONTENT="2.5 Integrating the window with your application">
+<META NAME="keywords" CONTENT="WindowsAndButtons">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="WindowsAndButtons.css">
+
+<LINK REL="next" HREF="node13.html">
+<LINK REL="previous" HREF="node10.html">
+<LINK REL="up" HREF="node6.html">
+<LINK REL="next" HREF="node12.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html144"
+  HREF="node12.html">2.5.1 The organization of</A> </B>
+<B>Up: <A NAME="tex2html142"
+  HREF="node6.html">2 Adding a Window</A>  </B>
+<B> Previous: <A NAME="tex2html136"
+  HREF="node10.html">2.4 Ordering Front a</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00025000000000000000">
+2.5 Integrating the window with your application</A>
+</H2>
+We now want to show a very simple example of an application creating a
+single window.  Our application will be useless if its only window is
+not visible; for this reason, we do not add a close button to the
+window (following the <I>NEXTSTEP</I> tradition, the user needs to
+select <I>Quit</I> from the main menu to quit the application.  To get
+the main menu, the user typically clicks the right button of his mouse
+on one of the windows).
+
+<P>
+We can create the window in the same method 
+<PRE>
+- (void) applicationWillFinishLaunching: (NSNotification *)not;
+</PRE>
+where we created the menu.  This method contains initialization 
+code to be run <I>before</I> the application is launched.
+
+<P>
+But, we can't order front (ie, make visible) windows before
+<TT>NSApp</TT> has become active (which happens when the application
+is `launched'), so that ordering front our window in
+<TT>applicationWillFinishLaunching:</TT> would not work, because this
+method is called <I>before</I> the application finished launching.
+
+<P>
+To get around this problem, we implement in our application delegate
+also another method, called:
+<PRE>
+- (void) applicationDidFinishLaunching: (NSNotification *)not;
+</PRE>
+This method (if implemented by the application's delegate) is invoked
+by the <TT>NSApp</TT> just after it finished launching.  We order
+front our window in this method.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html145"
+  HREF="node12.html">2.5.1 The organization of start-up code</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR><B> Next: <A NAME="tex2html144"
+  HREF="node12.html">2.5.1 The organization of</A> </B>
+<B>Up: <A NAME="tex2html142"
+  HREF="node6.html">2 Adding a Window</A> </B>
+<B> Previous: <A NAME="tex2html136"
+  HREF="node10.html">2.4 Ordering Front a</A> </B>
+
+<!--End of Navigation Panel-->
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

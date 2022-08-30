@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>2.6 Describing an Array</TITLE>
+<META NAME="description" CONTENT="2.6 Describing an Array">
+<META NAME="keywords" CONTENT="BasicClasses">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="BasicClasses.css">
+
+<LINK REL="next" HREF="node15.html">
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="node8.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html194"
+  HREF="node15.html">2.7 Iterating over Array</A> </B>
+<B>Up: <A NAME="tex2html192"
+  HREF="node8.html">2 NSArray</A>  </B>
+<B> Previous: <A NAME="tex2html186"
+  HREF="node13.html">2.5 Accessing Objects in</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00026000000000000000">
+2.6 Describing an Array</A>
+</H2>
+It is sometime useful for debugging to have a look at what is stored
+inside an <TT>NSArray</TT>.  Nothing easier with the GNUstep base
+library: all methods and functions taking format arguments (in the way
+<TT>+stringWithFormat:</TT> does) recognise the conversion specification
+<TT>%@</TT>, which describes an object.  So, to describe the 
+<TT>NSArray</TT> called <TT>array</TT>, you can just do:
+<PRE>
+NSLog (@"Array: %@", array);
+</PRE>
+
+<P>
+For example, an array created with 
+<PRE>
+NSArray *array;
+
+array = [NSArray arrayWithObjects: @"Hi", @"Hello", 
+                                   AUTORELEASE ([NSLock new]), 
+                                   nil];
+</PRE>
+will be described by the previous <TT>NSLog</TT> call as: 
+<PRE>
+Jun 08 08:50:38 Test[16808] Array: (Hi, Hello, &lt;NSLock: 8081f98&gt;)
+</PRE>
+
+<P>
+You may note that it is not as easy to get a full description of a
+pure C array.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

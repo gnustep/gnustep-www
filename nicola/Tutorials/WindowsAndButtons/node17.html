@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3.3 Putting the button in the window</TITLE>
+<META NAME="description" CONTENT="3.3 Putting the button in the window">
+<META NAME="keywords" CONTENT="WindowsAndButtons">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="WindowsAndButtons.css">
+
+<LINK REL="next" HREF="node18.html">
+<LINK REL="previous" HREF="node16.html">
+<LINK REL="up" HREF="node14.html">
+<LINK REL="next" HREF="node18.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html205"
+  HREF="node18.html">3.4 Source Code</A> </B>
+<B>Up: <A NAME="tex2html203"
+  HREF="node14.html">3 Adding a Button</A>  </B>
+<B> Previous: <A NAME="tex2html197"
+  HREF="node16.html">3.2 Creating a Button</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00033000000000000000">
+3.3 Putting the button in the window</A>
+</H2>
+We now need to modify our code to create the window so that it creates
+a window exactly of the right size to contain our button.  First, we
+need to get the size of the button:
+<PRE>
+NSSize buttonSize;
+
+buttonSize = [myButton frame].size;
+</PRE>
+<TT>frame</TT> is a method inherited by <TT>NSView</TT> which returns
+the rectangle enclosing the button (or, more generally, the rectangle
+enclosing/represented by an <TT>NSView</TT>).  The <TT>origin</TT> of
+this rectangle is meaningless at this point; it is the <TT>size</TT>
+(which was set by <TT>sizeToFit</TT>) what we want.
+
+<P>
+Then, we choose for the window a content rect with the <TT>size</TT>
+of the button, and with an <TT>origin</TT> of our choice; (100, 100)
+in this example:
+<PRE>
+NSRect rect;
+
+rect = NSMakeRect (100, 100, 
+                   buttonSize.width, 
+                   buttonSize.height);
+</PRE>
+At this point, we just create the window as before, but using this
+rectangle (full code below).  The last thing to do is then replacing
+the default window content view with our button:
+<PRE>
+[myWindow setContentView: myButton];
+</PRE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>

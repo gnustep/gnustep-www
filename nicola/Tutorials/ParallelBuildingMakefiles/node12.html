@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>5.1 Examples</TITLE>
+<META NAME="description" CONTENT="5.1 Examples">
+<META NAME="keywords" CONTENT="ParallelBuildingMakefiles">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="ParallelBuildingMakefiles.css">
+
+<LINK REL="next" HREF="node13.html">
+<LINK REL="previous" HREF="node11.html">
+<LINK REL="up" HREF="node11.html">
+<LINK REL="next" HREF="node13.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html149"
+  HREF="node13.html">5.2 Advanced usage of</A> </B>
+<B>Up: <A NAME="tex2html147"
+  HREF="node11.html">5 Subdirectories</A>  </B>
+<B> Previous: <A NAME="tex2html141"
+  HREF="node11.html">5 Subdirectories</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00051000000000000000">
+5.1 Examples</A>
+</H2>
+Let's say that you want to build a tool and a library.  To use the new
+subdirectories makefiles, first of all you need to put the tool and
+the library into two separate subdirectories.  For example, you could
+put the tool into a subdirectory called Tools, and the library into a
+subdirectory called Source (they could be called anything you want).
+Each of them will have its own standalone GNUmakefile.
+
+<P>
+At the top-level, you create a GNUmakefile that will drive the
+building of the subdirectories.  Here is an example:
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+SERIAL_SUBDIRECTORIES = Source Tools
+
+include $(GNUSTEP_MAKEFILES)/serial-subdirectories.make
+</PRE>
+
+<P>
+This will cause gnustep-make to go into the SERIAL_SUBDIRECTORIES in
+order, and build them serially, one by one.  So, it will first build
+Source (that contains our library) and then Tools (that contains our
+tool).
+
+<P>
+If you want the two subdirectories to be built in parallel, you just
+need to use parallel-subdirectories.make, as follows:
+
+<P>
+<PRE>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+PARALLEL_SUBDIRECTORIES = Source Tools
+
+include $(GNUSTEP_MAKEFILES)/parallel-subdirectories.make
+</PRE>
+
+<P>
+This will tell gnustep-make that it should fork off two subprocesses,
+and build the Source and Tools subdirectories in parallel.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2010-03-12
+</ADDRESS>
+</BODY>
+</HTML>

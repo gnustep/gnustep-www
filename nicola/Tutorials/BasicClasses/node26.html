@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2002-2-1 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>3.3 Retrieving a value with objectForKey:</TITLE>
+<META NAME="description" CONTENT="3.3 Retrieving a value with objectForKey:">
+<META NAME="keywords" CONTENT="BasicClasses">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2002-2-1">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="BasicClasses.css">
+
+<LINK REL="next" HREF="node27.html">
+<LINK REL="previous" HREF="node25.html">
+<LINK REL="up" HREF="node23.html">
+<LINK REL="next" HREF="node27.html">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<B> Next: <A NAME="tex2html318"
+  HREF="node27.html">3.4 Enumerating all the</A> </B>
+<B>Up: <A NAME="tex2html316"
+  HREF="node23.html">3 NSDictionary</A>  </B>
+<B> Previous: <A NAME="tex2html310"
+  HREF="node25.html">3.2 Creating a NSDictionary</A> </B>
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00033000000000000000">
+3.3 Retrieving a value with objectForKey:</A>
+</H2>
+To retrieve the value associated with a given key, you may 
+use the method <TT>-objectForKey:</TT>, as in the following 
+example: 
+<PRE>
+NSDictionary *dict;
+NSString *path;
+
+dict = [NSDictionary dictionaryWithObjectsAndKeys:
+               @"/opt/picture.png", @"Luca", 
+               @"/home/nico/birthday.png", @"Birthday Photo", 
+               @"/home/nico/birthday.png", @"Birthday Image", 
+               @"/home/marghe/pic.jpg", @"My Sister", nil];
+
+// Following will set path to /home/nico/birthday.png
+path = [dict objectForKey: @"Birthday Image"];
+</PRE>
+If the key is not in the dictionary, <TT>-objectForKey:</TT> will return 
+<TT>nil</TT>, for example
+<PRE>
+// Following will set path to nil
+path = [dict objectForKey: @"My Mother"];
+</PRE>
+(assuming <TT>dict</TT> is the one created in the previous example).
+In real life applications, in most cases you don't know if the key is
+in the dictionary or not until you try retrieving the value associated
+with it.  In these cases, you need to check the result of
+<TT>objectForKey:</TT> to make sure it's not <TT>nil</TT> before using 
+it.  For example, assuming that <TT>dict</TT> is a dictionary, you
+would normally do -
+<PRE>
+NSString *imageName = @"My Father";
+NSString *path;
+
+path = [dict objectForKey: imageName];
+
+if (path == nil)
+  {
+    // This means the dictionary does not contain it
+    NSLog (@"Don't know the path to the image '%@'", imageName);
+  }
+else
+  {
+    // Do something with path
+  }
+</PRE>
+This is also the standard way to check that a key is contained in a
+dictionary - you call <TT>objectForKey:</TT> and compare the result
+with <TT>nil</TT>.
+
+<P>
+<BR><HR>
+<ADDRESS>
+
+2008-01-16
+</ADDRESS>
+</BODY>
+</HTML>
