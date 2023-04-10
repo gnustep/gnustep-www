@@ -144,28 +144,28 @@ or the somewhat out-of-date <i><a href="http://gnustep.made-it.com/BuildGuide/in
 <tr>
 <td>GNUstep Make</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-make-2.9.0.tar.gz")?>">2.9.0</a></td>
+<td><a href="<?php download("core/gnustep-make-2.9.1.tar.gz")?>">2.9.1</a></td>
 <td>Makefile Package</td>
 </tr>
 
 <tr>
 <td>GNUstep Base</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-base-1.28.0.tar.gz")?>">1.28.0</a></td>
+<td><a href="<?php download("core/gnustep-base-1.29.0.tar.gz")?>">1.29.0</a></td>
 <td>Foundation</td>
 </tr>
 
 <tr>
 <td>GNUstep GUI</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-gui-0.29.0.tar.gz")?>">0.29.0</a></td>
+<td><a href="<?php download("core/gnustep-gui-0.30.0.tar.gz")?>">0.30.0</a></td>
 <td>Graphical user interface class library</td>
 </tr>
 
 <tr>
 <td>GNUstep Backend</td>
 <td>Required</td>
-<td><a href="<?php download("core/gnustep-back-0.29.0.tar.gz")?>">0.29.0</a></td>
+<td><a href="<?php download("core/gnustep-back-0.30.0.tar.gz")?>">0.30.0</a></td>
 <td>Generic back-end</td>
 </tr>
 
@@ -280,7 +280,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td>WebServices</td>
 <td>Optional</td>
-<td><a href="<?php download("libs/WebServices-0.7.3.tar.gz")?>">0.7.3</a></td>
+<td><a href="<?php download("libs/WebServices-0.9.0.tar.gz")?>">0.9.0</a></td>
 <td><a href="https://github.com/gnustep/libs-webservices/">from git</a></td>
 <td>Classes for building web services (partial)</td>
 </tr>
@@ -349,8 +349,7 @@ packages and applications may require you to install these libraries
 <tr>
 <td><a href="http://www.gnustep.org/experience/ProjectCenter.html">Project Center</a></td>
 <td>Recommended</td>
-<td><a href="<?php download("dev-apps/ProjectCenter-0.6.2.tar.gz")?>">0.6.2
-</a></td>
+<td><a href="<?php download("dev-apps/ProjectCenter-0.7.0.tar.gz")?>">0.7.0</a></td>
 <td>Project developer</td>
 </tr>
 
