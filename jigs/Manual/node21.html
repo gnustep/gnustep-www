@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.43)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<html>
+<head>
+<title>4.10 Controlling the Quick Reference Documentation</title>
+<meta name="description" content="4.10 Controlling the Quick Reference Documentation">
+<meta name="keywords" content="Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="LaTeX2HTML v99.2beta8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="next" href="node22.html">
+<link rel="previous" href="node20.html">
+<link rel="up" href="node11.html">
+<link rel="next" href="node22.html">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<b> Next: <a name="tex2html412" href="node22.html">4.11 Generating RPMs for</a> </b>
+<b>Up: <a name="tex2html410" href="node11.html">4. Wrapping Objective-C Libraries</a>  </b>
+<b> Previous: <a name="tex2html404" href="node20.html">4.9 Including Special Code</a> </b>
+<br> <p>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<a name="CHILD_LINKS"><strong>Subsections</strong></a>
+
+<ul>
+<li><a name="tex2html413" href="node21.html#SECTION005101000000000000000">4.10.1 Generating Documentation for Packages</a>
+<li><a name="tex2html414" href="node21.html#SECTION005102000000000000000">4.10.2 Installation Directory</a>
+</ul>
+<!--End of Table of Child-Links-->
+<hr>
+
+<h1><a name="SECTION005100000000000000000">
+4.10 Controlling the Quick Reference Documentation</a>
+</h1>
+
+<p>
+This section documents special options which control the quick
+reference documentation which JIGS automatically generates with the
+wrappers.  You may safely skip this section at a first reading.  You
+need to read the section <a href="node20.html#special-code-in-GNUmakefiles">4.9</a> before
+reading this one.
+
+<p>
+
+<h2><a name="SECTION005101000000000000000">
+4.10.1 Generating Documentation for Packages</a>
+</h2>
+By default, JIGS will treat the Java classes as separate classes, and
+document them accordingly.  If you are rather creating a complete
+package you may want javadoc documentation for the package.  This is
+not very different, it just additionally includes a useful index with 
+the list of all the classes in the package.
+
+<p>
+To get this behaviour, you need to write a 
+<pre>
+GNUmakefile.wrapper.java.preamble
+</pre>
+and set <tt>Reference_JAVADOC_FILES</tt> in it.  For example, when 
+wrapping the GNUstep Base Library we do:
+<pre>
+Reference_JAVADOC_FILES = gnu.gnustep.base
+</pre>
+
+<p>
+
+<h2><a name="SECTION005102000000000000000">
+4.10.2 Installation Directory</a>
+</h2>
+By default, JIGS will install the quick reference documentation into 
+<pre>
+$(GNUSTEP_INSTALLATION_DIR)/Developer/libMyLibrary/Java/Reference/
+</pre>where of course <tt>libMyLibrary</tt> is replaced with your library name.
+If you want to change it, you need to write a 
+<pre>
+GNUmakefile.wrapper.java.preamble
+</pre>
+and set <tt>Reference_DOC_INSTALL_DIR</tt> in it.  For example, 
+when compiling the GNUstep Base Library wrappers we use
+<pre>
+Reference_DOC_INSTALL_DIR = Developer/Base/Java/
+</pre>
+which installs the documentation into
+<pre>
+$(GNUSTEP_INSTALLATION_DIR)/Developer/Base/Java/Reference/
+</pre>
+<p>
+<hr><b> Next: <a name="tex2html412" href="node22.html">4.11 Generating RPMs for</a> </b>
+<b>Up: <a name="tex2html410" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+<b> Previous: <a name="tex2html404" href="node20.html">4.9 Including Special Code</a> </b>
+
+<!--End of Navigation Panel-->
+<address>
+Nicola Pero
+2001-07-24
+</address>
+</body>
+</html>

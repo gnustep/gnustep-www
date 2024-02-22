@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.43)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=S1zqJCYt" />
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=qtvMKcIJ" />
+<!-- End Wayback Rewrite JS Include -->
+
+<title>4.1 Compiling ready-to-use wrappers</title>
+<meta name="description" content="4.1 Compiling ready-to-use wrappers">
+<meta name="keywords" content="Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="LaTeX2HTML v99.2beta8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="next" href="node13.html">
+<link rel="previous" href="node11.html">
+<link rel="up" href="node11.html">
+<link rel="next" href="node13.html">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<b> Next: <a name="tex2html294" href="node13.html">4.2 The GNUmakefile for</a> </b>
+<b>Up: <a name="tex2html292" href="node11.html">4. Wrapping Objective-C Libraries</a>  </b>
+<b> Previous: <a name="tex2html286" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+<br> <p>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<a name="CHILD_LINKS"><strong>Subsections</strong></a>
+
+<ul>
+<li><a name="tex2html295" href="node12.html#SECTION00511000000000000000">4.1.1 Creating and compiling the wrappers</a>
+<li><a name="tex2html296" href="node12.html#SECTION00512000000000000000">4.1.2 Structure of the wrappers</a>
+<ul>
+<li><a name="tex2html297" href="node12.html#SECTION00512100000000000000">4.1.2.1 The Java subdirectory</a>
+<li><a name="tex2html298" href="node12.html#SECTION00512200000000000000">4.1.2.2 The Objc subdirectory</a>
+</ul></ul>
+<!--End of Table of Child-Links-->
+<hr>
+
+<h1><a name="SECTION00510000000000000000">
+4.1 Compiling ready-to-use wrappers</a>
+</h1>
+
+<p>
+We start by reviewing the simplest case: you have a library installed
+on your system, and you download the wrappers for that library.  The
+wrappers actually consist of a <tt>GNUmakefile</tt>, a <tt>.jigs</tt>
+file, and possibly a few other support files.  These files contain all
+the instructions JIGS needs to wrap your library.  You can try the
+discussion out by using any example in the
+<tt>Tools/WrapCreator/Examples/</tt> directory (which are slightly
+more complicated, as the library and the wrapper for the library are
+kept and compiled in the same directory at the same time).
+
+<p>
+
+<h2><a name="SECTION00511000000000000000">
+4.1.1 Creating and compiling the wrappers</a>
+</h2>
+
+<p>
+When you type <tt>make</tt>, JIGS will automatically create a
+directory called
+<pre>
+JavaWrapper
+</pre>
+(or <tt>JavaWrapper_debug</tt> if you are compiling with debug
+enabled), and generate inside this directory source code for the
+wrappers.  It will then enter into this directory, and compile the
+wrapper source code (which has just been generated).  If you want more
+details about the wrapping process (which classes and which methods
+are being wrapped), you can use
+<pre>
+make verbose=yes
+</pre>
+
+<p>
+To access your library from Java you need to have compiled and
+installed both the original library and the wrappers.
+
+<p>
+Typing <tt>make install</tt> will install the wrappers, so you should
+be ready to use them from Java.
+
+<p>
+
+<h2><a name="SECTION00512000000000000000">&#160;</a><a name="wrapper-structure">&#160;</a>
+<br>
+4.1.2 Structure of the wrappers
+</h2>
+
+<p>
+It's not strictly necessary for you to know the structure of the
+wrappers to create or use them, so you may safely skip this section.
+
+<p>
+In the following discussion, we consider wrappers for an imaginary
+library called <tt>libexample.so</tt>.
+
+<p>
+The wrappers for the library are composed of two parts: a set of Java
+classes, and a native Objective-C library, called
+<tt>libexample.A.so</tt> in the example.  This is called after the 
+original library (<tt>libexample.so</tt>) with a <tt>.A</tt> appended
+to the name.
+
+<p>
+If you go into the <tt>JavaWrapper</tt> directory, you can inspect
+these parts yourself.  There are two main subdirectories in the
+<tt>JavaWrapper</tt> directory, the <tt>Java</tt> and the
+<tt>Objc</tt> subdirectories.
+
+<p>
+
+<h3><a name="SECTION00512100000000000000">
+4.1.2.1 The Java subdirectory</a>
+</h3>
+
+<p>
+The <tt>Java</tt> subdirectory contains the Java classes.  All methods
+which are not explicitly marked as <tt>public</tt> in these classes
+are to be considered internal to the JIGS engine and you should not
+access them directly (you probably will not be allowed to anyway).
+
+<p>
+All these classes contain a static initializer of the following form:
+<pre>
+ static
+  {
+    JIGS.loadLibrary ("example.A");
+  }
+</pre>
+This will load the native library <tt>libexample.A.so</tt> as soon as
+the first Java class is accessed (<tt>libexample.A.so</tt> will
+implicitly load <tt>libexample.so</tt>).
+
+<p>
+Then, most methods are <tt>native</tt>, as in the following example: 
+<pre>
+ /**
+   * Wraps the Objective-C method
+   * &lt;B&gt;start&lt;/B&gt;
+   */
+  public native void start ();
+</pre>
+
+<p>
+The implementation of the Java methods marked as <tt>native</tt> will
+be found by the JVM inside the native library <tt>libexample.A.so</tt>
+(see next section).
+
+<p>
+As it is shown in the example, each class and public method has a tiny
+minimal javadoc description.  When the java classes are compiled,
+quick reference documentation for the classes will be generated from
+these comments by using javadoc, and put into the subdirectory
+<tt>Reference</tt>.  This documentation is minimal, and basically
+consists in the list of all Java wrapper classes and methods which
+were compiled, and for each one, a comment explaining which
+Objective-C class or method it wraps.  While minimal, this
+documentation can be quite useful for someone already knowing the
+Objective-C API (or having the Objective-C documentation to refer to)
+and wanting to use the library from Java.
+
+<p>
+
+<h3><a name="SECTION00512200000000000000">
+4.1.2.2 The Objc subdirectory</a>
+</h3>
+
+<p>
+The <tt>Objc</tt> subdirectory contains the Objective-C library 
+<tt>libexample.A.so</tt>, which provides to Java the implementation 
+of all the <tt>native</tt> methods in the Java classes.  The
+implementation of these methods will call the corresponding methods in
+the (pure Objective-C) <tt>libexample.so</tt> library, by using the
+JIGS core engine to catch exceptions, convert arguments and return
+types, etc.
+
+<p>
+<hr><b> Next: <a name="tex2html294" href="node13.html">4.2 The GNUmakefile for</a> </b>
+<b>Up: <a name="tex2html292" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+<b> Previous: <a name="tex2html286" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+
+<!--End of Navigation Panel-->
+<address>
+Nicola Pero
+2001-07-24
+</address>
+</body>
+</html>

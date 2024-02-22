@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.43)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<html>
+<head>
+<title>4.4 Library header name</title>
+<meta name="description" content="4.4 Library header name">
+<meta name="keywords" content="Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="LaTeX2HTML v99.2beta8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="next" href="node16.html">
+<link rel="previous" href="node14.html">
+<link rel="up" href="node11.html">
+<link rel="next" href="node16.html">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<b> Next: <a name="tex2html328" href="node16.html">4.5 Library header location</a> </b>
+<b>Up: <a name="tex2html326" href="node11.html">4. Wrapping Objective-C Libraries</a>  </b>
+<b> Previous: <a name="tex2html320" href="node14.html">4.3 Specifying the main</a> </b>
+<br> <p>
+
+<!--End of Navigation Panel-->
+
+<h1><a name="SECTION00540000000000000000">
+4.4 Library header name</a>
+</h1>
+JIGS automatically parses your library headers to determine the exact
+method declarations of the methods you want to expose.
+
+<p>
+You need to specify a single header file for your library which
+includes all the header files for your library.  JIGS tries to
+determine it in the following way: it takes the
+<tt>JAVA_WRAPPER_NAME</tt>, and adds <tt>.h</tt> to it.
+
+<p>
+For example, if the GNUmakefile for your java wrapper is the following:
+<pre>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+JAVA_WRAPPER_NAME = Game
+
+include $(GNUSTEP_MAKEFILES)/java-wrapper.make
+</pre>
+Then your library name is <tt>libGame</tt>.  The header file JIGS will
+try to parse by default is <tt>Game.h</tt>.  This header file should
+include all the header files which might be need to compile code
+against your library.
+
+<p>
+Often, you want to set explicitly the header file name.  You can do
+that simply by setting the 
+<pre>
+XXX_HEADER_FILES
+</pre>
+variable (where <tt>XXX</tt> is to be replaced with your
+<tt>JAVA_WRAPPER_NAME</tt>).  For example, when wrapping the
+gnustep-base library, we have in the <tt>GNUmakefile</tt>
+<pre>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+JAVA_WRAPPER_NAME = gnustep-base
+gnustep-base_HEADER_FILES = Foundation/Foundation.h
+
+include $(GNUSTEP_MAKEFILES)/java-wrapper.make
+</pre>
+Please note that it should be a single header; you can't use multiple
+headers, despite the variable is called <tt>HEADER_FILES</tt>.  The
+header file name should be in the full form you use for including it
+into C source code, such as in <tt>Foundation/Foundation.h</tt>.  It
+must be in this form because it <b>will</b> end up in an Objective-C
+source file.
+
+<p>
+<hr><b> Next: <a name="tex2html328" href="node16.html">4.5 Library header location</a> </b>
+<b>Up: <a name="tex2html326" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+<b> Previous: <a name="tex2html320" href="node14.html">4.3 Specifying the main</a> </b>
+
+<!--End of Navigation Panel-->
+<address>
+Nicola Pero
+2001-07-24
+</address>
+</body>
+</html>

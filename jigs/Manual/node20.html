@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.43)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<html>
+<head>
+<title>4.9 Including Special Code in the Wrapper GNUmakefiles</title>
+<meta name="description" content="4.9 Including Special Code in the Wrapper GNUmakefiles">
+<meta name="keywords" content="Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="LaTeX2HTML v99.2beta8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="next" href="node21.html">
+<link rel="previous" href="node19.html">
+<link rel="up" href="node11.html">
+<link rel="next" href="node21.html">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<b> Next: <a name="tex2html401" href="node21.html">4.10 Controlling the Quick</a> </b>
+<b>Up: <a name="tex2html399" href="node11.html">4. Wrapping Objective-C Libraries</a>  </b>
+<b> Previous: <a name="tex2html393" href="node19.html">4.8 Useful Make Options</a> </b>
+<br> <p>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<a name="CHILD_LINKS"><strong>Subsections</strong></a>
+
+<ul>
+<li><a name="tex2html402" href="node20.html#SECTION00591000000000000000">4.9.1 Finding the library</a>
+</ul>
+<!--End of Table of Child-Links-->
+<hr>
+
+<h1><a name="SECTION00590000000000000000">&#160;</a><a name="special-code-in-GNUmakefiles">&#160;</a>
+<br>
+4.9 Including Special Code in the Wrapper GNUmakefiles
+</h1>
+
+<p>
+This section describes a feature which is usually not needed, so you
+may skip it at a first reading.  As a prerequisite, you probably need
+to have read the section <a href="node12.html#wrapper-structure">4.1.2</a> to make any use of
+this section.
+
+<p>
+It is possible that you may need/want to insert special code in the
+GNUmakefile.preamble and GNUmakefile.postamble for the wrappers.  For
+example, some special flags required to compile an Objective-C library
+(the Objective-C wrapper library for your library) against your
+Objective-C library.
+
+<p>
+JIGS itself by default does not generate GNUmakefile.preamble and
+GNUmakefile.postamble at all; but it will look in the library
+directory for the files 
+<pre>
+GNUmakefile.wrapper.objc.preamble
+GNUmakefile.wrapper.objc.postamble
+GNUmakefile.wrapper.java.preamble
+GNUmakefile.wrapper.java.postamble
+</pre>
+and, if any of them is present, copy them into the <tt>JavaWrapper</tt> 
+directory, in the following way:
+<pre>
+GNUmakefile.wrapper.objc.preamble --&gt; JavaWrapper/Objc/GNUmakefile.preamble
+GNUmakefile.wrapper.objc.postamble --&gt; JavaWrapper/Objc/GNUmakefile.postamble
+GNUmakefile.wrapper.java.preamble --&gt; JavaWrapper/Java/GNUmakefile.preamble
+GNUmakefile.wrapper.java.postamble --&gt; JavaWrapper/Java/GNUmakefile.postamble
+</pre>
+
+<p>
+In this way, by adding one of these files to your library's directory,
+you can have it copied into the generated wrappers in the appropriate
+place.
+
+<p>
+
+<h2><a name="SECTION00591000000000000000">
+4.9.1 Finding the library</a>
+</h2>
+A typical usage of this is to wrap libraries which have not yet been
+installed.  Normally, you create java wrappers for libraries which you
+have already installed.  Sometimes though, you need to create java
+wrappers for a library before it is installed.  In this case, you
+might need to help the compiler to find your actual library when it
+links the java wrappers.
+
+<p>
+You would do so by creating a file called
+<pre>
+GNUmakefile.wrapper.objc.postamble
+</pre>
+and adding to this file something like the following line
+<pre>
+ADDITIONAL_LIB_DIRS = -L/opt/nicola/MyLibrary/
+</pre>
+Please note that you will need to install your library anyway before
+you can use the java wrappers, because the library must be found at
+run-time as well!
+
+<p>
+A classical case in which you need this trick is if you are building
+the java wrappers with the library itself (that is, if you have a
+<tt>GNUmakefile</tt> which includes both <tt>library.make</tt> and
+<tt>java-wrapper.make</tt> and which you use to compile both.  In that
+case, you need to add
+<pre>
+ADDITIONAL_LIB_DIRS = -L../../$(GNUSTEP_OBJ_DIR)
+</pre>
+to your <tt>GNUmakefile.wrapper.objc.preamble</tt> to make sure that,
+when the java wrappers are built, the compiler will find the original
+library (and you also need to make sure that <tt>library.make</tt> is
+included before <tt>java-wrapper.make</tt> so that the library is
+compiled before the wrappers.
+
+<p>
+<hr><b> Next: <a name="tex2html401" href="node21.html">4.10 Controlling the Quick</a> </b>
+<b>Up: <a name="tex2html399" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+<b> Previous: <a name="tex2html393" href="node19.html">4.8 Useful Make Options</a> </b>
+
+<!--End of Navigation Panel-->
+<address>
+Nicola Pero
+2001-07-24
+</address>
+</body>
+</html>

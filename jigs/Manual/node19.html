@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.43)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<html>
+<head><
+<title>4.8 Useful Make Options when Creating Wrappers</title>
+<meta name="description" content="4.8 Useful Make Options when Creating Wrappers">
+<meta name="keywords" content="Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="LaTeX2HTML v99.2beta8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="next" href="node20.html">
+<link rel="previous" href="node18.html">
+<link rel="up" href="node11.html">
+<link rel="next" href="node20.html">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<b> Next: <a name="tex2html386" href="node20.html">4.9 Including Special Code</a> </b>
+<b>Up: <a name="tex2html384" href="node11.html">4. Wrapping Objective-C Libraries</a>  </b>
+<b> Previous: <a name="tex2html378" href="node18.html">4.7 The .jigs File</a> </b>
+<br> <p>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<a name="CHILD_LINKS"><strong>Subsections</strong></a>
+
+<ul>
+<li><a name="tex2html387" href="node19.html#SECTION00581000000000000000">4.8.1 Silencing the Wrapper Generator</a>
+<li><a name="tex2html388" href="node19.html#SECTION00582000000000000000">4.8.2 Enabling Debugging</a>
+<li><a name="tex2html389" href="node19.html#SECTION00583000000000000000">4.8.3 Debugging or Non-Debugging</a>
+<ul>
+<li><a name="tex2html390" href="node19.html#SECTION00583100000000000000">4.8.3.1 The Fine Prints About Debugging</a>
+</ul>
+<li><a name="tex2html391" href="node19.html#SECTION00584000000000000000">4.8.4 Turning off the Generation of Quick Reference Doc</a>
+</ul>
+<!--End of Table of Child-Links-->
+<hr>
+
+<h1><a name="SECTION00580000000000000000">
+4.8 Useful Make Options when Creating Wrappers</a>
+</h1>
+
+<p>
+At this point, typing <tt>make</tt> should be enough to generate
+wrappers for your library.  
+
+<p>
+
+<h2><a name="SECTION00581000000000000000">
+4.8.1 Silencing the Wrapper Generator</a>
+</h2>
+
+<p>
+By default, wrapper generation is quite verbose - it tells you
+exactly what it is doing - for example, it lists all the classes and
+methods which are being wrapped.  If you find this annoying, you can
+turn it off by compiling with the <tt>verbose=no</tt> option, as in:
+<pre>
+make verbose=no
+</pre>
+
+<p>
+
+<h2><a name="SECTION00582000000000000000">
+4.8.2 Enabling Debugging</a>
+</h2>
+
+<p>
+If you are compiling your library with debugging enabled  - ie, typing
+<pre>
+make debug=yes
+</pre>
+the wrapper library will also be generated with debugging enabled.
+This means that the GNUmakefiles for the wrapping library will
+always automatically use <tt>debug=yes</tt> when the wrapping library
+is compiled.  The wrapping code itself will be generated in the
+<tt>JavaWrapper_debug</tt> directory rather than in the <tt>JavaWrapper</tt>, 
+to allow you to keep the two versions.
+
+<p>
+
+<h2><a name="SECTION00583000000000000000">
+4.8.3 Debugging or Non-Debugging</a>
+</h2>
+
+<p>
+When Objective-C GNUstep libraries are loaded from Java using JIGS,
+all the libraries must be of the same type - or debugging libraries
+or non-debugging libraries.  
+
+<p>
+In general, the simplest way you can manage this issue is by
+consistently using only libraries of one of the two kind on your
+system; ie, compile everything (from the GNUstep Base Library up) with
+`<tt>make</tt>', or compile everything with `<tt>make debug=yes</tt>'.
+
+<p>
+If you don't, then you need to read carefully the following part.
+
+<p>
+
+<h3><a name="SECTION00583100000000000000">
+4.8.3.1 The Fine Prints About Debugging</a>
+</h3>
+
+<p>
+JIGS will decide whether to use debugging or non-debugging libraries
+at run-time, when it is first initialized from Java.  Debugging
+libraries are easy to tell because the name ends with <tt>_d</tt>.
+For example, the core JIGS library is
+<tt>libgnustep-java</tt>; if you compile it without debugging, it will 
+be in the file 
+<pre>
+libgnustep-java.so
+</pre>
+but if you compile it with debugging, it will be in the file 
+<pre>
+libgnustep-java_d.so
+</pre>
+Because the name is different, you can have both versions on your
+system.  JIGS will choose to load debugging or non-debugging libraries
+in the following way:
+
+<ol>
+<li>If you have only one version of JIGS installed (ie, only the debugging 
+or the non-debugging, but not both), there is no choice - JIGS will
+load libraries of the same kind as itself.  This means if you have a
+debugging version of JIGS installed, you will need to have a version
+of all libraries you need with debugging enabled.  If you only have a
+non-debugging version of JIGS installed, you will need to have a
+version of all libraries you need without debugging.
+</li>
+<li>If you have both version of JIGS (the debugging and the non-debugging), 
+JIGS will decide at run-time which version of itself to use (and
+consequently, which version of all other libraries to use).  By
+default, it will load the non-debugging version.  This is the default
+because the idea is that using a debugger to debug libraries when
+accessed from Java in this way is so difficult that most people will
+not want to do it (I actually don't know how to do it myself).  But
+you can override the default by setting the <tt>JIGS_DEBUG</tt>
+environment variable.  Setting it to <tt>YES</tt> or <tt>yes</tt> will
+give priority to the debugging libraries.
+</li>
+</ol>
+Once JIGS has chosen an option, it will follow it consistently.  For
+example, if it decided to load debugging libraries, it will ignore all
+non-debugging libraries.
+
+<p>
+
+<h2><a name="SECTION00584000000000000000">
+4.8.4 Turning off the Generation of Quick Reference Doc</a>
+</h2>
+
+<p>
+To stop JIGS from automatically generating minimal javadoc comments
+and the quick reference documentation from them, it's enough to
+compile using <tt>javadoc=no</tt>, as in:
+<pre>
+make javadoc=no
+</pre>
+
+<p>
+<hr><b> Next: <a name="tex2html386" href="node20.html">4.9 Including Special Code</a> </b>
+<b>Up: <a name="tex2html384" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+<b> Previous: <a name="tex2html378" href="node18.html">4.7 The .jigs File</a> </b>
+
+<!--End of Navigation Panel-->
+<address>
+Nicola Pero
+2001-07-24
+</address>
+</body>
+</html>

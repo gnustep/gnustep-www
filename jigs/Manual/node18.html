@@ -1,0 +1,519 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.43)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<html>
+<head>
+<title>4.7 The .jigs File</title>
+<meta name="description" content="4.7 The .jigs File">
+<meta name="keywords" content="Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="LaTeX2HTML v99.2beta8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="next" href="node19.html">
+<link rel="previous" href="node17.html">
+<link rel="up" href="node11.html">
+<link rel="next" href="node19.html">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<b> Next: <a name="tex2html359" href="node19.html">4.8 Useful Make Options</a> </b>
+<b>Up: <a name="tex2html357" href="node11.html">4. Wrapping Objective-C Libraries</a>  </b>
+<b> Previous: <a name="tex2html351" href="node17.html">4.6 The wrapper directory</a> </b>
+<br> <p>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<a name="CHILD_LINKS"><strong>Subsections</strong></a>
+
+<ul>
+<li><a name="tex2html360" href="node18.html#SECTION00571000000000000000">4.7.1 Determining which .jigs file to read</a>
+<li><a name="tex2html361" href="node18.html#SECTION00572000000000000000">4.7.2 Overview of the .jigs file</a>
+<li><a name="tex2html362" href="node18.html#SECTION00573000000000000000">4.7.3 The Classes section</a>
+<ul>
+<li><a name="tex2html363" href="node18.html#SECTION00573100000000000000">4.7.3.1 java name</a>
+<li><a name="tex2html364" href="node18.html#SECTION00573200000000000000">4.7.3.2 objective-c name</a>
+<li><a name="tex2html365" href="node18.html#SECTION00573300000000000000">4.7.3.3 initializers</a>
+<li><a name="tex2html366" href="node18.html#SECTION00573400000000000000">4.7.3.4 class methods</a>
+<li><a name="tex2html367" href="node18.html#SECTION00573500000000000000">4.7.3.5 instance methods</a>
+<li><a name="tex2html368" href="node18.html#SECTION00573600000000000000">4.7.3.6 method declarations</a>
+<li><a name="tex2html369" href="node18.html#SECTION00573700000000000000">4.7.3.7 hardcoded constants</a>
+<li><a name="tex2html370" href="node18.html#SECTION00573800000000000000">4.7.3.8 enumerations</a>
+<li><a name="tex2html371" href="node18.html#SECTION00573900000000000000">4.7.3.9 file to include in java code</a>
+<li><a name="tex2html372" href="node18.html#SECTION005731000000000000000">4.7.3.10 file to include in preamble java code</a>
+<li><a name="tex2html373" href="node18.html#SECTION005731100000000000000">4.7.3.11 file to include in objective-c code</a>
+</ul>
+<li><a name="tex2html374" href="node18.html#SECTION00574000000000000000">4.7.4 Method Name Mapping</a>
+<li><a name="tex2html375" href="node18.html#SECTION00575000000000000000">4.7.5 Prerequisite Libraries</a>
+<li><a name="tex2html376" href="node18.html#SECTION00576000000000000000">4.7.6 Types</a>
+</ul>
+<!--End of Table of Child-Links-->
+<hr>
+
+<h1><a name="SECTION00570000000000000000">
+4.7 The .jigs File</a>
+</h1>
+
+<p>
+
+<h2><a name="SECTION00571000000000000000">
+4.7.1 Determining which .jigs file to read</a>
+</h2>
+After running the preprocessor on the header file, JIGS will read a
+configuration file to know which wrappers to generate, and how.  By
+default, the file is called <tt>$(JAVA_WRAPPER_NAME).jigs</tt>.  In
+the case described before, this file would be called
+<tt>Game.jigs</tt>.  You can override this choice by setting the
+<tt>JIGS_FILE</tt> variable in your <tt>GNUmakefile</tt>, but you
+shouldn't usually need to.
+
+<p>
+
+<h2><a name="SECTION00572000000000000000">
+4.7.2 Overview of the .jigs file</a>
+</h2>
+The <tt>.jigs</tt> file is the main file from which you can control
+the way the wrapping is done.  In this file, you need to list all the
+classes of your library which you want to expose, and for each class,
+which methods.  The <tt>.jigs</tt> file is in a format called 
+<i>property list</i> - please refer to the GNUstep Base Library tutorials 
+and documentation if you need more help on property lists.  The
+<tt>.jigs</tt> file is a big dictionary.  Each entry in the dictionary 
+is to be thought of as of a different section; the key to the section
+is the section name, the value is an array or a dictionary containing
+the information referring to that section.  For example, we have the
+<tt>classes</tt> section (containing an array of classes to be wrapped), the
+<tt>types</tt> section (containing a dictionary of mapping of custom C 
+types to already known C types), the <tt>method name mapping</tt>
+section (containing a dictionary of mappings from objective-C method
+names to Java method names, to be used for the whole library).  Here
+is an example:
+<pre>
+{
+  classes = (
+    {
+      "java name" = "gnu.gnustep.GreatGameLibrary.GGLSprite";
+      "objective-c name" = GGLSprite;
+      "instance methods" = (speed, "setSpeed:");
+      initializers = (init);
+     }
+   );
+  
+  "method name mapping" = {
+    speed = getSpeed;
+  };
+}
+</pre>
+
+<p>
+In this example, we only have the <tt>classes</tt> and <tt>method
+name mapping</tt> sections.  We now examine in detail each section of the
+<tt>.jigs</tt> file.
+
+<p>
+
+<h2><a name="SECTION00573000000000000000">
+4.7.3 The Classes section</a>
+</h2>
+Probably the most important section in the file is the
+<tt>classes</tt> section, where you list all the classes you want to
+be wrapped, and how.  This section is an array, each entry in the
+array being a different class to be wrapped.  Here is an example 
+of this section:
+<pre>
+classes = (
+  {
+    "java name" = "gnu.gnustep.GreatGameLibrary.GGLScore";
+    "objective-c name" = "GGLScore";
+
+    "initializers" = ("init"); 
+    "instance methods" = ("setPoints:", "points");
+    "class methods" = ("bestScore", "bestTenScores");
+  },
+
+  {
+    "java name" = "gnu.gnustep.GreatGameLibrary.GGLPlayer";
+    "objective-c name" = "GGLPlayer";
+
+    "class methods" = ("computerPlayer");
+    "instance methods" = ("name", "score", "addPoints:");
+    "initializers" = ("init", "initWithName:");                 
+  }
+);
+</pre>
+In this example, we want to generate wrappers for two classes:
+<tt>GGLScore</tt> and <tt>GGLPlayer</tt>.  Information about each 
+class is represented by a dictionary.  Any entry in this dictionary
+(except the `<tt>java name</tt>' entry) can be omitted, in which case
+a default value will be used.  We briefly now review the use of each
+entry.
+
+<p>
+
+<h3><a name="SECTION00573100000000000000">
+4.7.3.1 java name</a>
+</h3>
+This is a string - the name that is to be used in Java for the class
+you want to wrap.  This is the only compulsory entry for each class.
+You need to specify the full Java name of the class, such as
+<pre>
+"java name" = "gnu.gnustep.base.NSArray";
+</pre>
+You can decide to use a different name in Java than the name the class
+has in Objective-C.  It's generally better to avoid this, but it
+should work fine if you ever need to do it.  
+
+<p>
+
+<h3><a name="SECTION00573200000000000000">
+4.7.3.2 objective-c name</a>
+</h3>
+This is a string - the Objective-C name of the class you want to
+wrap, such as 
+<pre>
+"objective-c name" = "NSArray";
+</pre>
+If this entry is not present, it is guessed by taking the last part of
+<tt>java name</tt>.  For example, if <tt>java name</tt> is 
+<tt>gnu.gnustep.base.NSArray</tt>, then JIGS will use <tt>NSArray</tt> 
+as Objective-C name if you don't specify an Objective-C name.
+
+<p>
+
+<h3><a name="SECTION00573300000000000000">
+4.7.3.3 initializers</a>
+</h3>
+This is an array - the list of <tt>init</tt> methods you want to
+wrap, such as
+<pre>
+"initializers" = ("init", "initWithName:", "initWithArray:", "initWithName:array:");
+</pre>
+Each method in the <tt>initializers</tt> list will be exposed as a
+constructor.  The Objective-C name of each initializer is discarded 
+in Java, so you must make sure that these methods have all different 
+signatures.
+
+<p>
+
+<h3><a name="SECTION00573400000000000000">
+4.7.3.4 class methods</a>
+</h3>
+This is an array - the list of class methods you want to wrap, such as 
+<pre>
+"class methods" = (
+  "contentRectForFrameRect:styleMask:", 
+  "frameRectForContentRect:styleMask:", 
+  "minFrameWidthWithTitle:styleMask:",
+  "removeFrameUsingName:");
+</pre>
+Each of these methods is exposed as a static method in Java.  Unless
+you use a method mapping (explained below), the Java name of each of
+these methods will be obtained by removing from the Objective-C name
+everything which comes after the first `<tt>:</tt>'.  For example, the
+methods in the example would be wrapped as:
+<pre>
+public static native NSRect contentRectForFrameRect (NSRect arg0, long arg1);
+public static native NSRect frameRectForContentRect (NSRect arg0, long arg1);
+public static native NSRect minFrameWidthWithTitle (String arg0, long arg1);
+public static native void removeFrameUsingName (String arg0);
+</pre>
+
+<p>
+Please make sure you do not include any methods of the <tt>new</tt>
+family in the <tt>class methods</tt> list.  <tt>new</tt> methods can not
+be wrapped because they allocate and return non-autoreleased objects
+- it should not be a problem anyway, because if you need that
+constructor in Java, you can get it by simply wrapping the
+corresponding <tt>init</tt> method.
+
+<p>
+
+<h3><a name="SECTION00573500000000000000">
+4.7.3.5 instance methods</a>
+</h3>
+This is an array - the list of instance methods you want to wrap,
+such as 
+<pre>
+"instance methods" = (
+  "arguments",
+  "environment",
+  "hostName",
+  "processName",
+  "globallyUniqueString",
+  "setProcessName:");
+</pre>
+Each of these methods is exposed as an instance method in Java.  The
+Java names for these methods are obtained in the same way as for class
+methods.
+
+<p>
+Make sure you do not include any method of the <tt>copy</tt> and 
+<tt>mutableCopy</tt> family in this list.  Methods of these families 
+can not be wrapped like the other ones because they return
+newly-created non-autoreleased objects.  It is possible that in the
+future JIGS could provide a way to expose these methods; at present,
+you can not expose them - except the ones exposed by <tt>NSObject</tt>: 
+<tt>NSObject</tt> exposes <tt>copy</tt> (as <tt>clone</tt>) and 
+<tt>mutableCopy</tt> (as <tt>mutableClone</tt>) to Java, so if your 
+Objective-C class implements <tt>copy</tt> and <tt>mutableCopy</tt>,
+they will automatically be made available to Java by the
+<tt>NSObject</tt> wrapper without any need to do anything.
+
+<p>
+
+<h3><a name="SECTION00573600000000000000">
+4.7.3.6 method declarations</a>
+</h3>
+This is an array - a list of explicit method declarations which you
+can use to override the declarations found by the wrapper tool in the
+header file if you think the wrapper tool did not use the correct
+declaration - this usually happens only if in your library the same
+method is declared in different classes or protocols with different
+arguments or return types (this case is infrequent, but it happens
+sometime) - in this case the wrapper tool is likely not to pick up
+the correct declaration, because it is designed for the standard case,
+when the same signature is used across all classes.  By adding the
+correct declaration for your class in the <tt>method declaration</tt>
+section, you can make sure that the declaration you want is used.  For
+example, in the gui library the following explicit declaration is used
+when wrapping
+<tt>NSBox</tt>:
+<pre>
+"method declarations" = (
+   "- (void) setContentView: (NSView*)aView");
+</pre>
+This is because <tt>NSScrollView</tt> uses a conflicting declaration
+for this method, taking a <tt>NSClipView *</tt> argument.
+
+<p>
+Please note that, while in Objective-C these problems are harmless,
+and usually the worst it can happen is that the compiler warns you at
+compile time, after you expose your methods to Java these problems
+become first-rate problems, because in Java casts are dramatic and
+your program can crash if a method expecting a <tt>NSClipView</tt>
+argument receives a generic <tt>NSView</tt> instead.
+
+<p>
+
+<h3><a name="SECTION00573700000000000000">
+4.7.3.7 hardcoded constants</a>
+</h3>
+This is an array - a list of declaration of constants which will be
+added as static constants to the Java class, as in the following
+example:
+<pre>
+"hardcoded constants" = ("int NotFound = 0x7fffffff");
+</pre>
+This <tt>hardcoded constants</tt> section will generate the following
+code in the Java class:
+<pre>
+public static int NotFound = 0x7fffffff;
+</pre>
+This example is taken from the wrapping instructions for
+<tt>NSArray</tt>; it allows the Java programmer to access this
+constant simply as <tt>NSArray.NotFound</tt>.  The value of this
+constant is of course the value of the C constant <tt>NSNotFound</tt>
+which is returned by many GNUstep Base Library methods when something
+is not found.
+
+<p>
+If your Objective-C library defines some constants, and some methods
+which you expose to Java return or accept these constants, you may
+want to make these constants available to Java as well by using the
+<tt>hardcoded constants</tt> section.  Enumerations are exposed using 
+the <tt>enumerations</tt> section, as explained in the next
+paragraphs.
+
+<p>
+
+<h3><a name="SECTION00573800000000000000">
+4.7.3.8 enumerations</a>
+</h3>
+
+<p>
+Starting from JIGS 1.5.0, enumeration types are automatically
+recognized in the header file, and treated by the wrapper tool exactly
+as if they were simple <tt>int</tt>s.  Usually, that is not enough -
+you want also to have the enumeration constants available from Java as
+static integer constants of some class.  You can use the
+<tt>hardcoded constants</tt> section to manually add them to the
+class; this is quite clumsy, because you have to enter all the
+enumeration constants manually in the jigs file, and if you change the
+enumeration values in the Objective-C code, you have to manually
+update the jigs file.
+
+<p>
+Recent versions of JIGS (1.5.0 and newer) offer a new better option,
+in the form of the <tt>enumerations</tt> section.  For example, the
+following line inside a class section
+<pre>
+enumerations = (NSComparisonResult);
+</pre>
+will cause the following code to be automatically added to the
+generated Java class code:
+<pre> 
+public static int NSOrderedDescending = 1;
+public static int NSOrderedSame = 0;
+public static int NSOrderedAscending = -1;
+</pre>
+
+<p>
+Please notice that the wrapper tool has parsed your Objective-C header
+file, and extracted the constant values from there automatically!
+This means that you don't have to enter the constants in the first
+place, and if you ever change the enumeration, the Java wrappers will
+be immediately and automatically updated as soon as you recreate them.
+
+<p>
+
+<h3><a name="SECTION00573900000000000000">
+4.7.3.9 file to include in java code</a>
+</h3>
+This is a string - a filename (relative to the current directory).
+When WrapCreator generates the Java class, it will read the contents
+of this file, and add them - without any change - inside the Java
+class.
+
+<p>
+For example, to insert a Java method of your own into the generated 
+Java wrapper class, you could use the following entry:
+<pre>
+"file to include in java code" = "MyClass.java.add";
+</pre>
+Then, you need to put the Java code you want to add into the file
+<tt>MyClass.java.add</tt>.  Here is a trivial example:
+<pre>
+  /**
+    * Returns the sum of the arguments.
+    */
+  public int test (int a, int b)
+  {
+    return a + b;
+  }
+</pre>
+This code would be inserted <em>inside</em> the Java class implementation 
+when the Java wrapper is created.
+
+<p>
+
+<h3><a name="SECTION005731000000000000000">
+4.7.3.10 file to include in preamble java code</a>
+</h3>
+This is a string - a filename (relative to the current directory).
+The only difference with <tt>file to include in java code</tt>
+(described above) is that in this case the code is included <em>before</em> the Java class, between the <tt>import</tt> statements and the
+class implementation, rather than <em>inside</em> the class
+implementation.
+
+<p>
+
+<h3><a name="SECTION005731100000000000000">
+4.7.3.11 file to include in objective-c code</a>
+</h3>
+This is a string - a filename (relative to the current directory).
+When WrapCreator generates the Objective-C code, it will read the
+contents of this file, and add them - without any change - at the
+end of the Objective-C file for that class.  In this way, you can add
+arbitrary functions and C or Objective-C code to the wrapper library.
+
+<p>
+The combination of this feature with the one to include arbitrary java
+code into the wrapper allows you to add hand-made wrapped methods to
+the java wrapper.  This is a very advanced feature and is not
+documented here.
+
+<p>
+
+<h2><a name="SECTION00574000000000000000">
+4.7.4 Method Name Mapping</a>
+</h2>
+This section is a dictionary - mapping Objective-C method names 
+to Java method names, as in the following example:
+<pre>
+"method name mapping" = {
+  "null" = "nullValue";
+  "addTimer:forMode:" = "addTimerForMode";
+};
+</pre>
+Try to avoid method mappings, because they are confusing!  But
+sometimes you can't do without, as in the case of <tt>null</tt> which
+can't be exposed with this name to Java because <tt>null</tt> is a
+reserved keyword in Java.  In this case, you use the method mapping.
+Please note that JIGS needs to keep a global table of method name
+mappings while running in order to map selectors between Java and
+Objective-C; for this reason, you need to use the same mappings in all
+the classes.
+
+<p>
+
+<h2><a name="SECTION00575000000000000000">
+4.7.5 Prerequisite Libraries</a>
+</h2>
+Sometimes, the wrappers for your library need the wrappers of some
+other GNUstep Objective-C library to work correctly.  For example, you
+can't use the wrappers for the GNUstep Gui Library without the
+wrappers for the GNUstep Base Library.  If this is the case for your
+library, you need to add a <tt>prerequisite libraries</tt> section,
+containing a list of GNUstep libraries whose wrappers you want to be
+loaded at run-time when the wrappers for your library are initialized.
+For example, in <tt>gnustep-gui.jigs</tt> there is
+<pre>
+"prerequisite libraries" = ("gnustep-base");
+</pre>
+You will probably usually need at least this line.  Please note that
+the library is specified using the simplest possible name; JIGS at
+run-time will add the correct prefixes (<tt>lib</tt>) and suffixes
+(things like <tt>_d</tt> for debug version - if needed - and
+<tt>.A</tt> for the wrappers) to load in the library.
+
+<p>
+
+<h2><a name="SECTION00576000000000000000">
+4.7.6 Types</a>
+</h2>
+The wrapper tool can parse and manage a certain set of C types.  For
+example, upon finding <tt>BOOL</tt> in the Objective-C headers, the
+wrapper tool knows how to manage it.
+
+<p>
+In the <tt>types</tt> section you can specify a list of C types
+specific to your library, and for each of them, a corresponding
+(known) C type.  The wrapper tool will know it has to convert to/from
+Java the first C type in the same way as it does with the second.  For
+example, in the <tt>gnustep-base.jigs</tt> file, there is the
+following line:
+<pre>
+types = { NSTimeInterval = double; };
+</pre>
+This simply tells to the wrapper tool that whenever it finds an argument 
+of type <tt>NSTimeInterval</tt> in an Objective-C method declaration, it 
+has to treat it in the same way as if it were a <tt>double</tt>.
+
+<p>
+Starting from JIGS 1.5.0, the wrapper tool recognizes enumerations
+when it parses your header file, and it automatically treats them as
+new types corresponding to <tt>int</tt>.  This means that you don't
+need to do anything special to have JIGS wrap methods taking or
+returning enumerations - enumerations should be recognized
+automatically, and treated automatically as <tt>int</tt>s.
+
+<p>
+<hr><b> Next: <a name="tex2html359" href="node19.html">4.8 Useful Make Options</a> </b>
+<b>Up: <a name="tex2html357" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+<b> Previous: <a name="tex2html351" href="node17.html">4.6 The wrapper directory</a> </b>
+
+<!--End of Navigation Panel-->
+<address>
+Nicola Pero
+2001-07-24
+</address>
+</body>
+</html>
+

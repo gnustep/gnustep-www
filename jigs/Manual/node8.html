@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.43)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<html>
+<head>
+	<title>3.2 Accessing the GNUstep Base Library From Java</title>
+<meta name="description" content="3.2 Accessing the GNUstep Base Library From Java">
+<meta name="keywords" content="Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="LaTeX2HTML v99.2beta8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="next" href="node9.html">
+<link rel="previous" href="node7.html">
+<link rel="up" href="node6.html">
+<link rel="next" href="node9.html">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<b> Next: <a name="tex2html198" href="node9.html">3.3 How the Wrapping</a> </b>
+<b>Up: <a name="tex2html196" href="node6.html">3. Programming GNUstep in</a>  </b>
+<b> Previous: <a name="tex2html190" href="node7.html">3.1 Compiling Java Code</a> </b>
+<br> <p>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<a name="CHILD_LINKS"><strong>Subsections</strong></a>
+
+<ul>
+<li><a name="tex2html199" href="node8.html#SECTION00421000000000000000">3.2.1 A First Example</a>
+<li><a name="tex2html200" href="node8.html#SECTION00422000000000000000">3.2.2 The General Idea</a>
+</ul>
+<!--End of Table of Child-Links-->
+<hr>
+
+<h1><a name="SECTION00420000000000000000">
+3.2 Accessing the GNUstep Base Library From Java</a>
+</h1>
+
+<p>
+
+<h2><a name="SECTION00421000000000000000">
+3.2.1 A First Example</a>
+</h2>
+
+<p>
+Accessing the GNUstep Base Library from your Java code is very easy.
+The GNUstep Base Library classes are made available from Java as part
+of the <tt>gnu.gnustep.base</tt> package.  If you have correctly
+installed JIGS, this package has been installed as any other Java
+package by the GNUstep Makefile package in your GNUstep directory
+tree.  For example, on my system the GNUstep Base Library classes are
+in:
+<pre>
+/usr/GNUstep/System/Libraries/Java/gnu/gnustep/base/
+</pre>
+To use the classes, it is enough to import them with the statement:
+<pre>
+import gnu.gnustep.base.*;
+</pre>
+
+<p>
+As a simple example, here is a java program which reads the host name
+using GNUstep, and prints it out:
+<pre>
+import gnu.gnustep.base.*;
+
+class PrintHostName
+{ 
+  public static void main (String[] args) 
+    throws Throwable
+  {
+    NSProcessInfo process;
+
+    process = NSProcessInfo.processInfo ();
+    System.out.println (process.hostName ());
+  }
+}
+</pre>
+We will comment in detail the code in the next section.
+
+<p>
+The GNUmakefile for this program is the usual, trivial, one:
+<pre>
+include $(GNUSTEP_MAKEFILES)/common.make
+
+JAVA_PACKAGE_NAME = PrintHostName
+PrintHostName_JAVA_FILES = PrintHostName.java
+
+include $(GNUSTEP_MAKEFILES)/java.make
+</pre>
+This is probably a good moment to pause and try out this little
+program on your system, to get a feeling of how simple and easy the
+whole thing is.
+
+<p>
+
+<h2><a name="SECTION00422000000000000000">
+3.2.2 The General Idea</a>
+</h2>
+The previous code example showed the basic idea behind the GNUstep
+Java Interface: Java and Objective-C are very similar languages, so
+that Objective-C classes can be exposed as Java classes nearly as they
+are, with very little (if any) changings in the API.
+
+<p>
+In this example, the Objective-C class <tt>NSProcessInfo</tt> provided
+by the GNUstep Base Library is exposed to Java as the Java class
+<pre>
+gnu.gnustep.base.NSProcessInfo
+</pre>
+Usually, classes in the same Objective-C library are exposed as
+classes belonging to the same Java package; for example all classes in
+the GNUstep Base Library are exposed as part of the
+<tt>gnu.gnustep.base</tt> package, and all the classes in the GNUstep 
+Gui Library are exposed as part of the <tt>gnu.gnustep.gui</tt>
+package.
+
+<p>
+Both in Java and Objective-C there are class methods (called <i>static
+methods</i> in Objective-C) and instance methods.  The interface
+preservers both the name and the role of the Objective-C methods when
+they are exposed to Java: static methods are made available as class
+methods with the same name, and instance methods are made available as
+instance methods with the same name.  This is the general plan - but
+there are exceptions and pitfalls, because the languages differ in
+some details - we will carefully study these exceptions and details
+in the next sections.
+
+<p>
+In the example, the Objective-C static method <tt>processInfo</tt> is
+accessible in Java as the class method <tt>processInfo</tt>; the
+Objective-C instance method <tt>hostName</tt> is exposed as a Java
+method <tt>hostName</tt>.
+
+<p>
+The only difference is in the syntax: in Objective-C you would write
+<pre>
+NSProcessInfo *process;
+
+process = [NSProcessInfo processInfo];
+</pre>
+because this is the Objective-C syntax for method calls; in Java the 
+same code is written as 
+<pre>
+NSProcessInfo process;
+
+process = NSProcessInfo.processInfo ();
+</pre>
+because this is the Java syntax for method calls.
+
+<p>
+If you want to know exactly which classes and methods are exposed to
+Java, with which name, and to which Objective-C classes and methods
+they correspond, you can consult the quick reference documentation for
+the GNUstep base library wrappers.  This is generated automatically by
+JIGS when it creates the wrappers; if you have installed JIGS
+correctly, it should be in:
+<pre>
+$(GNUSTEP_SYSTEM_ROOT)/Documentation/Developer/Base/Java/Reference/
+</pre>Warning: this is only a quick reference for the java wrapper, listing
+classes and methods exposed to Java, and does not document the GNUstep
+Base Library itself.
+
+<p>
+<hr><b> Next: <a name="tex2html198" href="node9.html">3.3 How the Wrapping</a> </b>
+<b>Up: <a name="tex2html196" href="node6.html">3. Programming GNUstep in</a> </b>
+<b> Previous: <a name="tex2html190" href="node7.html">3.1 Compiling Java Code</a> </b>
+
+<!--End of Navigation Panel-->
+<address>
+Nicola Pero
+2001-07-24
+</address>
+</body>
+</html>

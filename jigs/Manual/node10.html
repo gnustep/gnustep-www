@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta8 (1.43)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<html>
+<head>
+<title>3.4 Advanced Topics</title>
+<meta name="description" content="3.4 Advanced Topics">
+<meta name="keywords" content="Manual">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="LaTeX2HTML v99.2beta8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="previous" href="node9.html">
+<link rel="up" href="node6.html">
+<link rel="next" href="node11.html">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#4444FF" alink="#3388FF">
+<b> Next: <a name="tex2html227" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+<b>Up: <a name="tex2html225" href="node6.html">3. Programming GNUstep in</a>  </b>
+<b> Previous: <a name="tex2html221" href="node9.html">3.3 How the Wrapping</a> </b>
+<br> <p>
+
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<a name="CHILD_LINKS"><strong>Subsections</strong></a>
+
+<ul>
+<li><a name="tex2html228" href="node10.html#SECTION00441000000000000000">3.4.1 Weak References to Java Objects</a>
+<li><a name="tex2html229" href="node10.html#SECTION00442000000000000000">3.4.2 Selectors</a>
+<li><a name="tex2html230" href="node10.html#SECTION00443000000000000000">3.4.3 Subclassing GNUstep Objects in Java</a>
+<li><a name="tex2html231" href="node10.html#SECTION00444000000000000000">3.4.4 Using Java Threads</a>
+<ul>
+<li><a name="tex2html232" href="node10.html#SECTION00444100000000000000">3.4.4.1 The Fine Prints About Threads</a>
+</ul></ul>
+<!--End of Table of Child-Links-->
+<hr>
+
+<h1><a name="SECTION00440000000000000000">
+3.4 Advanced Topics</a>
+</h1>
+
+<p>
+
+<h2><a name="SECTION00441000000000000000">
+3.4.1 Weak References to Java Objects</a>
+</h2>
+
+<p>
+Usually, when you pass a Java object as an argument to an Objective-C 
+method, you do not need to do anything particular:
+<pre>
+/* Java Example */
+NSMutableArray array = new NSMutableArray ();
+FileReader nicola = new FileReader ("nicola");
+
+array.addObject (nicola);
+</pre>
+In this example (assuming the file <tt>nicola</tt> exists), we create
+a java <tt>FileReader</tt> object, and then put it into a GNUstep
+<tt>NSMutableArray</tt>.
+
+<p>
+This is the standard case - all works fine and out-of-the-box;
+unfortunately, there is an exception.  The following methods need
+special treatment to be used from Java:
+<pre>
+public void setDelegate (Object delegate);
+public void setTarget (Object target);
+</pre>
+These methods are quite common in the GNUstep API, so it's quite
+important that you know how to correctly call them.  These methods are
+special, because the Objective-C implementation uses a special memory
+management for the argument: it saves it as a weak reference rather
+than a normal reference.  This is not a problem from Objective-C, but
+in Java to use these methods you need to prepare the call by using the
+method
+<pre>
+public void retainObject (Object object);
+</pre>
+provided by the <tt>gnu.gnustep.base.NSObject</tt> class<a name="tex2html2" href="footnode.html#foot411"><sup>3.2</sup></a>, as in the
+following example:
+<pre>
+/* Java Example */
+FileReader nicola = new FileReader ("nicola");
+NSButton button = new NSButton ();
+
+/* Retain object before calling setTarget */
+NSObject.retainObject (nicola);
+
+button.setTarget (nicola);
+</pre>
+The example (setting a <tt>FileReader</tt> as the target of a
+<tt>NSButton</tt>) is not necessarily meaningful, but it shows quite 
+clearly how you should call <tt>setTarget</tt>.
+
+<p>
+In most cases, you use <tt>setTarget</tt> and <tt>setDelegate</tt>
+only at the beginning, and then keep the target and delegate you have 
+set for the whole life of you application.  In these cases, a single 
+call to <tt>retainObject</tt> is enough.
+
+<p>
+In particular cases, you may want to change the target and delegate
+during the lifetime of your application, or you may want to destroy
+the object whose target (or delegate) you have set.  In these cases,
+the single call to <tt>retainObject</tt> is enough to prevent your
+application from crashing, but you will be leaking a little amount of
+memory each time you change the target or delegate, or destroy an
+object having a target or delegate set.  To stop this leaking, you
+need to use <tt>releaseObject</tt> on the old target/delegate after
+you have relieved it of its duty as target/delegate (or after you have
+destroyed your object having it as its target/delegate).  In other 
+words, you need to compensate each <tt>retainObject</tt> with a 
+<tt>releaseObject</tt> call.
+
+<p>
+Here is a full example, in which we call <tt>setTarget</tt> to set
+<tt>oldTarget</tt> as target, and then later we call it again to
+change the target to be <tt>newTarget</tt>:
+<pre>
+/* Java Example */
+
+/* Set the old target */
+NSObject.retainObject (oldTarget);
+button.setTarget (oldTarget);
+
+/* Do something else */
+
+/* Many lines later... */
+
+/* Set the new target */
+NSObject.retainObject (newTarget);
+button.setTarget (newTarget);
+
+/* Balance the retain you did of the old target */
+NSObject.releaseObject (oldTarget);
+</pre>
+This example is correct and leaks no memory; but hey - in some cases,
+you don't remember what was the old target!  You can still get it from
+the button before setting the new one:
+<pre>
+/* Java Example */
+
+Object old;
+
+/* Get the old target */
+old = button.target ();
+
+/* Set the new target */
+NSObject.retainObject (newTarget);
+button.setTarget (newTarget);
+
+/* Release the old target */
+NSObject.releaseObject (old);
+</pre>
+
+<p>
+
+<h2><a name="SECTION00442000000000000000">
+3.4.2 Selectors</a>
+</h2>
+
+<p>
+<i>Selectors</i> are a typical feature of the Objective-C language, and
+are used quite often in the GNUstep API.  
+
+<p>
+For example, in Objective-C you can tell a button that, when it is
+pressed, it needs to send a message with a certain name to a certain
+object.  The crucial point is that in Objective-C you can dynamically
+change indipendently both the object which is to receive the message
+(and consequently its class) and the name of the message you want to
+be sent to the object.  
+
+<p>
+A selector represents just this - a method with a certain name -
+leaving unspecified the class the method belongs to.  In Objective-C
+you can then ask (at runtime) to the libraries to know if a class
+implements a certain selector, or if an object responds to the
+selector (which happens if and only if its class implements the
+method), and if it does, invoke it.  Selectors are used instead of
+using directly method names so that the Objective-C runtime can keep
+selector tables and heavily optimize this kind of operations.
+
+<p>
+JIGS <i>morphs</i> selectors to Java <tt>NSSelector</tt> objects.  This
+means that you can create a selector in Java, as a <tt>NSSelector</tt>
+object, and then pass it as an argument to methods which in
+Objective-C would accept a <tt>SEL</tt> (the C type for a selector)
+argument; and vice versa, methods returning a <tt>SEL</tt> in
+Objective-C will return an <tt>NSSelector</tt> object in Java.
+
+<p>
+There is an important difference to learn here: in Objective-C, a
+method is univocally identified by its name; in Java, different
+methods can have the same name, and be distinguished only because they
+have different argument types (overloaded methods).  Thus the correct
+way of interpreting a selector in Java is as a method name and a list
+of argument types.  When you create a Java <tt>NSSelector</tt> object,
+you must specify both the Java name and the type of the arguments.
+The JIGS core engine takes care of mapping selectors from Java to
+Objective-C and vice versa, so that you use selectors on the Java side
+by specifying both java name and argument types, and on the
+Objective-C side by only specifying the objective-C name.  Where is
+the trick ?  Well, don't forget that Objective-C method names are
+longer than Java method names - in Objective-C a method name has an
+additional part for each argument - such as in
+`<tt>writeToFile:atomically:</tt>', while in Java only the first part
+of the name is used, such as in `<tt>writeToFile</tt>'.  To map the
+Java method name to the full Objective-C name you need to know the
+type of arguments - which in this case are a <tt>String</tt> and a
+<tt>BOOL</tt>.  By knowing the argument type, the JIGS engine can find
+out that the short Java name <tt>writeToFile</tt> has to be expanded
+when crossing the interface to the long Objective-C name
+<tt>writeToFile:atomically:</tt>.  This is why in Objective-C the name 
+of the method (which has an additional string per parameter) is
+enough, while in Java, where the name is very short and brief, you
+need the argument types too.
+
+<p>
+We now make a complete example to make clear how selectors are used
+from Java in practice.  We want to create a button from java, and have
+it print out
+<pre>
+Ahi Pisa, vituperio de le genti
+</pre>
+when the user pushes it.  A full working example which you can compile
+and run is in 
+<pre>
+Testing/Java/NSButtonTest.java
+</pre>
+here we only examine the parts related to selectors.
+
+<p>
+First of all, we implement the callback in a Java object: 
+<pre>
+/* Java Example */
+include java.lang.*;
+
+class MyObject
+{
+  public MyObject () { }
+
+  public void buttonPress (Object sender)
+  {
+    System.out.println ("Ahi Pisa, vituperio de le genti");
+  }
+}
+</pre>
+This is the method we want to be invoked when the button is pressed;
+it is standard in GNUstep that such callback methods should take a
+single object argument, which is the object which generated the
+callback - so that in this case, when the user pushes the button, the
+method <tt>buttonPress</tt> will be invoked with a single argument:
+the (object representing the) button which was pressed.  If you have
+more than one button all using the same action, this could be useful
+to tell which button was pushed.
+
+<p>
+These callbacks are called <i>actions</i> in the GNUstep API.  So, we
+have implemented the action that we want to be invoked when the button
+is pressed.
+
+<p>
+Then (somewhere else) we create the button, 
+<pre>
+/* Java Example */
+ NSButton button;
+
+ button = new NSButton ();
+</pre>
+we create an object which implements the method <tt>buttonPress</tt>,
+and set it as the <i>target</i> of the button - when the button is
+pushed, the button tries to invoke the <i>action</i> on the
+<i>target</i> object:
+<pre>
+/* Java Example */
+ MyObject object = new MyObject (); 
+
+ NSObject.retain (object);
+ button.setTarget (object);
+</pre>
+(why the call to <tt>retain</tt> is needed was explained in the
+previous section), then we create a <tt>NSSelector</tt> object
+representing the method we want to be invoked (more comments below),
+and set it to be the button action:
+<pre>
+/* Java Example */
+NSSelector selector;
+
+selector = new NSSelector ("buttonPress", new Class[] {Object.class}));
+button.setAction (selector);
+</pre>
+And finally (just to make the example complete), we set the title of
+the button, and make it of the correct size:
+<pre>
+/* Java Example */
+button.setTitle ("Print Quote");
+button.sizeToFit ();
+</pre>
+
+<p>
+As exemplified in the code, <tt>NSSelector</tt> has a single
+constructor which should be used from Java, and it is:
+<pre>
+ public NSSelector (String aMethodName, Class[] someParameterTypes);
+</pre>
+The first argument is the name of the method (`<tt>buttonPress</tt>'
+in our case), the second argument is a Java array of <tt>Class</tt>
+objects representing the types of the method arguments.  In the
+example, our method has a single argument, which must be an 
+<tt>Object</tt>; and 
+<pre>
+new Class [] {Object.class}
+</pre>
+is the Java code to create a new array of <tt>Class</tt> objects
+containing a single <tt>Object.class</tt> object - if this is
+unclear, please refer to your Java documentation.
+
+<p>
+<b>FIXME</b>: Explain why in some circumstances selectors for class
+methods are not safe to use from Java.
+
+<p>
+
+<h2><a name="SECTION00443000000000000000">
+3.4.3 Subclassing GNUstep Objects in Java</a>
+</h2>
+
+<p>
+Classes of GNUstep Libraries exposed to Java are Java classes in all
+respects, so you can subclass them directly and simply.  
+
+<p>
+<tt>NSObject</tt> implements <tt>finalize ()</tt> to make some important 
+cleanup - so if your <tt>NSObject</tt>'s subclass implements
+<tt>finalize ()</tt>, you must call <tt>super.finalize ()</tt> 
+at the end of your subclass implementation, as in the following template:
+<pre>
+public void finalize ()
+{
+  /* Insert any cleanup specific to this class here */
+
+  super.finalize ();
+}
+</pre>
+
+<p>
+<b>WARNING</b>: This does not work yet (as of JIGS 0.9.3) if you pass
+the object back to Objective-C.
+
+<p>
+
+<h2><a name="SECTION00444000000000000000">
+3.4.4 Using Java Threads</a>
+</h2>
+
+<p>
+You can access GNUstep from multiple Java threads.  Make sure that the
+GNUstep libraries you access are themselves thread-safe before trying
+to use them in multithreading !  Otherwise you need to properly
+synchronize access to the library facilities using the standard Java
+synchronization support.
+
+<p>
+
+<h3><a name="SECTION00444100000000000000">
+3.4.4.1 The Fine Prints About Threads</a>
+</h3>
+
+<p>
+This section gives you a rough idea of how threads work in JIGS.  You
+may skip it at a first reading.
+
+<p>
+The first Java thread which accesses GNUstep will be registered as the
+default Objective-C thread.  If this is the only thread you use to
+access Objective-C, no other thread will be registered with
+Objective-C, and GNUstep will happily go single-threaded.  But as soon
+as you access GNUstep from a different thread, GNUstep will detect
+that you are using a different thread, and switch to multi-threading
+mode.  When multi-threading is enabled, the behaviour of JIGS is also
+different: each time you call GNUstep, the thread is attached to
+GNUstep, and detached when the call to GNUstep returns (unless it is
+the default thread).  This is quite expensive - which implies that
+your default Java thread (the first one you use to access GNUstep)
+will access GNUstep much faster than other Java threads; and that - if
+you are aiming at performance - multi-threaded code is not
+necessarily going to be faster than single-threaded code.
+
+<p>
+In some rare cases, the default behaviour could not be appropriate for
+your needs, and you could want to force GNUstep into multithreading
+mode before you access it from a secondary thread.  The standard trick
+to do this is to start an auxiliary Java thread, and run any GNUstep
+command inside this thread.  The other solution is to call the method
+<pre>
+  static native public void forceMultithreading ();
+</pre>
+of the <tt>gnu.gnustep.java.JIGS</tt> class.  This is a GNUstep
+extension which simply forces GNUstep into multithreading mode by
+starting an auxiliary GNUstep thread.
+<hr><b> Next: <a name="tex2html227" href="node11.html">4. Wrapping Objective-C Libraries</a> </b>
+<b>Up: <a name="tex2html225" href="node6.html">3. Programming GNUstep in</a> </b>
+<b> Previous: <a name="tex2html221" href="node9.html">3.3 How the Wrapping</a> </b>
+
+<!--End of Navigation Panel-->
+<address>
+Nicola Pero
+2001-07-24
+</address>
+</body>
+</html>
