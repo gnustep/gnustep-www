@@ -1,581 +1,1049 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
     <title>GCObject documentation</title>
+<meta http-equiv="Content-Style-Type" content="text/css"/>
+<link rel="stylesheet" type="text/css" href="default-styles.css" media="screen" title="Normal" />
   </head>
   <body>
-    <font face="serif">
-    <a href="BaseAdditions.html">Up</a>
-    <br />
-    <h1><a name="title$GCObject">GCObject documentation</a></h1>
-    <h3>Authors</h3>
-    <dl>
-      <dt>Richard Frith-Macdonald (<a href="mailto:rfm@gnu.org"><code>rfm@gnu.org</code></a>)</dt>
-      <dd>
-      </dd>
-    </dl>
-    <p><b>Copyright:</b> (C) 2002 Free Software Foundation, Inc.</p>
+    <div class="content-bar">
+      <div class="content-bar-top">
+        <div class="content-bar-top-body">
+          <a href="#nav-bar-classes">Classes</a><br>
+          <a href="#nav-bar-protocols">Protocols</a><br>
+          <a href="#nav-bar-constants">Constants</a><br>
+          <a href="#nav-bar-functions">Functions</a><br>
+          <a href="#nav-bar-macros">Macros</a><br>
+          <a href="#nav-bar-types">Types</a><br>
+          <a href="#nav-bar-variables">Variables</a><br>
+        </div>
+      </div>
+      <div class="content-bar-bottom">
+        <div class="content-bar-bottom-body">
+          <h3 class="content-bar-index-section-header"><a name="nav-bar-classes">Classes</a></h3>
+          <p class="project_class_index">
+                        
+            <a rel="gsdoc" href="GCObject.html#class$GCArray">GCArray</a><br>
+            <a rel="gsdoc" href="GCObject.html#class$GCDictionary">GCDictionary</a><br>
+            <a rel="gsdoc" href="GCObject.html#class$GCMutableArray">GCMutableArray</a><br>
+            <a rel="gsdoc" href="GCObject.html#class$GCMutableDictionary">GCMutableDictionary</a><br>
+            <a rel="gsdoc" href="GCObject.html#class$GCObject">GCObject</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSHTMLParser">GSHTMLParser</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSHTMLSAXHandler">GSHTMLSAXHandler</a><br>
+            <a rel="gsdoc" href="GSMime.html#class$GSMimeCodingContext">GSMimeCodingContext</a><br>
+            <a rel="gsdoc" href="GSMime.html#class$GSMimeDocument">GSMimeDocument</a><br>
+            <a rel="gsdoc" href="GSMime.html#class$GSMimeHeader">GSMimeHeader</a><br>
+            <a rel="gsdoc" href="GSMime.html#class$GSMimeParser">GSMimeParser</a><br>
+            <a rel="gsdoc" href="GSMime.html#class$GSMimeSMTPClient">GSMimeSMTPClient</a><br>
+            <a rel="gsdoc" href="GSMime.html#class$GSMimeSerializer">GSMimeSerializer</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSSAXHandler">GSSAXHandler</a><br>
+            <a rel="gsdoc" href="GSTLS.html#class$GSTLSCertificateList">GSTLSCertificateList</a><br>
+            <a rel="gsdoc" href="GSTLS.html#class$GSTLSCredentials">GSTLSCredentials</a><br>
+            <a rel="gsdoc" href="GSTLS.html#class$GSTLSDHParams">GSTLSDHParams</a><br>
+            <a rel="gsdoc" href="GSTLS.html#class$GSTLSObject">GSTLSObject</a><br>
+            <a rel="gsdoc" href="GSTLS.html#class$GSTLSPrivateKey">GSTLSPrivateKey</a><br>
+            <a rel="gsdoc" href="GSTLS.html#class$GSTLSSession">GSTLSSession</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSTreeSAXHandler">GSTreeSAXHandler</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXMLAttribute">GSXMLAttribute</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXMLDocument">GSXMLDocument</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXMLNamespace">GSXMLNamespace</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXMLNode">GSXMLNode</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXMLParser">GSXMLParser</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXMLRPC">GSXMLRPC</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXPathBoolean">GSXPathBoolean</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXPathContext">GSXPathContext</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXPathNodeSet">GSXPathNodeSet</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXPathNumber">GSXPathNumber</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXPathObject">GSXPathObject</a><br>
+            <a rel="gsdoc" href="GSXML.html#class$GSXPathString">GSXPathString</a><br>
 
-        <div>
-      <hr width="50%" align="left" />
-      <h3>Contents -</h3>
-      <ol>
-        <li>
-          <a href="#001000000000">Software documentation for the GCArray class</a>
-        </li>
-        <li>
-          <a href="#002000000000">Software documentation for the GCDictionary class</a>
-        </li>
-        <li>
-          <a href="#003000000000">Software documentation for the GCMutableArray class</a>
-        </li>
-        <li>
-          <a href="#004000000000">Software documentation for the GCMutableDictionary
-        class</a>
-        </li>
-        <li>
-          <a href="#005000000000">Software documentation for the GCObject class</a>
-        </li>
-        <li>
-          <a href="#006000000000">Software documentation for the GCObject(Extra)
-        category</a>
-        </li>
-      </ol>
-      <hr width="50%" align="left" />
+          </p>
+          <h3 class="content-bar-index-section-header"><a name="nav-bar-protocols">Protocols</a></h3>
+          <p class="project_protocol_index">
+          </p>
+          <h3 class="content-bar-index-section-header"><a name="nav-bar-constants">Constants</a></h3>
+          <p class="project_constant_index">
+                        
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSMimeErrorDomain">GSMimeErrorDomain</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSCAFile">GSTLSCAFile</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSCertificateFile">GSTLSCertificateFile</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSCertificateKeyFile">GSTLSCertificateKeyFile</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSCertificateKeyPassword">GSTLSCertificateKeyPassword</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSDebug">GSTLSDebug</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSIssuers">GSTLSIssuers</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSOwners">GSTLSOwners</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSPriority">GSTLSPriority</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSRemoteHosts">GSTLSRemoteHosts</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSRevokeFile">GSTLSRevokeFile</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSServerName">GSTLSServerName</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSTLSVerify">GSTLSVerify</a><br>
+
+          </p>
+          <h3 class="content-bar-index-section-header"><a name="nav-bar-functions">Functions</a></h3>
+          <p class="project_function_index">
+                        
+            <a rel="gsdoc" href="Functions.html#function$GSAutoreleasedBuffer">GSAutoreleasedBuffer</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSCGetInstanceVariableDefinition">GSCGetInstanceVariableDefinition</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSClassFromName">GSClassFromName</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSClassList">GSClassList</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSClassNameFromObject">GSClassNameFromObject</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSClassSwizzle">GSClassSwizzle</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSCurrentThread">GSCurrentThread</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSCurrentThreadDictionary">GSCurrentThreadDictionary</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSDebugFunctionMsg">GSDebugFunctionMsg</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSDebugMethodMsg">GSDebugMethodMsg</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSDebugSet">GSDebugSet</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSDefaultLanguageLocale">GSDefaultLanguageLocale</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSDomainFromDefaultLocale">GSDomainFromDefaultLocale</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSEncodingForRegistry">GSEncodingForRegistry</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSEncodingFromLocale">GSEncodingFromLocale</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSFindNamedFile">GSFindNamedFile</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSFlushMethodCacheForClass">GSFlushMethodCacheForClass</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSFromUnicode">GSFromUnicode</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSGetMethod">GSGetMethod</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayAddItem">GSIArrayAddItem</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayAddItemNoRetain">GSIArrayAddItemNoRetain</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayCapacity">GSIArrayCapacity</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayCheckSort">GSIArrayCheckSort</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayClear">GSIArrayClear</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayCopyWithZone">GSIArrayCopyWithZone</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayCount">GSIArrayCount</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayEmpty">GSIArrayEmpty</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayGrow">GSIArrayGrow</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayGrowTo">GSIArrayGrowTo</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayInitWithZoneAndCapacity">GSIArrayInitWithZoneAndCapacity</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayInitWithZoneAndStaticCapacity">GSIArrayInitWithZoneAndStaticCapacity</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayInsertItem">GSIArrayInsertItem</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayInsertItemNoRetain">GSIArrayInsertItemNoRetain</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayInsertSorted">GSIArrayInsertSorted</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayInsertSortedNoRetain">GSIArrayInsertSortedNoRetain</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayInsertionPosition">GSIArrayInsertionPosition</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayItemAtIndex">GSIArrayItemAtIndex</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayItems">GSIArrayItems</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayLastItem">GSIArrayLastItem</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayRemoveAllItems">GSIArrayRemoveAllItems</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayRemoveItemAtIndex">GSIArrayRemoveItemAtIndex</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayRemoveItemAtIndexNoRelease">GSIArrayRemoveItemAtIndexNoRelease</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayRemoveItemsFromIndex">GSIArrayRemoveItemsFromIndex</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArrayRemoveLastItem">GSIArrayRemoveLastItem</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArraySearch">GSIArraySearch</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArraySetItemAtIndex">GSIArraySetItemAtIndex</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIArraySize">GSIArraySize</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapAddKey">GSIMapAddKey</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapAddKeyNoRetain">GSIMapAddKeyNoRetain</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapAddNodeToBucket">GSIMapAddNodeToBucket</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapAddNodeToMap">GSIMapAddNodeToMap</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapAddPair">GSIMapAddPair</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapAddPairNoRetain">GSIMapAddPairNoRetain</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapBucketForKey">GSIMapBucketForKey</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapCleanMap">GSIMapCleanMap</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapCountByEnumeratingWithStateObjectsCount">GSIMapCountByEnumeratingWithStateObjectsCount</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapEmptyMap">GSIMapEmptyMap</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapEndEnumerator">GSIMapEndEnumerator</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapEnumeratorBucket">GSIMapEnumeratorBucket</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapEnumeratorForMap">GSIMapEnumeratorForMap</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapEnumeratorNextNode">GSIMapEnumeratorNextNode</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapFirstNode">GSIMapFirstNode</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapFreeNode">GSIMapFreeNode</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapInitWithZoneAndCapacity">GSIMapInitWithZoneAndCapacity</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapLinkNodeIntoBucket">GSIMapLinkNodeIntoBucket</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapMoreNodes">GSIMapMoreNodes</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapNodeForKey">GSIMapNodeForKey</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapNodeForKeyInBucket">GSIMapNodeForKeyInBucket</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapNodeForSimpleKey">GSIMapNodeForSimpleKey</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapPickBucket">GSIMapPickBucket</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapRemangleBuckets">GSIMapRemangleBuckets</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapRemoveAndFreeNode">GSIMapRemoveAndFreeNode</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapRemoveKey">GSIMapRemoveKey</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapRemoveNodeFromBucket">GSIMapRemoveNodeFromBucket</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapRemoveNodeFromMap">GSIMapRemoveNodeFromMap</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapRemoveWeak">GSIMapRemoveWeak</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapResize">GSIMapResize</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapRightSizeMap">GSIMapRightSizeMap</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapSize">GSIMapSize</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSIMapUnlinkNodeFromBucket">GSIMapUnlinkNodeFromBucket</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSLanguageFromLocale">GSLanguageFromLocale</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSLanguagesFromLocale">GSLanguagesFromLocale</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSLastErrorStr">GSLastErrorStr</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSLocaleVariants">GSLocaleVariants</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSNameFromClass">GSNameFromClass</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSNameFromSelector">GSNameFromSelector</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCAddClassBehavior">GSObjCAddClassBehavior</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCAddClassOverride">GSObjCAddClassOverride</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCAddClasses">GSObjCAddClasses</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCAddMethods">GSObjCAddMethods</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCAllSubclassesOfClass">GSObjCAllSubclassesOfClass</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCBehaviorDebug">GSObjCBehaviorDebug</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCClass">GSObjCClass</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCDirectSubclassesOfClass">GSObjCDirectSubclassesOfClass</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCFindVariable">GSObjCFindVariable</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCGetInstanceVariableDefinition">GSObjCGetInstanceVariableDefinition</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCGetVal">GSObjCGetVal</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCGetVariable">GSObjCGetVariable</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCIsClass">GSObjCIsClass</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCIsInstance">GSObjCIsInstance</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCIsKindOf">GSObjCIsKindOf</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCMakeClass">GSObjCMakeClass</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCMethodNames">GSObjCMethodNames</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCSetVal">GSObjCSetVal</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCSetVariable">GSObjCSetVariable</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCSuper">GSObjCSuper</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCVariableNames">GSObjCVariableNames</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSObjCVersion">GSObjCVersion</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSPathHandling">GSPathHandling</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSPrintf">GSPrintf</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSProtocolFromName">GSProtocolFromName</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSProtocolGetMethodDescriptionRecursive">GSProtocolGetMethodDescriptionRecursive</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSRegisterProtocol">GSRegisterProtocol</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSSelectorFromName">GSSelectorFromName</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSSelectorFromNameAndTypes">GSSelectorFromNameAndTypes</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSSelectorTypesMatch">GSSelectorTypesMatch</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSSetLocale">GSSetLocale</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSSetLocaleC">GSSetLocaleC</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSSkipTypeQualifierAndLayoutInfo">GSSkipTypeQualifierAndLayoutInfo</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSToUnicode">GSToUnicode</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSTypesFromSelector">GSTypesFromSelector</a><br>
+            <a rel="gsdoc" href="Functions.html#function$GSUnicode">GSUnicode</a><br>
+            <a rel="gsdoc" href="Functions.html#function$_Block_copy">_Block_copy</a><br>
+            <a rel="gsdoc" href="Functions.html#function$_Block_release">_Block_release</a><br>
+            <a rel="gsdoc" href="Functions.html#function$gs_consumed">gs_consumed</a><br>
+            <a rel="gsdoc" href="Functions.html#function$uni_cop">uni_cop</a><br>
+            <a rel="gsdoc" href="Functions.html#function$uni_is_decomp">uni_is_decomp</a><br>
+            <a rel="gsdoc" href="Functions.html#function$uni_isnonsp">uni_isnonsp</a><br>
+            <a rel="gsdoc" href="Functions.html#function$uni_tolower">uni_tolower</a><br>
+            <a rel="gsdoc" href="Functions.html#function$uni_toupper">uni_toupper</a><br>
+
+          </p>
+          <h3 class="content-bar-index-section-header"><a name="nav-bar-macros">Macros</a></h3>
+          <p class="project_macro_index">
+                        
+            <a rel="gsdoc" href="Functions.html#macro$ALog">ALog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$ASSIGN">ASSIGN</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$ASSIGNCOPY">ASSIGNCOPY</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$ASSIGNMUTABLECOPY">ASSIGNMUTABLECOPY</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$AUTORELEASE">AUTORELEASE</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$BLOCK_SCOPE">BLOCK_SCOPE</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$CALL_BLOCK">CALL_BLOCK</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$CALL_BLOCK_NO_ARGS">CALL_BLOCK_NO_ARGS</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$CALL_BLOCK_RET">CALL_BLOCK_RET</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$CALL_BLOCK_RET_NO_ARGS">CALL_BLOCK_RET_NO_ARGS</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$CALL_NON_NULL_BLOCK">CALL_NON_NULL_BLOCK</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$CALL_NON_NULL_BLOCK_NO_ARGS">CALL_NON_NULL_BLOCK_NO_ARGS</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$CHECK_INDEX_RANGE_ERROR">CHECK_INDEX_RANGE_ERROR</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$CREATE_AUTORELEASE_POOL">CREATE_AUTORELEASE_POOL</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$DEALLOC">DEALLOC</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$DEFINE_BLOCK_TYPE">DEFINE_BLOCK_TYPE</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$DEFINE_BLOCK_TYPE_NO_ARGS">DEFINE_BLOCK_TYPE_NO_ARGS</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$DESTROY">DESTROY</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$DLog">DLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$ENTER_POOL">ENTER_POOL</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GSLocalizedStaticString">GSLocalizedStaticString</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GSOnceFLog">GSOnceFLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GSOnceMLog">GSOnceMLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_API_LATEST">GS_API_LATEST</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_API_MACOSX">GS_API_MACOSX</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_API_NONE">GS_API_NONE</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_API_OPENSTEP">GS_API_OPENSTEP</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_API_OSSPEC">GS_API_OSSPEC</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_API_VERSION">GS_API_VERSION</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_CLANG_MINREQ">GS_CLANG_MINREQ</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_DEPRECATED_FUNC">GS_DEPRECATED_FUNC</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_EXPOSE">GS_EXPOSE</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_GCC_MINREQ">GS_GCC_MINREQ</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_LOCALISATION_BUNDLE">GS_LOCALISATION_BUNDLE</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_MAX_OBJECTS_FROM_STACK">GS_MAX_OBJECTS_FROM_STACK</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_NORETURN_METHOD">GS_NORETURN_METHOD</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_PART_MAP_ENUMERATOR">GS_PART_MAP_ENUMERATOR</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_RANGE_CHECK">GS_RANGE_CHECK</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_UNIMPLEMENTED">GS_UNIMPLEMENTED</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_UNUSED_ARG">GS_UNUSED_ARG</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_UNUSED_FUNC">GS_UNUSED_FUNC</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_UNUSED_IVAR">GS_UNUSED_IVAR</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_USEIDLIST">GS_USEIDLIST</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$GS_USEIDPAIRLIST">GS_USEIDPAIRLIST</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$IF_NO_ARC">IF_NO_ARC</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$IF_NO_GC">IF_NO_GC</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$LEAVE_POOL">LEAVE_POOL</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$MAC_OS_X_VERSION_MAX_ALLOWED">MAC_OS_X_VERSION_MAX_ALLOWED</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSDebugFLLog">NSDebugFLLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSDebugFLog">NSDebugFLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSDebugFRLog">NSDebugFRLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSDebugLLog">NSDebugLLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSDebugLog">NSDebugLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSDebugMLLog">NSDebugMLLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSDebugMLog">NSDebugMLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSDebugMRLog">NSDebugMRLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSWarnFLog">NSWarnFLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSWarnLog">NSWarnLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NSWarnMLog">NSWarnMLog</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NS_CONSUMED">NS_CONSUMED</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NS_CONSUMES_SELF">NS_CONSUMES_SELF</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NS_RETURNS_NOT_RETAINED">NS_RETURNS_NOT_RETAINED</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$NS_RETURNS_RETAINED">NS_RETURNS_RETAINED</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$OS_API_VERSION">OS_API_VERSION</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$RECREATE_AUTORELEASE_POOL">RECREATE_AUTORELEASE_POOL</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$RELEASE">RELEASE</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$RETAIN">RETAIN</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$TEST_AUTORELEASE">TEST_AUTORELEASE</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$TEST_RELEASE">TEST_RELEASE</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$TEST_RETAIN">TEST_RETAIN</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$_">_</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$__">__</a><br>
+            <a rel="gsdoc" href="Functions.html#macro$__has_feature">__has_feature</a><br>
+
+          </p>
+          <h3 class="content-bar-index-section-header"><a name="nav-bar-types">Types</a></h3>
+          <p class="project_type_index">
+                        
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIArray">GSIArray</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIArray_t">GSIArray_t</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIMapBucket">GSIMapBucket</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIMapBucket_t">GSIMapBucket_t</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIMapEnumerator">GSIMapEnumerator</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIMapEnumerator_t">GSIMapEnumerator_t</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIMapNode">GSIMapNode</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIMapNode_t">GSIMapNode_t</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIMapTable">GSIMapTable</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIMapTable_t">GSIMapTable_t</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSIVar">GSIVar</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSMethod">GSMethod</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSMimeErrorCode">GSMimeErrorCode</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSTLSIOR">GSTLSIOR</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$GSTLSIOW">GSTLSIOW</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$NSGNUstepStringEncoding">NSGNUstepStringEncoding</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$NSInteger">NSInteger</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$NSUInteger">NSUInteger</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#type$struct _GSIMapEnumerator">struct _GSIMapEnumerator</a><br>
+
+          </p>
+          <h3 class="content-bar-index-section-header"><a name="nav-bar-variables">Variables</a></h3>
+          <p class="project_variable_index">
+                        
+            <a rel="gsdoc" href="TypesAndConstants.html#variable$_GSIE">_GSIE</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#variable$struct _GSIArray">struct _GSIArray</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#variable$struct _GSIMapBucket">struct _GSIMapBucket</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#variable$struct _GSIMapNode">struct _GSIMapNode</a><br>
+            <a rel="gsdoc" href="TypesAndConstants.html#variable$struct _GSIMapTable">struct _GSIMapTable</a><br>
+
+          </p>
+        </div>
+      </div>
     </div>
+    <div class="content-pane">
+      <div class="content-pane-body">
+        <a href="BaseAdditions.html">Up</a>
+        <br>
+        <h1><a name="title$GCObject">GCObject documentation</a></h1>
+        <h3>Authors</h3>
+        <dl>
+          <dt>Richard Frith-Macdonald (<a href="mailto:rfm@gnu.org"><code>rfm@gnu.org</code></a>)</dt>
+          <dd>
+          </dd>
+        </dl>
+        <p><b>Date:</b> Generated at 2024-11-18 21:56:54 +0100</p>
+        <p><b>Copyright:</b> (C) 2002 Free Software Foundation, Inc.</p>
 
-          <h1><a name="001000000000">
+            <div>
+          <hr class="section-separator">
+          <h3>Contents -</h3>
+          <ol>
+            <li>
+              <a href="#001000000000">Software documentation for the GCArray class</a>
+            </li>
+            <li>
+              <a href="#002000000000">Software documentation for the GCDictionary class</a>
+            </li>
+            <li>
+              <a href="#003000000000">Software documentation for the GCMutableArray class</a>
+            </li>
+            <li>
+              <a href="#004000000000">Software documentation for the GCMutableDictionary
+        class</a>
+            </li>
+            <li>
+              <a href="#005000000000">Software documentation for the GCObject class</a>
+            </li>
+            <li>
+              <a href="#006000000000">Software documentation for the GCObject(Extra)
+        category</a>
+            </li>
+          </ol>
+          <hr class="section-separator">
+        </div>
+
+              <h1><a name="001000000000">
         Software documentation for the GCArray class
       </a></h1>
-    <h2><a name="class$GCArray">GCArray</a> : NSArray</h2>
-    <blockquote class="declared">
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>GNUstepBase/GCObject.h</dd>
-      </dl>
-    </blockquote>
-    <div class="availability">
+        <h2 class="class"><a name="class$GCArray">GCArray</a> : <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a></h2>
+<svg width="97pt" height="116pt"
+ viewBox="0.00 0.00 97.25 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>class_GCArray</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-112 93.25,-112 93.25,4 -4,4"/>
+<!-- NSArray -->
+<g id="node1" class="node figure_super">
+<title>NSArray</title>
+<g id="a_node1"><a xlink:href="/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray" xlink:title="NSArray">
+<polygon fill="lightgrey" stroke="black" points="88.12,-108 1.12,-108 1.12,-72 88.12,-72 88.12,-108"/>
+<text text-anchor="middle" x="44.62" y="-80.7" font-family="Times,serif" font-size="24.00" fill="blue">NSArray</text>
+</a>
+</g>
+</g>
+<!-- GCArray -->
+<g id="node2" class="node figure_class">
+<title>GCArray</title>
+<polygon fill="lightgrey" stroke="black" points="89.25,-36 0,-36 0,0 89.25,0 89.25,-36"/>
+<text text-anchor="middle" x="44.62" y="-8.7" font-family="Times,serif" font-size="24.00" fill="green">GCArray</text>
+</g>
+<!-- NSArray&#45;&gt;GCArray -->
+<g id="edge1" class="edge">
+<title>NSArray&#45;&gt;GCArray</title>
+<path fill="none" stroke="black" d="M44.62,-71.7C44.62,-64.41 44.62,-55.73 44.62,-47.54"/>
+<polygon fill="black" stroke="black" points="48.13,-47.62 44.63,-37.62 41.13,-47.62 48.13,-47.62"/>
+</g>
+</g>
+</svg>
+        <blockquote class="declared">
+          <dl>
+            <dt><b>Declared in:</b></dt>
+            <dd>GNUstepBase/GCObject.h</dd>
+          </dl>
+        </blockquote>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
           <em>Description forthcoming.</em>
         
-    </div>
-    <hr width="50%" align="left" />
-    <a href="#_GCArray_ivars">Instance Variables</a>
-    <br/><br/>
-<a name="_GCArray_ivars"/>    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for GCArray Class</h2>
-    <h3><a name="ivariable$GCArray*_contents">_contents</a></h3>
-    @protected id* <b>_contents</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="section-separator">
+        <a href="#_GCArray_ivars">Instance Variables</a>
+        <br><br>
+<a name="_GCArray_ivars"/>        <br><hr class="section-separator">
+        <h2>Instance Variables for GCArray Class</h2>
+        <h3><a name="ivariable$GCArray*_contents">_contents</a></h3>
+        @protected id* <b>_contents</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Warning</em> the underscore at the start of the
             name of this instance variable indicates that, even
             though it is not technically <em>private</em>, it is
             intended for internal use within the package, and
             you should not use the variable in other code.
           
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$GCArray*_count">_count</a></h3>
-    @protected unsigned int <b>_count</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="method-separator"/>
+        <h3><a name="ivariable$GCArray*_count">_count</a></h3>
+        @protected unsigned int <b>_count</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Warning</em> the underscore at the start of the
             name of this instance variable indicates that, even
             though it is not technically <em>private</em>, it is
             intended for internal use within the package, and
             you should not use the variable in other code.
           
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$GCArray*_isGCObject">_isGCObject</a></h3>
-    @protected BOOL* <b>_isGCObject</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="method-separator"/>
+        <h3><a name="ivariable$GCArray*_isGCObject">_isGCObject</a></h3>
+        @protected BOOL* <b>_isGCObject</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Warning</em> the underscore at the start of the
             name of this instance variable indicates that, even
             though it is not technically <em>private</em>, it is
             intended for internal use within the package, and
             you should not use the variable in other code.
           
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$GCArray*gc">gc</a></h3>
-    @protected gcInfo <b>gc</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="method-separator"/>
+        <h3><a name="ivariable$GCArray*gc">gc</a></h3>
+        @protected gcInfo <b>gc</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+        </div>
+        <hr class="method-separator"/>
+        <br><hr class="section-separator"><br>
 
-          <h1><a name="002000000000">
+              <h1><a name="002000000000">
         Software documentation for the GCDictionary class
       </a></h1>
-    <h2><a name="class$GCDictionary">GCDictionary</a> : NSDictionary</h2>
-    <blockquote class="declared">
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>GNUstepBase/GCObject.h</dd>
-      </dl>
-    </blockquote>
-    <div class="availability">
+        <h2 class="class"><a name="class$GCDictionary">GCDictionary</a> : <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a></h2>
+<svg width="144pt" height="116pt"
+ viewBox="0.00 0.00 143.75 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>class_GCDictionary</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-112 139.75,-112 139.75,4 -4,4"/>
+<!-- NSDictionary -->
+<g id="node1" class="node figure_super">
+<title>NSDictionary</title>
+<g id="a_node1"><a xlink:href="/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary" xlink:title="NSDictionary">
+<polygon fill="lightgrey" stroke="black" points="134.62,-108 1.12,-108 1.12,-72 134.62,-72 134.62,-108"/>
+<text text-anchor="middle" x="67.88" y="-80.7" font-family="Times,serif" font-size="24.00" fill="blue">NSDictionary</text>
+</a>
+</g>
+</g>
+<!-- GCDictionary -->
+<g id="node2" class="node figure_class">
+<title>GCDictionary</title>
+<polygon fill="lightgrey" stroke="black" points="135.75,-36 0,-36 0,0 135.75,0 135.75,-36"/>
+<text text-anchor="middle" x="67.88" y="-8.7" font-family="Times,serif" font-size="24.00" fill="green">GCDictionary</text>
+</g>
+<!-- NSDictionary&#45;&gt;GCDictionary -->
+<g id="edge1" class="edge">
+<title>NSDictionary&#45;&gt;GCDictionary</title>
+<path fill="none" stroke="black" d="M67.88,-71.7C67.88,-64.41 67.88,-55.73 67.88,-47.54"/>
+<polygon fill="black" stroke="black" points="71.38,-47.62 67.88,-37.62 64.38,-47.62 71.38,-47.62"/>
+</g>
+</g>
+</svg>
+        <blockquote class="declared">
+          <dl>
+            <dt><b>Declared in:</b></dt>
+            <dd>GNUstepBase/GCObject.h</dd>
+          </dl>
+        </blockquote>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
           <em>Description forthcoming.</em>
         
-    </div>
-    <hr width="50%" align="left" />
-    <a href="#_GCDictionary_ivars">Instance Variables</a>
-    <br/><br/>
-<a name="_GCDictionary_ivars"/>    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for GCDictionary Class</h2>
-    <h3><a name="ivariable$GCDictionary*_map">_map</a></h3>
-    @protected NSMapTable* <b>_map</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="section-separator">
+        <a href="#_GCDictionary_ivars">Instance Variables</a>
+        <br><br>
+<a name="_GCDictionary_ivars"/>        <br><hr class="section-separator">
+        <h2>Instance Variables for GCDictionary Class</h2>
+        <h3><a name="ivariable$GCDictionary*_map">_map</a></h3>
+        @protected NSMapTable* <b>_map</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Warning</em> the underscore at the start of the
             name of this instance variable indicates that, even
             though it is not technically <em>private</em>, it is
             intended for internal use within the package, and
             you should not use the variable in other code.
           
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$GCDictionary*gc">gc</a></h3>
-    @protected gcInfo <b>gc</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="method-separator"/>
+        <h3><a name="ivariable$GCDictionary*gc">gc</a></h3>
+        @protected gcInfo <b>gc</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+        </div>
+        <hr class="method-separator"/>
+        <br><hr class="section-separator"><br>
 
-          <h1><a name="003000000000">
+              <h1><a name="003000000000">
         Software documentation for the GCMutableArray class
       </a></h1>
-    <h2><a name="class$GCMutableArray">GCMutableArray</a> : NSMutableArray</h2>
-    <blockquote class="declared">
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>GNUstepBase/GCObject.h</dd>
-      </dl>
-    </blockquote>
-    <div class="availability">
+        <h2 class="class"><a name="class$GCMutableArray">GCMutableArray</a> : <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSMutableArray">NSMutableArray</a></h2>
+<svg width="177pt" height="116pt"
+ viewBox="0.00 0.00 176.75 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>class_GCMutableArray</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-112 172.75,-112 172.75,4 -4,4"/>
+<!-- NSMutableArray -->
+<g id="node1" class="node figure_super">
+<title>NSMutableArray</title>
+<g id="a_node1"><a xlink:href="/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSMutableArray" xlink:title="NSMutableArray">
+<polygon fill="lightgrey" stroke="black" points="167.62,-108 1.12,-108 1.12,-72 167.62,-72 167.62,-108"/>
+<text text-anchor="middle" x="84.38" y="-80.7" font-family="Times,serif" font-size="24.00" fill="blue">NSMutableArray</text>
+</a>
+</g>
+</g>
+<!-- GCMutableArray -->
+<g id="node2" class="node figure_class">
+<title>GCMutableArray</title>
+<polygon fill="lightgrey" stroke="black" points="168.75,-36 0,-36 0,0 168.75,0 168.75,-36"/>
+<text text-anchor="middle" x="84.38" y="-8.7" font-family="Times,serif" font-size="24.00" fill="green">GCMutableArray</text>
+</g>
+<!-- NSMutableArray&#45;&gt;GCMutableArray -->
+<g id="edge1" class="edge">
+<title>NSMutableArray&#45;&gt;GCMutableArray</title>
+<path fill="none" stroke="black" d="M84.38,-71.7C84.38,-64.41 84.38,-55.73 84.38,-47.54"/>
+<polygon fill="black" stroke="black" points="87.88,-47.62 84.38,-37.62 80.88,-47.62 87.88,-47.62"/>
+</g>
+</g>
+</svg>
+        <blockquote class="declared">
+          <dl>
+            <dt><b>Declared in:</b></dt>
+            <dd>GNUstepBase/GCObject.h</dd>
+          </dl>
+        </blockquote>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
           <em>Description forthcoming.</em>
         
-    </div>
-    <hr width="50%" align="left" />
-    <a href="#_GCMutableArray_ivars">Instance Variables</a>
-    <br/><br/>
-<a name="_GCMutableArray_ivars"/>    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for GCMutableArray Class</h2>
-    <h3><a name="ivariable$GCMutableArray*_contents">_contents</a></h3>
-    @protected id* <b>_contents</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="section-separator">
+        <a href="#_GCMutableArray_ivars">Instance Variables</a>
+        <br><br>
+<a name="_GCMutableArray_ivars"/>        <br><hr class="section-separator">
+        <h2>Instance Variables for GCMutableArray Class</h2>
+        <h3><a name="ivariable$GCMutableArray*_contents">_contents</a></h3>
+        @protected id* <b>_contents</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Warning</em> the underscore at the start of the
             name of this instance variable indicates that, even
             though it is not technically <em>private</em>, it is
             intended for internal use within the package, and
             you should not use the variable in other code.
           
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$GCMutableArray*_count">_count</a></h3>
-    @protected unsigned int <b>_count</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="method-separator"/>
+        <h3><a name="ivariable$GCMutableArray*_count">_count</a></h3>
+        @protected unsigned int <b>_count</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Warning</em> the underscore at the start of the
             name of this instance variable indicates that, even
             though it is not technically <em>private</em>, it is
             intended for internal use within the package, and
             you should not use the variable in other code.
           
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$GCMutableArray*_isGCObject">_isGCObject</a></h3>
-    @protected BOOL* <b>_isGCObject</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="method-separator"/>
+        <h3><a name="ivariable$GCMutableArray*_isGCObject">_isGCObject</a></h3>
+        @protected BOOL* <b>_isGCObject</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Warning</em> the underscore at the start of the
             name of this instance variable indicates that, even
             though it is not technically <em>private</em>, it is
             intended for internal use within the package, and
             you should not use the variable in other code.
           
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$GCMutableArray*_maxCount">_maxCount</a></h3>
-    @protected unsigned int <b>_maxCount</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="method-separator"/>
+        <h3><a name="ivariable$GCMutableArray*_maxCount">_maxCount</a></h3>
+        @protected unsigned int <b>_maxCount</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Warning</em> the underscore at the start of the
             name of this instance variable indicates that, even
             though it is not technically <em>private</em>, it is
             intended for internal use within the package, and
             you should not use the variable in other code.
           
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$GCMutableArray*gc">gc</a></h3>
-    @protected gcInfo <b>gc</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="method-separator"/>
+        <h3><a name="ivariable$GCMutableArray*gc">gc</a></h3>
+        @protected gcInfo <b>gc</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+        </div>
+        <hr class="method-separator"/>
+        <br><hr class="section-separator"><br>
 
-          <h1><a name="004000000000">
+              <h1><a name="004000000000">
         Software documentation for the GCMutableDictionary
         class
       </a></h1>
-    <h2><a name="class$GCMutableDictionary">GCMutableDictionary</a> : NSMutableDictionary</h2>
-    <blockquote class="declared">
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>GNUstepBase/GCObject.h</dd>
-      </dl>
-    </blockquote>
-    <div class="availability">
+        <h2 class="class"><a name="class$GCMutableDictionary">GCMutableDictionary</a> : <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSMutableDictionary">NSMutableDictionary</a></h2>
+<svg width="223pt" height="116pt"
+ viewBox="0.00 0.00 223.25 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>class_GCMutableDictionary</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-112 219.25,-112 219.25,4 -4,4"/>
+<!-- NSMutableDictionary -->
+<g id="node1" class="node figure_super">
+<title>NSMutableDictionary</title>
+<g id="a_node1"><a xlink:href="/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSMutableDictionary" xlink:title="NSMutableDictionary">
+<polygon fill="lightgrey" stroke="black" points="214.12,-108 1.12,-108 1.12,-72 214.12,-72 214.12,-108"/>
+<text text-anchor="middle" x="107.62" y="-80.7" font-family="Times,serif" font-size="24.00" fill="blue">NSMutableDictionary</text>
+</a>
+</g>
+</g>
+<!-- GCMutableDictionary -->
+<g id="node2" class="node figure_class">
+<title>GCMutableDictionary</title>
+<polygon fill="lightgrey" stroke="black" points="215.25,-36 0,-36 0,0 215.25,0 215.25,-36"/>
+<text text-anchor="middle" x="107.62" y="-8.7" font-family="Times,serif" font-size="24.00" fill="green">GCMutableDictionary</text>
+</g>
+<!-- NSMutableDictionary&#45;&gt;GCMutableDictionary -->
+<g id="edge1" class="edge">
+<title>NSMutableDictionary&#45;&gt;GCMutableDictionary</title>
+<path fill="none" stroke="black" d="M107.62,-71.7C107.62,-64.41 107.62,-55.73 107.62,-47.54"/>
+<polygon fill="black" stroke="black" points="111.13,-47.62 107.63,-37.62 104.13,-47.62 111.13,-47.62"/>
+</g>
+</g>
+</svg>
+        <blockquote class="declared">
+          <dl>
+            <dt><b>Declared in:</b></dt>
+            <dd>GNUstepBase/GCObject.h</dd>
+          </dl>
+        </blockquote>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
           <em>Description forthcoming.</em>
         
-    </div>
-    <hr width="50%" align="left" />
-    <a href="#_GCMutableDictionary_ivars">Instance Variables</a>
-    <br/><br/>
-<a name="_GCMutableDictionary_ivars"/>    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for GCMutableDictionary Class</h2>
-    <h3><a name="ivariable$GCMutableDictionary*_map">_map</a></h3>
-    @protected NSMapTable* <b>_map</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="section-separator">
+        <a href="#_GCMutableDictionary_ivars">Instance Variables</a>
+        <br><br>
+<a name="_GCMutableDictionary_ivars"/>        <br><hr class="section-separator">
+        <h2>Instance Variables for GCMutableDictionary Class</h2>
+        <h3><a name="ivariable$GCMutableDictionary*_map">_map</a></h3>
+        @protected NSMapTable* <b>_map</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Warning</em> the underscore at the start of the
             name of this instance variable indicates that, even
             though it is not technically <em>private</em>, it is
             intended for internal use within the package, and
             you should not use the variable in other code.
           
-    </div>
-    <hr width="25%" align="left" />
-    <h3><a name="ivariable$GCMutableDictionary*gc">gc</a></h3>
-    @protected gcInfo <b>gc</b>;<br />
-    <div class="availability">
+        </div>
+        <hr class="method-separator"/>
+        <h3><a name="ivariable$GCMutableDictionary*gc">gc</a></h3>
+        @protected gcInfo <b>gc</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+        </div>
+        <hr class="method-separator"/>
+        <br><hr class="section-separator"><br>
 
-          <h1><a name="005000000000">
+              <h1><a name="005000000000">
         Software documentation for the GCObject class
       </a></h1>
-    <h2><a name="class$GCObject">GCObject</a> : NSObject</h2>
-    <blockquote class="declared">
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>GNUstepBase/GCObject.h</dd>
-      </dl>
-    </blockquote>
-    <div class="availability">
+        <h2 class="class"><a name="class$GCObject">GCObject</a> : <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+<svg width="105pt" height="116pt"
+ viewBox="0.00 0.00 104.75 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>class_GCObject</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-112 100.75,-112 100.75,4 -4,4"/>
+<!-- NSObject -->
+<g id="node1" class="node figure_super">
+<title>NSObject</title>
+<g id="a_node1"><a xlink:href="/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject" xlink:title="NSObject">
+<polygon fill="lightgrey" stroke="black" points="95.62,-108 1.12,-108 1.12,-72 95.62,-72 95.62,-108"/>
+<text text-anchor="middle" x="48.38" y="-80.7" font-family="Times,serif" font-size="24.00" fill="blue">NSObject</text>
+</a>
+</g>
+</g>
+<!-- GCObject -->
+<g id="node2" class="node figure_class">
+<title>GCObject</title>
+<polygon fill="lightgrey" stroke="black" points="96.75,-36 0,-36 0,0 96.75,0 96.75,-36"/>
+<text text-anchor="middle" x="48.38" y="-8.7" font-family="Times,serif" font-size="24.00" fill="green">GCObject</text>
+</g>
+<!-- NSObject&#45;&gt;GCObject -->
+<g id="edge1" class="edge">
+<title>NSObject&#45;&gt;GCObject</title>
+<path fill="none" stroke="black" d="M48.38,-71.7C48.38,-64.41 48.38,-55.73 48.38,-47.54"/>
+<polygon fill="black" stroke="black" points="51.88,-47.62 48.38,-37.62 44.88,-47.62 51.88,-47.62"/>
+</g>
+</g>
+</svg>
+        <blockquote class="declared">
+          <dl>
+            <dt><b>Declared in:</b></dt>
+            <dd>GNUstepBase/GCObject.h</dd>
+          </dl>
+        </blockquote>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
           
-    </p>
-    <p>
+          
+        </p>
+        <p>
 
             The GCObject class is both the base class for all
             garbage collected objects, and an infrastructure
             for handling garbage collection.
-              </p>
-    <p>
-      
+                  </p>
+        <p>
           
-    </p>
-    <p>
+          
+        </p>
+        <p>
 
             It maintains a list of all garbage collectable objects
             and provides a method to run a garbage collection pass
             on those objects.
-              </p>
-    <p>
-      
+                  </p>
+        <p>
+          
         
-    </div>
-    <hr width="50%" align="left" />
-    <a href="#_GCObject_ivars">Instance Variables</a>
-    <br/><br/>
-    <b>Method summary</b>
-    <ul>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcAlreadyVisited">-gcAlreadyVisited</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcNextObject">-gcNextObject</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcPreviousObject">-gcPreviousObject</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcSetNextObject$">-gcSetNextObject:</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcSetPreviousObject$">-gcSetPreviousObject:</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcSetVisited$">-gcSetVisited:</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject+gcCollectGarbage">+gcCollectGarbage</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject+gcIsCollecting">+gcIsCollecting</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject+gcObjectWillBeDeallocated$">+gcObjectWillBeDeallocated:</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject-gcDecrementRefCount">-gcDecrementRefCount</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject-gcDecrementRefCountOfContainedObjects">-gcDecrementRefCountOfContainedObjects</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject-gcIncrementRefCount">-gcIncrementRefCount</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject-gcIncrementRefCountOfContainedObjects">-gcIncrementRefCountOfContainedObjects</a></li>
-    </ul>
-    <hr width="50%" align="left" />
+        </div>
+        <hr class="section-separator">
+        <a href="#_GCObject_ivars">Instance Variables</a>
+        <br><br>
+        <p class="global_method_index">
+          <h3 class="index-section-header">Method summary</h3>
+          <ul>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcAlreadyVisited">-gcAlreadyVisited</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcNextObject">-gcNextObject</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcPreviousObject">-gcPreviousObject</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcSetNextObject$">-gcSetNextObject:</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcSetPreviousObject$">-gcSetPreviousObject:</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcSetVisited$">-gcSetVisited:</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject+gcCollectGarbage">+gcCollectGarbage</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject+gcIsCollecting">+gcIsCollecting</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject+gcObjectWillBeDeallocated$">+gcObjectWillBeDeallocated:</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject-gcDecrementRefCount">-gcDecrementRefCount</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject-gcDecrementRefCountOfContainedObjects">-gcDecrementRefCountOfContainedObjects</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject-gcIncrementRefCount">-gcIncrementRefCount</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject-gcIncrementRefCountOfContainedObjects">-gcIncrementRefCountOfContainedObjects</a></li>
+          </ul>
+        </p>
+        <hr class="section-separator">
 <div class="method">
-    <h3><a name="method$GCObject+gcCollectGarbage">gcCollectGarbage&nbsp;</a></h3>
-    + (void) <b>gcCollectGarbage</b>;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject+gcCollectGarbage">gcCollectGarbage&nbsp;</a></h3>
+        + (void) <b>gcCollectGarbage</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             
-    </p>
-    <p>
+        </p>
+        <p>
 
               This method runs a garbage collection, causing
               unreferenced objects to be deallocated. This
               is done using a simple three pass algorithm -
-                </p>
-    <p>
-      
-            
-      <dl>
-        <dt>Pass 1</dt>
-        <dd>
+                    </p>
+        <p>
           
+            
+          <dl>
+            <dt>Pass 1</dt>
+            <dd>
+              
                 All the garbage collectable objects are sent a
-                <a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject-gcDecrementRefCountOfContainedObjects">-gcDecrementRefCountOfContainedObjects</a>
+                <a rel="gsdoc" href="#method$GCObject-gcDecrementRefCountOfContainedObjects">-gcDecrementRefCountOfContainedObjects</a>
  message.
               
-        </dd>
-        <dt>Pass 2</dt>
-        <dd>
-          
+            </dd>
+            <dt>Pass 2</dt>
+            <dd>
+              
                 All objects having a refCount greater than 0 are
                 sent an
-                <a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject-gcIncrementRefCountOfContainedObjects">-gcIncrementRefCountOfContainedObjects</a>
+                <a rel="gsdoc" href="#method$GCObject-gcIncrementRefCountOfContainedObjects">-gcIncrementRefCountOfContainedObjects</a>
  message.
               
-        </dd>
-        <dt>Pass 3</dt>
-        <dd>
-          
+            </dd>
+            <dt>Pass 3</dt>
+            <dd>
+              
                 All the objects that still have the refCount of 0
                 are part of cyclic graphs and none of the objects
                 from this graph are held by some object outside
                 graph. These objects receive the
-                
+                <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSObject.html#method$NSObject-dealloc">
                   -dealloc
-                
+                </a>
 
                 message. In this method they should send the
-                
+                <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSObject.html#method$NSObject-dealloc">
                   -dealloc
-                
+                </a>
 
                 message to any garbage collectable (GCObject
                 and subclass) instances they contain.
               
-        </dd>
-      </dl>
-      
+            </dd>
+          </dl>
+          
             
-    </p>
-    <p>
+        </p>
+        <p>
 
               During garbage collection, the
-              <a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject+gcIsCollecting">
+              <a rel="gsdoc" href="#method$GCObject+gcIsCollecting">
                 +gcIsCollecting
               </a>
 
               method returns <code>YES</code>.
-                </p>
-    <p>
-      
+                    </p>
+        <p>
           
-    </div>
-    <hr width="25%" align="left" />
+          
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject+gcIsCollecting">gcIsCollecting&nbsp;</a></h3>
-    + (BOOL) <b>gcIsCollecting</b>;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject+gcIsCollecting">gcIsCollecting&nbsp;</a></h3>
+        + (BOOL) <b>gcIsCollecting</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             Returns a flag to indicate whether a garbage
             collection is in progress.
           
-    </div>
-    <hr width="25%" align="left" />
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject+gcObjectWillBeDeallocated$">gcObjectWillBeDeallocated:&nbsp;</a></h3>
-    + (void) <b>gcObjectWillBeDeallocated:</b> (<a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#class$GCObject">GCObject</a>*)anObject;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject+gcObjectWillBeDeallocated$">gcObjectWillBeDeallocated:&nbsp;</a></h3>
+        + (void) <b>gcObjectWillBeDeallocated:</b> (<a rel="gsdoc" href="#class$GCObject">GCObject</a>*)anObject;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             Called to remove <var>anObject</var> from the list
-            of garbage collectable objects. <br /> This method is
+            of garbage collectable objects. <br> This method is
             provided so that classes which are not subclasses
             of GCObject (but which have the same initial instance
             variable layout) can use multiple inheritance
             (behaviors) to act as GCObject instances, but
             can have their own
-            
+            <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSObject.html#method$NSObject-dealloc">
               -dealloc
-            
+            </a>
 
-            methods. <br /> These classes should call this in
+            methods. <br> These classes should call this in
             their own
-            
+            <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSObject.html#method$NSObject-dealloc">
               -dealloc
-            
+            </a>
 
             methods.
           
-    </div>
-    <hr width="25%" align="left" />
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject-gcDecrementRefCount">gcDecrementRefCount&nbsp;</a></h3>
-    - (void) <b>gcDecrementRefCount</b>;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject-gcDecrementRefCount">gcDecrementRefCount&nbsp;</a></h3>
+        - (void) <b>gcDecrementRefCount</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
-            Decrements the garbage collection reference
-            count for the receiver. <br />
+<br>
+        <div class="desc">
           
-    </div>
-    <hr width="25%" align="left" />
+            Decrements the garbage collection reference
+            count for the receiver. <br>
+          
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject-gcDecrementRefCountOfContainedObjects">gcDecrementRefCountOfContainedObjects&nbsp;</a></h3>
-    - (void) <b>gcDecrementRefCountOfContainedObjects</b>;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject-gcDecrementRefCountOfContainedObjects">gcDecrementRefCountOfContainedObjects&nbsp;</a></h3>
+        - (void) <b>gcDecrementRefCountOfContainedObjects</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             
-    </p>
-    <p>
+        </p>
+        <p>
 
               Marks the receiver as not having been visited in
               the current garbage collection process (first pass of
               collection).
-                </p>
-    <p>
-      
+                    </p>
+        <p>
+          
             
-    </p>
-    <p>
+        </p>
+        <p>
 
               All container subclasses should override this method
               to call the super implementation then decrement the
               ref counts of their contents as well as sending the
-              <a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject-gcDecrementRefCountOfContainedObjects">-gcDecrementRefCountOfContainedObjects</a>
+              <a rel="gsdoc" href="#method$GCObject-gcDecrementRefCountOfContainedObjects">-gcDecrementRefCountOfContainedObjects</a>
  message to each of them.
-                </p>
-    <p>
-      
+                    </p>
+        <p>
           
-    </div>
-    <hr width="25%" align="left" />
+          
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject-gcIncrementRefCount">gcIncrementRefCount&nbsp;</a></h3>
-    - (void) <b>gcIncrementRefCount</b>;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject-gcIncrementRefCount">gcIncrementRefCount&nbsp;</a></h3>
+        - (void) <b>gcIncrementRefCount</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             Increments the garbage collection reference
-            count for the receiver. <br />
+            count for the receiver. <br>
           
-    </div>
-    <hr width="25%" align="left" />
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject-gcIncrementRefCountOfContainedObjects">gcIncrementRefCountOfContainedObjects&nbsp;</a></h3>
-    - (BOOL) <b>gcIncrementRefCountOfContainedObjects</b>;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject-gcIncrementRefCountOfContainedObjects">gcIncrementRefCountOfContainedObjects&nbsp;</a></h3>
+        - (BOOL) <b>gcIncrementRefCountOfContainedObjects</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             
-    </p>
-    <p>
+        </p>
+        <p>
 
               Checks to see if the receiver has already been
               visited in the current garbage collection
@@ -583,159 +1051,162 @@
               visited (and returns <code>YES</code>) or returns
               <code>NO</code> to indicate that it had already
               been visited.
-                </p>
-    <p>
-      
+                    </p>
+        <p>
+          
             
-    </p>
-    <p>
+        </p>
+        <p>
 
               All container subclasses should override this method
               to call the super implementation then, if the method
               returns <code>YES</code>, increment the reference
               count of any contained objects and send the
-              <a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject-gcIncrementRefCountOfContainedObjects">-gcIncrementRefCountOfContainedObjects</a>
+              <a rel="gsdoc" href="#method$GCObject-gcIncrementRefCountOfContainedObjects">-gcIncrementRefCountOfContainedObjects</a>
  to each of the contained objects too.
-                </p>
-    <p>
-      
+                    </p>
+        <p>
           
-    </div>
-    <hr width="25%" align="left" />
+          
+        </div>
+        <hr class="method-separator">
 </div>
-<a name="_GCObject_ivars"/>    <br/><hr width="50%" align="left" />
-    <h2>Instance Variables for GCObject Class</h2>
-    <h3><a name="ivariable$GCObject*gc">gc</a></h3>
-    @protected gcInfo <b>gc</b>;<br />
-    <div class="availability">
+<a name="_GCObject_ivars"/>        <br><hr class="section-separator">
+        <h2>Instance Variables for GCObject Class</h2>
+        <h3><a name="ivariable$GCObject*gc">gc</a></h3>
+        @protected gcInfo <b>gc</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
-    <br/><hr width="50%" align="left" /><br/>
+        </div>
+        <hr class="method-separator"/>
+        <br><hr class="section-separator"><br>
 
-          <h1><a name="006000000000">
+              <h1><a name="006000000000">
         Software documentation for the GCObject(Extra)
         category
       </a></h1>
-    <h2><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#class$GCObject">GCObject</a>(<a name="category$GCObject(Extra)">Extra</a>)</h2>
-    <blockquote class="declared">
-      <dl>
-        <dt><b>Declared in:</b></dt>
-        <dd>GNUstepBase/GCObject.h</dd>
-      </dl>
-    </blockquote>
-    <div class="availability">
+        <h2><a rel="gsdoc" href="#class$GCObject">GCObject</a>(<a name="category$GCObject(Extra)">Extra</a>)</h2>
+        <blockquote class="declared">
+          <dl>
+            <dt><b>Declared in:</b></dt>
+            <dd>GNUstepBase/GCObject.h</dd>
+          </dl>
+        </blockquote>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
           This category implements accessor methods for the
           instance variables used for garbage collecting.
           If/when we can ensure that all garbage collecting
           classes use the same initial ivar layout, we can
           remove these methods and the garbage collector can
           access the ivars directly, making a pretty big
-          performance improvement during collecting. <br />
+          performance improvement during collecting. <br>
           NB. These methods must *only* be used by the garbage
           collecting process or in methods called from the
           garbage collector. Anything else is not thread-safe.
         
-    </div>
-    <b>Method summary</b>
-    <ul>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcAlreadyVisited">-gcAlreadyVisited</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcNextObject">-gcNextObject</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcPreviousObject">-gcPreviousObject</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcSetNextObject$">-gcSetNextObject:</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcSetPreviousObject$">-gcSetPreviousObject:</a></li>
-      <li><a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#method$GCObject(Extra)-gcSetVisited$">-gcSetVisited:</a></li>
-    </ul>
-    <hr width="50%" align="left" />
+        </div>
+        <p class="global_method_index">
+          <h3 class="index-section-header">Method summary</h3>
+          <ul>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcAlreadyVisited">-gcAlreadyVisited</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcNextObject">-gcNextObject</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcPreviousObject">-gcPreviousObject</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcSetNextObject$">-gcSetNextObject:</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcSetPreviousObject$">-gcSetPreviousObject:</a></li>
+            <li><a rel="gsdoc" href="GCObject.html#method$GCObject(Extra)-gcSetVisited$">-gcSetVisited:</a></li>
+          </ul>
+        </p>
+        <hr class="section-separator">
 <div class="method">
-    <h3><a name="method$GCObject(Extra)-gcAlreadyVisited">gcAlreadyVisited&nbsp;</a></h3>
-    - (BOOL) <b>gcAlreadyVisited</b>;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject(Extra)-gcAlreadyVisited">gcAlreadyVisited&nbsp;</a></h3>
+        - (BOOL) <b>gcAlreadyVisited</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject(Extra)-gcNextObject">gcNextObject&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#class$GCObject">GCObject</a>*) <b>gcNextObject</b>;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject(Extra)-gcNextObject">gcNextObject&nbsp;</a></h3>
+        - (<a rel="gsdoc" href="#class$GCObject">GCObject</a>*) <b>gcNextObject</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject(Extra)-gcPreviousObject">gcPreviousObject&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#class$GCObject">GCObject</a>*) <b>gcPreviousObject</b>;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject(Extra)-gcPreviousObject">gcPreviousObject&nbsp;</a></h3>
+        - (<a rel="gsdoc" href="#class$GCObject">GCObject</a>*) <b>gcPreviousObject</b>;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject(Extra)-gcSetNextObject$">gcSetNextObject:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#class$GCObject">GCObject</a>*) <b>gcSetNextObject:</b> (<a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#class$GCObject">GCObject</a>*)anObject;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject(Extra)-gcSetNextObject$">gcSetNextObject:&nbsp;</a></h3>
+        - (<a rel="gsdoc" href="#class$GCObject">GCObject</a>*) <b>gcSetNextObject:</b> (<a rel="gsdoc" href="#class$GCObject">GCObject</a>*)anObject;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject(Extra)-gcSetPreviousObject$">gcSetPreviousObject:&nbsp;</a></h3>
-    - (<a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#class$GCObject">GCObject</a>*) <b>gcSetPreviousObject:</b> (<a rel="gsdoc" href="../../BaseAdditions/Reference/GCObject.html#class$GCObject">GCObject</a>*)anObject;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject(Extra)-gcSetPreviousObject$">gcSetPreviousObject:&nbsp;</a></h3>
+        - (<a rel="gsdoc" href="#class$GCObject">GCObject</a>*) <b>gcSetPreviousObject:</b> (<a rel="gsdoc" href="#class$GCObject">GCObject</a>*)anObject;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
+        </div>
+        <hr class="method-separator">
 </div>
 <div class="method">
-    <h3><a name="method$GCObject(Extra)-gcSetVisited$">gcSetVisited:&nbsp;</a></h3>
-    - (void) <b>gcSetVisited:</b> (BOOL)flag;<br />
-    <div class="availability">
+        <h3><a name="method$GCObject(Extra)-gcSetVisited$">gcSetVisited:&nbsp;</a></h3>
+        - (void) <b>gcSetVisited:</b> (BOOL)flag;<br>
+        <div class="availability">
 <b>Availability:</b> OpenStep</div>
-<br />
-    <div class="desc">
-      
+<br>
+        <div class="desc">
+          
             <em>Description forthcoming.</em>
           
-    </div>
-    <hr width="25%" align="left" />
+        </div>
+        <hr class="method-separator">
 </div>
-    <br />
-    <a href="BaseAdditions.html">Up</a>
-    </font>
-</body>
+        <br>
+        <a href="BaseAdditions.html">Up</a>
+    </div>
+  </div>
+  </body>
 </html>
