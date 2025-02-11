@@ -174,7 +174,7 @@ in the same area of memory, or allocate in chunks - perhaps for performance
 reasons, you may create a Zone from where you would allocate those objects by
 using the <code class="code">NSCreateZone</code> function.  This will minimise the paging
 required by your application when accessing those objects frequently.
-In all normal yuse however, you should confine yourself to the default zone.
+In all normal use however, you should confine yourself to the default zone.
 </p>
 <p>Low level memory allocation is performed by the <code class="code">NSAllocateObject()</code>
 function.  This is rarely used but available when you require more advanced
@@ -188,6 +188,10 @@ Zones include <code class="code">-copy</code> and <code class="code">-mutableCop
 will probably not need to worry about Zones at all; unless performance is
 critical, you can just use the methods without zone arguments, that take the
 default zone.
+</p>
+<p>With the ObjC-2 (NG) setup,  the use of zones is obsoleted:  the runtime
+library performs the actual allocation of objects and ignores the zone
+information.
 </p>
 
 </div>
@@ -210,6 +214,9 @@ deallocated separately.  Usually this is done by subclasses overriding
 <p>As with <code class="code">alloc</code>, the underlying implementation utilizes a function
 (<code class="code">NSDeallocateObject()</code>) that can be used by your code if you know what
 you are doing.
+</p>
+<p>With the ObjC-2 (NG) setup,  the use of zones is obsoleted:  the runtime
+library performs the freeing of memory used by objects.
 </p>
 
 </div>
@@ -234,6 +241,13 @@ You use the OpenStep retain/release mechanism, along with autorelease
 pools which provide a degree of automated memory management.  This gives
 a good degree of control over memory management, but requires some care
 in following simple rules.  It&rsquo;s pretty efficient.
+
+</li><li>Automated Reference Counts (ARC)<br>
+Only available when using the ObjC-2 (NG) environment rather than classic
+Objective-C.  In this case the compiler generates code to use the retain
+count and autorelease pools.  The use of ARC can be turned on/off for
+individual files.
+
 
 </li></ul>
 
@@ -289,6 +303,12 @@ object gets deallocated.
   [c release];	// Calls 'release' ... (retain count 0) then 'dealloc'
 </pre></div>
 
+<p>Retain count is best understood using the concept of ownership.  When we
+retain an object we own it and are responsible for releasing it again.
+When nobody owns an object (its retain count is zero) it is deallocated.
+The retain count of an object is the number of places which own the object
+and have therefore undertaken to release it when they have finished with it.
+</p>
 <p>One way of thinking about the initial retain count of 1 on the object is that
 a call to <code class="code">alloc</code> (or <code class="code">copy</code>) implicitly calls <code class="code">retain</code> as
 well.  There are a couple of default conventions about how <code class="code">retain</code> and
@@ -317,7 +337,7 @@ matched by an equal number of <code class="code">release</code>s.</i>
 <p>Retain and release must also be used for instance variables that are objects:
 </p>
 <div class="example">
-<pre class="example-preformatted">- (void)setFoo:(FooClass *newFoo)
+<pre class="example-preformatted">- (void) setFoo: (FooClass *newFoo)
 {
     // first, assert reference to newFoo
   [newFoo retain];
@@ -329,11 +349,15 @@ matched by an equal number of <code class="code">release</code>s.</i>
 }
 </pre></div>
 
+<p>To write portable code (which will work with both the classic retain counting
+mechanism and with ARC) you should use the macros RETAIN(expr) and
+RELEASE(expr) along with the DESTROY(lvalue) and ASSIGN(lvalue, expr) macros.
+</p>
 <p>Because of this retain/release management, it is safest to use accessor
 methods to set variables even within a class:
 </p>
 <div class="example">
-<pre class="example-preformatted">- (void)resetFoo
+<pre class="example-preformatted">- (void) resetFoo
 {
   FooClass *foo = [[FooClass alloc] init];
   [self setFoo: foo];
@@ -361,6 +385,7 @@ general you need to be careful in these cases that retains and releases match.
 <li><a href="#Autorelease-Pools" accesskey="1">Autorelease Pools</a></li>
 <li><a href="#Avoiding-Retain-Cycles" accesskey="2">Avoiding Retain Cycles</a></li>
 <li><a href="#Summary" accesskey="3">Summary</a></li>
+<li><a href="#Leak-Checking" accesskey="4">Leak Checking</a></li>
 </ul>
 <div class="subsubsection-level-extent" id="Autorelease-Pools">
 <h4 class="subsubsection"><span>3.2.2.1 Autorelease Pools<a class="copiable-link" href="#Autorelease-Pools"> &para;</a></span></h4>
@@ -368,17 +393,17 @@ general you need to be careful in these cases that retains and releases match.
 <p>One important case where the retain/release system has difficulties is when
 an object needs to be transferred or handed off to another.  You don&rsquo;t want
 to retain the transferred object in the transferring code, but neither do you
-want the object to be destroyed before the handoff can take place.  The
+want the object to be destroyed before the hand-off can take place.  The
 OpenStep/GNUstep solution to this is the <i class="i">autorelease pool</i>.  An
 autorelease pool is a special mechanism that will retain objects it is given
 for a limited time &ndash; always enough for a transfer to take place.  This
 mechanism is accessed by calling <code class="code">autorelease</code> on an object instead of
 <code class="code">release</code>.  <code class="code">Autorelease</code> first adds the object to the active
-autorelease pool, which retains it, then sends a <code class="code">release</code> to the
-object.  At some point later on, the pool will send the object a second
-<code class="code">release</code> message, but by this time the object will presumably either
-have been retained by some other code, or is no longer needed and can thus be
-deallocated.  For example:
+autorelease pool, which retains it, then sends a <code class="code">release</code> to the object.
+ At some point later on (when the pool is destroyed), the pool will send the
+object a second <code class="code">release</code> message, but by this time the object will
+presumably either have been retained by some other code, or is no longer
+needed and can thus be deallocated.  For example:
 </p>
 <div class="example">
 <pre class="example-preformatted">- (NSString *) getStatus
@@ -413,6 +438,9 @@ stored and used later on however, it should be retained:
   [currentStatus retain];
 </pre></div>
 
+<p>To write portable code (for both classic retain counting and ARC) you should
+use the AUTORELEASE(expr) macro.
+</p>
 <p><b class="b">Convenience Constructors</b>
 </p>
 <p>A special case of object transfer occurs when a <i class="i">convenience</i> constructor is
@@ -439,7 +467,7 @@ retain it if you want to hold onto it for a while.
 </p>
 <p>An autorelease pool is created automatically if you are using the GNUstep
 GUI classes, however if you are just using the GNUstep Base classes for a
-nongraphical application, you must create and release autorelease pools
+non-graphical application, you must create and release autorelease pools
 yourself:
 </p>
 <div class="example">
@@ -454,13 +482,18 @@ pool itself:
 <pre class="example-preformatted">  [pool release];
 </pre></div>
 
-<p>To achieve finer control over autorelease behavior you may also create
+<p>To achieve finer control over autorelease behaviour you may also create
 additional pools and release them in a nested manner.  Calls to
 <code class="code">autorelease</code> will always use the most recently created pool.
 </p>
 <p>Finally, note that <code class="code">autorelease</code> calls are significantly slower than
 plain <code class="code">release</code>.  Therefore you should only use them when they are
 necessary.
+</p>
+<p>The best way to manage autorelease pools is using macros which will work
+both for the classic system or when using ARC.  The ENTER_POOL macro
+begins a block in which a new pool handles autoreleases and the LEAVE_POOL
+macro ends that block and destroys the autorelease pool.
 </p>
 
 </div>
@@ -477,6 +510,21 @@ careful with your designs.  If you notice a situation where a retain cycle
 could arise, remove at least one of the links in the chain, but not in such a
 way that references to deallocated objects might be mistakenly used.
 </p>
+<p>To help solve the problem of retain cycles you can use weak references
+to break a cycle.  The runtime library provides functions to handle weak
+references so that you can safely check to see whether the reference is
+to an object that still exists or not.  To manage that the objc_storeWeak()
+function is used whenever assigning a value to the variable (instead of
+retaining the value), and the objc_loadWeak() function is used to retrieve
+the value from the variable ... the retrieved value will be nil if the
+object has been deallocated.  With the ObjC-2 (Next Generation) environment
+you can use the keyword &lsquo;weak&rsquo; to tell the compiler to automatically insert
+calls to those runtime functions whenever a value is written to or read from
+the variable.
+NB. weak references are relatively inefficient since each time objc_loadWeak()
+is called it both retains and autorelease the referenced value so that it
+will continue to exist for long enough for your code to work with it.
+</p>
 
 </div>
 <div class="subsubsection-level-extent" id="Summary">
@@ -486,13 +534,13 @@ way that references to deallocated objects might be mistakenly used.
 </p>
 <table class="multitable">
 <tbody><tr><td width="25%">Method</td><td width="75%">Description</td></tr>
-<tr><td width="25%"><code class="code">-retain</code></td><td width="75%">increases the reference count of an object by 1</td></tr>
-<tr><td width="25%"><code class="code">-release</code></td><td width="75%">decreases the reference count of an object by 1</td></tr>
-<tr><td width="25%"><code class="code">-autorelease</code></td><td width="75%">decreases the reference count of an object by 1 at some stage in the future</td></tr>
+<tr><td width="25%"><code class="code">-retain</code></td><td width="75%">increases the retain count of an object by 1</td></tr>
+<tr><td width="25%"><code class="code">-release</code></td><td width="75%">decreases the retain count of an object by 1</td></tr>
+<tr><td width="25%"><code class="code">-autorelease</code></td><td width="75%">decreases the retain count of an object by 1 at some stage in the future</td></tr>
 <tr><td width="25%"><code class="code">+alloc</code> and <code class="code">+allocWithZone:</code></td><td width="75%">allocates memory for an object, and returns it with retain count of 1</td></tr>
 <tr><td width="25%"><code class="code">-copy</code>, <code class="code">-mutableCopy</code>, <code class="code">copyWithZone:</code> and <code class="code">-mutableCopyWithZone:</code></td><td width="75%">makes a copy of an object, and returns it with retain count of 1</td></tr>
 <tr><td width="25%"><code class="code">-init</code> and any method whose name begins with <code class="code">init</code></td><td width="75%">initialises the receiver, returning the retain count unchanged.
-<code class="code">-init</code> has had no effect on the reference count.</td></tr>
+<code class="code">-init</code> has had no effect on the retain count.</td></tr>
 <tr><td width="25%"><code class="code">-new</code> and any method whose name begins with <code class="code">new</code></td><td width="75%">allocates memory for an object, initialises it, and returns the result.</td></tr>
 <tr><td width="25%"><code class="code">-dealloc</code></td><td width="75%">deallocates object immediately (regardless of value of retain count)</td></tr>
 <tr><td width="25%">convenience constructors</td><td width="75%">allocate memory for an object, and returns it in an autoreleased state
@@ -530,6 +578,59 @@ ownership rules (how you should use the returned values) remain the same.
 
 
 
+</div>
+<div class="subsubsection-level-extent" id="Leak-Checking">
+<h4 class="subsubsection"><span>3.2.2.4 Leak Checking<a class="copiable-link" href="#Leak-Checking"> &para;</a></span></h4>
+
+<p>Looking at the following code:
+</p>
+<div class="example">
+<pre class="example-preformatted">#import &quot;Client.h&quot;
+
+@implementation Client
+- (void) executeCallSequence
+{
+  NSString *str = [NSString stringWithFormat: @&quot;one little string: %d\n&quot;, 100];
+  const char *strCharPtr = [str cString];
+}
+@end
+
+int main(int argv, char** argc)
+{
+  Client *client = [[Client alloc] init];
+
+  [[NSAutoreleasePool alloc] init];
+  [client executeCallSequence];
+
+  return 0;
+}
+</pre></div>
+
+<p>So, what do we expect this to do if we build the program with leak checking (&rsquo;make asan=yes&rsquo;) or run it with a separate leak checker such as valgrind?
+</p>
+<p>Firstly this code creates a Client instance, owned by the main function.  This is because +alloc returns an instance owned by the caller, and -init consumes its receiver and returns an instance owned by the caller, so the alloc/init sequence produces an instance owned by the main function. 
+</p>
+<p>Next it creates/enters an autorelease pool, owned by the main function.
+</p>
+<p>Next it executes the method &rsquo;-[Client executeCallSequence]&rsquo; which:
+</p>
+<p>Creates an NSString which is NOT owned by the method.
+</p>
+<p>The +stringWithFormat: method creates a new instance and adds it to the current autorelease pool before returning it.
+</p>
+<p>Creates a C string, which is NOT owned by the method.
+</p>
+<p>A non-object return value can&rsquo;t be retained or released, but it conforms to the convention that the memory is not owned by the caller, so the caller need not free it.  The -cString method is free to manage that however it likes (for instance it might return a pointer to some internal memory which exists until the NSString object is deallocated), but typically what&rsquo;s returned is a pointer to memory inside some other object which has been autoreleased.
+</p>
+<p>Finally, the &rsquo;return&rsquo; command means that the program exits with a status of zero.
+</p>
+
+<p>A simple look at the basic retain count and autorelease rules would say that all the memory is leaked (because the program contains no call to release anything), but there&rsquo;s a bit of behind the scenes magic:  when a thread exits it releases all the autorelease pools created in it which were not already released.  That&rsquo;s not to say that the failure to release the autorelease pool was not a bug (the code should have released it), just that there is a fail-safe behaviour to protect multithreaded programs from this particular programmer error.
+</p>
+<p>So when you consider that, you can see that the autorelease pool is deallocated so the memory of the  pool is actually freed, and the memory of the NSString and C-String inside it are therefore also freed.
+</p>
+<p>This leaves us with the memory of the Client object being leaked.  However, the idea that any unfreed memory is a leak is too simplistic (leak checkers would be useless if they reported so much) so the leak checker only reports some unfreed memory ... stuff that can&rsquo;t be reached from various standard routes.  The main case is that anything pointed to by global or static variables is not considered leaked, but also anything pointed to by a variable in the main() function is not considered leaked.  This is why the Client instance would not normally be reported by a leak checker.
+</p>
 
 </div>
 </div>
@@ -548,9 +649,9 @@ manual reference counting required when ARC is not available.
 <tr><td width="25%"><code class="code">RETAIN(foo);</code></td><td width="75%"><code class="code">[foo retain];</code></td></tr>
 <tr><td width="25%"><code class="code">RELEASE(foo);</code></td><td width="75%"><code class="code">[foo release];</code></td></tr>
 <tr><td width="25%"><code class="code">AUTORELEASE(foo);</code></td><td width="75%"><code class="code">[foo autorelease];</code></td></tr>
-<tr><td width="25%"><code class="code">ASSIGN(foo, bar);</code></td><td width="75%"><code class="code">[bar retain]; [foo release]; foo = bar;</code></td></tr>
-<tr><td width="25%"><code class="code">ASSIGNCOPY(foo, bar);</code></td><td width="75%"><code class="code">[foo release]; foo = [bar copy];</code></td></tr>
-<tr><td width="25%"><code class="code">ASSIGNMUTABLECOPY(foo, bar);</code></td><td width="75%"><code class="code">[foo release]; foo = [bar mutableCopy];</code></td></tr>
+<tr><td width="25%"><code class="code">ASSIGN(foo, bar);</code></td><td width="75%"><code class="code">id tmp = [bar retain]; [foo release]; foo = tmp;</code></td></tr>
+<tr><td width="25%"><code class="code">ASSIGNCOPY(foo, bar);</code></td><td width="75%"><code class="code">id tmp = [bar copy]; [foo release]; foo = tmp;</code></td></tr>
+<tr><td width="25%"><code class="code">ASSIGNMUTABLECOPY(foo, bar);</code></td><td width="75%"><code class="code">id tmp = [bar mutableCopy]; [foo release]; foo = tmp;</code></td></tr>
 <tr><td width="25%"><code class="code">DESTROY(foo);</code></td><td width="75%"><code class="code">[foo release]; foo = nil;</code></td></tr>
 <tr><td width="25%"><code class="code">ENTER_POOL</code></td><td width="75%">Like @autoreleasepool this introduces a code block with a manually created autorelease pool.</td></tr>
 <tr><td width="25%"><code class="code">LEAVE_POOL</code></td><td width="75%">This ends a block created by an ENTER_POOL destroying the autorelease pool created at the start of the block</td></tr>

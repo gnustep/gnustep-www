@@ -8,11 +8,231 @@
         hugo@algoriddim.com
       </email>
     </author>
-    <date>Generated at 2024-11-18 21:56:13 +0100</date>
+    <date>Generated at 2025-02-11 22:18:53 +0100</date>
     <copy>2017-2024 Free Software Foundation, Inc.</copy>
   </head>
   <body>
     <front><contents /></front>
+    <chapter>
+      <heading>
+        Software documentation for the NSURLSession class
+      </heading>
+      <class name="NSURLSession" super="NSObject" ovadd="10.9.0">
+        <declared>Foundation/NSURLSession.h</declared>
+        <desc>
+          NSURLSession is a replacement API for
+          NSURLConnection. It provides options that
+          affect the policy of, and various aspects of the
+          mechanism by which NSURLRequest objects are
+          retrieved from the network. <br /> An NSURLSession
+          may be bound to a delegate object. The delegate is
+          invoked for certain events during the lifetime of a
+          session. NSURLSession instances are threadsafe. An
+          NSURLSession creates NSURLSessionTask objects
+          which represent the action of a resource being loaded.
+          NSURLSessionTask objects are always created
+          in a suspended state and must be sent the
+          <ref type="method" id="-resume">
+            -resume
+          </ref>
+          message before they will execute. Subclasses of
+          NSURLSessionTask are used to syntactically
+          differentiate between data and file downloads.
+          An NSURLSessionDataTask receives the resource as a series
+          of calls to the URLSession:dataTask:didReceiveData:
+          delegate method. This is type of task most commonly
+          associated with retrieving objects for immediate
+          parsing by the consumer.
+        </desc>
+        <method type="NSURLSession*" factory="yes" ovadd="10.9.0">
+          <sel>sessionWithConfiguration:</sel>
+          <arg type="NSURLSessionConfiguration*">configuration</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSession*" factory="yes" ovadd="10.9.0">
+          <sel>sessionWithConfiguration:</sel>
+          <arg type="NSURLSessionConfiguration*">configuration</arg>
+          <sel>delegate:</sel>
+          <arg type="id&lt;NSURLSessionDelegate&gt;">delegate</arg>
+          <sel>delegateQueue:</sel>
+          <arg type="NSOperationQueue*">queue</arg>
+          <desc>
+            Customization of NSURLSession occurs during
+            creation of a new session. If you do specify a
+            <var>delegate</var>, the <var>delegate</var> will be
+            retained until after the <var>delegate</var> has
+            been sent the URLSession:didBecomeInvalidWithError:
+            message.
+          </desc>
+        </method>
+        <method type="NSURLSession*" factory="yes" ovadd="10.9.0">
+          <sel>sharedSession</sel>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionConfiguration*" ovadd="10.9.0">
+          <sel>configuration</sel>
+          <desc>
+            The configuration object used to create the session. A
+            copy of the configuration object is made. Changes to
+            the configuration object after the session is created
+            have no effect.
+          </desc>
+        </method>
+        <method type="NSURLSessionDataTask*" ovadd="10.9.0">
+          <sel>dataTaskWithRequest:</sel>
+          <arg type="NSURLRequest*">request</arg>
+          <desc>
+            Creates a data task with the given
+            <var>request</var>. The <var>request</var> may have a
+            body stream.
+          </desc>
+        </method>
+        <method type="NSURLSessionDataTask*" ovadd="10.9.0">
+          <sel>dataTaskWithURL:</sel>
+          <arg type="NSURL*">url</arg>
+          <desc>
+            Creates a data task to retrieve the contents of the
+            given URL.
+          </desc>
+        </method>
+        <method type="nullable id&lt;NSURLSessionDelegate&gt;" ovadd="10.9.0">
+          <sel>delegate</sel>
+          <desc>
+            The delegate for the session. This is the object to
+            which delegate messages will be sent. The session
+            keeps a strong reference to the delegate.
+          </desc>
+        </method>
+        <method type="NSOperationQueue*" ovadd="10.9.0">
+          <sel>delegateQueue</sel>
+          <desc>
+            This serial NSOperationQueue queue is used for
+            dispatching delegate messages and completion
+            handlers.
+          </desc>
+        </method>
+        <method type="NSURLSessionDownloadTask*" ovadd="10.9.0">
+          <sel>downloadTaskWithRequest:</sel>
+          <arg type="NSURLRequest*">request</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionDownloadTask*" ovadd="10.9.0">
+          <sel>downloadTaskWithResumeData:</sel>
+          <arg type="NSData*">resumeData</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionDownloadTask*" ovadd="10.9.0">
+          <sel>downloadTaskWithURL:</sel>
+          <arg type="NSURL*">url</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="void" ovadd="10.9.0">
+          <sel>finishTasksAndInvalidate</sel>
+          <desc>
+            <ref type="method" id="-finishTasksAndInvalidate">
+              -finishTasksAndInvalidate
+            </ref>
+            returns immediately and existing tasks will be
+            allowed to run to completion. New tasks may not be
+            created. The session will continue to make
+            delegate callbacks until
+            URLSession:didBecomeInvalidWithError:
+            has been issued. When invalidating a background
+            session, it is not safe to create another
+            background session with the same identifier
+            until URLSession:didBecomeInvalidWithError: has been
+            issued.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.9.0">
+          <sel>getAllTasksWithCompletionHandler:</sel>
+          <arg type="void(^)(NSArray&lt;__kindof NSURLSessionTask*&gt;*tasks)">completionHandler</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="void" ovadd="10.9.0">
+          <sel>getTasksWithCompletionHandler:</sel>
+          <arg type="void(^)(NSArray&lt;NSURLSessionDataTask*&gt;*dataTasks,NSArray&lt;NSURLSessionUploadTask*&gt;*uploadTasks,NSArray&lt;NSURLSessionDownloadTask*&gt;*downloadTasks)">completionHandler</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="void" ovadd="10.9.0">
+          <sel>invalidateAndCancel</sel>
+          <desc>
+            <ref type="method" id="-invalidateAndCancel">
+              -invalidateAndCancel
+            </ref>
+            acts as
+            <ref type="method" id="-finishTasksAndInvalidate">
+              -finishTasksAndInvalidate
+            </ref>
+            , but issues
+            <ref type="method" id="-cancel">
+              -cancel
+            </ref>
+            to all outstanding tasks for this session. Note task
+            cancellation is subject to the state of the
+            task, and some tasks may have already have completed
+            at the time they are sent
+            <ref type="method" id="-cancel">
+              -cancel
+            </ref>
+            .
+          </desc>
+        </method>
+        <method type="nullable NSString*" ovadd="10.9.0">
+          <sel>sessionDescription</sel>
+          <desc>
+            An App-specific description of the session.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.9.0">
+          <sel>setSessionDescription:</sel>
+          <arg type="NSString*">description</arg>
+          <desc>
+            Sets an app-specific <var>description</var> of the
+            session.
+          </desc>
+        </method>
+        <method type="NSURLSessionUploadTask*" ovadd="10.9.0">
+          <sel>uploadTaskWithRequest:</sel>
+          <arg type="NSURLRequest*">request</arg>
+          <sel>fromData:</sel>
+          <arg type="NSData*">bodyData</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionUploadTask*" ovadd="10.9.0">
+          <sel>uploadTaskWithRequest:</sel>
+          <arg type="NSURLRequest*">request</arg>
+          <sel>fromFile:</sel>
+          <arg type="NSURL*">fileURL</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionUploadTask*" ovadd="10.9.0">
+          <sel>uploadTaskWithStreamedRequest:</sel>
+          <arg type="NSURLRequest*">request</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+      </class>
+    </chapter>
     <chapter>
       <heading>
         Software documentation for the
@@ -715,6 +935,95 @@
           <em>Description forthcoming.</em>
         </desc>
       </class>
+    </chapter>
+    <chapter>
+      <heading>
+        Software documentation for the
+        NSURLSession(NSURLSessionAsynchronousConvenience)
+        category
+      </heading>
+      <category name="NSURLSessionAsynchronousConvenience" class="NSURLSession" ovadd="10.9.0">
+        <declared>Foundation/NSURLSession.h</declared>
+        <desc>
+          NSURLSession convenience routines deliver
+          results to a completion handler block. These
+          convenience routines are not available to
+          NSURLSessions that are configured as background
+          sessions. Task objects are always created in a
+          suspended state and must be sent the
+          <ref type="method" id="-resume">
+            -resume
+          </ref>
+          message before they will execute.
+        </desc>
+        <method type="NSURLSessionDataTask*" ovadd="10.9.0">
+          <sel>dataTaskWithRequest:</sel>
+          <arg type="NSURLRequest*">request</arg>
+          <sel>completionHandler:</sel>
+          <arg type="GSNSURLSessionDataCompletionHandler">completionHandler</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionDataTask*" ovadd="10.9.0">
+          <sel>dataTaskWithURL:</sel>
+          <arg type="NSURL*">url</arg>
+          <sel>completionHandler:</sel>
+          <arg type="GSNSURLSessionDataCompletionHandler">completionHandler</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionDownloadTask*" ovadd="10.9.0">
+          <sel>downloadTaskWithRequest:</sel>
+          <arg type="NSURLRequest*">request</arg>
+          <sel>completionHandler:</sel>
+          <arg type="GSNSURLSessionDownloadCompletionHandler">completionHandler</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionDownloadTask*" ovadd="10.9.0">
+          <sel>downloadTaskWithResumeData:</sel>
+          <arg type="NSData*">resumeData</arg>
+          <sel>completionHandler:</sel>
+          <arg type="GSNSURLSessionDownloadCompletionHandler">completionHandler</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionDownloadTask*" ovadd="10.9.0">
+          <sel>downloadTaskWithURL:</sel>
+          <arg type="NSURL*">url</arg>
+          <sel>completionHandler:</sel>
+          <arg type="GSNSURLSessionDownloadCompletionHandler">completionHandler</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionUploadTask*" ovadd="10.9.0">
+          <sel>uploadTaskWithRequest:</sel>
+          <arg type="NSURLRequest*">request</arg>
+          <sel>fromData:</sel>
+          <arg type="NSData*">bodyData</arg>
+          <sel>completionHandler:</sel>
+          <arg type="GSNSURLSessionDataCompletionHandler">completionHandler</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSURLSessionUploadTask*" ovadd="10.9.0">
+          <sel>uploadTaskWithRequest:</sel>
+          <arg type="NSURLRequest*">request</arg>
+          <sel>fromFile:</sel>
+          <arg type="NSURL*">fileURL</arg>
+          <sel>completionHandler:</sel>
+          <arg type="GSNSURLSessionDataCompletionHandler">completionHandler</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+      </category>
     </chapter>
     <chapter>
       <heading>

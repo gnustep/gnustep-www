@@ -536,7 +536,25 @@ of statistics collection is only incurred when it is active.  To access the
 statistics, use the set of <code class="code">GSDebugAllocation...()</code> functions defined in
 <code class="code">NSDebug.h</code>.
 </p>
-
+<p>In addition to basic statistics (but at higher performance cose), the
+<code class="code">GSDebugAllocation...()</code> functions provide detailed records of when and
+where objects are allocated/deallocated.  This can be useful when debugging
+for memory leaks.
+</p>
+<p>Finally, for pinpoint accuracy, the -trackOwnership method can be called on
+an individual object to turn on tracking of the lifetime of that object. In
+this case a stack trace is printed logging every ownership event (retain,
+release, or dealloc) and a log is printed at process exit if the object
+has not been deallocated.  The same method may be called on a class to
+track every object of that class.  This method is declared in
+<code class="code">NSObject+GNUstepBase.h</code>.  Tracking the life of an individual object is
+particularly useful if a leak checker (eg when your program was built using
+<code class="code">(make asan=yes)</code> or run under valgrind) has reported a leak and the
+cause of the leak is hard to find:  the leak checker will have told you the
+stack trace where the leaked memory was allocated, so you can change your
+code to start tracking immediately after that and see exacly what happened
+to the object ownership after its creation.
+</p>
 </div>
 </div>
 <div class="section-level-extent" id="Assertions">

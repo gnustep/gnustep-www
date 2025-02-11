@@ -243,6 +243,9 @@
 	NSURLRequest = {
 	    NSHTTPURLRequest = NSURLRequest;
 	};
+	NSURLSession = {
+	    NSURLSessionAsynchronousConvenience = NSURLSession;
+	};
 	NSUnarchiver = {
 	    GNUstep = NSArchiver;
 	};
@@ -330,6 +333,7 @@
 	"NSURLConnection(NSURLConnectionSynchronousLoading)" = NSURLConnection;
 	"NSURLProtocol(Subclassing)" = NSURLProtocol;
 	"NSURLRequest(NSHTTPURLRequest)" = NSURLRequest;
+	"NSURLSession(NSURLSessionAsynchronousConvenience)" = NSURLSession;
 	"NSUnarchiver(GNUstep)" = NSArchiver;
 	"NSValue(Subclassing)" = NSValue;
 	"NSXMLParser(NSXMLParserLocatorAdditions)" = NSXMLParser;
@@ -504,6 +508,7 @@
 	NSURLQueryItem = NSURL;
 	NSURLRequest = NSURLRequest;
 	NSURLResponse = NSURLResponse;
+	NSURLSession = NSURLSession;
 	NSURLSessionConfiguration = NSURLSession;
 	NSURLSessionDataTask = NSURLSession;
 	NSURLSessionDownloadTask = NSURLSession;
@@ -853,9 +858,7 @@
 	    "_runLoopInfo" = NSThread;
 	    "_selector" = NSThread;
 	    "_stackSize" = NSThread;
-	    "_stringCollatorCache" = NSThread;
 	    "_target" = NSThread;
-	    "_targetIsBlock" = NSThread;
 	    "_thread_dictionary" = NSThread;
 	};
 	NSTimer = {
@@ -1631,6 +1634,8 @@
 	GSInitializeProcessAndroid = Functions;
 	GSInitializeProcessAndroidWithArgs = Functions;
 	GSLogLock = Functions;
+	GSNSURLSessionDataCompletionHandler = Functions;
+	GSNSURLSessionDownloadCompletionHandler = Functions;
 	GSOutOfMemory = Functions;
 	GSRegisterCurrentThread = Functions;
 	GSSetDebugAllocationFunctions = Functions;
@@ -1742,6 +1747,7 @@
 	NSIncrementExtraRefCount = Functions;
 	NSInsetRect = Functions;
 	NSIntegralRect = Functions;
+	NSIntegralRectWithOptions = Functions;
 	NSIntersectionRange = Functions;
 	NSIntersectionRect = Functions;
 	NSIntersectsRect = Functions;
@@ -1776,13 +1782,17 @@
 	NSOffsetRect = Functions;
 	NSOpenStepRootDirectory = Functions;
 	NSPageSize = Functions;
+	NSPointFromCGPoint = Functions;
 	NSPointFromString = Functions;
 	NSPointInRect = Functions;
+	NSPointToCGPoint = Functions;
 	NSProtocolFromString = Functions;
 	NSRangeFromString = Functions;
 	NSRealMemoryAvailable = Functions;
 	NSReallocateCollectable = Functions;
+	NSRectFromCGRect = Functions;
 	NSRectFromString = Functions;
+	NSRectToCGRect = Functions;
 	NSRecycleZone = Functions;
 	NSResetHashTable = Functions;
 	NSResetMapTable = Functions;
@@ -1794,7 +1804,9 @@
 	NSSetUncaughtExceptionHandler = Functions;
 	NSSetZoneName = Functions;
 	NSShouldRetainWithZone = Functions;
+	NSSizeFromCGSize = Functions;
 	NSSizeFromString = Functions;
+	NSSizeToCGSize = Functions;
 	NSStandardApplicationPaths = Functions;
 	NSStandardLibraryPaths = Functions;
 	NSStringFromClass = Functions;
@@ -2406,9 +2418,6 @@
 	"_string" = {
 	    NSLinguisticTagger = NSLinguisticTagger;
 	};
-	"_stringCollatorCache" = {
-	    NSThread = NSThread;
-	};
 	"_subs" = {
 	    NSCompoundPredicate = NSCompoundPredicate;
 	};
@@ -2422,9 +2431,6 @@
 	    NSInvocation = NSInvocation;
 	    NSThread = NSThread;
 	    NSTimer = NSTimer;
-	};
-	"_targetIsBlock" = {
-	    NSThread = NSThread;
 	};
 	"_targetRetained" = {
 	    NSInvocation = NSInvocation;
@@ -4352,6 +4358,12 @@
 	"+serviceListener" = {
 	    NSXPCListener = NSXPCConnection;
 	};
+	"+sessionWithConfiguration:" = {
+	    NSURLSession = NSURLSession;
+	};
+	"+sessionWithConfiguration:delegate:delegateQueue:" = {
+	    NSURLSession = NSURLSession;
+	};
 	"+set" = {
 	    NSSet = NSSet;
 	};
@@ -4437,6 +4449,9 @@
 	"+sharedInstance" = {
 	    NSMessagePortNameServer = NSPortNameServer;
 	    NSSocketPortNameServer = NSPortNameServer;
+	};
+	"+sharedSession" = {
+	    NSURLSession = NSURLSession;
 	};
 	"+sharedURLCache" = {
 	    NSURLCache = NSURLCache;
@@ -4723,6 +4738,9 @@
 	    NSValueTransformer = NSValueTransformer;
 	};
 	"+valueWithBytes:objCType:" = {
+	    NSValue = NSValue;
+	};
+	"+valueWithEdgeInsets:" = {
 	    NSValue = NSValue;
 	};
 	"+valueWithNonretainedObject:" = {
@@ -5817,6 +5835,9 @@
 	"-condition" = {
 	    NSConditionLock = NSLock;
 	};
+	"-configuration" = {
+	    NSURLSession = NSURLSession;
+	};
 	"-configureAsServer" = {
 	    "NSRunLoop(OPENSTEP)" = NSRunLoop;
 	};
@@ -6081,6 +6102,18 @@
 	    NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore;
 	    NSUserDefaults = NSUserDefaults;
 	};
+	"-dataTaskWithRequest:" = {
+	    NSURLSession = NSURLSession;
+	};
+	"-dataTaskWithRequest:completionHandler:" = {
+	    "NSURLSession(NSURLSessionAsynchronousConvenience)" = NSURLSession;
+	};
+	"-dataTaskWithURL:" = {
+	    NSURLSession = NSURLSession;
+	};
+	"-dataTaskWithURL:completionHandler:" = {
+	    "NSURLSession(NSURLSessionAsynchronousConvenience)" = NSURLSession;
+	};
 	"-dataUsingEncoding:" = {
 	    NSString = NSString;
 	};
@@ -6301,10 +6334,14 @@
 	    NSPort = NSPort;
 	    NSSpellServer = NSSpellServer;
 	    NSStream = NSStream;
+	    NSURLSession = NSURLSession;
 	    NSURLSessionTask = NSURLSession;
 	    NSUserNotificationCenter = NSUserNotification;
 	    NSXMLParser = NSXMLParser;
 	    NSXPCListener = NSXPCConnection;
+	};
+	"-delegateQueue" = {
+	    NSURLSession = NSURLSession;
 	};
 	"-deleteCharactersInRange:" = {
 	    NSMutableAttributedString = NSAttributedString;
@@ -6556,6 +6593,24 @@
 	"-downloadDidFinish:" = {
 	    "NSObject(NSURLDownloadDelegate)" = NSURLDownload;
 	};
+	"-downloadTaskWithRequest:" = {
+	    NSURLSession = NSURLSession;
+	};
+	"-downloadTaskWithRequest:completionHandler:" = {
+	    "NSURLSession(NSURLSessionAsynchronousConvenience)" = NSURLSession;
+	};
+	"-downloadTaskWithResumeData:" = {
+	    NSURLSession = NSURLSession;
+	};
+	"-downloadTaskWithResumeData:completionHandler:" = {
+	    "NSURLSession(NSURLSessionAsynchronousConvenience)" = NSURLSession;
+	};
+	"-downloadTaskWithURL:" = {
+	    NSURLSession = NSURLSession;
+	};
+	"-downloadTaskWithURL:completionHandler:" = {
+	    "NSURLSession(NSURLSessionAsynchronousConvenience)" = NSURLSession;
+	};
 	"-drain" = {
 	    NSAutoreleasePool = NSAutoreleasePool;
 	};
@@ -6568,6 +6623,9 @@
 	};
 	"-earliestBeginDate" = {
 	    NSURLSessionTask = NSURLSession;
+	};
+	"-edgeInsetsValue" = {
+	    NSValue = NSValue;
 	};
 	"-editingStringForObjectValue:" = {
 	    NSFormatter = NSFormatter;
@@ -6758,6 +6816,9 @@
 	};
 	"-enumerateLinguisticTagsInRange:scheme:options:orthography:usingBlock:" = {
 	    "NSString(NSLinguisticAnalysis)" = NSLinguisticTagger;
+	};
+	"-enumerateMatchesInString:options:range:callback:context:" = {
+	    NSRegularExpression = NSRegularExpression;
 	};
 	"-enumerateMatchesInString:options:range:usingBlock:" = {
 	    NSRegularExpression = NSRegularExpression;
@@ -7062,6 +7123,9 @@
 	"-finishEncoding" = {
 	    NSKeyedArchiver = NSKeyedArchiver;
 	};
+	"-finishTasksAndInvalidate" = {
+	    NSURLSession = NSURLSession;
+	};
 	"-fire" = {
 	    NSTimer = NSTimer;
 	};
@@ -7144,6 +7208,9 @@
 	};
 	"-generatesDecimalNumbers" = {
 	    NSNumberFormatter = NSNumberFormatter;
+	};
+	"-getAllTasksWithCompletionHandler:" = {
+	    NSURLSession = NSURLSession;
 	};
 	"-getArgument:atIndex:" = {
 	    NSInvocation = NSInvocation;
@@ -7233,6 +7300,9 @@
 	    NSArray = NSArray;
 	    NSOrderedSet = NSOrderedSet;
 	};
+	"-getOffset:error:" = {
+	    NSFileHandle = NSFileHandle;
+	};
 	"-getParagraphStart:end:contentsEnd:forRange:" = {
 	    NSString = NSString;
 	};
@@ -7241,6 +7311,9 @@
 	};
 	"-getReturnValue:" = {
 	    NSInvocation = NSInvocation;
+	};
+	"-getTasksWithCompletionHandler:" = {
+	    NSURLSession = NSURLSession;
 	};
 	"-getUUIDBytes:" = {
 	    NSUUID = NSUUID;
@@ -8199,6 +8272,9 @@
 	    NSTimer = NSTimer;
 	    NSXPCConnection = NSXPCConnection;
 	    NSXPCListener = NSXPCConnection;
+	};
+	"-invalidateAndCancel" = {
+	    NSURLSession = NSURLSession;
 	};
 	"-invalidationHandler" = {
 	    NSXPCConnection = NSXPCConnection;
@@ -10589,7 +10665,13 @@
 	"-seekToEndOfFile" = {
 	    NSFileHandle = NSFileHandle;
 	};
+	"-seekToEndReturningOffset:error:" = {
+	    NSFileHandle = NSFileHandle;
+	};
 	"-seekToFileOffset:" = {
+	    NSFileHandle = NSFileHandle;
+	};
+	"-seekToOffset:error:" = {
 	    NSFileHandle = NSFileHandle;
 	};
 	"-selector" = {
@@ -10657,6 +10739,9 @@
 	};
 	"-serviceName" = {
 	    NSXPCConnection = NSXPCConnection;
+	};
+	"-sessionDescription" = {
+	    NSURLSession = NSURLSession;
 	};
 	"-set" = {
 	    NSOrderedSet = NSOrderedSet;
@@ -11610,6 +11695,9 @@
 	};
 	"-setServiceName:" = {
 	    NSXPCConnection = NSXPCConnection;
+	};
+	"-setSessionDescription:" = {
+	    NSURLSession = NSURLSession;
 	};
 	"-setSet:" = {
 	    NSMutableSet = NSSet;
@@ -12707,6 +12795,21 @@
 	"-updateFromPath:" = {
 	    NSFileWrapper = NSFileWrapper;
 	};
+	"-uploadTaskWithRequest:fromData:" = {
+	    NSURLSession = NSURLSession;
+	};
+	"-uploadTaskWithRequest:fromData:completionHandler:" = {
+	    "NSURLSession(NSURLSessionAsynchronousConvenience)" = NSURLSession;
+	};
+	"-uploadTaskWithRequest:fromFile:" = {
+	    NSURLSession = NSURLSession;
+	};
+	"-uploadTaskWithRequest:fromFile:completionHandler:" = {
+	    "NSURLSession(NSURLSessionAsynchronousConvenience)" = NSURLSession;
+	};
+	"-uploadTaskWithStreamedRequest:" = {
+	    NSURLSession = NSURLSession;
+	};
 	"-uppercaseString" = {
 	    NSString = NSString;
 	};
@@ -13475,6 +13578,7 @@
 	);
 	"../Headers/Foundation/NSURLSession.h" = (
 	    "../Documentation/Base/NSURLSession.gsdoc",
+	    "../Documentation/Base/Functions.gsdoc",
 	    "../Documentation/Base/TypesAndConstants.gsdoc"
 	);
 	"../Headers/Foundation/NSUUID.h" = (
@@ -14284,6 +14388,7 @@
 	NSURLQueryItem = NSObject;
 	NSURLRequest = NSObject;
 	NSURLResponse = NSObject;
+	NSURLSession = NSObject;
 	NSURLSessionConfiguration = NSObject;
 	NSURLSessionDataTask = NSURLSessionTask;
 	NSURLSessionDownloadTask = NSURLSessionTask;
@@ -14498,7 +14603,9 @@
     type = {
 	GSDebugAllocationTraceFunction = TypesAndConstants;
 	GSFileWrapperType = TypesAndConstants;
+	GSRegexEnumerationCallback = TypesAndConstants;
 	NSActivityOptions = TypesAndConstants;
+	NSAlignmentOptions = TypesAndConstants;
 	NSAttributedStringKey = TypesAndConstants;
 	NSBackgroundActivityResult = TypesAndConstants;
 	NSBinarySearchingOptions = TypesAndConstants;
@@ -14623,6 +14730,7 @@
 	NSURLRequestNetworkServiceType = TypesAndConstants;
 	NSURLSessionAuthChallengeDisposition = TypesAndConstants;
 	NSURLSessionResponseDisposition = TypesAndConstants;
+	NSURLSessionTaskState = TypesAndConstants;
 	NSUserNotificationActivationType = TypesAndConstants;
 	NSXMLDTDNodeKind = TypesAndConstants;
 	NSXMLDocumentContentKind = TypesAndConstants;
@@ -14632,6 +14740,7 @@
 	NSZone = TypesAndConstants;
 	OSType = TypesAndConstants;
 	RunLoopEventType = TypesAndConstants;
+	"_NSObjCValueType" = TypesAndConstants;
 	"gid_t" = TypesAndConstants;
 	"gsuuid_t" = TypesAndConstants;
 	"pid_t" = TypesAndConstants;
@@ -15866,6 +15975,7 @@
 	    "-availableData" = NSFileHandle;
 	    "-closeFile" = NSFileHandle;
 	    "-fileDescriptor" = NSFileHandle;
+	    "-getOffset:error:" = NSFileHandle;
 	    "-initWithFileDescriptor:" = NSFileHandle;
 	    "-initWithFileDescriptor:closeOnDealloc:" = NSFileHandle;
 	    "-initWithNativeHandle:" = NSFileHandle;
@@ -15879,7 +15989,9 @@
 	    "-readToEndOfFileInBackgroundAndNotify" = NSFileHandle;
 	    "-readToEndOfFileInBackgroundAndNotifyForModes:" = NSFileHandle;
 	    "-seekToEndOfFile" = NSFileHandle;
+	    "-seekToEndReturningOffset:error:" = NSFileHandle;
 	    "-seekToFileOffset:" = NSFileHandle;
+	    "-seekToOffset:error:" = NSFileHandle;
 	    "-synchronizeFile" = NSFileHandle;
 	    "-truncateAtOffset:error:" = NSFileHandle;
 	    "-truncateFileAtOffset:" = NSFileHandle;
@@ -17667,6 +17779,7 @@
 	NSRegularExpression = {
 	    "+escapedPatternForString:" = NSRegularExpression;
 	    "+regularExpressionWithPattern:options:error:" = NSRegularExpression;
+	    "-enumerateMatchesInString:options:range:callback:context:" = NSRegularExpression;
 	    "-enumerateMatchesInString:options:range:usingBlock:" = NSRegularExpression;
 	    "-firstMatchInString:options:range:" = NSRegularExpression;
 	    "-initWithPattern:options:error:" = NSRegularExpression;
@@ -18407,6 +18520,37 @@
 	    "-suggestedFilename" = NSURLResponse;
 	    "-textEncodingName" = NSURLResponse;
 	};
+	NSURLSession = {
+	    "+sessionWithConfiguration:" = NSURLSession;
+	    "+sessionWithConfiguration:delegate:delegateQueue:" = NSURLSession;
+	    "+sharedSession" = NSURLSession;
+	    "-configuration" = NSURLSession;
+	    "-dataTaskWithRequest:" = NSURLSession;
+	    "-dataTaskWithURL:" = NSURLSession;
+	    "-delegate" = NSURLSession;
+	    "-delegateQueue" = NSURLSession;
+	    "-downloadTaskWithRequest:" = NSURLSession;
+	    "-downloadTaskWithResumeData:" = NSURLSession;
+	    "-downloadTaskWithURL:" = NSURLSession;
+	    "-finishTasksAndInvalidate" = NSURLSession;
+	    "-getAllTasksWithCompletionHandler:" = NSURLSession;
+	    "-getTasksWithCompletionHandler:" = NSURLSession;
+	    "-invalidateAndCancel" = NSURLSession;
+	    "-sessionDescription" = NSURLSession;
+	    "-setSessionDescription:" = NSURLSession;
+	    "-uploadTaskWithRequest:fromData:" = NSURLSession;
+	    "-uploadTaskWithRequest:fromFile:" = NSURLSession;
+	    "-uploadTaskWithStreamedRequest:" = NSURLSession;
+	};
+	"NSURLSession(NSURLSessionAsynchronousConvenience)" = {
+	    "-dataTaskWithRequest:completionHandler:" = NSURLSession;
+	    "-dataTaskWithURL:completionHandler:" = NSURLSession;
+	    "-downloadTaskWithRequest:completionHandler:" = NSURLSession;
+	    "-downloadTaskWithResumeData:completionHandler:" = NSURLSession;
+	    "-downloadTaskWithURL:completionHandler:" = NSURLSession;
+	    "-uploadTaskWithRequest:fromData:completionHandler:" = NSURLSession;
+	    "-uploadTaskWithRequest:fromFile:completionHandler:" = NSURLSession;
+	};
 	NSURLSessionConfiguration = {
 	    "+backgroundSessionConfigurationWithIdentifier:" = NSURLSession;
 	    "+defaultSessionConfiguration" = NSURLSession;
@@ -18860,12 +19004,14 @@
 	NSValue = {
 	    "+value:withObjCType:" = NSValue;
 	    "+valueWithBytes:objCType:" = NSValue;
+	    "+valueWithEdgeInsets:" = NSValue;
 	    "+valueWithNonretainedObject:" = NSValue;
 	    "+valueWithPoint:" = NSValue;
 	    "+valueWithPointer:" = NSValue;
 	    "+valueWithRange:" = NSValue;
 	    "+valueWithRect:" = NSValue;
 	    "+valueWithSize:" = NSValue;
+	    "-edgeInsetsValue" = NSValue;
 	    "-getValue:" = NSValue;
 	    "-initWithBytes:objCType:" = NSValue;
 	    "-isEqualToValue:" = NSValue;

@@ -4486,7 +4486,14 @@ notice and this notice are preserved.
           . <br /> Object allocation debugging should not affect
           performance too much, and is very useful as it
           allows you to monitor how many objects of each class
-          your application has allocated.
+          your application has allocated. <br /> NB. For much more
+          detailed diagnosis of memory leaks, the GNUstep
+          additional method
+          <ref type="method" id="-trackOwnership" class="NSObject">
+            [NSObject -trackOwnership]
+          </ref>
+          may be used to log the location of the memory lifcycle of
+          a particular object.
         </desc>
       </function>
       <function type="void" name="GSDebugAllocationAdd" ovadd="1.0.0">
@@ -5168,6 +5175,17 @@ notice and this notice are preserved.
           defining components are integers.
         </desc>
       </function>
+      <function type="NSRect" name="NSIntegralRectWithOptions" ovadd="1.0.0">
+        <arg type="NSRect">aRect</arg>
+        <arg type="NSAlignmentOptions">options</arg>
+        <desc>
+          Returns a rectangle obtained by expanding
+          <var>aRect</var> minimally so that all four of its
+          defining components are integers, using the
+          specified alignment <var>options</var> to control
+          rounding behavior.
+        </desc>
+      </function>
       <function type="NSRect" name="NSIntersectionRect" ovadd="1.0.0">
         <arg type="NSRect">aRect</arg>
         <arg type="NSRect">bRect</arg>
@@ -5285,6 +5303,12 @@ notice and this notice are preserved.
           vertically by <var>dy</var>.
         </desc>
       </function>
+      <function type="NSPoint" name="NSPointFromCGPoint" ovadd="10.5.0">
+        <arg type="CGPoint">point</arg>
+        <desc>
+          Return an NSPoint from CGPoint
+        </desc>
+      </function>
       <function type="NSPoint" name="NSPointFromString" ovadd="1.0.0">
         <arg type="NSString*">string</arg>
         <desc>
@@ -5301,6 +5325,18 @@ notice and this notice are preserved.
           <var>aRect</var>, <code>YES</code>)'.
         </desc>
       </function>
+      <function type="CGPoint" name="NSPointToCGPoint" ovadd="10.5.0">
+        <arg type="NSPoint">point</arg>
+        <desc>
+          Return an CGPoint from NSPoint
+        </desc>
+      </function>
+      <function type="NSRect" name="NSRectFromCGRect" ovadd="10.5.0">
+        <arg type="CGRect">rect</arg>
+        <desc>
+          Return an NSRect from CGRect.
+        </desc>
+      </function>
       <function type="NSRect" name="NSRectFromString" ovadd="1.0.0">
         <arg type="NSString*">string</arg>
         <desc>
@@ -5310,12 +5346,30 @@ notice and this notice are preserved.
           fails.
         </desc>
       </function>
+      <function type="CGRect" name="NSRectToCGRect" ovadd="10.5.0">
+        <arg type="NSRect">rect</arg>
+        <desc>
+          Return an CGRect from NSRect.
+        </desc>
+      </function>
+      <function type="NSSize" name="NSSizeFromCGSize" ovadd="10.5.0">
+        <arg type="CGSize">size</arg>
+        <desc>
+          Return an NSSize from CGSize
+        </desc>
+      </function>
       <function type="NSSize" name="NSSizeFromString" ovadd="1.0.0">
         <arg type="NSString*">string</arg>
         <desc>
           Parses size from <var>string</var> of form "
           <code>{width=a; height=b}</code> ". Size of 0,0
           returned if parsing fails.
+        </desc>
+      </function>
+      <function type="CGSize" name="NSSizeToCGSize" ovadd="10.5.0">
+        <arg type="NSSize">size</arg>
+        <desc>
+          Return an CGSize from NSSize
         </desc>
       </function>
       <function type="NSString*" name="NSStringFromPoint" ovadd="1.0.0">
@@ -6365,6 +6419,28 @@ notice and this notice are preserved.
       </function>
     </chapter>
 <!--EndNSThreadFunctions-->
+<!--StartNSURLSessionFunctions-->
+    <chapter>
+      <heading>NSURLSession functions</heading>
+      <p></p>
+      <function type="void(^" name="GSNSURLSessionDataCompletionHandler" ovadd="10.9.0">
+        <arg type="NSData*">data</arg>
+        <arg type="NSURLResponse*">response</arg>
+        <arg type="NSError*">error</arg>
+        <desc>
+          <em>Description forthcoming.</em>
+        </desc>
+      </function>
+      <function type="void(^" name="GSNSURLSessionDownloadCompletionHandler" ovadd="10.9.0">
+        <arg type="NSURL*">location</arg>
+        <arg type="NSURLResponse*">response</arg>
+        <arg type="NSError*">error</arg>
+        <desc>
+          <em>Description forthcoming.</em>
+        </desc>
+      </function>
+    </chapter>
+<!--EndNSURLSessionFunctions-->
 <!--StartNSZoneFunctions-->
     <chapter>
       <heading>NSZone functions</heading>
