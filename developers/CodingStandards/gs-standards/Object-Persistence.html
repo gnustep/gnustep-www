@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Object Persistence (Coding Standards for GNUstep Libraries)</title>
+
+<meta name="description" content="Object Persistence (Coding Standards for GNUstep Libraries)">
+<meta name="keywords" content="Object Persistence (Coding Standards for GNUstep Libraries)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html" rel="up" title="Top">
+<link href="Documentation.html" rel="next" title="Documentation">
+<link href="Naming-Conventions.html" rel="prev" title="Naming Conventions">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Object-Persistence">
+<div class="nav-panel">
+<p>
+Next: <a href="Documentation.html" accesskey="n" rel="next">Documentation</a>, Previous: <a href="Naming-Conventions.html" accesskey="p" rel="prev">Naming Conventions</a>, Up: <a href="index.html" accesskey="u" rel="up">Coding Standards</a> &nbsp; </p>
+</div>
+<hr>
+<h3 class="section" id="Object-Persistence-1"><span>1.8 Object Persistence<a class="copiable-link" href="#Object-Persistence-1"> &para;</a></span></h3>
+
+<p>The standard method of saving and restoring object information in GNUstep
+is through the use of the -encodeWithCoder: and -initWithCoder: methods.
+Any object which requires persistence implements these methods. They are
+used, for instance by Gorm, to save GUI interface elements. It is important
+that all changes to these methods be backward compatible with previously
+stored archives (for instance, those created by Gorm). The easiest way to do
+this is to use class version numbers to indicate which archive configuration
+should be read.
+Modern implementations are expected to suppoort keyed archiving and should
+use the same keys that are used in OSX.
+</p>
+</div>
+
+
+
+</body>
+</html>
