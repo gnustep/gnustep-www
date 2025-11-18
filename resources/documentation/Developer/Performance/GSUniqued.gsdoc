@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!DOCTYPE gsdoc PUBLIC "-//GNUstep//DTD gsdoc 1.0.4//EN" "http://www.gnustep.org/gsdoc-1_0_4.dtd">
+<gsdoc base="GSUniqued" stylesheeturl="default-styles.css">
+  <head>
+    <title>GSUniqued class documentation</title>
+    <author name="Richard Frith-Macdonald">
+      <email address="rfm@gnu.org">
+        rfm@gnu.org
+      </email>
+    </author>
+    <date>Generated at 2025-11-18 10:33:49 +0100</date>
+    <copy>2014 Free Software Foundation, Inc.</copy>
+  </head>
+  <body>
+    <front><contents /></front>
+    <chapter>
+      <heading>
+        Software documentation for the GSUniqued class
+      </heading>
+      <class name="GSUniqued" super="NSObject">
+        <declared>GSUniqued.h</declared>
+        <desc>
+          <strong>Class</strong> used to unique other objects.
+          <br />
+          <p>
+            The point of this class is to lower the memory
+            footprint and speed up comparisons (pointer
+            equality) in cases where an application stores
+            multiple copies of the same object in various
+            maps. <br /> Since uniquing is performed by storing
+            an immutable copy of the original object in a map until
+            there are no further references to that object, it's
+            pointless to use this uniquing unless the
+            application would be storing at least two
+            copies of the object. <br /> Also, since this is
+            thread-safe there is a lock management overhead
+            wherever a uniqued object is released, so
+            performance gains are to be expected only if
+            the uniqued object has a relatively
+            <strong>long</strong> lifetime and is tested for
+            equality with other instances frequently. <br />
+            In <strong>short</strong>, use with care; while uniquing
+            can have a big performance advantage for some programs,
+            this is actually quite rare.
+          </p>
+          <p>
+            The internal implementation of the uniquing works by
+            taking immutable copies of the objects to be
+            uniqued, storing those copies in a hash table, and
+            swizzling their class pointers to a sub-class
+            which will automatically remove the instance from the
+            hash table before it is deallocated. <br /> Access to
+            the hash table is protected by locks so that uniqued
+            objects may be used freely in multiple threads.
+            <br /> The name of the subclass used is the name of
+            the original class with 'GSUniqued' added as a prefix.
+          </p>
+        </desc>
+        <method type="id" factory="yes">
+          <sel>copyUniqued:</sel>
+          <arg type="id&lt;NSObject,NSCopying&gt;">anObject</arg>
+          <desc>
+            This method returns a copy of its argument, uniqued so
+            that other such copies of equal objects will be the
+            same instance. <br /> The argument must respond to
+            <ref type="method" id="-copyWithZone:">
+              -copyWithZone:
+            </ref>
+            by returning an instance of class of immutable objects
+            (ie where the <ref type="method" id="-hash">-hash</ref>
+            and <ref type="method" id="-isEqual:">-isEqual:</ref>
+            methods are stable for that instance).
+          </desc>
+        </method>
+      </class>
+    </chapter>
+    <chapter>
+      <heading>
+        Software documentation for the NSObject(GSUniqued)
+        category
+      </heading>
+      <category name="GSUniqued" class="NSObject">
+        <declared>GSUniqued.h</declared>
+        <desc>
+          Category for uniquing any copyable object. <br />
+          NB. This must only be used by classes for which
+          <ref type="method" id="-copyWithZone:">
+            -copyWithZone:
+          </ref>
+          produces an instance of an immutable class.
+        </desc>
+        <method type="id">
+          <sel>copyUniqued</sel>
+          <desc>
+            This method returns a copy of the receiver uniqued so
+            that other such copies of equal objects content will
+            be the same instance.
+          </desc>
+        </method>
+      </category>
+    </chapter>
+  </body>
+</gsdoc>
