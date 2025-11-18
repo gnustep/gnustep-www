@@ -1,4 +1,9 @@
 {
+    author = {
+	"Richard Frith-Macdonald" = (
+	    "richard@brainstorm.co.uk"
+	);
+    };
     class = {
 	AGSHtml = AGSHtml;
 	AGSIndex = AGSIndex;
@@ -11,6 +16,8 @@
 	    category = AGSHtml;
 	    chap = AGSHtml;
 	    classname = AGSHtml;
+	    cssNavigation = AGSHtml;
+	    fileName = AGSHtml;
 	    globalRefs = AGSHtml;
 	    heading = AGSHtml;
 	    indent = AGSHtml;
@@ -26,6 +33,8 @@
 	    sssect = AGSHtml;
 	    unit = AGSHtml;
 	    upFile = AGSHtml;
+	    verbose = AGSHtml;
+	    warn = AGSHtml;
 	};
 	AGSIndex = {
 	    base = AGSIndex;
@@ -53,6 +62,7 @@
 	    buffer = AGSParser;
 	    comment = AGSParser;
 	    commentsRead = AGSParser;
+	    debug = AGSParser;
 	    declared = AGSParser;
 	    documentAllInstanceVariables = AGSParser;
 	    documentInstanceVariables = AGSParser;
@@ -65,6 +75,7 @@
 	    inArgList = AGSParser;
 	    inHeader = AGSParser;
 	    inInstanceVariables = AGSParser;
+	    inPreprocessorDirective = AGSParser;
 	    inUnclosedExample = AGSParser;
 	    info = AGSParser;
 	    itemName = AGSParser;
@@ -81,6 +92,9 @@
 	    warn = AGSParser;
 	    wordMap = AGSParser;
 	};
+    };
+    function = {
+	commonRoot = autogsdoc;
     };
     ivariable = {
 	args = {
@@ -111,6 +125,12 @@
 	commentsRead = {
 	    AGSParser = AGSParser;
 	};
+	cssNavigation = {
+	    AGSHtml = AGSHtml;
+	};
+	debug = {
+	    AGSParser = AGSParser;
+	};
 	declared = {
 	    AGSParser = AGSParser;
 	};
@@ -121,6 +141,7 @@
 	    AGSParser = AGSParser;
 	};
 	fileName = {
+	    AGSHtml = AGSHtml;
 	    AGSParser = AGSParser;
 	};
 	globalRefs = {
@@ -153,6 +174,9 @@
 	    AGSParser = AGSParser;
 	};
 	inInstanceVariables = {
+	    AGSParser = AGSParser;
+	};
+	inPreprocessorDirective = {
 	    AGSParser = AGSParser;
 	};
 	inUnclosedExample = {
@@ -244,10 +268,12 @@
 	    AGSHtml = AGSHtml;
 	};
 	verbose = {
+	    AGSHtml = AGSHtml;
 	    AGSOutput = AGSOutput;
 	    AGSParser = AGSParser;
 	};
 	warn = {
+	    AGSHtml = AGSHtml;
 	    AGSOutput = AGSOutput;
 	    AGSParser = AGSParser;
 	};
@@ -259,11 +285,20 @@
 	"-addInformalProtocols:" = {
 	    AGSIndex = AGSIndex;
 	};
+	"-authors" = {
+	    AGSIndex = AGSIndex;
+	};
 	"-checkComment:unit:info:" = {
 	    AGSOutput = AGSOutput;
 	};
+	"-debug" = {
+	    AGSParser = AGSParser;
+	};
 	"-decIndent" = {
 	    AGSHtml = AGSHtml;
+	};
+	"-find:" = {
+	    AGSIndex = AGSIndex;
 	};
 	"-fitWords:from:to:maxSize:output:" = {
 	    AGSOutput = AGSOutput;
@@ -295,6 +330,9 @@
 	"-makeRefs:" = {
 	    AGSIndex = AGSIndex;
 	};
+	"-makeURL:ofType:isRef:" = {
+	    AGSHtml = AGSHtml;
+	};
 	"-mergeRefs:override:" = {
 	    AGSIndex = AGSIndex;
 	};
@@ -313,7 +351,7 @@
 	"-outputDecl:kind:to:" = {
 	    AGSOutput = AGSOutput;
 	};
-	"-outputDocument:" = {
+	"-outputDocument:name:" = {
 	    AGSHtml = AGSHtml;
 	};
 	"-outputFunction:to:" = {
@@ -359,7 +397,7 @@
 	"-parseComment" = {
 	    AGSParser = AGSParser;
 	};
-	"-parseDeclaration" = {
+	"-parseDeclarations" = {
 	    AGSParser = AGSParser;
 	};
 	"-parseFile:isSource:" = {
@@ -404,6 +442,9 @@
 	"-parseSpace:" = {
 	    AGSParser = AGSParser;
 	};
+	"-parseSpaceOrGeneric" = {
+	    AGSParser = AGSParser;
+	};
 	"-parseVersion" = {
 	    AGSParser = AGSParser;
 	};
@@ -419,6 +460,9 @@
 	"-reset" = {
 	    AGSParser = AGSParser;
 	};
+	"-setDebug:" = {
+	    AGSParser = AGSParser;
+	};
 	"-setDeclared:" = {
 	    AGSParser = AGSParser;
 	};
@@ -430,6 +474,9 @@
 	};
 	"-setDocumentInstanceVariables:" = {
 	    AGSParser = AGSParser;
+	};
+	"-setEmail:forAuthor:" = {
+	    AGSIndex = AGSIndex;
 	};
 	"-setGenerateStandards:" = {
 	    AGSParser = AGSParser;
@@ -473,10 +520,19 @@
 	"-skipArray" = {
 	    AGSParser = AGSParser;
 	};
+	"-skipAttribute:" = {
+	    AGSParser = AGSParser;
+	};
 	"-skipBlock" = {
 	    AGSParser = AGSParser;
 	};
 	"-skipBlock:" = {
+	    AGSParser = AGSParser;
+	};
+	"-skipGeneric" = {
+	    AGSParser = AGSParser;
+	};
+	"-skipIfAttribute" = {
 	    AGSParser = AGSParser;
 	};
 	"-skipLiteral" = {
@@ -518,6 +574,9 @@
 	"-unitRef:type:unit:" = {
 	    AGSIndex = AGSIndex;
 	};
+	"-where" = {
+	    AGSParser = AGSParser;
+	};
     };
     output = {
 	"AGSHtml.h" = (
@@ -550,7 +609,6 @@
 	    "AGSParser.m"
 	);
 	"autogsdoc.m" = (
-	    "autogsdoc.m",
 	    "autogsdoc.m"
 	);
     };
@@ -570,6 +628,9 @@
 	autogsdoc = "Autogsdoc... a tool to make documentation from source
       code";
     };
+    tool = {
+	autogsdoc = autogsdoc;
+    };
     unitmethods = {
 	AGSHtml = {
 	    "-decIndent" = AGSHtml;
@@ -577,8 +638,9 @@
 	    "-makeAnchor:ofType:name:" = AGSHtml;
 	    "-makeLink:ofType:inUnit:isRef:" = AGSHtml;
 	    "-makeLink:ofType:isRef:" = AGSHtml;
+	    "-makeURL:ofType:isRef:" = AGSHtml;
 	    "-outputBlock:to:inPara:" = AGSHtml;
-	    "-outputDocument:" = AGSHtml;
+	    "-outputDocument:name:" = AGSHtml;
 	    "-outputIndex:scope:title:style:target:to:" = AGSHtml;
 	    "-outputList:to:" = AGSHtml;
 	    "-outputNode:to:" = AGSHtml;
@@ -595,6 +657,8 @@
 	};
 	AGSIndex = {
 	    "-addInformalProtocols:" = AGSIndex;
+	    "-authors" = AGSIndex;
+	    "-find:" = AGSIndex;
 	    "-globalRef:type:" = AGSIndex;
 	    "-makeRefs:" = AGSIndex;
 	    "-mergeRefs:override:" = AGSIndex;
@@ -602,6 +666,7 @@
 	    "-outputsForHeader:" = AGSIndex;
 	    "-refs" = AGSIndex;
 	    "-setDirectory:" = AGSIndex;
+	    "-setEmail:forAuthor:" = AGSIndex;
 	    "-setGlobalRef:type:" = AGSIndex;
 	    "-setOutputs:forHeader:" = AGSIndex;
 	    "-setRelationship:from:to:" = AGSIndex;
@@ -626,12 +691,13 @@
 	    "-split:" = AGSOutput;
 	};
 	AGSParser = {
+	    "-debug" = AGSParser;
 	    "-info" = AGSParser;
 	    "-init" = AGSParser;
 	    "-orderedSymbolDeclarationsByUnit" = AGSParser;
 	    "-outputs" = AGSParser;
 	    "-parseComment" = AGSParser;
-	    "-parseDeclaration" = AGSParser;
+	    "-parseDeclarations" = AGSParser;
 	    "-parseFile:isSource:" = AGSParser;
 	    "-parseIdentifier" = AGSParser;
 	    "-parseImplementation" = AGSParser;
@@ -646,8 +712,10 @@
 	    "-parseProtocolList" = AGSParser;
 	    "-parseSpace" = AGSParser;
 	    "-parseSpace:" = AGSParser;
+	    "-parseSpaceOrGeneric" = AGSParser;
 	    "-parseVersion" = AGSParser;
 	    "-reset" = AGSParser;
+	    "-setDebug:" = AGSParser;
 	    "-setDeclared:" = AGSParser;
 	    "-setDocumentAllInstanceVariables:" = AGSParser;
 	    "-setDocumentInstanceVariables:" = AGSParser;
@@ -656,8 +724,11 @@
 	    "-setWordMap:" = AGSParser;
 	    "-setupBuffer" = AGSParser;
 	    "-skipArray" = AGSParser;
+	    "-skipAttribute:" = AGSParser;
 	    "-skipBlock" = AGSParser;
 	    "-skipBlock:" = AGSParser;
+	    "-skipGeneric" = AGSParser;
+	    "-skipIfAttribute" = AGSParser;
 	    "-skipLiteral" = AGSParser;
 	    "-skipRemainderOfLine" = AGSParser;
 	    "-skipSpaces" = AGSParser;
@@ -666,6 +737,7 @@
 	    "-skipToEndOfLine" = AGSParser;
 	    "-skipUnit" = AGSParser;
 	    "-sources" = AGSParser;
+	    "-where" = AGSParser;
 	};
     };
 }

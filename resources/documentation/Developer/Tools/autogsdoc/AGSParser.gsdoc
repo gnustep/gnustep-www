@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE gsdoc PUBLIC "-//GNUstep//DTD gsdoc 1.0.4//EN" "http://www.gnustep.org/gsdoc-1_0_4.dtd">
-<gsdoc base="AGSParser" up="autogsdoc">
+<gsdoc base="AGSParser" stylesheeturl="default-styles.css" up="autogsdoc">
   <head>
     <title>
       AGSParser...a class to get documention info from ObjC
@@ -11,6 +11,7 @@
         richard@brainstorm.co.uk
       </email>
     </author>
+    <date>Generated at 2025-11-18 15:27:52 +0100</date>
     <abstract>
       This is the AGSParser class... and some autogsdoc examples.
       The AGSParser class is designed to produce a property-list
@@ -45,6 +46,11 @@
           </desc>
         </ivariable>
         <ivariable type="BOOL" name="commentsRead" validity="protected">
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </ivariable>
+        <ivariable type="BOOL" name="debug" validity="protected">
           <desc>
             <em>Description forthcoming.</em>
           </desc>
@@ -105,6 +111,11 @@
           </desc>
         </ivariable>
         <ivariable type="BOOL" name="inInstanceVariables" validity="protected">
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </ivariable>
+        <ivariable type="BOOL" name="inPreprocessorDirective" validity="protected">
           <desc>
             <em>Description forthcoming.</em>
           </desc>
@@ -184,6 +195,12 @@
             <em>Description forthcoming.</em>
           </desc>
         </ivariable>
+        <method type="BOOL">
+          <sel>debug</sel>
+          <desc>
+            Returns the current debug setting for the parser.
+          </desc>
+        </method>
         <method type="NSMutableDictionary*">
           <sel>info</sel>
           <desc>
@@ -243,13 +260,11 @@
             checked for the prsence of file header markup,
             which is extracted into the 'info' dictionary. <br />
             There are various sections we can extract from the
-            document - at most one of each. If date and
-            version are not supplied RCS Date and Revision tags
-            will be extracted where available.
+            document - at most one of each.
           </desc>
         </method>
-        <method type="NSMutableDictionary*">
-          <sel>parseDeclaration</sel>
+        <method type="NSMutableArray*">
+          <sel>parseDeclarations</sel>
           <desc>
             We handle struct, union, and enum declarations by
             skipping the stuff enclosed in curly braces. If
@@ -377,6 +392,12 @@
             'comment' ivar.
           </desc>
         </method>
+        <method type="unsigned">
+          <sel>parseSpaceOrGeneric</sel>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
         <method type="NSString*">
           <sel>parseVersion</sel>
           <desc>
@@ -387,6 +408,13 @@
           <sel>reset</sel>
           <desc>
             <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="void">
+          <sel>setDebug:</sel>
+          <arg type="BOOL">aFlag</arg>
+          <desc>
+            Turns debug on/off
           </desc>
         </method>
         <method type="void">
@@ -434,7 +462,7 @@
         </method>
         <method type="void">
           <sel>setStandards:</sel>
-          <arg type="NSMutableDictionary*">dict</arg>
+          <arg type="id">dst</arg>
           <desc>
             Store the current standards information derived from
             preprocessor conditionals in the supplied
@@ -475,6 +503,13 @@
           </desc>
         </method>
         <method type="unsigned">
+          <sel>skipAttribute:</sel>
+          <arg type="NSString*">s</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="unsigned">
           <sel>skipBlock</sel>
           <desc>
             Skip a bracketed block. Expect the current character
@@ -485,6 +520,18 @@
         <method type="unsigned">
           <sel>skipBlock:</sel>
           <arg type="BOOL*">isEmpty</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="unsigned">
+          <sel>skipGeneric</sel>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="unsigned">
+          <sel>skipIfAttribute</sel>
           <desc>
             <em>Description forthcoming.</em>
           </desc>
@@ -540,6 +587,12 @@
         </method>
         <method type="NSMutableArray*">
           <sel>sources</sel>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="NSString*">
+          <sel>where</sel>
           <desc>
             <em>Description forthcoming.</em>
           </desc>

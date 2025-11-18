@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE gsdoc PUBLIC "-//GNUstep//DTD gsdoc 1.0.4//EN" "http://www.gnustep.org/gsdoc-1_0_4.dtd">
-<gsdoc base="AGSHtml" up="autogsdoc">
+<gsdoc base="AGSHtml" stylesheeturl="default-styles.css" up="autogsdoc">
   <head>
     <title>
       AGSHtml... a class to output html for a gsdoc file
@@ -10,6 +10,7 @@
         richard@brainstorm.co.uk
       </email>
     </author>
+    <date>Generated at 2025-11-18 15:27:52 +0100</date>
     <copy>2001 Free Software Foundation, Inc.</copy>
   </head>
   <body>
@@ -39,6 +40,16 @@
           </desc>
         </ivariable>
         <ivariable type="NSString*" name="classname" validity="protected">
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </ivariable>
+        <ivariable type="BOOL" name="cssNavigation" validity="protected">
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </ivariable>
+        <ivariable type="NSString*" name="fileName" validity="protected">
           <desc>
             <em>Description forthcoming.</em>
           </desc>
@@ -114,6 +125,16 @@
           </desc>
         </ivariable>
         <ivariable type="NSString*" name="upFile" validity="protected">
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </ivariable>
+        <ivariable type="BOOL" name="verbose" validity="protected">
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </ivariable>
+        <ivariable type="BOOL" name="warn" validity="protected">
           <desc>
             <em>Description forthcoming.</em>
           </desc>
@@ -194,6 +215,17 @@
             to succeed and return the link.
           </desc>
         </method>
+        <method type="NSString*">
+          <sel>makeURL:</sel>
+          <arg type="NSString*">r</arg>
+          <sel>ofType:</sel>
+          <arg type="NSString*">t</arg>
+          <sel>isRef:</sel>
+          <arg type="BOOL">f</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
         <method type="GSXMLNode*">
           <sel>outputBlock:</sel>
           <arg type="GSXMLNode*">node</arg>
@@ -215,6 +247,8 @@
         <method type="NSString*">
           <sel>outputDocument:</sel>
           <arg type="GSXMLNode*">node</arg>
+          <sel>name:</sel>
+          <arg type="NSString*">file</arg>
           <desc>
             <em>Description forthcoming.</em>
           </desc>
@@ -253,10 +287,12 @@
           <sel>to:</sel>
           <arg type="NSMutableString*">buf</arg>
           <desc>
-            Css : TODO print.css <br /> Robots <br /> As a special
-            case, if we have a reference to a function, and we
-            can't find it, we check to see if there is actually a
-            macro of that name and refer to that instead.
+            charset/encoding should be in first 1024
+            bytes, so before title <br /> Robots <br /> As a
+            special case, if we have a reference to a function,
+            and we can't find it, we check to see if there is
+            actually a macro of that name and refer to that
+            instead.
           </desc>
         </method>
         <method type="void">
