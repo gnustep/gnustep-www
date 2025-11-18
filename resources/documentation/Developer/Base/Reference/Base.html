@@ -10,6 +10,7 @@
     <div class="content-bar">
       <div class="content-bar-top">
         <div class="content-bar-top-body">
+          <div class="content-bar-top-body-title">Base</div><br />
           <a href="#nav-bar-classes">Classes</a><br />
           <a href="#nav-bar-protocols">Protocols</a><br />
           <a href="#nav-bar-constants">Constants</a><br />
@@ -313,6 +314,7 @@
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSFileHandleNotificationError">GSFileHandleNotificationError</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSFileHandleWriteCompletionNotification">GSFileHandleWriteCompletionNotification</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyCertificateFileKey">GSHTTPPropertyCertificateFileKey</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyDigestURIOmitsQuery">GSHTTPPropertyDigestURIOmitsQuery</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyKeyFileKey">GSHTTPPropertyKeyFileKey</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyLocalHostKey">GSHTTPPropertyLocalHostKey</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyMethodKey">GSHTTPPropertyMethodKey</a><br />
@@ -730,6 +732,7 @@
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSNonRetainedObjectHashCallBacks">NSNonRetainedObjectHashCallBacks</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSNonRetainedObjectMapKeyCallBacks">NSNonRetainedObjectMapKeyCallBacks</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSNonRetainedObjectMapValueCallBacks">NSNonRetainedObjectMapValueCallBacks</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$NSNotFound">NSNotFound</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSObjectHashCallBacks">NSObjectHashCallBacks</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSObjectInaccessibleException">NSObjectInaccessibleException</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSObjectMapKeyCallBacks">NSObjectMapKeyCallBacks</a><br />
@@ -1218,9 +1221,11 @@
             <a rel="gsdoc" href="Functions.html#macro$GS_API_OSSPEC">GS_API_OSSPEC</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_API_VERSION">GS_API_VERSION</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_CLANG_MINREQ">GS_CLANG_MINREQ</a><br />
+            <a rel="gsdoc" href="Functions.html#macro$GS_DEPRECATED">GS_DEPRECATED</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_DEPRECATED_FUNC">GS_DEPRECATED_FUNC</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_EXPOSE">GS_EXPOSE</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_GCC_MINREQ">GS_GCC_MINREQ</a><br />
+            <a rel="gsdoc" href="Functions.html#macro$GS_NON_PORTABLE">GS_NON_PORTABLE</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_NORETURN_METHOD">GS_NORETURN_METHOD</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_UNIMPLEMENTED">GS_UNIMPLEMENTED</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_UNUSED_ARG">GS_UNUSED_ARG</a><br />
@@ -1295,7 +1300,9 @@
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSCompoundPredicateType">NSCompoundPredicateType</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDataBase64DecodingOptions">NSDataBase64DecodingOptions</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDataBase64EncodingOptions">NSDataBase64EncodingOptions</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#type$NSDataReadingOptions">NSDataReadingOptions</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDataSearchOptions">NSDataSearchOptions</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#type$NSDateComponentEnum">NSDateComponentEnum</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDateComponentsFormatterUnitsStyle">NSDateComponentsFormatterUnitsStyle</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDateComponentsFormatterZeroFormattingBehavior">NSDateComponentsFormatterZeroFormattingBehavior</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDateFormatterBehavior">NSDateFormatterBehavior</a><br />
@@ -1497,7 +1504,6 @@
         <h1><a name="title$Base">GNUstep Base</a></h1>
         <p><b>Copyright:</b> (C) 1993-2023 Free Software Foundation, Inc.</p>
 
-    
               <h1><a name="001000000000">Base</a></h1>
         <p>
 
@@ -1705,9 +1711,39 @@
             <p>
 
 		Setting the user default <code>GSMacOSXCompatible</code> to
-		<code>YES</code> will cause MacOS compatible behavior to be
-		the default at runtime.  This default may however be overridden
-		to provide more fine grained control of system behavior.
+		<code>YES</code> will cause various (normally undesirable)
+		MacOS compatible behaviors to be the default at runtime.<br />
+		Since OSX behavors vary from release to release, this default
+		may also be set to an OSX version number (eg. 10.06) to say
+		that the desired behavior is the one used by that version
+		of the system.  The full version number format is NN.NN.NN
+		(major.minor.subminor) but NN.NN and NN alone are also
+		accepted.
+	                  </p>
+            
+	      
+            <p>
+Typical usage within GNUstep is when Apple remove
+		functionality from their API, break existing behaviors,
+		or have undefined behaviors (such as methods which fail
+		to check for invalid arguments).
+	                  </p>
+            
+	      
+            <p>
+Developers on OSX are encouraged to contribute code to
+		mimic unsupported behaviors corresponding to a particular
+		OSX version as a stop-gap to allow their code to operate
+		with GNUstep until they have a chance to fix it.
+	                  </p>
+            
+	      
+            <p>
+The GSMaxOSXVersion() function is provided as a convenience
+		to allow code to check the requested version compatibility
+		at runtime,  while GNUstep headers contain version checking
+		macros to help avoid the use of version dependent APIs at
+		compile time.
 	                  </p>
             
 	    
@@ -2689,7 +2725,6 @@ MyApp.app/MyApp
 	          </p>
         <div>
 
-      
                   <h1><a name="002000000000">API Documentation</a></h1>
           <ul>
             <li>

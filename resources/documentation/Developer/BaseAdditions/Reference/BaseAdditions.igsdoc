@@ -113,6 +113,7 @@
 	GSTLSPrivateKey = GSTLS;
 	GSTLSSession = GSTLS;
 	GSTreeSAXHandler = GSXML;
+	GSURITemplate = GSURITemplate;
 	GSXMLAttribute = GSXML;
 	GSXMLDocument = GSXML;
 	GSXMLNamespace = GSXML;
@@ -236,6 +237,11 @@
 	    session = GSTLS;
 	    setup = GSTLS;
 	};
+	GSURITemplate = {
+	    base = GSURITemplate;
+	    pattern = GSURITemplate;
+	    terms = GSURITemplate;
+	};
 	GSXMLDocument = {
 	    "_ownsLib" = GSXML;
 	    "_parent" = GSXML;
@@ -280,6 +286,8 @@
 	GSTLSRevokeFile = TypesAndConstants;
 	GSTLSServerName = TypesAndConstants;
 	GSTLSVerify = TypesAndConstants;
+	GSURITemplateErrorDomain = TypesAndConstants;
+	GSURITemplateScanLocationKey = TypesAndConstants;
     };
     function = {
 	GSAutoreleasedBuffer = Functions;
@@ -367,6 +375,7 @@
 	GSLanguagesFromLocale = Functions;
 	GSLastErrorStr = Functions;
 	GSLocaleVariants = Functions;
+	GSMacOSXVersion = Functions;
 	GSNameFromClass = Functions;
 	GSNameFromSelector = Functions;
 	GSObjCAddClassBehavior = Functions;
@@ -410,10 +419,13 @@
 	"gs_consumed" = Functions;
 	"objc_copyWeak" = Functions;
 	"objc_destroyWeak" = Functions;
+	"objc_getAssociatedObject" = Functions;
 	"objc_initWeak" = Functions;
 	"objc_loadWeak" = Functions;
 	"objc_loadWeakRetained" = Functions;
 	"objc_moveWeak" = Functions;
+	"objc_removeAssociatedObjects" = Functions;
+	"objc_setAssociatedObject" = Functions;
 	"objc_storeWeak" = Functions;
 	"uni_cop" = Functions;
 	"uni_is_decomp" = Functions;
@@ -472,6 +484,9 @@
 	};
 	atEnd = {
 	    GSMimeCodingContext = GSMime;
+	};
+	base = {
+	    GSURITemplate = GSURITemplate;
 	};
 	boundary = {
 	    GSMimeParser = GSMime;
@@ -612,6 +627,9 @@
 	    GSTLSDHParams = GSTLS;
 	    GSTLSPrivateKey = GSTLS;
 	};
+	pattern = {
+	    GSURITemplate = GSURITemplate;
+	};
 	problem = {
 	    GSTLSSession = GSTLS;
 	};
@@ -635,6 +653,9 @@
 	};
 	src = {
 	    GSXMLParser = GSXML;
+	};
+	terms = {
+	    GSURITemplate = GSURITemplate;
 	};
 	textEncoding = {
 	    GSMimeSerializer = GSMime;
@@ -686,11 +707,13 @@
 	"GS_API_OSSPEC" = Functions;
 	"GS_API_VERSION" = Functions;
 	"GS_CLANG_MINREQ" = Functions;
+	"GS_DEPRECATED" = Functions;
 	"GS_DEPRECATED_FUNC" = Functions;
 	"GS_EXPOSE" = Functions;
 	"GS_GCC_MINREQ" = Functions;
 	"GS_LOCALISATION_BUNDLE" = Functions;
 	"GS_MAX_OBJECTS_FROM_STACK" = Functions;
+	"GS_NON_PORTABLE" = Functions;
 	"GS_NORETURN_METHOD" = Functions;
 	"GS_PART_MAP_ENUMERATOR" = Functions;
 	"GS_RANGE_CHECK" = Functions;
@@ -781,6 +804,9 @@
 	    GSMimeDocument = GSMime;
 	};
 	"+encodeBase64String:" = {
+	    GSMimeDocument = GSMime;
+	};
+	"+encodingForXml:" = {
 	    GSMimeDocument = GSMime;
 	};
 	"+encodingFromCharset:" = {
@@ -909,6 +935,9 @@
 	"+stringWithFormat:arguments:" = {
 	    "NSString(GNUstepBase)" = "NSString+GNUstepBase";
 	};
+	"+templateWithString:error:" = {
+	    GSURITemplate = GSURITemplate;
+	};
 	"+trackOwnership" = {
 	    "NSObject(GSCleanUp)" = "NSObject+GNUstepBase";
 	};
@@ -948,6 +977,9 @@
 	};
 	"-URLHandleResourceDidFinishLoading:" = {
 	    GSXMLRPC = GSXML;
+	};
+	"-URLWithVariables:relativeToURL:error:" = {
+	    GSURITemplate = GSURITemplate;
 	};
 	"-abort" = {
 	    GSMimeSMTPClient = GSMime;
@@ -1563,6 +1595,9 @@
 	"-pathWithEscapes" = {
 	    "NSURL(GNUstepBase)" = "NSURL+GNUstepBase";
 	};
+	"-pattern" = {
+	    GSURITemplate = GSURITemplate;
+	};
 	"-pending" = {
 	    GSTLSSession = GSTLS;
 	};
@@ -1617,6 +1652,9 @@
 	};
 	"-registerNamespaceWithPrefix:href:" = {
 	    GSXPathContext = GSXML;
+	};
+	"-relativeStringWithVariables:error:" = {
+	    GSURITemplate = GSURITemplate;
 	};
 	"-replaceString:withString:" = {
 	    "NSMutableString(GNUstepBase)" = "NSMutableString+GNUstepBase";
@@ -1956,6 +1994,10 @@
 	    "../Documentation/BaseAdditions/GSTLS.gsdoc",
 	    "../Documentation/BaseAdditions/TypesAndConstants.gsdoc"
 	);
+	"../Headers/GNUstepBase/GSURITemplate.h" = (
+	    "../Documentation/BaseAdditions/GSURITemplate.gsdoc",
+	    "../Documentation/BaseAdditions/TypesAndConstants.gsdoc"
+	);
 	"../Headers/GNUstepBase/GSUnion.h" = (
 	    "../Documentation/BaseAdditions/GSUnion.gsdoc"
 	);
@@ -2050,6 +2092,9 @@
 	"../Headers/GNUstepBase/GSTLS.h" = (
 	    "GSTLS.m"
 	);
+	"../Headers/GNUstepBase/GSURITemplate.h" = (
+	    "Additions/GSURITemplate.m"
+	);
 	"../Headers/GNUstepBase/GSUnion.h" = (
 	    "../Headers/GNUstepBase/GSUnion.h"
 	);
@@ -2130,6 +2175,7 @@
 	GSTLSPrivateKey = GSTLSObject;
 	GSTLSSession = GSTLSObject;
 	GSTreeSAXHandler = GSSAXHandler;
+	GSURITemplate = NSObject;
 	GSXMLAttribute = GSXMLNode;
 	GSXMLDocument = NSObject;
 	GSXMLNamespace = NSObject;
@@ -2149,6 +2195,7 @@
 	GCObject = "GCObject documentation";
 	GSMime = "The MIME parsing system";
 	GSTLS = "GSTLS documentation";
+	GSURITemplate = "GSURITemplate class documentation";
 	GSXML = "The XML and HTML parsing system";
 	"NSArray+GNUstepBase" = "NSArray+GNUstepBase documentation";
 	"NSAttributedString+GNUstepBase" = "NSAttributedString+GNUstepBase documentation";
@@ -2182,9 +2229,11 @@
 	GSMimeErrorCode = TypesAndConstants;
 	GSTLSIOR = TypesAndConstants;
 	GSTLSIOW = TypesAndConstants;
+	GSURITemplateError = TypesAndConstants;
 	NSGNUstepStringEncoding = TypesAndConstants;
 	NSInteger = TypesAndConstants;
 	NSUInteger = TypesAndConstants;
+	"objc_AssociationPolicy" = TypesAndConstants;
 	"struct _GSIMapEnumerator" = TypesAndConstants;
     };
     unitmethods = {
@@ -2218,6 +2267,7 @@
 	    "+documentWithContent:type:name:" = GSMime;
 	    "+encodeBase64:" = GSMime;
 	    "+encodeBase64String:" = GSMime;
+	    "+encodingForXml:" = GSMime;
 	    "+encodingFromCharset:" = GSMime;
 	    "-addContent:" = GSMime;
 	    "-addHeader:" = GSMime;
@@ -2432,6 +2482,12 @@
 	    "-sessionInfo" = GSTLS;
 	    "-verify" = GSTLS;
 	    "-write:length:" = GSTLS;
+	};
+	GSURITemplate = {
+	    "+templateWithString:error:" = GSURITemplate;
+	    "-URLWithVariables:relativeToURL:error:" = GSURITemplate;
+	    "-pattern" = GSURITemplate;
+	    "-relativeStringWithVariables:error:" = GSURITemplate;
 	};
 	GSXMLAttribute = {
 	    "-value" = GSXML;

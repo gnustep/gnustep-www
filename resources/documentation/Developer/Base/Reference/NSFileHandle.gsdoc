@@ -8,7 +8,7 @@
         richard@brainstorm.co.uk
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:18:53 +0100</date>
+    <date>Generated at 2025-11-17 22:53:26 +0100</date>
     <copy>1997 Free Software Foundation, Inc.</copy>
   </head>
   <body>
@@ -218,7 +218,8 @@
           <sel>error:</sel>
           <arg type="out NSError**">error</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Get the current position of the file pointer within the
+            file.
           </desc>
         </method>
         <method type="id" ovadd="1.0.0">
@@ -272,7 +273,7 @@
         </method>
         <method type="NSData*" ovadd="1.0.0">
           <sel>readDataOfLength:</sel>
-          <arg type="unsigned int">len</arg>
+          <arg type="NSUInteger">len</arg>
           <desc>
             Reads up to <var>len</var> bytes from file or
             communications channel into return data.
@@ -286,6 +287,24 @@
             communications channel into return data.
             <br /> If the file is empty, returns an empty data
             item.
+          </desc>
+        </method>
+        <method type="NSData*" ovadd="10.15.0">
+          <sel>readDataToEndOfFileAndReturnError:</sel>
+          <arg type="NSError**">error</arg>
+          <desc>
+            Reads the data synchronously up to the end of file or
+            maximum number of bytes.
+          </desc>
+        </method>
+        <method type="NSData*" ovadd="10.15.0">
+          <sel>readDataUpToLength:</sel>
+          <arg type="NSUInteger">length</arg>
+          <sel>error:</sel>
+          <arg type="NSError**">error</arg>
+          <desc>
+            Reads the data synchronously up to the specified
+            number of bytes.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -337,7 +356,8 @@
           <sel>error:</sel>
           <arg type="out NSError**">error</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the file pointer at the end of the file and
+            returns the new file offset.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -355,7 +375,8 @@
           <sel>error:</sel>
           <arg type="out NSError**">error</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the file pointer to the specified
+            <var>offset</var> within the file.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -403,6 +424,16 @@
           <desc>
             Synchronously writes given data
             <var>item</var> to file or connection.
+          </desc>
+        </method>
+        <method type="BOOL" ovadd="10.15.0">
+          <sel>writeData:</sel>
+          <arg type="NSData*">data</arg>
+          <sel>error:</sel>
+          <arg type="NSError**">error</arg>
+          <desc>
+            Writes the specified <var>data</var> synchronously
+            to the file handle.
           </desc>
         </method>
       </class>

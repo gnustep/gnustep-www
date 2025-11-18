@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE gsdoc PUBLIC "-//GNUstep//DTD gsdoc 1.0.4//EN" "http://www.gnustep.org/gsdoc-1_0_4.dtd">
+<gsdoc base="GSURITemplate" stylesheeturl="default-styles.css" up="BaseAdditions">
+  <head>
+    <title>GSURITemplate class documentation</title>
+    <author name="Richard Frith-Macdonald">
+      <email address="rfm@gnu.org">
+        rfm@gnu.org
+      </email>
+    </author>
+    <date>Generated at 2025-11-17 22:54:53 +0100</date>
+    <copy>2025 Free Software Foundation, Inc.</copy>
+  </head>
+  <body>
+    <front><contents /></front>
+    <chapter>
+      <heading>
+        Software documentation for the GSURITemplate class
+      </heading>
+      <class name="GSURITemplate" super="NSObject" ovadd="0.0.0">
+        <declared>GNUstepBase/GSURITemplate.h</declared>
+        <desc>
+          <strong>Class</strong> for parsing and expanding URL
+          templates acording to the RFC6570 specification
+          (see https://tools.ietf.org/html/rfc6570). eg. template
+          = [GSURITemplate templateWithString:
+          @&quot;/search{?q}&quot;
+          relativeToURL: aURL error: &amp;error];
+        </desc>
+        <ivariable type="NSURL*" name="base" validity="protected" ovadd="0.0.0">
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </ivariable>
+        <ivariable type="NSString*" name="pattern" validity="protected" ovadd="0.0.0">
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </ivariable>
+        <ivariable type="NSMutableArray*" name="terms" validity="protected" ovadd="0.0.0">
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </ivariable>
+        <method type="instancetype" factory="yes" ovadd="0.0.0">
+          <sel>templateWithString:</sel>
+          <arg type="NSString*">aPattern</arg>
+          <sel>error:</sel>
+          <arg type="NSError**">error</arg>
+          <desc>
+            Creates and returns an instance initialized with
+            the given pattern. <br /> The pattern may be either an
+            absolute template or a relative template.
+          </desc>
+        </method>
+        <method type="NSURL*" ovadd="0.0.0">
+          <sel>URLWithVariables:</sel>
+          <arg type="NSDictionary*">variables</arg>
+          <sel>relativeToURL:</sel>
+          <arg type="NSURL*">baseURL</arg>
+          <sel>error:</sel>
+          <arg type="NSError**">error</arg>
+          <desc>
+            Expands the template with the given
+            <var>variables</var> and reurns a new URL relative to
+            the given base URL or, if that is <code>nil</code>,
+            relative to the absolute part of the pattern with
+            which the template was created. <br /> In the absence
+            of any absolute part, this method returns a relative
+            URL.
+          </desc>
+        </method>
+        <method type="NSString*" ovadd="0.0.0">
+          <sel>pattern</sel>
+          <desc>
+            The URI template pattern used to initialize the
+            receiver.
+          </desc>
+        </method>
+        <method type="NSString*" ovadd="0.0.0">
+          <sel>relativeStringWithVariables:</sel>
+          <arg type="NSDictionary*">variables</arg>
+          <sel>error:</sel>
+          <arg type="NSError**">error</arg>
+          <desc>
+            Expands the receiver with the specified
+            <var>variables</var>, returning the relative part of
+            the result. <br /> Returns <code>nil</code> if the
+            template cannot be expanded with the
+            <var>variables</var>. <br />
+          </desc>
+        </method>
+      </class>
+    </chapter>
+  </body>
+</gsdoc>

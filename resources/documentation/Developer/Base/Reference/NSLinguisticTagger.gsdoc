@@ -8,7 +8,7 @@
         greg.casamento@gmail.com
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:18:53 +0100</date>
+    <date>Generated at 2025-11-17 22:53:26 +0100</date>
     <copy>2019 Free Software Foundation, Inc.</copy>
   </head>
   <body>
@@ -81,7 +81,8 @@
           <sel>availableTagSchemesForLanguage:</sel>
           <arg type="NSString*">language</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns all available tag schemes for a specific
+            <var>language</var>.
           </desc>
         </method>
         <method type="NSArray*" factory="yes" ovadd="10.7.0">
@@ -90,14 +91,16 @@
           <sel>language:</sel>
           <arg type="NSString*">language</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns all available tag schemes for the specified
+            <var>unit</var> and <var>language</var>.
           </desc>
         </method>
         <method type="NSString*" factory="yes" ovadd="10.7.0">
           <sel>dominantLanguageForString:</sel>
           <arg type="NSString*">string</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the dominant language for a given
+            <var>string</var>.
           </desc>
         </method>
         <method type="void" factory="yes" ovadd="10.7.0">
@@ -116,7 +119,8 @@
           <sel>usingBlock:</sel>
           <arg type="GSLinguisticTagRangeBoolBlock">block</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Enumerates tags for a <var>string</var> over a
+            <var>range</var> using a <var>block</var>.
           </desc>
         </method>
         <method type="NSLinguisticTag" factory="yes" ovadd="10.7.0">
@@ -133,7 +137,8 @@
           <sel>tokenRange:</sel>
           <arg type="NSRangePointer">tokenRange</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the tag for a character index in a
+            <var>string</var>.
           </desc>
         </method>
         <method type="NSArray*" factory="yes" ovadd="10.7.0">
@@ -152,13 +157,14 @@
           <sel>tokenRanges:</sel>
           <arg type="NSArray**">tokenRanges</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns tags for a <var>string</var> in a
+            <var>range</var> with optional token ranges.
           </desc>
         </method>
         <method type="NSString*" ovadd="10.7.0">
           <sel>dominantLanguage</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the dominant language of the text.
           </desc>
         </method>
         <method type="void" ovadd="10.7.0">
@@ -171,7 +177,9 @@
           <sel>usingBlock:</sel>
           <arg type="GSLinguisticTagRangeRangeBoolBlock">block</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Enumerate over the tags in <var>range</var>,
+            using <var>tagScheme</var>, with <var>opts</var>,
+            execute <var>block</var> for each iteration.
           </desc>
         </method>
         <method type="void" ovadd="10.7.0">
@@ -186,7 +194,8 @@
           <sel>usingBlock:</sel>
           <arg type="GSLinguisticTagRangeBoolBlock">block</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Enumerates tags over a <var>range</var> using a
+            second <var>block</var> type (for finer control).
           </desc>
         </method>
         <method type="instancetype" ovadd="10.7.0">
@@ -195,7 +204,8 @@
           <sel>options:</sel>
           <arg type="NSUInteger">opts</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Initializes a tagger with the given linguistic
+            tag schemes and options.
           </desc>
         </method>
         <method type="NSOrthography*" ovadd="10.7.0">
@@ -204,7 +214,8 @@
           <sel>effectiveRange:</sel>
           <arg type="NSRangePointer">effectiveRange</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the orthography at a specific character
+            index and the effective range.
           </desc>
         </method>
         <method type="NSArray*" ovadd="10.7.0">
@@ -219,14 +230,16 @@
           <sel>scores:</sel>
           <arg type="NSArray**">scores</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the possible tags at a character index and
+            their <var>scores</var>.
           </desc>
         </method>
         <method type="NSRange" ovadd="10.7.0">
           <sel>sentenceRangeForRange:</sel>
           <arg type="NSRange">range</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the sentence <var>range</var> encompassing
+            the given <var>range</var>.
           </desc>
         </method>
         <method type="void" ovadd="10.7.0">
@@ -235,20 +248,21 @@
           <sel>range:</sel>
           <arg type="NSRange">range</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Assigns a custom <var>orthography</var> object for
+            the specified <var>range</var>.
           </desc>
         </method>
         <method type="void" ovadd="10.7.0">
           <sel>setString:</sel>
           <arg type="NSString*">string</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the <var>string</var> to be tagged.
           </desc>
         </method>
         <method type="NSString*" ovadd="10.7.0">
           <sel>string</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Gets the string to be tagged.
           </desc>
         </method>
         <method type="void" ovadd="10.7.0">
@@ -257,7 +271,8 @@
           <sel>changeInLength:</sel>
           <arg type="NSInteger">delta</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Informs the tagger that a portion of the string has
+            been edited.
           </desc>
         </method>
         <method type="NSLinguisticTag" ovadd="10.7.0">
@@ -270,7 +285,10 @@
           <sel>sentenceRange:</sel>
           <arg type="NSRangePointer">sentenceRange</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            return the NSLinguisticTag starting at
+            <var>charIndex</var>, with the given
+            <var>scheme</var> and within <var>tokenRange</var>,
+            also return <var>sentenceRange</var>;
           </desc>
         </method>
         <method type="NSLinguisticTag" ovadd="10.7.0">
@@ -283,13 +301,15 @@
           <sel>tokenRange:</sel>
           <arg type="NSRangePointer">tokenRange</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the tag at a character index and provides
+            the token and sentence ranges.
           </desc>
         </method>
         <method type="NSArray*" ovadd="10.7.0">
           <sel>tagSchemes</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the list of tag schemes used by this
+            tagger.
           </desc>
         </method>
         <method type="NSArray*" ovadd="10.7.0">
@@ -302,7 +322,9 @@
           <sel>tokenRanges:</sel>
           <arg type="NSArray**">tokenRanges</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Get the tags in the given <var>range</var>, for
+            <var>tagScheme</var>, with <var>opts</var> return the
+            ranges for those tags in <var>tokenRanges</var>.
           </desc>
         </method>
         <method type="NSArray*" ovadd="10.7.0">
@@ -317,7 +339,8 @@
           <sel>tokenRanges:</sel>
           <arg type="NSArray**">tokenRanges</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns tags in a <var>range</var> for a given
+            <var>scheme</var> with optional token ranges.
           </desc>
         </method>
         <method type="NSRange" ovadd="10.7.0">
@@ -326,7 +349,8 @@
           <sel>unit:</sel>
           <arg type="NSLinguisticTaggerUnit">unit</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the token range at a given index for the
+            specified <var>unit</var>.
           </desc>
         </method>
       </class>
@@ -340,7 +364,8 @@
       <category name="NSLinguisticAnalysis" class="NSString" ovadd="10.7.0">
         <declared>Foundation/NSLinguisticTagger.h</declared>
         <desc>
-          <em>Description forthcoming.</em>
+          Category for NSString providing convenience
+          linguistic analysis methods.
         </desc>
         <method type="void" ovadd="10.7.0">
           <sel>enumerateLinguisticTagsInRange:</sel>
@@ -354,7 +379,14 @@
           <sel>usingBlock:</sel>
           <arg type="GSLinguisticTagRangeRangeBoolBlock">block</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Enumerates linguistic tags in a given
+            <var>range</var>, passing each to the provided
+            <var>block</var>. @param <var>range</var> Range to
+            enumerate. @param <var>scheme</var> Tagging
+            <var>scheme</var>. @param <var>options</var> Options
+            for tagging. @param <var>orthography</var> Orthography
+            reference. @param <var>block</var> Block to call
+            with each result.
           </desc>
         </method>
         <method type="NSArray*" ovadd="10.7.0">
@@ -369,7 +401,15 @@
           <sel>tokenRanges:</sel>
           <arg type="NSArray**">tokenRanges</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns linguistic tags in the specified
+            <var>range</var> using the given <var>scheme</var>
+            and <var>orthography</var>. @param <var>range</var>
+            Range of the string to analyze. @param
+            <var>scheme</var> Tagging <var>scheme</var> to use.
+            @param <var>options</var> Tagging <var>options</var>
+            . @param <var>orthography</var> Orthography to guide
+            analysis. @param <var>tokenRanges</var> Optional
+            output for token ranges.
           </desc>
         </method>
       </category>

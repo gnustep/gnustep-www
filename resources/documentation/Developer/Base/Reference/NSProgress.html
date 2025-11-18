@@ -10,6 +10,7 @@
     <div class="content-bar">
       <div class="content-bar-top">
         <div class="content-bar-top-body">
+          <div class="content-bar-top-body-title">Base</div><br />
           <a href="#nav-bar-classes">Classes</a><br />
           <a href="#nav-bar-protocols">Protocols</a><br />
           <a href="#nav-bar-constants">Constants</a><br />
@@ -313,6 +314,7 @@
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSFileHandleNotificationError">GSFileHandleNotificationError</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSFileHandleWriteCompletionNotification">GSFileHandleWriteCompletionNotification</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyCertificateFileKey">GSHTTPPropertyCertificateFileKey</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyDigestURIOmitsQuery">GSHTTPPropertyDigestURIOmitsQuery</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyKeyFileKey">GSHTTPPropertyKeyFileKey</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyLocalHostKey">GSHTTPPropertyLocalHostKey</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSHTTPPropertyMethodKey">GSHTTPPropertyMethodKey</a><br />
@@ -730,6 +732,7 @@
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSNonRetainedObjectHashCallBacks">NSNonRetainedObjectHashCallBacks</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSNonRetainedObjectMapKeyCallBacks">NSNonRetainedObjectMapKeyCallBacks</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSNonRetainedObjectMapValueCallBacks">NSNonRetainedObjectMapValueCallBacks</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$NSNotFound">NSNotFound</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSObjectHashCallBacks">NSObjectHashCallBacks</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSObjectInaccessibleException">NSObjectInaccessibleException</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSObjectMapKeyCallBacks">NSObjectMapKeyCallBacks</a><br />
@@ -1218,9 +1221,11 @@
             <a rel="gsdoc" href="Functions.html#macro$GS_API_OSSPEC">GS_API_OSSPEC</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_API_VERSION">GS_API_VERSION</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_CLANG_MINREQ">GS_CLANG_MINREQ</a><br />
+            <a rel="gsdoc" href="Functions.html#macro$GS_DEPRECATED">GS_DEPRECATED</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_DEPRECATED_FUNC">GS_DEPRECATED_FUNC</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_EXPOSE">GS_EXPOSE</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_GCC_MINREQ">GS_GCC_MINREQ</a><br />
+            <a rel="gsdoc" href="Functions.html#macro$GS_NON_PORTABLE">GS_NON_PORTABLE</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_NORETURN_METHOD">GS_NORETURN_METHOD</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_UNIMPLEMENTED">GS_UNIMPLEMENTED</a><br />
             <a rel="gsdoc" href="Functions.html#macro$GS_UNUSED_ARG">GS_UNUSED_ARG</a><br />
@@ -1295,7 +1300,9 @@
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSCompoundPredicateType">NSCompoundPredicateType</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDataBase64DecodingOptions">NSDataBase64DecodingOptions</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDataBase64EncodingOptions">NSDataBase64EncodingOptions</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#type$NSDataReadingOptions">NSDataReadingOptions</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDataSearchOptions">NSDataSearchOptions</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#type$NSDateComponentEnum">NSDateComponentEnum</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDateComponentsFormatterUnitsStyle">NSDateComponentsFormatterUnitsStyle</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDateComponentsFormatterZeroFormattingBehavior">NSDateComponentsFormatterZeroFormattingBehavior</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#type$NSDateFormatterBehavior">NSDateFormatterBehavior</a><br />
@@ -1499,14 +1506,13 @@
         <h1><a name="title$NSProgress">NSProgress class documentation</a></h1>
         <h3>Authors</h3>
         <dl>
-          <dt>Gregory Casamento (<a href="mailto:greg.casamento@gmail.com"><code>greg.casamento@gmail.com</code></a>)</dt>
+          <dt>Hugo Melder (<a href="mailto:hugo@algoriddim.com"><code>hugo@algoriddim.com</code></a>)</dt>
           <dd>
           </dd>
         </dl>
-        <p><b>Date:</b> Generated at 2025-02-11 22:18:53 +0100</p>
-        <p><b>Copyright:</b> (C) 2019 Free Software Foundation, Inc.</p>
-
-            <div>
+        <p><b>Date:</b> Generated at 2025-11-17 22:53:26 +0100</p>
+        <p><b>Copyright:</b> (C) 2025 Free Software Foundation, Inc.</p>
+        <div>
           <hr class="section-separator">
           <h3>Contents -</h3>
           <ol>
@@ -1564,7 +1570,59 @@
 <br />
         <div class="desc">
           
-          <em>Description forthcoming.</em>
+          A progress object tracks an amount of work that is yet to
+          be completed. Work is tracked in units. A progress is
+          finished when the completed number of unit work is
+          equal to the total number of unit work. Progress
+          objects can be arranged in a tree formation. Children
+          of a parent progress continuosly report their progress and
+          update the parents fractionCompleted property. When a
+          child is added to a parent progress, a pending unit
+          count is specified. This count is added to the parent
+          after completion of the child. There are two mechanisms
+          to add a progress as a child to another progress object:
+          One can explicitly add a child with
+          <a rel="gsdoc" href="#method$NSProgress-addChild$withPendingUnitCount$">
+            -addChild:withPendingUnitCount:
+          </a>
+
+          . There is also a way to implicitly add newly instantiated
+          progress object as a child to an existing progress.
+          For this, we first need to define how the
+          &quot;currentProgress&quot; API works: Every thread
+          has a thread-specific current progress stack. The
+          top-most element on this stack can be accessed by
+          <a rel="gsdoc" href="#method$NSProgress+currentProgress">
+            +currentProgress
+          </a>
+
+          class method. By sending
+          <a rel="gsdoc" href="#method$NSProgress-becomeCurrentWithPendingUnitCount$">
+            -becomeCurrentWithPendingUnitCount:
+          </a>
+
+          to a progress, the progress object is pushed onto the
+          stack and becomes the new current progress. The next
+          progress object instantiated (excluding creation
+          with discreteProgressWithTotalUnitCount:) becomes a
+          child of this current progress. This is the second
+          mechanism to implicitly add a child to a progress
+          object. <br /> Implementation Note: GNUstep
+          currently, as of August 2025, lacks the ability to
+          create RW locks. RW locks would make the NSProgress
+          implementation more efficient, as getters (and
+          other readers) could request shared, instead of
+          exclusive access. While not explicitly mentioned in
+          the Apple API documentation, NSProgress relies on a
+          per-object NSLock to synchronize progress update
+          operations. Apple&apos;s API documentation is terrible
+          for the NSProgress implementation, as it does not
+          describe important implementation details and
+          side-effects. To give you an example, there is
+          no mention of the usage of a thread-specific stack for
+          current progress. We conducted experiments on macOS
+          15.5 to match this implementation with the one present
+          in Foundation.
         
         </div>
         <p class="global_method_index">
@@ -1602,6 +1660,7 @@
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-publish">-publish</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-resignCurrent">-resignCurrent</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-resume">-resume</a></li>
+            <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setCancellable$">-setCancellable:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setCancellationHandler$">-setCancellationHandler:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setCompletedUnitCount$">-setCompletedUnitCount:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setEstimatedTimeRemaining$">-setEstimatedTimeRemaining:</a></li>
@@ -1609,14 +1668,15 @@
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setFileOperationKind$">-setFileOperationKind:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setFileTotalCount$">-setFileTotalCount:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setFileUrl$">-setFileUrl:</a></li>
-            <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setIndeterminate$">-setIndeterminate:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setKind$">-setKind:</a></li>
+            <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setLocalizedAdditionalDescription$">-setLocalizedAdditionalDescription:</a></li>
+            <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setLocalizedDescription$">-setLocalizedDescription:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setPausingHandler$">-setPausingHandler:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setResumingHandler$">-setResumingHandler:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setThroughput$">-setThroughput:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setTotalUnitCount$">-setTotalUnitCount:</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-setUserInfoObject$forKey$">-setUserInfoObject:forKey:</a></li>
-            <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-throughtput">-throughtput</a></li>
+            <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-throughput">-throughput</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-totalUnitCount">-totalUnitCount</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-unpublish">-unpublish</a></li>
             <li><a rel="gsdoc" href="NSProgress.html#method$NSProgress-userInfo">-userInfo</a></li>
@@ -1644,7 +1704,8 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Retrieve the first progress object that is on the
+            thread-local current progress stack.
           
         </div>
         <hr class="method-separator">
@@ -1657,7 +1718,13 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Creates a progress object for a total number of
+            work units. This object will not be part of an
+            existing progress tree. This object cannot
+            implicitly become a child of the current
+            progress, even if the current progress expects
+            the next created progress object to be an implicit
+            child.
           
         </div>
         <hr class="method-separator">
@@ -1670,7 +1737,11 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Creates a progress object for a total number of
+            work units. Note that this object may become an
+            implicit child of the thread-local current
+            progress object, if requested by the current
+            progress object.
           
         </div>
         <hr class="method-separator">
@@ -1683,7 +1754,9 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Creates a progress object for a total number of
+            work units. This object is then added as a child to
+            the <var>parent</var> with a pending number of units.
           
         </div>
         <hr class="method-separator">
@@ -1709,7 +1782,12 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Adds the progress to the receiver as a
+            <var>child</var>. The pending unit count is added to
+            the receiver upon completion of the <var>child</var>
+            progress. The pending unit count should not
+            exceed the receivers total unit count. However, this
+            is not enforced in Apple&apos;s NSProgress implementation.
           
         </div>
         <hr class="method-separator">
@@ -1722,7 +1800,22 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Push the receiver to the thread-local current progress
+            stack. The first object on the stack can be accessed
+            with +[NSProgress currentProgress]. Upon
+            initialisation of the next progress object,
+            the newly created object becomes a child of receiver.
+            Note that this only holds for the first object
+            created. If the child progress completes, the
+            pending unit count is added to the receiver. The
+            pending unit count represents the portion of work
+            to perform in relation to the total number of units of
+            work, which is the value of the receivers
+            totalUnitCount property. The pending units
+            of work should be less than or equal to the total units
+            of work of the receiver. Ensure that the total number is
+            not exceeded. Calls to this method must be matched by
+            -[NSProgress resignCurrent].
           
         </div>
         <hr class="method-separator">
@@ -1735,7 +1828,16 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Cancels tracking by the receiver (so subsequent
+            calls to
+            <a rel="gsdoc" href="#method$NSProgress-isCancelled">
+              -isCancelled
+            </a>
+
+            will return <code>YES</code>), and also cancels
+            unfinished children. If a cancellation handler
+            is set, it will be called before cancelling child
+            progresses.
           
         </div>
         <hr class="method-separator">
@@ -1748,7 +1850,7 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the number of unit work already completed.
           
         </div>
         <hr class="method-separator">
@@ -1826,7 +1928,11 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Provides a fraction of completed work, including
+            work done by child progresses. Different from the
+            completedUnitCount property, this
+            property is continuously updated, tracking the
+            progress of children as well.
           
         </div>
         <hr class="method-separator">
@@ -1839,7 +1945,11 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Instantiate a new progress object by optionally
+            supplying a <var>parent</var> and user
+            information dictionary. The <var>parent</var>
+            progress must either be the current progress
+            object of the current thread, or <code>nil</code>.
           
         </div>
         <hr class="method-separator">
@@ -1852,7 +1962,12 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Indicates whether the underlying work whose
+            progress is being tracked can be cancelled. This
+            has no effect on whether the receiver can be cancelled.
+            By default, a progress instance assumes that the work is
+            cancellable but not pausable. <br /> Progress
+            Cancellation
           
         </div>
         <hr class="method-separator">
@@ -1865,7 +1980,8 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns <code>YES</code> if the reciever has been
+            cancelled.
           
         </div>
         <hr class="method-separator">
@@ -1917,7 +2033,9 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Pausation of a progress is not implemented. This
+            method always returns &apos;NO&apos;. <br /> Progress
+            Pausation (Not Implemented)
           
         </div>
         <hr class="method-separator">
@@ -1930,7 +2048,9 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Pausation of a progress is not implemented.
+            Therefore a progress is never paused and this
+            method always returns &apos;NO&apos;.
           
         </div>
         <hr class="method-separator">
@@ -1956,7 +2076,8 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the additional localized description
+            string.
           
         </div>
         <hr class="method-separator">
@@ -1969,7 +2090,7 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the localized description string.
           
         </div>
         <hr class="method-separator">
@@ -1982,7 +2103,8 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Pausation of a progress is not implemented. This
+            method will throw an exception.
           
         </div>
         <hr class="method-separator">
@@ -2008,7 +2130,9 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            The progress discovery functionality is not
+            implemented. This method will throw an
+            exception.
           
         </div>
         <hr class="method-separator">
@@ -2021,7 +2145,10 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Receiver resigns the role of the current progress.
+            The receiver is popped from the thread-local current
+            progress stack. If the receiver is not the current
+            progress, an exception will be thrown.
           
         </div>
         <hr class="method-separator">
@@ -2029,6 +2156,19 @@
 <div class="method">
         <h3><a name="method$NSProgress-resume">resume&nbsp;</a></h3>
         - (void) <b>resume</b>;<br />
+        <div class="availability">
+<b>Availability:</b> MacOS-X 10.9.0</div>
+<br />
+        <div class="desc">
+          
+            Progress Resumption (Not Implemented)
+          
+        </div>
+        <hr class="method-separator">
+</div>
+<div class="method">
+        <h3><a name="method$NSProgress-setCancellable$">setCancellable:&nbsp;</a></h3>
+        - (void) <b>setCancellable:</b> (BOOL)cancellable;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.9.0</div>
 <br />
@@ -2047,7 +2187,8 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets a cancellation <var>handler</var> that is called
+            when a progress gets cancelled.
           
         </div>
         <hr class="method-separator">
@@ -2060,7 +2201,8 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Updates the number of unit work already completed.
+            Monotonicity of this count is not enforced.
           
         </div>
         <hr class="method-separator">
@@ -2131,8 +2273,8 @@
         <hr class="method-separator">
 </div>
 <div class="method">
-        <h3><a name="method$NSProgress-setIndeterminate$">setIndeterminate:&nbsp;</a></h3>
-        - (void) <b>setIndeterminate:</b> (BOOL)flag;<br />
+        <h3><a name="method$NSProgress-setKind$">setKind:&nbsp;</a></h3>
+        - (void) <b>setKind:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSProgressKind">NSProgressKind</a>)k;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.9.0</div>
 <br />
@@ -2144,14 +2286,27 @@
         <hr class="method-separator">
 </div>
 <div class="method">
-        <h3><a name="method$NSProgress-setKind$">setKind:&nbsp;</a></h3>
-        - (void) <b>setKind:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSProgressKind">NSProgressKind</a>)k;<br />
+        <h3><a name="method$NSProgress-setLocalizedAdditionalDescription$">setLocalizedAdditionalDescription:&nbsp;</a></h3>
+        - (void) <b>setLocalizedAdditionalDescription:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)addDesc;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.9.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the additional localized description string.
+          
+        </div>
+        <hr class="method-separator">
+</div>
+<div class="method">
+        <h3><a name="method$NSProgress-setLocalizedDescription$">setLocalizedDescription:&nbsp;</a></h3>
+        - (void) <b>setLocalizedDescription:</b> (<a rel="gsdoc" href="NSString.html#class$NSString">NSString</a>*)desc;<br />
+        <div class="availability">
+<b>Availability:</b> MacOS-X 10.9.0</div>
+<br />
+        <div class="desc">
+          
+            Sets the localized description string.
           
         </div>
         <hr class="method-separator">
@@ -2203,7 +2358,8 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the total nubmer of unit work to be tracked by
+            the receiver.
           
         </div>
         <hr class="method-separator">
@@ -2222,8 +2378,8 @@
         <hr class="method-separator">
 </div>
 <div class="method">
-        <h3><a name="method$NSProgress-throughtput">throughtput&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>*) <b>throughtput</b>;<br />
+        <h3><a name="method$NSProgress-throughput">throughput&nbsp;</a></h3>
+        - (<a rel="gsdoc" href="NSValue.html#class$NSNumber">NSNumber</a>*) <b>throughput</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.9.0</div>
 <br />
@@ -2242,7 +2398,8 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the total number of unit work to be tracked
+            by the receiver.
           
         </div>
         <hr class="method-separator">

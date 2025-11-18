@@ -147,15 +147,25 @@ the Apple Cocoa Objective-C Foundation documentation (available through
     </ul></li>
     <li><a id="toc-Memory-Management" href="Objects.html#Memory-Management">3.2 Memory Management</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-Explicit-Memory-Management" href="Objects.html#Explicit-Memory-Management">3.2.1 Explicit Memory Management</a></li>
-      <li><a id="toc-OpenStep_002dStyle-_0028Retain_002fRelease_0029-Memory-Management" href="Objects.html#OpenStep_002dStyle-_0028Retain_002fRelease_0029-Memory-Management">3.2.2 OpenStep-Style (Retain/Release) Memory Management</a>
+      <li><a id="toc-Basic-strategies" href="Objects.html#Basic-strategies">3.2.1 Basic strategies</a>
       <ul class="toc-numbered-mark">
-        <li><a id="toc-Autorelease-Pools" href="Objects.html#Autorelease-Pools">3.2.2.1 Autorelease Pools</a></li>
-        <li><a id="toc-Avoiding-Retain-Cycles" href="Objects.html#Avoiding-Retain-Cycles">3.2.2.2 Avoiding Retain Cycles</a></li>
-        <li><a id="toc-Summary" href="Objects.html#Summary">3.2.2.3 Summary</a></li>
-        <li><a id="toc-Leak-Checking" href="Objects.html#Leak-Checking">3.2.2.4 Leak Checking</a></li>
+        <li><a id="toc-Explicit" href="Objects.html#Explicit">3.2.1.1 Explicit</a></li>
+        <li><a id="toc-Retain-count" href="Objects.html#Retain-count">3.2.1.2 Retain count</a></li>
+        <li><a id="toc-Automated-Reference-Counts-_0028ARC_0029" href="Objects.html#Automated-Reference-Counts-_0028ARC_0029">3.2.1.3 Automated Reference Counts (ARC)</a></li>
       </ul></li>
-      <li><a id="toc-ObjC_002d2-and-Automated-Reference-Counting" href="Objects.html#ObjC_002d2-and-Automated-Reference-Counting">3.2.3 ObjC-2 and Automated Reference Counting</a></li>
+      <li><a id="toc-Autorelease-Pools" href="Objects.html#Autorelease-Pools">3.2.2 Autorelease Pools</a></li>
+      <li><a id="toc-Avoiding-Retain-Cycles" href="Objects.html#Avoiding-Retain-Cycles">3.2.3 Avoiding Retain Cycles</a></li>
+      <li><a id="toc-Methods_002c-Conventions_002c-and-Macros" href="Objects.html#Methods_002c-Conventions_002c-and-Macros">3.2.4 Methods, Conventions, and Macros</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-retain_002frelease-related-methods" href="Objects.html#retain_002frelease-related-methods">3.2.4.1 retain/release related methods</a></li>
+        <li><a id="toc-retain_002frelease-related-conventions" href="Objects.html#retain_002frelease-related-conventions">3.2.4.2 retain/release related conventions</a></li>
+        <li><a id="toc-retain_002frelease-related-macros" href="Objects.html#retain_002frelease-related-macros">3.2.4.3 retain/release related macros</a></li>
+      </ul></li>
+      <li><a id="toc-Leak-Checking" href="Objects.html#Leak-Checking">3.2.5 Leak Checking</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-tracking-leaked-objects" href="Objects.html#tracking-leaked-objects">3.2.5.1 tracking leaked objects</a></li>
+        <li><a id="toc-Not-so-simple" href="Objects.html#Not-so-simple">3.2.5.2 Not so simple</a></li>
+      </ul></li>
     </ul></li>
   </ul></li>
   <li><a id="toc-Writing-New-Classes" href="Classes.html">4 Writing New Classes</a>
@@ -201,7 +211,7 @@ the Apple Cocoa Objective-C Foundation documentation (available through
     <li><a id="toc-Forwarding" href="Advanced-Messaging.html#Forwarding">5.3 Forwarding</a></li>
     <li><a id="toc-Implementations" href="Advanced-Messaging.html#Implementations">5.4 Implementations</a></li>
   </ul></li>
-  <li><a id="toc-Exception-Handling_002c-Logging_002c-and-Assertions" href="Exception-Handling.html">6 Exception Handling, Logging, and Assertions</a>
+  <li><a id="toc-Exception-Handling_002c-Assertions_002c-Logging_002c-and-Sanitization" href="Exception-Handling.html">6 Exception Handling, Assertions, Logging, and Sanitization</a>
   <ul class="toc-numbered-mark">
     <li><a id="toc-Exceptions" href="Exception-Handling.html#Exceptions">6.1 Exceptions</a>
     <ul class="toc-numbered-mark">
@@ -222,8 +232,15 @@ the Apple Cocoa Objective-C Foundation documentation (available through
     <ul class="toc-numbered-mark">
       <li><a id="toc-Assertions-and-their-Handling" href="Exception-Handling.html#Assertions-and-their-Handling">6.3.1 Assertions and their Handling</a></li>
       <li><a id="toc-Custom-Assertion-Handling" href="Exception-Handling.html#Custom-Assertion-Handling">6.3.2 Custom Assertion Handling</a></li>
+      <li><a id="toc-Comparison-with-Java" href="Exception-Handling.html#Comparison-with-Java">6.3.3 Comparison with Java</a></li>
     </ul></li>
-    <li><a id="toc-Comparison-with-Java" href="Exception-Handling.html#Comparison-with-Java">6.4 Comparison with Java</a></li>
+    <li><a id="toc-Address-sanitization" href="Exception-Handling.html#Address-sanitization">6.4 Address sanitization</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Building-with-ASAN" href="Exception-Handling.html#Building-with-ASAN">6.4.1 Building with ASAN</a></li>
+      <li><a id="toc-Typical-address-issues" href="Exception-Handling.html#Typical-address-issues">6.4.2 Typical address issues</a></li>
+      <li><a id="toc-Leak-sanitization" href="Exception-Handling.html#Leak-sanitization">6.4.3 Leak sanitization</a></li>
+      <li><a id="toc-Drawbacks-of-ASAN" href="Exception-Handling.html#Drawbacks-of-ASAN">6.4.4 Drawbacks of ASAN</a></li>
+    </ul></li>
   </ul></li>
   <li><a id="toc-Distributed-Objects-1" href="Distributed-Objects.html">7 Distributed Objects</a>
   <ul class="toc-numbered-mark">

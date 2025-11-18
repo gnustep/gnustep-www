@@ -42,6 +42,50 @@ notice and this notice are preserved.
           <em>Description forthcoming.</em>
         </desc>
       </type>
+      <type type="enum uintptr_t" name="objc_AssociationPolicy" ovadd="1.0.0">
+        <desc>
+          objc_AssociationPolicy acts like a
+          bitfield, but only specific combinations of flags
+          are permitted. NB The atomic forms are (non-atomic-form |
+          0x300), so 0x300 can be used as a marker for the
+          atomic version.
+          <deflist>
+            <term><em>OBJC_ASSOCIATION_ASSIGN</em></term>
+            <desc>
+              Simple pointer assignment creating an unsafe
+              unretained reference.
+            </desc>
+            <term>
+              <em>OBJC_ASSOCIATION_RETAIN_NONATOMIC</em>
+            </term>
+            <desc>
+              Retain when set, without a guarantee of atomicity.
+            </desc>
+            <term>
+              <em>OBJC_ASSOCIATION_COPY_NONATOMIC</em>
+            </term>
+            <desc>
+              Copy when set (by sending a
+              <ref type="method" id="-copy">
+                -copy
+              </ref>
+              message), without a guarantee of atomicity.
+            </desc>
+            <term><em>OBJC_ASSOCIATION_RETAIN</em></term>
+            <desc>
+              Retain when set, with guaranteed atomicity.
+            </desc>
+            <term><em>OBJC_ASSOCIATION_COPY</em></term>
+            <desc>
+              Copy when set (by sending a
+              <ref type="method" id="-copy">
+                -copy
+              </ref>
+              message), without guarantee of atomicity.
+            </desc>
+          </deflist>
+        </desc>
+      </type>
     </chapter>
 <!--EndGSObjCRuntimeTypedefs-->
 <!--StartGSUnionTypedefs-->
@@ -165,6 +209,17 @@ notice and this notice are preserved.
       </type>
     </chapter>
 <!--EndGSTLSTypedefs-->
+<!--StartGSURITemplateTypedefs-->
+    <chapter>
+      <heading>GSURITemplate types</heading>
+      <p></p>
+      <type type="NS_ENUM(NSInteger)" name="GSURITemplateError" ovadd="0.0.0">
+        <desc>
+          <em>Description forthcoming.</em>
+        </desc>
+      </type>
+    </chapter>
+<!--EndGSURITemplateTypedefs-->
 <!--StartUnicodeTypedefs-->
     <chapter>
       <heading>Unicode types</heading>
@@ -294,6 +349,25 @@ notice and this notice are preserved.
       </constant>
     </chapter>
 <!--EndGSTLSConstants-->
+<!--StartGSURITemplateConstants-->
+    <chapter>
+      <heading>GSURITemplate constants</heading>
+      <p></p>
+      <constant type="NSString* const" name="GSURITemplateErrorDomain" ovadd="0.0.0">
+        <desc>
+          The domain of errors returned by `GSURITemplate` objects.
+        </desc>
+      </constant>
+      <constant type="NSString* const" name="GSURITemplateScanLocationKey" ovadd="0.0.0">
+        <desc>
+          For errors returned while parsing a template pattern
+          string, the is key may be used to fetch the character
+          offset within the pattern at which the error occurred
+          from the userInfo Dictionary.
+        </desc>
+      </constant>
+    </chapter>
+<!--EndGSURITemplateConstants-->
 <!--EndConstants-->
 </body>
 </gsdoc>
