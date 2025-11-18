@@ -8,7 +8,11 @@
         FredKiefer@gmx.de
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
+    <abstract>
+      Input method server for text input processing and
+      internationalization
+    </abstract>
     <copy>2001 Free Software Foundation, Inc.</copy>
   </head>
   <body>
@@ -22,7 +26,20 @@
         <conform>NSInputServerMouseTracker</conform>
         <conform>NSInputServiceProvider</conform>
         <desc>
-          <em>Description forthcoming.</em>
+          <title>
+            NSInputServer <strong>Class</strong>
+            Interface
+          </title>
+          <abstract>
+            Concrete input server implementation
+          </abstract>
+          NSInputServer provides a concrete
+          implementation of input method server
+          functionality, conforming to both
+          NSInputServerMouseTracker and
+          NSInputServiceProvider protocols. This
+          class serves as the foundation for building custom
+          input method servers.
         </desc>
         <method type="id" ovadd="1.0.0">
           <sel>initWithDelegate:</sel>
@@ -30,7 +47,12 @@
           <sel>name:</sel>
           <arg type="NSString*">name</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Initializes an input server with a delegate and
+            <var>name</var>. aDelegate: The delegate object that
+            will handle input server events name: The
+            <var>name</var> identifying this input server
+            instance Returns: An initialized NSInputServer
+            instance
           </desc>
         </method>
       </class>
@@ -43,7 +65,16 @@
       <protocol name="NSInputServerMouseTracker" ovadd="1.0.0">
         <declared>AppKit/NSInputServer.h</declared>
         <desc>
-          <em>Description forthcoming.</em>
+          <title>NSInputServerMouseTracker</title>
+          <abstract>
+            Protocol for handling mouse events in input server
+            contexts
+          </abstract>
+          The NSInputServerMouseTracker protocol defines methods
+          for handling mouse events that occur over text content
+          managed by an input server. This enables
+          character-level mouse interaction during text
+          composition and input processing.
         </desc>
         <method type="BOOL" ovadd="1.0.0">
           <sel>mouseDownOnCharacterIndex:</sel>
@@ -55,7 +86,14 @@
           <sel>client:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Handles mouse down events at specific character
+            positions. index: The character <var>index</var>
+            where the mouse down occurred point: The coordinate
+            of the mouse down event flags: Modifier key
+            <var>flags</var> active during the event sender: The
+            client object requesting mouse tracking Returns:
+            <code>YES</code> if the event was handled,
+            <code>NO</code> to pass it on
           </desc>
         </method>
         <method type="BOOL" ovadd="1.0.0">
@@ -68,7 +106,14 @@
           <sel>client:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Handles mouse dragged events at specific character
+            positions. index: The character <var>index</var>
+            where the mouse drag occurred point: The coordinate
+            of the mouse drag event flags: Modifier key
+            <var>flags</var> active during the event sender: The
+            client object requesting mouse tracking Returns:
+            <code>YES</code> if the event was handled,
+            <code>NO</code> to pass it on
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -81,7 +126,12 @@
           <sel>client:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Handles mouse up events at specific character
+            positions. index: The character <var>index</var>
+            where the mouse up occurred point: The coordinate of
+            the mouse up event flags: Modifier key <var>flags</var>
+            active during the event sender: The client object
+            requesting mouse tracking
           </desc>
         </method>
       </protocol>
@@ -94,7 +144,15 @@
       <protocol name="NSInputServiceProvider" ovadd="1.0.0">
         <declared>AppKit/NSInputServer.h</declared>
         <desc>
-          <em>Description forthcoming.</em>
+          <title>NSInputServiceProvider</title>
+          <abstract>
+            Protocol for providing input method services
+          </abstract>
+          The NSInputServiceProvider protocol defines the
+          comprehensive interface for input method
+          service providers. This protocol handles all aspects
+          of text input processing, from client state management to
+          text insertion and conversation tracking.
         </desc>
         <method type="void" ovadd="1.0.0">
           <sel>activeConversationChanged:</sel>
@@ -102,7 +160,10 @@
           <sel>toNewConversation:</sel>
           <arg type="long">newConversation</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Notifies the provider when the active conversation
+            changes. sender: The client object initiating the
+            change newConversation: Identifier for the new
+            active conversation
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -111,13 +172,19 @@
           <sel>fromOldConversation:</sel>
           <arg type="long">oldConversation</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Notifies the provider that the active conversation
+            will change. sender: The client object initiating the
+            change oldConversation: Identifier for the
+            conversation being deactivated
           </desc>
         </method>
         <method type="BOOL" ovadd="1.0.0">
           <sel>canBeDisabled</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether this input service can be disabled.
+            Returns: <code>YES</code> if the service can be
+            disabled, <code>NO</code> if it must remain
+            active
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -126,35 +193,46 @@
           <sel>client:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Requests the provider to execute a command by
+            selector. aSelector: The selector identifying the
+            command to execute sender: The client object
+            requesting the command execution
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>inputClientBecomeActive:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Notifies the provider that an input client has
+            become active. sender: The client object that became
+            active
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>inputClientDisabled:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Notifies the provider that an input client has
+            been disabled. sender: The client object that was
+            disabled
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>inputClientEnabled:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Notifies the provider that an input client has
+            been enabled. sender: The client object that was
+            enabled
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>inputClientResignActive:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Notifies the provider that an input client has
+            resigned active status. sender: The client object
+            that resigned active status
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -163,14 +241,20 @@
           <sel>client:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Requests insertion of text into the active client.
+            aString: The string or attributed string to insert
+            sender: The client object where text should be
+            inserted
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>markedTextAbandoned:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Notifies the provider that marked text has been
+            abandoned. This occurs when composition is
+            cancelled without completion. sender: The client
+            object where marked text was abandoned
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -179,32 +263,44 @@
           <sel>client:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Notifies the provider of marked text selection
+            changes. newSelection: The new selection range
+            within the marked text sender: The client object
+            where selection changed
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>terminate:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Requests the provider to terminate its operations.
+            sender: The client object requesting termination
           </desc>
         </method>
         <method type="BOOL" ovadd="1.0.0">
           <sel>wantsToDelayTextChangeNotifications</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the provider wants to delay text
+            change notifications. Returns: <code>YES</code> to
+            delay notifications during input processing,
+            <code>NO</code> for immediate notifications
           </desc>
         </method>
         <method type="BOOL" ovadd="1.0.0">
           <sel>wantsToHandleMouseEvents</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the provider wants to handle mouse
+            events. Returns: <code>YES</code> to receive mouse
+            events, <code>NO</code> to ignore them
           </desc>
         </method>
         <method type="BOOL" ovadd="1.0.0">
           <sel>wantsToInterpretAllKeystrokes</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the provider wants to interpret all
+            keystrokes. Returns: <code>YES</code> to
+            receive all key events, <code>NO</code> to receive
+            only specific events
           </desc>
         </method>
       </protocol>

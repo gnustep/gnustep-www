@@ -13,7 +13,7 @@
         far@ix.netcom.com
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <abstract>
       Control for selecting and display a single color value.
     </abstract>
@@ -98,6 +98,10 @@
           <sel>activate:</sel>
           <arg type="BOOL">exclusive</arg>
           <desc>
+            Activates the color well to connect with the
+            shared color panel. exclusive: <code>YES</code> to
+            deactivate other color wells, <code>NO</code> to
+            allow multiple active wells <br />
             <p>
               Activates the NSColorWell and displays the
               NSColorPanel with the current NSColorWell's
@@ -117,6 +121,9 @@
         <method type="NSColor*" ovadd="1.0.0">
           <sel>color</sel>
           <desc>
+            Returns the current color displayed in the color
+            well. Returns: The NSColor currently shown in the
+            well <br />
             <p>
               Returns the current NSColor of the NSColorWell.
             </p>
@@ -131,6 +138,8 @@
         <method type="void" ovadd="1.0.0">
           <sel>deactivate</sel>
           <desc>
+            Deactivates the color well, disconnecting it
+            from the color panel. <br />
             <p>
               Deactivates the NSColorWell and marks self
               for display. It is usally call from an observer, when
@@ -148,6 +157,9 @@
           <sel>drawWellInside:</sel>
           <arg type="NSRect">insideRect</arg>
           <desc>
+            Draws the color well's interior within the specified
+            rectangle. insideRect: The rectangle defining
+            the interior area to draw the color <br />
             <p>
               Draws the NSColorWell inside the rectangle
               <var>insideRect</var>.
@@ -162,19 +174,29 @@
           <sel>encodeWithCoder:</sel>
           <arg type="NSCoder*">aCoder</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Encodes the color well's state to the specified
+            coder. aCoder: The coder to write the color well's
+            data to
           </desc>
         </method>
         <method type="id" ovadd="1.0.0">
           <sel>initWithCoder:</sel>
           <arg type="NSCoder*">aDecoder</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Initializes a color well from data in the
+            specified decoder. aDecoder: The decoder
+            containing the color well's archived data
+            Returns: An initialized NSColorWell instance, or
+            <code>nil</code> if initialization fails
           </desc>
         </method>
         <method type="BOOL" ovadd="1.0.0">
           <sel>isActive</sel>
           <desc>
+            Returns whether the color well is currently active.
+            Returns: <code>YES</code> if the color well is
+            connected to the color panel, <code>NO</code>
+            otherwise <br />
             <p>
               Returns whether the NSColorWell is active. By
               default a NSColorWell is not active.
@@ -193,6 +215,10 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>isBordered</sel>
           <desc>
+            Returns whether the color well displays a border.
+            Returns: <code>YES</code> if the well has a
+            border, <code>NO</code> for borderless display
+            <br />
             <p>
               Returns whether the NSColorWell has border. By
               default a NSColorWell has border.
@@ -209,6 +235,10 @@
           <sel>setBordered:</sel>
           <arg type="BOOL">bordered</arg>
           <desc>
+            Sets whether the color well should display a border.
+            bordered: <code>YES</code> to show a border
+            around the well, <code>NO</code> for borderless
+            appearance <br />
             <p>
               Sets whether the NSColorWell has border and marks
               self for display. By default a NSColorWell has
@@ -226,6 +256,9 @@
           <sel>setColor:</sel>
           <arg type="NSColor*">color</arg>
           <desc>
+            Sets the <var>color</var> to display in the
+            <var>color</var> well. color: The NSColor to display
+            in the well <br />
             <p>
               Sets the NSColorWell to <var>color</var> and marks
               self for display. <br /> Sets the NSColorPanel if
@@ -241,6 +274,12 @@
           <sel>takeColorFrom:</sel>
           <arg type="id">sender</arg>
           <desc>
+            Takes the color from the specified <var>sender</var>
+            object. sender: An object that responds to the
+            <ref type="method" id="-color">
+              -color
+            </ref>
+            method to provide a color <br />
             <p>
               Sets the NSColorWell's color to the
               <var>sender</var> color.

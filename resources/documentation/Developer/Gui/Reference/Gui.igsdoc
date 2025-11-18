@@ -50,8 +50,8 @@
 	    "gerritvd@decillion.net"
 	);
 	"Gregory Casamento" = (
-	    "greg.casamento@gmail.com",
-	    "greg_casamento@yahoo.com"
+	    "greg_casamento@yahoo.com",
+	    "greg.casamento@gmail.com"
 	);
 	"Gregory John Casamento" = (
 	    "greg_casamento@yahoo.com",
@@ -160,6 +160,12 @@
 	};
 	NSFont = {
 	    GNUstep = NSFont;
+	};
+	NSFontAssetRequest = {
+	    GNUstep = NSFontAssetRequest;
+	};
+	NSFontManager = {
+	    Private = NSFontManager;
 	};
 	NSGraphicsContext = {
 	    GNUstep = NSGraphicsContext;
@@ -331,6 +337,8 @@
 	"NSColor(GSQuartz)" = NSColor;
 	"NSFileWrapper(NSExtensions)" = NSFileWrapperExtensions;
 	"NSFont(GNUstep)" = NSFont;
+	"NSFontAssetRequest(GNUstep)" = NSFontAssetRequest;
+	"NSFontManager(Private)" = NSFontManager;
 	"NSGraphicsContext(GNUstep)" = NSGraphicsContext;
 	"NSGraphicsContext(NSGradient)" = NSGraphicsContext;
 	"NSGraphicsContext(NSGraphics)" = NSGraphicsContext;
@@ -1123,6 +1131,14 @@
 	    role = NSFont;
 	    screenFont = NSFont;
 	};
+	NSFontAssetRequest = {
+	    "_downloadInProgress" = NSFontAssetRequest;
+	    "_downloadedFontDescriptors" = NSFontAssetRequest;
+	    "_downloader" = NSFontAssetRequest;
+	    "_fontDescriptors" = NSFontAssetRequest;
+	    "_options" = NSFontAssetRequest;
+	    "_progress" = NSFontAssetRequest;
+	};
 	NSFontCollection = {
 	    "_fontCollectionDictionary" = NSFontCollection;
 	};
@@ -1437,7 +1453,9 @@
 	};
 	NSMovieView = {
 	    "_movie" = NSMovieView;
+	    "_positionField" = NSMovieView;
 	    "_rate" = NSMovieView;
+	    "_statusField" = NSMovieView;
 	    "_volume" = NSMovieView;
 	    "struct NSMovieViewFlags" = NSMovieView;
 	};
@@ -2316,6 +2334,7 @@
 	};
     };
     constant = {
+	GSFontManagerAvailableFontsDidChangeNotification = TypesAndConstants;
 	GSSixteenBitRGBDepth = TypesAndConstants;
 	NSAccessibilityActivationPointAttribute = TypesAndConstants;
 	NSAccessibilityAllowedValuesAttribute = TypesAndConstants;
@@ -2918,6 +2937,7 @@
 	NSRegisterServicesProvider = Functions;
 	NSReleaseAlertPanel = Functions;
 	NSRunAlertPanel = Functions;
+	NSRunAlertPanelRelativeToWindow = Functions;
 	NSRunCriticalAlertPanel = Functions;
 	NSRunInformationalAlertPanel = Functions;
 	NSRunLocalizedAlertPanel = Functions;
@@ -3993,6 +4013,15 @@
 	    NSProgressIndicator = NSProgressIndicator;
 	    NSScroller = NSScroller;
 	};
+	"_downloadInProgress" = {
+	    NSFontAssetRequest = NSFontAssetRequest;
+	};
+	"_downloadedFontDescriptors" = {
+	    NSFontAssetRequest = NSFontAssetRequest;
+	};
+	"_downloader" = {
+	    NSFontAssetRequest = NSFontAssetRequest;
+	};
 	"_dr" = {
 	    NSCollectionViewFlowLayout = NSCollectionViewFlowLayout;
 	};
@@ -4179,6 +4208,9 @@
 	};
 	"_fontCollectionDictionary" = {
 	    NSFontCollection = NSFontCollection;
+	};
+	"_fontDescriptors" = {
+	    NSFontAssetRequest = NSFontAssetRequest;
 	};
 	"_fontEnumerator" = {
 	    NSFontManager = NSFontManager;
@@ -5234,6 +5266,7 @@
 	    NSPrintPanel = NSPrintPanel;
 	};
 	"_options" = {
+	    NSFontAssetRequest = NSFontAssetRequest;
 	    NSPDFPanel = NSPDFPanel;
 	    NSPrintPanel = NSPrintPanel;
 	    NSTextTab = NSParagraphStyle;
@@ -5413,6 +5446,9 @@
 	"_popoverBehavior" = {
 	    NSStoryboardSegue = NSStoryboardSegue;
 	};
+	"_positionField" = {
+	    NSMovieView = NSMovieView;
+	};
 	"_positioningRect" = {
 	    NSPopover = NSPopover;
 	};
@@ -5479,6 +5515,9 @@
 	};
 	"_priority" = {
 	    NSLayoutConstraint = NSLayoutConstraint;
+	};
+	"_progress" = {
+	    NSFontAssetRequest = NSFontAssetRequest;
 	};
 	"_progressMarks" = {
 	    NSAnimation = NSAnimation;
@@ -5902,6 +5941,9 @@
 	"_stateImageWidth" = {
 	    NSMenuItemCell = NSMenuItemCell;
 	    NSMenuView = NSMenuView;
+	};
+	"_statusField" = {
+	    NSMovieView = NSMovieView;
 	};
 	"_stopAnimation" = {
 	    NSAnimation = NSAnimation;
@@ -6537,6 +6579,8 @@
 	};
     };
     macro = {
+	"_GNUstep_H_NSAlert" = Functions;
+	"_GNUstep_H_NSController" = Functions;
 	"_GNUstep_H_NSTextAttachment" = Functions;
 	"_GNUstep_H_NSTextContainer" = Functions;
     };
@@ -6851,6 +6895,9 @@
 	};
 	"+defaultDepthLimit" = {
 	    NSWindow = NSWindow;
+	};
+	"+defaultDownloaderClass" = {
+	    "NSFontAssetRequest(GNUstep)" = NSFontAssetRequest;
 	};
 	"+defaultFlatness" = {
 	    NSBezierPath = NSBezierPath;
@@ -7555,6 +7602,9 @@
 	};
 	"+setDefaultContextClass:" = {
 	    "NSGraphicsContext(GNUstep)" = NSGraphicsContext;
+	};
+	"+setDefaultDownloaderClass:" = {
+	    "NSFontAssetRequest(GNUstep)" = NSFontAssetRequest;
 	};
 	"+setDefaultFlatness:" = {
 	    NSBezierPath = NSBezierPath;
@@ -10821,6 +10871,9 @@
 	"-currentPoint" = {
 	    NSBezierPath = NSBezierPath;
 	};
+	"-currentPosition" = {
+	    NSMovieView = NSMovieView;
+	};
 	"-currentPresentationOptions" = {
 	    NSApplication = NSApplication;
 	};
@@ -12176,6 +12229,9 @@
 	    NSTabView = NSTabView;
 	    NSText = NSText;
 	    "NSTextStorage(Scripting)" = NSTextStorage;
+	};
+	"-fontAssetDownloader" = {
+	    "NSFontAssetRequest(GNUstep)" = NSFontAssetRequest;
 	};
 	"-fontAttributes" = {
 	    NSFontDescriptor = NSFontDescriptor;
@@ -16530,6 +16586,9 @@
 	    NSScrollView = NSScrollView;
 	    NSView = NSView;
 	};
+	"-refreshAvailableFonts" = {
+	    "NSFontManager(Private)" = NSFontManager;
+	};
 	"-refusesFirstResponder" = {
 	    NSCell = NSCell;
 	    NSControl = NSControl;
@@ -18857,6 +18916,9 @@
 	"-setFont:range:" = {
 	    NSText = NSText;
 	};
+	"-setFontAssetDownloader:" = {
+	    "NSFontAssetRequest(GNUstep)" = NSFontAssetRequest;
+	};
 	"-setFontMenu:" = {
 	    NSFontManager = NSFontManager;
 	};
@@ -20301,6 +20363,9 @@
 	"-setState:atRow:column:" = {
 	    NSMatrix = NSMatrix;
 	};
+	"-setStatusField:" = {
+	    NSMovieView = NSMovieView;
+	};
 	"-setString:" = {
 	    NSText = NSText;
 	};
@@ -21251,6 +21316,9 @@
 	};
 	"-statusBar" = {
 	    NSStatusItem = NSStatusItem;
+	};
+	"-statusField" = {
+	    NSMovieView = NSMovieView;
 	};
 	"-statusForTable:" = {
 	    NSPrinter = NSPrinter;
@@ -22924,7 +22992,8 @@
 	);
 	"../Headers/AppKit/NSAlert.h" = (
 	    "../Documentation/Gui/NSAlert.gsdoc",
-	    "../Documentation/Gui/TypesAndConstants.gsdoc"
+	    "../Documentation/Gui/TypesAndConstants.gsdoc",
+	    "../Documentation/Gui/Functions.gsdoc"
 	);
 	"../Headers/AppKit/NSAnimation.h" = (
 	    "../Documentation/Gui/NSAnimation.gsdoc",
@@ -23059,7 +23128,8 @@
 	    "../Documentation/Gui/TypesAndConstants.gsdoc"
 	);
 	"../Headers/AppKit/NSController.h" = (
-	    "../Documentation/Gui/NSController.gsdoc"
+	    "../Documentation/Gui/NSController.gsdoc",
+	    "../Documentation/Gui/Functions.gsdoc"
 	);
 	"../Headers/AppKit/NSCursor.h" = (
 	    "../Documentation/Gui/NSCursor.gsdoc"
@@ -24850,13 +24920,13 @@
 	NSAccessibilityCustomAction = "NSAccessibilityCustomAction class documentation";
 	NSAccessibilityCustomRotor = "NSAccessibilityCustomRotor documentation";
 	NSAccessibilityElement = "NSAccessibilityElement class documentation";
-	NSAccessibilityProtocols = "NSAccessibilityProtocols documentation";
+	NSAccessibilityProtocols = NSAccessibilityProtocols;
 	NSActionCell = NSActionCell;
 	NSAffineTransform = "NSAffineTransform.m";
 	NSAlert = NSAlert;
 	NSAnimation = "NSAnimation documentation";
 	NSAnimationContext = "NSAnimationContext class documentation";
-	NSAppearance = "NSAppearance class documentation";
+	NSAppearance = NSAppearance;
 	NSApplication = NSApplication;
 	NSArrayController = NSArrayController;
 	NSAttributedString = NSAttributedStringAdditions;
@@ -24867,7 +24937,7 @@
 	NSBrowserCell = NSBrowserCell;
 	NSButton = NSButton;
 	NSButtonCell = NSButtonCell;
-	NSButtonTouchBarItem = "NSButtonTouchBarItem class documentation";
+	NSButtonTouchBarItem = NSButtonTouchBarItem;
 	NSCIImageRep = "NSCIImageRep class documentation";
 	NSCachedImageRep = NSCachedImageRep;
 	NSCandidateListTouchBarItem = "NSCandidateListTouchBarItem class documentation";
@@ -24891,8 +24961,8 @@
 	NSColorSpace = "NSColorSpace class documentation";
 	NSColorWell = NSColorWell;
 	NSComboBox = NSComboBox;
-	NSComboBoxCell = NSComboBoxCell;
-	NSControl = NSControl;
+	NSComboBoxCell = "NSComboBoxCellDataSource Protocol";
+	NSControl = "NSControlTextEditingDelegate Protocol";
 	NSController = NSController;
 	NSCursor = NSCursor;
 	NSCustomImageRep = NSCustomImageRep;
@@ -24903,17 +24973,17 @@
 	NSDataLinkPanel = NSDataLinkPanel;
 	NSDatePicker = NSDatePicker;
 	NSDatePickerCell = NSDatePickerCell;
-	NSDockTile = "NSDockTile class documentation";
+	NSDockTile = NSDockTile;
 	NSDocument = NSDocument;
 	NSDocumentController = NSDocumentController;
 	NSDragging = "NSDragging documentation";
-	NSDrawer = NSDrawer;
+	NSDrawer = NSDrawerDelegate;
 	NSEPSImageRep = NSEPSImageRep;
 	NSEvent = NSEvent;
 	NSFileWrapperExtensions = NSFileWrapper;
 	NSFont = NSFont;
-	NSFontAssetRequest = "NSFontAssetRequest class documentation";
-	NSFontCollection = "NSFontCollection documentation";
+	NSFontAssetRequest = NSFontAssetRequest;
+	NSFontCollection = NSMutableFontCollection;
 	NSFontDescriptor = NSFontDescriptor;
 	NSFontManager = NSFontManager;
 	NSFontPanel = NSFontPanel;
@@ -24932,8 +25002,8 @@
 	NSImageCell = NSImageCell;
 	NSImageRep = NSImageRep;
 	NSImageView = NSImageView;
-	NSInputManager = "NSInputManager class documentation";
-	NSInputServer = NSInputServer;
+	NSInputManager = NSTextInput;
+	NSInputServer = NSInputServiceProvider;
 	NSKeyValueBinding = "NSKeyValueBinding informal protocol reference";
 	NSLayoutAnchor = "NSLayoutAnchor documentation";
 	NSLayoutConstraint = "NSLayoutConstraint class documentation";
@@ -24960,7 +25030,7 @@
 	NSOpenGLView = "NSOpenGLView.m";
 	NSOpenPanel = NSOpenPanel;
 	NSOutlineView = NSOutlineView;
-	NSPDFImageRep = "NSPDFImageRep class documentation";
+	NSPDFImageRep = NSPDFImageRep;
 	NSPDFInfo = "NSPDFInfo class documentation";
 	NSPDFPanel = "NSPDFPanel class documentation";
 	NSPICTImageRep = "NSPICTImageRep class documentation";
@@ -25065,7 +25135,7 @@
 	NSToolbarItem = "NSToolbarItem class documentation";
 	NSToolbarItemGroup = "NSToolbarItemGroup class documentation";
 	NSTouch = "NSTouch class documentation";
-	NSTouchBar = "NSTouchBar class documentation";
+	NSTouchBar = NSTouchBar;
 	NSTouchBarItem = "NSTouchBarItem class documentation";
 	NSTrackingArea = "NSTrackingArea class documentation";
 	NSTreeController = "NSTreeController class documentation";
@@ -27855,6 +27925,12 @@
 	    "-initWithFontDescriptors:options:" = NSFontAssetRequest;
 	    "-progress" = NSFontAssetRequest;
 	};
+	"NSFontAssetRequest(GNUstep)" = {
+	    "+defaultDownloaderClass" = NSFontAssetRequest;
+	    "+setDefaultDownloaderClass:" = NSFontAssetRequest;
+	    "-fontAssetDownloader" = NSFontAssetRequest;
+	    "-setFontAssetDownloader:" = NSFontAssetRequest;
+	};
 	NSFontCollection = {
 	    "+allFontCollectionNames" = NSFontCollection;
 	    "+fontCollectionWithAllAvailableDescriptors" = NSFontCollection;
@@ -27939,6 +28015,9 @@
 	    "-setSelectedFont:isMultiple:" = NSFontManager;
 	    "-traitsOfFont:" = NSFontManager;
 	    "-weightOfFont:" = NSFontManager;
+	};
+	"NSFontManager(Private)" = {
+	    "-refreshAvailableFonts" = NSFontManager;
 	};
 	NSFontPanel = {
 	    "+sharedFontPanel" = NSFontPanel;
@@ -28902,6 +28981,7 @@
 	NSMovieView = {
 	    "-clear:" = NSMovieView;
 	    "-copy:" = NSMovieView;
+	    "-currentPosition" = NSMovieView;
 	    "-cut:" = NSMovieView;
 	    "-gotoBeginning:" = NSMovieView;
 	    "-gotoEnd:" = NSMovieView;
@@ -28927,10 +29007,12 @@
 	    "-setPlaysEveryFrame:" = NSMovieView;
 	    "-setPlaysSelectionOnly:" = NSMovieView;
 	    "-setRate:" = NSMovieView;
+	    "-setStatusField:" = NSMovieView;
 	    "-setVolume:" = NSMovieView;
 	    "-showController:adjustingSize:" = NSMovieView;
 	    "-sizeForMagnification:" = NSMovieView;
 	    "-start:" = NSMovieView;
+	    "-statusField" = NSMovieView;
 	    "-stepBack:" = NSMovieView;
 	    "-stepForward:" = NSMovieView;
 	    "-stop:" = NSMovieView;

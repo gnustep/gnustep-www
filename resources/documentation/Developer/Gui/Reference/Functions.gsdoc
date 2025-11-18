@@ -1634,6 +1634,18 @@
           <em>Description forthcoming.</em>
         </desc>
       </function>
+      <function type="NSInteger" name="NSRunAlertPanelRelativeToWindow" ovadd="1.0.0">
+        <arg type="NSString*">title</arg>
+        <arg type="NSString*">msg</arg>
+        <arg type="NSString*">defaultButton</arg>
+        <arg type="NSString*">alternateButton</arg>
+        <arg type="NSString*">otherButton</arg>
+        <arg type="NSWindow*">docWindow</arg>
+        <vararg />
+        <desc>
+          <em>Description forthcoming.</em>
+        </desc>
+      </function>
       <function type="NSInteger" name="NSRunCriticalAlertPanel" ovadd="10.0.0">
         <arg type="NSString*">title</arg>
         <arg type="NSString*">msg</arg>
@@ -2299,6 +2311,87 @@
 <!--EndPSOperatorsFunctions-->
 <!--EndFunctions-->
 <!--StartMacros-->
+<!--StartNSAlertMacros-->
+    <chapter>
+      <heading>NSAlert macros</heading>
+      <p></p>
+      <macro name="_GNUstep_H_NSAlert" ovadd="1.0.0">
+        <desc>
+          Class: NSAlert Description: Encapsulates and manages
+          alert panels for displaying messages to the user. This
+          class provides methods to configure and display alerts
+          with customizable buttons, informative and message text,
+          icons, and style. Alerts can be presented modally or
+          as sheets. Instance Variables: _informative_text -
+          Supplementary information displayed in the
+          alert. _message_text - Primary message displayed in
+          bold. _icon - Icon shown in the alert panel. _buttons -
+          List of buttons presented to the user. _help_anchor -
+          Identifier for associated help documentation.
+          _window - Window used for sheet presentation.
+          _delegate - Delegate receiving alert-related
+          callbacks. _style - Style of alert (warning,
+          informational, critical). _shows_help -
+          Indicates if the Help button is shown.
+          _modalDelegate - Modal delegate handling sheet
+          callbacks. _didEndSelector - Selector called when
+          sheet ends. _result - Result of the modal session.
+          Usage: Example: Displaying a modal alert NSAlert
+          *alert = [NSAlert alertWithMessageText:@"Confirm"
+          defaultButton:@"OK"
+          alternateButton:@"Cancel"
+          otherButton:nil
+          informativeTextWithFormat:@"Are
+          you sure you want to proceed?"]; NSInteger result =
+          [alert runModal]; Example: Displaying an alert as a
+          sheet [alert beginSheetModalForWindow:mainWindow
+          modalDelegate:self
+          didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil]; Example: Handling Help button via delegate - (BOOL)alertShowHelp:(NSAlert *)alert {[[NSHelpManager sharedHelpManager] openHelpAnchor:@"exampleHelp" inBook:nil]; return <code>YES</code>;} Button Roles: Default Button - Represents the primary affirmative action (e.g., "OK", "Yes"). Alternate Button - Represents a secondary option (e.g., "Cancel", "No"). Other Button - Optional extra option (e.g., "More Info"). Can be <code>nil</code>. Alert Styles: NSWarningAlertStyle - Used for warnings that require user acknowledgment. NSInformationalAlertStyle - Used for informative messages without critical implications. NSCriticalAlertStyle - Used for serious errors requiring immediate attention.
+        </desc>
+      </macro>
+    </chapter>
+<!--EndNSAlertMacros-->
+<!--StartNSControllerMacros-->
+    <chapter>
+      <heading>NSController macros</heading>
+      <p></p>
+      <macro name="_GNUstep_H_NSController" ovadd="1.0.0">
+        <desc>
+          <title>NSController</title>
+          <abstract>
+            Abstract base class for controllers in the
+            Model-View-Controller architecture
+          </abstract>
+          NSController is an abstract base class that
+          provides the foundational infrastructure for
+          controller objects in Cocoa's
+          Model-View-Controller (MVC)
+          architecture. It serves as the superclass for
+          concrete controller classes like NSObjectController,
+          NSArrayController, and NSTreeController.
+          Key responsibilities include: - Managing editing sessions
+          and editor registration - Providing a common interface
+          for model-view communication - Handling commit and
+          discard operations for pending changes - Supporting
+          the NSEditor and NSEditorRegistration protocols -
+          Enabling Key-Value Observing (KVO) integration -
+          Managing declared keys for automatic observation
+          NSController implements the NSEditor protocol to
+          participate in editing hierarchies, allowing
+          controllers to be composed and managed by other
+          controllers. It also implements
+          NSEditorRegistration to manage child
+          editors that are editing the controller's content.
+          Subclasses should override the abstract methods to
+          provide specific behavior for their particular model
+          management strategies. The base class provides the
+          infrastructure for tracking active editors and
+          coordinating editing operations across the
+          controller hierarchy.
+        </desc>
+      </macro>
+    </chapter>
+<!--EndNSControllerMacros-->
 <!--StartNSTextAttachmentMacros-->
     <chapter>
       <heading>NSTextAttachment macros</heading>

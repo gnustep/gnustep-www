@@ -8,7 +8,7 @@
         hns@computer.org
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <abstract>The font descriptor class</abstract>
     <copy>2007-2016 Free Software Foundation, Inc.</copy>
   </head>
@@ -23,7 +23,28 @@
         <conform>NSCoding</conform>
         <conform>NSCopying</conform>
         <desc>
-          <em>Description forthcoming.</em>
+          NSFontDescriptor provides a flexible way to
+          describe fonts using attribute dictionaries rather
+          than specific font instances. This class serves as an
+          intermediate representation that can be used to
+          create fonts with specific characteristics or to find
+          fonts that match certain criteria. Font descriptors are
+          particularly useful for: - Font matching and
+          substitution when exact fonts aren't available -
+          Describing fonts in a platform-independent way -
+          Creating variations of existing fonts with modified
+          attributes - Serializing font information for
+          storage or transmission - Implementing font panels
+          and font selection interfaces The descriptor system uses
+          attribute dictionaries where keys are NSString
+          constants (like NSFontFamilyAttribute) and values
+          are appropriate objects (NSString for names, NSNumber for
+          sizes, etc.). This provides flexibility while
+          maintaining type safety. Font descriptors work
+          closely with NSFont for font creation and with
+          NSFontCollection for organizing and managing
+          groups of related fonts. They also integrate with the
+          font panel system for user font selection.
         </desc>
         <ivariable type="NSDictionary*" name="_attributes" validity="protected" ovadd="10.3.0">
           <desc>
@@ -38,7 +59,17 @@
           <sel>fontDescriptorWithFontAttributes:</sel>
           <arg type="NSDictionary*">attributes</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a font descriptor from a dictionary of font
+            <var>attributes</var>. The <var>attributes</var>
+            dictionary contains key-value pairs that
+            describe the desired font characteristics using
+            standard font attribute keys like
+            NSFontFamilyAttribute,
+            NSFontSizeAttribute, and
+            NSFontTraitsAttribute. Returns a new
+            font descriptor that encapsulates these
+            <var>attributes</var>, or <code>nil</code> if the
+            <var>attributes</var> dictionary is invalid.
           </desc>
         </method>
         <method type="id" factory="yes" ovadd="10.4.0">
@@ -47,7 +78,15 @@
           <sel>matrix:</sel>
           <arg type="NSAffineTransform*">matrix</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a font descriptor with a specific font
+            <var>name</var> and transformation <var>matrix</var>.
+            The <var>name</var> parameter specifies the font family
+            <var>name</var> and the <var>matrix</var> parameter
+            provides an affine transformation to apply to the
+            font, allowing for effects like scaling, rotation, or
+            skewing. Returns a new font descriptor that
+            combines the font <var>name</var> with the
+            geometric transformation.
           </desc>
         </method>
         <method type="id" factory="yes" ovadd="10.3.0">
@@ -56,107 +95,227 @@
           <sel>size:</sel>
           <arg type="CGFloat">size</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a font descriptor with a specific font
+            family <var>name</var> and point <var>size</var>.
+            The <var>name</var> parameter specifies the font family
+            (such as "Helvetica" or "Times") and the
+            <var>size</var> parameter specifies the font
+            <var>size</var> in points. This is a convenience
+            method for creating descriptors with the most
+            commonly needed attributes. Returns a new font
+            descriptor with the specified family and
+            <var>size</var>.
           </desc>
         </method>
         <method type="NSDictionary*" ovadd="10.3.0">
           <sel>fontAttributes</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the complete attribute dictionary for this
+            font descriptor. The returned dictionary contains all
+            the font attributes that define this descriptor, using
+            standard attribute keys like NSFontFamilyAttribute
+            and NSFontSizeAttribute. This provides access to all
+            font characteristics in a single collection for
+            inspection or serialization.
           </desc>
         </method>
         <method type="NSFontDescriptor*" ovadd="10.4.0">
           <sel>fontDescriptorByAddingAttributes:</sel>
           <arg type="NSDictionary*">attributes</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a new font descriptor by adding
+            <var>attributes</var> to this descriptor. The
+            <var>attributes</var> parameter contains additional
+            font <var>attributes</var> to merge with the existing
+            <var>attributes</var> in this descriptor. If an
+            attribute key already exists, the new value
+            replaces the old one. Returns a new font
+            descriptor with the combined
+            <var>attributes</var>.
           </desc>
         </method>
         <method type="NSFontDescriptor*" ovadd="10.4.0">
           <sel>fontDescriptorWithFace:</sel>
           <arg type="NSString*">face</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a new font descriptor with a specific font
+            <var>face</var> name. The <var>face</var> parameter
+            specifies the font <var>face</var> (such as
+            "Bold", "Italic", or "Regular") to use with this
+            descriptor's other attributes. This is useful
+            for creating variations of an existing font descriptor
+            with different weights or styles. Returns a new
+            descriptor with the <var>face</var> attribute.
           </desc>
         </method>
         <method type="NSFontDescriptor*" ovadd="10.4.0">
           <sel>fontDescriptorWithFamily:</sel>
           <arg type="NSString*">family</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a new font descriptor with a specific font
+            <var>family</var> name. The <var>family</var>
+            parameter specifies the font <var>family</var>
+            (such as "Helvetica" or "Times") to use while
+            preserving other attributes from this
+            descriptor. This allows changing the font
+            <var>family</var> while maintaining size, traits, and
+            other characteristics. Returns a new descriptor with
+            the <var>family</var> attribute.
           </desc>
         </method>
         <method type="NSFontDescriptor*" ovadd="10.4.0">
           <sel>fontDescriptorWithMatrix:</sel>
           <arg type="NSAffineTransform*">matrix</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a new font descriptor with a specific
+            transformation <var>matrix</var>. The
+            <var>matrix</var> parameter provides an
+            NSAffineTransform to apply to the font,
+            allowing for geometric transformations like
+            scaling, rotation, or skewing. Other attributes
+            from this descriptor are preserved. Returns a new
+            descriptor with the <var>matrix</var>
+            transformation applied.
           </desc>
         </method>
         <method type="NSFontDescriptor*" ovadd="10.4.0">
           <sel>fontDescriptorWithSize:</sel>
           <arg type="CGFloat">size</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a new font descriptor with a specific point
+            <var>size</var>. The <var>size</var> parameter
+            specifies the font <var>size</var> in points
+            while preserving all other attributes from this
+            descriptor. This is a convenient way to resize
+            a font while maintaining its family, traits, and other
+            characteristics. Returns a new descriptor
+            with the specified <var>size</var>.
           </desc>
         </method>
         <method type="NSFontDescriptor*" ovadd="10.4.0">
           <sel>fontDescriptorWithSymbolicTraits:</sel>
           <arg type="NSFontSymbolicTraits">traits</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a new font descriptor with specific
+            symbolic <var>traits</var>. The <var>traits</var>
+            parameter contains NSFontSymbolicTraits flags
+            that describe font characteristics like bold, italic,
+            condensed, etc. Other attributes from this
+            descriptor are preserved while the symbolic
+            <var>traits</var> are updated. Returns a new
+            descriptor with the specified <var>traits</var>.
           </desc>
         </method>
         <method type="id" ovadd="10.3.0">
           <sel>initWithFontAttributes:</sel>
           <arg type="NSDictionary*">attributes</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Initializes a font descriptor with the
+            specified font <var>attributes</var> dictionary.
+            The <var>attributes</var> dictionary should contain
+            key-value pairs using standard font attribute
+            keys. This is the designated initializer for creating
+            font descriptors with custom attribute combinations.
+            Returns an initialized font descriptor or
+            <code>nil</code> if the <var>attributes</var> are
+            invalid.
           </desc>
         </method>
         <method type="NSFontDescriptor*" ovadd="10.5.0">
           <sel>matchingFontDescriptorWithMandatoryKeys:</sel>
           <arg type="NSSet*">keys</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Finds the best matching font descriptor for this
+            descriptor's attributes. The <var>keys</var>
+            parameter is an NSSet containing attribute
+            <var>keys</var> that must be matched exactly in the
+            search result. Unlike
+            matchingFontDescriptorsWithMandatoryKeys:
+            which returns an array of all matches, this method
+            returns only the single best matching font
+            descriptor, or <code>nil</code> if no suitable
+            match is found. This is useful when you need a
+            specific font rather than a list of options.
           </desc>
         </method>
         <method type="NSArray*" ovadd="10.4.0">
           <sel>matchingFontDescriptorsWithMandatoryKeys:</sel>
           <arg type="NSSet*">keys</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Finds font descriptors that match this descriptor's
+            attributes. The <var>keys</var> parameter is an
+            NSSet containing attribute <var>keys</var> that must
+            be matched exactly in the search results. Other
+            attributes may be used for ranking but are not
+            mandatory. Returns an NSArray of
+            NSFontDescriptor objects sorted by
+            relevance, with the best matches first. Returns
+            an empty array if no matching fonts are found.
           </desc>
         </method>
         <method type="NSAffineTransform*" ovadd="10.4.0">
           <sel>matrix</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the transformation matrix associated with
+            this font descriptor. Extracts the NSAffineTransform
+            from the NSFontMatrixAttribute if present, or returns
+            the identity matrix if no transformation is specified.
+            This matrix defines geometric transformations like
+            scaling, rotation, or skewing that should be
+            applied to the font.
           </desc>
         </method>
         <method type="id" ovadd="10.4.0">
           <sel>objectForKey:</sel>
           <arg type="NSString*">attribute</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the value for a specific font
+            <var>attribute</var> key. The <var>attribute</var>
+            parameter should be one of the standard font
+            <var>attribute</var> constants like
+            NSFontNameAttribute or
+            NSFontSizeAttribute. Returns the
+            corresponding value object (NSString,
+            NSNumber, etc.) or <code>nil</code> if the
+            <var>attribute</var> is not present in this
+            descriptor. Provides direct access to
+            individual attributes without retrieving the
+            entire dictionary.
           </desc>
         </method>
         <method type="CGFloat" ovadd="10.4.0">
           <sel>pointSize</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the point size specified in this font
+            descriptor. Extracts the font size from the
+            NSFontSizeAttribute if present, or
+            returns 0.0 if no size is specified. This provides
+            convenient access to the font size without
+            needing to query the attributes dictionary
+            directly.
           </desc>
         </method>
         <method type="NSString*" ovadd="10.4.0">
           <sel>postscriptName</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the PostScript name for the font described
+            by this descriptor. The PostScript name is a unique
+            identifier for the specific font face that
+            includes family, weight, and style information in
+            a standardized format. Returns the PostScript name as an
+            NSString, or <code>nil</code> if the descriptor
+            doesn't specify a complete font definition.
           </desc>
         </method>
         <method type="NSFontSymbolicTraits" ovadd="10.4.0">
           <sel>symbolicTraits</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the symbolic traits associated with this
+            font descriptor. Extracts the NSFontSymbolicTraits
+            flags from the font attributes, providing information
+            about font characteristics like bold, italic,
+            condensed, monospace, etc. Returns 0 if no
+            symbolic traits are specified in this descriptor.
           </desc>
         </method>
       </class>

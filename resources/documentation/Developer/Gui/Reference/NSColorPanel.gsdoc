@@ -8,7 +8,7 @@
         scottc@net-community.com
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <abstract>System generic color panel</abstract>
     <copy>1996 Free Software Foundation, Inc.</copy>
   </head>
@@ -21,6 +21,37 @@
       <class name="NSColorPanel" super="NSPanel" ovadd="1.0.0">
         <declared>AppKit/NSColorPanel.h</declared>
         <desc>
+          <title>NSColorPanel</title>
+          <abstract>
+            System color selection panel interface
+          </abstract>
+          NSColorPanel provides a comprehensive color
+          selection interface that allows users to choose
+          colors using various color picking methods and modes.
+          The panel is typically used as a shared system-wide color
+          picker that can be integrated into applications
+          requiring color selection functionality. Key
+          features include: * Multiple color picker modes
+          (RGB, HSB, CMYK, grayscale, wheel, crayon, etc.) *
+          Customizable picker mask to enable/disable
+          specific color modes * Alpha transparency support
+          with optional alpha slider * Target-action pattern for
+          color change notifications * Continuous or discrete
+          update modes * Color list integration for predefined
+          color collections * Accessory view support for custom
+          interface extensions * Drag and drop color support
+          for easy color sharing * Automatic color space conversion
+          between picker modes The color panel operates as a
+          singleton shared instance and integrates seamlessly
+          with the application's event system. It supports both
+          programmatic color setting and interactive user
+          selection, with flexible notification mechanisms
+          to keep the application synchronized with color changes.
+          Color picker modes can be selectively enabled or
+          disabled using picker masks, allowing applications
+          to restrict the available color selection methods to match
+          their specific requirements or user interface
+          constraints. <br />
           <p>
             TODO Description
           </p>
@@ -159,6 +190,12 @@
           <sel>fromView:</sel>
           <arg type="NSView*">sourceView</arg>
           <desc>
+            Initiates a drag operation with the specified
+            color. aColor: The color to drag anEvent: The mouse
+            event that initiated the drag sourceView: The view
+            from which the drag originated Returns:
+            <code>YES</code> if the drag was successful,
+            <code>NO</code> otherwise <br />
             <p>
               Drags <var>aColor</var> from <var>sourceView</var>
               at the location give by the event <var>anEvent</var> (
@@ -174,19 +211,29 @@
           <sel>setPickerMask:</sel>
           <arg type="int">mask</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets which color picker modes are available in the
+            color panel. mask: Bitmask of NSColorPanel*ModeMask
+            constants specifying available modes <br />
+            Determines color selection modes availible to
+            the the NSApplications colorPanel.
           </desc>
         </method>
         <method type="void" factory="yes" ovadd="1.0.0">
           <sel>setPickerMode:</sel>
           <arg type="int">mode</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the current color picker <var>mode</var> for new
+            color panel instances. mode: The color picker
+            <var>mode</var> constant (NSGrayModeColorPanel, etc.)
+            <br /> Specifies color panel's initial picker.
           </desc>
         </method>
         <method type="NSColorPanel*" factory="yes" ovadd="1.0.0">
           <sel>sharedColorPanel</sel>
           <desc>
+            Returns the shared color panel instance, creating
+            it if necessary. Returns: The singleton NSColorPanel
+            instance for the application <br />
             <p>
               Creates (if needed) and returns the shared
               NSColorPanel.
@@ -196,6 +243,9 @@
         <method type="BOOL" factory="yes" ovadd="1.0.0">
           <sel>sharedColorPanelExists</sel>
           <desc>
+            Returns whether the shared color panel has been
+            created. Returns: <code>YES</code> if the shared
+            color panel exists, <code>NO</code> otherwise <br />
             <p>
               Returns whether the NSColorPanel has been already
               created.
@@ -205,6 +255,9 @@
         <method type="NSView*" ovadd="1.0.0">
           <sel>accessoryView</sel>
           <desc>
+            Returns the accessory view displayed in the color
+            panel. Returns: The current accessory view, or
+            <code>nil</code> if none is set <br />
             <p>
               Returns the NSColorPanel's accessory view if it
               exists, <code>nil</code> otherwise.
@@ -220,6 +273,9 @@
         <method type="CGFloat" ovadd="1.0.0">
           <sel>alpha</sel>
           <desc>
+            Returns the current alpha transparency value.
+            Returns: The alpha component (0.0 to 1.0) of the
+            current color <br />
             <p>
               Returns the alpha value of the NSColorPanel.
               Returns 1.0 if the NSColorPanel does not show
@@ -240,12 +296,18 @@
           <sel>attachColorList:</sel>
           <arg type="NSColorList*">aColorList</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Attaches a color list to the color panel for the
+            color list picker mode. aColorList: The NSColorList
+            to make available in the color panel <br /> Adds a color
+            list to all of the color pickers of the receiver.
           </desc>
         </method>
         <method type="NSColor*" ovadd="1.0.0">
           <sel>color</sel>
           <desc>
+            Returns the currently selected color. Returns: The
+            NSColor currently selected in the color panel
+            <br />
             <p>
               Returns the current NSColor displayed by the
               NSColorPanel.
@@ -262,12 +324,19 @@
           <sel>detachColorList:</sel>
           <arg type="NSColorList*">aColorList</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Detaches a color list from the color panel.
+            aColorList: The NSColorList to remove from the
+            color panel <br /> Removes the referenced color list
+            to all of the color pickers of the receiver.
           </desc>
         </method>
         <method type="BOOL" ovadd="1.0.0">
           <sel>isContinuous</sel>
           <desc>
+            Returns whether the color panel operates in
+            continuous mode. Returns: <code>YES</code> if
+            the panel sends continuous updates, <code>NO</code> for
+            discrete updates <br />
             <p>
               Returns whether the NSColorPanel continuously
               sends its action message.
@@ -283,6 +352,9 @@
         <method type="int" ovadd="1.0.0">
           <sel>mode</sel>
           <desc>
+            Returns the current color picker mode. Returns: The
+            current mode constant (NSGrayModeColorPanel, etc.)
+            <br />
             <p>
               Returns the current mode of the NSColorPanel.
             </p>
@@ -298,6 +370,9 @@
           <sel>setAccessoryView:</sel>
           <arg type="NSView*">aView</arg>
           <desc>
+            Sets an accessory view to display in the color panel.
+            aView: The view to display as an accessory, or
+            <code>nil</code> to remove <br />
             <p>
               Sets the accessoryView to a view. The old view (if
               exists) will be removed (and released). You need
@@ -315,6 +390,9 @@
           <sel>setAction:</sel>
           <arg type="SEL">aSelector</arg>
           <desc>
+            Sets the action message sent when the color changes.
+            aSelector: The selector to invoke on the target
+            when color changes <br />
             <p>
               Sets the NSColorPanl action method to
               <var>aSelector</var> The action message is usally
@@ -332,6 +410,8 @@
           <sel>setColor:</sel>
           <arg type="NSColor*">aColor</arg>
           <desc>
+            Sets the current color in the color panel. aColor: The
+            color to display and select in the panel <br />
             <p>
               Sets the NSColor displayed to <var>aColor</var>.
               This method posts a
@@ -350,6 +430,10 @@
           <sel>setContinuous:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
+            Sets whether the color panel operates in continuous
+            mode. flag: <code>YES</code> for continuous updates
+            during interaction, <code>NO</code> for discrete
+            updates <br />
             <p>
               Sets whether the NSColorPanel sends continuously
               action messages
@@ -366,6 +450,9 @@
           <sel>setMode:</sel>
           <arg type="int">mode</arg>
           <desc>
+            Sets the current color picker <var>mode</var>. mode:
+            The color picker <var>mode</var> constant to activate
+            <br />
             <p>
               Set the NSColorPanel <var>mode</var> to
               <var>mode</var>.
@@ -379,6 +466,9 @@
           <sel>setShowsAlpha:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
+            Sets whether the alpha transparency slider is visible.
+            flag: <code>YES</code> to show the alpha slider,
+            <code>NO</code> to hide it <br />
             <p>
               Sets whether the NSColorPanel shows alpha values and
               the alpha slider.
@@ -395,6 +485,9 @@
           <sel>setTarget:</sel>
           <arg type="id">anObject</arg>
           <desc>
+            Sets the target object for color change actions.
+            anObject: The object to receive action messages
+            when color changes <br />
             <p>
               Sets the target object to <var>anObject</var>
             </p>
@@ -403,6 +496,9 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>showsAlpha</sel>
           <desc>
+            Returns whether the alpha transparency slider is
+            visible. Returns: <code>YES</code> if the alpha
+            slider is shown, <code>NO</code> if hidden <br />
             <p>
               Returns whether the NSColorPanel shows alpha
               values and the alpha slider
@@ -432,7 +528,9 @@
           <sel>orderFrontColorPanel:</sel>
           <arg type="id">sender</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Brings the shared color panel to the front and makes
+            it key. sender: The object that sent the message
+            (typically a menu item or button)
           </desc>
         </method>
       </category>

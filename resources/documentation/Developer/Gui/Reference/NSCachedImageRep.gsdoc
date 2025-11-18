@@ -8,7 +8,7 @@
         fedor@gnu.org
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <abstract>Cached image representation.</abstract>
     <copy>1996 Free Software Foundation, Inc.</copy>
   </head>
@@ -21,6 +21,26 @@
       <class name="NSCachedImageRep" super="NSImageRep" ovadd="1.0.0">
         <declared>AppKit/NSCachedImageRep.h</declared>
         <desc>
+          NSCachedImageRep is a specialized image
+          representation that stores cached bitmap data
+          for efficient drawing operations. It provides a way to
+          capture and cache the visual content of windows or
+          specific rectangular areas as bitmap images,
+          enabling fast redrawing and composition operations
+          without regenerating complex graphics content. This
+          class is particularly useful for performance
+          optimization in scenarios where the same
+          graphical content needs to be drawn repeatedly,
+          such as during window dragging, animation sequences, or
+          when implementing custom drawing caches. The cached
+          representation can be created from existing
+          window content or initialized as an empty bitmap with
+          specific characteristics. NSCachedImageRep supports
+          various pixel formats and color depths, allowing for
+          optimization based on the specific requirements
+          of the cached content. It can handle both separate and
+          planar pixel formats, with optional alpha channel
+          support for transparency effects. <br />
           <p>
             Todo Description
           </p>
@@ -53,7 +73,16 @@
           <sel>alpha:</sel>
           <arg type="BOOL">alpha</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Initializes a new cached image representation
+            with the specified size and pixel characteristics.
+            This creates an empty bitmap cache with the given
+            logical size and pixel format properties. The depth
+            parameter determines the color depth and pixel
+            format, while the <var>separate</var> flag controls
+            whether pixels are stored in <var>separate</var>
+            planes or interleaved format. The <var>alpha</var>
+            flag enables transparency support by including an
+            <var>alpha</var> channel in the pixel format.
           </desc>
         </method>
         <method type="id" ovadd="1.0.0">
@@ -70,7 +99,17 @@
           <sel>alpha:</sel>
           <arg type="BOOL">alpha</arg>
           <desc>
-            GNUstep extension <br />
+            GNUstep extension Initializes a new cached image
+            representation with the specified dimensions
+            and pixel characteristics. This extended initializer
+            provides additional control over the pixel format
+            by allowing specification of both logical size and
+            actual pixel dimensions, enabling support for
+            high-resolution displays and custom pixel
+            densities. The depth parameter controls color
+            depth and pixel format, while <var>separate</var> and
+            <var>alpha</var> flags determine memory layout and
+            transparency support respectively. <br />
             <p>
               Initializes and returns a new
               NSCachedImageRep with size and depth
@@ -87,6 +126,14 @@
           <sel>rect:</sel>
           <arg type="NSRect">aRect</arg>
           <desc>
+            Initializes a cached image representation by
+            capturing the contents of a specific rectangular
+            area within the given window. This method creates a
+            bitmap cache by copying the current visual content
+            of the specified rectangle from the window's backing
+            store. The cached representation can then be used
+            for efficient redrawing operations without requiring
+            regeneration of the original content. <br />
             <p>
               Initializes and returns a new
               NSCachedImageRep into a NSWindow
@@ -105,6 +152,14 @@
         <method type="NSRect" ovadd="1.0.0">
           <sel>rect</sel>
           <desc>
+            Returns the rectangular area that was cached from
+            the original window. This rectangle represents the
+            bounds of the content that was captured when the
+            cached image representation was created using the
+            window-based initializer. The rectangle is
+            specified in the coordinate system of the
+            original window from which the content was cached.
+            <br />
             <p>
               Returns the rectangle where the image is cached.
             </p>
@@ -119,6 +174,13 @@
         <method type="NSWindow*" ovadd="1.0.0">
           <sel>window</sel>
           <desc>
+            Returns the window from which this cached image
+            representation was created. This provides
+            access to the original source window that was used
+            to capture the cached content. Returns <code>nil</code>
+            if the cached image representation was created using
+            size-based initialization rather than window
+            content capture. <br />
             <p>
               Returns the NSWindow where the image is cached.
             </p>

@@ -13,7 +13,7 @@
         far@ix.netcom.com
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <abstract>The button cell class</abstract>
     <copy>1996-1999 Free Software Foundation, Inc.</copy>
   </head>
@@ -26,6 +26,20 @@
       <class name="NSButtonCell" super="NSActionCell" ovadd="1.0.0">
         <declared>AppKit/NSButtonCell.h</declared>
         <desc>
+          NSButtonCell is the cell class responsible for
+          displaying and handling the behavior of buttons in
+          the GNUstep GUI framework. It provides functionality for
+          various button types including push buttons, toggle
+          buttons, radio buttons, and switch buttons. The cell
+          manages the button's appearance, state, key
+          equivalents, images, and user interaction
+          behavior. As a subclass of NSActionCell,
+          NSButtonCell inherits action and target
+          functionality while adding button-specific
+          features such as alternate titles and images for
+          different button states, periodic actions for
+          continuous button presses, and customizable visual
+          styles through bezel styles and gradient types. <br />
           <p>
             TODO Description
           </p>
@@ -159,6 +173,12 @@
         <method type="NSImage*" ovadd="1.0.0">
           <sel>alternateImage</sel>
           <desc>
+            Returns the alternate image displayed when the
+            button is in its alternate state, such as when
+            pressed or highlighted. The alternate image
+            provides visual feedback to indicate the button's
+            current interaction state. Returns <code>nil</code>
+            if no alternate image is set. <br />
             <p>
               Returns the NSButtonCell's alternate image.
             </p>
@@ -173,18 +193,31 @@
         <method type="NSString*" ovadd="10.0.0">
           <sel>alternateMnemonic</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the mnemonic character extracted from the
+            alternate title, which represents the keyboard
+            shortcut character for the button's alternate
+            state. Returns <code>nil</code> if no mnemonic has
+            been set for the alternate title.
           </desc>
         </method>
         <method type="NSUInteger" ovadd="10.0.0">
           <sel>alternateMnemonicLocation</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the character position of the mnemonic
+            within the alternate title string. This indicates
+            where the mnemonic character appears for proper
+            keyboard navigation and visual highlighting.
+            Returns NSNotFound if no mnemonic location is set.
           </desc>
         </method>
         <method type="NSString*" ovadd="1.0.0">
           <sel>alternateTitle</sel>
           <desc>
+            Returns the alternate title displayed when the
+            button is in its alternate state. The alternate
+            title is typically shown when the button is pressed
+            or highlighted, providing visual feedback to the user
+            about the button's current state. <br />
             <p>
               Returns the NSButtonCell's alternate title (used
               when highlighted).
@@ -200,25 +233,46 @@
         <method type="NSAttributedString*" ovadd="10.0.0">
           <sel>attributedAlternateTitle</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the alternate title as an attributed
+            string, providing access to formatting information
+            such as font, color, and style attributes applied to
+            the alternate title text. Returns <code>nil</code> if
+            no alternate attributed title has been set.
           </desc>
         </method>
         <method type="NSAttributedString*" ovadd="10.0.0">
           <sel>attributedTitle</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the primary title as an attributed string,
+            including all formatting attributes such as font,
+            color, and text styling. This provides richer text
+            display capabilities than plain string titles.
+            Returns <code>nil</code> if no attributed title has
+            been set.
           </desc>
         </method>
         <method type="NSColor*" ovadd="10.4.0">
           <sel>backgroundColor</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the background color used when drawing the
+            button cell. This color is applied behind the
+            button's content and affects the overall
+            appearance of the button. Returns
+            <code>nil</code> if using the default system
+            background color for the button's current style
+            and state.
           </desc>
         </method>
         <method type="NSBezelStyle" ovadd="10.0.0">
           <sel>bezelStyle</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the current bezel style used for drawing
+            the button's border and background. The bezel style
+            determines the visual appearance of the button,
+            including its shape, shadows, and dimensional
+            effects. Different styles provide various visual
+            treatments from flat to highly dimensional
+            appearances.
           </desc>
         </method>
         <method type="void" ovadd="10.4.0">
@@ -227,7 +281,12 @@
           <sel>inView:</sel>
           <arg type="NSView*">controlView</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Draws the button's bezel (border and background)
+            within the specified frame in the given view. This
+            method handles the visual rendering of the button's
+            dimensional appearance, including borders,
+            background fills, shadows, and other
+            bezel-related visual elements.
           </desc>
         </method>
         <method type="void" ovadd="10.4.0">
@@ -238,7 +297,11 @@
           <sel>inView:</sel>
           <arg type="NSView*">controlView</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Draws the specified image within the given frame in
+            the control view. This method handles the rendering of
+            the button's image content, including proper scaling,
+            positioning, and state-dependent visual
+            effects such as dimming for disabled buttons.
           </desc>
         </method>
         <method type="NSRect" ovadd="10.4.0">
@@ -249,7 +312,12 @@
           <sel>inView:</sel>
           <arg type="NSView*">controlView</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Draws the button's title text within the specified
+            frame and returns the actual rectangle used for text
+            rendering. This method handles text layout, font
+            application, color application, and
+            positioning of the title content within the
+            button's available space.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -258,6 +326,14 @@
           <sel>interval:</sel>
           <arg type="float*">interval</arg>
           <desc>
+            Retrieves the current periodic <var>delay</var>
+            and <var>interval</var> settings for continuous button
+            actions. The <var>delay</var> specifies how
+            <strong>long</strong> to wait before beginning
+            repeated actions, while the <var>interval</var>
+            specifies the time between subsequent repeated
+            actions. Both values are returned through the
+            provided pointer parameters. <br />
             <p>
               Gets the NSButtonCell's <var>delay</var> and the
               <var>interval</var> parameters used when NSButton
@@ -277,12 +353,22 @@
         <method type="NSGradientType" ovadd="10.0.0">
           <sel>gradientType</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the current gradient type applied to the
+            button's background. The gradient type determines
+            the direction and intensity of shading effects,
+            creating dimensional appearance through light and
+            shadow gradients across the button surface.
           </desc>
         </method>
         <method type="NSInteger" ovadd="1.0.0">
           <sel>highlightsBy</sel>
           <desc>
+            Returns the mask that specifies which user
+            interactions cause the button to highlight
+            visually. The mask combines flags that determine
+            whether the button highlights on mouse down, mouse
+            entered, content changes, or other interaction
+            states to provide visual feedback. <br />
             <p>
               Returns a mask describing how the button cell is
               highlighted :
@@ -302,12 +388,21 @@
         <method type="BOOL" ovadd="10.0.0">
           <sel>imageDimsWhenDisabled</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the button's image automatically
+            dims when the button is disabled. When enabled,
+            disabled buttons show their images with reduced
+            opacity or altered appearance to indicate the
+            non-interactive state visually.
           </desc>
         </method>
         <method type="NSCellImagePosition" ovadd="1.0.0">
           <sel>imagePosition</sel>
           <desc>
+            Returns the current positioning of the image
+            relative to the title text within the button cell.
+            The image position determines the layout arrangement of
+            the image and text elements, such as image above text,
+            image to the left of text, or image only. <br />
             <p>
               Returns the NSButtonCell's image position. See
               <ref type="type" id="NSCellImagePosition">
@@ -326,12 +421,22 @@
         <method type="NSImageScaling" ovadd="10.5.0">
           <sel>imageScaling</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the current image scaling mode used when
+            displaying the button's image. This determines
+            how the image is resized to fit within the available
+            space, such as proportional scaling, scaling to fit,
+            or scaling to fill the entire area.
           </desc>
         </method>
         <method type="BOOL" ovadd="1.0.0">
           <sel>isTransparent</sel>
           <desc>
+            Returns whether the button cell is configured to be
+            transparent, meaning its background does not
+            draw and content behind it shows through. Transparent
+            buttons are useful for overlay controls and custom
+            drawing scenarios where background visibility is
+            desired. <br />
             <p>
               Returns whether the button cell is transparent.
             </p>
@@ -346,6 +451,12 @@
         <method type="NSString*" ovadd="1.0.0">
           <sel>keyEquivalent</sel>
           <desc>
+            Returns the key equivalent string that can be used
+            to activate this button via keyboard shortcut. The key
+            equivalent is typically a single character that,
+            when pressed with appropriate modifier keys, triggers
+            the button's action. Returns <code>nil</code> if no key
+            equivalent is set. <br />
             <p>
               Returns the NSButtonCell's key equivalent. The
               key equivalent and its modifier mask are used to
@@ -364,6 +475,12 @@
         <method type="NSFont*" ovadd="1.0.0">
           <sel>keyEquivalentFont</sel>
           <desc>
+            Returns the font used to display the key equivalent
+            symbol or character within the button. This font may
+            differ from the main title font and is used
+            specifically for rendering key equivalent
+            indicators. Returns <code>nil</code> if using
+            the default system font. <br />
             <p>
               Returns the NSFont of the key equivalent.
             </p>
@@ -378,6 +495,12 @@
         <method type="NSUInteger" ovadd="1.0.0">
           <sel>keyEquivalentModifierMask</sel>
           <desc>
+            Returns the modifier key mask that must be pressed
+            along with the key equivalent to activate the button.
+            This mask combines flags like NSCommandKeyMask,
+            NSShiftKeyMask, NSControlKeyMask, and
+            NSAlternateKeyMask to specify the
+            required key combination. <br />
             <p>
               Returns the modifier mask of the NSButtonCell's
               key equivalent. The key equivalent and its modifier
@@ -400,20 +523,34 @@
           <sel>mouseEntered:</sel>
           <arg type="NSEvent*">event</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Handles mouse entered events when the cursor moves
+            into the button cell's bounds. This method is called
+            to update the button's appearance for mouse hover
+            effects, such as highlighting or showing borders
+            only while the mouse is inside the button area.
           </desc>
         </method>
         <method type="void" ovadd="10.0.0">
           <sel>mouseExited:</sel>
           <arg type="NSEvent*">event</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Handles mouse exited events when the cursor moves
+            out of the button cell's bounds. This method is called
+            to update the button's appearance when mouse interaction
+            ends, such as removing hover highlights or hiding
+            borders that only show during mouse interaction.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setAlternateImage:</sel>
           <arg type="NSImage*">anImage</arg>
           <desc>
+            Sets the alternate image to be displayed when the
+            button is in its alternate state. This image is
+            shown during button press, highlight, or other
+            alternate state conditions. Pass <code>nil</code>
+            to remove the alternate image. The image object is
+            retained by the button cell. <br />
             <p>
               Sets the NSButtonCell's alternate image to
               <var>anImage</var>.
@@ -430,13 +567,25 @@
           <sel>setAlternateMnemonicLocation:</sel>
           <arg type="NSUInteger">location</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the character position within the alternate title
+            where the mnemonic character should be highlighted.
+            This is used for keyboard navigation accessibility and
+            visual indication of the shortcut key. Pass
+            NSNotFound to remove the mnemonic
+            <var>location</var>.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setAlternateTitle:</sel>
           <arg type="NSString*">aString</arg>
           <desc>
+            Sets the alternate title to be displayed when the
+            button is in its alternate state. This title is
+            shown during button press or highlight states,
+            allowing for different text to appear based on the
+            button's current interaction state. Pass
+            <code>nil</code> to remove the alternate title.
+            <br />
             <p>
               Sets the NSButtonCell's alternate title (used when
               highlighted) to <var>aString</var> and update
@@ -454,48 +603,86 @@
           <sel>setAlternateTitleWithMnemonic:</sel>
           <arg type="NSString*">aString</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the alternate title from a string containing
+            mnemonic markers, automatically processing
+            ampersand characters to create keyboard shortcuts
+            and visual indicators. The processed title becomes the
+            alternate title with appropriate mnemonic
+            highlighting.
           </desc>
         </method>
         <method type="void" ovadd="10.0.0">
           <sel>setAttributedAlternateTitle:</sel>
           <arg type="NSAttributedString*">aString</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the alternate title using an attributed string,
+            allowing for rich text formatting including font
+            variations, colors, and other text attributes.
+            This attributed title is displayed when the button is
+            in its alternate state. Pass <code>nil</code> to remove
+            the attributed alternate title.
           </desc>
         </method>
         <method type="void" ovadd="10.0.0">
           <sel>setAttributedTitle:</sel>
           <arg type="NSAttributedString*">aString</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the primary title using an attributed string,
+            enabling rich text formatting with fonts, colors,
+            and styling attributes. This becomes the main title
+            displayed when the button is in its normal state.
+            Pass <code>nil</code> to remove the attributed title.
           </desc>
         </method>
         <method type="void" ovadd="10.4.0">
           <sel>setBackgroundColor:</sel>
           <arg type="NSColor*">color</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the background <var>color</var> for the button
+            cell. This <var>color</var> is drawn behind the
+            button's content and can be used to customize the
+            button's appearance beyond the standard bezel
+            styles. Pass <code>nil</code> to use the default
+            system background <var>color</var> for the button's
+            style.
           </desc>
         </method>
         <method type="void" ovadd="10.0.0">
           <sel>setBezelStyle:</sel>
           <arg type="NSBezelStyle">bezelStyle</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the bezel style that determines the visual
+            appearance of the button's border and
+            background. The bezel style controls the
+            button's shape, dimensionality, and visual
+            treatment, ranging from flat styles to highly
+            dimensional effects with shadows and
+            highlighting.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setButtonType:</sel>
           <arg type="NSButtonType">buttonType</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Configures the button's type, which determines
+            its fundamental interaction behavior and visual
+            appearance. Different button types provide
+            distinct behaviors for state changes,
+            highlighting, and response to user
+            interaction such as momentary, toggle, or radio
+            button behaviors.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setFont:</sel>
           <arg type="NSFont*">fontObject</arg>
           <desc>
+            Sets the font used to display both the regular and
+            alternate titles of the button cell. This font
+            affects all text rendering within the button,
+            ensuring consistent typography across different
+            button states. The font object is retained by the
+            button cell. <br />
             <p>
               Sets the NSButtonCell's font to
               <var>fontObject</var>. The key equivalent font size
@@ -523,13 +710,24 @@
           <sel>setGradientType:</sel>
           <arg type="NSGradientType">gradientType</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the gradient type for the button's background
+            shading. Different gradient types provide various
+            dimensional effects through directional
+            shading, from subtle concave effects to strong
+            convex appearance with pronounced highlighting and
+            shadowing.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setHighlightsBy:</sel>
           <arg type="NSInteger">mask</arg>
           <desc>
+            Sets the <var>mask</var> that determines which user
+            interactions trigger visual highlighting of
+            the button. The <var>mask</var> combines various flags
+            to specify highlighting behavior for mouse down, mouse
+            entry, content changes, and other interactive states
+            that should provide visual feedback. <br />
             <p>
               Sets a <var>mask</var> describing how the button
               cell is highlighted :
@@ -550,13 +748,24 @@
           <sel>setImageDimsWhenDisabled:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets whether the button's image should automatically
+            dim when the button becomes disabled. When enabled,
+            this provides visual feedback about the button's
+            non-interactive state by reducing image
+            opacity or applying visual effects to indicate
+            disability.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setImagePosition:</sel>
           <arg type="NSCellImagePosition">aPosition</arg>
           <desc>
+            Sets the positioning of the image relative to the
+            title text within the button cell. This determines
+            the visual layout of image and text elements,
+            controlling whether the image appears above,
+            below, to the left, to the right, or overlapping
+            with the text. <br />
             <p>
               Sets the image position. The GNUstep implementation
               depends only on the image position. If the image
@@ -586,13 +795,26 @@
           <sel>setImageScaling:</sel>
           <arg type="NSImageScaling">scaling</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the image <var>scaling</var> mode that determines
+            how the button's image is resized to fit within the
+            button's bounds. Different <var>scaling</var>
+            modes provide various behaviors for maintaining
+            aspect ratio and fitting images into the available
+            display area.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setKeyEquivalent:</sel>
           <arg type="NSString*">key</arg>
           <desc>
+            Sets the <var>key</var> equivalent string that allows
+            keyboard activation of the button. When this
+            <var>key</var> is pressed with the appropriate
+            modifier keys, the button's action is triggered.
+            Pass an empty string or <code>nil</code> to remove the
+            <var>key</var> equivalent. Common values include
+            single characters, escape sequences, or special
+            <var>key</var> constants. <br />
             <p>
               Sets the NSButtonCell's <var>key</var> equivalent to
               <var>key</var>. The <var>key</var> equivalent and
@@ -616,6 +838,12 @@
           <sel>setKeyEquivalentFont:</sel>
           <arg type="NSFont*">fontObj</arg>
           <desc>
+            Sets the font used for displaying key equivalent
+            indicators within the button. This font is used
+            specifically for key equivalent symbols and
+            may be different from the main button title font. Pass
+            <code>nil</code> to use the default system font for
+            key equivalents. <br />
             <p>
               Sets the NSFont of the key equivalent to
               <var>fontObject</var>.
@@ -637,6 +865,11 @@
           <sel>size:</sel>
           <arg type="float">fontSize</arg>
           <desc>
+            Sets the key equivalent font using a font name and
+            size. This convenience method creates a font object
+            from the specified name and size, then sets it as the
+            key equivalent font. The font is used for rendering key
+            equivalent indicators within the button. <br />
             <p>
               Sets the NSFont with size <var>fontSize</var> of the
               key equivalent to <var>fontName</var>.
@@ -659,6 +892,12 @@
           <sel>setKeyEquivalentModifierMask:</sel>
           <arg type="NSUInteger">mask</arg>
           <desc>
+            Sets the modifier key <var>mask</var> that must be
+            pressed along with the key equivalent to activate
+            the button. The <var>mask</var> should combine
+            appropriate flags like NSCommandKeyMask to
+            specify which modifier keys are required for the
+            keyboard shortcut. <br />
             <p>
               Sets the modifier <var>mask</var> of the
               NSButtonCell's key equivalent to
@@ -685,6 +924,15 @@
           <sel>interval:</sel>
           <arg type="float">interval</arg>
           <desc>
+            Sets the periodic <var>delay</var> and
+            <var>interval</var> for continuous button actions
+            when the button is held down. The <var>delay</var>
+            parameter specifies the initial wait time before
+            repeated actions begin, and the
+            <var>interval</var> parameter specifies the time
+            between subsequent repeated actions. This enables
+            automatic repetition for buttons like scrollers.
+            <br />
             <p>
               Sets the NSButtonCell's <var>delay</var> and
               <var>interval</var> parameters used when NSButton
@@ -705,27 +953,46 @@
           <sel>setShowsBorderOnlyWhileMouseInside:</sel>
           <arg type="BOOL">show</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets whether the button should display its border only
+            during mouse hover. When enabled, the button appears
+            borderless until the mouse enters its bounds, at
+            which point the border appears to provide visual
+            feedback for potential interaction.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setShowsStateBy:</sel>
           <arg type="NSInteger">mask</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the <var>mask</var> that determines which
+            conditions cause the button to display its
+            alternate state visually. This controls when the
+            button shows alternate titles, images, or other
+            state-dependent visual elements to reflect
+            different operational conditions.
           </desc>
         </method>
         <method type="void" ovadd="10.0.0">
           <sel>setSound:</sel>
           <arg type="NSSound*">aSound</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the sound that plays when the button is
+            activated. The sound provides auditory feedback
+            for button interactions, enhancing the user experience
+            with audio cues. Pass <code>nil</code> to remove the
+            button's sound and disable audio feedback for
+            button activation.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setTitle:</sel>
           <arg type="NSString*">aString</arg>
           <desc>
+            Sets the primary title text displayed on the button.
+            This is the default text shown when the button is in
+            its normal state. The title string is copied and stored
+            by the button cell. Pass <code>nil</code> to remove the
+            title text entirely. <br />
             <p>
               Sets the NSButtonCell's title to <var>aString</var>.
             </p>
@@ -735,13 +1002,24 @@
           <sel>setTitleWithMnemonic:</sel>
           <arg type="NSString*">aString</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the primary title from a string that includes
+            mnemonic markers, typically ampersand characters
+            that indicate keyboard shortcuts. The mnemonic
+            character is automatically processed to create
+            the appropriate key equivalent and visual underlining
+            for accessibility.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setTransparent:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
+            Sets whether the button cell should be transparent.
+            When set to <code>YES</code>, the button's background
+            is not drawn, allowing content behind it to show
+            through. This is useful for creating overlay
+            buttons or custom visual effects where background
+            transparency is needed. <br />
             <p>
               Sets whether the button cell is transparent.
             </p>
@@ -756,24 +1034,42 @@
         <method type="BOOL" ovadd="10.0.0">
           <sel>showsBorderOnlyWhileMouseInside</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the button shows its border only
+            when the mouse cursor is positioned over it. This
+            creates a hover effect where the button appears
+            borderless until mouse interaction, providing a
+            cleaner interface with interactive feedback.
           </desc>
         </method>
         <method type="NSInteger" ovadd="1.0.0">
           <sel>showsStateBy</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the mask that specifies which conditions
+            cause the button to show its alternate state
+            visually. This mask determines when alternate
+            titles, images, or other state-dependent visual
+            elements are displayed to reflect the button's
+            current operational state.
           </desc>
         </method>
         <method type="NSSound*" ovadd="10.0.0">
           <sel>sound</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the sound object that plays when the button
+            is activated. This sound provides auditory feedback for
+            button interactions. Returns <code>nil</code> if no
+            sound has been assigned to the button or if audio
+            feedback is disabled for button activation.
           </desc>
         </method>
         <method type="NSString*" ovadd="1.0.0">
           <sel>title</sel>
           <desc>
+            Returns the primary title text currently displayed
+            on the button. This is the main text shown when the
+            button is in its normal, non-highlighted state.
+            Returns <code>nil</code> if no title has been set.
+            <br />
             <p>
               Returns the NSButtonCell's title.
             </p>

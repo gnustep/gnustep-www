@@ -10,6 +10,7 @@
     <div class="content-bar">
       <div class="content-bar-top">
         <div class="content-bar-top-body">
+          <div class="content-bar-top-body-title">Gui</div><br />
           <a href="#nav-bar-classes">Classes</a><br />
           <a href="#nav-bar-protocols">Protocols</a><br />
           <a href="#nav-bar-constants">Constants</a><br />
@@ -411,6 +412,7 @@
           <h3 class="content-bar-index-section-header"><a name="nav-bar-constants">Constants</a></h3>
           <p class="project_constant_index">
                         
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSFontManagerAvailableFontsDidChangeNotification">GSFontManagerAvailableFontsDidChangeNotification</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSSixteenBitRGBDepth">GSSixteenBitRGBDepth</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSAccessibilityActivationPointAttribute">NSAccessibilityActivationPointAttribute</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSAccessibilityAllowedValuesAttribute">NSAccessibilityAllowedValuesAttribute</a><br />
@@ -1016,6 +1018,7 @@
             <a rel="gsdoc" href="Functions.html#function$NSRegisterServicesProvider">NSRegisterServicesProvider</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSReleaseAlertPanel">NSReleaseAlertPanel</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunAlertPanel">NSRunAlertPanel</a><br />
+            <a rel="gsdoc" href="Functions.html#function$NSRunAlertPanelRelativeToWindow">NSRunAlertPanelRelativeToWindow</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunCriticalAlertPanel">NSRunCriticalAlertPanel</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunInformationalAlertPanel">NSRunInformationalAlertPanel</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunLocalizedAlertPanel">NSRunLocalizedAlertPanel</a><br />
@@ -1107,6 +1110,8 @@
           <h3 class="content-bar-index-section-header"><a name="nav-bar-macros">Macros</a></h3>
           <p class="project_macro_index">
                         
+            <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSAlert">_GNUstep_H_NSAlert</a><br />
+            <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSController">_GNUstep_H_NSController</a><br />
             <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSTextAttachment">_GNUstep_H_NSTextAttachment</a><br />
             <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSTextContainer">_GNUstep_H_NSTextContainer</a><br />
 
@@ -1964,13 +1969,12 @@
           <dd>
           </dd>
         </dl>
-        <p><b>Date:</b> Generated at 2025-02-11 22:28:02 +0100</p>
+        <p><b>Date:</b> Generated at 2025-11-18 15:37:48 +0100</p>
         <blockquote>
           The button cell class
         </blockquote>
         <p><b>Copyright:</b> (C) 1996-1999 Free Software Foundation, Inc.</p>
-
-            <div>
+        <div>
         </div>
 
               <h1><a name="001000000000">
@@ -2016,6 +2020,20 @@
 <br />
         <div class="desc">
           
+          NSButtonCell is the cell class responsible for
+          displaying and handling the behavior of buttons in
+          the GNUstep GUI framework. It provides functionality for
+          various button types including push buttons, toggle
+          buttons, radio buttons, and switch buttons. The cell
+          manages the button&apos;s appearance, state, key
+          equivalents, images, and user interaction
+          behavior. As a subclass of NSActionCell,
+          NSButtonCell inherits action and target
+          functionality while adding button-specific
+          features such as alternate titles and images for
+          different button states, periodic actions for
+          continuous button presses, and customizable visual
+          styles through bezel styles and gradient types. <br />
           
         </p>
         <p>
@@ -2096,6 +2114,12 @@
 <br />
         <div class="desc">
           
+            Returns the alternate image displayed when the
+            button is in its alternate state, such as when
+            pressed or highlighted. The alternate image
+            provides visual feedback to indicate the button&apos;s
+            current interaction state. Returns <code>nil</code>
+            if no alternate image is set. <br />
             
         </p>
         <p>
@@ -2122,38 +2146,51 @@
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-alternateMnemonic">alternateMnemonic&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>alternateMnemonic</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>alternateMnemonic</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the mnemonic character extracted from the
+            alternate title, which represents the keyboard
+            shortcut character for the button&apos;s alternate
+            state. Returns <code>nil</code> if no mnemonic has
+            been set for the alternate title.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-alternateMnemonicLocation">alternateMnemonicLocation&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>alternateMnemonicLocation</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>alternateMnemonicLocation</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the character position of the mnemonic
+            within the alternate title string. This indicates
+            where the mnemonic character appears for proper
+            keyboard navigation and visual highlighting.
+            Returns NSNotFound if no mnemonic location is set.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-alternateTitle">alternateTitle&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>alternateTitle</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>alternateTitle</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Returns the alternate title displayed when the
+            button is in its alternate state. The alternate
+            title is typically shown when the button is pressed
+            or highlighted, providing visual feedback to the user
+            about the button&apos;s current state. <br />
             
         </p>
         <p>
@@ -2181,26 +2218,35 @@
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-attributedAlternateTitle">attributedAlternateTitle&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*) <b>attributedAlternateTitle</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*) <b>attributedAlternateTitle</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the alternate title as an attributed
+            string, providing access to formatting information
+            such as font, color, and style attributes applied to
+            the alternate title text. Returns <code>nil</code> if
+            no alternate attributed title has been set.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-attributedTitle">attributedTitle&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*) <b>attributedTitle</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*) <b>attributedTitle</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the primary title as an attributed string,
+            including all formatting attributes such as font,
+            color, and text styling. This provides richer text
+            display capabilities than plain string titles.
+            Returns <code>nil</code> if no attributed title has
+            been set.
           
         </div>
         <hr class="method-separator">
@@ -2213,7 +2259,13 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the background color used when drawing the
+            button cell. This color is applied behind the
+            button&apos;s content and affects the overall
+            appearance of the button. Returns
+            <code>nil</code> if using the default system
+            background color for the button&apos;s current style
+            and state.
           
         </div>
         <hr class="method-separator">
@@ -2226,46 +2278,66 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the current bezel style used for drawing
+            the button&apos;s border and background. The bezel style
+            determines the visual appearance of the button,
+            including its shape, shadows, and dimensional
+            effects. Different styles provide various visual
+            treatments from flat to highly dimensional
+            appearances.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-drawBezelWithFrame$inView$">drawBezelWithFrame:&nbsp;inView:&nbsp;</a></h3>
-        - (void) <b>drawBezelWithFrame:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)cellFrame<b> inView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)controlView;<br />
+        - (void) <b>drawBezelWithFrame:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)cellFrame<b> inView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)controlView;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Draws the button&apos;s bezel (border and background)
+            within the specified frame in the given view. This
+            method handles the visual rendering of the button&apos;s
+            dimensional appearance, including borders,
+            background fills, shadows, and other
+            bezel-related visual elements.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-drawImage$withFrame$inView$">drawImage:&nbsp;withFrame:&nbsp;inView:&nbsp;</a></h3>
-        - (void) <b>drawImage:</b> (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*)imageToDisplay<b> withFrame:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)cellFrame<b> inView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)controlView;<br />
+        - (void) <b>drawImage:</b> (<a rel="gsdoc" href="NSImage.html#class$NSImage">NSImage</a>*)imageToDisplay<b> withFrame:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)cellFrame<b> inView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)controlView;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Draws the specified image within the given frame in
+            the control view. This method handles the rendering of
+            the button&apos;s image content, including proper scaling,
+            positioning, and state-dependent visual
+            effects such as dimming for disabled buttons.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-drawTitle$withFrame$inView$">drawTitle:&nbsp;withFrame:&nbsp;inView:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawTitle:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*)titleToDisplay<b> withFrame:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)cellFrame<b> inView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)controlView;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>) <b>drawTitle:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*)titleToDisplay<b> withFrame:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSRect">NSRect</a>)cellFrame<b> inView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)controlView;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Draws the button&apos;s title text within the specified
+            frame and returns the actual rectangle used for text
+            rendering. This method handles text layout, font
+            application, color application, and
+            positioning of the title content within the
+            button&apos;s available space.
           
         </div>
         <hr class="method-separator">
@@ -2278,6 +2350,14 @@
 <br />
         <div class="desc">
           
+            Retrieves the current periodic <var>delay</var>
+            and <var>interval</var> settings for continuous button
+            actions. The <var>delay</var> specifies how
+            <strong>long</strong> to wait before beginning
+            repeated actions, while the <var>interval</var>
+            specifies the time between subsequent repeated
+            actions. Both values are returned through the
+            provided pointer parameters. <br />
             
         </p>
         <p>
@@ -2316,19 +2396,29 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the current gradient type applied to the
+            button&apos;s background. The gradient type determines
+            the direction and intensity of shading effects,
+            creating dimensional appearance through light and
+            shadow gradients across the button surface.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-highlightsBy">highlightsBy&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>highlightsBy</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>highlightsBy</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Returns the mask that specifies which user
+            interactions cause the button to highlight
+            visually. The mask combines flags that determine
+            whether the button highlights on mouse down, mouse
+            entered, content changes, or other interaction
+            states to provide visual feedback. <br />
             
         </p>
         <p>
@@ -2371,7 +2461,11 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns whether the button&apos;s image automatically
+            dims when the button is disabled. When enabled,
+            disabled buttons show their images with reduced
+            opacity or altered appearance to indicate the
+            non-interactive state visually.
           
         </div>
         <hr class="method-separator">
@@ -2384,6 +2478,11 @@
 <br />
         <div class="desc">
           
+            Returns the current positioning of the image
+            relative to the title text within the button cell.
+            The image position determines the layout arrangement of
+            the image and text elements, such as image above text,
+            image to the left of text, or image only. <br />
             
         </p>
         <p>
@@ -2421,7 +2520,11 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the current image scaling mode used when
+            displaying the button&apos;s image. This determines
+            how the image is resized to fit within the available
+            space, such as proportional scaling, scaling to fit,
+            or scaling to fill the entire area.
           
         </div>
         <hr class="method-separator">
@@ -2434,6 +2537,12 @@
 <br />
         <div class="desc">
           
+            Returns whether the button cell is configured to be
+            transparent, meaning its background does not
+            draw and content behind it shows through. Transparent
+            buttons are useful for overlay controls and custom
+            drawing scenarios where background visibility is
+            desired. <br />
             
         </p>
         <p>
@@ -2460,12 +2569,18 @@
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-keyEquivalent">keyEquivalent&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>keyEquivalent</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>keyEquivalent</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Returns the key equivalent string that can be used
+            to activate this button via keyboard shortcut. The key
+            equivalent is typically a single character that,
+            when pressed with appropriate modifier keys, triggers
+            the button&apos;s action. Returns <code>nil</code> if no key
+            equivalent is set. <br />
             
         </p>
         <p>
@@ -2506,6 +2621,12 @@
 <br />
         <div class="desc">
           
+            Returns the font used to display the key equivalent
+            symbol or character within the button. This font may
+            differ from the main title font and is used
+            specifically for rendering key equivalent
+            indicators. Returns <code>nil</code> if using
+            the default system font. <br />
             
         </p>
         <p>
@@ -2532,12 +2653,18 @@
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-keyEquivalentModifierMask">keyEquivalentModifierMask&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>keyEquivalentModifierMask</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSUInteger">NSUInteger</a>) <b>keyEquivalentModifierMask</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Returns the modifier key mask that must be pressed
+            along with the key equivalent to activate the button.
+            This mask combines flags like NSCommandKeyMask,
+            NSShiftKeyMask, NSControlKeyMask, and
+            NSAlternateKeyMask to specify the
+            required key combination. <br />
             
         </p>
         <p>
@@ -2580,7 +2707,11 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Handles mouse entered events when the cursor moves
+            into the button cell&apos;s bounds. This method is called
+            to update the button&apos;s appearance for mouse hover
+            effects, such as highlighting or showing borders
+            only while the mouse is inside the button area.
           
         </div>
         <hr class="method-separator">
@@ -2593,7 +2724,11 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Handles mouse exited events when the cursor moves
+            out of the button cell&apos;s bounds. This method is called
+            to update the button&apos;s appearance when mouse interaction
+            ends, such as removing hover highlights or hiding
+            borders that only show during mouse interaction.
           
         </div>
         <hr class="method-separator">
@@ -2606,6 +2741,12 @@
 <br />
         <div class="desc">
           
+            Sets the alternate image to be displayed when the
+            button is in its alternate state. This image is
+            shown during button press, highlight, or other
+            alternate state conditions. Pass <code>nil</code>
+            to remove the alternate image. The image object is
+            retained by the button cell. <br />
             
         </p>
         <p>
@@ -2633,25 +2774,37 @@
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setAlternateMnemonicLocation$">setAlternateMnemonicLocation:&nbsp;</a></h3>
-        - (void) <b>setAlternateMnemonicLocation:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)location;<br />
+        - (void) <b>setAlternateMnemonicLocation:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)location;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the character position within the alternate title
+            where the mnemonic character should be highlighted.
+            This is used for keyboard navigation accessibility and
+            visual indication of the shortcut key. Pass
+            NSNotFound to remove the mnemonic
+            <var>location</var>.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setAlternateTitle$">setAlternateTitle:&nbsp;</a></h3>
-        - (void) <b>setAlternateTitle:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aString;<br />
+        - (void) <b>setAlternateTitle:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aString;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Sets the alternate title to be displayed when the
+            button is in its alternate state. This title is
+            shown during button press or highlight states,
+            allowing for different text to appear based on the
+            button&apos;s current interaction state. Pass
+            <code>nil</code> to remove the alternate title.
+            <br />
             
         </p>
         <p>
@@ -2680,39 +2833,53 @@
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setAlternateTitleWithMnemonic$">setAlternateTitleWithMnemonic:&nbsp;</a></h3>
-        - (void) <b>setAlternateTitleWithMnemonic:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aString;<br />
+        - (void) <b>setAlternateTitleWithMnemonic:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aString;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the alternate title from a string containing
+            mnemonic markers, automatically processing
+            ampersand characters to create keyboard shortcuts
+            and visual indicators. The processed title becomes the
+            alternate title with appropriate mnemonic
+            highlighting.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setAttributedAlternateTitle$">setAttributedAlternateTitle:&nbsp;</a></h3>
-        - (void) <b>setAttributedAlternateTitle:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*)aString;<br />
+        - (void) <b>setAttributedAlternateTitle:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*)aString;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the alternate title using an attributed string,
+            allowing for rich text formatting including font
+            variations, colors, and other text attributes.
+            This attributed title is displayed when the button is
+            in its alternate state. Pass <code>nil</code> to remove
+            the attributed alternate title.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setAttributedTitle$">setAttributedTitle:&nbsp;</a></h3>
-        - (void) <b>setAttributedTitle:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*)aString;<br />
+        - (void) <b>setAttributedTitle:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSAttributedString.html#class$NSAttributedString">NSAttributedString</a>*)aString;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the primary title using an attributed string,
+            enabling rich text formatting with fonts, colors,
+            and styling attributes. This becomes the main title
+            displayed when the button is in its normal state.
+            Pass <code>nil</code> to remove the attributed title.
           
         </div>
         <hr class="method-separator">
@@ -2725,7 +2892,13 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the background <var>color</var> for the button
+            cell. This <var>color</var> is drawn behind the
+            button&apos;s content and can be used to customize the
+            button&apos;s appearance beyond the standard bezel
+            styles. Pass <code>nil</code> to use the default
+            system background <var>color</var> for the button&apos;s
+            style.
           
         </div>
         <hr class="method-separator">
@@ -2738,7 +2911,13 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the bezel style that determines the visual
+            appearance of the button&apos;s border and
+            background. The bezel style controls the
+            button&apos;s shape, dimensionality, and visual
+            treatment, ranging from flat styles to highly
+            dimensional effects with shadows and
+            highlighting.
           
         </div>
         <hr class="method-separator">
@@ -2751,7 +2930,13 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Configures the button&apos;s type, which determines
+            its fundamental interaction behavior and visual
+            appearance. Different button types provide
+            distinct behaviors for state changes,
+            highlighting, and response to user
+            interaction such as momentary, toggle, or radio
+            button behaviors.
           
         </div>
         <hr class="method-separator">
@@ -2764,6 +2949,12 @@
 <br />
         <div class="desc">
           
+            Sets the font used to display both the regular and
+            alternate titles of the button cell. This font
+            affects all text rendering within the button,
+            ensuring consistent typography across different
+            button states. The font object is retained by the
+            button cell. <br />
             
         </p>
         <p>
@@ -2811,19 +3002,30 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the gradient type for the button&apos;s background
+            shading. Different gradient types provide various
+            dimensional effects through directional
+            shading, from subtle concave effects to strong
+            convex appearance with pronounced highlighting and
+            shadowing.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setHighlightsBy$">setHighlightsBy:&nbsp;</a></h3>
-        - (void) <b>setHighlightsBy:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>)mask;<br />
+        - (void) <b>setHighlightsBy:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>)mask;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Sets the <var>mask</var> that determines which user
+            interactions trigger visual highlighting of
+            the button. The <var>mask</var> combines various flags
+            to specify highlighting behavior for mouse down, mouse
+            entry, content changes, and other interactive states
+            that should provide visual feedback. <br />
             
         </p>
         <p>
@@ -2866,7 +3068,12 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets whether the button&apos;s image should automatically
+            dim when the button becomes disabled. When enabled,
+            this provides visual feedback about the button&apos;s
+            non-interactive state by reducing image
+            opacity or applying visual effects to indicate
+            disability.
           
         </div>
         <hr class="method-separator">
@@ -2879,6 +3086,12 @@
 <br />
         <div class="desc">
           
+            Sets the positioning of the image relative to the
+            title text within the button cell. This determines
+            the visual layout of image and text elements,
+            controlling whether the image appears above,
+            below, to the left, to the right, or overlapping
+            with the text. <br />
             
         </p>
         <p>
@@ -2928,19 +3141,32 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the image <var>scaling</var> mode that determines
+            how the button&apos;s image is resized to fit within the
+            button&apos;s bounds. Different <var>scaling</var>
+            modes provide various behaviors for maintaining
+            aspect ratio and fitting images into the available
+            display area.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setKeyEquivalent$">setKeyEquivalent:&nbsp;</a></h3>
-        - (void) <b>setKeyEquivalent:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)key;<br />
+        - (void) <b>setKeyEquivalent:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)key;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Sets the <var>key</var> equivalent string that allows
+            keyboard activation of the button. When this
+            <var>key</var> is pressed with the appropriate
+            modifier keys, the button&apos;s action is triggered.
+            Pass an empty string or <code>nil</code> to remove the
+            <var>key</var> equivalent. Common values include
+            single characters, escape sequences, or special
+            <var>key</var> constants. <br />
             
         </p>
         <p>
@@ -2984,6 +3210,12 @@
 <br />
         <div class="desc">
           
+            Sets the font used for displaying key equivalent
+            indicators within the button. This font is used
+            specifically for key equivalent symbols and
+            may be different from the main button title font. Pass
+            <code>nil</code> to use the default system font for
+            key equivalents. <br />
             
         </p>
         <p>
@@ -3015,12 +3247,17 @@
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setKeyEquivalentFont$size$">setKeyEquivalentFont:&nbsp;size:&nbsp;</a></h3>
-        - (void) <b>setKeyEquivalentFont:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fontName<b> size:</b> (float)fontSize;<br />
+        - (void) <b>setKeyEquivalentFont:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fontName<b> size:</b> (float)fontSize;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Sets the key equivalent font using a font name and
+            size. This convenience method creates a font object
+            from the specified name and size, then sets it as the
+            key equivalent font. The font is used for rendering key
+            equivalent indicators within the button. <br />
             
         </p>
         <p>
@@ -3056,12 +3293,18 @@
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setKeyEquivalentModifierMask$">setKeyEquivalentModifierMask:&nbsp;</a></h3>
-        - (void) <b>setKeyEquivalentModifierMask:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask;<br />
+        - (void) <b>setKeyEquivalentModifierMask:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSUInteger">NSUInteger</a>)mask;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Sets the modifier key <var>mask</var> that must be
+            pressed along with the key equivalent to activate
+            the button. The <var>mask</var> should combine
+            appropriate flags like NSCommandKeyMask to
+            specify which modifier keys are required for the
+            keyboard shortcut. <br />
             
         </p>
         <p>
@@ -3106,6 +3349,15 @@
 <br />
         <div class="desc">
           
+            Sets the periodic <var>delay</var> and
+            <var>interval</var> for continuous button actions
+            when the button is held down. The <var>delay</var>
+            parameter specifies the initial wait time before
+            repeated actions begin, and the
+            <var>interval</var> parameter specifies the time
+            between subsequent repeated actions. This enables
+            automatic repetition for buttons like scrollers.
+            <br />
             
         </p>
         <p>
@@ -3144,20 +3396,29 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets whether the button should display its border only
+            during mouse hover. When enabled, the button appears
+            borderless until the mouse enters its bounds, at
+            which point the border appears to provide visual
+            feedback for potential interaction.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setShowsStateBy$">setShowsStateBy:&nbsp;</a></h3>
-        - (void) <b>setShowsStateBy:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>)mask;<br />
+        - (void) <b>setShowsStateBy:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>)mask;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the <var>mask</var> that determines which
+            conditions cause the button to display its
+            alternate state visually. This controls when the
+            button shows alternate titles, images, or other
+            state-dependent visual elements to reflect
+            different operational conditions.
           
         </div>
         <hr class="method-separator">
@@ -3170,19 +3431,29 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the sound that plays when the button is
+            activated. The sound provides auditory feedback
+            for button interactions, enhancing the user experience
+            with audio cues. Pass <code>nil</code> to remove the
+            button&apos;s sound and disable audio feedback for
+            button activation.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setTitle$">setTitle:&nbsp;</a></h3>
-        - (void) <b>setTitle:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aString;<br />
+        - (void) <b>setTitle:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aString;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Sets the primary title text displayed on the button.
+            This is the default text shown when the button is in
+            its normal state. The title string is copied and stored
+            by the button cell. Pass <code>nil</code> to remove the
+            title text entirely. <br />
             
         </p>
         <p>
@@ -3197,13 +3468,18 @@
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-setTitleWithMnemonic$">setTitleWithMnemonic:&nbsp;</a></h3>
-        - (void) <b>setTitleWithMnemonic:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aString;<br />
+        - (void) <b>setTitleWithMnemonic:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)aString;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the primary title from a string that includes
+            mnemonic markers, typically ampersand characters
+            that indicate keyboard shortcuts. The mnemonic
+            character is automatically processed to create
+            the appropriate key equivalent and visual underlining
+            for accessibility.
           
         </div>
         <hr class="method-separator">
@@ -3216,6 +3492,12 @@
 <br />
         <div class="desc">
           
+            Sets whether the button cell should be transparent.
+            When set to <code>YES</code>, the button&apos;s background
+            is not drawn, allowing content behind it to show
+            through. This is useful for creating overlay
+            buttons or custom visual effects where background
+            transparency is needed. <br />
             
         </p>
         <p>
@@ -3248,20 +3530,29 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns whether the button shows its border only
+            when the mouse cursor is positioned over it. This
+            creates a hover effect where the button appears
+            borderless until mouse interaction, providing a
+            cleaner interface with interactive feedback.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-showsStateBy">showsStateBy&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>showsStateBy</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>showsStateBy</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the mask that specifies which conditions
+            cause the button to show its alternate state
+            visually. This mask determines when alternate
+            titles, images, or other state-dependent visual
+            elements are displayed to reflect the button&apos;s
+            current operational state.
           
         </div>
         <hr class="method-separator">
@@ -3274,19 +3565,28 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the sound object that plays when the button
+            is activated. This sound provides auditory feedback for
+            button interactions. Returns <code>nil</code> if no
+            sound has been assigned to the button or if audio
+            feedback is disabled for button activation.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSButtonCell-title">title&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>title</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>title</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Returns the primary title text currently displayed
+            on the button. This is the main text shown when the
+            button is in its normal, non-highlighted state.
+            Returns <code>nil</code> if no title has been set.
+            <br />
             
         </p>
         <p>

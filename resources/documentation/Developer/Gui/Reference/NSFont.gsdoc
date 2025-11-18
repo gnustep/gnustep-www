@@ -8,7 +8,7 @@
         ovidiu@net-community.com
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <abstract>The font class</abstract>
     <copy>1996 Free Software Foundation, Inc.</copy>
   </head>
@@ -82,7 +82,30 @@
         <conform>NSCoding</conform>
         <conform>NSCopying</conform>
         <desc>
-          <em>Description forthcoming.</em>
+          <title>NSFont</title>
+          <abstract>
+            Represents fonts for text rendering and
+            measurement
+          </abstract>
+          NSFont encapsulates all the information needed to
+          render text with a specific typeface, size, and style.
+          It provides comprehensive font creation, measurement, and
+          glyph manipulation capabilities for text layout and
+          rendering systems. The font system supports both
+          screen and printer fonts, with automatic conversion
+          between them. Fonts can be created by name and size,
+          or through more advanced methods using font descriptors
+          and transformation matrices. NSFont provides extensive
+          metrics information including ascender, descender,
+          line height, character advancement, and glyph bounding
+          rectangles. It also supports advanced typography
+          features like composite glyph positioning and
+          multi-byte character encoding schemes. The class
+          integrates with the broader text system through
+          glyph manipulation methods that support complex text
+          layout, international text rendering, and precise
+          typographic control needed for high-quality
+          document formatting. <br />
         </desc>
         <ivariable type="void*" name="_fontRef" validity="protected" ovadd="1.0.0">
           <desc>
@@ -137,6 +160,14 @@
           <sel>boldSystemFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
+            Returns the bold system font at the specified size.
+            The bold system font is used for emphasis in user
+            interface elements and provides consistent bold
+            text appearance across the system. The
+            <var>fontSize</var> parameter specifies the desired
+            font size in points. Use 0.0 for the default system
+            size. Returns a bold variant of the system font at
+            the specified size. <br />
             <p>
               Returns the default bold font for use in menus
               and heading in standard gui components. If
@@ -155,7 +186,12 @@
           <sel>controlContentFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the font used for control content (button
+            titles, text field content). The
+            <var>fontSize</var> parameter specifies the desired
+            font size in points. Use 0.0 for the default size.
+            Returns the standard control content font at the
+            specified size.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="10.4.0">
@@ -164,7 +200,16 @@
           <sel>size:</sel>
           <arg type="CGFloat">size</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a font using a font <var>descriptor</var>
+            and <var>size</var>. Font descriptors provide a more
+            flexible way to specify font characteristics
+            including family, weight, traits, and other
+            attributes. The <var>descriptor</var> parameter
+            specifies the desired font characteristics. The
+            <var>size</var> parameter sets the font
+            <var>size</var> in points. Returns a font matching
+            the <var>descriptor</var> at the specified
+            <var>size</var>.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="10.4.0">
@@ -175,7 +220,19 @@
           <sel>textTransform:</sel>
           <arg type="NSAffineTransform*">transform</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a font using a font <var>descriptor</var>,
+            <var>size</var>, and transformation matrix. This
+            method provides the most comprehensive font creation
+            capabilities, combining descriptor-based
+            selection with <var>size</var> and transformation
+            control. @param <var>descriptor</var> The font
+            <var>descriptor</var> specifying the desired font
+            characteristics. @param <var>size</var>
+            The font <var>size</var> in points. @param
+            <var>transform</var> The transformation to apply to
+            the font. @return A font matching the
+            <var>descriptor</var> at the specified
+            <var>size</var> with transformation applied.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="10.4.0">
@@ -184,7 +241,16 @@
           <sel>textTransform:</sel>
           <arg type="NSAffineTransform*">transform</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a font using a font <var>descriptor</var>
+            and transformation matrix. This method combines
+            descriptor-based font selection with
+            custom transformations. The <var>descriptor</var>
+            parameter specifies the desired font
+            characteristics. The <var>transform</var>
+            parameter specifies the transformation to apply
+            to the font. Returns a font matching the
+            <var>descriptor</var> with the specified
+            transformation applied.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="1.0.0">
@@ -193,6 +259,20 @@
           <sel>matrix:</sel>
           <arg type="const CGFloat*">fontMatrix</arg>
           <desc>
+            Creates a font with the specified PostScript name
+            and transformation matrix. This method provides the
+            most control over font creation, allowing custom
+            transformation matrices for scaling,
+            rotation, and skewing effects. The
+            <var>aFontName</var> parameter should contain the
+            PostScript name of the font (e.g.,
+            "Helvetica-Bold"). The
+            <var>fontMatrix</var> parameter should be a 6-element
+            transformation matrix [a b c d tx ty] for
+            font transformation. Returns a font object with the
+            specified name and transformation, or
+            <code>nil</code> if the font cannot be created.
+            <br />
             <p>
               Returns an autoreleased font with name
               <var>aFontName</var> and matrix
@@ -216,6 +296,16 @@
           <sel>size:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
+            Creates a font with the specified PostScript name
+            and size. This is the most commonly used font creation
+            method for standard text rendering. The
+            <var>aFontName</var> parameter should contain the
+            PostScript name of the font (e.g.,
+            "Times-Roman", "Helvetica"). The
+            <var>fontSize</var> parameter specifies the desired
+            font size in points. Returns a font object with the
+            specified name and size, or <code>nil</code> if
+            the font cannot be created. <br />
             <p>
               Returns an autoreleased font with name
               <var>aFontName</var> and size <var>fontSize</var>.
@@ -230,46 +320,72 @@
           <sel>labelFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the font used for labels and non-editable
+            text. The <var>fontSize</var> parameter specifies the
+            desired font size in points. Use 0.0 for the
+            default size. Returns the standard label font at
+            the specified size.
           </desc>
         </method>
         <method type="CGFloat" factory="yes" ovadd="10.0.0">
           <sel>labelFontSize</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the standard font size for labels. Returns
+            the standard label font size in points.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="10.0.0">
           <sel>menuBarFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the font used in the menu bar. The
+            <var>fontSize</var> parameter specifies the desired
+            font size in points. Use 0.0 for the default size.
+            Returns the standard menu bar font at the specified
+            size.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="10.0.0">
           <sel>menuFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the font used in menus. The
+            <var>fontSize</var> parameter specifies the desired
+            font size in points. Use 0.0 for the default size.
+            Returns the standard menu font at the specified
+            size.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="10.0.0">
           <sel>messageFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the font used for message text in alerts
+            and dialogs. The <var>fontSize</var> parameter
+            specifies the desired font size in points. Use
+            0.0 for the default size. Returns the standard message
+            font at the specified size.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="10.0.0">
           <sel>paletteFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the font used in palette windows and tool
+            palettes. The <var>fontSize</var> parameter
+            specifies the desired font size in points. Use
+            0.0 for the default size. Returns the standard palette
+            font at the specified size.
           </desc>
         </method>
         <method type="NSArray*" factory="yes" ovadd="1.0.0">
           <sel>preferredFontNames</sel>
           <desc>
+            Returns the list of preferred font names. The
+            preferred fonts list determines the fallback
+            order when a requested font is not available on the
+            system. Returns an array of NSString objects
+            containing preferred font names. <br />
             <p>
               Returns an array of the names of preferred fonts.
             </p>
@@ -285,6 +401,12 @@
           <sel>setPreferredFontNames:</sel>
           <arg type="NSArray*">fontNames</arg>
           <desc>
+            Sets the list of preferred font names. This
+            establishes the fallback order for font
+            selection when requested fonts are not available.
+            The <var>fontNames</var> parameter should contain an
+            array of NSString objects with preferred font names.
+            <br />
             <p>
               Sets an array of the names of preferred fonts to
               fontsNames/
@@ -301,26 +423,44 @@
           <sel>setUserFixedPitchFont:</sel>
           <arg type="NSFont*">aFont</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the user's preferred fixed-pitch font. This
+            establishes the default fixed-pitch font that
+            will be returned by userFixedPitchFontOfSize: for
+            subsequent requests. @param <var>aFont</var> The
+            font to set as the user's preferred fixed-pitch font.
           </desc>
         </method>
         <method type="void" factory="yes" ovadd="1.0.0">
           <sel>setUserFont:</sel>
           <arg type="NSFont*">aFont</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the user's preferred proportional font. This
+            establishes the default proportional font that
+            will be returned by userFontOfSize: for subsequent
+            requests. @param <var>aFont</var> The font to set
+            as the user's preferred proportional font.
           </desc>
         </method>
         <method type="CGFloat" factory="yes" ovadd="10.0.0">
           <sel>smallSystemFontSize</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the standard small system font size.
+            Returns the standard small system font size in
+            points.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="1.0.0">
           <sel>systemFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
+            Returns the standard system font at the specified
+            size. The system font is the default font used for
+            user interface text throughout the system and provides
+            optimal readability for interface elements. The
+            <var>fontSize</var> parameter specifies the desired
+            font size in points. Use 0.0 for the default system
+            size. Returns the system font at the specified size.
+            <br />
             <p>
               Returns the default font for use in menus and
               heading in standard gui components. If
@@ -342,41 +482,70 @@
         <method type="CGFloat" factory="yes" ovadd="10.0.0">
           <sel>systemFontSize</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the standard system font size. Returns the
+            standard system font size in points.
           </desc>
         </method>
         <method type="CGFloat" factory="yes" ovadd="10.0.0">
           <sel>systemFontSizeForControlSize:</sel>
           <arg type="NSControlSize">controlSize</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the appropriate system font size for the
+            given control size. This method provides the correct
+            font size for different control sizes (regular, small,
+            mini) to maintain visual consistency. The
+            <var>controlSize</var> parameter specifies the
+            control size (NSRegularControlSize,
+            NSSmallControlSize, NSMiniControlSize).
+            Returns the appropriate font size for the specified
+            control size.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="10.0.0">
           <sel>titleBarFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the font used in window title bars. The
+            <var>fontSize</var> parameter specifies the desired
+            font size in points. Use 0.0 for the default size.
+            Returns the standard title bar font at the
+            specified size.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="10.0.0">
           <sel>toolTipsFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the font used for tooltip text. The
+            <var>fontSize</var> parameter specifies the desired
+            font size in points. Use 0.0 for the default size.
+            Returns the standard tooltip font at the specified
+            size.
           </desc>
         </method>
         <method type="void" factory="yes" ovadd="1.0.0">
           <sel>useFont:</sel>
           <arg type="NSString*">aFontName</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the font for subsequent text drawing operations
+            by name. This is a legacy method that establishes a font
+            for text operations by PostScript name. @param
+            <var>aFontName</var> The PostScript name of the font
+            to use for text operations.
           </desc>
         </method>
         <method type="NSFont*" factory="yes" ovadd="1.0.0">
           <sel>userFixedPitchFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
+            Returns the user's preferred fixed-pitch font at
+            the specified size. Fixed-pitch fonts are essential for
+            code editing, terminal applications, and any context
+            where character alignment is important. The
+            <var>fontSize</var> parameter specifies the desired
+            font size in points. Use 0.0 for the default size.
+            Returns the user's preferred fixed-pitch font at
+            the specified size. <br />
             <p>
               Returns the default fixed pitch font for use in
               locations other than standard gui components.
@@ -407,6 +576,14 @@
           <sel>userFontOfSize:</sel>
           <arg type="CGFloat">fontSize</arg>
           <desc>
+            Returns the user's preferred proportional font at
+            the specified size. This font reflects the user's
+            personal preference for general text display and
+            reading, providing a personalized text experience.
+            The <var>fontSize</var> parameter specifies the desired
+            font size in points. Use 0.0 for the default size.
+            Returns the user's preferred proportional font at
+            the specified size. <br />
             <p>
               Returns the default font for use in locations
               other than standard gui components. If
@@ -735,23 +912,38 @@
         <method type="void" ovadd="1.0.0">
           <sel>set</sel>
           <desc>
-            Sets the receiver as the font used for text drawing
-            operations. If the current view is a flipped
-            view, the reciever automatically flips itself to
-            display correctly in the flipped view
+            Sets this font as the current font for text drawing in
+            the current graphics context. This method establishes
+            the font for subsequent text rendering operations,
+            taking into account the coordinate system and
+            rendering context. <br /> Sets the receiver as
+            the font used for text drawing operations. If the
+            current view is a flipped view, the reciever
+            automatically flips itself to display
+            correctly in the flipped view
           </desc>
         </method>
         <method type="void" ovadd="10.4.0">
           <sel>setInContext:</sel>
           <arg type="NSGraphicsContext*">context</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets this font as the current font in the specified
+            graphics <var>context</var>. This method provides
+            more control by allowing the font to be set in a
+            specific graphics <var>context</var> rather than
+            the current one. @param <var>context</var> The graphics
+            <var>context</var> in which to set this font.
           </desc>
         </method>
         <method type="NSAffineTransform*" ovadd="10.4.0">
           <sel>textTransform</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the text transformation matrix for this
+            font. The transformation matrix defines scaling,
+            rotation, and skewing applied to the font's
+            glyphs during rendering. @return The
+            NSAffineTransform representing the font's
+            text transformation.
           </desc>
         </method>
         <method type="CGFloat" ovadd="1.0.0">

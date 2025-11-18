@@ -8,7 +8,7 @@
         scottc@net-community.com
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <abstract>The abstract cell class</abstract>
     <copy>1996-2012,2019 Free Software Foundation, Inc.</copy>
   </head>
@@ -23,6 +23,34 @@
         <conform>NSCopying</conform>
         <conform>NSCoding</conform>
         <desc>
+          NSCell is the abstract base class that defines the
+          fundamental behavior for objects that display
+          content and handle user interaction within controls.
+          Cells are lightweight objects that can display text,
+          images, or other content without the overhead of a
+          full view. They are commonly used as components within
+          controls like buttons, text fields, and table views
+          to provide efficient rendering and interaction handling.
+          The cell architecture separates the visual representation
+          and behavior from the containing control, allowing
+          multiple cells to share common functionality while
+          being customized for specific display requirements.
+          This design enables efficient memory usage and fast
+          drawing performance for controls that display many
+          similar elements. NSCell provides comprehensive
+          support for various content types including plain
+          text, attributed strings, images, and formatted data
+          through formatters. It handles user interaction
+          through target-action patterns, supports various
+          visual states like highlighting and
+          enabling/disabling, and provides
+          extensive customization options for appearance and
+          behavior. Common subclasses include NSTextFieldCell
+          for text display and editing, NSButtonCell for
+          button-like behavior, NSImageCell for image
+          display, and various specialized cells for specific
+          control types. The cell system forms the foundation
+          for most user interface controls in the AppKit. <br />
           <p>
             TODO Desctiption
           </p>
@@ -125,18 +153,36 @@
         <method type="NSFocusRingType" factory="yes" ovadd="10.3.0">
           <sel>defaultFocusRingType</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the default focus ring type used by cells
+            when no specific focus ring type has been set. The
+            focus ring provides visual indication when a cell has
+            keyboard focus, helping users understand which
+            element will respond to keyboard input. The default
+            type depends on system preferences and the current
+            user interface theme.
           </desc>
         </method>
         <method type="NSMenu*" factory="yes" ovadd="10.0.0">
           <sel>defaultMenu</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the default menu used by cells when no
+            specific menu has been assigned. This provides a
+            standard context menu for cell interactions,
+            typically containing common operations like copy,
+            paste, and formatting options appropriate for the
+            cell's content type and current state.
           </desc>
         </method>
         <method type="BOOL" factory="yes" ovadd="1.0.0">
           <sel>prefersTrackingUntilMouseUp</sel>
           <desc>
+            Returns whether cells prefer to continue tracking
+            mouse events until the mouse button is released,
+            rather than stopping when the mouse leaves the
+            cell's bounds. This affects how cells handle
+            extended mouse interactions and determines the
+            default tracking behavior for mouse-down events
+            within cell boundaries. <br />
             <p>
               This class method returns <code>NO</code>. This
               method should be overrided by subclasses.
@@ -174,6 +220,12 @@
         <method type="NSTextAlignment" ovadd="1.0.0">
           <sel>alignment</sel>
           <desc>
+            Returns the text alignment setting for the cell's
+            content. This determines how text is positioned
+            within the cell's bounds, with options for left,
+            right, center, justified, and natural alignment
+            based on the text's writing direction and locale
+            preferences. <br />
             <p>
               Returns the alignment of the text used in the
               NSCell. See
@@ -203,7 +255,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>allowsMixedState</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the cell supports a mixed state in
+            addition to its primary on and off states. Mixed
+            state is useful for hierarchical controls where some
+            but not all child elements are selected, or for
+            representing indeterminate conditions in the
+            user interface.
           </desc>
         </method>
         <method type="BOOL" ovadd="10.4.0">
@@ -249,10 +306,16 @@
             </p>
           </desc>
         </method>
-        <method type="NSInteger" ovadd="1.0.0">
+        <method type="NSInteger" ovadd="10.5.0">
           <sel>cellAttribute:</sel>
           <arg type="NSCellAttribute">aParameter</arg>
           <desc>
+            Returns the value of the specified cell attribute
+            parameter. Cell attributes control various
+            aspects of the cell's behavior and appearance, such
+            as whether it's selectable, editable, or has scrollable
+            content. The returned value interpretation depends
+            on the specific attribute type. <br />
             <p>
               Returns some NSCell's attributes for the
               specified
@@ -364,6 +427,12 @@
         <method type="double" ovadd="1.0.0">
           <sel>doubleValue</sel>
           <desc>
+            Returns the cell's value as a double-precision
+            floating point number. If the cell's content
+            cannot be converted to a numeric value, this returns
+            zero. The conversion handles various string
+            representations of numbers and uses any
+            assigned formatter for interpretation. <br />
             <p>
               Returns the NSCell's value as a
               <strong>double</strong>.
@@ -457,6 +526,13 @@
         <method type="float" ovadd="1.0.0">
           <sel>floatValue</sel>
           <desc>
+            Returns the cell's value as a single-precision
+            floating point number. Similar to doubleValue,
+            this converts the cell's content to a numeric
+            representation, returning zero if
+            conversion is not possible. Formatters are used
+            if available to interpret string representations of
+            numbers. <br />
             <p>
               Returns the cell's value as a
               <strong>float</strong>.
@@ -478,6 +554,12 @@
         <method type="NSFont*" ovadd="1.0.0">
           <sel>font</sel>
           <desc>
+            Returns the font used for displaying the cell's
+            text content. The font determines the typeface, size,
+            and style characteristics used for rendering text,
+            affecting both appearance and text metrics for
+            layout calculations within the cell's display area.
+            <br />
             <p>
               Returns the font of the text used in the NSCell
             </p>
@@ -517,7 +599,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>hasValidObjectValue</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the cell currently contains a valid
+            object value. This indicates if the cell's content
+            represents valid data that can be used for
+            display or processing, as opposed to placeholder or
+            invalid content that might result from failed
+            validation or parsing.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -597,6 +684,13 @@
           <sel>initImageCell:</sel>
           <arg type="NSImage*">anImage</arg>
           <desc>
+            Initializes a cell for displaying an image. The
+            cell is configured with image display capabilities and
+            the specified image becomes the cell's primary content.
+            This creates an NSImageCellType cell that is optimized
+            for image rendering and handles image-specific display
+            properties like scaling and positioning within
+            the cell bounds. <br />
             <p>
               Initializes and returns a new NSCell with a
               NSImage <var>anImage</var>. This method sets the
@@ -622,6 +716,12 @@
           <sel>initTextCell:</sel>
           <arg type="NSString*">aString</arg>
           <desc>
+            Initializes a cell for displaying text content.
+            The cell is configured as an NSTextCellType with the
+            specified string as its initial content. This
+            creates a text-capable cell that supports text
+            editing, formatting, and display properties like
+            font, alignment, and text attributes. <br />
             <p>
               Initializes and returns a new NSCell with a
               NSString <var>aString</var>. This method sets
@@ -642,6 +742,12 @@
         <method type="int" ovadd="1.0.0">
           <sel>intValue</sel>
           <desc>
+            Returns the cell's value as an integer. The cell's
+            content is converted to an integer representation,
+            with string values parsed numerically. Non-numeric
+            content results in a return value of zero.
+            Formatters assist in interpreting complex string
+            representations when present. <br />
             <p>
               Returns the cell's value as an
               <strong>int</strong>.
@@ -671,6 +777,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>isBezeled</sel>
           <desc>
+            Returns whether the cell is drawn with a bezeled
+            appearance. Bezeled cells have a
+            three-dimensional border that creates a
+            raised or recessed visual effect, commonly used for
+            buttons and other interactive elements to provide
+            visual feedback about their clickable nature. <br />
             <p>
               Returns whether the NSCell has a bezeled border.
               By default a NSCell has no bezeled border
@@ -686,6 +798,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>isBordered</sel>
           <desc>
+            Returns whether the cell is drawn with a simple
+            border. Bordered cells have a flat outline around
+            their content area, providing visual separation
+            without the dimensional effects of bezeling. This
+            is often used for text fields and other content areas
+            that need clear boundaries. <br />
             <p>
               Returns whether the NSCell has a border. By
               default a NSCell has border
@@ -722,6 +840,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>isEditable</sel>
           <desc>
+            Returns whether the cell's text content can be
+            edited by the user. Editable cells allow direct text
+            input and modification, typically displaying a text
+            cursor and accepting keyboard input when activated.
+            Non-editable cells display text as read-only
+            content. <br />
             <p>
               Returns whether the cell is editable.By default a
               NSCell is not editable.
@@ -737,6 +861,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>isEnabled</sel>
           <desc>
+            Returns whether the cell is currently enabled for
+            user interaction. Enabled cells respond to user
+            actions like clicks and key presses, while disabled
+            cells typically appear dimmed and ignore user input.
+            This setting affects both visual appearance and
+            interactive behavior. <br />
             <p>
               Returns whether the NSCell can respond to mouse
               events.
@@ -774,6 +904,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>isOpaque</sel>
           <desc>
+            Returns whether the cell is completely opaque when
+            drawn. Opaque cells fill their entire bounds with
+            content, allowing the drawing system to optimize
+            rendering by skipping transparency calculations.
+            Non-opaque cells may have transparent areas that
+            blend with background content. <br />
             <p>
               Returns whether the cell is opaque. Return
               <code>NO</code> by default
@@ -783,6 +919,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>isScrollable</sel>
           <desc>
+            Returns whether the cell's content area supports
+            scrolling when the content exceeds the visible
+            bounds. Scrollable cells can display content larger
+            than their frame by allowing users to scroll through
+            the text or other content using keyboard navigation or
+            scroll gestures. <br />
             <p>
               Returns whether the NSCell is scrollable. By
               default a NSCell is not scrollable
@@ -798,6 +940,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>isSelectable</sel>
           <desc>
+            Returns whether the cell's text content can be
+            selected by the user. Selectable cells allow users
+            to highlight text for copying or other operations, even
+            if the text cannot be edited. This is useful for
+            displaying copyable information in read-only
+            contexts. <br />
             <p>
               Returns whether the cell is selectable. This
               method returns <code>YES</code> if the cell is
@@ -876,13 +1024,23 @@
         <method type="NSInteger" ovadd="1.0.0">
           <sel>nextState</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the state value that would follow the
+            current state in the cell's state cycle. For cells
+            with mixed state support, this cycles through off, on,
+            and mixed values. For binary cells, it alternates
+            between off and on states as appropriate for the
+            cell type.
           </desc>
         </method>
         <method type="id" ovadd="1.0.0">
           <sel>objectValue</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the cell's current value as an object. This
+            is the primary method for accessing the cell's content
+            in its native object form, which could be a string,
+            number, date, or other object type depending on the
+            cell's configuration and the type of data it
+            represents.
           </desc>
         </method>
         <method type="void" ovadd="10.0.0">
@@ -1003,6 +1161,11 @@
           <sel>setAlignment:</sel>
           <arg type="NSTextAlignment">mode</arg>
           <desc>
+            Sets the text alignment for content displayed within
+            the cell. The alignment affects how text is positioned
+            horizontally within the cell's bounds and may
+            interact with the text's natural writing direction
+            for proper internationalization support. <br />
             <p>
               Sets the alignment of the text. See
               <ref type="type" id="NSTextAlignment">
@@ -1029,7 +1192,12 @@
           <sel>setAllowsMixedState:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets whether the cell should support mixed state
+            functionality. When enabled, the cell can
+            display and respond to a third state between its
+            primary on and off conditions, typically used for
+            partial or indeterminate selections in hierarchical
+            or grouped controls.
           </desc>
         </method>
         <method type="void" ovadd="10.4.0">
@@ -1064,6 +1232,12 @@
           <sel>setBezeled:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
+            Sets whether the cell should be drawn with a bezeled
+            appearance. When enabled, the cell displays
+            with three-dimensional border effects that create
+            visual depth. This is typically used for interactive
+            elements like buttons to indicate their pressable
+            nature to users. <br />
             <p>
               Sets whether the cell has a bezeled border. If this
               method is called, the bordered <var>flag</var> is
@@ -1087,6 +1261,12 @@
           <sel>setBordered:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
+            Sets whether the cell should be drawn with a simple
+            border outline. Bordered cells have a flat perimeter
+            that defines their content area without
+            three-dimensional effects. This provides
+            clear visual boundaries while maintaining a clean,
+            flat appearance for modern interfaces. <br />
             <p>
               Sets whether the cell has a border. If this method
               is called, the bezeled <var>flag</var> is turn off. By
@@ -1106,12 +1286,19 @@
             </p>
           </desc>
         </method>
-        <method type="void" ovadd="1.0.0">
+        <method type="void" ovadd="10.5.0">
           <sel>setCellAttribute:</sel>
           <arg type="NSCellAttribute">aParameter</arg>
           <sel>to:</sel>
           <arg type="NSInteger">value</arg>
           <desc>
+            Sets the <var>value</var> for the specified cell
+            attribute parameter. This method configures
+            various behavioral and display characteristics of
+            the cell by modifying the appropriate attribute flags.
+            Different attributes accept different
+            <var>value</var> ranges and meanings for their
+            parameters. <br />
             <p>
               TODO
             </p>
@@ -1167,6 +1354,11 @@
           <sel>setDoubleValue:</sel>
           <arg type="double">aDouble</arg>
           <desc>
+            Sets the cell's value from a double-precision floating
+            point number. The numeric value is stored and can be
+            retrieved in various formats. If a formatter is
+            assigned to the cell, it may be used to control
+            how the numeric value is displayed as text. <br />
             <p>
               Sets the NSCell's value to <var>aDouble</var>.
             </p>
@@ -1182,6 +1374,12 @@
           <sel>setEditable:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
+            Sets whether the cell's text content should be
+            editable by users. Editable cells support direct
+            text input and modification, while non-editable cells
+            display content as read-only. This affects both the
+            visual appearance and the interactive behavior of
+            the cell. <br />
             <p>
               Sets whether the NSCell's text is editable.
             </p>
@@ -1203,6 +1401,12 @@
           <sel>setEnabled:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
+            Sets whether the cell should be enabled for user
+            interaction. When disabled, the cell typically
+            appears grayed out and does not respond to user
+            actions. This is commonly used to indicate
+            unavailable functionality or to prevent
+            interaction during processing states. <br />
             <p>
               Sets whether the NSCell can respond to mouse events
             </p>
@@ -1227,6 +1431,12 @@
           <sel>setFloatValue:</sel>
           <arg type="float">aFloat</arg>
           <desc>
+            Sets the cell's value from a single-precision floating
+            point number. Similar to setDoubleValue, this stores
+            a numeric value that can be accessed in different formats
+            and displayed according to any assigned formatter's
+            specifications for numeric presentation.
+            <br />
             <p>
               Sets the NSCell's value to a <var>aFloat</var>. This
               used for example in NSSliderCell
@@ -1261,6 +1471,11 @@
           <sel>setFont:</sel>
           <arg type="NSFont*">fontObject</arg>
           <desc>
+            Sets the font to be used for displaying the cell's
+            text content. The font affects the visual appearance,
+            size, and style of rendered text, and influences
+            layout calculations for text positioning and cell
+            sizing based on content requirements. <br />
             <p>
               Sets the text font. The NSCell's type is set to
               NSTextCellType if needed
@@ -1325,6 +1540,12 @@
           <sel>setIntValue:</sel>
           <arg type="int">anInt</arg>
           <desc>
+            Sets the cell's value from an integer. The integer
+            value is stored and becomes available through the
+            various value accessor methods. Display formatting
+            is handled by any assigned formatter, allowing for
+            customized presentation of the numeric content.
+            <br />
             <p>
               Sets the NSCell's value to <var>anInt</var>.
             </p>
@@ -1375,14 +1596,25 @@
         <method type="void" ovadd="1.0.0">
           <sel>setNextState</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Advances the cell to its next state in the state
+            progression cycle. This method updates the
+            cell's state value to the next logical value,
+            cycling through available states as determined by
+            the cell's configuration and mixed state support
+            settings.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setObjectValue:</sel>
           <arg type="id">object</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the cell's value using an arbitrary
+            <var>object</var>. This is the primary method for
+            setting cell content and accepts any
+            <var>object</var> type. The cell stores the
+            <var>object</var> and uses it for display and value
+            conversion operations. Pass <code>nil</code> to
+            clear the cell's content.
           </desc>
         </method>
         <method type="void" ovadd="10.0.0">
@@ -1413,6 +1645,12 @@
           <sel>setScrollable:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
+            Sets whether the cell should support scrolling when
+            content exceeds the visible area. Scrollable cells
+            can accommodate content larger than their display
+            bounds by enabling navigation through the content
+            using keyboard controls or other scrolling
+            mechanisms. <br />
             <p>
               Sets whether the NCell is scrollable. By default a
               NSCell is not scrollable
@@ -1429,6 +1667,12 @@
           <sel>setSelectable:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
+            Sets whether the cell's text content should be
+            selectable by users. Selectable cells allow text
+            highlighting for operations like copying, even
+            when editing is disabled. This enables user
+            interaction with text content without allowing
+            modifications. <br />
             <p>
               Sets whether the cell selectable. Making a cell
               unselectable also makes it uneditable until
@@ -1470,6 +1714,12 @@
           <sel>setState:</sel>
           <arg type="NSInteger">value</arg>
           <desc>
+            Sets the cell's state <var>value</var> which controls
+            its visual appearance and behavior. Common state values
+            include on, off, and mixed states for controls like
+            checkboxes and buttons. The state affects how
+            the cell renders itself and may trigger associated
+            actions when changed. <br />
             <p>
               Sets the NSCell's state. Please use always symbolic
               constants when calling this method. The integer
@@ -1486,6 +1736,12 @@
           <sel>setStringValue:</sel>
           <arg type="NSString*">aString</arg>
           <desc>
+            Sets the cell's value from a string. The string
+            becomes the cell's content and may be parsed into
+            other data types when accessed through numeric value
+            methods. Formatters can provide additional parsing
+            and validation capabilities for string content
+            interpretation. <br />
             <p>
               Sets the cell's value to a NSString. The NSCell's
               type is set to NSTextCellType if needed
@@ -1553,6 +1809,12 @@
           <sel>setType:</sel>
           <arg type="NSCellType">aType</arg>
           <desc>
+            Sets the cell's type which determines its fundamental
+            display and interaction characteristics. The type
+            affects how the cell renders its content, handles
+            user interaction, and manages its internal state.
+            Common types include text cells and image cells.
+            <br />
             <p>
               Sets the NSCell's type. See
               <ref type="type" id="NSCellType">
@@ -1592,7 +1854,11 @@
           <sel>setWraps:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets whether text content should wrap to multiple
+            lines when it exceeds the cell's width. Text wrapping
+            allows longer content to be displayed by breaking it
+            across lines rather than truncating or requiring
+            horizontal scrolling to view all content.
           </desc>
         </method>
         <method type="BOOL" ovadd="10.0.0">
@@ -1627,6 +1893,12 @@
         <method type="NSInteger" ovadd="1.0.0">
           <sel>state</sel>
           <desc>
+            Returns the cell's current state value. The state
+            represents the cell's current condition or
+            setting, such as whether a checkbox is checked,
+            unchecked, or in a mixed state. This value
+            determines the cell's visual representation and
+            behavioral characteristics. <br />
             <p>
               Returns the NSCell's state
             </p>
@@ -1657,6 +1929,12 @@
         <method type="NSString*" ovadd="1.0.0">
           <sel>stringValue</sel>
           <desc>
+            Returns the cell's value as a string
+            representation. This provides a textual
+            representation of the cell's content
+            regardless of the underlying data type. Objects
+            are converted using their string description methods,
+            and formatters are applied when available. <br />
             <p>
               Returns the cell's value as a NSString.
             </p>
@@ -1823,6 +2101,12 @@
         <method type="NSCellType" ovadd="1.0.0">
           <sel>type</sel>
           <desc>
+            Returns the cell's current type identifier. The
+            type indicates the basic category of cell behavior and
+            determines the primary methods used for content
+            display and user interaction. This affects the
+            cell's rendering strategy and available
+            configuration options. <br />
             <p>
               Returns the cell's type. Returns NSNullCellType
               if the cell's type flag is set to NSImageCellType and
@@ -1855,7 +2139,12 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>wraps</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the cell's text content wraps to
+            multiple lines when it exceeds the available
+            width. Wrapping cells display <strong>long</strong>
+            text across multiple lines within the cell's bounds,
+            while non-wrapping cells may truncate or scroll
+            content that doesn't fit horizontally.
           </desc>
         </method>
       </class>

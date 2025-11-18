@@ -10,6 +10,7 @@
     <div class="content-bar">
       <div class="content-bar-top">
         <div class="content-bar-top-body">
+          <div class="content-bar-top-body-title">Gui</div><br />
           <a href="#nav-bar-classes">Classes</a><br />
           <a href="#nav-bar-protocols">Protocols</a><br />
           <a href="#nav-bar-constants">Constants</a><br />
@@ -411,6 +412,7 @@
           <h3 class="content-bar-index-section-header"><a name="nav-bar-constants">Constants</a></h3>
           <p class="project_constant_index">
                         
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSFontManagerAvailableFontsDidChangeNotification">GSFontManagerAvailableFontsDidChangeNotification</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSSixteenBitRGBDepth">GSSixteenBitRGBDepth</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSAccessibilityActivationPointAttribute">NSAccessibilityActivationPointAttribute</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSAccessibilityAllowedValuesAttribute">NSAccessibilityAllowedValuesAttribute</a><br />
@@ -1016,6 +1018,7 @@
             <a rel="gsdoc" href="Functions.html#function$NSRegisterServicesProvider">NSRegisterServicesProvider</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSReleaseAlertPanel">NSReleaseAlertPanel</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunAlertPanel">NSRunAlertPanel</a><br />
+            <a rel="gsdoc" href="Functions.html#function$NSRunAlertPanelRelativeToWindow">NSRunAlertPanelRelativeToWindow</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunCriticalAlertPanel">NSRunCriticalAlertPanel</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunInformationalAlertPanel">NSRunInformationalAlertPanel</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunLocalizedAlertPanel">NSRunLocalizedAlertPanel</a><br />
@@ -1107,6 +1110,8 @@
           <h3 class="content-bar-index-section-header"><a name="nav-bar-macros">Macros</a></h3>
           <p class="project_macro_index">
                         
+            <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSAlert">_GNUstep_H_NSAlert</a><br />
+            <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSController">_GNUstep_H_NSController</a><br />
             <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSTextAttachment">_GNUstep_H_NSTextAttachment</a><br />
             <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSTextContainer">_GNUstep_H_NSTextContainer</a><br />
 
@@ -1961,19 +1966,18 @@
           <dd>
           </dd>
         </dl>
-        <p><b>Date:</b> Generated at 2025-02-11 22:28:02 +0100</p>
+        <p><b>Date:</b> Generated at 2025-11-18 15:37:48 +0100</p>
         <blockquote>
           The abstract document class
         </blockquote>
         <p><b>Copyright:</b> (C) 1999 Free Software Foundation, Inc.</p>
-
-            <div>
+        <div>
         </div>
 
               <h1><a name="001000000000">
         Software documentation for the NSDocument class
       </a></h1>
-        <h2 class="class"><a name="class$NSDocument">NSDocument</a> : <a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
+        <h2 class="class"><a name="class$NSDocument">NSDocument</a> : <a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject">NSObject</a></h2>
 <svg width="139pt" height="116pt"
  viewBox="0.00 0.00 138.50 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
@@ -1982,7 +1986,7 @@
 <!-- NSObject -->
 <g id="node1" class="node figure_super">
 <title>NSObject</title>
-<g id="a_node1"><a xlink:href="/System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject" xlink:title="NSObject">
+<g id="a_node1"><a xlink:href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSObject.html#class$NSObject" xlink:title="NSObject">
 <polygon fill="lightgrey" stroke="black" points="112.5,-108 18,-108 18,-72 112.5,-72 112.5,-108"/>
 <text text-anchor="middle" x="65.25" y="-80.7" font-family="Times,serif" font-size="24.00">NSObject</text>
 </a>
@@ -2013,7 +2017,28 @@
 <br />
         <div class="desc">
           
-          <em>Description forthcoming.</em>
+          NSDocument is the abstract base class for
+          document-based applications in the AppKit
+          framework. This class provides a comprehensive
+          foundation for managing individual documents
+          within a multi-document application architecture.
+          NSDocument handles the complete document lifecycle
+          including creation, loading, saving, printing, and
+          closing operations. The class integrates seamlessly
+          with NSDocumentController for application-level document
+          management and NSWindowController for document
+          presentation and user interaction. Key
+          responsibilities include file I/O
+          operations, change tracking with undo support,
+          window management, print operations, and user
+          interface validation. NSDocument supports various
+          file formats, automatic and manual save operations,
+          error handling, and delegate-based callbacks for
+          asynchronous operations. Subclasses must
+          override specific methods to provide
+          document-specific functionality while
+          leveraging the extensive infrastructure provided
+          by the base class.
         
         </div>
         <p class="global_method_index">
@@ -2128,39 +2153,78 @@
         <hr class="section-separator">
 <div class="method">
         <h3><a name="method$NSDocument+isNativeType$">isNativeType:&nbsp;</a></h3>
-        + (BOOL) <b>isNativeType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        + (BOOL) <b>isNativeType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Tests whether the specified <var>type</var>
+            represents a native file format for this
+            document class. Native types are formats that
+            preserve all document information without data
+            loss and represent the primary or preferred storage
+            format for this document <var>type</var>. This
+            method helps distinguish between native formats and
+            export/import formats that may not preserve
+            complete document fidelity. The document
+            controller uses this information for save
+            operation behavior, determining when to prompt
+            users about potential data loss or format
+            limitations. Subclasses should override this
+            method to identify their native file formats
+            accurately.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSDocument+readableTypes">readableTypes&nbsp;</a></h3>
-        + (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>readableTypes</b>;<br />
+        + (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>readableTypes</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns an array of file types that this document
+            class can read and open. The returned array contains
+            type identifier strings that correspond to file
+            formats supported for document loading operations.
+            These types are typically UTI strings or file
+            extensions that define the readable formats for
+            this document class. The document controller uses this
+            information to determine which document classes
+            can handle specific file types during open operations.
+            Subclasses should override this method to
+            specify their supported input formats, enabling
+            proper document type resolution and automatic
+            document class selection based on file
+            characteristics.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSDocument+writableTypes">writableTypes&nbsp;</a></h3>
-        + (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>writableTypes</b>;<br />
+        + (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>writableTypes</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns an array of file types that this document
+            class can write and save. The returned array contains
+            type identifier strings that correspond to file
+            formats supported for document saving operations.
+            These types define the available output formats that
+            users can select when saving documents of this class.
+            The document controller and save panels use this
+            information to populate format selection
+            controls and validate save operations. Subclasses
+            should override this method to specify their
+            supported output formats, enabling appropriate
+            save format options and proper file type handling
+            during save operations.
           
         </div>
         <hr class="method-separator">
@@ -2173,7 +2237,21 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Adds the specified window controller to this
+            document&apos;s controller collection. The
+            <var>windowController</var> parameter represents an
+            NSWindowController instance that will
+            manage document presentation and user interface
+            coordination. This method establishes the
+            bidirectional relationship between the
+            document and its window controller, enabling
+            proper document lifecycle management and user
+            interface synchronization. The document retains
+            the window controller and configures it for
+            document-specific operations. Multiple
+            window controllers can be added to support complex
+            document presentations with specialized interface
+            components.
           
         </div>
         <hr class="method-separator">
@@ -2193,7 +2271,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-autosavedContentsFileURL">autosavedContentsFileURL&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*) <b>autosavedContentsFileURL</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*) <b>autosavedContentsFileURL</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2206,7 +2284,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-autosavingFileType">autosavingFileType&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>autosavingFileType</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>autosavingFileType</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2262,7 +2340,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-dataOfType$error$">dataOfType:&nbsp;error:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*) <b>dataOfType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*) <b>dataOfType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2275,7 +2353,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-dataRepresentationOfType$">dataRepresentationOfType:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*) <b>dataRepresentationOfType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*) <b>dataRepresentationOfType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2288,7 +2366,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-displayName">displayName&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>displayName</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>displayName</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2301,7 +2379,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileAttributesToWriteToFile$ofType$saveOperation$">fileAttributesToWriteToFile:&nbsp;ofType:&nbsp;saveOperation:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>fileAttributesToWriteToFile:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullDocumentPath<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)docType<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOperationType;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>fileAttributesToWriteToFile:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fullDocumentPath<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)docType<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOperationType;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2314,7 +2392,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileAttributesToWriteToURL$ofType$forSaveOperation$originalContentsURL$error$">fileAttributesToWriteToURL:&nbsp;ofType:&nbsp;forSaveOperation:&nbsp;originalContentsURL:&nbsp;error:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>fileAttributesToWriteToURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> originalContentsURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)original<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*) <b>fileAttributesToWriteToURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> originalContentsURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)original<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2327,7 +2405,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileModificationDate">fileModificationDate&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSDate.html#class$NSDate">NSDate</a>*) <b>fileModificationDate</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSDate.html#class$NSDate">NSDate</a>*) <b>fileModificationDate</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2340,7 +2418,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileName">fileName&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileName</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileName</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2353,7 +2431,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileNameExtensionForType$saveOperation$">fileNameExtensionForType:&nbsp;saveOperation:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileNameExtensionForType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)typeName<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOperation;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileNameExtensionForType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)typeName<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOperation;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.5.0</div>
 <br />
@@ -2379,7 +2457,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileNameFromRunningSavePanelForSaveOperation$">fileNameFromRunningSavePanelForSaveOperation:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileNameFromRunningSavePanelForSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOperation;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileNameFromRunningSavePanelForSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOperation;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0 removed at MacOS-X 10.4.0</div>
 <br />
@@ -2392,7 +2470,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileType">fileType&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileType</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileType</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2405,7 +2483,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileTypeFromLastRunSavePanel">fileTypeFromLastRunSavePanel&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileTypeFromLastRunSavePanel</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>fileTypeFromLastRunSavePanel</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2418,7 +2496,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileURL">fileURL&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*) <b>fileURL</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*) <b>fileURL</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2431,7 +2509,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileWrapperOfType$error$">fileWrapperOfType:&nbsp;error:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSFileWrapper.html#class$NSFileWrapper">NSFileWrapper</a>*) <b>fileWrapperOfType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSFileWrapper.html#class$NSFileWrapper">NSFileWrapper</a>*) <b>fileWrapperOfType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2444,7 +2522,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-fileWrapperRepresentationOfType$">fileWrapperRepresentationOfType:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSFileWrapper.html#class$NSFileWrapper">NSFileWrapper</a>*) <b>fileWrapperRepresentationOfType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSFileWrapper.html#class$NSFileWrapper">NSFileWrapper</a>*) <b>fileWrapperRepresentationOfType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2476,7 +2554,20 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns whether this document has an active undo
+            manager available for undo and redo operations.
+            This method indicates the document&apos;s undo capability
+            without requiring access to the actual undo manager
+            instance. Documents with undo managers can track
+            and reverse changes, while those without undo managers
+            operate in a linear modification mode without
+            change reversal capabilities. User interface
+            elements like Undo menu items use this information
+            to determine their availability and enabled state.
+            Applications can use this method to
+            conditionally enable undo- dependent features
+            and provide appropriate user feedback about available
+            functionality.
           
         </div>
         <hr class="method-separator">
@@ -2489,14 +2580,28 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Initializes a new empty document instance with
+            default settings. This designated initializer
+            creates a new document without loading content from
+            any file source, suitable for creating blank documents
+            that users will populate with content. The
+            initialization process establishes default
+            document state, creates necessary internal
+            structures, and prepares the document for
+            content editing and user interaction. Subclasses
+            should override this method to perform
+            document-specific initialization while
+            ensuring proper super class initialization. This
+            method is typically used when creating new documents
+            through menu actions or programmatic document
+            creation workflows.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-initForURL$withContentsOfURL$ofType$error$">initForURL:&nbsp;withContentsOfURL:&nbsp;ofType:&nbsp;error:&nbsp;</a></h3>
-        - (id) <b>initForURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)forUrl<b> withContentsOfURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (id) <b>initForURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)forUrl<b> withContentsOfURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2509,12 +2614,26 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-initWithContentsOfFile$ofType$">initWithContentsOfFile:&nbsp;ofType:&nbsp;</a></h3>
-        - (id) <b>initWithContentsOfFile:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileType;<br />
+        - (id) <b>initWithContentsOfFile:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileType;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
+            Initializes a new document instance by loading
+            content from the specified file path with the given
+            file type. The <var>fileName</var> parameter specifies
+            the complete path to the source file, while
+            <var>fileType</var> identifies the format for proper
+            content interpretation and loading. This
+            initialization method handles file reading,
+            content parsing, and document state setup in a
+            single operation. The document&apos;s file location and
+            type properties are automatically configured based on
+            the provided parameters. Subclasses typically override
+            this method to implement format-specific loading logic
+            while leveraging the base class infrastructure for
+            standard document management operations. <br />
             Initialises the receiver with the contents of
             the document at <var>fileName</var> assuming that the
             type of data is as specified by <var>fileType</var>.
@@ -2526,24 +2645,40 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-initWithContentsOfURL$ofType$">initWithContentsOfURL:&nbsp;ofType:&nbsp;</a></h3>
-        - (id) <b>initWithContentsOfURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileType;<br />
+        - (id) <b>initWithContentsOfURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileType;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
-            Initialises the receiver with the contents of
-            the document at <var>url</var> assuming that the type
-            of data is as specified by <var>fileType</var>. <br />
-            Destroys the receiver and returns <code>nil</code>
-            on failure.
+            Initializes a new document instance by loading
+            content from the specified URL with the given file
+            type. The <var>url</var> parameter specifies the
+            source location using URL syntax, supporting both
+            local file URLs and potentially remote resources
+            depending on implementation. The
+            <var>fileType</var> parameter identifies the content
+            format for proper interpretation during loading.
+            This method provides URL-based initialization with
+            automatic content loading and document
+            configuration. Modern document
+            implementations should prefer URL-based
+            methods for enhanced flexibility and network
+            resource support. Subclasses override this method
+            to implement format-specific URL-based loading while
+            maintaining standard document lifecycle
+            behavior. <br /> Initialises the receiver with
+            the contents of the document at <var>url</var> assuming
+            that the type of data is as specified by
+            <var>fileType</var>. <br /> Destroys the receiver and
+            returns <code>nil</code> on failure.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-initWithContentsOfURL$ofType$error$">initWithContentsOfURL:&nbsp;ofType:&nbsp;error:&nbsp;</a></h3>
-        - (id) <b>initWithContentsOfURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (id) <b>initWithContentsOfURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2556,7 +2691,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-initWithType$error$">initWithType:&nbsp;error:&nbsp;</a></h3>
-        - (id) <b>initWithType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (id) <b>initWithType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2575,7 +2710,20 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns whether this document has unsaved changes
+            that require saving. The document maintains an
+            internal change count that tracks modifications
+            since the last save operation, and this method
+            reports the current edited state based on that
+            count. The edited state affects user interface
+            elements like window titles, close confirmations,
+            and save menu items. Document controllers and window
+            managers use this information to provide
+            appropriate user feedback and prevent
+            accidental data loss. The method returns
+            <code>YES</code> when the document contains unsaved
+            changes and <code>NO</code> when all changes have
+            been saved or the document is in its original state.
           
         </div>
         <hr class="method-separator">
@@ -2595,7 +2743,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-lastComponentOfFileName">lastComponentOfFileName&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>lastComponentOfFileName</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>lastComponentOfFileName</b>;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2608,7 +2756,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-loadDataRepresentation$ofType$">loadDataRepresentation:&nbsp;ofType:&nbsp;</a></h3>
-        - (BOOL) <b>loadDataRepresentation:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*)data<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (BOOL) <b>loadDataRepresentation:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*)data<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2621,7 +2769,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-loadFileWrapperRepresentation$ofType$">loadFileWrapperRepresentation:&nbsp;ofType:&nbsp;</a></h3>
-        - (BOOL) <b>loadFileWrapperRepresentation:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSFileWrapper.html#class$NSFileWrapper">NSFileWrapper</a>*)wrapper<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (BOOL) <b>loadFileWrapperRepresentation:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSFileWrapper.html#class$NSFileWrapper">NSFileWrapper</a>*)wrapper<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2675,7 +2823,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-presentError$">presentError:&nbsp;</a></h3>
-        - (BOOL) <b>presentError:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>*)error;<br />
+        - (BOOL) <b>presentError:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>*)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2688,7 +2836,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-presentError$modalForWindow$delegate$didPresentSelector$contextInfo$">presentError:&nbsp;modalForWindow:&nbsp;delegate:&nbsp;didPresentSelector:&nbsp;contextInfo:&nbsp;</a></h3>
-        - (void) <b>presentError:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>*)error<b> modalForWindow:</b> (<a rel="gsdoc" href="NSWindow.html#class$NSWindow">NSWindow</a>*)window<b> delegate:</b> (id)delegate<b> didPresentSelector:</b> (SEL)sel<b> contextInfo:</b> (void*)context;<br />
+        - (void) <b>presentError:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>*)error<b> modalForWindow:</b> (<a rel="gsdoc" href="NSWindow.html#class$NSWindow">NSWindow</a>*)window<b> delegate:</b> (id)delegate<b> didPresentSelector:</b> (SEL)sel<b> contextInfo:</b> (void*)context;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2714,7 +2862,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-printDocumentWithSettings$showPrintPanel$delegate$didPrintSelector$contextInfo$">printDocumentWithSettings:&nbsp;showPrintPanel:&nbsp;delegate:&nbsp;didPrintSelector:&nbsp;contextInfo:&nbsp;</a></h3>
-        - (void) <b>printDocumentWithSettings:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*)settings<b> showPrintPanel:</b> (BOOL)flag<b> delegate:</b> (id)delegate<b> didPrintSelector:</b> (SEL)sel<b> contextInfo:</b> (void*)context;<br />
+        - (void) <b>printDocumentWithSettings:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*)settings<b> showPrintPanel:</b> (BOOL)flag<b> delegate:</b> (id)delegate<b> didPrintSelector:</b> (SEL)sel<b> contextInfo:</b> (void*)context;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2740,7 +2888,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-printOperationWithSettings$error$">printOperationWithSettings:&nbsp;error:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="NSPrintOperation.html#class$NSPrintOperation">NSPrintOperation</a>*) <b>printOperationWithSettings:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*)settings<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (<a rel="gsdoc" href="NSPrintOperation.html#class$NSPrintOperation">NSPrintOperation</a>*) <b>printOperationWithSettings:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSDictionary.html#class$NSDictionary">NSDictionary</a>*)settings<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2766,7 +2914,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-readFromData$ofType$error$">readFromData:&nbsp;ofType:&nbsp;error:&nbsp;</a></h3>
-        - (BOOL) <b>readFromData:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*)data<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (BOOL) <b>readFromData:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSData.html#class$NSData">NSData</a>*)data<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2779,7 +2927,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-readFromFile$ofType$">readFromFile:&nbsp;ofType:&nbsp;</a></h3>
-        - (BOOL) <b>readFromFile:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (BOOL) <b>readFromFile:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2792,7 +2940,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-readFromFileWrapper$ofType$error$">readFromFileWrapper:&nbsp;ofType:&nbsp;error:&nbsp;</a></h3>
-        - (BOOL) <b>readFromFileWrapper:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSFileWrapper.html#class$NSFileWrapper">NSFileWrapper</a>*)wrapper<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (BOOL) <b>readFromFileWrapper:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSFileWrapper.html#class$NSFileWrapper">NSFileWrapper</a>*)wrapper<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2805,7 +2953,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-readFromURL$ofType$">readFromURL:&nbsp;ofType:&nbsp;</a></h3>
-        - (BOOL) <b>readFromURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (BOOL) <b>readFromURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2818,7 +2966,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-readFromURL$ofType$error$">readFromURL:&nbsp;ofType:&nbsp;error:&nbsp;</a></h3>
-        - (BOOL) <b>readFromURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (BOOL) <b>readFromURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2850,14 +2998,26 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Reverts the document to its last saved state,
+            discarding all unsaved changes since the last
+            save operation. This action method presents user
+            confirmation when appropriate and then reloads
+            the document content from its file source. The revert
+            operation restores the document to its previously
+            saved state, resetting the change count and edited
+            status. This method provides a mechanism for
+            abandoning unwanted changes and returning to
+            known good document state. The revert process
+            includes user interface updates and proper window
+            controller coordination to maintain consistent
+            document presentation after content restoration.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-revertToContentsOfURL$ofType$error$">revertToContentsOfURL:&nbsp;ofType:&nbsp;error:&nbsp;</a></h3>
-        - (BOOL) <b>revertToContentsOfURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (BOOL) <b>revertToContentsOfURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -2870,7 +3030,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-revertToSavedFromFile$ofType$">revertToSavedFromFile:&nbsp;ofType:&nbsp;</a></h3>
-        - (BOOL) <b>revertToSavedFromFile:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (BOOL) <b>revertToSavedFromFile:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2883,7 +3043,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-revertToSavedFromURL$ofType$">revertToSavedFromURL:&nbsp;ofType:&nbsp;</a></h3>
-        - (BOOL) <b>revertToSavedFromURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (BOOL) <b>revertToSavedFromURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2896,7 +3056,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-runModalPageLayoutWithPrintInfo$">runModalPageLayoutWithPrintInfo:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>runModalPageLayoutWithPrintInfo:</b> (<a rel="gsdoc" href="NSPrintInfo.html#class$NSPrintInfo">NSPrintInfo</a>*)printInfo;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>runModalPageLayoutWithPrintInfo:</b> (<a rel="gsdoc" href="NSPrintInfo.html#class$NSPrintInfo">NSPrintInfo</a>*)printInfo;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -2935,7 +3095,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-runModalSavePanel$withAccessoryView$">runModalSavePanel:&nbsp;withAccessoryView:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>runModalSavePanel:</b> (<a rel="gsdoc" href="NSSavePanel.html#class$NSSavePanel">NSSavePanel</a>*)savePanel<b> withAccessoryView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)accessoryView;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/TypesAndConstants.html#type$NSInteger">NSInteger</a>) <b>runModalSavePanel:</b> (<a rel="gsdoc" href="NSSavePanel.html#class$NSSavePanel">NSSavePanel</a>*)savePanel<b> withAccessoryView:</b> (<a rel="gsdoc" href="NSView.html#class$NSView">NSView</a>*)accessoryView;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.0.0 removed at MacOS-X 10.4.0</div>
 <br />
@@ -2980,7 +3140,22 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Performs a save operation for the current
+            document, preserving changes to the existing file
+            location. This action method is typically
+            connected to Save menu items or toolbar buttons
+            and initiates the standard document save process. If
+            the document has an established file location, the save
+            operation writes changes directly to that
+            location. For new documents without a file
+            location, this method automatically presents a
+            save panel to allow the user to specify a save
+            location and file name. The method handles all
+            aspects of the save process including user
+            interface updates, error handling, and change
+            count management. Successful saves reset the
+            document&apos;s edited status and update the
+            modification date.
           
         </div>
         <hr class="method-separator">
@@ -2993,7 +3168,20 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Performs a save-as operation, allowing the user to
+            specify a new save location and potentially change
+            the file format. This action method presents a save
+            panel regardless of whether the document has an
+            existing file location, enabling users to create
+            copies or save in different formats. The save-as
+            operation preserves the original file while
+            creating a new file at the specified location.
+            After successful completion, the document&apos;s file
+            location is updated to the new location, making it
+            the target for subsequent save operations. This method
+            supports workflow flexibility and file management
+            by enabling document duplication and format conversion
+            capabilities.
           
         </div>
         <hr class="method-separator">
@@ -3006,7 +3194,19 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Performs a save-to operation, creating a copy of
+            the document at a specified location without changing
+            the current document&apos;s file location. Unlike save-as,
+            this operation preserves the original document&apos;s
+            location as the target for future save operations
+            while creating an independent copy at the new
+            location. This action is useful for creating
+            backups, exporting to different locations, or
+            generating copies for distribution without
+            affecting the primary document workflow. The
+            save-to operation maintains the current document&apos;s
+            edited status and file associations while ensuring
+            the copy reflects the current document content.
           
         </div>
         <hr class="method-separator">
@@ -3026,7 +3226,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-saveToFile$saveOperation$delegate$didSaveSelector$contextInfo$">saveToFile:&nbsp;saveOperation:&nbsp;delegate:&nbsp;didSaveSelector:&nbsp;contextInfo:&nbsp;</a></h3>
-        - (void) <b>saveToFile:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOperation<b> delegate:</b> (id)delegate<b> didSaveSelector:</b> (SEL)didSaveSelector<b> contextInfo:</b> (void*)contextInfo;<br />
+        - (void) <b>saveToFile:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOperation<b> delegate:</b> (id)delegate<b> didSaveSelector:</b> (SEL)didSaveSelector<b> contextInfo:</b> (void*)contextInfo;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -3039,7 +3239,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-saveToURL$ofType$forSaveOperation$delegate$didSaveSelector$contextInfo$">saveToURL:&nbsp;ofType:&nbsp;forSaveOperation:&nbsp;delegate:&nbsp;didSaveSelector:&nbsp;contextInfo:&nbsp;</a></h3>
-        - (void) <b>saveToURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> delegate:</b> (id)delegate<b> didSaveSelector:</b> (SEL)didSaveSelector<b> contextInfo:</b> (void*)contextInfo;<br />
+        - (void) <b>saveToURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> delegate:</b> (id)delegate<b> didSaveSelector:</b> (SEL)didSaveSelector<b> contextInfo:</b> (void*)contextInfo;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3052,7 +3252,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-saveToURL$ofType$forSaveOperation$error$">saveToURL:&nbsp;ofType:&nbsp;forSaveOperation:&nbsp;error:&nbsp;</a></h3>
-        - (BOOL) <b>saveToURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (BOOL) <b>saveToURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3065,7 +3265,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-setAutosavedContentsFileURL$">setAutosavedContentsFileURL:&nbsp;</a></h3>
-        - (void) <b>setAutosavedContentsFileURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url;<br />
+        - (void) <b>setAutosavedContentsFileURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3078,7 +3278,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-setFileModificationDate$">setFileModificationDate:&nbsp;</a></h3>
-        - (void) <b>setFileModificationDate:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSDate.html#class$NSDate">NSDate</a>*)date;<br />
+        - (void) <b>setFileModificationDate:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSDate.html#class$NSDate">NSDate</a>*)date;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3091,7 +3291,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-setFileName$">setFileName:&nbsp;</a></h3>
-        - (void) <b>setFileName:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName;<br />
+        - (void) <b>setFileName:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -3104,7 +3304,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-setFileType$">setFileType:&nbsp;</a></h3>
-        - (void) <b>setFileType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (void) <b>setFileType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -3117,7 +3317,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-setFileURL$">setFileURL:&nbsp;</a></h3>
-        - (void) <b>setFileURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url;<br />
+        - (void) <b>setFileURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3136,14 +3336,27 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Configures whether this document should maintain
+            an undo manager for change tracking and reversal
+            operations. The <var>flag</var> parameter
+            determines whether the document creates and
+            maintains an undo manager instance. When
+            <code>YES</code>, the document provides full undo
+            and redo functionality with change history tracking.
+            When <code>NO</code>, the document operates without
+            undo support, which may improve performance for large
+            documents or specialized applications where undo
+            functionality is not required. This setting
+            affects user interface validation, change count
+            management, and the availability of
+            undo-related menu items and toolbar buttons.
           
         </div>
         <hr class="method-separator">
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-setLastComponentOfFileName$">setLastComponentOfFileName:&nbsp;</a></h3>
-        - (void) <b>setLastComponentOfFileName:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)str;<br />
+        - (void) <b>setLastComponentOfFileName:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)str;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3169,13 +3382,26 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-setUndoManager$">setUndoManager:&nbsp;</a></h3>
-        - (void) <b>setUndoManager:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>*)undoManager;<br />
+        - (void) <b>setUndoManager:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>*)undoManager;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the undo manager instance for this document. The
+            <var>undoManager</var> parameter specifies the
+            NSUndoManager instance that will handle undo
+            and redo operations for this document. Setting a custom
+            undo manager allows applications to provide
+            specialized undo behavior, shared undo
+            management across multiple documents, or
+            enhanced undo functionality beyond the standard
+            implementation. The document integrates the
+            provided undo manager with its change tracking and
+            user interface validation systems. Setting
+            <code>nil</code> removes undo support from the
+            document, which may be appropriate for certain
+            document types or application configurations.
           
         </div>
         <hr class="method-separator">
@@ -3263,13 +3489,26 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-undoManager">undoManager&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>*) <b>undoManager</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSUndoManager.html#class$NSUndoManager">NSUndoManager</a>*) <b>undoManager</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns the undo manager instance associated with
+            this document. The undo manager coordinates undo and
+            redo operations for document modifications,
+            maintaining a history of changes that can be
+            reversed or reapplied. Each document typically
+            maintains its own undo manager to provide
+            isolated undo functionality that doesn&apos;t interfere
+            with other documents. The returned undo manager
+            integrates with the document&apos;s change tracking
+            system to provide accurate change counts and edited
+            status updates. Applications can customize undo
+            behavior by configuring the undo manager or
+            providing custom undo implementations through the
+            standard NSUndoManager interface.
           
         </div>
         <hr class="method-separator">
@@ -3282,7 +3521,22 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Updates the document&apos;s <var>change</var> tracking
+            state based on the specified <var>change</var> type.
+            The <var>change</var> parameter indicates whether a
+            modification was made, undone, or cleared,
+            allowing the document to maintain accurate
+            <var>change</var> counts and edited status.
+            NSChangeDone increments the <var>change</var>
+            count for new modifications, NSChangeUndone
+            decrements for undo operations, and
+            NSChangeCleared resets the count after save
+            operations. This method automatically updates
+            user interface elements and triggers appropriate
+            notifications to maintain consistent document
+            state representation. Proper <var>change</var>
+            tracking enables undo support, save prompts, and
+            accurate document status reporting.
           
         </div>
         <hr class="method-separator">
@@ -3315,7 +3569,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-willPresentError$">willPresentError:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>*) <b>willPresentError:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>*)error;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>*) <b>willPresentError:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>*)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3354,13 +3608,27 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-windowControllers">windowControllers&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>windowControllers</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>windowControllers</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Returns an array of window controllers currently
+            associated with this document. Window
+            controllers manage the presentation and user
+            interface aspects of the document, with each
+            controller typically corresponding to a document
+            window. This method provides access to all window
+            controllers for document-wide operations,
+            window enumeration, or controller-specific
+            customization. The returned array contains
+            NSWindowController instances that handle
+            window lifecycle, user interface updates, and user
+            interaction coordination. Multiple window
+            controllers enable complex document
+            presentations with multiple views or
+            specialized interface panels.
           
         </div>
         <hr class="method-separator">
@@ -3380,7 +3648,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-windowNibName">windowNibName&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>windowNibName</b>;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*) <b>windowNibName</b>;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -3393,7 +3661,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-writableTypesForSaveOperation$">writableTypesForSaveOperation:&nbsp;</a></h3>
-        - (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>writableTypesForSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op;<br />
+        - (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSArray.html#class$NSArray">NSArray</a>*) <b>writableTypesForSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3406,7 +3674,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-writeSafelyToURL$ofType$forSaveOperation$error$">writeSafelyToURL:&nbsp;ofType:&nbsp;forSaveOperation:&nbsp;error:&nbsp;</a></h3>
-        - (BOOL) <b>writeSafelyToURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (BOOL) <b>writeSafelyToURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3419,7 +3687,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-writeToFile$ofType$">writeToFile:&nbsp;ofType:&nbsp;</a></h3>
-        - (BOOL) <b>writeToFile:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (BOOL) <b>writeToFile:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -3432,7 +3700,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-writeToFile$ofType$originalFile$saveOperation$">writeToFile:&nbsp;ofType:&nbsp;originalFile:&nbsp;saveOperation:&nbsp;</a></h3>
-        - (BOOL) <b>writeToFile:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> originalFile:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)origFileName<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOp;<br />
+        - (BOOL) <b>writeToFile:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> originalFile:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)origFileName<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOp;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -3445,7 +3713,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-writeToURL$ofType$">writeToURL:&nbsp;ofType:&nbsp;</a></h3>
-        - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
+        - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />
@@ -3458,7 +3726,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-writeToURL$ofType$error$">writeToURL:&nbsp;ofType:&nbsp;error:&nbsp;</a></h3>
-        - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3471,7 +3739,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-writeToURL$ofType$forSaveOperation$originalContentsURL$error$">writeToURL:&nbsp;ofType:&nbsp;forSaveOperation:&nbsp;originalContentsURL:&nbsp;error:&nbsp;</a></h3>
-        - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> originalContentsURL:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)orig<b> error:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
+        - (BOOL) <b>writeToURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)url<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)type<b> forSaveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)op<b> originalContentsURL:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSURL.html#class$NSURL">NSURL</a>*)orig<b> error:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSError.html#class$NSError">NSError</a>**)error;<br />
         <div class="availability">
 <b>Availability:</b> MacOS-X 10.4.0</div>
 <br />
@@ -3484,7 +3752,7 @@
 </div>
 <div class="method">
         <h3><a name="method$NSDocument-writeWithBackupToFile$ofType$saveOperation$">writeWithBackupToFile:&nbsp;ofType:&nbsp;saveOperation:&nbsp;</a></h3>
-        - (BOOL) <b>writeWithBackupToFile:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="/System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileType<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOp;<br />
+        - (BOOL) <b>writeWithBackupToFile:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileName<b> ofType:</b> (<a rel="gsdoc" href="../../../../../../../System/Library/Documentation/Developer/Base/Reference/NSString.html#class$NSString">NSString</a>*)fileType<b> saveOperation:</b> (<a rel="gsdoc" href="TypesAndConstants.html#type$NSSaveOperationType">NSSaveOperationType</a>)saveOp;<br />
         <div class="availability">
 <b>Availability:</b> OpenStep</div>
 <br />

@@ -10,6 +10,7 @@
     <div class="content-bar">
       <div class="content-bar-top">
         <div class="content-bar-top-body">
+          <div class="content-bar-top-body-title">Gui</div><br />
           <a href="#nav-bar-classes">Classes</a><br />
           <a href="#nav-bar-protocols">Protocols</a><br />
           <a href="#nav-bar-constants">Constants</a><br />
@@ -411,6 +412,7 @@
           <h3 class="content-bar-index-section-header"><a name="nav-bar-constants">Constants</a></h3>
           <p class="project_constant_index">
                         
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$GSFontManagerAvailableFontsDidChangeNotification">GSFontManagerAvailableFontsDidChangeNotification</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$GSSixteenBitRGBDepth">GSSixteenBitRGBDepth</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSAccessibilityActivationPointAttribute">NSAccessibilityActivationPointAttribute</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSAccessibilityAllowedValuesAttribute">NSAccessibilityAllowedValuesAttribute</a><br />
@@ -1016,6 +1018,7 @@
             <a rel="gsdoc" href="Functions.html#function$NSRegisterServicesProvider">NSRegisterServicesProvider</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSReleaseAlertPanel">NSReleaseAlertPanel</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunAlertPanel">NSRunAlertPanel</a><br />
+            <a rel="gsdoc" href="Functions.html#function$NSRunAlertPanelRelativeToWindow">NSRunAlertPanelRelativeToWindow</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunCriticalAlertPanel">NSRunCriticalAlertPanel</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunInformationalAlertPanel">NSRunInformationalAlertPanel</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSRunLocalizedAlertPanel">NSRunLocalizedAlertPanel</a><br />
@@ -1107,6 +1110,8 @@
           <h3 class="content-bar-index-section-header"><a name="nav-bar-macros">Macros</a></h3>
           <p class="project_macro_index">
                         
+            <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSAlert">_GNUstep_H_NSAlert</a><br />
+            <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSController">_GNUstep_H_NSController</a><br />
             <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSTextAttachment">_GNUstep_H_NSTextAttachment</a><br />
             <a rel="gsdoc" href="Functions.html#macro$_GNUstep_H_NSTextContainer">_GNUstep_H_NSTextContainer</a><br />
 
@@ -1961,13 +1966,12 @@
           <dd>
           </dd>
         </dl>
-        <p><b>Date:</b> Generated at 2025-02-11 22:28:02 +0100</p>
+        <p><b>Date:</b> Generated at 2025-11-18 15:37:48 +0100</p>
         <blockquote>
           System generic color panel
         </blockquote>
         <p><b>Copyright:</b> (C) 1996 Free Software Foundation, Inc.</p>
-
-            <div>
+        <div>
           <hr class="section-separator">
           <h3>Contents -</h3>
           <ol>
@@ -2027,14 +2031,6 @@
         <div class="desc">
           
           
-        </p>
-        <p>
-
-            TODO Description
-                  </p>
-        <p>
-          
-        
         </div>
         <hr class="section-separator">
         <a href="#_NSColorPanel_ivars">Instance Variables</a>
@@ -2073,6 +2069,12 @@
 <br />
         <div class="desc">
           
+            Initiates a drag operation with the specified
+            color. aColor: The color to drag anEvent: The mouse
+            event that initiated the drag sourceView: The view
+            from which the drag originated Returns:
+            <code>YES</code> if the drag was successful,
+            <code>NO</code> otherwise <br />
             
         </p>
         <p>
@@ -2106,7 +2108,11 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets which color picker modes are available in the
+            color panel. mask: Bitmask of NSColorPanel*ModeMask
+            constants specifying available modes <br />
+            Determines color selection modes availible to
+            the the NSApplications colorPanel.
           
         </div>
         <hr class="method-separator">
@@ -2119,7 +2125,10 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Sets the current color picker <var>mode</var> for new
+            color panel instances. mode: The color picker
+            <var>mode</var> constant (NSGrayModeColorPanel, etc.)
+            <br /> Specifies color panel&apos;s initial picker.
           
         </div>
         <hr class="method-separator">
@@ -2132,6 +2141,9 @@
 <br />
         <div class="desc">
           
+            Returns the shared color panel instance, creating
+            it if necessary. Returns: The singleton NSColorPanel
+            instance for the application <br />
             
         </p>
         <p>
@@ -2153,6 +2165,9 @@
 <br />
         <div class="desc">
           
+            Returns whether the shared color panel has been
+            created. Returns: <code>YES</code> if the shared
+            color panel exists, <code>NO</code> otherwise <br />
             
         </p>
         <p>
@@ -2174,6 +2189,9 @@
 <br />
         <div class="desc">
           
+            Returns the accessory view displayed in the color
+            panel. Returns: The current accessory view, or
+            <code>nil</code> if none is set <br />
             
         </p>
         <p>
@@ -2207,6 +2225,9 @@
 <br />
         <div class="desc">
           
+            Returns the current alpha transparency value.
+            Returns: The alpha component (0.0 to 1.0) of the
+            current color <br />
             
         </p>
         <p>
@@ -2245,7 +2266,10 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Attaches a color list to the color panel for the
+            color list picker mode. aColorList: The NSColorList
+            to make available in the color panel <br /> Adds a color
+            list to all of the color pickers of the receiver.
           
         </div>
         <hr class="method-separator">
@@ -2258,6 +2282,9 @@
 <br />
         <div class="desc">
           
+            Returns the currently selected color. Returns: The
+            NSColor currently selected in the color panel
+            <br />
             
         </p>
         <p>
@@ -2291,7 +2318,10 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Detaches a color list from the color panel.
+            aColorList: The NSColorList to remove from the
+            color panel <br /> Removes the referenced color list
+            to all of the color pickers of the receiver.
           
         </div>
         <hr class="method-separator">
@@ -2304,6 +2334,10 @@
 <br />
         <div class="desc">
           
+            Returns whether the color panel operates in
+            continuous mode. Returns: <code>YES</code> if
+            the panel sends continuous updates, <code>NO</code> for
+            discrete updates <br />
             
         </p>
         <p>
@@ -2337,6 +2371,9 @@
 <br />
         <div class="desc">
           
+            Returns the current color picker mode. Returns: The
+            current mode constant (NSGrayModeColorPanel, etc.)
+            <br />
             
         </p>
         <p>
@@ -2369,6 +2406,9 @@
 <br />
         <div class="desc">
           
+            Sets an accessory view to display in the color panel.
+            aView: The view to display as an accessory, or
+            <code>nil</code> to remove <br />
             
         </p>
         <p>
@@ -2403,6 +2443,9 @@
 <br />
         <div class="desc">
           
+            Sets the action message sent when the color changes.
+            aSelector: The selector to invoke on the target
+            when color changes <br />
             
         </p>
         <p>
@@ -2432,6 +2475,8 @@
 <br />
         <div class="desc">
           
+            Sets the current color in the color panel. aColor: The
+            color to display and select in the panel <br />
             
         </p>
         <p>
@@ -2468,6 +2513,10 @@
 <br />
         <div class="desc">
           
+            Sets whether the color panel operates in continuous
+            mode. flag: <code>YES</code> for continuous updates
+            during interaction, <code>NO</code> for discrete
+            updates <br />
             
         </p>
         <p>
@@ -2501,6 +2550,9 @@
 <br />
         <div class="desc">
           
+            Sets the current color picker <var>mode</var>. mode:
+            The color picker <var>mode</var> constant to activate
+            <br />
             
         </p>
         <p>
@@ -2531,6 +2583,9 @@
 <br />
         <div class="desc">
           
+            Sets whether the alpha transparency slider is visible.
+            flag: <code>YES</code> to show the alpha slider,
+            <code>NO</code> to hide it <br />
             
         </p>
         <p>
@@ -2564,6 +2619,9 @@
 <br />
         <div class="desc">
           
+            Sets the target object for color change actions.
+            anObject: The object to receive action messages
+            when color changes <br />
             
         </p>
         <p>
@@ -2584,6 +2642,9 @@
 <br />
         <div class="desc">
           
+            Returns whether the alpha transparency slider is
+            visible. Returns: <code>YES</code> if the alpha
+            slider is shown, <code>NO</code> if hidden <br />
             
         </p>
         <p>
@@ -2858,7 +2919,9 @@
 <br />
         <div class="desc">
           
-            <em>Description forthcoming.</em>
+            Brings the shared color panel to the front and makes
+            it key. sender: The object that sent the message
+            (typically a menu item or button)
           
         </div>
         <hr class="method-separator">

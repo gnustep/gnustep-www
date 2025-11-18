@@ -13,7 +13,7 @@
         richard@brainstorm.co.uk
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <copy>1996 Free Software Foundation, Inc.</copy>
   </head>
   <body>
@@ -25,7 +25,16 @@
       <class name="NSClipView" super="NSView" ovadd="1.0.0">
         <declared>AppKit/NSClipView.h</declared>
         <desc>
-          <em>Description forthcoming.</em>
+          NSClipView provides the clipping functionality for
+          scroll views by managing a document view within a
+          constrained visible area. This class serves as an
+          intermediary between the scroll view and the
+          content being displayed, handling the translation and
+          clipping of the document view to show only the
+          portion that should be visible within the scrollable
+          area. It manages scrolling operations, coordinate
+          transformations, and optimizations for
+          efficient redrawing during scroll operations.
         </desc>
         <ivariable type="NSColor*" name="_backgroundColor" validity="protected" ovadd="1.0.0">
           <desc>
@@ -85,6 +94,13 @@
           <sel>autoscroll:</sel>
           <arg type="NSEvent*">theEvent</arg>
           <desc>
+            Handles automatic scrolling during drag operations
+            or other continuous user interactions. When the event
+            location is near the edges of the clip view, this
+            method automatically scrolls in the appropriate
+            direction to reveal content beyond the current
+            visible area. Returns whether scrolling occurred as
+            a result of the event. <br />
             <p>
               Scrolls in response to mouse-dragged events.
             </p>
@@ -93,6 +109,13 @@
         <method type="NSColor*" ovadd="1.0.0">
           <sel>backgroundColor</sel>
           <desc>
+            Returns the background color currently used for
+            areas not covered by the document view. The
+            background color fills empty space within the
+            clip view bounds, providing a consistent appearance
+            when the document is smaller than the visible area or
+            contains transparent regions that allow the
+            background to show through. <br />
             <p>
               Returns the NSClipView's background color
             </p>
@@ -108,6 +131,14 @@
           <sel>constrainScrollPoint:</sel>
           <arg type="NSPoint">proposedNewOrigin</arg>
           <desc>
+            Adjusts the proposed scroll origin to ensure it
+            remains within valid bounds for the current
+            document and clip view configuration. This method
+            prevents scrolling beyond the document boundaries
+            and ensures that the visible area never extends outside
+            the document content when possible. Returns the
+            constrained point that should be used for
+            scrolling. <br />
             <p>
             </p>
           </desc>
@@ -115,12 +146,25 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>copiesOnScroll</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the clip view is currently using
+            copying optimization for scroll operations. Copying
+            on scroll can significantly improve performance by
+            reusing existing pixel data for overlapping areas,
+            but may not be appropriate for all types of document
+            content or rendering situations that require
+            complete redrawing.
           </desc>
         </method>
         <method type="NSCursor*" ovadd="1.0.0">
           <sel>documentCursor</sel>
           <desc>
+            Returns the cursor that is currently set for
+            display over the document view. The document cursor
+            indicates the type of interaction available when
+            the mouse is positioned over the document content
+            within the clip view. Returns <code>nil</code> if no
+            specific document cursor has been set, in which
+            case the default cursor behavior applies. <br />
             <p>
               Returns the cursor of the document view
             </p>
@@ -135,6 +179,13 @@
         <method type="NSRect" ovadd="1.0.0">
           <sel>documentRect</sel>
           <desc>
+            Returns the rectangle that encompasses the entire
+            document view in the clip view's coordinate
+            system. This represents the full bounds of the
+            document content, which may extend beyond the
+            currently visible area. The rectangle indicates
+            the total scrollable area available within the clip
+            view for the document. <br />
             <p>
               Returns the document rectangle.
             </p>
@@ -149,6 +200,13 @@
         <method type="id" ovadd="1.0.0">
           <sel>documentView</sel>
           <desc>
+            Returns the view that is currently set as the
+            document view being clipped and displayed. The
+            document view contains the actual content that
+            users interact with, while this clip view handles the
+            scrolling and visible area management. Returns
+            <code>nil</code> if no document view is currently
+            set for this clip view. <br />
             <p>
               Returns the NSClipView's document view.
             </p>
@@ -163,6 +221,13 @@
         <method type="NSRect" ovadd="1.0.0">
           <sel>documentVisibleRect</sel>
           <desc>
+            Returns the rectangle representing the currently
+            visible portion of the document view in the
+            document's own coordinate system. This indicates
+            which part of the document content is actually
+            displayed within the clip view's bounds, useful
+            for determining what content needs to be drawn or
+            updated during scroll operations. <br />
             <p>
               Returns the document visible rectangle in the
               document views coordinate system.
@@ -179,20 +244,40 @@
         <method type="BOOL" ovadd="10.0.0">
           <sel>drawsBackground</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the clip view is currently set to
+            draw its background color. When background drawing is
+            enabled, the clip view fills areas not occupied by
+            the document view with the background color. When
+            disabled, these areas remain transparent,
+            creating different visual effects depending on the
+            surrounding interface elements.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>scrollToPoint:</sel>
           <arg type="NSPoint">aPoint</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Scrolls the document view so that the specified
+            point becomes the origin of the visible area within
+            the clip view. The point coordinates are in the
+            document view's coordinate system, allowing
+            precise control over which portion of the document
+            content is displayed. The actual scroll position
+            may be constrained by the document and clip view
+            bounds.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setBackgroundColor:</sel>
           <arg type="NSColor*">aColor</arg>
           <desc>
+            Sets the background color that will be displayed in
+            areas of the clip view not covered by the document
+            view. This color is visible when the document is
+            smaller than the clip view bounds or when
+            transparent areas exist in the document
+            content. The background color provides visual
+            consistency for the scrollable area. <br />
             <p>
               Sets the NSClipView's background color to
               <var>aColor</var> and marks self for display. Sets
@@ -217,13 +302,26 @@
           <sel>setCopiesOnScroll:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets whether the clip view should use copying
+            optimization during scroll operations. When
+            enabled, the clip view copies pixel data from
+            overlapping areas during scrolling to reduce
+            the amount of redrawing required, improving performance
+            for large document views. When disabled, the entire
+            visible area is redrawn on each scroll.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setDocumentCursor:</sel>
           <arg type="NSCursor*">aCursor</arg>
           <desc>
+            Sets the cursor that should be displayed when the
+            mouse is over the document view within this clip
+            view. The document cursor provides visual feedback to
+            users about the type of interaction available with
+            the document content, such as text editing, resizing,
+            or other context-specific operations. Pass
+            <code>nil</code> to use the default cursor. <br />
             <p>
               Sets the cursor for the document view to
               <var>aCursor</var>
@@ -240,6 +338,14 @@
           <sel>setDocumentView:</sel>
           <arg type="NSView*">aView</arg>
           <desc>
+            Sets the view that will be displayed and clipped
+            within this clip view. The document view is the
+            content that users scroll through, and this clip
+            view manages showing only the visible portion. The
+            document view can be larger than the clip view's
+            bounds, with scrolling revealing different portions
+            of the content. Pass <code>nil</code> to remove the
+            current document view from the clip view. <br />
             <p>
               Sets <var>aView</var> the NSClipView's document view
               to <var>aView</var>
@@ -256,7 +362,13 @@
           <sel>setDrawsBackground:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets whether the clip view should draw its background
+            color in areas not covered by the document view. When
+            enabled, the background color fills empty space
+            within the clip view bounds. When disabled, those
+            areas remain transparent, allowing views behind the
+            clip view to show through, which can be useful for
+            layered interface designs.
           </desc>
         </method>
       </class>

@@ -5,7 +5,7 @@
     <title>NSCollectionView</title>
     <author name="Doug Simons (doug.simons@testplant.com)">
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <copy>2013, 2021 Free Software Foundation, Inc.</copy>
   </head>
   <body>
@@ -17,7 +17,17 @@
       <class name="NSCollectionView" super="NSView" ovadd="1.0.0">
         <declared>AppKit/NSCollectionView.h</declared>
         <desc>
-          <em>Description forthcoming.</em>
+          NSCollectionView provides a flexible
+          container for displaying collections of items
+          arranged in a customizable layout. This view manages
+          the display of multiple collection view items, handles
+          user selection and interaction, supports drag and drop
+          operations, and provides extensive customization
+          through layouts and delegate methods. It serves as
+          the primary interface for displaying grid-based or custom
+          arranged content with efficient recycling of view
+          components for optimal performance with large
+          datasets.
         </desc>
         <ivariable type="BOOL" name="_allowReload" validity="protected" ovadd="1.0.0">
           <desc>
@@ -357,13 +367,24 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>allowsMultipleSelection</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether the collection view allows
+            selection of multiple items simultaneously. When
+            enabled, users can select multiple collection view
+            items using standard multi-selection techniques such
+            as command-click or shift-click. When disabled,
+            selecting one item automatically deselects all
+            others, maintaining single-item selection behavior.
           </desc>
         </method>
         <method type="NSArray*" ovadd="1.0.0">
           <sel>backgroundColors</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the array of background colors used for
+            alternating item backgrounds in the collection
+            view. Background colors provide visual distinction
+            between items and can create striping effects or
+            other visual patterns to improve readability and
+            organization of the displayed content.
           </desc>
         </method>
         <method type="NSView*" ovadd="10.11.0">
@@ -381,13 +402,24 @@
         <method type="NSCollectionViewLayout*" ovadd="10.11.0">
           <sel>collectionViewLayout</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the collection view layout object that
+            determines how items are positioned and arranged
+            within the collection view. The layout controls item
+            placement, sizing, spacing, and other visual
+            arrangement aspects. Different layout classes
+            provide various presentation styles such as grids,
+            flows, or custom arrangements.
           </desc>
         </method>
         <method type="NSArray*" ovadd="1.0.0">
           <sel>content</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the array of objects that serves as the
+            data source for the collection view items. Each object
+            in the content array corresponds to one item displayed
+            in the collection view, with the item prototype or
+            registered classes determining how each object
+            is presented visually to the user.
           </desc>
         </method>
         <method type="id&lt;NSCollectionViewDataSource&gt;" ovadd="10.11.0">
@@ -399,7 +431,13 @@
         <method type="id&lt;NSCollectionViewDelegate&gt;" ovadd="1.0.0">
           <sel>delegate</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the object that serves as the delegate for
+            this collection view. The delegate handles various
+            aspects of user interaction, selection behavior,
+            drag and drop operations, and provides feedback about
+            item display and lifecycle events. The delegate
+            enables customization of the collection view's
+            behavior beyond its default functionality.
           </desc>
         </method>
         <method type="void" ovadd="10.11.0">
@@ -438,41 +476,78 @@
           <sel>offset:</sel>
           <arg type="NSPointPointer">dragImageOffset</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns a drag image representing the items at the
+            specified <var>indexes</var> during a drag
+            operation. The image provides visual feedback to
+            users about what content is being dragged and can be
+            customized to show item previews, counts, or
+            other relevant information. The offset parameter
+            specifies the image position relative to the
+            mouse cursor.
           </desc>
         </method>
         <method type="NSRect" ovadd="1.0.0">
           <sel>frameForItemAtIndex:</sel>
           <arg type="NSUInteger">index</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the frame rectangle for the item at the
+            specified <var>index</var> within the collection
+            view's coordinate system. The frame defines the
+            item's position and size as determined by the
+            current layout, useful for hit testing, scrolling
+            to specific items, or custom drawing and animation
+            operations.
           </desc>
         </method>
         <method type="NSIndexPath*" ovadd="10.11.0">
           <sel>indexPathForItem:</sel>
           <arg type="NSCollectionViewItem*">item</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the index path for the specified collection
+            view <var>item</var> object. The index path identifies
+            the item's position within the collection view's
+            section and <var>item</var> structure. Returns
+            <code>nil</code> if the <var>item</var> is not found
+            or is not currently associated with a valid position in
+            the collection view.
           </desc>
         </method>
         <method type="NSIndexPath*" ovadd="10.11.0">
           <sel>indexPathForItemAtPoint:</sel>
           <arg type="NSPoint">point</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the index path for the item located at the
+            specified <var>point</var> within the collection
+            view's coordinate system. This method performs hit
+            testing to determine which item, if any, is
+            positioned at the given location. Returns
+            <code>nil</code> if no item is found at the
+            specified <var>point</var>.
           </desc>
         </method>
         <method type="NSSet*" ovadd="10.11.0">
           <sel>indexPathsForVisibleItems</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns a set of index paths identifying all
+            currently visible items within the collection
+            view's bounds. Index paths specify both section and
+            item positions for precise identification in
+            multi-section layouts. This information is
+            useful for optimizing updates and managing visible
+            content efficiently.
           </desc>
         </method>
         <method type="NSSet*" ovadd="10.11.0">
           <sel>indexPathsForVisibleSupplementaryElementsOfKind:</sel>
           <arg type="NSCollectionViewSupplementaryElementKind">elementKind</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns a set of index paths for visible
+            supplementary elements of the specified kind.
+            Supplementary elements include section
+            headers, footers, and other layout-provided
+            decorative views. The index paths identify the
+            location of currently visible supplementary views
+            within the collection view's section structure.
           </desc>
         </method>
         <method type="void" ovadd="10.11.0">
@@ -492,27 +567,51 @@
         <method type="BOOL" ovadd="1.0.0">
           <sel>isSelectable</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether items in the collection view can be
+            selected by user interaction. When selectable,
+            users can click items to select them, and the
+            collection view manages selection state and
+            visual feedback. When not selectable, items are
+            display-only and do not respond to selection
+            attempts, though they may still handle other
+            interactions.
           </desc>
         </method>
         <method type="NSCollectionViewItem*" ovadd="1.0.0">
           <sel>itemAtIndex:</sel>
           <arg type="NSUInteger">index</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the collection view item object currently
+            displayed at the specified <var>index</var>. This
+            provides access to the item's view hierarchy and
+            properties for direct manipulation or
+            inspection. Returns <code>nil</code> if no item
+            exists at the given <var>index</var> or if the item
+            is not currently visible and instantiated.
           </desc>
         </method>
         <method type="NSCollectionViewItem*" ovadd="10.11.0">
           <sel>itemAtIndexPath:</sel>
           <arg type="NSIndexPath*">indexPath</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the collection view item object at the
+            specified index path. The item may be created if
+            it's not currently instantiated but is within the
+            displayable range. Returns <code>nil</code> if
+            no item exists at the given index path or if the path is
+            invalid for the current content configuration.
           </desc>
         </method>
         <method type="NSCollectionViewItem*" ovadd="1.0.0">
           <sel>itemPrototype</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the prototype collection view item used as
+            a template for creating new items when content is
+            displayed. The prototype defines the basic
+            structure, appearance, and behavior that will be
+            copied for each item in the collection view. This
+            provides a convenient way to configure items
+            without programmatic setup.
           </desc>
         </method>
         <method type="NSCollectionViewLayoutAttributes*" ovadd="10.11.0">
@@ -554,25 +653,47 @@
         <method type="NSSize" ovadd="1.0.0">
           <sel>maxItemSize</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the maximum size allowed for collection
+            view items. Items will not be displayed larger than
+            this size regardless of their content or other sizing
+            constraints. The maximum size provides an
+            upper bound that prevents items from growing too
+            large and disrupting the overall layout and visual
+            balance of the collection.
           </desc>
         </method>
         <method type="NSUInteger" ovadd="1.0.0">
           <sel>maxNumberOfColumns</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the maximum number of columns that the
+            collection view will display in its layout. This
+            constraint affects how items are arranged and
+            can force items to wrap to new rows when the column
+            limit is reached. The column limit provides control
+            over the aspect ratio and density of the collection
+            view's content arrangement.
           </desc>
         </method>
         <method type="NSUInteger" ovadd="1.0.0">
           <sel>maxNumberOfRows</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the maximum number of rows that the
+            collection view will display in its layout. This
+            constraint controls the vertical extent of the
+            collection and can force items to wrap to new
+            columns when the row limit is reached, depending on
+            the layout configuration and item arrangement strategy.
           </desc>
         </method>
         <method type="NSSize" ovadd="1.0.0">
           <sel>minItemSize</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the minimum size allowed for collection
+            view items. Items will not be displayed smaller than
+            this size, ensuring they remain visible and usable
+            even when content would naturally size smaller. The
+            minimum size provides a lower bound that maintains
+            item accessibility and visual consistency.
           </desc>
         </method>
         <method type="void" ovadd="10.11.0">
@@ -597,7 +718,13 @@
           <sel>newItemForRepresentedObject:</sel>
           <arg type="id">object</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates and returns a new collection view item
+            configured to represent the specified
+            <var>object</var>. This method uses the item
+            prototype or registered classes to instantiate
+            and configure the item appropriately for displaying the
+            given represented <var>object</var> within the
+            collection view layout.
           </desc>
         </method>
         <method type="NSInteger" ovadd="10.11.0">
@@ -722,7 +849,12 @@
         <method type="NSIndexSet*" ovadd="1.0.0">
           <sel>selectionIndexes</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the set of indexes identifying currently
+            selected items in the collection view. The index
+            set contains the positions of all items that are
+            currently selected, allowing access to the
+            selected content objects and providing information
+            for batch operations on the selection.
           </desc>
         </method>
         <method type="void" ovadd="10.11.0">
@@ -736,14 +868,26 @@
           <sel>setAllowsMultipleSelection:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets whether the collection view should allow multiple
+            items to be selected at the same time. Multiple
+            selection enables users to perform batch
+            operations on several items and provides more
+            flexible interaction patterns. Single selection
+            mode is appropriate when only one item should be
+            active or highlighted at any given time.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setBackgroundColors:</sel>
           <arg type="NSArray*">colors</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the array of background <var>colors</var> to be
+            used for item backgrounds in the collection view. The
+            <var>colors</var> cycle through the provided array to
+            create alternating background patterns. Pass
+            <code>nil</code> or an empty array to disable
+            background coloring and use the default
+            appearance for all items.
           </desc>
         </method>
         <method type="void" ovadd="10.11.0">
@@ -764,14 +908,26 @@
           <sel>setCollectionViewLayout:</sel>
           <arg type="NSCollectionViewLayout*">layout</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the <var>layout</var> object that will control
+            item arrangement within the collection view. Changing
+            the <var>layout</var> can dramatically alter the visual
+            presentation and behavior of the collection.
+            The <var>layout</var> change may be animated depending
+            on the implementation and can trigger extensive
+            repositioning of visible items.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setContent:</sel>
           <arg type="NSArray*">content</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the array of objects that will be displayed as
+            items in the collection view. Each object becomes the
+            represented object for a collection view item,
+            which handles the visual presentation and user
+            interaction. Setting new <var>content</var>
+            triggers a refresh of the displayed items to
+            reflect the updated data.
           </desc>
         </method>
         <method type="void" ovadd="10.11.0">
@@ -785,7 +941,13 @@
           <sel>setDelegate:</sel>
           <arg type="id&lt;NSCollectionViewDelegate&gt;">aDelegate</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the delegate object that will handle collection
+            view events and customize behavior. The delegate
+            receives notifications about user interactions,
+            selection changes, drag and drop operations, and
+            item lifecycle events. Pass <code>nil</code> to remove
+            the current delegate and use default behavior for all
+            collection view operations.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
@@ -794,42 +956,77 @@
           <sel>forLocal:</sel>
           <arg type="BOOL">localDestination</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the drag operations that this collection view
+            supports when acting as a drag source. The
+            operation mask determines what types of drag
+            operations (copy, move, link, etc.) are offered
+            to potential drop destinations. The local flag indicates
+            whether the mask applies to drops within the same
+            application or external destinations.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setItemPrototype:</sel>
           <arg type="NSCollectionViewItem*">prototype</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the <var>prototype</var> collection view item
+            that will serve as the template for creating new
+            items. The prototype's configuration, including view
+            hierarchy, bindings, and other properties, is
+            copied when creating items for display. Setting a
+            new <var>prototype</var> affects subsequently created
+            items but does not modify existing ones.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setMaxItemSize:</sel>
           <arg type="NSSize">size</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the maximum <var>size</var> that collection view
+            items are allowed to reach. Items that would
+            naturally <var>size</var> larger than this limit
+            are constrained to fit within the maximum bounds. This
+            prevents oversized items from dominating the
+            display and maintains consistent visual proportions
+            across the collection view layout.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setMaxNumberOfColumns:</sel>
           <arg type="NSUInteger">number</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the maximum <var>number</var> of columns for the
+            collection view layout. Items will wrap to new
+            rows when this column limit is exceeded, creating a
+            constrained grid arrangement. Setting this
+            value affects the overall shape and organization of
+            the collection view's content presentation.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setMaxNumberOfRows:</sel>
           <arg type="NSUInteger">number</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the maximum <var>number</var> of rows for the
+            collection view layout. When this limit is
+            reached, the layout behavior depends on the
+            configuration, potentially wrapping items to
+            additional columns or constraining the total
+            <var>number</var> of visible items within the
+            specified row count.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setMinItemSize:</sel>
           <arg type="NSSize">size</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the minimum <var>size</var> that collection view
+            items must maintain. Items that would naturally
+            <var>size</var> smaller than this limit are expanded
+            to meet the minimum requirements. This ensures all items
+            remain visible and interactive while maintaining
+            consistent appearance standards across the
+            collection view.
           </desc>
         </method>
         <method type="void" ovadd="10.11.0">
@@ -843,21 +1040,39 @@
           <sel>setSelectable:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets whether items in the collection view should
+            respond to selection attempts. Enabling selection
+            allows users to interact with items and receive
+            visual feedback about their choices. Disabling
+            selection creates a read-only display where items
+            cannot be highlighted or chosen, though other
+            interactions may still function.
           </desc>
         </method>
         <method type="void" ovadd="10.11.0">
           <sel>setSelectionIndexPaths:</sel>
           <arg type="NSSet*">indexPaths</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the index paths of items that should be selected
+            in the collection view. Index paths specify both section
+            and item positions, providing precise control over
+            selection in multi-section layouts. This
+            programmatically updates the selection
+            state and may trigger delegate notifications and
+            visual feedback updates.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>setSelectionIndexes:</sel>
           <arg type="NSIndexSet*">indexes</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Sets the <var>indexes</var> of items that should be
+            selected in the collection view. This
+            programmatically changes the selection
+            state, potentially triggering delegate notifications
+            and visual updates. The selection respects the
+            collection view's multiple selection settings
+            and other selection constraints.
           </desc>
         </method>
         <method type="NSView*" ovadd="10.11.0">
@@ -866,13 +1081,25 @@
           <sel>atIndexPath:</sel>
           <arg type="NSIndexPath*">indexPath</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the supplementary view of the specified
+            kind at the given index path. Supplementary views
+            provide additional layout elements such as section
+            headers, footers, or decorative content that
+            complements the primary collection view items.
+            Returns <code>nil</code> if no supplementary view
+            exists at the specified location.
           </desc>
         </method>
         <method type="void" ovadd="1.0.0">
           <sel>tile</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Recalculates and updates the layout of all
+            items in the collection view. This method triggers a
+            complete relayout operation, repositioning items
+            according to the current layout configuration,
+            content changes, and view bounds. Tiling is
+            typically called automatically when needed but
+            can be invoked manually for custom layout updates.
           </desc>
         </method>
         <method type="IBAction" ovadd="10.12.0">
@@ -885,14 +1112,26 @@
         <method type="NSArray*" ovadd="10.11.0">
           <sel>visibleItems</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns an array of currently visible collection
+            view items within the collection view's bounds.
+            Visible items are those that are at least partially
+            displayed and have been instantiated for
+            rendering. This provides access to the actual
+            item objects for direct inspection or manipulation of
+            the currently displayed content.
           </desc>
         </method>
         <method type="NSArray*" ovadd="10.11.0">
           <sel>visibleSupplementaryViewsOfKind:</sel>
           <arg type="NSCollectionViewSupplementaryElementKind">elementKind</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns an array of visible supplementary views of
+            the specified kind. Supplementary views include
+            headers, footers, and other decorative or
+            informational views that are not primary
+            content items. This method provides access to
+            currently displayed supplementary views for
+            inspection or direct manipulation.
           </desc>
         </method>
       </class>

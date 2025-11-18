@@ -18,7 +18,7 @@
         far@ix.netcom.com
       </email>
     </author>
-    <date>Generated at 2025-02-11 22:28:02 +0100</date>
+    <date>Generated at 2025-11-18 15:37:48 +0100</date>
     <abstract>The event class</abstract>
     <copy>1996 Free Software Foundation, Inc.</copy>
   </head>
@@ -33,47 +33,121 @@
         <conform>NSCoding</conform>
         <conform>NSCopying</conform>
         <desc>
-          <em>Description forthcoming.</em>
+          <title>NSEvent</title>
+          <abstract>
+            Represents user input and system events in the
+            application
+          </abstract>
+          NSEvent encapsulates information about user
+          interactions (mouse clicks, key presses, mouse
+          movement) and system notifications (application
+          lifecycle, window changes). It serves as the
+          primary mechanism for delivering input events to
+          applications and provides detailed information
+          about the context and nature of each event. Key
+          features include: - Complete event information
+          including type, location, timing, and modifiers -
+          Factory methods for creating events of different
+          types - Access to event-specific data like click
+          counts, key codes, and pressure values - Support for
+          mouse tracking, keyboard input, and system
+          notifications - Integration with the event loop
+          and event dispatch system - Tablet and touch input
+          support for advanced input devices Event Creation:
+          NSEvent provides class methods to create events for
+          different purposes: - mouseEventWithType:... for
+          mouse events with click counts and pressure -
+          keyEventWithType:... for keyboard events
+          with character and modifier info -
+          enterExitEventWithType:... for
+          mouse tracking events - otherEventWithType:... for
+          custom and system events Event Properties: All events
+          have common properties like type, timestamp, location,
+          and modifiers. Specific event types provide additional
+          information: - Mouse events: button number,
+          click count, pressure, scroll deltas - Key events:
+          character strings, key codes, repeat status -
+          Tracking events: tracking numbers and user data -
+          System events: subtype and custom data values The
+          event data is stored in a union structure that
+          efficiently manages different data types for
+          different event categories, minimizing memory usage
+          while providing type-safe access to event-specific
+          information.
         </desc>
         <ivariable type="NSGraphicsContext*" name="event_context" validity="protected" ovadd="1.0.0">
           <desc>
-            <em>Description forthcoming.</em>
+            The graphics context associated with this event's
+            window
           </desc>
         </ivariable>
         <ivariable type="NSTimeInterval" name="event_time" validity="protected" ovadd="1.0.0">
           <desc>
-            <em>Description forthcoming.</em>
+            The time when this event occurred, measured in seconds
+            since system startup
           </desc>
         </ivariable>
         <ivariable type="NSEventType" name="event_type" validity="protected" ovadd="1.0.0">
           <desc>
-            <em>Description forthcoming.</em>
+            The type of this event (mouse, keyboard, system, etc.)
           </desc>
         </ivariable>
         <ivariable type="NSPoint" name="location_point" validity="protected" ovadd="1.0.0">
           <desc>
-            <em>Description forthcoming.</em>
+            The location of the event in the window's coordinate
+            system
           </desc>
         </ivariable>
         <ivariable type="NSUInteger" name="modifier_flags" validity="protected" ovadd="1.0.0">
           <desc>
-            <em>Description forthcoming.</em>
+            Modifier key flags active when this event occurred
           </desc>
         </ivariable>
         <ivariable type="union _MB_event_data" name="union _MB_event_data" validity="protected" ovadd="1.0.0">
           <desc>
-            <em>Description forthcoming.</em>
+            Union containing event-specific data for different
+            event types. The appropriate struct member is
+            selected based on the event_type. <br /> Mouse
+            event data including buttons, clicks, pressure, and
+            scroll deltas <br /> Sequential event number for
+            this mouse event <br /> Number of clicks for this
+            mouse event (1=single, 2=double, etc.) <br /> Mouse
+            button number (0=left, 1=right, 2=other) <br />
+            Pressure value for pressure-sensitive input
+            devices (0.0 to 1.0) <br /> Horizontal scroll delta
+            for scroll wheel events <br /> Vertical scroll delta
+            for scroll wheel events <br /> Z-axis scroll delta for
+            3D scroll devices <br /> Keyboard event data including
+            characters and key codes <br /> <code>YES</code>
+            if this is a repeating key event, <code>NO</code> for
+            initial press <br /> Characters generated by this
+            key event with modifiers applied <br /> Characters that
+            would be generated without modifier keys <br />
+            Hardware-specific key code for the
+            pressed key <br /> Mouse tracking event data for
+            enter/exit events <br /> Sequential event number
+            for this tracking event <br /> Tracking area number
+            associated with this event <br /> User-defined
+            data associated with the tracking area <br /> System
+            and application-defined event data <br /> Event subtype
+            for categorizing system/app events <br /> First custom
+            data value <br /> Second custom data value
           </desc>
         </ivariable>
         <ivariable type="NSInteger" name="window_num" validity="protected" ovadd="1.0.0">
           <desc>
-            <em>Description forthcoming.</em>
+            The window number where this event occurred, or 0 if
+            not window-specific
           </desc>
         </ivariable>
         <method type="NSTimeInterval" factory="yes" ovadd="10.6.0">
           <sel>doubleClickInterval</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the double-click time interval. This is the
+            maximum time interval between two mouse clicks for
+            them to be considered a double-click. This value
+            reflects the user's system preferences. Returns:
+            The double-click interval in seconds
           </desc>
         </method>
         <method type="NSEvent*" factory="yes" ovadd="1.0.0">
@@ -96,20 +170,49 @@
           <sel>userData:</sel>
           <arg type="void*">userData</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates an enter/exit event for mouse tracking
+            areas. This factory method creates events that are
+            generated when the mouse enters or exits defined
+            tracking areas within views. These events are used
+            to implement cursor changes, tooltips, and other
+            location- sensitive interface behaviors. type:
+            The event <var>type</var> (NSMouseEntered or
+            NSMouseExited) location: The mouse
+            <var>location</var> in window coordinates flags:
+            Modifier key <var>flags</var> active when the
+            event occurred time: The <var>time</var> when the
+            event occurred (seconds since system startup)
+            windowNum: The window number where the event
+            occurred context: The graphics <var>context</var>
+            associated with the window eventNum: Sequential
+            event number for tracking trackingNum: The tracking
+            area number that generated this event userData:
+            User-defined data associated with the tracking
+            area Returns: A new NSEvent object representing the
+            enter/exit event
           </desc>
         </method>
         <method type="NSEvent*" factory="yes" ovadd="10.5.0">
           <sel>eventWithEventRef:</sel>
           <arg type="const void*">eventRef</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates an NSEvent from a Carbon EventRef. This
+            factory method creates an NSEvent object from a
+            Carbon EventRef, allowing integration with Carbon
+            event handling code. eventRef: A Carbon EventRef to
+            convert to an NSEvent Returns: A new NSEvent object
+            representing the Carbon event
           </desc>
         </method>
         <method type="BOOL" factory="yes" ovadd="10.5.0">
           <sel>isMouseCoalescingEnabled</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether mouse event coalescing is currently
+            enabled. Mouse coalescing combines multiple rapid
+            mouse movement events into single events to improve
+            performance during mouse tracking operations.
+            Returns: <code>YES</code> if mouse coalescing is
+            enabled, <code>NO</code> otherwise
           </desc>
         </method>
         <method type="NSEvent*" factory="yes" ovadd="1.0.0">
@@ -134,25 +237,56 @@
           <sel>keyCode:</sel>
           <arg type="unsigned short">code</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a keyboard event for key presses and
+            releases. This factory method creates events
+            representing keyboard input, including both
+            the actual characters generated and the raw key codes.
+            It handles modifier key combinations and key repeat
+            detection. type: The event <var>type</var>
+            (NSKeyDown or NSKeyUp) location: The mouse
+            <var>location</var> when the key event occurred
+            flags: Modifier key <var>flags</var> active when the
+            key was pressed time: The <var>time</var> when the
+            event occurred (seconds since system startup)
+            windowNum: The window number where the event
+            occurred context: The graphics <var>context</var>
+            associated with the window keys: The characters
+            generated by this key press with modifiers ukeys:
+            The characters that would be generated without
+            modifiers repeatKey: <code>YES</code> if this is
+            a repeating key event, <code>NO</code> for initial press
+            code: The hardware-specific key <var>code</var> for
+            the pressed key Returns: A new NSEvent object
+            representing the keyboard event
           </desc>
         </method>
         <method type="NSTimeInterval" factory="yes" ovadd="10.6.0">
           <sel>keyRepeatDelay</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the key repeat delay interval. This is the
+            time interval between the initial key press and the
+            first key repeat event when a key is held down.
+            Returns: The key repeat delay in seconds
           </desc>
         </method>
         <method type="NSTimeInterval" factory="yes" ovadd="10.6.0">
           <sel>keyRepeatInterval</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the key repeat interval. This is the time
+            interval between consecutive key repeat events
+            after the initial delay when a key is held down.
+            Returns: The key repeat interval in seconds
           </desc>
         </method>
         <method type="NSEventModifierFlags" factory="yes" ovadd="10.6.0">
           <sel>modifierFlags</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the currently pressed modifier flags. This
+            class method returns the modifier flags that are
+            currently active system-wide, regardless of which
+            application has focus. This is useful for
+            checking modifier state outside of event handling.
+            Returns: The currently active modifier flags
           </desc>
         </method>
         <method type="NSEvent*" factory="yes" ovadd="1.0.0">
@@ -175,7 +309,26 @@
           <sel>pressure:</sel>
           <arg type="float">pressureValue</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a mouse event for clicks, releases, and
+            movement. This factory method creates events
+            representing mouse interactions including
+            button presses, releases, and movement. It supports
+            multi-click detection and pressure-sensitive
+            input devices. type: The event <var>type</var>
+            (NSLeftMouseDown, NSMouseMoved, etc.)
+            location: The mouse <var>location</var> in window
+            coordinates flags: Modifier key
+            <var>flags</var> active when the event occurred time:
+            The <var>time</var> when the event occurred (seconds
+            since system startup) windowNum: The window number
+            where the event occurred context: The graphics
+            <var>context</var> associated with the window
+            eventNum: Sequential event number for tracking
+            clickNum: Number of clicks (1=single, 2=double,
+            3=triple, etc.) pressureValue: Pressure value for
+            pressure-sensitive devices (0.0 to 1.0)
+            Returns: A new NSEvent object representing the
+            mouse event
           </desc>
         </method>
         <method type="NSEvent*" factory="yes" ovadd="0.0.0" ovrem="0.0.0">
@@ -206,12 +359,41 @@
           <sel>deltaZ:</sel>
           <arg type="CGFloat">deltaZ</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates an extended mouse event with additional
+            button and delta information. This GNUstep-specific
+            factory method creates mouse events with support
+            for additional mouse buttons and scroll delta values.
+            This provides more detailed information than the
+            standard mouse event creation method. type: The
+            event <var>type</var> (mouse-related events)
+            location: The mouse <var>location</var> in window
+            coordinates flags: Modifier key
+            <var>flags</var> active when the event occurred time:
+            The <var>time</var> when the event occurred (seconds
+            since system startup) windowNum: The window number
+            where the event occurred context: The graphics
+            <var>context</var> associated with the window
+            eventNum: Sequential event number for tracking
+            clickNum: Number of clicks for button events
+            pressureValue: Pressure value for
+            pressure-sensitive devices buttonNum:
+            The specific mouse button number (0=left, 1=right,
+            2=middle, etc.) deltaX: Horizontal scroll delta
+            for scroll events deltaY: Vertical scroll delta for
+            scroll events deltaZ: Z-axis scroll delta for 3D
+            scroll devices Returns: A new NSEvent object with
+            extended mouse information
           </desc>
         </method>
         <method type="NSPoint" factory="yes" ovadd="1.0.0">
           <sel>mouseLocation</sel>
           <desc>
+            Returns the current mouse location in screen
+            coordinates. This class method provides the
+            current mouse cursor position relative to the
+            screen's coordinate system, regardless of which
+            window or application currently has focus. Returns:
+            The current mouse location in screen coordinates <br />
             Returns the current mouse location.
           </desc>
         </method>
@@ -235,20 +417,48 @@
           <sel>data2:</sel>
           <arg type="NSInteger">data2</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Creates a system or application-defined event. This
+            factory method creates events for system
+            notifications and custom application events.
+            These events carry custom data and can be used for
+            inter-component communication within
+            applications. type: The event <var>type</var>
+            (NSSystemDefined, NSApplicationDefined,
+            etc.) location: The <var>location</var> associated
+            with this event (may be irrelevant) flags: Modifier
+            key <var>flags</var> active when the event was created
+            time: The <var>time</var> when the event occurred
+            (seconds since system startup) windowNum: The
+            window number associated with this event (may be 0)
+            context: The graphics <var>context</var> (may be
+            <code>nil</code> for non-window events) subType:
+            Event subtype for categorizing similar events data1:
+            First custom data value data2: Second custom data
+            value Returns: A new NSEvent object representing the
+            custom event
           </desc>
         </method>
         <method type="NSUInteger" factory="yes" ovadd="10.6.0">
           <sel>pressedMouseButtons</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns a bitmask of currently pressed mouse
+            buttons. This class method returns which mouse
+            buttons are currently pressed system-wide. The
+            bitmask uses the same format as buttonMask.
+            Returns: A bitmask indicating which mouse buttons
+            are pressed
           </desc>
         </method>
         <method type="void" factory="yes" ovadd="10.5.0">
           <sel>setMouseCoalescingEnabled:</sel>
           <arg type="BOOL">flag</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Enables or disables mouse event coalescing. When
+            enabled, multiple mouse moved events that occur in
+            rapid succession are coalesced into a single event to
+            improve performance. This is typically desirable
+            for tracking mouse movement. flag: <code>YES</code> to
+            enable coalescing, <code>NO</code> to disable
           </desc>
         </method>
         <method type="void" factory="yes" ovadd="1.0.0">
@@ -257,66 +467,124 @@
           <sel>withPeriod:</sel>
           <arg type="NSTimeInterval">periodSeconds</arg>
           <desc>
-            <em>Description forthcoming.</em>
+            Starts generating periodic events at regular
+            intervals. This class method configures the
+            event system to generate NSPeriodic events at
+            specified intervals. These events can be used for
+            regular updates, animations, or periodic
+            processing. The events continue until
+            stopPeriodicEvents is called.
+            delaySeconds: Initial delay before the first
+            periodic event periodSeconds: Time interval
+            between subsequent periodic events
           </desc>
         </method>
         <method type="void" factory="yes" ovadd="1.0.0">
           <sel>stopPeriodicEvents</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Stops generating periodic events. This class method
+            stops the generation of NSPeriodic events that were
+            started with
+            startPeriodicEventsAfterDelay:withPeriod:.
+            After calling this method, no more periodic events
+            will be generated.
           </desc>
         </method>
         <method type="NSInteger" ovadd="10.4.0">
           <sel>absoluteX</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the absolute X coordinate for tablet
+            events. For tablet events, this returns the
+            absolute position on the tablet surface rather
+            than the relative screen position. The coordinate
+            system is tablet-specific. Returns: The absolute X
+            coordinate on the tablet surface
           </desc>
         </method>
         <method type="NSInteger" ovadd="10.4.0">
           <sel>absoluteY</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the absolute Y coordinate for tablet
+            events. For tablet events, this returns the
+            absolute position on the tablet surface rather
+            than the relative screen position. The coordinate
+            system is tablet-specific. Returns: The absolute Y
+            coordinate on the tablet surface
           </desc>
         </method>
         <method type="NSInteger" ovadd="10.4.0">
           <sel>absoluteZ</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the absolute Z coordinate for tablet
+            events. For 3D tablet events, this returns the
+            height above the tablet surface. Most 2D tablets
+            return 0 for this value. Returns: The absolute Z
+            coordinate (height) above the tablet surface
           </desc>
         </method>
         <method type="NSEventMask" ovadd="10.3.0">
           <sel>associatedEventsMask</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the event mask for events associated with
+            this event. For tablet proximity events, this returns
+            a mask indicating which types of events will be generated
+            by the tablet device when it enters proximity. This
+            allows applications to prepare for the types of
+            events they will receive. Returns: An NSEventMask
+            indicating associated event types
           </desc>
         </method>
         <method type="NSEventButtonMask" ovadd="10.4.0">
           <sel>buttonMask</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns a bitmask of currently pressed mouse
+            buttons. This bitmask indicates which mouse
+            buttons are currently pressed at the time this
+            event occurred, not just the button that changed
+            state for this particular event. Returns: An
+            NSEventButtonMask indicating which
+            buttons are pressed
           </desc>
         </method>
         <method type="NSInteger" ovadd="10.0.0">
           <sel>buttonNumber</sel>
           <desc>
-            Returns the button number for the mouse button
-            pressed in a mouse event. Intended primarily for
-            the case where a mouse has three or more buttons, and
-            you want to know which button an 'other' mouse event
-            refers to.
+            Returns the mouse button number for mouse events.
+            For mouse button events, this returns which button was
+            pressed or released. Button numbers are: 0=left
+            button, 1=right button, 2=middle button, etc. For
+            non-mouse events, the return value is undefined.
+            Returns: The button number that triggered this
+            mouse event <br /> Returns the button number for the
+            mouse button pressed in a mouse event. Intended
+            primarily for the case where a mouse has three or
+            more buttons, and you want to know which button an
+            'other' mouse event refers to.
           </desc>
         </method>
         <method type="NSUInteger" ovadd="10.4.0">
           <sel>capabilityMask</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the capability mask for tablet devices. For
+            tablet proximity events, this indicates the
+            capabilities of the tablet device (pressure
+            sensitivity, tilt, rotation, etc.).
+            Applications can use this to adapt their
+            behavior to the device. Returns: A bitmask
+            indicating the device capabilities
           </desc>
         </method>
         <method type="NSString*" ovadd="1.0.0">
           <sel>characters</sel>
           <desc>
-            Returns the string of characters for a keyboard
-            event. <br /> Raises an
+            Returns the characters generated by a key event.
+            For keyboard events, this returns the string that would
+            be inserted into a text field, taking into account the
+            current modifier keys. For non-keyboard events,
+            returns <code>nil</code>. Returns: The characters
+            generated by this key event with modifiers
+            applied <br /> Returns the string of characters for
+            a keyboard event. <br /> Raises an
             NSInternalInconsistencyException
             if applied to any other type of event.
           </desc>
@@ -324,9 +592,17 @@
         <method type="NSString*" ovadd="1.0.0">
           <sel>charactersIgnoringModifiers</sel>
           <desc>
-            Returns the string of characters for a keyboard
-            event, as if no modifier keys had been pressed when
-            the keyboard event occirred. <br /> Raises an
+            Returns the characters that would be generated
+            without modifier keys. For keyboard events, this
+            returns the string that would be generated if no
+            modifier keys (except Shift for capitalization)
+            were pressed. This is useful for key binding systems
+            that want to ignore modifiers. For non-keyboard
+            events, returns <code>nil</code>. Returns: The base
+            characters for this key event without modifier
+            effects <br /> Returns the string of characters for
+            a keyboard event, as if no modifier keys had been pressed
+            when the keyboard event occirred. <br /> Raises an
             NSInternalInconsistencyException
             if applied to any other type of event.
           </desc>
@@ -334,43 +610,78 @@
         <method type="NSInteger" ovadd="1.0.0">
           <sel>clickCount</sel>
           <desc>
-            Return the number of clicks associated with the
-            mouse down or up event. This method is not applicable
-            for any event type other than a mouse down or mouse up.
-            <br /> Raises an NSInternalInconsistencyException if
-            applied to any other type of event.
+            Returns the click count for mouse button events.
+            For mouse button events, this indicates the number of
+            consecutive clicks: 1=single click, 2=double
+            click, 3=triple click, etc. The system determines
+            multiple clicks based on timing and proximity of
+            events. For non-mouse events, returns 0. Returns:
+            The number of consecutive clicks for this mouse event
+            <br /> Return the number of clicks associated with
+            the mouse down or up event. This method is not
+            applicable for any event type other than a mouse
+            down or mouse up. <br /> Raises an
+            NSInternalInconsistencyException
+            if applied to any other type of event.
           </desc>
         </method>
         <method type="NSGraphicsContext*" ovadd="1.0.0">
           <sel>context</sel>
           <desc>
-            Returns the graphics context for which this event
-            was generated.
+            Returns the graphics context associated with this
+            event. This is the graphics context of the window
+            where the event occurred, which can be used for
+            coordinate transformations and drawing
+            operations. May return <code>nil</code> for
+            events not associated with a specific window.
+            Returns: The NSGraphicsContext associated with
+            this event's window <br /> Returns the graphics
+            context for which this event was generated.
           </desc>
         </method>
         <method type="NSInteger" ovadd="1.0.0">
           <sel>data1</sel>
           <desc>
-            Returns the 'data1' item associated with the event.
-            <br /> Raises NSInternalInconsistencyException if
-            the event is not of type NSAppKitDefined,
-            NSSystemDefined, NSApplicationDefined, or
-            NSPeriodic
+            Returns the first custom data value for
+            system/application events. For
+            NSSystemDefined and NSApplicationDefined
+            events, this contains the first custom data value
+            set when the event was created. For other event types,
+            the return value is undefined. Returns: The first
+            custom data value for this event <br /> Returns the
+            'data1' item associated with the event. <br />
+            Raises NSInternalInconsistencyException if the event
+            is not of type NSAppKitDefined, NSSystemDefined,
+            NSApplicationDefined, or NSPeriodic
           </desc>
         </method>
         <method type="NSInteger" ovadd="1.0.0">
           <sel>data2</sel>
           <desc>
-            Returns the 'data2' item associated with the event.
-            <br /> Raises NSInternalInconsistencyException if
-            the event is not of type NSAppKitDefined,
-            NSSystemDefined, NSApplicationDefined, or
-            NSPeriodic
+            Returns the second custom data value for
+            system/application events. For
+            NSSystemDefined and NSApplicationDefined
+            events, this contains the second custom data value
+            set when the event was created. For other event types,
+            the return value is undefined. Returns: The second
+            custom data value for this event <br /> Returns the
+            'data2' item associated with the event. <br />
+            Raises NSInternalInconsistencyException if the event
+            is not of type NSAppKitDefined, NSSystemDefined,
+            NSApplicationDefined, or NSPeriodic
           </desc>
         </method>
         <method type="CGFloat" ovadd="10.0.0">
           <sel>deltaX</sel>
           <desc>
+            Returns the horizontal scroll delta for scroll
+            wheel events. For scroll events, this indicates the
+            horizontal scrolling amount. Positive values
+            indicate scrolling to the right, negative values
+            indicate scrolling to the left. The magnitude
+            depends on the scroll wheel resolution and system
+            acceleration settings. Returns: The horizontal
+            scroll distance for this scroll event <br />
             <p>
               Returns the movement of the mouse on the X axis.
             </p>
@@ -384,6 +695,14 @@
         <method type="CGFloat" ovadd="10.0.0">
           <sel>deltaY</sel>
           <desc>
+            Returns the vertical scroll delta for scroll wheel
+            events. For scroll events, this indicates the
+            vertical scrolling amount. Positive values
+            indicate scrolling up (away from user), negative
+            values indicate scrolling down (toward user). The
+            magnitude depends on the scroll wheel resolution
+            and system acceleration settings. Returns: The vertical
+            scroll distance for this scroll event <br />
             <p>
               Returns the movement of the mouse on the Y axis.
             </p>
@@ -397,6 +716,12 @@
         <method type="CGFloat" ovadd="10.0.0">
           <sel>deltaZ</sel>
           <desc>
+            Returns the z-axis scroll delta for scroll wheel
+            events. For scroll events with 3D scroll wheels or
+            trackpads, this indicates scrolling along the
+            z-axis (typically used for zooming). Most standard
+            scroll wheels return 0.0 for this value. Returns:
+            The z-axis scroll distance for this scroll event <br />
             <p>
               Returns the movement of the mouse on the Z axis.
             </p>
@@ -413,12 +738,21 @@
         <method type="NSUInteger" ovadd="10.4.0">
           <sel>deviceID</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the device identifier for tablet events.
+            For tablet events, this uniquely identifies the input
+            device that generated the event. Multiple tablets
+            can be distinguished by their device IDs. Returns: A
+            unique identifier for the input device
           </desc>
         </method>
-        <method type="NSInteger" ovadd="1.0.0">
+        <method type="NSInteger" ovadd="10.0.0">
           <sel>eventNumber</sel>
           <desc>
+            Returns the unique identifier for this event. Each
+            event has a unique identifier that can be used to
+            track and correlate events. This number increases
+            monotonically within a session. Returns: A
+            unique identifier number for this event <br />
             Returns the event number associated with any mouse
             event or tracking event. Event numbers are allocated
             sequentially when the system creates these
@@ -430,14 +764,26 @@
         <method type="const void*" ovadd="10.5.0">
           <sel>eventRef</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the Carbon EventRef for this event. This
+            provides access to the underlying Carbon event
+            representation, allowing integration with
+            Carbon event handling APIs. Returns: The Carbon
+            EventRef for this event, or NULL if not available
           </desc>
         </method>
         <method type="BOOL" ovadd="1.0.0">
           <sel>isARepeat</sel>
           <desc>
-            Returns a flag to say if this is a keyboard repeat
-            event. <br /> Raises an
+            Returns whether this is a key repeat event. For
+            keyboard events, this indicates whether the key
+            was held down <strong>long</strong> enough to trigger
+            key repeat. The first press returns <code>NO</code>,
+            subsequent repeat events return <code>YES</code>
+            . For non-keyboard events, the return value is undefined.
+            Returns: <code>YES</code> if this is a key repeat
+            event, <code>NO</code> if it's the initial key press
+            <br /> Returns a flag to say if this is a keyboard
+            repeat event. <br /> Raises an
             NSInternalInconsistencyException
             if applied to any other type of event than an NSKeyUp or
             NSKeyDown.
@@ -446,12 +792,25 @@
         <method type="BOOL" ovadd="10.4.0">
           <sel>isEnteringProximity</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns whether a tablet device is entering
+            proximity. For tablet proximity events, this
+            indicates whether the device is entering (
+            <code>YES</code>) or leaving (<code>NO</code>)
+            proximity to the tablet surface. Returns:
+            <code>YES</code> if entering proximity,
+            <code>NO</code> if leaving proximity
           </desc>
         </method>
         <method type="unsigned short" ovadd="1.0.0">
           <sel>keyCode</sel>
           <desc>
+            Returns the hardware key code for keyboard events.
+            For keyboard events, this returns the raw hardware key
+            code that doesn't depend on the current keyboard
+            layout. This is useful for key bindings that should
+            work regardless of keyboard layout. For non-keyboard
+            events, the return value is undefined. Returns: The
+            hardware key code for this keyboard event <br />
             Returns the numeric key code of a keyboard event.
             <br /> Raises an NSInternalInconsistencyException if
             applied to any other type of event than an NSKeyUp
@@ -461,14 +820,26 @@
         <method type="NSPoint" ovadd="1.0.0">
           <sel>locationInWindow</sel>
           <desc>
-            Returns the window location for which this event
-            was generated (in the base coordinate system of the
-            window).
+            Returns the location of this event in the window's
+            coordinate system. The location is in the
+            window's base coordinate system (bottom-left
+            origin). For events not associated with a window,
+            the coordinates are in screen space. For non-positional
+            events, returns NSZeroPoint. Returns: The location
+            of this event in window coordinates <br /> Returns the
+            window location for which this event was generated
+            (in the base coordinate system of the window).
           </desc>
         </method>
         <method type="NSEventModifierFlags" ovadd="1.0.0">
           <sel>modifierFlags</sel>
           <desc>
+            Returns the modifier flags active when this event
+            occurred. The modifier flags indicate which
+            modifier keys (Command, Option, Control, Shift,
+            Function, etc.) were pressed when the event
+            occurred. Returns: A bitmask of
+            NSEventModifierFlags values <br />
             Returns the modifier flag bits associated with the
             event.
           </desc>
@@ -476,36 +847,69 @@
         <method type="NSEventPhase" ovadd="10.7.0">
           <sel>momentumPhase</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the momentum phase for scroll events. For
+            trackpad scroll events, this indicates the
+            momentum phase after the user has lifted their
+            fingers but scrolling continues due to inertia.
+            This helps distinguish user-driven from momentum
+            scrolling. Returns: The NSEventPhase value for
+            momentum scrolling
           </desc>
         </method>
         <method type="NSEventPhase" ovadd="10.7.0">
           <sel>phase</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the gesture phase for scroll and gesture
+            events. For trackpad scroll and gesture events,
+            this indicates the phase of the gesture: began,
+            changed, ended, cancelled, etc. This allows
+            applications to properly handle multi-phase
+            gestures. Returns: The NSEventPhase value for
+            this gesture event
           </desc>
         </method>
         <method type="NSUInteger" ovadd="10.4.0">
           <sel>pointingDeviceID</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the pointing device identifier for tablet
+            events. For tablet events, this identifies the
+            specific pointing device (stylus, puck, eraser,
+            etc.) being used with the tablet. Different tools on
+            the same tablet have different IDs. Returns: A unique
+            identifier for the pointing device
           </desc>
         </method>
         <method type="NSUInteger" ovadd="10.4.0">
           <sel>pointingDeviceSerialNumber</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the serial number of the pointing device.
+            For tablet events, this is the hardware serial number
+            of the pointing device. This remains constant across
+            sessions and can be used to identify specific
+            styluses or tools. Returns: The serial number of
+            the pointing device
           </desc>
         </method>
         <method type="NSPointingDeviceType" ovadd="10.4.0">
           <sel>pointingDeviceType</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the type of the pointing device. For tablet
+            events, this indicates the category of pointing
+            device (stylus, cursor/puck, eraser, etc.) being
+            used. Returns: An NSPointingDeviceType value
+            indicating the device type
           </desc>
         </method>
         <method type="float" ovadd="1.0.0">
           <sel>pressure</sel>
           <desc>
+            Returns the pressure value for tablet and touch
+            events. For tablet events, this returns the
+            pressure applied to the tablet surface (0.0 = no
+            pressure, 1.0 = maximum pressure). For mouse
+            events on pressure-sensitive devices, indicates
+            click pressure. For other event types, returns 0.0.
+            Returns: The pressure value from 0.0 to 1.0 <br />
             Returns the pressure associated with a mouse event.
             This is a value in the range 0.0 to 1.0 and for mormal
             mouse events should be set to one of those extremes.
@@ -518,14 +922,25 @@
         <method type="float" ovadd="10.4.0">
           <sel>rotation</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the rotation angle for tablet events. For
+            tablet events from devices that support rotation
+            (like art pens), this returns the rotation angle in
+            degrees. The angle is measured from the device's
+            natural orientation. Returns: The rotation angle in
+            degrees (0.0 to 359.9)
           </desc>
         </method>
         <method type="short" ovadd="1.0.0">
           <sel>subtype</sel>
           <desc>
-            Returns the 'subtype' item associated with the
-            event. <br /> Raises
+            Returns the subtype for system and
+            application-defined events. For
+            NSSystemDefined and NSApplicationDefined
+            events, this provides additional categorization of
+            the event type. For other event types, the return value
+            is undefined. Returns: The event subtype identifier
+            <br /> Returns the 'subtype' item associated with
+            the event. <br /> Raises
             NSInternalInconsistencyException
             if the event is not of type NSAppKitDefined,
             NSSystemDefined, NSApplicationDefined,
@@ -535,100 +950,172 @@
         <method type="NSUInteger" ovadd="10.4.0">
           <sel>systemTabletID</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the system tablet identifier. For tablet
+            events, this identifies the tablet system that
+            generated the event. This allows distinguishing
+            between multiple tablet systems connected to the
+            same computer. Returns: A unique identifier for the
+            tablet system
           </desc>
         </method>
         <method type="NSUInteger" ovadd="10.4.0">
           <sel>tabletID</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the tablet identifier. For tablet events,
+            this identifies the specific tablet that generated the
+            event. This is useful when multiple tablets are part
+            of the same system. Returns: A unique identifier for the
+            tablet
           </desc>
         </method>
         <method type="float" ovadd="10.4.0">
           <sel>tangentialPressure</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the tangential pressure for tablet events.
+            For tablet events from devices with tangential pressure
+            sensors (like airbrush styluses), this returns the
+            side pressure value. The range is typically 0.0 to
+            1.0. Returns: The tangential pressure value
           </desc>
         </method>
         <method type="NSPoint" ovadd="10.4.0">
           <sel>tilt</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the tilt angle for tablet events. For
+            tablet events from devices that support tilt
+            sensing, this returns the tilt of the stylus
+            relative to the tablet surface. The point contains
+            x and y tilt angles. Returns: An NSPoint with x and y
+            tilt angles
           </desc>
         </method>
         <method type="NSTimeInterval" ovadd="1.0.0">
           <sel>timestamp</sel>
           <desc>
-            Returns the time interval since system startup at
-            which this event was generated.
+            Returns the timestamp when this event occurred. The
+            timestamp is relative to system startup time and
+            can be used to measure time intervals between events or
+            determine event ordering. Returns: The time when
+            this event occurred as seconds since system startup
+            <br /> Returns the time interval since system
+            startup at which this event was generated.
           </desc>
         </method>
         <method type="NSInteger" ovadd="1.0.0">
           <sel>trackingNumber</sel>
           <desc>
-            Returns a number identifying the tracking rectangle
-            entered or exited. <br /> Raises an
-            NSInternalInconsistencyException
-            if applied to any other type of event than a mouse
+            Returns the tracking rectangle number for tracking
+            events. For mouse entered/exited events generated
+            by tracking rectangles, this returns the tracking
+            rectangle number that was assigned when the
+            tracking rectangle was created. For other event
+            types, the return value is undefined. Returns: The
+            tracking rectangle number that generated this
+            event <br /> Returns a number identifying the
+            tracking rectangle entered or exited. <br />
+            Raises an NSInternalInconsistencyException if
+            applied to any other type of event than a mouse
             entered or exited event.
           </desc>
         </method>
         <method type="NSEventType" ovadd="1.0.0">
           <sel>type</sel>
           <desc>
-            returns the type of this event.
+            Returns the type of this event. This indicates the
+            fundamental category of the event (mouse,
+            keyboard, tracking, etc.) and determines which
+            other properties are meaningful. Returns: The
+            NSEventType value indicating this event's type
+            <br /> returns the type of this event.
           </desc>
         </method>
         <method type="unsigned long long" ovadd="10.4.0">
           <sel>uniqueID</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns a unique identifier for tablet events. For
+            tablet events, this provides a unique identifier
+            that persists across the lifetime of the pointing
+            device session. This can be used to correlate
+            related tablet events. Returns: A unique identifier
+            for the pointing device session
           </desc>
         </method>
         <method type="void*" ovadd="1.0.0">
           <sel>userData</sel>
           <desc>
-            Returns usder data associated with a tracking
-            event... the data assigned to the tracking
-            rectangle concerned when it was created.. <br />
-            Raises an NSInternalInconsistencyException if
-            applied to any other type of event than a mouse
+            Returns the user data pointer for tracking events.
+            For mouse entered/exited events generated by tracking
+            rectangles, this returns the user data pointer
+            that was provided when the tracking rectangle was
+            created. For other event types, returns NULL.
+            Returns: The user data pointer associated with
+            this tracking event <br /> Returns usder data
+            associated with a tracking event... the data
+            assigned to the tracking rectangle concerned when
+            it was created.. <br /> Raises an
+            NSInternalInconsistencyException
+            if applied to any other type of event than a mouse
             entered or exited event.
           </desc>
         </method>
         <method type="id" ovadd="10.4.0">
           <sel>vendorDefined</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns vendor-defined data for tablet events. For
+            tablet events, this contains any additional data
+            defined by the tablet hardware vendor. The format
+            and meaning depend on the specific tablet hardware.
+            Returns: An object containing vendor-specific
+            data, or <code>nil</code>
           </desc>
         </method>
         <method type="NSUInteger" ovadd="10.4.0">
           <sel>vendorID</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the vendor identifier for tablet events.
+            For tablet events, this identifies the hardware vendor
+            of the tablet device. This can be used to implement
+            vendor-specific features or workarounds.
+            Returns: A unique identifier for the tablet vendor
           </desc>
         </method>
         <method type="NSUInteger" ovadd="10.4.0">
           <sel>vendorPointingDeviceType</sel>
           <desc>
-            <em>Description forthcoming.</em>
+            Returns the vendor-specific pointing device type.
+            For tablet events, this provides additional device type
+            information specific to the tablet vendor. This
+            supplements the standard pointingDeviceType
+            with vendor-specific details. Returns: A
+            vendor-specific device type identifier
           </desc>
         </method>
         <method type="NSWindow*" ovadd="1.0.0">
           <sel>window</sel>
           <desc>
-            Returns the window for which this event was
-            generated. <br /> Periodic events have no
-            associated window, and you should not call this
-            method for those events.
+            Returns the window associated with this event. This
+            is the window where the event occurred or the window
+            that should receive the event. May be <code>nil</code>
+            for global events or events that occurred outside any
+            window. Returns: The NSWindow associated with this
+            event, or <code>nil</code> <br /> Returns the window
+            for which this event was generated. <br /> Periodic
+            events have no associated window, and you should not
+            call this method for those events.
           </desc>
         </method>
         <method type="NSInteger" ovadd="1.0.0">
           <sel>windowNumber</sel>
           <desc>
-            Returns the window number of the window for which
-            this event was generated. <br /> Periodic events have
-            no associated window, and you should not call this
+            Returns the window number associated with this
+            event. This is a unique identifier for the window
+            where the event occurred. Window numbers are assigned
+            by the window server and remain constant for the
+            lifetime of a window. Returns: The window number
+            for this event's associated window <br /> Returns the
+            window number of the window for which this event was
+            generated. <br /> Periodic events have no
+            associated window, and you should not call this
             method for those events.
           </desc>
         </method>
