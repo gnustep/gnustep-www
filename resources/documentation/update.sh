@@ -37,95 +37,97 @@ BUILDDIR=`pwd`
 
 set -e
 
+build() {
+  if [ $iteration = 1 ]
+  then
+    make uninstall
+    make clean
+    AGSDOC_INDEXING=yes make doc=yes install
+  else
+    AGSDOC_INDEXING=no make doc=yes install
+  fi
+}
 
-if [ ! -d libs-base ]; then
-  echo "Build directory does not exist: $BUILDDIR/libs-base"
-  exit 1
-fi
-cd libs-base
-make install
-cd Documentation
-make uninstall
-make clean
-make install
-make clean
-make install
-cd $BUILDDIR
+for iteration in 1 2
+do
 
-if [ ! -d libs-gui ]; then
-  echo "Build directory does not exist: $BUILDDIR/libs-gui"
-  exit 1
-fi
-cd libs-gui
-cd Documentation
-make uninstall
-make clean
-make install
-make clean
-make install
-cd $BUILDDIR
+  if [ $iteration = 2 ]
+  then
+    export AGSDOC_RELOCATABLE=yes
+  fi
 
-if [ ! -d libs-back ]; then
-  echo "Build directory does not exist: $BUILDDIR/libs-back"
-  exit 1
-fi
-cd libs-back
-cd Documentation
-make uninstall
-make clean
-make install
-make clean
-make install
-cd $BUILDDIR
+  if [ ! -d libs-base ]; then
+    echo "Build directory does not exist: $BUILDDIR/libs-base"
+    exit 1
+  fi
+  cd libs-base
+  if [ $iteration = 2 ]
+  then
+    make install
+  fi
+  cd Documentation
+  build
+  cd $BUILDDIR
 
-if [ ! -d libs-renaissance ]; then
-  echo "Build directory does not exist: $BUILDDIR/libs-renaissance"
-  exit 1
-fi
-cd libs-renaissance
-make doc=yes uninstall
-make doc=yes clean
-make doc=yes install
-cd $BUILDDIR
+  if [ ! -d libs-gui ]; then
+    echo "Build directory does not exist: $BUILDDIR/libs-gui"
+    exit 1
+  fi
+  cd libs-gui
+  cd Documentation
+  build
+  cd $BUILDDIR
 
-if [ ! -d libs-steptalk ]; then
-  echo "Build directory does not exist: $BUILDDIR/libs-steptalk"
-  exit 1
-fi
-cd libs-steptalk
-make doc=yes uninstall
-make doc=yes clean
-make doc=yes install
-cd $BUILDDIR
+  if [ ! -d libs-back ]; then
+    echo "Build directory does not exist: $BUILDDIR/libs-back"
+    exit 1
+  fi
+  cd libs-back
+  cd Documentation
+  build
+  cd $BUILDDIR
 
-if [ ! -d libs-gdl2 ]; then
-  echo "Build directory does not exist: $BUILDDIR/libs-gdl2"
-  exit 1
-fi
-cd libs-gdl2
-make doc=yes uninstall
-make doc=yes clean
-make doc=yes install
-cd $BUILDDIR
+  if [ ! -d libs-renaissance ]; then
+    echo "Build directory does not exist: $BUILDDIR/libs-renaissance"
+    exit 1
+  fi
+  cd libs-renaissance
+  build
+  cd $BUILDDIR
 
-if [ ! -d libs-gsweb ]; then
-  echo "Build directory does not exist: $BUILDDIR/libs-gsweb"
-  exit 1
-fi
-cd libs-gsweb
-make doc=yes uninstall
-make doc=yes clean
-make doc=yes install
-cd $BUILDDIR
+  if [ ! -d libs-steptalk ]; then
+    echo "Build directory does not exist: $BUILDDIR/libs-steptalk"
+    exit 1
+  fi
+  cd libs-steptalk
+  build
+  cd $BUILDDIR
+
+  if [ ! -d libs-gdl2 ]; then
+    echo "Build directory does not exist: $BUILDDIR/libs-gdl2"
+    exit 1
+  fi
+  cd libs-gdl2
+  build
+  cd $BUILDDIR
+
+  if [ ! -d libs-gsweb ]; then
+    echo "Build directory does not exist: $BUILDDIR/libs-gsweb"
+    exit 1
+  fi
+  cd libs-gsweb
+  build
+  cd $BUILDDIR
+done
 
 
-
-# Finally, copy thje documentation from the SYSTEM domain Documentation
+# Finally, copy the documentation from the SYSTEM domain Documentation
 # directory into the corresponding website directory.
 
 cd `gnustep-config --variable=GNUSTEP_SYSTEM_DOC`
 tar --exclude='*.gsdoc' \
   --exclude='*.igsdoc' \
   --exclude='dependencies' \
+  --exclude='dependencies_html' \
   -cf - * | (cd $GSWEBSITEDEV; tar -xvf -)
 
