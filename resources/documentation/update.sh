@@ -95,6 +95,14 @@ do
   build
   cd $BUILDDIR
 
+  if [ ! -d libs-performance ]; then
+    echo "Build directory does not exist: $BUILDDIR/libs-performance"
+    exit 1
+  fi
+  cd libs-performance
+  build
+  cd $BUILDDIR
+
   if [ ! -d libs-steptalk ]; then
     echo "Build directory does not exist: $BUILDDIR/libs-steptalk"
     exit 1
@@ -129,5 +137,7 @@ tar --exclude='*.gsdoc' \
   --exclude='*.igsdoc' \
   --exclude='dependencies' \
   --exclude='dependencies_html' \
+  --exclude='stamp' \
+  --exclude='stamp_html' \
   -cf - * | (cd $GSWEBSITEDEV; tar -xvf -)
 
