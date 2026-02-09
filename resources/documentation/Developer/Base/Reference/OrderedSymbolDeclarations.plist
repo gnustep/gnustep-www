@@ -139,6 +139,10 @@
 	"-URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:",
 	"-URLSession:task:needNewBodyStream:"
     );
+    "(NSUserActivityDelegate)" = (
+	"-userActivityWillSave:",
+	"-userActivityWasContinued:"
+    );
     "(NSXPCListenerDelegate)" = (
 	"-listener:shouldAcceptNewConnection:"
     );
@@ -696,8 +700,10 @@
 	"+dataWithBytes:length:",
 	"+dataWithBytesNoCopy:length:",
 	"+dataWithBytesNoCopy:length:freeWhenDone:",
+	"+dataWithContentsOfFile:options:error:",
 	"+dataWithContentsOfFile:",
 	"+dataWithContentsOfMappedFile:",
+	"+dataWithContentsOfURL:options:error:",
 	"+dataWithContentsOfURL:",
 	"+dataWithData:",
 	"-initWithBase64EncodedData:options:",
@@ -707,8 +713,10 @@
 	"-initWithBytesNoCopy:length:",
 	"-initWithBytesNoCopy:length:freeWhenDone:",
 	"-initWithContentsOfFile:",
+	"-initWithContentsOfFile:options:error:",
 	"-initWithContentsOfMappedFile:",
 	"-initWithContentsOfURL:",
+	"-initWithContentsOfURL:options:error:",
 	"-initWithData:",
 	"-bytes",
 	"-description",
@@ -828,7 +836,7 @@
 	"-zeroFormattingBehavior",
 	"-setZeroFormattingBehavior:",
 	"-calendar",
-	"-setCalender:",
+	"-setCalendar:",
 	"-referenceDate",
 	"-setReferenceDate:",
 	"-allowsFractionalUnits",
@@ -1227,6 +1235,9 @@
 	"-readDataToEndOfFile",
 	"-readDataOfLength:",
 	"-writeData:",
+	"-writeData:error:",
+	"-readDataUpToLength:error:",
+	"-readDataToEndOfFileAndReturnError:",
 	"-acceptConnectionInBackgroundAndNotify",
 	"-acceptConnectionInBackgroundAndNotifyForModes:",
 	"-readInBackgroundAndNotify",
@@ -1238,13 +1249,13 @@
 	"-offsetInFile",
 	"-seekToEndOfFile",
 	"-seekToFileOffset:",
-	"-closeFile",
-	"-synchronizeFile",
-	"-truncateFileAtOffset:",
 	"-getOffset:error:",
 	"-seekToEndReturningOffset:error:",
 	"-seekToOffset:error:",
-	"-truncateAtOffset:error:"
+	"-truncateAtOffset:error:",
+	"-closeFile",
+	"-synchronizeFile",
+	"-truncateFileAtOffset:"
     );
     "NSFileHandle(GNUstepExtensions)" = (
 	"+fileHandleAsServerAtAddress:service:protocol:",
@@ -1929,6 +1940,31 @@
 	"-endEditing"
     );
     NSMutableCharacterSet = (
+	"+alphanumericCharacterSet",
+	"+capitalizedLetterCharacterSet",
+	"+controlCharacterSet",
+	"+decimalDigitCharacterSet",
+	"+decomposableCharacterSet",
+	"+illegalCharacterSet",
+	"+letterCharacterSet",
+	"+lowercaseLetterCharacterSet",
+	"+newlineCharacterSet",
+	"+URLFragmentAllowedCharacterSet",
+	"+URLHostAllowedCharacterSet",
+	"+URLPasswordAllowedCharacterSet",
+	"+URLPathAllowedCharacterSet",
+	"+URLQueryAllowedCharacterSet",
+	"+URLUserAllowedCharacterSet",
+	"+nonBaseCharacterSet",
+	"+punctuationCharacterSet",
+	"+symbolCharacterSet",
+	"+uppercaseLetterCharacterSet",
+	"+whitespaceAndNewlineCharacterSet",
+	"+whitespaceCharacterSet",
+	"+characterSetWithBitmapRepresentation:",
+	"+characterSetWithCharactersInString:",
+	"+characterSetWithRange:",
+	"+characterSetWithContentsOfFile:",
 	"-addCharactersInRange:",
 	"-addCharactersInString:",
 	"-formIntersectionWithCharacterSet:",
@@ -2021,8 +2057,7 @@
 	"-minusOrderedSet:",
 	"-minusSet:",
 	"-unionOrderedSet:",
-	"-unionSet:",
-	"-initWithCoder:"
+	"-unionSet:"
     );
     NSMutableSet = (
 	"+setWithCapacity:",
@@ -2119,6 +2154,7 @@
     NSNotification = (
 	"+notificationWithName:object:",
 	"+notificationWithName:object:userInfo:",
+	"-initWithName:object:userInfo:",
 	"-name",
 	"-object",
 	"-userInfo"
@@ -2606,6 +2642,10 @@
 	"-download:willResumeWithResponse:fromByte:",
 	"-download:willSendRequest:redirectResponse:"
     );
+    "NSObject(NSUserActivityDelegate)" = (
+	"-userActivityWillSave:",
+	"-userActivityWasContinued:"
+    );
     "NSObject(NSUserNotificationCenterDelegateMethods)" = (
 	"-userNotificationCenter:didDeliverNotification:",
 	"-userNotificationCenter:didActivateNotification:",
@@ -2917,7 +2957,8 @@
 	"+initializeWithArguments:count:environment:",
 	"-androidContext",
 	"-androidFilesDir",
-	"-androidCacheDir"
+	"-androidCacheDir",
+	"-setValue:inEnvironment:"
     );
     NSProgress = (
 	"-initWithParent:userInfo:",
@@ -2926,16 +2967,19 @@
 	"+progressWithTotalUnitCount:parent:pendingUnitCount:",
 	"+currentProgress",
 	"-becomeCurrentWithPendingUnitCount:",
-	"-addChild:withPendingUnitCount:",
 	"-resignCurrent",
+	"-addChild:withPendingUnitCount:",
 	"-totalUnitCount",
 	"-setTotalUnitCount:",
 	"-completedUnitCount",
 	"-setCompletedUnitCount:",
 	"-localizedDescription",
+	"-setLocalizedDescription:",
 	"-localizedAdditionalDescription",
+	"-setLocalizedAdditionalDescription:",
 	"-fractionCompleted",
 	"-isCancellable",
+	"-setCancellable:",
 	"-isCancelled",
 	"-cancel",
 	"-setCancellationHandler:",
@@ -2946,9 +2990,8 @@
 	"-resume",
 	"-setResumingHandler:",
 	"-isIndeterminate",
-	"-setIndeterminate:",
-	"-kind",
 	"-setKind:",
+	"-kind",
 	"-setUserInfoObject:forKey:",
 	"-userInfo",
 	"-setFileOperationKind:",
@@ -2964,7 +3007,7 @@
 	"-setFileTotalCount:",
 	"-fileTotalCount",
 	"-setThroughput:",
-	"-throughtput",
+	"-throughput",
 	"-publish",
 	"-unpublish",
 	"-performAsCurrentWithPendingUnitCount:usingBlock:",
@@ -4186,6 +4229,42 @@
 	"+imperialGallons",
 	"+metricCups"
     );
+    NSUserActivity = (
+	"-initWithActivityType:",
+	"+currentActivity",
+	"-activityType",
+	"-title",
+	"-setTitle:",
+	"-userInfo",
+	"-setUserInfo:",
+	"-addUserInfoEntriesFromDictionary:",
+	"-requiredUserInfoKeys",
+	"-setRequiredUserInfoKeys:",
+	"-needsSave",
+	"-setNeedsSave:",
+	"-webpageURL",
+	"-setWebpageURL:",
+	"-keywords",
+	"-setKeywords:",
+	"-expirationDate",
+	"-setExpirationDate:",
+	"-referrerURL",
+	"-setReferrerURL:",
+	"-supportsContinuationOnPhone",
+	"-setSupportsContinuationOnPhone:",
+	"-eligibleForHandoff",
+	"-setEligibleForHandoff:",
+	"-eligibleForSearch",
+	"-setEligibleForSearch:",
+	"-eligibleForPublicIndexing",
+	"-setEligibleForPublicIndexing:",
+	"-isValid",
+	"-delegate",
+	"-setDelegate:",
+	"-becomeCurrent",
+	"-resignCurrent",
+	"-invalidate"
+    );
     NSUserDefaults = (
 	"+standardUserDefaults",
 	"+resetStandardUserDefaults",
@@ -4223,7 +4302,8 @@
 	"-volatileDomainForName:",
 	"-volatileDomainNames",
 	"-dictionaryRepresentation",
-	"-registerDefaults:"
+	"-registerDefaults:",
+	"-writeDictionary:toFile:"
     );
     NSUserNotification = (
 	"-title",
