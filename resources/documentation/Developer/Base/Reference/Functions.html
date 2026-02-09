@@ -282,6 +282,7 @@
             <a rel="gsdoc" href="NSURLSession.html#protocol$(NSURLSessionDelegate)">&lt;NSURLSessionDelegate&gt;</a><br />
             <a rel="gsdoc" href="NSURLSession.html#protocol$(NSURLSessionDownloadDelegate)">&lt;NSURLSessionDownloadDelegate&gt;</a><br />
             <a rel="gsdoc" href="NSURLSession.html#protocol$(NSURLSessionTaskDelegate)">&lt;NSURLSessionTaskDelegate&gt;</a><br />
+            <a rel="gsdoc" href="NSUserActivity.html#protocol$(NSUserActivityDelegate)">&lt;NSUserActivityDelegate&gt;</a><br />
             <a rel="gsdoc" href="NSUserNotification.html#protocol$(NSUserNotificationCenterDelegate)">&lt;NSUserNotificationCenterDelegate&gt;</a><br />
             <a rel="gsdoc" href="NSXMLParser.html#protocol$(NSXMLParserDelegate)">&lt;NSXMLParserDelegate&gt;</a><br />
             <a rel="gsdoc" href="NSXPCConnection.html#protocol$(NSXPCListenerDelegate)">&lt;NSXPCListenerDelegate&gt;</a><br />
@@ -300,6 +301,7 @@
             <a rel="gsdoc" href="NSNetServices.html#category$NSObject(NSNetServiceDelegateMethods)">(NSNetServiceDelegateMethods)</a><br />
             <a rel="gsdoc" href="NSSpellServer.html#category$NSObject(NSSpellServerDelegate)">(NSSpellServerDelegate)</a><br />
             <a rel="gsdoc" href="NSStream.html#category$NSObject(NSStreamDelegate)">(NSStreamDelegate)</a><br />
+            <a rel="gsdoc" href="NSUserActivity.html#category$NSObject(NSUserActivityDelegate)">(NSUserActivityDelegate)</a><br />
             <a rel="gsdoc" href="NSUserNotification.html#category$NSObject(NSUserNotificationCenterDelegateMethods)">(NSUserNotificationCenterDelegateMethods)</a><br />
             <a rel="gsdoc" href="NSRunLoop.html#category$NSObject(RunLoopEvents)">(RunLoopEvents)</a><br />
             <a rel="gsdoc" href="NSObject.html#category$NSObject(TimedPerformers)">(TimedPerformers)</a><br />
@@ -938,6 +940,12 @@
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUndoManagerWillCloseUndoGroupNotification">NSUndoManagerWillCloseUndoGroupNotification</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUndoManagerWillRedoChangeNotification">NSUndoManagerWillRedoChangeNotification</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUndoManagerWillUndoChangeNotification">NSUndoManagerWillUndoChangeNotification</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUserActivityDocumentURLKey">NSUserActivityDocumentURLKey</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUserActivityExternalRecordURLKey">NSUserActivityExternalRecordURLKey</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUserActivityPersistentIdentifierKey">NSUserActivityPersistentIdentifierKey</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUserActivityReferrerURLKey">NSUserActivityReferrerURLKey</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUserActivitySuggestedInvocationPhraseKey">NSUserActivitySuggestedInvocationPhraseKey</a><br />
+            <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUserActivityTypeBrowsingWeb">NSUserActivityTypeBrowsingWeb</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUserDefaultsDidChangeNotification">NSUserDefaultsDidChangeNotification</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSUserNotificationDefaultSoundName">NSUserNotificationDefaultSoundName</a><br />
             <a rel="gsdoc" href="TypesAndConstants.html#constant$NSWeekDayNameArray">NSWeekDayNameArray</a><br />
@@ -1481,10 +1489,8 @@
           </dd>
         </dl>
         <p><b>Copyright:</b> (C) 2005 Free Software Foundation, Inc.</p>
-
-            <div>
-
-                <hr class="section-separator">
+        <div>
+          <hr class="section-separator">
           <h3>Contents -</h3>
           <ol>
             <li>
@@ -5657,7 +5663,18 @@
 <br />
         <div class="desc">
           
-          Return the caller&apos;s home directory as an NSString
+          Returns the home directory of the user who owns the
+          current process. <br /> Calls
+          <a rel="gsdoc" href="#function$NSHomeDirectoryForUser">
+            NSHomeDirectoryForUser()
+          </a>
+
+          passing it the result of
+          <a rel="gsdoc" href="#function$NSUserName">
+            NSUserName()
+          </a>
+
+          . <br /> Return the caller&apos;s home directory as an NSString
           object. Calls
           <a rel="gsdoc" href="#function$NSHomeDirectoryForUser">
             NSHomeDirectoryForUser()
@@ -5674,15 +5691,22 @@
 <br />
         <div class="desc">
           
-          Returns loginName&apos;s home directory as an NSString
-          object. <br /> On most systems this returns the
-          directory specified in the system&apos;s password file
-          (ar at least whatever is returned by the standard
-          operating system API for retrieving password file
-          records), but on ms-windows this is determined by
-          examining the HOMEPATH and HOMEDRIVE environment
-          variables or (if those don&apos;t make sense) the
-          USERPROFILE environment variable.
+          Returns the home directory of the user specified.
+          <br /> This is obtained from the operating system
+          (though the GNUSTEP_HOME environment variable
+          overrides that for the current user) and is usually
+          the same as the HOME environment variable. <br /> On
+          ms-windows, the HOMEPATH environment variable is
+          usually used unless it is the root directory, in
+          which case USERPROFILE is used. <br /> Returns
+          loginName&apos;s home directory as an NSString object.
+          <br /> On most systems this returns the directory
+          specified in the system&apos;s password file (ar at
+          least whatever is returned by the standard operating
+          system API for retrieving password file records), but
+          on ms-windows this is determined by examining the HOMEPATH
+          and HOMEDRIVE environment variables or (if those don&apos;t
+          make sense) the USERPROFILE environment variable.
         
         </div>
         <hr class="method-separator">
@@ -5776,12 +5800,14 @@
 <br />
         <div class="desc">
           
-          Return the caller&apos;s login name as an NSString object.
-          <br /> Under unix-like systems, the name associated
-          with the current effective user ID is used. <br /> Under
-          ms-windows, the &apos;LOGNAME&apos; environment is used, or
-          if that fails, the GetUserNameW function is used to find
-          the user name. <br /> Raises an exception on failure.
+          Returns the name of the user who owns the current
+          process. <br /> Return the caller&apos;s login name as an
+          NSString object. <br /> Under unix-like systems, the
+          name associated with the current effective user ID is
+          used. <br /> Under ms-windows, the &apos;LOGNAME&apos;
+          environment is used, or if that fails, the
+          GetUserNameW function is used to find the user
+          name. <br /> Raises an exception on failure.
         
         </div>
         <hr class="method-separator">
