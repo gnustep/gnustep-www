@@ -18,11 +18,18 @@ export AGSDOC_PROJECTS="{}"
 # Record the root of the website.
 GSWEBSITEDEV=`pwd`
 
-if test $# = 1
+if test $# -gt 0
 then
   BUILDDIR=$1
 else
   BUILDDIR=$HOME/gnustep-gcc/build
+fi
+
+if test $# -gt 1
+then
+  PAR=$2
+else
+  PAR=1
 fi
 
 if [ ! -d $BUILDDIR ]; then
@@ -42,9 +49,9 @@ build() {
   then
     make uninstall
     make clean
-    AGSDOC_INDEXING=yes make doc=yes install
+    AGSDOC_INDEXING=yes make -j$PAR doc=yes install
   else
-    AGSDOC_INDEXING=no make doc=yes install
+    AGSDOC_INDEXING=no make -j$PAR doc=yes install
   fi
 }
 
