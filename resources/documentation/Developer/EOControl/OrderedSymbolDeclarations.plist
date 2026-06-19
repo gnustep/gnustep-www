@@ -227,6 +227,32 @@
 	"-fetchTimestamp",
 	"-setFetchTimestamp:"
     );
+    "EOEditingContext(EOEditingContextPrivate)" = (
+	"-incrementUndoTransactionID",
+	"-handleError:",
+	"-handleErrors:",
+	"-_enqueueEndOfEventNotification",
+	"-_sendOrEnqueueNotification:selector:",
+	"-_insertObject:withGlobalID:",
+	"-_processObjectStoreChanges:",
+	"-_processDeletedObjects",
+	"-_processOwnedObjectsUsingChangeTable:deleteTable:",
+	"-_processNotificationQueue",
+	"-_observeUndoManagerNotifications",
+	"-_registerClearStateWithUndoManager",
+	"-_forgetObjectWithGlobalID:",
+	"-_invalidateObject:withGlobalID:",
+	"-_invalidateObjectsWithGlobalIDs:",
+	"-_objectBasedChangeInfoForGIDInfo:",
+	"-_mutableSetFromToManyArray:",
+	"-_uncommittedChangesForObject:fromSnapshot:",
+	"-_changesFromInvalidatingObjectsWithGlobalIDs:",
+	"-_resetAllChanges",
+	"-_defaultSharedEditingContextWasInitialized:",
+	"-_defaultEditingContextNowInitialized:",
+	"-_objectsInitializedInSharedContext:",
+	"-_processInitializedObjectsInSharedContext:"
+    );
     "EOEditingContext(EOMultiThreaded)" = (
 	"+setEOFMultiThreadedEnabled:",
 	"-lock",
@@ -254,6 +280,12 @@
 	"-redo:",
 	"-objectsDescription",
 	"-unprocessedDescription"
+    );
+    "EOEditingContext(Private)" = (
+	"-_processRecentChanges"
+    );
+    EOEntityClassDescription = (
+	"-entity"
     );
     EOEvent = (
 	"+eventTypeDescriptions",
@@ -342,6 +374,9 @@
 	"-doesNotRecognizeSelector:",
 	"-forwardInvocation:"
     );
+    "EOFault(EOCalculateSize)" = (
+	"+eoCalculateSizeWith:forFault:"
+    );
     EOFaultHandler = (
 	"-setTargetClass:extraData:",
 	"-targetClass",
@@ -411,6 +446,9 @@
 	"-debugDictionaryDescription",
 	"+_instanceDictionaryInitializerExcludedPropertyNames"
     );
+    "EOGenericRecord(EOCalculateSize)" = (
+	"+eoCalculateSizeWith:forArray:"
+    );
     EOGlobalID = (
 	"-isEqual:",
 	"-hash",
@@ -443,6 +481,15 @@
 	"-dictionary",
 	"-setDelegate:",
 	"-delegate"
+    );
+    EOKeyValueArchivingContainer = (
+	"+keyValueArchivingContainer",
+	"-setPropertyList:",
+	"-propertyList",
+	"-setParent:",
+	"-parent",
+	"-setObject:",
+	"-object"
     );
     EOKeyValueQualifier = (
 	"+qualifierWithKey:operatorSelector:value:",
@@ -571,6 +618,8 @@
     );
     "EOQualifier(Privat)" = (
 	"-_addBindingsToDictionary:",
+	"-_qualifierMigratedToSubEntity:fromParentEntity:",
+	"-_addBindingsToDictionary:",
 	"-_validateKey:withRootClassDescription:",
 	"-_addBindingsToDictionary:"
     );
@@ -611,6 +660,9 @@
 	"-deleteObject:",
 	"-saveChanges"
     );
+    "EOSharedEditingContext(Privat)" = (
+	"+_defaultSharedEditingContext"
+    );
     EOSortOrdering = (
 	"+sortOrderingWithKey:selector:",
 	"-initWithKey:selector:",
@@ -622,14 +674,52 @@
 	"+assignGloballyUniqueBytes:",
 	"-isTemporary"
     );
+    EOThreadSafeQueue = (
+	"-addItem:",
+	"-removeItem"
+    );
     EOUndoManager = (
 	"-forgetAllWithTarget:",
 	"-forgetAll",
 	"-registerUndoWithTarget:selector:arg:",
 	"-reenableUndoRegistration"
     );
+    "GDL2CDNSObject(EOClassDescription)" = (
+	"+classDescriptionForClass:",
+	"-valueForKey:",
+	"-takeValue:forKey:"
+    );
+    "GDL2KVCNSArray(NSArray)" = (
+	"-count",
+	"-resultsOfPerformingSelector:withObject:defaultResult:"
+    );
+    "GDL2KVCNSDictionary(NSDictionary)" = (
+	"-allKeys",
+	"-allValues",
+	"-objectForKey:",
+	"-count",
+	"-smartTakeValue:forKeyPath:",
+	"-takeValue:forKeyPath:isSmart:"
+    );
+    "GDL2KVCNSMutableDictionary(NSMutableDictionary)" = (
+	"-removeObjectForKey:",
+	"-setObject:forKey:",
+	"-takeValue:forKeyPath:isSmart:"
+    );
+    "GDL2KVCNSObject(NSKeyValueCoding)" = (
+	"-unableToSetNilForKey:",
+	"-validateValue:forKey:error:",
+	"-validateValue:forKeyPath:error:",
+	"-valueForKey:",
+	"-valueForKeyPath:",
+	"-valueForUndefinedKey:",
+	"-valuesForKeys:"
+    );
     "GDL2NonRetainingMutableArray(PrivateExceptions)" = (
 	"-_raiseRangeExceptionWithIndex:from:"
+    );
+    "NSArray(EOCalculateSize)" = (
+	"-eoCalculateSizeWith:"
     );
     "NSArray(EOKeyBasedSorting)" = (
 	"-sortedArrayUsingKeyOrderArray:"
@@ -667,6 +757,9 @@
 	"-containsAnyNullObject",
 	"+dictionaryWithNullValuesForKeys:"
     );
+    "NSDictionary(EOCalculateSize)" = (
+	"-eoCalculateSizeWith:"
+    );
     "NSDictionary(EOKeyValueCoding)" = (
 	"-valueForKey:",
 	"-storedValueForKey:",
@@ -689,9 +782,26 @@
     "NSMutableDictionary(EOKeyValueCoding)" = (
 	"-takeValue:forKey:"
     );
+    "NSMutableDictionary(EOKeyValueCodingPrivate)" = (
+	"-takeValue:forKeyPath:isSmart:"
+    );
     "NSObject(Comparison)" = (
 	"-compare:",
+	"-compare:",
+	"-compare:",
+	"-compare:",
 	"-compare:"
+    );
+    "NSObject(EOAccess)" = (
+	"-fetchSpecificationNamed:",
+	"-entityNamed:",
+	"+defaultGroup"
+    );
+    "NSObject(EOCOmpareOnNameSupport)" = (
+	"-name"
+    );
+    "NSObject(EOCalculateSize)" = (
+	"-eoGetSize"
     );
     "NSObject(EOClassDescriptionClassDelegate)" = (
 	"-shouldPropagateDeleteForObject:inEditingContext:forRelationshipKey:"
@@ -718,6 +828,11 @@
     "NSObject(EOEditors)" = (
 	"-editorHasChangesForEditingContext:",
 	"-editingContextWillSaveChanges:"
+    );
+    "NSObject(EOEntityWarningSupression)" = (
+	"-name",
+	"-globalIDForRow:",
+	"+objectDeallocated:"
     );
     "NSObject(EOEventRecordingHandler)" = (
 	"-setLoggingEnabled:forEventClass:"
@@ -792,6 +907,12 @@
     "NSObject(PerformSelect3)" = (
 	"-performSelector:withPointer:",
 	"-performSelector:withObject:withObject:withObject:"
+    );
+    "NSObject(SupressCompilerWarnings)" = (
+	"+defaultGroup"
+    );
+    "NSString(EOCalculateSize)" = (
+	"-eoGetSize"
     );
     "NSString(EORelationshipPath)" = (
 	"-relationshipPathByDeletingFirstComponent",

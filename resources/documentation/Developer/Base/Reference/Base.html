@@ -1107,7 +1107,6 @@
             <a rel="gsdoc" href="Functions.html#function$NSLogPageSize">NSLogPageSize</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSLog_printf_handler">NSLog_printf_handler</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSLogv">NSLogv</a><br />
-            <a rel="gsdoc" href="Functions.html#function$NSMakeCollectable">NSMakeCollectable</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakePoint">NSMakePoint</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakeRange">NSMakeRange</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakeRect">NSMakeRect</a><br />
@@ -1480,7 +1479,7 @@
     <div class="content-pane">
       <div class="content-pane-body">
         <h1><a name="title$Base">GNUstep Base</a></h1>
-        <p><b>Copyright:</b> (C) 1993-2023 Free Software Foundation, Inc.</p>
+        <p><b>Copyright:</b> (C) 1993-2026 Free Software Foundation, Inc.</p>
 
               <h1><a name="001000000000">Base</a></h1>
         <p>
@@ -1771,6 +1770,104 @@ The GSMaxOSXVersion() function is provided as a convenience
                 which means that the order of equal objects may be changed
                 by a sort.  Selecting these may break code which assumes that
 	        sorting is stable.
+	                  </p>
+            
+	    
+          </dd>
+          <dt>GSTLSCAFile</dt>
+          <dd>
+            
+	      
+            <p>
+
+		This provides a process-wide setting of the path to the
+		certificate authority file used for TLS connections.<br />
+		This overrides the GS_TLS_CA_FILE environment variable,
+		which in turn overrides the SSL_CERT_FILE environment
+		variable (used by OPENSSL) and the default location.<br />
+		An option of this name set for an individual connection
+		takes precedence over this setting.
+	                  </p>
+            
+	    
+          </dd>
+          <dt>GSTLSDebug</dt>
+          <dd>
+            
+	      
+            <p>
+
+		This sets a process-wide debug level for TLS connections.<br />
+		This overrides the GS_TLS_DEBUG environment variable.<br />
+		which in turn overrides the default of YES.<br />
+		A GSTLSDebug option set for an individual connection
+		takes precedence over this setting.
+	                  </p>
+            
+	    
+          </dd>
+          <dt>GSTLSPriority</dt>
+          <dd>
+            
+	      
+            <p>
+
+		This sets a process-wide GNUTLS priority string.<br /> 
+		This overrides the GS_TLS_PRIORITY environment variable.<br />
+		A GSTLSPriority option set for an individual connection
+		takes precedence over this setting.<br />
+		See the documentation of the GNUTLS project for an
+	        explanation of the priority string.
+	                  </p>
+            
+	    
+          </dd>
+          <dt>GSTLSRevokeFile</dt>
+          <dd>
+            
+	      
+            <p>
+
+		This provides a process-wide setting of the path to the
+		certificate revocation file used for TLS connections.<br />
+		This overrides the GS_TLS_REVOKE_FILE environment variable,
+		which in turn overrides the default location).<br />
+		An option of this name set for an individual connection
+		takes precedence over this setting.
+	                  </p>
+            
+	    
+          </dd>
+          <dt>GSTLSVerifyClient</dt>
+          <dd>
+            
+	      
+            <p>
+
+		This provides a process-wide setting of a boolean controlling
+		whether client certificate verification failures cause the
+		connection to be dropped when a remote client connects.<br />
+		This overrides the GS_TLS_VERIFY_C environment variable,
+		which in turn overrides the default of NO.<br />
+		A GSTLSVerify option set for an individual connection
+		takes precedence over this setting.
+	                  </p>
+            
+	    
+          </dd>
+          <dt>GSTLSVerifyServer</dt>
+          <dd>
+            
+	      
+            <p>
+
+		This provides a process-wide setting of a boolean controlling
+		whether certificate verification failures cause the connection
+		to be dropped when we are connecting to a remote server.<br />
+		This overrides the GS_TLS_VERIFY_S environment variable,
+		which in turn overrides the default of YES.<br />
+		A GSTLSVerify option set for an individual connection
+		takes precedence over this setting.
 	                  </p>
             
 	    
@@ -2119,6 +2216,36 @@ The GSMaxOSXVersion() function is provided as a convenience
 	      from another class.
 	    
           </dd>
+          <dt>GS_TLS_CA_FILE</dt>
+          <dd>
+            
+	      See the GSTLSCAFile default (takes precedence over this).
+	    
+          </dd>
+          <dt>GS_TLS_DEBUG</dt>
+          <dd>
+            
+	      See the GSTLSDebug default (takes precedence over this).
+	    
+          </dd>
+          <dt>GS_TLS_REVOKE_FIL</dt>
+          <dd>
+            
+	      See the GSTLSRevokeFile default (takes precedence over this).
+	    
+          </dd>
+          <dt>GS_TLS_VERIFY_C</dt>
+          <dd>
+            
+	      See the GSTLSVerifyClient default (takes precedence over this).
+	    
+          </dd>
+          <dt>GS_TLS_VERIFY_S</dt>
+          <dd>
+            
+	      See the GSTLSVerifyServer default (takes precedence over this).
+	    
+          </dd>
           <dt>HOMEDRIVE</dt>
           <dd>
             
@@ -2431,7 +2558,7 @@ The GSMaxOSXVersion() function is provided as a convenience
 	    same names except for replacing &apos;SYSTEM&apos; with &apos;LOCAL&apos;, &apos;NETWORK&apos;,
 	    or &apos;USER&apos;.<br />
 	    All these paths must be absolute, except for the USER domain
-	    paths which, if not absolute, are considered to be with the
+	    paths which, if not absolute, are considered to be within the
 	    user&apos;s home directory.<br />
 	    NB. as a special case a path may begin with &apos;./&apos; or &apos;../&apos; when
 	    it is to be resolved to an absolute path relative to the
@@ -2577,7 +2704,8 @@ The GSMaxOSXVersion() function is provided as a convenience
 	    the GNUSTEP_CONFIG_FILE environment variable unless that option
 	    was disabled when the base library was configured)
 	    begins with a dot-slash (./) or dot-dot-slash (../) then the path
-            used for that file is made relative to the base library.<br />
+            used for that file is made relative to the directory containing
+	    the base library.<br />
 	    The base library contains code to determine its own location,
 	    so this allows it to locate the configuration file, and by
 	    reading the configuration file it determines where all other
