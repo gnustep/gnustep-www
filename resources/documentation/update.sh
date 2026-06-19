@@ -47,20 +47,29 @@ set -e
 build() {
   if [ $iteration = 1 ]
   then
+    echo "#### Pass one cleanup in" `pwd`
     make uninstall
     make clean
-    AGSDOC_INDEXING=yes make -j$PAR doc=yes install
+    echo "#### Pass one pull changes in" `pwd`
+    git pull
+    echo "#### Pass one build indexes in" `pwd`
+    AGSDOC_INDEXING=yes make -j$PAR doc=yes messages=yes install
   else
-    AGSDOC_INDEXING=no make -j$PAR doc=yes install
+    echo "#### Pass two build html in" `pwd`
+    AGSDOC_INDEXING=no make -j$PAR doc=yes messages=yes install
   fi
 }
 
 for iteration in 1 2
 do
 
-  if [ $iteration = 2 ]
+  if [ $iteration = 1 ]
   then
+    export AGSDOC_RELOCATABLE=no
+    echo "######### Starting pass One ########"
+  else
     export AGSDOC_RELOCATABLE=yes
+    echo "######### Starting pass Two ########"
   fi
 
   if [ ! -d libs-base ]; then
@@ -124,6 +133,16 @@ do
   fi
   cd libs-gdl2
   build
+  cd EOAccess
+  build
+  cd ../EOControl
+  build
+  cd ../EOInterface
+  build
+  cd ../Tools
+  build
+  cd ../EOAdaptors/PostgreSQLAdaptor/
+  build
   cd $BUILDDIR
 
   if [ ! -d libs-gsweb ]; then
@@ -131,6 +150,12 @@ do
     exit 1
   fi
   cd libs-gsweb
+  build
+  cd GSWeb
+  build
+  cd ../GSWExtensions
+  build
+  cd ../GSWExtensionsGSW
   build
   cd $BUILDDIR
 done
