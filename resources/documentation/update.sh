@@ -65,6 +65,17 @@ do
 
   if [ $iteration = 1 ]
   then
+
+    # gnustep-make is a special case of coourse
+    if [ ! -d tools-make/Documentation ]; then
+      echo "Build directory does not exist: $BUILDDIR/tools-make/Documentation"
+      exit 1
+    fi
+    cd tools-make/Documentation
+    make clean
+    make install
+    cd $BUILDDIR
+
     export AGSDOC_RELOCATABLE=no
     echo "######### Starting pass One ########"
   else
@@ -141,8 +152,6 @@ do
   build
   cd ../Tools
   build
-  cd ../EOAdaptors/PostgreSQLAdaptor/
-  build
   cd $BUILDDIR
 
   if [ ! -d libs-gsweb ]; then
@@ -154,8 +163,6 @@ do
   cd GSWeb
   build
   cd ../GSWExtensions
-  build
-  cd ../GSWExtensionsGSW
   build
   cd $BUILDDIR
 done
