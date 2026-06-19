@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>GNUstep deamons (GNUstep HOWTO)</title>
+
+<meta name="description" content="GNUstep deamons (GNUstep HOWTO)">
+<meta name="keywords" content="GNUstep deamons (GNUstep HOWTO)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Additional-Installation.html" rel="up" title="Additional Installation">
+<link href="Time-Zone.html" rel="prev" title="Time Zone">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="GNUstep-deamons">
+<div class="nav-panel">
+<p>
+Previous: <a href="Time-Zone.html" accesskey="p" rel="prev">Time Zone</a>, Up: <a href="Additional-Installation.html" accesskey="u" rel="up">Additional Installation</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="GNUstep-deamons-1"><span>4.4 GNUstep deamons<a class="copiable-link" href="#GNUstep-deamons-1"> &para;</a></span></h3>
+
+<p>Set up your system to execute some GNUstep deamons.  This is optional
+because if you don&rsquo;t do this, they will be started automatically when
+you run your first GNUstep app:
+</p>
+<ul class="itemize mark-bullet">
+<li>gdomap - Put this in a system startup file, like <samp class="file">/etc/rc.local</samp> or <samp class="file">/etc/rc.d/rc.local</samp> (customize for your system)
+<div class="example">
+<pre class="example-preformatted">if [ -f /usr/local/bin/gdomap ]; then
+  /usr/local/bin/gdomap
+fi
+</pre></div>
+</li><li>gdnc - Start after sourcing <samp class="file">GNUstep.sh</samp> (e.g. in .profile)
+</li><li>gpbs - Same as with gdnc, make sure X-Windows is running.
+</li><li>make_services - Not a deamon, but a tool that needs to be run everytime
+you install a new Application or service. This is NOT run automatically.
+</li></ul>
+
+<div class="example">
+<pre class="example-preformatted">if [ `gdomap -L GDNCServer | grep -c Unable` == 1 ]; then
+  echo &quot;Starting GNUstep services...&quot;
+  gdnc
+  gpbs
+fi
+make_services
+</pre></div>
+
+
+</div>
+
+
+
+</body>
+</html>

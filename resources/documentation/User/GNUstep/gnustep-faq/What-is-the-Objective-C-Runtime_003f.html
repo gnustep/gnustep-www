@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>What is the Objective C Runtime? (Untitled Document)</title>
+
+<meta name="description" content="What is the Objective C Runtime? (Untitled Document)">
+<meta name="keywords" content="What is the Objective C Runtime? (Untitled Document)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="GNU-Objective-C-Compiler-and-Runtime.html" rel="up" title="GNU Objective C Compiler and Runtime">
+<link href="GNU-Objective-C-Compiler-and-Runtime.html" rel="prev" title="GNU Objective C Compiler and Runtime">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="What-is-the-Objective-C-Runtime_003f">
+<div class="nav-panel">
+<p>
+Previous: <a href="GNU-Objective-C-Compiler-and-Runtime.html" accesskey="p" rel="prev">GNU Objective C Compiler and Runtime</a>, Up: <a href="GNU-Objective-C-Compiler-and-Runtime.html" accesskey="u" rel="up">GNU Objective C Compiler and Runtime</a> &nbsp; </p>
+</div>
+<hr>
+<h4 class="subsection" id="What-is-the-Objective-C-Runtime_003f-1"><span>1.3.1 What is the Objective C Runtime?<a class="copiable-link" href="#What-is-the-Objective-C-Runtime_003f-1"> &para;</a></span></h4>
+
+<p>The Objective C Runtime Library provides C functions and data structures
+required to execute an Objective C program. 
+</p>
+<p>The GNU Objective C Runtime Library offers everything NeXT&rsquo;s runtime
+does, including Categories, Protocols, &lsquo;<samp class="samp">+poseAs:</samp>&rsquo;, thread-safety,
+class initialization on demand, delayed loading of classes, and
+initialization of static instances (such as @&quot;&quot;-style string objects). 
+</p>
+<p>It also has several differences over NeXT&rsquo;s implementation:
+</p>
+<ul class="itemize mark-bullet">
+<li>GNU&rsquo;s runtime provides &ldquo;selector-types&rdquo; along with each
+selector; NeXT&rsquo;s does not.  A selector-type is a string that describes
+the C variable types for the method&rsquo;s return and argument values.  Among
+other uses, selector-types is extremely helpful for fast distributed
+objects implementations, (see GNUstep Base Library Section, below).
+
+</li><li>Many of the GNU functions have different names than their
+corresponding NeXT functions; the GNU names conform to the GNU coding
+standards. The GNUstep base library contains a compatibility header that
+works with both runtimes. You should use functions there or use OpenStep
+Foundation methods/functions instead of the basic
+runtime functions so that you code can run with either system.
+
+<p>Apple has recently added new functionality to their runtime, including
+built-in exception handling, etc. Hopefully these will be ported to the
+GNU runtime in the future.
+</p>
+</li></ul>
+
+
+</div>
+
+
+
+</body>
+</html>

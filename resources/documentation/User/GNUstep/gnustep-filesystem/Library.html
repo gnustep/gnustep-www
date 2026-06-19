@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Library (GNUstep Filesystem Hierarchy Document)</title>
+
+<meta name="description" content="Library (GNUstep Filesystem Hierarchy Document)">
+<meta name="keywords" content="Library (GNUstep Filesystem Hierarchy Document)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Structure-of-a-Domain.html" rel="up" title="Structure of a Domain">
+<link href="Headers.html" rel="next" title="Headers">
+<link href="Admin-Tools.html" rel="prev" title="Admin Tools">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Library">
+<div class="nav-panel">
+<p>
+Next: <a href="Headers.html" accesskey="n" rel="next">Headers</a>, Previous: <a href="Admin-Tools.html" accesskey="p" rel="prev">Admin Tools</a>, Up: <a href="Structure-of-a-Domain.html" accesskey="u" rel="up">Structure of a Domain</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Library-1"><span>6.8 Library<a class="copiable-link" href="#Library-1"> &para;</a></span></h3>
+
+<p>The <samp class="file">Library</samp> location contains most of the resources that are
+located and loaded at runtime.  These resources are organized in
+folders (directories) inside <samp class="file">Library</samp>; the most important
+<samp class="file">Library</samp> folders will be described later on.
+</p>
+<p>Like all systems inspired by OpenStep, resources are mostly organized
+in bundles and small wrappers that contain both machine-dependent
+files (such as executables or loadable object files) and general
+machine-independent resources (such as images or text files).  For
+this reason, the <samp class="file">Library</samp> location will contain both
+machine-dependent and machine-independent files.
+</p>
+<p>The structure of the folders within Library is the same in all
+filesystem layouts, with a few exceptions: in the GNUstep filesystem
+layout, the <code class="code">Libraries</code>, <code class="code">Headers</code>, <code class="code">Documentation</code> and
+<code class="code">WebApplications</code> folders are all inside <code class="code">Library</code>, but this
+is not necessarily true for other filesystem layouts.
+</p>
+<p>Vice versa, it&rsquo;s common on other filesystem layouts (eg, FHS) to put
+<code class="code">Applications</code> and <code class="code">Admin Applications</code> as folders inside
+<code class="code">Library</code>.
+</p>
+<p>In GNUmakefiles, the <samp class="file">Library</samp> location is available via the
+<code class="code">GNUSTEP_LIBRARY</code> variable, which is the location for the
+domain in which the software will be installed.  You can also
+reference the locations in the various domains directly by using the
+variables <code class="code">GNUSTEP_SYSTEM_LIBRARY</code>,
+<code class="code">GNUSTEP_NETWORK_LIBRARY</code>, <code class="code">GNUSTEP_LOCAL_LIBRARY</code> and
+<code class="code">GNUSTEP_USER_LIBRARY</code>.
+</p>
+<p>In gnustep-base, the <samp class="file">Library</samp> locations are available by
+using the <code class="code">NSLibraryDirectory</code> directory key for
+<code class="code">NSSearchPathForDirectoriesInDomains()</code>.
+</p>
+
+</div>
+
+
+
+</body>
+</html>

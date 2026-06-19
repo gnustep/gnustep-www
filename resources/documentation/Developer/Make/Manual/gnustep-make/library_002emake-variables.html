@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>library.make variables (GNUstep Makefile Package)</title>
+
+<meta name="description" content="library.make variables (GNUstep Makefile Package)">
+<meta name="keywords" content="library.make variables (GNUstep Makefile Package)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="library_002emake.html" rel="up" title="library.make">
+<link href="Example-Library-Makefile.html" rel="next" title="Example Library Makefile">
+<link href="library_002emake.html" rel="prev" title="library.make">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="library_002emake-variables">
+<div class="nav-panel">
+<p>
+Next: <a href="Example-Library-Makefile.html" accesskey="n" rel="next">Example Makefile</a>, Previous: <a href="library_002emake.html" accesskey="p" rel="prev">Libraries (<samp class="file">library.make</samp>)</a>, Up: <a href="library_002emake.html" accesskey="u" rel="up">Libraries (<samp class="file">library.make</samp>)</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Project-Variables-1"><span>4.8.1 Project Variables<a class="copiable-link" href="#Project-Variables-1"> &para;</a></span></h4>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-LIBRARY_005fNAME"><span class="category-def">Library project: </span><span><strong class="def-name">LIBRARY_NAME</strong><a class="copiable-link" href="#index-LIBRARY_005fNAME"> &para;</a></span></dt>
+<dd><p><code class="code">LIBRARY_NAME</code> should be assigned the list of name of libraries to
+be generated.  Most UNIX systems expect that the filename for the
+library has the word <samp class="file">lib</samp> prefixed to the name; i.e. the <samp class="file">c</samp>
+library has filename of <samp class="file">libc</samp>.  Prefix the <samp class="file">lib</samp> to the
+library name when it is specified in the <code class="code">LIBRARY_NAME</code> variable
+because the Makefile Package will not automatically prefix it.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-C_005fFILES"><span class="category-def">Library project: </span><span><strong class="def-name">C_FILES</strong><a class="copiable-link" href="#index-C_005fFILES"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_C_FILES</code> is the list of C files, with a <samp class="file">.c</samp> extension,
+that are to be compiled to generate the <strong class="strong">xxx</strong> library.
+Replace the <strong class="strong">xxx</strong> with the name of the library as listed by
+the <code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-OBJC_005fFILES"><span class="category-def">Library project: </span><span><strong class="def-name">OBJC_FILES</strong><a class="copiable-link" href="#index-OBJC_005fFILES"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_OBJC_FILES</code> is the list of Objective-C files, with a <samp class="file">.m</samp>
+extension, that are to be compiled to generate the <strong class="strong">xxx</strong> library.
+Replace the <strong class="strong">xxx</strong> with the name of the library as listed by the
+<code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-PSWRAP_005fFILES"><span class="category-def">Library project: </span><span><strong class="def-name">PSWRAP_FILES</strong><a class="copiable-link" href="#index-PSWRAP_005fFILES"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_PSWRAP_FILES</code> is the list of PostScript wrap files, with a
+<samp class="file">.psw</samp> extension, that are to be compiled to generate the
+<strong class="strong">xxx</strong> library.  PostScript wrap files are processed by the
+<samp class="file">pswrap</samp> utility which generates a <samp class="file">.c</samp> and a <samp class="file">.h</samp> file
+from each <samp class="file">.psw</samp> file; the generate <samp class="file">.c</samp> file is the file
+actually compiled.  Replace the <strong class="strong">xxx</strong> with the name of the
+library as listed by the <code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-HEADER_005fFILES"><span class="category-def">Library project: </span><span><strong class="def-name">HEADER_FILES</strong><a class="copiable-link" href="#index-HEADER_005fFILES"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_HEADER_FILES</code> is the list of header filenames that are to be
+installed with the library.  If a filename has a directory path prefixed
+to it then that prefix will be maintained when the headers are
+installed.  It is up to the user to make sure that the installation
+directory exists; otherwise, an error will occur when the library is
+installed, see <a class="ref" href="#library_002emake-variables">xxx_HEADER_FILES_INSTALL_DIR</a>.  Replace the <strong class="strong">xxx</strong> with
+the name of the library as listed by the <code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-HEADER_005fFILES_005fDIR"><span class="category-def">Library project: </span><span><strong class="def-name">HEADER_FILES_DIR</strong><a class="copiable-link" href="#index-HEADER_005fFILES_005fDIR"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_HEADER_FILES_DIR</code> is the relative path from the current
+directory, where the makefile is located, to where the header files
+specified by <code class="code">xxx_HEADER_FILES</code> are located.  If a filename
+specified in <code class="code">xxx_HEADER_FILES</code> has a directory path prefixed to it
+then that path will not be removed when the Makefile Package accesses
+the files, so do not specify a path with <code class="code">xxx_HEADER_FILES_DIR</code>
+that is already prefixed to the header filenames, see <a class="ref" href="#library_002emake-variables">xxx_HEADER_FILES_INSTALL_DIR</a>.  <code class="code">xxx_HEADER_FILES_DIR</code>
+is optional; leaving it blank or undefined, and the Makefile Package
+assumes that the relative path to the header files is the current
+directory where the makefile resides.  Replace the <strong class="strong">xxx</strong> with the
+name of the library as listed by the <code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-HEADER_005fFILES_005fINSTALL_005fDIR"><span class="category-def">Library project: </span><span><strong class="def-name">HEADER_FILES_INSTALL_DIR</strong><a class="copiable-link" href="#index-HEADER_005fFILES_005fINSTALL_005fDIR"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_HEADER_FILES_INSTALL_DIR</code> specifies the relative subdirectory
+path below <code class="code">GNUSTEP_HEADERS</code> where the header files are to be
+installed.  If this directory or any of its parent directories do not
+exist, then the Makefile Package will create them.  The Makefile Package
+prefixes <code class="code">xxx_HEADER_FILES_INSTALL_DIR</code> to each of the filenames in
+<code class="code">xxx_HEADER_FILES</code> when they are installed, so if the filenames in
+<code class="code">xxx_HEADER_FILES</code> already have a directory path prefixed then the
+user is responsible for creating that directory, the Makefile Package
+will not create.  <code class="code">xxx_HEADER_FILES_INSTALL_DIR</code> is optional;
+leaving it blank or undefined, and the Makefile Package assumes that the
+installation directory is just <code class="code">GNUSTEP_HEADERS</code> with no
+subdirectory.  Replace the <strong class="strong">xxx</strong> with the name of the library as
+listed by the <code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-CPPFLAGS"><span class="category-def">Library project: </span><span><strong class="def-name">CPPFLAGS</strong><a class="copiable-link" href="#index-CPPFLAGS"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_CPPFLAGS</code> are additional flags that will be passed to the
+compiler preprocessor when compiling Objective-C and C files to generate
+the <strong class="strong">xxx</strong> library.  Adding flags here does not override the
+default <code class="code">CPPFLAGS</code>, see <a class="ref" href="Overridable-Flags.html">CPPFLAGS</a>, they are
+in addition to <code class="code">CPPFLAGS</code>.  These flags are specific to the
+<strong class="strong">xxx</strong> library, see <a class="ref" href="GNUmakefile_002epreamble.html">ADDITIONAL_CPPFLAGS</a>,
+to see how to specify global preprocessor flags.  Replace the
+<strong class="strong">xxx</strong> with the name of the listed as listed by the
+<code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-OBJCFLAGS"><span class="category-def">Library project: </span><span><strong class="def-name">OBJCFLAGS</strong><a class="copiable-link" href="#index-OBJCFLAGS"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_OBJCFLAGS</code> are additional flags that will be passed to the
+compiler when compiling Objective-C files to generate the <strong class="strong">xxx</strong>
+library.  Adding flags here does not override the default
+<code class="code">OBJCFLAGS</code>, see <a class="ref" href="Overridable-Flags.html">OBJCFLAGS</a>, they are in
+addition to <code class="code">OBJCFLAGS</code>.  These flags are specific to the
+<strong class="strong">xxx</strong> library, see <a class="ref" href="GNUmakefile_002epreamble.html">ADDITIONAL_OBJCFLAGS</a>,
+to see how to specify global compiler flags.  Replace the <strong class="strong">xxx</strong>
+with the name of the library as listed by the <code class="code">LIBRARY_NAME</code>
+variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-CFLAGS"><span class="category-def">Library project: </span><span><strong class="def-name">CFLAGS</strong><a class="copiable-link" href="#index-CFLAGS"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_CFLAGS</code> are additional flags that will be passed to the
+compiler when compiling C files to generate the <strong class="strong">xxx</strong> library.
+Adding flags here does not override the default <code class="code">CFLAGS</code>, see
+<a class="ref" href="Overridable-Flags.html">CFLAGS</a>, they are in addition to <code class="code">CFLAGS</code>.
+These flags are specific to the <strong class="strong">xxx</strong> library, see
+<a class="ref" href="GNUmakefile_002epreamble.html">ADDITIONAL_CFLAGS</a>, to see how to specify global
+compiler flags.  Replace the <strong class="strong">xxx</strong> with the name of the library
+as listed by the <code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-LDFLAGS"><span class="category-def">Library project: </span><span><strong class="def-name">LDFLAGS</strong><a class="copiable-link" href="#index-LDFLAGS"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_LDFLAGS</code> are additional flags that will be passed to the
+linker when it creates the <strong class="strong">xxx</strong> library.  Adding flags here does
+not override the default <code class="code">LDFLAGS</code>, see <a class="ref" href="Overridable-Flags.html">LDFLAGS</a>, they are in addition to <code class="code">LDFLAGS</code>.  These flags
+are specific to the <strong class="strong">xxx</strong> library, see
+<a class="ref" href="GNUmakefile_002epreamble.html">ADDITIONAL_LDFLAGS</a>, to see how to specify
+global linker flags.  Replace the <strong class="strong">xxx</strong> with the name of the
+library as listed by the <code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+<dl class="first-defvr">
+<dt class="defvr" id="index-INCLUDE_005fDIRS"><span class="category-def">Library project: </span><span><strong class="def-name">INCLUDE_DIRS</strong><a class="copiable-link" href="#index-INCLUDE_005fDIRS"> &para;</a></span></dt>
+<dd><p><code class="code">xxx_INCLUDE_DIRS</code> is the list of additional directories that the
+compiler will search when it is looking for include files; these flags
+are specific to the <strong class="strong">xxx</strong> library, see
+<a class="ref" href="GNUmakefile_002epreamble.html">ADDITIONAL_INCLUDE_DIRS</a>, to see how to specify
+additional global include directories.  The directories should be
+specified as &lsquo;<samp class="samp">-I</samp>&rsquo; flags to the compiler.  The additional include
+directories will be placed before the normal GNUstep and system include
+directories, and before any global include directories specified with
+<code class="code">ADDITIONAL_INCLUDE_DIRS</code>, so they will always be searched first.
+Replace the <strong class="strong">xxx</strong> with the name of the library as listed by the
+<code class="code">LIBRARY_NAME</code> variable.
+</p></dd></dl>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Example-Library-Makefile.html">Example Makefile</a>, Previous: <a href="library_002emake.html">Libraries (<samp class="file">library.make</samp>)</a>, Up: <a href="library_002emake.html">Libraries (<samp class="file">library.make</samp>)</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

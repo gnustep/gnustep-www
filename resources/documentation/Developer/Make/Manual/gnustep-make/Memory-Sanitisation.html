@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Memory Sanitisation (GNUstep Makefile Package)</title>
+
+<meta name="description" content="Memory Sanitisation (GNUstep Makefile Package)">
+<meta name="keywords" content="Memory Sanitisation (GNUstep Makefile Package)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Running-Make.html" rel="up" title="Running Make">
+<link href="Library-Types.html" rel="next" title="Library Types">
+<link href="Profile-Information.html" rel="prev" title="Profile Information">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Memory-Sanitisation">
+<div class="nav-panel">
+<p>
+Next: <a href="Library-Types.html" accesskey="n" rel="next">Static, Shared, and Dynamic Link Libraries</a>, Previous: <a href="Profile-Information.html" accesskey="p" rel="prev">Profile Information</a>, Up: <a href="Running-Make.html" accesskey="u" rel="up">Running Make</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Memory-Sanitisation-1"><span>3.3 Memory Sanitisation<a class="copiable-link" href="#Memory-Sanitisation-1"> &para;</a></span></h3>
+
+<p>Production code must not use memory sanitization tools, but during development
+and debugging these can be extremely useful, so the Makefile Package provides
+an option to tell the compiler to generate output for address and leak
+sanitization using https://github.com/google/sanitizers/wiki/addresssanitizer
+</p>
+<p>Unfortunately, AddressSanitizer/LeakSanitizer is not particularly portable and
+is available on a limited selection of hardware and operating systems, so
+turning it on in GNUstep-make may not actually work on your system.  It is
+however very good with modern GCC or Clang on the most popular platforms.
+</p>
+<p>The following command illustrates how to tell the Makefile Package to pass
+the appropriate flags to the compiler so that sanitization is put into the
+binary and so that the preprocessor can be used to change code behaviour when
+it is built for sanitization (-fsanitize=address and -DGNUSTEP_WITH_ASAN=1).
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">make asan=yes
+</pre></div>
+
+<p>You can get the same effect by setting an environment variable as follows:
+</p><div class="example smallexample">
+<pre class="example-preformatted">export GNUSTEP_WITH_ASAN=1
+</pre></div>
+
+<p>When you build libraries, frameworks, or bundles with sanitization turned on,
+you must also use ASAN to build any apps or tools which use them.  This
+is because the library/framework/bundle will have dependencies on the leak
+sanitization shared library, and those dependencies must be fulfilled when
+the app/tool is linked.
+</p>
+<p>The basic effect of sanitization is that, in the event of an address error
+(when the code attempts to access memory it shouldn&rsquo;t), the app/tool is
+immediately terminated with details of the problem printed to stderr, and
+in the event of memory leaks (detected at app/tool exit) a report of the
+locations of the leaks is printed to stderr.
+</p>
+<p>Beware that an app/tool built with ASAN maps a huge amount of virtual memory
+to help it detect memory violations in the code, and while this virtual memory
+usage does not require real memory, it does mean that processes monitoring the
+memory usage of your app/tool will give completely meaningless results.
+</p>
+<p>Beware also, that an app/tool built with ASAN does use considerably more real
+memory than normal, and its usage of memory continually grows, because it is
+keeping records of what the app/tool does with memory in order to be able to
+perform leak analysis and reporting when the app/tool finishes.
+If you have many apps/tools under test concurrently and for a long time, your
+system may run out of memory.
+</p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Library-Types.html">Static, Shared, and Dynamic Link Libraries</a>, Previous: <a href="Profile-Information.html">Profile Information</a>, Up: <a href="Running-Make.html">Running Make</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

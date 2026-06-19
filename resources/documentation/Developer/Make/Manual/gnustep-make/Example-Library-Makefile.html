@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Example Library Makefile (GNUstep Makefile Package)</title>
+
+<meta name="description" content="Example Library Makefile (GNUstep Makefile Package)">
+<meta name="keywords" content="Example Library Makefile (GNUstep Makefile Package)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="library_002emake.html" rel="up" title="library.make">
+<link href="library_002emake-variables.html" rel="prev" title="library.make variables">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Example-Library-Makefile">
+<div class="nav-panel">
+<p>
+Previous: <a href="library_002emake-variables.html" accesskey="p" rel="prev">Project Variables</a>, Up: <a href="library_002emake.html" accesskey="u" rel="up">Libraries (<samp class="file">library.make</samp>)</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Example-Makefile"><span>4.8.2 Example Makefile<a class="copiable-link" href="#Example-Makefile"> &para;</a></span></h4>
+
+<p>This example makefile illustrates two libraries, <samp class="file">libone</samp> and
+<samp class="file">libtwo</samp>, that are to be generated.
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">#
+# An example GNUmakefile
+#
+
+# Include the common variables defined by the Makefile Package
+include $(GNUSTEP_MAKEFILES)/common.make
+
+# Two libraries
+LIBRARY_NAME = libone libtwo
+
+#
+# The files for the libone library
+#
+# The Objective-C files to compile
+libone_OBJC_FILES = one.m draw.m
+
+# The C source files to be compiled
+libone_C_FILES = parse.c
+
+# The PostScript wrap source files to be compiled
+libone_PSWRAP_FILES = drawing.psw
+
+# The header files for the library
+libone_HEADER_FILES_DIR = ./one
+libone_HEADER_FILES_INSTALL_DIR = one
+libone_HEADER_FILES = one.h draw.h
+
+#
+# The files for the libtwo library
+#
+# The Objective-C files to compile
+libtwo_OBJC_FILES = two.m another.m test.m
+
+# The header files for the library
+libtwo_HEADER_FILES_DIR = ./two
+libtwo_HEADER_FILES_INSTALL_DIR = two
+libtwo_HEADER_FILES = two.h another.h test.h common.h
+
+# Option include to set any additional variables
+-include GNUmakefile.preamble
+
+# Include in the rules for making libraries
+include $(GNUSTEP_MAKEFILES)/library.make
+
+# Option include to define any additional rules
+-include GNUmakefile.postamble
+
+</pre></div>
+
+<p>Notice that the <samp class="file">libone</samp> library has Objective-C, C, and PostScript
+wrap files to be compiled; while, the <samp class="file">libtwo</samp> library only has
+some Objective-C files.
+</p>
+<p>The header files for the <samp class="file">libone</samp> library reside in the <samp class="file">one</samp>
+subdirectory from where the sources are located, and the header files
+will be installed into the <samp class="file">one</samp> subdirectory within
+<code class="code">GNUSTEP_HEADERS</code>.  Likewise the header files for the <samp class="file">libtwo</samp>
+library reside in the <samp class="file">two</samp> subdirectory from where the sources are
+located, and the header files will be installed into the <samp class="file">two</samp>
+subdirectory within <code class="code">GNUSTEP_HEADERS</code>.
+</p>
+</div>
+
+
+
+</body>
+</html>

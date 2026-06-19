@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Library Combination (GNUstep Makefile Package)</title>
+
+<meta name="description" content="Library Combination (GNUstep Makefile Package)">
+<meta name="keywords" content="Library Combination (GNUstep Makefile Package)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Common-Variables.html" rel="up" title="Common Variables">
+<link href="Overridable-Flags.html" rel="next" title="Overridable Flags">
+<link href="Platform-Information.html" rel="prev" title="Platform Information">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Library-Combination">
+<div class="nav-panel">
+<p>
+Next: <a href="Overridable-Flags.html" accesskey="n" rel="next">Overridable Flags</a>, Previous: <a href="Platform-Information.html" accesskey="p" rel="prev">Host and Target Platform Information</a>, Up: <a href="Common-Variables.html" accesskey="u" rel="up">Common Variables (<samp class="file">common.make</samp>)</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Library-Combination-1"><span>7.4 Library Combination<a class="copiable-link" href="#Library-Combination-1"> &para;</a></span></h3>
+
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-OBJC_005fRUNTIME_005fLIB"><span class="category-def">Variable: </span><span><strong class="def-name">OBJC_RUNTIME_LIB</strong><a class="copiable-link" href="#index-OBJC_005fRUNTIME_005fLIB"> &para;</a></span></dt>
+<dd><p><code class="code">OBJC_RUNTIME_LIB</code> is assigned the code that indicates the
+Objective-C Runtime library which compiled Objective-C programs will
+use; the four possible values are: &lsquo;<samp class="samp">ng</samp>&rsquo; for the GNUstep Runtime
+with latest language features turned on at acompile time, &lsquo;<samp class="samp">gnu</samp>&rsquo;
+for the GNU Runtime (or the GNUstep runtime with traditional
+language features compiled), &lsquo;<samp class="samp">nx</samp>&rsquo; for the NeXT Runtime,
+and &lsquo;<samp class="samp">sun</samp>&rsquo; for the Sun Microsystems Runtime.
+The Objective-C Runtime library can be changed
+to use a library other than the default with the &lsquo;<samp class="samp">library_combo</samp>&rsquo;
+make parameter, see <a class="ref" href="Running-Make.html">Running Make</a> for more details.  Read
+<a class="ref" href="#Library-Combination">Library Combination</a> for more information on how the Makefile
+Package handles different library combinations.  If a makefile must
+perform specific operations dependent upon the Objective-C Runtime
+library then this variable is the one to check.
+</p></dd></dl>
+
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-RUNTIME_005fVERSION"><span class="category-def">Variable: </span><span><strong class="def-name">RUNTIME_VERSION</strong><a class="copiable-link" href="#index-RUNTIME_005fVERSION"> &para;</a></span></dt>
+<dd><p><code class="code">RUNTIME_VERSION</code> is set to and allows you to override the Objective-C
+runtime ABI in use by the clang compiler. Generally, gnustep-make will provide
+a sane default for you.Please be aware that mixing different ABIs in the same
+binary is not generally supported. Possible values:
+</p>
+<dl class="table">
+<dt>&lsquo;<samp class="samp">gcc</samp>&rsquo;</dt>
+<dd><p>This is the classic ABI also implemented by GCC which does not support advanced
+features such as ARC or non-fragile instance variables.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">gnustep-1.8</samp>&rsquo;</dt>
+<dd><p>This is the first iteration of the GNUstep Objective-C ABI, which supports the
+advanced features while remaining compatible with the GCC ABI. Requires the
+GNUstep Objective-C runtime (libobjc2) 1.8 or later.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">gnustep-2.0</samp>&rsquo;</dt>
+<dd><p>This version breaks compatibility with the older runtime ABIs in order to 
+provide better introspection metadata, reduced memory usage and smaller 
+binaries. Requires the GNUstep Objective-C runtime (libobjc2) 2.0 or later.
+</p></dd>
+</dl>
+</dd></dl>
+
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-RUNTIME_005fDEFINE"><span class="category-def">Variable: </span><span><strong class="def-name">RUNTIME_DEFINE</strong><a class="copiable-link" href="#index-RUNTIME_005fDEFINE"> &para;</a></span></dt>
+<dd><p><code class="code">RUNTIME_DEFINE</code> is assigned a preprocessor flag that can be
+passed to the compiler which defines a macro based upon the
+Objective-C Runtime library that compiled Objective-C programs will
+use.  This macro is useful if the compiled program must execute
+different code based upon the Objective-C Runtime being used.  See
+<a class="ref" href="GNUmakefile_002epreamble.html">Global Variables (<samp class="file">GNUmakefile.preamble</samp>)</a> for an example on how to pass this
+preprocessor flag when compiling.  The four possible values are:
+&lsquo;<samp class="samp">-DGNUSTEP_RUNTIME=1</samp>&rsquo; for the GNUstep ObjectiveC-2 Runtime,
+&lsquo;<samp class="samp">-DGNU_RUNTIME=1</samp>&rsquo; for the GNU Runtime, &lsquo;<samp class="samp">-DNeXT_RUNTIME=1</samp>&rsquo;
+for the NeXT Runtime, and &lsquo;<samp class="samp">-DSun_RUNTIME=1</samp>&rsquo; for the Sun
+Microsystems Runtime.
+</p></dd></dl>
+
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-FOUNDATION_005fLIB"><span class="category-def">Variable: </span><span><strong class="def-name">FOUNDATION_LIB</strong><a class="copiable-link" href="#index-FOUNDATION_005fLIB"> &para;</a></span></dt>
+<dd><p><code class="code">FOUNDATION_LIB</code> is assigned the code that indicates the
+Foundation Kit library, as specified by the OpenStep specification,
+which compiled Objective-C programs will use; the four possible values
+are: &lsquo;<samp class="samp">gnu</samp>&rsquo; for the GNUstep Base Library, &lsquo;<samp class="samp">nx</samp>&rsquo; for the NeXT
+Foundation Kit Library, &lsquo;<samp class="samp">sun</samp>&rsquo; for the Sun Microsystems Foundation
+Kit Library, and &lsquo;<samp class="samp">fd</samp>&rsquo; for the libFoundation Library.  The
+Foundation Kit library can be changed to use a library other than the
+default with the &lsquo;<samp class="samp">library_combo</samp>&rsquo; make parameter, see <a class="ref" href="Running-Make.html">Running Make</a> for more details.  Read <a class="ref" href="#Library-Combination">Library Combination</a> for more
+information on how the Makefile Package handles different library
+combinations.  If a makefile must perform specific operations
+dependent upon the Foundation Kit library then this variable is the
+one to check.
+</p></dd></dl>
+
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-FND_005fDEFINE"><span class="category-def">Variable: </span><span><strong class="def-name">FND_DEFINE</strong><a class="copiable-link" href="#index-FND_005fDEFINE"> &para;</a></span></dt>
+<dd><p><code class="code">FND_DEFINE</code> is assigned a preprocessor flag that can be passed
+to the compiler which defines a macro based upon the Foundation Kit
+library, as specified by the OpenStep specification, which compiled
+Objective-C programs will use.  This macro is useful if the compiled
+program must execute different code based upon the Foundation Kit
+library being used.  See <a class="ref" href="GNUmakefile_002epreamble.html">Global Variables (<samp class="file">GNUmakefile.preamble</samp>)</a> for an example on
+how to pass this preprocessor flag when compiling.  The four possible
+values are: &lsquo;<samp class="samp">-DGNUSTEP_BASE_LIBRARY=1</samp>&rsquo; for the GNUstep Base
+Library, &lsquo;<samp class="samp">-DNeXT_Foundation_LIBRARY=1</samp>&rsquo; for the NeXT Foundation
+Kit Library, &lsquo;<samp class="samp">-DSun_Foundation_LIBRARY=1</samp>&rsquo; for the Sun
+Microsystems Foundation Kit Library, and
+&lsquo;<samp class="samp">-DLIB_FOUNDATION_LIBRARY=1</samp>&rsquo; for the libFoundation Library.
+</p></dd></dl>
+
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-GUI_005fLIB"><span class="category-def">Variable: </span><span><strong class="def-name">GUI_LIB</strong><a class="copiable-link" href="#index-GUI_005fLIB"> &para;</a></span></dt>
+<dd><p><code class="code">GUI_LIB</code> is assigned the code that indicates the Application Kit
+library, as specified by the OpenStep specification, which compiled
+Objective-C programs will use; the two possible values are: &lsquo;<samp class="samp">gnu</samp>&rsquo;
+for the GNUstep GUI Library and &lsquo;<samp class="samp">nx</samp>&rsquo; for the NeXT Application Kit
+Library.  The Application Kit library can be changed to use a library
+other than the default with the &lsquo;<samp class="samp">library_combo</samp>&rsquo; make parameter,
+see <a class="ref" href="Running-Make.html">Running Make</a> for more details.  Read <a class="ref" href="#Library-Combination">Library Combination</a> for more information on how the Makefile Package handles
+different library combinations.  If a makefile must perform specific
+operations dependent upon the Application Kit library then this
+variable is the one to check.
+</p></dd></dl>
+
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-GUI_005fDEFINE"><span class="category-def">Variable: </span><span><strong class="def-name">GUI_DEFINE</strong><a class="copiable-link" href="#index-GUI_005fDEFINE"> &para;</a></span></dt>
+<dd><p><code class="code">GUI_DEFINE</code> is assigned a preprocessor flag that can be passed
+to the compiler which defines a macro based upon the Application Kit
+library, as specified by the OpenStep specification, which compiled
+Objective-C programs will use.  This macro is useful if the compiled
+program must execute different code based upon the Application Kit
+library being used.  See <a class="ref" href="GNUmakefile_002epreamble.html">Global Variables (<samp class="file">GNUmakefile.preamble</samp>)</a> for an example on
+how to pass this preprocessor flag when compiling.  The two possible
+values are: &lsquo;<samp class="samp">-DGNUSTEP_GUI_LIBRARY=1</samp>&rsquo; for the GNUstep GUI Library
+and &lsquo;<samp class="samp">-DNeXT_Application_LIBRARY=1</samp>&rsquo; for the NeXT Application Kit
+Library.
+</p></dd></dl>
+
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-GUI_005fBACKEND_005fLIB"><span class="category-def">Variable: </span><span><strong class="def-name">GUI_BACKEND_LIB</strong><a class="copiable-link" href="#index-GUI_005fBACKEND_005fLIB"> &para;</a></span></dt>
+<dd><p><code class="code">GUI_BACKEND_LIB</code> is assigned the code that indicates the backend
+library which compiled Objective-C programs will use in conjunction
+with the GNUstep GUI Library.  The three possible values are:
+&lsquo;<samp class="samp">xdps</samp>&rsquo; for the GNUstep X/DPS GUI Backend Library, &lsquo;<samp class="samp">nsx</samp>&rsquo; for
+the NSKit GUI Backend Library, and &lsquo;<samp class="samp">w32</samp>&rsquo; for the MediaBook WIN32
+GUI Backend Library.  <code class="code">GUI_BACKEND_LIB</code> is only relevant when
+<code class="code">GUI_LIB</code> is set to &lsquo;<samp class="samp">gnu</samp>&rsquo;; otherwise, <code class="code">GUI_BACKEND_LIB</code>
+will be set to &lsquo;<samp class="samp">nil</samp>&rsquo; to indicate that there is no backend
+library.  <code class="code">GUI_BACKEND_LIB</code> can be changed to use a library other
+than the default with the &lsquo;<samp class="samp">library_combo</samp>&rsquo; make parameter, see
+<a class="ref" href="Running-Make.html">Running Make</a> for more details.  Read <a class="ref" href="#Library-Combination">Library Combination</a>
+for more information on how the Makefile Package handles different
+library combinations.  If a makefile must perform specific operations
+dependent upon the backend library then this variable is the one to
+check.
+</p></dd></dl>
+
+<dl class="first-defvr first-defvar-alias-first-defvr">
+<dt class="defvr defvar-alias-defvr" id="index-GUI_005fBACKEND_005fDEFINE"><span class="category-def">Variable: </span><span><strong class="def-name">GUI_BACKEND_DEFINE</strong><a class="copiable-link" href="#index-GUI_005fBACKEND_005fDEFINE"> &para;</a></span></dt>
+<dd><p><code class="code">GUI_BACKEND_DEFINE</code> is assigned a preprocessor flag that can be
+passed to the compiler which defines a macro based upon the backend
+library which compiled Objective-C programs will use in conjunction
+with the GNUstep GUI Library.  This macro is useful if the compiled
+program must execute different code based upon the backend library
+being used.  See <a class="ref" href="GNUmakefile_002epreamble.html">Global Variables (<samp class="file">GNUmakefile.preamble</samp>)</a> for an example on how to
+pass this preprocessor flag when compiling.  The three possible values
+are: &lsquo;<samp class="samp">-DXDPS_BACKEND_LIBRARY=1</samp>&rsquo; for the GNUstep X/DPS GUI Backend
+Library, &lsquo;<samp class="samp">-DNSX_BACKEND_LIBRARY=1</samp>&rsquo; for the NSKit GUI Backend
+Library, and &lsquo;<samp class="samp">-DW32_BACKEND_LIBRARY=1</samp>&rsquo; for the MediaBook WIN32
+GUI Backend Library.  <code class="code">GUI_BACKEND_DEFINE</code> is not defined if
+there is not backend library; i.e. <code class="code">GUI_BACKEND_LIB</code> is
+&lsquo;<samp class="samp">nil</samp>&rsquo;.
+</p></dd></dl>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Overridable-Flags.html">Overridable Flags</a>, Previous: <a href="Platform-Information.html">Host and Target Platform Information</a>, Up: <a href="Common-Variables.html">Common Variables (<samp class="file">common.make</samp>)</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

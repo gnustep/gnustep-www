@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Accessing Domain Locations (GNUstep Filesystem Hierarchy Document)</title>
+
+<meta name="description" content="Accessing Domain Locations (GNUstep Filesystem Hierarchy Document)">
+<meta name="keywords" content="Accessing Domain Locations (GNUstep Filesystem Hierarchy Document)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Structure-of-a-Domain.html" rel="up" title="Structure of a Domain">
+<link href="Applications.html" rel="next" title="Applications">
+<link href="The-GNUstep-Filesystem-Layout.html" rel="prev" title="The GNUstep Filesystem Layout">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Accessing-Domain-Locations">
+<div class="nav-panel">
+<p>
+Next: <a href="Applications.html" accesskey="n" rel="next">Applications</a>, Previous: <a href="The-GNUstep-Filesystem-Layout.html" accesskey="p" rel="prev">The GNUstep Filesystem Layout</a>, Up: <a href="Structure-of-a-Domain.html" accesskey="u" rel="up">Structure of a Domain</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Accessing-Domain-Locations-1"><span>6.2 Accessing Domain Locations<a class="copiable-link" href="#Accessing-Domain-Locations-1"> &para;</a></span></h3>
+
+<p>In order to install and run software that uses some resources, you
+need to be able to install the resources in the appropriate location,
+and your software needs to be able to locate these resources when it&rsquo;s
+running.
+</p>
+<p>Since domain locations can be mapped to arbitrary locations on disk,
+you must use the appropriate gnustep-make and gnustep-base facilities
+to install things in the right place and to find things at runtime.
+</p>
+<p>GNUstep-make creates makefile variables for all the domain locations.
+If you need to perform some custom installation for your software, you
+must use these variables to make sure your installation will work with
+all filesystem layouts.  For example, the <samp class="file">Applications</samp> location
+for the domain where the software will be installed is available as
+the <code class="code">GNUSTEP_APPS</code> variable.  You can also access the locations
+for specific domains by using the variables
+<code class="code">GNUSTEP_SYSTEM_APPS</code>, <code class="code">GNUSTEP_NETWORK_APPS</code>,
+<code class="code">GNUSTEP_LOCAL_APPS</code> and <code class="code">GNUSTEP_USER_APPS</code>.
+</p>
+<p>GNUstep-base provides you with the
+<code class="code">NSSearchPathForDirectoriesInDomains()</code> function that allows you
+to retrieve the domain locations at runtime.  You must lookup
+resources only via this function.  For example, the
+<samp class="file">Applications</samp> location can be found by using the
+<code class="code">NSApplicationDirectory</code> directory key, so you can use it in your
+software to iterate over all the <samp class="file">Applications</samp> directories in
+the various domains searching for an application.
+</p>
+<p>In general, all interesting domain locations have a set of variables
+defined in gnustep-make (such as <code class="code">GNUSTEP_APPS</code>,
+<code class="code">GNUSTEP_SYSTEM_APPS</code>, <code class="code">GNUSTEP_NETWORK_APPS</code>,
+<code class="code">GNUSTEP_LOCAL_APPS</code> and <code class="code">GNUSTEP_USER_APPS</code>) and a
+corresponding directory key in gnustep-base (such as
+<code class="code">NSApplicationDirectory</code>).
+</p>
+<p>When examining the various domain locations, we will explicitly
+mention the gnustep-make variables and the gnustep-base directory keys
+that can be used to access them.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Applications.html">Applications</a>, Previous: <a href="The-GNUstep-Filesystem-Layout.html">The GNUstep Filesystem Layout</a>, Up: <a href="Structure-of-a-Domain.html">Structure of a Domain</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>
