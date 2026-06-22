@@ -11,7 +11,12 @@
 # SYSTEM domain and we must tell autogsdoc to ignore LOCAL domain and other
 # non-system projects when generating cross references.
 
+# We need to install everything into one domain so that there is a
+# common root from which to calculate relative paths.
 export GNUSTEP_INSTALLATION_DOMAIN=SYSTEM
+
+# We don't want to include any external projects because links to those
+# would generate dead links on the website.
 export AGSDOC_LOCAL_PROJECTS=None
 export AGSDOC_PROJECTS="{}"
 
@@ -44,19 +49,30 @@ BUILDDIR=`pwd`
 
 set -e
 
+PROJECTS="tools-make libs-base libs-gui libs-back libs-renaissance libs-performance libs-steptalk libs-gdl2 libs-gsweb"
+
+for i in $PROJECTS
+do
+  cd $i
+  git pull
+  make -j install
+  cd $BUILDDIR
+done
+
 build() {
+  echo "#### Pass one with $1."
   if [ $iteration = 1 ]
   then
     echo "#### Pass one cleanup in" `pwd`
-    make uninstall
-    make clean
+    make $1 uninstall
+    make $1 clean
     echo "#### Pass one pull changes in" `pwd`
     git pull
     echo "#### Pass one build indexes in" `pwd`
-    AGSDOC_INDEXING=yes make -j$PAR doc=yes messages=yes install
+    AGSDOC_INDEXING=yes make -j$PAR $1 messages=yes install
   else
     echo "#### Pass two build html in" `pwd`
-    AGSDOC_INDEXING=no make -j$PAR doc=yes messages=yes install
+    AGSDOC_INDEXING=no make -j$PAR $1 messages=yes install
   fi
 }
 
@@ -88,10 +104,6 @@ do
     exit 1
   fi
   cd libs-base
-  if [ $iteration = 2 ]
-  then
-    make install
-  fi
   cd Documentation
   build
   cd $BUILDDIR
@@ -119,7 +131,7 @@ do
     exit 1
   fi
   cd libs-renaissance
-  build
+  build doc=only
   cd $BUILDDIR
 
   if [ ! -d libs-performance ]; then
@@ -127,7 +139,7 @@ do
     exit 1
   fi
   cd libs-performance
-  build
+  build doc=only
   cd $BUILDDIR
 
   if [ ! -d libs-steptalk ]; then
@@ -135,7 +147,7 @@ do
     exit 1
   fi
   cd libs-steptalk
-  build
+  build doc=yes
   cd $BUILDDIR
 
   if [ ! -d libs-gdl2 ]; then
@@ -143,15 +155,16 @@ do
     exit 1
   fi
   cd libs-gdl2
-  build
-  cd EOAccess
-  build
+  cd Documentation
+  build doc=only
+  cd ../EOAccess
+  build doc=only
   cd ../EOControl
-  build
+  build doc=only
   cd ../EOInterface
-  build
+  build doc=only
   cd ../Tools
-  build
+  build doc=only
   cd $BUILDDIR
 
   if [ ! -d libs-gsweb ]; then
@@ -159,11 +172,10 @@ do
     exit 1
   fi
   cd libs-gsweb
-  build
   cd GSWeb
-  build
+  build doc=yes
   cd ../GSWExtensions
-  build
+  build doc=yes
   cd $BUILDDIR
 done
 
