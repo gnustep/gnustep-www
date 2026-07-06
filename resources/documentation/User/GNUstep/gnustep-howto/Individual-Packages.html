@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Individual Packages (GNUstep HOWTO)</title>
+
+<meta name="description" content="Individual Packages (GNUstep HOWTO)">
+<meta name="keywords" content="Individual Packages (GNUstep HOWTO)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Core-Package.html" rel="up" title="Core Package">
+<link href="Alternate-Library-Setup.html" rel="prev" title="Alternate Library Setup">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Individual-Packages">
+<div class="nav-panel">
+<p>
+Previous: <a href="Alternate-Library-Setup.html" accesskey="p" rel="prev">Alternate Library Setup</a>, Up: <a href="Core-Package.html" accesskey="u" rel="up">Installing the Core Libraries</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Building-the-Package"><span>3.1.2 Building the Package<a class="copiable-link" href="#Building-the-Package"> &para;</a></span></h4>
+
+<p>To build the individual packages, use this familiar set of commands for
+each pacakge (add any additional options you decide upon):
+</p>
+<div class="example">
+<pre class="example-preformatted">./configure
+make
+make install
+</pre></div>
+
+<p>Start with the Makefile Package (gnustep-make). After installing
+gnustep-make you need to execute GNUstep&rsquo;s shell configuration script,
+as follows:
+</p>
+<div class="example">
+<pre class="example-preformatted"> . /usr/local/share/GNUstep/Makefiles/GNUstep.sh
+</pre></div>
+
+<p>before proceeding any further.
+</p>
+<p>NOTE for gcc 2.X or MinGW users: Now install gnustep-objc. Before building
+gnustep-objc, edit the <samp class="file">GNUmakefile</samp> and set the <var class="var">THREADING</var>
+variable to the thread library used on your system (usually its posix,
+but you can leave it at single if you don&rsquo;t need threads). At this point
+you should probably re-configure, make and install gnustep-make, so it
+can pick up on any threading information that gnustep-objc provides.
+</p>
+<p>Now install gnustep-base, gnustep-gui and finally gnustep-back.
+</p>
+<p>NOTE: If you are trying to install the packages without root permission,
+you may need to change one thing in the base library. Edit the file
+gnustep-base/Tools/gdomap.h to uncomment the last line and modify
+the specified port number to a port which you <em class="emph">know</em> is not in use on
+your network.  You should only do this if absolutely necessary since
+making this change will break communications with any systems where
+an identical change has not been made.  Also, the standard gdomap port
+is the one officially registered with IANA and is reserved for use by
+gdomap - it should only be changed if you can&rsquo;t get your system
+administrator to start the gdomap server using it.
+</p>
+</div>
+
+
+
+</body>
+</html>

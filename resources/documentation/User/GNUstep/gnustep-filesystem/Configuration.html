@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Configuration (GNUstep Filesystem Hierarchy Document)</title>
+
+<meta name="description" content="Configuration (GNUstep Filesystem Hierarchy Document)">
+<meta name="keywords" content="Configuration (GNUstep Filesystem Hierarchy Document)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Structure-of-a-Domain.html" rel="prev" title="Structure of a Domain">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="Configuration">
+<div class="nav-panel">
+<p>
+Previous: <a href="Structure-of-a-Domain.html" accesskey="p" rel="prev">Structure of a Domain</a>, Up: <a href="index.html" accesskey="u" rel="up">GNUstep Filesystem Hierarchy</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Configuration-1"><span>7 Configuration<a class="copiable-link" href="#Configuration-1"> &para;</a></span></h2>
+
+<p>GNUstep supports arbitrary filesystem layouts to map the locations in
+the various domains to directories on the filesystem.
+</p>
+<p>When you run gnustep-make&rsquo;s ./configure program you can use the
+&ndash;with-layout=xxx flag to select the filesystem layout that you prefer
+(choosing between the ones in the FilesystemLayouts directory, or
+creating your own in there!).
+</p>
+<p>For most users, this is all they need to know.
+</p>
+<p>In this section we&rsquo;ll go more into the details of how the filesystem
+layout system internally works; this is only useful if you need to do
+something advanced with it, typically because you have multiple
+GNUstep installations or you are trying to do some custom packaging of
+GNUstep.
+</p>
+<p>The filesystem layout is determined by the GNUstep configuration file
+(or if that is not present, by default values built into the GNUstep
+make and base packages when they were configured and built).
+</p>
+<p>The location of the GNUstep configuration file is built in to the make and
+base packages when they are configured using the &ndash;with-config-file option
+to the configure script.  The path specified must be an absolute one for
+the make package, but may also be a path relative to the location of the
+base library itsself (as dynamically linked into applications) for the
+base package.
+</p>
+<p>However, the location of the configuration file may also be specified
+using the GNUSTEP_CONFIG_FILE environment variable, overriding the value
+built in to the package, at any time when using the make package to build
+or install software.  Support for the environment variable may also
+be enabled for the make package when its configure script is run.
+</p>
+<p>The GNUSTEP_CONFIG_FILE environment variable is particularly useful if
+you have multiple installations and need to easily switch between
+them.
+</p>
+
+<ul class="mini-toc">
+<li><a href="File-Format.html" accesskey="1">File Format</a></li>
+<li><a href="Windows-_0028MINGW_0029.html" accesskey="2">Windows (MINGW)</a></li>
+</ul>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Previous: <a href="Structure-of-a-Domain.html">Structure of a Domain</a>, Up: <a href="index.html">GNUstep Filesystem Hierarchy</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+
+
+
+</body>
+</html>

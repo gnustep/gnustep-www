@@ -1,4 +1,4 @@
-This is ProgrammingManual.info, produced by makeinfo version 7.2 from
+This is ProgrammingManual.info, produced by makeinfo version 7.1.1 from
 manual.texi.
 
 INFO-DIR-SECTION Software libraries
@@ -350,13 +350,13 @@ is to copy an existing makefile and change it to suit your own project.
 The make utility will be used to build the Objective-C examples shown in
 this manual, and when an example can be compiled then the makefile will
 also be shown.  For a full description of the make utility see its
-documentation (../../Make/Manual/make_toc.html).
+documentation (../../Make/Manual/gnustep-make/index.html).
 
 1.4.3 A Word on the Graphical Environment
 -----------------------------------------
 
 The GNUstep GUI component is discussed elsewhere
-(../../Gui/ProgrammingManual/manual_toc.html), but a brief overview is
+(../../Gui/ProgrammingManual/AppKit/index.html), but a brief overview is
 useful here.  GNUstep GUI provides a collection of classes for
 developing graphical applications, including windows, controls (also
 known as widgets, and back-end components for event handling and other
@@ -390,8 +390,8 @@ libraries, etc., analogously to ‘/usr/local’ on a Unix system.  Network
 mounts shared files in a networked environment.  Users usually exists as
 ‘$HOME/GNUstep’ and holds preferences files and personal application
 data.  There is further documentation
-(../../../User/GNUstep/filesystem_toc.html) available on the complete
-directory layout.
+(../../../User/GNUstep/gnustep-filesystem/index.html) available on the
+complete directory layout.
 
 Usually, on a Unix-type system, the GNUstep installation will be found
 under ‘/usr/lib/GNUstep’.
@@ -406,6 +406,7 @@ demonstrate a number of object-oriented features of Objective-C, and
 also demonstrates the use of make to compile an Objective-C program.
 
   1. Create a new project directory to hold your project.
+
 
   2. Create the following Objective-C source code using your favourite
      text editor and save it in the project directory with the filename
@@ -452,6 +453,7 @@ also demonstrates the use of make to compile an Objective-C program.
      the program does.  The program is an example of a (class) method
      responding to a message.  Can you see how it works?
 
+
      A message is sent to the ‘Test’ class as an argument to ‘printf()’,
      requesting the string value of that class.  The ‘Test’ class
      performs its ‘classStringValue’ method in response to this message
@@ -459,7 +461,9 @@ also demonstrates the use of make to compile an Objective-C program.
      in this program since a class method does not require an instance
      of a class in order to respond to a message.
 
+
      You will learn more about class methods in the next chapter.
+
 
   3. Now create the makefile, again using your favourite text editor,
      and save it in the same project directory with the filename
@@ -478,9 +482,11 @@ also demonstrates the use of make to compile an Objective-C program.
      copy and modify this makefile for later projects you may have: just
      change the tool name and list the new source files.
 
+
      The two 'include' lines are just a way of keeping your makefile
      simple, by including two 'ready-made' makefiles that someone else
      created.
+
 
   4. Before you can execute this makefile you must first set your
      GNUstep environment variables.  Among other things this defines the
@@ -496,10 +502,11 @@ also demonstrates the use of make to compile an Objective-C program.
 
      On most Unix systems, GNUstep is installed in ‘/usr/lib/GNUstep’.
      (Directory layout documentation
-     (../../../User/GNUstep/filesystem_toc.html).)
+     (../../../User/GNUstep/gnustep-filesystem/index.html).)
 
   5. You can now compile the project using make.  At the system command
      prompt, change to the project directory and enter the make command.
+
 
   6. Run the program (on Unix enter ./obj/LogTest at the command
      prompt).  The message "This is the string value of the Test class"
@@ -1102,6 +1109,7 @@ a return value as illustrated below:
      gprschannel = [NSString stringWithFormat: @"The GPRS channel is %d",
                      qos];
 
+
 The example will produce an ‘NSString’ called ‘gprsChannel’ holding the
 string "The GPRS channel is 5".
 
@@ -1260,6 +1268,7 @@ reads ‘@"/home/Brainstorm/test"’:
        RELEASE(pool);
        return 0;
      }
+
 
 
 File: ProgrammingManual.info,  Node: Objects,  Next: Classes,  Prev: Objective-C,  Up: Top
@@ -4012,6 +4021,7 @@ reports:
 
      SUMMARY: AddressSanitizer: N byte(s) leaked in N allocation(s).
 
+
 The above example is the approximate format for a program named a.out
 built by compiling the source file a.m and shows that the leaked memory
 was allocated by a call to malloc() at line 7 column 19 in a.m
@@ -4956,7 +4966,9 @@ will wait for the remote process to return.
      'asynchronous' messaging).  The protocol declaration for the
      receiving method would look something like this:
 
+
      ‘- (oneway void)noWaitForReply;’
+
 
    • The in, out and inout qualifiers can be used with pointer arguments
      to control the direction in which an argument is passed.  The
@@ -4983,7 +4995,7 @@ will wait for the remote process to return.
           - changeValue: (inout int *)number;
 
      Passing of arguments by reference is very restricted in
-     Objective-C. it applies only to pointers to C data types, not to
+     Objective-C.  it applies only to pointers to C data types, not to
      objects, and except for the special case of a pointer to a nul
      terminated C string (char*) the pointer is assumed to refer to a
      single data item of the specified type.
@@ -5005,8 +5017,10 @@ will wait for the remote process to return.
            */
           - updateBuffer: (inout char *)str;
 
+
    • The bycopy and byref qualifiers can be used in a protocol when the
      argument or return type is an object.
+
 
      An object is normally passed by reference and received in the
      remote process as a proxy.  When an object is passed by copy, then
@@ -5029,6 +5043,7 @@ will wait for the remote process to return.
      rely on these defaults being adopted and should explicitly state
      the qualifier in the protocol.
 
+
      The bycopy qualifier can also be used in conjunction with the out
      qualifier, to indicate that an object will be passed out of the
      remote process by copy rather than by proxy (no need to send the
@@ -5045,6 +5060,7 @@ will wait for the remote process to return.
      will also be ignored if the remote process does not have the class
      of the object in its address space, since an object's instance
      variables are accessed through the object's methods.
+
 
      When a copy of an object is sent to a remote process, only the
      object's instance variables are sent and received (an object's
@@ -5094,6 +5110,7 @@ There are two situations to consider.
      will happen if the remote process is busy, has hung, or if there is
      a problem with the network.  The best way to handle the exception
      is to close the connection to the remote process.
+
 
    • An exception is raised in the remote process while the remote
      process is executing a method.
@@ -6042,6 +6059,7 @@ objects: Distributed Objects, a lighter weight approach is to create
        [[NSRunLoop currentRunLoop] run];
      }
 
+
 8.12 GNUstep Additions
 ======================
 
@@ -6604,6 +6622,7 @@ F.1.1 Makefile Example
      Vehicle.o: Truck.h Vehicle.h Vehicle.m
      main.o: Station.h Vehicle.h
 
+
 F.1.2 Makefile Structure
 ------------------------
 
@@ -6793,20 +6812,20 @@ Concept Index
 * distributed objects, client code <1>:  Distributed Objects.
                                                              (line  156)
 * distributed objects, error checking:   Distributed Objects.
-                                                             (line 1031)
+                                                             (line 1037)
 * distributed objects, example (no error checking): Distributed Objects.
                                                              (line  427)
 * distributed objects, using a protocol: Distributed Objects.
                                                              (line  265)
 * error checking, distributed objects:   Distributed Objects.
-                                                             (line 1031)
+                                                             (line 1037)
 * exception facilities:                  Exception Handling. (line    6)
 * exception handling, compared with Java: Exception Handling.
                                                              (line  499)
 * exceptions:                            Exception Handling. (line   37)
 * filesystem layout:                     Introduction.       (line  315)
 * forward invocation, distributed objects: Distributed Objects.
-                                                             (line 1013)
+                                                             (line 1019)
 * forwarding:                            Advanced Messaging. (line  221)
 * frameworks:                            Bundles and Frameworks.
                                                              (line    6)
@@ -6846,7 +6865,7 @@ Concept Index
 * memory management, retain count:       Objects.            (line  192)
 * memory sanitisation facilities:        Exception Handling. (line    6)
 * message forwarding, distributed objects: Distributed Objects.
-                                                             (line 1013)
+                                                             (line 1019)
 * messages:                              Objective-C.        (line  116)
 * messaging, advanced techniques:        Advanced Messaging. (line    6)
 * naming constraints:                    Objective-C.        (line  500)
@@ -6919,23 +6938,24 @@ Concept Index
 * your first Objective-C program:        Introduction.       (line  334)
 * Zones:                                 Objects.            (line   71)
 
+
 
 Tag Table:
-Node: Top908
-Node: Introduction2967
-Node: Objective-C23219
-Node: Objects52586
-Node: Classes89967
-Node: Advanced Messaging124417
-Node: Exception Handling140378
-Node: Distributed Objects170640
-Node: Base Library211038
-Node: GSDoc256232
-Node: Bundles and Frameworks262316
-Node: Objective-C Java and C++262556
-Node: Java and Guile269997
-Node: Compliance to Standards270231
-Node: Make275021
+Node: Top910
+Node: Introduction2969
+Node: Objective-C23260
+Node: Objects52629
+Node: Classes90010
+Node: Advanced Messaging124460
+Node: Exception Handling140421
+Node: Distributed Objects170684
+Node: Base Library211090
+Node: GSDoc256285
+Node: Bundles and Frameworks262369
+Node: Objective-C Java and C++262609
+Node: Java and Guile270050
+Node: Compliance to Standards270284
+Node: Make275074
 
 End Tag Table
 

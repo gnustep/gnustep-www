@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>native-library.make (GNUstep Makefile Package)</title>
+
+<meta name="description" content="native-library.make (GNUstep Makefile Package)">
+<meta name="keywords" content="native-library.make (GNUstep Makefile Package)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Project-Types.html" rel="up" title="Project Types">
+<link href="nsis_002emake.html" rel="next" title="nsis.make">
+<link href="library_002emake.html" rel="prev" title="library.make">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="native_002dlibrary_002emake">
+<div class="nav-panel">
+<p>
+Next: <a href="nsis_002emake.html" accesskey="n" rel="next">NSIS Installer (<samp class="file">nsis.make</samp>)</a>, Previous: <a href="library_002emake.html" accesskey="p" rel="prev">Libraries (<samp class="file">library.make</samp>)</a>, Up: <a href="Project-Types.html" accesskey="u" rel="up">Project Types</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Native-Library-_0028native_002dlibrary_002emake_0029"><span>4.9 Native Library (<samp class="file">native-library.make</samp>)<a class="copiable-link" href="#Native-Library-_0028native_002dlibrary_002emake_0029"> &para;</a></span></h3>
+
+<p>A &quot;native library&quot; is a project which is to be built as a shared
+library on most targets and as a framework on Darwin.  (Currently
+this is only the case for apple-apple-apple.)  In other
+words, it is to be built as the most appropriate native equivalent
+of a traditional shared library (see <a class="ref" href="library_002emake.html">Libraries (<samp class="file">library.make</samp>)</a> and
+<a class="ref" href="framework_002emake.html">Frameworks (<samp class="file">framework.make</samp>)</a>).
+</p>
+<dl class="first-defvr">
+<dt class="defvr" id="index-NATIVE_005fLIBRARY_005fNAME"><span class="category-def">Native Library project: </span><span><strong class="def-name">NATIVE_LIBRARY_NAME</strong><a class="copiable-link" href="#index-NATIVE_005fLIBRARY_005fNAME"> &para;</a></span></dt>
+<dd><p><code class="code">NATIVE_LIBRARY_NAME</code> should be the name of the native library,
+without the &rsquo;lib&rsquo;.  All the other variables are the same as
+the ones used in libraries and frameworks.
+</p></dd></dl>
+
+<p>To compile something against a native library, you can use
+<code class="code">ADDITIONAL_NATIVE_LIBS += MyLibrary</code>
+This will be converted into -lMyLibrary link flag on for most
+targets and into -framework MyLibrary link flag for
+apple-apple-apple.
+</p>
+<p>To add the corresponding flags, you can use
+<code class="code">ADDITIONAL_NATIVE_LIB_DIRS += ../MyPath</code>
+This will be converted into -L../MyPath/$(GNUSTEP_OBJ_DIR) flag 
+on for most targets and into -F../MyPath flag for apple-apple-apple.
+</p>
+</div>
+
+
+
+</body>
+</html>

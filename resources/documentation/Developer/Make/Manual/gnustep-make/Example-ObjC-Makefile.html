@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Example ObjC Makefile (GNUstep Makefile Package)</title>
+
+<meta name="description" content="Example ObjC Makefile (GNUstep Makefile Package)">
+<meta name="keywords" content="Example ObjC Makefile (GNUstep Makefile Package)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="objc_002emake.html" rel="up" title="objc.make">
+<link href="objc_002emake-variables.html" rel="prev" title="objc.make variables">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Example-ObjC-Makefile">
+<div class="nav-panel">
+<p>
+Previous: <a href="objc_002emake-variables.html" accesskey="p" rel="prev">Project Variables</a>, Up: <a href="objc_002emake.html" accesskey="u" rel="up">Objective-C Programs (<samp class="file">objc.make</samp>)</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Example-Makefile-1"><span>4.11.2 Example Makefile<a class="copiable-link" href="#Example-Makefile-1"> &para;</a></span></h4>
+
+<p>This makefile illustrates two Objective-C programs, <samp class="file">simple</samp> and
+<samp class="file">list</samp> that are to be generated.
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">#
+# An example GNUmakefile
+#
+
+# Include the common variables defined by the Makefile Package
+include $(GNUSTEP_MAKEFILES)/common.make
+
+# Build a simple Objective-C program
+OBJC_PROGRAM_NAME = simple list
+
+# Have the Objective-C runtime macro be defined for simple program
+simple_CPPFLAGS = $(RUNTIME_DEFINE)
+
+# The Objective-C files to compile for simple program
+simple_OBJC_FILES = simple.m
+
+# The Objective-C files to compile for list program
+list_OBJC_FILES = list.m linkedlist.m
+
+# The C files to compile for list program
+list_C_FILES = sort.c
+
+# Option include to set any additional variables
+-include GNUmakefile.preamble
+
+# Include in the rules for making Objective-C programs
+include $(GNUSTEP_MAKEFILES)/objc.make
+
+# Option include to define any additional rules
+-include GNUmakefile.postamble
+</pre></div>
+
+<p>The <samp class="file">simple</samp> Objective-C program only consists of single
+Objective-C file; while, the <samp class="file">list</samp> Objective-C program consists of
+two Objective-C files and one C file.  The <samp class="file">simple</samp> Objective-C
+program use the variable defined by the Makefile Package,
+<code class="code">RUNTIME_DEFINE</code>, to define a macro based upon the Objective-C
+Runtime library; presumably <samp class="file">simple.m</samp> has code which is dependent
+upon the Objective-C Runtime.
+</p>
+</div>
+
+
+
+</body>
+</html>

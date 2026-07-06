@@ -10,7 +10,7 @@
     <div class="content-bar">
       <div class="content-bar-top">
         <div class="content-bar-top-body">
-          <div class="content-bar-top-body-title">Base</div><br />
+          <div class="content-bar-top-body-title"><a href="Base.html">Base</a></div><br />
           <a href="#nav-bar-classes">Classes</a><br />
           <a href="#nav-bar-protocols">Protocols</a><br />
           <a href="#nav-bar-constants">Constants</a><br />
@@ -1107,7 +1107,6 @@
             <a rel="gsdoc" href="Functions.html#function$NSLogPageSize">NSLogPageSize</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSLog_printf_handler">NSLog_printf_handler</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSLogv">NSLogv</a><br />
-            <a rel="gsdoc" href="Functions.html#function$NSMakeCollectable">NSMakeCollectable</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakePoint">NSMakePoint</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakeRange">NSMakeRange</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakeRect">NSMakeRect</a><br />
@@ -1731,7 +1730,6 @@
               <li><a rel="gsdoc" href="Functions.html#function$NSLogPageSize">NSLogPageSize</a></li>
               <li><a rel="gsdoc" href="Functions.html#function$NSLog_printf_handler">NSLog_printf_handler</a></li>
               <li><a rel="gsdoc" href="Functions.html#function$NSLogv">NSLogv</a></li>
-              <li><a rel="gsdoc" href="Functions.html#function$NSMakeCollectable">NSMakeCollectable</a></li>
               <li><a rel="gsdoc" href="Functions.html#function$NSMakePoint">NSMakePoint</a></li>
               <li><a rel="gsdoc" href="Functions.html#function$NSMakeRange">NSMakeRange</a></li>
               <li><a rel="gsdoc" href="Functions.html#function$NSMakeRect">NSMakeRect</a></li>
@@ -3373,11 +3371,18 @@
         <div class="desc">
           
           Used internally by
-          <a rel="gsdoc" href="#function$NSAllocateObject">
-            NSAllocateObject()
+          <a rel="gsdoc" href="NSObject.html#method$NSObject-init">
+            [NSObject -init]
           </a>
 
-          ... you probably don&apos;t need this.
+          and
+          <a rel="gsdoc" href="#function$NSCopyObject">
+            NSCopyObject()
+          </a>
+
+          . <br /> You don&apos;t need this unless you create/initialise
+          an object by some custom method which avoids calling
+          either of those.
         
         </div>
         <hr class="method-separator">
@@ -3629,12 +3634,13 @@
 <br />
         <div class="desc">
           
-          Used internally by
-          <a rel="gsdoc" href="#function$NSDeallocateObject">
-            NSDeallocateObject()
+          Used internally by the
+          <a rel="gsdoc" href="NSObject.html#method$NSObject-dealloc">
+            [NSObject -dealloc]
           </a>
 
-          ... you probably don&apos;t need this.
+          method. <br /> You don&apos;t need this unless you destroy
+          an object by some custom method which avoids calling that.
         
         </div>
         <hr class="method-separator">
@@ -5568,7 +5574,13 @@
           cause the config file to be read earlier. <br /> If you
           want to prevent the user specific config file from being
           read, you must set the GNUSTEP_USER_CONFIG_FILE value
-          in the dictionary to be an empty string.
+          in the dictionary to be an empty string. <br /> Paths with
+          a leading./ or../ in the config are interpreted relative to
+          the config file location: if you are supplying a
+          dictionary to be used instead of the config file
+          (so there is no path to the config file), you must either
+          use absolute paths, or expect them to be relative to the
+          program being executed.
         
         </div>
         <hr class="method-separator">
@@ -6336,17 +6348,6 @@
           
           Return log base 2 of the number of bytes in a memory
           page.
-        
-        </div>
-        <hr class="method-separator">
-        <h3><a name="function$NSMakeCollectable">NSMakeCollectable</a></h3>
-        id NSMakeCollectable(const void* <b>cf</b>);<br />
-        <div class="availability">
-<b>Availability:</b> OpenStep</div>
-<br />
-        <div class="desc">
-          
-          <em>Description forthcoming.</em>
         
         </div>
         <hr class="method-separator">

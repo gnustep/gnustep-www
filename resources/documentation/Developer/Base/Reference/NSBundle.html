@@ -10,7 +10,7 @@
     <div class="content-bar">
       <div class="content-bar-top">
         <div class="content-bar-top-body">
-          <div class="content-bar-top-body-title">Base</div><br />
+          <div class="content-bar-top-body-title"><a href="Base.html">Base</a></div><br />
           <a href="#nav-bar-classes">Classes</a><br />
           <a href="#nav-bar-protocols">Protocols</a><br />
           <a href="#nav-bar-constants">Constants</a><br />
@@ -1107,7 +1107,6 @@
             <a rel="gsdoc" href="Functions.html#function$NSLogPageSize">NSLogPageSize</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSLog_printf_handler">NSLog_printf_handler</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSLogv">NSLogv</a><br />
-            <a rel="gsdoc" href="Functions.html#function$NSMakeCollectable">NSMakeCollectable</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakePoint">NSMakePoint</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakeRange">NSMakeRange</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakeRect">NSMakeRect</a><br />
@@ -1494,7 +1493,7 @@
           <dd>
           </dd>
         </dl>
-        <p><b>Date:</b> Generated at 2026-02-09</p>
+        <p><b>Date:</b> Generated at 2026-06-22</p>
         <p><b>Copyright:</b> (C) 
       1995, 1997, 1999, 2001, 2002 Free Software Foundation, Inc.
     </p>
@@ -1517,31 +1516,31 @@
         Software documentation for the NSBundle class
       </a></h1>
         <h2 class="class"><a name="class$NSBundle">NSBundle</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
-<svg width="108pt" height="116pt"
- viewBox="0.00 0.00 108.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="132pt" height="116pt"
+ viewBox="0.00 0.00 132.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
 <title>class_NSBundle</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-112 103.75,-112 103.75,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 128,-112 128,4 -4,4"/>
 <!-- NSObject -->
 <g id="node1" class="node figure_super">
 <title>NSObject</title>
 <g id="a_node1"><a xlink:href="NSObject.html#class$NSObject" xlink:title="NSObject">
-<polygon fill="lightgrey" stroke="black" points="97.12,-108 2.62,-108 2.62,-72 97.12,-72 97.12,-108"/>
-<text xml:space="preserve" text-anchor="middle" x="49.88" y="-80.7" font-family="Times,serif" font-size="24.00">NSObject</text>
+<polygon fill="lightgrey" stroke="black" points="121,-108 3,-108 3,-72 121,-72 121,-108"/>
+<text text-anchor="middle" x="62" y="-83.8" font-family="Times,serif" font-size="24.00">NSObject</text>
 </a>
 </g>
 </g>
 <!-- NSBundle -->
 <g id="node2" class="node figure_class">
 <title>NSBundle</title>
-<polygon fill="lightgrey" stroke="black" points="99.75,-36 0,-36 0,0 99.75,0 99.75,-36"/>
-<text xml:space="preserve" text-anchor="middle" x="49.88" y="-8.7" font-family="Times,serif" font-size="24.00">NSBundle</text>
+<polygon fill="lightgrey" stroke="black" points="124,-36 0,-36 0,0 124,0 124,-36"/>
+<text text-anchor="middle" x="62" y="-11.8" font-family="Times,serif" font-size="24.00">NSBundle</text>
 </g>
 <!-- NSObject&#45;&gt;NSBundle -->
 <g id="edge1" class="edge">
 <title>NSObject&#45;&gt;NSBundle</title>
-<path fill="none" stroke="black" d="M49.88,-71.7C49.88,-64.41 49.88,-55.73 49.88,-47.54"/>
-<polygon fill="black" stroke="black" points="53.38,-47.62 49.88,-37.62 46.38,-47.62 53.38,-47.62"/>
+<path fill="none" stroke="black" d="M62,-71.7C62,-63.98 62,-54.71 62,-46.11"/>
+<polygon fill="black" stroke="black" points="65.5,-46.1 62,-36.1 58.5,-46.1 65.5,-46.1"/>
 </g>
 </g>
 </svg>
@@ -1847,13 +1846,20 @@
 
               Return the bundle containing the resources for the
               executable. If the executable is an
-              application, this is the main application
-              bundle (the xxx.app directory); if the executable
-              is a tool, this is a bundle &apos;naturally&apos; associated
-              with the tool: if the tool executable is
-              xxx/Tools/ix86/linux-gnu/gnu-gnu-gnu/Control
-              then the tool&apos;s main bundle directory is
-              xxx/Tools/Resources/Control.
+              application (executable and associated
+              resources treated as a single unit), this is
+              the Resources subdirectory within the main
+              application bundle (the xxx.app directory);
+              if the executable is a tool, this is a bundle
+              &apos;naturally&apos; associated with the tool: the
+              GNUSTEP_*_LIBRARY/Tools/Resources/{executablename}
+              directory where &apos;*&apos; is the domain in which the
+              executable is located. <br /> For instance, in
+              the standard GNUstep filesystem layout, if the tool
+              is installed in the local domain (GNUSTEP_LOCAL_TOOLS
+              is /usr/GNUstep/Local/Tools, and GNUSTEP_LOCAL_LIBRARY
+              is /usr/GNUstep/Local/Library), if the executable is
+              /usr/GNUstep/Local/Tools/ix86/linux-gnu/gnu-gnu-gnu/Control (/usr/GNUstep/Local/Tools/Control when using a &apos;flattened&apos; layout) then the tool&apos;s main bundle directory is installed as /usr/GNUstep/Local/Library/Tools/Resources/Control. <br /> Of course the resources may also be in the SYSTEM, NETWORK or USER areas of the filesystem. <br /> For alternative file system layouts see the gnustep-make documentation. <br /> For configurable overrides of the filesystem layout, see the &apos;GNUstep Configuration File&apos; section in the gnustep-base documentation.
                     </p>
         <p>
           
@@ -1862,8 +1868,8 @@
         <p>
 
               NB: traditionally tools didn&apos;t have a main bundle --
-              this is a recent GNUstep extension, but it&apos;s quite
-              nice and it&apos;s here to stay.
+              this is a GNUstep extension, but it&apos;s quite nice and
+              it&apos;s here to stay.
                     </p>
         <p>
           
@@ -2243,7 +2249,10 @@
         <div class="desc">
           
             Returns the info property list associated with the
-            bundle.
+            bundle. <br /> This is read from the
+            &apos;Info-gnustep.plist&apos; file (or
+            &apos;Info.plist&apos; if that does not exist) in this
+            bundle, otherwise it is an empty dictionary.
           
         </div>
         <hr class="method-separator">
@@ -2266,17 +2275,17 @@ This is a designated initialiser for the class.<br />
             similar in that it accepts a relative
             <var>path</var>, but GNUstep converts it to an
             absolute <var>path</var> by referring to the
-            current working directory when the is initialised,
-            so an absolute <var>path</var> is then used and a
-            warning message is printed. <br /> On MacOS-X using
-            a bundle initialised with a relative <var>path</var> will
-            cause a crash if the current working directory is
-            changed between the point at which the bundle was
-            initialised and that at which it is used.
-            <br /> If <var>path</var> is <code>nil</code> or
-            can&apos;t be accessed, initWithPath: deallocates the
+            current working directory when the bundle is
+            initialised, so an absolute <var>path</var> is
+            then used and a warning message is printed. <br /> On
+            MacOS-X using a bundle initialised with a relative
+            <var>path</var> will cause a crash if the current
+            working directory is changed between the point at
+            which the bundle was initialised and that at which it
+            is used. <br /> If <var>path</var> is <code>nil</code>
+            or can&apos;t be accessed, initWithPath: deallocates the
             receiver and returns <code>nil</code>. <br /> If a
-            bundle for that <var>path</var> already existed, it
+            bundle for that <var>path</var> already exists, it
             is returned in place of the receiver (and the receiver
             is deallocated). <br /> If the
             <a rel="gsdoc" href="#method$NSBundle-bundleIdentifier">

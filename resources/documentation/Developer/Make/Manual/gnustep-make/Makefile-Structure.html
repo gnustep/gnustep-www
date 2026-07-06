@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Makefile Structure (GNUstep Makefile Package)</title>
+
+<meta name="description" content="Makefile Structure (GNUstep Makefile Package)">
+<meta name="keywords" content="Makefile Structure (GNUstep Makefile Package)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Running-Make.html" rel="next" title="Running Make">
+<link href="Makefile-Introduction.html" rel="prev" title="Makefile Introduction">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="Makefile-Structure">
+<div class="nav-panel">
+<p>
+Next: <a href="Running-Make.html" accesskey="n" rel="next">Running Make</a>, Previous: <a href="Makefile-Introduction.html" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html" accesskey="u" rel="up">Makefile Package</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Structure-of-a-Makefile"><span>2 Structure of a Makefile<a class="copiable-link" href="#Structure-of-a-Makefile"> &para;</a></span></h2>
+
+<p>Here is an example makefile (named GNUmakefile to emphasis the fact that it relies on special features of the GNU make program).
+</p>
+<div class="example smallexample">
+<pre class="example-preformatted">#
+# An example GNUmakefile
+#
+
+# Include the common variables defined by the Makefile Package
+include $(GNUSTEP_MAKEFILES)/common.make
+
+# Build a simple Objective-C program
+TOOL_NAME = simple
+
+# The Objective-C files to compile
+simple_OBJC_FILES = simple.m
+
+-include GNUmakefile.preamble
+
+# Include in the rules for making GNUstep command-line programs
+include $(GNUSTEP_MAKEFILES)/tool.make
+
+-include GNUmakefile.postamble
+</pre></div>
+
+<p>This is all that is necessary to define the project.
+</p>
+
+</div>
+
+
+
+</body>
+</html>

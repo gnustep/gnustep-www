@@ -10,7 +10,7 @@
     <div class="content-bar">
       <div class="content-bar-top">
         <div class="content-bar-top-body">
-          <div class="content-bar-top-body-title">Base</div><br />
+          <div class="content-bar-top-body-title"><a href="Base.html">Base</a></div><br />
           <a href="#nav-bar-classes">Classes</a><br />
           <a href="#nav-bar-protocols">Protocols</a><br />
           <a href="#nav-bar-constants">Constants</a><br />
@@ -1107,7 +1107,6 @@
             <a rel="gsdoc" href="Functions.html#function$NSLogPageSize">NSLogPageSize</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSLog_printf_handler">NSLog_printf_handler</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSLogv">NSLogv</a><br />
-            <a rel="gsdoc" href="Functions.html#function$NSMakeCollectable">NSMakeCollectable</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakePoint">NSMakePoint</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakeRange">NSMakeRange</a><br />
             <a rel="gsdoc" href="Functions.html#function$NSMakeRect">NSMakeRect</a><br />
@@ -1497,7 +1496,7 @@
           <dd>
           </dd>
         </dl>
-        <p><b>Date:</b> Generated at 2026-02-09</p>
+        <p><b>Date:</b> Generated at 2026-06-22</p>
         <p><b>Copyright:</b> (C) 1996-2018 Free Software Foundation, Inc.</p>
         <div>
           <hr class="section-separator">
@@ -1531,31 +1530,31 @@
         Software documentation for the NSThread class
       </a></h1>
         <h2 class="class"><a name="class$NSThread">NSThread</a> : <a rel="gsdoc" href="NSObject.html#class$NSObject">NSObject</a></h2>
-<svg width="107pt" height="116pt"
- viewBox="0.00 0.00 107.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="132pt" height="116pt"
+ viewBox="0.00 0.00 132.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
 <title>class_NSThread</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-112 103,-112 103,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 128,-112 128,4 -4,4"/>
 <!-- NSObject -->
 <g id="node1" class="node figure_super">
 <title>NSObject</title>
 <g id="a_node1"><a xlink:href="NSObject.html#class$NSObject" xlink:title="NSObject">
-<polygon fill="lightgrey" stroke="black" points="96.75,-108 2.25,-108 2.25,-72 96.75,-72 96.75,-108"/>
-<text xml:space="preserve" text-anchor="middle" x="49.5" y="-80.7" font-family="Times,serif" font-size="24.00">NSObject</text>
+<polygon fill="lightgrey" stroke="black" points="121,-108 3,-108 3,-72 121,-72 121,-108"/>
+<text text-anchor="middle" x="62" y="-83.8" font-family="Times,serif" font-size="24.00">NSObject</text>
 </a>
 </g>
 </g>
 <!-- NSThread -->
 <g id="node2" class="node figure_class">
 <title>NSThread</title>
-<polygon fill="lightgrey" stroke="black" points="99,-36 0,-36 0,0 99,0 99,-36"/>
-<text xml:space="preserve" text-anchor="middle" x="49.5" y="-8.7" font-family="Times,serif" font-size="24.00">NSThread</text>
+<polygon fill="lightgrey" stroke="black" points="124,-36 0,-36 0,0 124,0 124,-36"/>
+<text text-anchor="middle" x="62" y="-11.8" font-family="Times,serif" font-size="24.00">NSThread</text>
 </g>
 <!-- NSObject&#45;&gt;NSThread -->
 <g id="edge1" class="edge">
 <title>NSObject&#45;&gt;NSThread</title>
-<path fill="none" stroke="black" d="M49.5,-71.7C49.5,-64.41 49.5,-55.73 49.5,-47.54"/>
-<polygon fill="black" stroke="black" points="53,-47.62 49.5,-37.62 46,-47.62 53,-47.62"/>
+<path fill="none" stroke="black" d="M62,-71.7C62,-63.98 62,-54.71 62,-46.11"/>
+<polygon fill="black" stroke="black" points="65.5,-46.1 62,-36.1 58.5,-46.1 65.5,-46.1"/>
 </g>
 </g>
 </svg>
@@ -1864,7 +1863,11 @@ This is a designated initialiser for the class.<br />
             with the argument <var>anArgument</var> (which may be
             <code>nil</code>). <br /> The arguments
             <var>aTarget</var> and <var>aSelector</var> are
-            retained while the thread is running.
+            retained while the thread is running. <br /> The
+            method implementation of <var>aSelector</var> is
+            responsible for creating and destroying an
+            autorelease pool if it uses (either directly or
+            indirectly) any code with autoreleases.
           
         </div>
         <hr class="method-separator">
@@ -1934,7 +1937,9 @@ This is a designated initialiser for the class.<br />
 <br />
         <div class="desc">
           
-            FIXME... what does this do?
+            Do not call this directly. This method is called to send
+            the message that the receiver was initialised with at
+            the point when the thread starts executing.
           
         </div>
         <hr class="method-separator">
@@ -2484,7 +2489,8 @@ This is a designated initialiser for the class.<br />
           This category contains convenience initialisers and
           methods for executing blocks in different threads and
           creating NSThread objects with a block as entry
-          point.
+          point. The use of these methods is not portable
+          between compilers!
         
         </div>
         <p class="global_method_index">
